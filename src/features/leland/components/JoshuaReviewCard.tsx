@@ -13,7 +13,7 @@
 
 import { useState } from 'react';
 import { CheckCircle2, AlertTriangle, ShieldCheck, ChevronRight, X, ArrowUpRight, ScaleIcon } from 'lucide-react';
-import { HeroMetric } from 'strata-design-system';
+import { HeroMetric, Callout } from 'strata-design-system';
 import StatusBadge from '../../../components/shared/StatusBadge';
 import { useDemo } from '../../../context/DemoContext';
 import { HERO_PO_HAPPY, HERO_VALIDATION } from '../../../config/profiles/leland-data';
@@ -138,17 +138,13 @@ export default function JoshuaReviewCard() {
                             </div>
 
                             {/* Strata recommendation */}
-                            <div className="rounded-xl border border-ai/30 bg-ai/5 dark:bg-ai/10 p-4">
-                                <div className="flex items-center gap-2 mb-2">
-                                    <div className="size-6 rounded-md bg-ai/15 text-ai flex items-center justify-center">
-                                        <ShieldCheck className="h-3 w-3" />
-                                    </div>
-                                    <span className="text-[11px] font-bold uppercase tracking-wider text-ai">Recommendation</span>
-                                </div>
-                                <div className="text-[13px] text-foreground leading-snug">
-                                    Use the approved quote price · flag the dealer for the next 30 days for follow-up pricing checks.
-                                </div>
-                            </div>
+                            <Callout
+                                tone="ai"
+                                variant="soft"
+                                eyebrow="Recommendation"
+                                body="Use the approved quote price · flag the dealer for the next 30 days for follow-up pricing checks."
+                                icon={<ShieldCheck className="h-4 w-4" />}
+                            />
 
                             {/* Action buttons OR resolved state */}
                             {!resolved ? (
