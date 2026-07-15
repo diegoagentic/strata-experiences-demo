@@ -1,0 +1,12 @@
+/* All @import rules must precede other statements */
+@import './fonts.css';
+@import 'tailwindcss/preflight';
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';
+@import './tokens/variables.css';
+@import './tokens/variables-dark.css';
+@import './tokens/theme-v4.css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Legacy Shadcn Theme (Removed - Migrated to Tokens) */

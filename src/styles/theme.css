@@ -1,0 +1,52 @@
+@import './tokens/variables.css';
+@import './tokens/variables-dark.css';
+
+:root {
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
+    --card: var(--color-card);
+    --card-foreground: var(--color-card-foreground);
+    --popover: var(--color-popover);
+    --popover-foreground: var(--color-popover-foreground);
+    --primary: var(--color-primary);
+    --primary-foreground: var(--color-primary-foreground);
+    --secondary: var(--color-secondary);
+    --secondary-foreground: var(--color-secondary-foreground);
+    --muted: var(--color-muted);
+    --muted-foreground: var(--color-muted-foreground);
+    --accent: var(--color-accent);
+    --accent-foreground: var(--color-accent-foreground);
+    --destructive: var(--color-destructive);
+    --destructive-foreground: var(--color-destructive-foreground);
+    --border: var(--color-border);
+    --input: var(--color-input);
+    --ring: var(--color-ring);
+    --radius: 0.5rem;
+    --chart-trend-line: #a1a1aa;
+    --chart-trend-dot-fill: var(--color-primary);
+    --chart-trend-dot-stroke: var(--color-primary);
+    --chart-brand-fill: var(--color-brand-300);
+    --shadow-glow-sm: none;
+}
+
+.dark {
+    --chart-trend-line: var(--color-primary);
+    --chart-trend-dot-fill: var(--color-background);
+    --chart-brand-fill: var(--color-brand-500);
+    --shadow-glow-sm: 0 0 20px rgba(225, 225, 225, 0.15);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--fontFamily-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--fontFamily-brand), var(--fontFamily-sans);
+}

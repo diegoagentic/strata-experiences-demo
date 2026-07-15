@@ -1,0 +1,110 @@
+@import './styles/theme.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .scrollbar-minimal::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    .scrollbar-minimal::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .scrollbar-minimal::-webkit-scrollbar-thumb {
+        @apply bg-zinc-300 dark:bg-zinc-700 rounded-full transition-colors;
+        background-clip: padding-box;
+        border: 2px solid transparent;
+    }
+
+    .scrollbar-minimal::-webkit-scrollbar-thumb:hover {
+        @apply bg-zinc-400 dark:bg-zinc-600;
+    }
+
+    .scrollbar-none::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollbar-none {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    /* Ultra-thin Minimal Scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        @apply bg-zinc-200 dark:bg-zinc-700 rounded-full transition-colors;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        @apply bg-zinc-400 dark:bg-zinc-500;
+    }
+
+    /* 2px Ultra-Minimalist Line Scrollbar */
+    .scrollbar-micro::-webkit-scrollbar {
+        width: 2px;
+        height: 2px;
+    }
+
+    .scrollbar-micro::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .scrollbar-micro::-webkit-scrollbar-thumb {
+        @apply bg-zinc-300 dark:bg-zinc-700 rounded-full transition-colors;
+    }
+
+    .scrollbar-micro::-webkit-scrollbar-thumb:hover {
+        @apply bg-zinc-400 dark:bg-zinc-600;
+    }
+}
+
+/* AI Agent Avatar Glow Animation */
+@keyframes ai-glow {
+    0%, 100% { box-shadow: 0 0 4px rgba(16, 185, 129, 0.2), 0 0 0 1px rgba(16, 185, 129, 0.15); }
+    50% { box-shadow: 0 0 12px rgba(16, 185, 129, 0.35), 0 0 0 1px rgba(16, 185, 129, 0.3); }
+}
+
+.animate-ai-glow {
+    animation: ai-glow 2.5s ease-in-out infinite;
+}
+
+/* Demo Spotlight Animations */
+@keyframes scan {
+    0%, 100% { top: 0%; }
+    50% { top: 100%; }
+}
+
+@keyframes upload {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+@keyframes demo-spotlight-pulse {
+    0%, 100% { box-shadow: 0 0 0 2px hsl(var(--primary) / 0.4), 0 0 20px hsl(var(--primary) / 0.15); }
+    50% { box-shadow: 0 0 0 4px hsl(var(--primary) / 0.6), 0 0 40px hsl(var(--primary) / 0.3); }
+}
+
+.demo-spotlight-active {
+    animation: demo-spotlight-pulse 1s ease-in-out 3;
+    position: relative;
+    z-index: 1;
+}
+
+.demo-spotlight-steady {
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.3), 0 0 15px hsl(var(--primary) / 0.1);
+    transition: box-shadow 0.5s ease-out;
+    position: relative;
+    z-index: 1;
+}

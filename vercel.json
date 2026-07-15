@@ -1,0 +1,15 @@
+{
+  "installCommand": "node scripts/vercel-install.mjs && npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "headers": [
+    {
+      "source": "/docs/(.*\\.pdf)",
+      "headers": [
+        { "key": "Content-Type", "value": "application/pdf" },
+        { "key": "Content-Disposition", "value": "inline" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+      ]
+    }
+  ]
+}

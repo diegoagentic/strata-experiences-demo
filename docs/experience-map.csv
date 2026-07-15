@@ -1,0 +1,37 @@
+Module,Category,Profile(s),Description,Quote-to-SIF,Dealer,Expert Hub,Facility Manager,Manufacturer,Installer,Designer,CRM,# Experiences Touched
+Email Ingestion Simulation,Shared,COI / Acme,"RFQ email intake, auto-queues for AI processing",,X,X,X,X,X,X,X,1
+Dealer Kanban Pipeline,Shared,COI / Acme / Continua / OPS,"AI extraction, normalization, SIF quote-draft generation",X,X,,,,,,,2
+Expert Hub Transactions,Shared,COI / Acme / Continua / OPS,HITL review/reconciliation of quotes & acknowledgements,,,X,,~,,,,2
+MAC / Service Center,Shared,COI / Acme / Continua,Warranty & labor-claim HITL processing,,,X,,,~,,,2
+Dashboard (shared shell),Shared,All tour-based profiles,"Approvals, role-based notifications, financial rollups",,X,,,,,,,1
+CRM Simulation,Shared,COI / OPS / Continua,"Project auto-create, Customer 360, budget-vs-actual widget",,~,,,,,,X,2
+Approval Chain Modal,Shared,Multiple,Multi-level policy-engine approval UI,,X,X,X,X,X,X,X,2
+Three-Way Match View,Widget,OPS,PO ? ACK ? Receipt reconciliation,,,X,,,,,,1
+Smart Quote Hub,Widget,Multiple,Generic quoting hub widget,X,~,,,,,,,2
+Confidence Score Badge,Widget,Multiple,AI confidence indicator reused across quote/ack review,X,,X,,,,,,2
+Conversational Survey,Shared,Continua / CLC,Structured AI-guided survey (post-occupancy / intake),,,,X,,,,,1
+Inventory Management,Shared,Continua,"Forecasting, reuse cataloging, multi-location sync, receiving/QC",,,,X,X,,,,1
+Transactions Screen,Shared,Continua,Multi-vendor PO/ACK/receiving order lifecycle,~,X,X,X,X,,,,2
+Catalog / Rule Builder,Shared,Multiple,"Quote setup, client policy & rule governance",~,~,,,,,,,2
+Order Creation Forms,Shared,Multiple,Order creation / import-from-quote flows,~,X,,,,,,,2
+ERP Sync Modal,Shared,OPS / Dupler,QuickBooks / CORE sync,,X,X,X,,,,,1
+Notification / Action Center,Shared,Multiple,"Role-based notification digest, chat view",X,X,X,X,X,X,X,X,1
+Strata Estimator,Feature module,WRG,"BOM, pricing waterfall, SIF export, audit trail, designer verification",X,~,,,,,X,,3
+Dupler PDF Processor,Feature module,Dupler,Vendor PDF quote ? spec assembly ? priced SIF,X,,,,~,,X,,3
+Dupler Warehouse,Feature module,Dupler,"Receiving, transit tracking, vendor claims/returns",,,,X,~,X,,,2
+Dupler Reporting,Feature module,Dupler,"Cross-system health dashboard, client portal",X,X,X,X,X,X,X,X,1
+CLC Calendar Scene,Feature module,CLC,"IQ ? Outlook install scheduling, capacity-conflict AI",,,,,,X,,,1
+CLC SharePoint Scene,Feature module,CLC,Installer folder seeding / publish,,,,,,~,,,1
+CLC Intake Scene,Feature module,CLC,Award survey + IQ data reconciliation,,,,~,,,,,1
+Officeworks Spec Check Scenes,Feature module,Officeworks,BOM self-audit (6-attribute) & peer review,,,,,,,X,,1
+Officeworks Labor & Delivery Scenes,Feature module,Officeworks,Installer/vendor bid request & evaluation,,,,,,X,,,1
+Officeworks Sales Scenes,Feature module,Officeworks,"Inbox triage, opportunity intake, proposal & close",,~,,,,,,~,2
+BFI Pre-Award Scenes,Feature module,BFI,Direct manufacturer quote intake & proposal assembly,,,,,X,,~,,2
+BFI Receiving Scenes,Feature module,BFI,Install-crew dispatch & shortage-claim resolution,,,,,,X,,,1
+Leland Strata Shell,Feature module,Leland,Fully-automated PO ? order pipeline,~,X,,,,,,,2
+Leland Review Queue,Feature module,Leland,One-click exception approval (price-catch resolution),,,X,,,,,,1
+MBI Quotes Scenes,Feature module,MBI,"BOM completeness/SIF conversion, non-catalog resolution",X,,,,,,,,1
+MBI Design AI,Feature module,"MBI (built, not in live tour)","AI spec-check simulation, designer capacity board",,,,,,,X,,1
+CRM Standalone App,Feature module,Strata CRM,"Pipeline, Forecast, Design Intake, Opportunity Detail, AI Import",,~,,,,,,X,2
+TOTAL (X + ~) per experience,,,,10,15,6,4,4,6,5,3,
+of which dedicated (X only),,,,6,9,6,3,1,3,4,2,

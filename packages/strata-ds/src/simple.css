@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@source "./test.html";
+
+.foo {
+    color: red;
+}
