@@ -23,7 +23,7 @@ import { useDemoProfile } from '../context/useDemoProfile'
 import { SHARED_BLOCKS } from '../config/sharedBlocks';
 
 import ActionCenter from './notifications/ActionCenter';
-import ViewAsToggle from './manufacturer/ViewAsToggle';
+import RoleSwitcher from './RoleSwitcher';
 import { useViewAs } from './manufacturer/viewAsSignal';
 
 import logoLightBrand from '../assets/logo-light-brand.png';
@@ -563,12 +563,12 @@ export default function Navbar({
                         </button>
                     )}
 
-                    {/* W11 · Dealer mirror · manufacturer/dealer view toggle (inbound-outbound only) */}
-                    {isInboundOutbound && (
-                        <div className="hidden lg:block">
-                            <ViewAsToggle />
-                        </div>
-                    )}
+                    {/* Role switcher · auto-renders for any profile declaring
+                        `hasRoleSwitcher: true` + `roles[]` in demoProfiles.ts.
+                        Replaces the inbound-outbound-specific ViewAsToggle. */}
+                    <div className="hidden lg:block">
+                        <RoleSwitcher />
+                    </div>
 
                     <button onClick={toggleTheme} className="hidden lg:flex p-2 rounded-full hover:bg-muted text-muted-foreground hover:text-foreground transition-colors">
                         {theme === 'dark' ? <SunIcon className="w-4 h-4" /> : <MoonIcon className="w-4 h-4" />}

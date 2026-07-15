@@ -1,42 +1,34 @@
 /**
- * viewAsSignal · sessionStorage + CustomEvent signal for dealer mirror toggle (W11)
+ * viewAsSignal · thin backward-compat wrapper over the generalized
+ * roleSignal (see src/lib/roleSignal.ts).
  *
- * Lets any component read the current "View as" state without prop-drilling.
- * Toggling triggers a CustomEvent that all `useViewAs()` consumers react to.
+ * The inbound-outbound experience declares two roles ('manufacturer' /
+ * 'dealer') in demoProfiles.ts. The global RoleSwitcher writes to the
+ * same store this file reads, so the 10+ manufacturer-side consumers
+ * (ARDepositsPanel, ItemDetailsDrawer, OrderActionsBar, etc.) keep
+ * working unchanged.
  *
- * States:
- *   - 'manufacturer' (default) · full UI · all actions enabled
- *   - 'dealer'                 · read-only · hides AR/proforma/financial · disables write actions
+ * New code should prefer `useCurrentRole(profileId)` from
+ * `src/lib/roleSignal.ts` directly.
  */
 
-import { useEffect, useState } from 'react'
+import { readRole, writeRole, useCurrentRole } from '../../lib/roleSignal'
 
 export type ViewAs = 'manufacturer' | 'dealer'
 
-const KEY = 'inbound-outbound:view-as'
-const EVENT = 'inbound-outbound:view-as-change'
+const PROFILE_ID = 'inbound-outbound'
+
+const normalize = (v: string | null): ViewAs =>
+    v === 'dealer' ? 'dealer' : 'manufacturer'
 
 export function readViewAs(): ViewAs {
-    if (typeof window === 'undefined') return 'manufacturer'
-    const v = window.sessionStorage.getItem(KEY)
-    return v === 'dealer' ? 'dealer' : 'manufacturer'
+    return normalize(readRole(PROFILE_ID))
 }
 
 export function writeViewAs(value: ViewAs): void {
-    if (typeof window === 'undefined') return
-    window.sessionStorage.setItem(KEY, value)
-    window.dispatchEvent(new CustomEvent(EVENT, { detail: value }))
+    writeRole(PROFILE_ID, value)
 }
 
 export function useViewAs(): ViewAs {
-    const [state, setState] = useState<ViewAs>(readViewAs)
-    useEffect(() => {
-        const onChange = (e: Event) => {
-            const detail = (e as CustomEvent).detail as ViewAs | undefined
-            setState(detail === 'dealer' ? 'dealer' : 'manufacturer')
-        }
-        window.addEventListener(EVENT, onChange)
-        return () => window.removeEventListener(EVENT, onChange)
-    }, [])
-    return state
+    return normalize(useCurrentRole(PROFILE_ID, 'manufacturer'))
 }

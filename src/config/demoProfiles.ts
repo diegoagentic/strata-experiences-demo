@@ -52,6 +52,21 @@ export interface DemoStep {
 
 export type DemoProfileId = 'acme' | 'coi' | 'dupler' | 'ops' | 'continua' | 'wrg' | 'mbi' | 'leland' | 'bfi' | 'workspaces' | 'officeworks' | 'inbound-outbound' | 'clc';
 
+/** Icon aliases surface as Lucide icons via components/RoleSwitcher.tsx's ICON_MAP. */
+export type RoleIcon =
+    | 'factory' | 'store' | 'building' | 'user' | 'users' | 'wrench'
+    | 'truck' | 'palette' | 'clipboard-check' | 'calculator' | 'sparkles'
+    | 'receipt' | 'shield' | 'mail' | 'calendar' | 'folder';
+
+export interface RoleDef {
+    /** Stable slug persisted in sessionStorage (${profileId}:role). */
+    id: string;
+    /** Human label shown in the RoleSwitcher menu + trigger. */
+    label: string;
+    /** Optional icon alias (see RoleIcon). Falls back to a generic user icon. */
+    icon?: RoleIcon;
+}
+
 export interface DemoProfile {
     id: DemoProfileId;
     /** Feature-first title shown in the dropdown (ej: "Spec Check & Design Validation").
@@ -73,6 +88,14 @@ export interface DemoProfile {
     stepBehavior: Record<string, StepBehavior>;
     stepMessages: Record<string, string[]>;
     selfIndicatedSteps: string[];
+
+    // ─── Role switching (generalized in F3) ──────────────────────────────────
+    /** Roles this experience can be "viewed as" (Dealer / Manufacturer / etc). */
+    roles?: RoleDef[];
+    /** First role rendered before the user picks; falls back to roles[0]. */
+    defaultRoleId?: string;
+    /** When true, RoleSwitcher renders in the navbar. */
+    hasRoleSwitcher?: boolean;
 }
 
 // Order: most recently created demo first (newest at top of Switch Demo dropdown).
@@ -91,6 +114,12 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: INBOUND_OUTBOUND_STEP_BEHAVIOR,
         stepMessages: INBOUND_OUTBOUND_STEP_MESSAGES,
         selfIndicatedSteps: INBOUND_OUTBOUND_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'manufacturer',
+        roles: [
+            { id: 'manufacturer', label: 'Manufacturer', icon: 'factory' },
+            { id: 'dealer',       label: 'Dealer',       icon: 'store' },
+        ],
     },
     {
         id: 'clc',

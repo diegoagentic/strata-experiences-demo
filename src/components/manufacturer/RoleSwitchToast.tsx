@@ -1,17 +1,18 @@
 /**
- * RoleSwitchToast · transient strip shown on every "View as" change (W11)
+ * RoleSwitchToast · transient strip shown on every "View as" change (W11).
  *
- * Replaces the old persistent DealerViewBanner. Listens to the viewAs
- * CustomEvent directly (NOT useViewAs) so it fires ONLY on a change — never on
- * initial mount. The strip is colored by the chosen role (Manufacturer = brand
- * lime · Dealer = info blue), shows for ~2.5s and fades itself out.
+ * Listens to the generalized 'role:change' event (from src/lib/roleSignal.ts)
+ * filtered to `profileId === 'inbound-outbound'`, so the toast only fires for
+ * the manufacturer/dealer split · not for role changes in other experiences.
+ * F5+ will generalize the toast look per experience if needed.
  */
 
 import { useEffect, useRef, useState } from 'react'
 import { Factory, Store } from 'lucide-react'
 import type { ViewAs } from './viewAsSignal'
+import { ROLE_EVENT } from '../../lib/roleSignal'
 
-const EVENT = 'inbound-outbound:view-as-change'
+const PROFILE_ID = 'inbound-outbound'
 const DURATION = 2500
 
 const CONFIG: Record<ViewAs, { label: string; sub: string; Icon: typeof Factory; cls: string }> = {
@@ -40,8 +41,9 @@ export default function RoleSwitchToast() {
             timers.current = []
         }
         const onChange = (e: Event) => {
-            const detail = (e as CustomEvent).detail as ViewAs | undefined
-            const next: ViewAs = detail === 'dealer' ? 'dealer' : 'manufacturer'
+            const detail = (e as CustomEvent).detail as { profileId?: string; roleId?: string } | undefined
+            if (detail?.profileId !== PROFILE_ID) return
+            const next: ViewAs = detail.roleId === 'dealer' ? 'dealer' : 'manufacturer'
             clear()
             setLeaving(false)
             setRole(next)
@@ -52,9 +54,9 @@ export default function RoleSwitchToast() {
             }, DURATION)
             timers.current = [t1, t2]
         }
-        window.addEventListener(EVENT, onChange)
+        window.addEventListener(ROLE_EVENT, onChange)
         return () => {
-            window.removeEventListener(EVENT, onChange)
+            window.removeEventListener(ROLE_EVENT, onChange)
             clear()
         }
     }, [])

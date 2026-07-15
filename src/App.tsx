@@ -680,9 +680,9 @@ function App() {
       {/* Architecture Slide — kept for programmatic access, button removed */}
       <StrataArchitectureSlide open={showArchSlide} onClose={() => setShowArchSlide(false)} />
 
-      {/* W11 · Dealer mirror MVP · only for inbound-outbound profile.
-          ViewAsToggle lives inline in the Navbar; RoleSwitchToast is a transient
-          strip that confirms each role change (no persistent banner). */}
+      {/* RoleSwitchToast · transient confirmation strip fired on every role
+          change. Kept scoped to inbound-outbound for now (only profile using
+          the manufacturer/dealer split); F5+ will opt in per experience. */}
       {isInboundOutbound && <RoleSwitchToast />}
     </GenUIProvider>
   );
