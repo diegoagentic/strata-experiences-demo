@@ -139,6 +139,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         description: 'IQ × Outlook × SharePoint × M365 · install scheduling · asset seeding · intake validation · data lake',
         icon: '📅',
         experienceLabel: 'Operations Experience',
+        defaultApp: 'clc-dashboard',
         steps: CLC_STEPS,
         stepBehavior: CLC_STEP_BEHAVIOR,
         stepMessages: CLC_STEP_MESSAGES,

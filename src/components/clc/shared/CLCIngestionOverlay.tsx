@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Sparkles, CheckCircle2, Loader2 } from 'lucide-react'
+import { ProgressBar } from 'strata-design-system'
 
 interface CLCIngestionOverlayProps {
     /** Called once the ingestion sequence finishes · the parent uses it
@@ -87,10 +88,12 @@ export default function CLCIngestionOverlay({
                         )
                     })}
                 </ul>
-                <div className="mt-4 h-1 rounded-full bg-muted overflow-hidden" aria-hidden>
-                    <div
-                        className="h-full bg-ai transition-all duration-500 ease-out"
-                        style={{ width: `${(phase / phases.length) * 100}%` }}
+                <div className="mt-4">
+                    <ProgressBar
+                        value={Math.round((phase / phases.length) * 100)}
+                        tone="ai"
+                        height="xs"
+                        aria-label="Ingestion progress"
                     />
                 </div>
                 <p className="mt-3 text-[10px] text-muted-foreground text-center">

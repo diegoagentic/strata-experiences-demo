@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Send, X, Filter as FilterIcon, Sparkles, Eye, Loader2, CheckCircle2 } from 'lucide-react'
+import { ProgressBar } from 'strata-design-system'
 import type { InstallJob, Region } from './installScheduleData'
 import { REGION_BADGE, REGION_LABEL } from './installScheduleData'
 
@@ -347,12 +348,12 @@ export default function CLCPublishModal({ jobs, onClose, onPublish, onViewJob, p
                                 {Math.round((bulkSent / Math.max(bulkTotal, 1)) * 100)}%
                             </span>
                         </div>
-                        <div className="h-1.5 rounded-full bg-muted overflow-hidden">
-                            <div
-                                className={`h-full transition-all duration-300 ease-out ${bulkAllDone ? 'bg-success' : 'bg-ai'}`}
-                                style={{ width: `${(bulkSent / Math.max(bulkTotal, 1)) * 100}%` }}
-                            />
-                        </div>
+                        <ProgressBar
+                            value={Math.round((bulkSent / Math.max(bulkTotal, 1)) * 100)}
+                            tone={bulkAllDone ? 'success' : 'ai'}
+                            height="sm"
+                            aria-label="Bulk publish progress"
+                        />
                     </footer>
                 ) : (
                     <footer className="p-3 border-t border-border bg-muted/20 flex items-center justify-between gap-3 flex-wrap">
