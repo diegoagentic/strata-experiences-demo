@@ -19,7 +19,7 @@ Fuente de verdad de qué se muestra por experiencia · `docs/experience-map.csv`
 |---|---|---|---|---|---|
 | 1 | `inbound-outbound` | Manufacturer Order Entry | 🟢 | ⏳ F16 | RoleSwitcher activo (manufacturer/dealer). 12 steps · 5 apps. |
 | 2 | `clc` | Install Scheduling + Data Reconciliation | 🟡 | ⏳ F8 | Comentario dice 12 steps · en runtime son 11 (docs desfasadas, no rompe). |
-| 3 | `officeworks` | Spec Check & Design Validation | 🟡 | ⏳ F6 | CSV lista "Labor & Delivery" + "Sales Scenes" — no presentes en el tour. `officeworks-dashboard` en nav no aparece en steps. |
+| 3 | `officeworks` | Spec Check & Design Validation | 🟢 | 🟢 F6 | Landing modo normal via `defaultApp: 'officeworks-dashboard'`. `OfficeworksDashboardScene` KPI cards adoptaron `<HeroMetric>`; `AckReviewScene` summary cards igual. **Gap CSV**: Labor & Delivery + Sales scenes (`manattLaborData` 583 LOC + `manattSalesData` 619 LOC + Dashboard 914/251 LOC + ReviewModal 6832/759 LOC) existen en `demo-2026-strata` y NO fueron copiadas · pendiente sync futuro. |
 | 4 | `workspaces` | Expense Management End-to-End | 🟢 | ⏳ F14 | Fixed F4: tab "Spend Dashboard" ahora navega a `workspaces-reporting` (antes iba a `workspaces-dashboard` inexistente). |
 | 5 | `bfi` | Agency Fee Lifecycle | 🟢 | ⏳ F7 | 13 steps · Pre-Award + Receiving cubiertos vs CSV. Navbar oculta para r1.6/a1.0/a1.2 (mobile frame). |
 | 6 | `leland` | PO-to-Order Automation | 🟡 | ⏳ F5 | 4 apps en tour · CSV solo formaliza 2 (Strata Shell + Review Queue). Inbox + Seradex son additions. |

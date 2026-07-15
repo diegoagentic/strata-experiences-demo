@@ -18,6 +18,7 @@ import {
     FileCheck, Sparkles, FileText, CheckCircle2, AlertTriangle, XCircle, ArrowRight,
     GitCompare, Send,
 } from 'lucide-react'
+import { HeroMetric } from 'strata-design-system'
 import PDFPreviewModal, { OFFICEWORKS_PDFS } from './shared/PDFPreviewModal'
 import { MANATT_ORDER_META } from './shared/manattOrderData'
 import { CHANGE_ORDER_REASONS } from './shared/auditChecklistSteps'
@@ -239,30 +240,27 @@ export default function AckReviewScene({ onContinue }: Props) {
 
             {/* Summary cards */}
             <div className="grid grid-cols-3 gap-3">
-                <div className="bg-success/5 border border-success/20 rounded-xl p-4">
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-success" />
-                        Match
-                    </div>
-                    <div className="text-2xl font-semibold text-success tabular-nums">{matchCount}</div>
-                    <div className="text-xs text-muted-foreground mt-1">fields aligned</div>
-                </div>
-                <div className="bg-warning/5 border border-warning/20 rounded-xl p-4">
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
-                        <AlertTriangle className="h-3.5 w-3.5 text-warning" />
-                        Partial
-                    </div>
-                    <div className="text-2xl font-semibold text-warning tabular-nums">{partialCount}</div>
-                    <div className="text-xs text-muted-foreground mt-1">auto-resolvable</div>
-                </div>
-                <div className="bg-destructive/5 border border-destructive/20 rounded-xl p-4">
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
-                        <XCircle className="h-3.5 w-3.5 text-destructive" />
-                        Mismatch
-                    </div>
-                    <div className="text-2xl font-semibold text-destructive tabular-nums">{mismatchCount}</div>
-                    <div className="text-xs text-muted-foreground mt-1">requires review</div>
-                </div>
+                <HeroMetric
+                    tone="success"
+                    label="Match"
+                    value={matchCount}
+                    sub="fields aligned"
+                    icon={<CheckCircle2 className="h-4 w-4" />}
+                />
+                <HeroMetric
+                    tone="warning"
+                    label="Partial"
+                    value={partialCount}
+                    sub="auto-resolvable"
+                    icon={<AlertTriangle className="h-4 w-4" />}
+                />
+                <HeroMetric
+                    tone="danger"
+                    label="Mismatch"
+                    value={mismatchCount}
+                    sub="requires review"
+                    icon={<XCircle className="h-4 w-4" />}
+                />
             </div>
 
             {/* Diff table */}

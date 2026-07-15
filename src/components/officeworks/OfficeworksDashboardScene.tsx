@@ -20,6 +20,7 @@ import {
 import {
     ResponsiveContainer, LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, ReferenceLine, CartesianGrid,
 } from 'recharts'
+import { HeroMetric } from 'strata-design-system'
 import CapacityHeatmap from './shared/CapacityHeatmap'
 import DesignerDetailModal from './shared/DesignerDetailModal'
 import {
@@ -56,10 +57,10 @@ export default function OfficeworksDashboardScene() {
 
             {/* KPI cards row (4) */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <KPICard icon={Clock} label="Avg cycle time" value="3.4w" change="+12% vs Q1 target" tone="warning" />
-                <KPICard icon={TrendingUp} label="Revisions / project" value="2.7" change="range 2–4 typical" tone="muted" />
-                <KPICard icon={Target} label="Error escape rate" value="0.018%" change="below industry 0.025%" tone="success" />
-                <KPICard icon={Activity} label="Spec checks / week" value="~20" change="+10 new designs/week" tone="muted" />
+                <HeroMetric icon={<Clock className="h-4 w-4" />} label="Avg cycle time" value="3.4w" sub="+12% vs Q1 target" tone="warning" />
+                <HeroMetric icon={<TrendingUp className="h-4 w-4" />} label="Revisions / project" value="2.7" sub="range 2–4 typical" tone="neutral" />
+                <HeroMetric icon={<Target className="h-4 w-4" />} label="Error escape rate" value="0.018%" sub="below industry 0.025%" tone="success" />
+                <HeroMetric icon={<Activity className="h-4 w-4" />} label="Spec checks / week" value="~20" sub="+10 new designs/week" tone="neutral" />
             </div>
 
             {/* Charts row 1: trends */}
@@ -228,24 +229,3 @@ export default function OfficeworksDashboardScene() {
 
 // ─── KPI card sub-component ───────────────────────────────────────────────────
 
-interface KPICardProps {
-    icon: React.ComponentType<{ className?: string }>
-    label: string
-    value: string
-    change: string
-    tone: 'success' | 'warning' | 'destructive' | 'muted'
-}
-
-function KPICard({ icon: Icon, label, value, change, tone }: KPICardProps) {
-    const changeClass = tone === 'success' ? 'text-success' : tone === 'warning' ? 'text-warning' : tone === 'destructive' ? 'text-destructive' : 'text-muted-foreground'
-    return (
-        <div className="bg-card border border-border rounded-xl p-4">
-            <div className="flex items-center gap-2 text-muted-foreground text-xs mb-2">
-                <Icon className="h-3.5 w-3.5" />
-                <span>{label}</span>
-            </div>
-            <div className="text-2xl font-semibold text-foreground tabular-nums">{value}</div>
-            <div className={`text-xs mt-1 ${changeClass}`}>{change}</div>
-        </div>
-    )
-}

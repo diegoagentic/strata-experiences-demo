@@ -152,6 +152,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         companyName: 'Officeworks Inc.',
         description: 'Spec Check & Design AI · Teknion BOM validation · MANATT 4th Floor',
         icon: '📐',
+        defaultApp: 'officeworks-dashboard',
         steps: OFFICEWORKS_STEPS,
         stepBehavior: OFFICEWORKS_STEP_BEHAVIOR,
         stepMessages: OFFICEWORKS_STEP_MESSAGES,
