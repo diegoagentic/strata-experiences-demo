@@ -50,6 +50,14 @@ export type DemoProfileId = 'acme' | 'coi' | 'dupler' | 'ops' | 'continua' | 'wr
 
 export interface DemoProfile {
     id: DemoProfileId;
+    /** Feature-first title shown in the dropdown (ej: "Spec Check & Design Validation").
+     *  Does NOT include the client name. */
+    title: string;
+    /** Cliente + scenes complementarias (ej: "Officeworks · Intake + CET/CAP + Audit").
+     *  Optional. Shown below the title in the dropdown. */
+    subtitle?: string;
+    /** Legacy label kept for compat (some tour components still read it).
+     *  New code should use `title`. */
     name: string;
     companyName: string;
     description: string;
@@ -68,6 +76,8 @@ export interface DemoProfile {
 export const DEMO_PROFILES: DemoProfile[] = [
     {
         id: 'inbound-outbound',
+        title: 'Manufacturer Order Entry',
+        subtitle: 'Senator pitch · Inbound RFQ / Outbound Ack · Dealer↔Manufacturer',
         name: 'Inbound | Outbound',
         companyName: 'Inbound | Outbound',
         description: 'Manufacturer order entry · inbound RFQ + PO · outbound quote + ack + shipping + invoice · 12 steps · 2 flows',
@@ -80,6 +90,8 @@ export const DEMO_PROFILES: DemoProfile[] = [
     },
     {
         id: 'officeworks',
+        title: 'Spec Check & Design Validation',
+        subtitle: 'Officeworks · Intake + CET/CAP + Teknion Preview + Audit',
         name: 'Officeworks',
         companyName: 'Officeworks Inc.',
         description: 'Spec Check & Design AI · Teknion BOM validation · MANATT 4th Floor',
@@ -91,10 +103,12 @@ export const DEMO_PROFILES: DemoProfile[] = [
     },
     {
         id: 'workspaces',
+        title: 'Expense Management End-to-End',
+        subtitle: 'Workscapes · Mobile OCR + Approval + GL Sync + CFO Dashboard',
         name: 'Workscapes',
         companyName: 'Workscapes, Inc.',
         description: 'Expense report AI · GL auto-fill · CORE sync · spend dashboard',
-        icon: '📊',
+        icon: '💰',
         steps: WORKSPACES_STEPS,
         stepBehavior: WORKSPACES_STEP_BEHAVIOR,
         stepMessages: WORKSPACES_STEP_MESSAGES,
@@ -102,6 +116,8 @@ export const DEMO_PROFILES: DemoProfile[] = [
     },
     {
         id: 'bfi',
+        title: 'Agency Fee Lifecycle',
+        subtitle: 'BFI · Pre-Award + Receiving & Claims + CPR Closing',
         name: 'BFI',
         companyName: 'BFI',
         description: 'Agency Fee AI · CoNY receiving workflow',
@@ -113,6 +129,8 @@ export const DEMO_PROFILES: DemoProfile[] = [
     },
     {
         id: 'leland',
+        title: 'PO-to-Order Automation',
+        subtitle: 'Leland · PO Intake + Quote Match + Price Catch Review',
         name: 'Leland',
         companyName: 'Leland',
         description: 'Purchase order pipeline · materials review · exception handling',
@@ -124,6 +142,8 @@ export const DEMO_PROFILES: DemoProfile[] = [
     },
     {
         id: 'mbi',
+        title: 'Back-Office AI (AP + AR + Quotes)',
+        subtitle: 'MBI · Accounting + Collections + Quotes AI',
         name: 'MBI',
         companyName: 'MBI',
         description: 'Modern Business Interiors · Budget Builder prototype + Accounting/Quotes/Design AI',
@@ -135,6 +155,8 @@ export const DEMO_PROFILES: DemoProfile[] = [
     },
     {
         id: 'wrg',
+        title: 'Labor Estimation',
+        subtitle: 'WRG · Estimator + Designer Verification + Sales Review + Handoff',
         name: 'WRG',
         companyName: 'WRG',
         description: 'Quoting lifecycle — intake to client proposal',
@@ -146,6 +168,8 @@ export const DEMO_PROFILES: DemoProfile[] = [
     },
     {
         id: 'continua',
+        title: 'Project & Inventory Intelligence',
+        subtitle: 'Continua · Inventory + FM + Procurement + Sustainability',
         name: 'Continua',
         companyName: 'Continua',
         description: 'Project lifecycle, inventory intelligence & sustainability',
@@ -157,10 +181,12 @@ export const DEMO_PROFILES: DemoProfile[] = [
     },
     {
         id: 'dupler',
+        title: 'Vendor Data → SIF → Warehouse',
+        subtitle: 'Dupler · PDF Extraction + Warehouse & Transit + Reporting',
         name: 'Dupler',
         companyName: 'Dupler',
         description: 'PDF→SIF, Warehouse & Transit, Unified Reporting',
-        icon: '🏢',
+        icon: '📄',
         steps: DUPLER_STEPS,
         stepBehavior: DUPLER_STEP_BEHAVIOR,
         stepMessages: DUPLER_STEP_MESSAGES,
@@ -168,10 +194,12 @@ export const DEMO_PROFILES: DemoProfile[] = [
     },
     {
         id: 'ops',
+        title: 'Receiving → Invoice → QB Sync',
+        subtitle: 'Apex Furniture · 3-Way Match + Change Orders + CFO Dashboard',
         name: 'OPS Demo (Demo 2)',
         companyName: 'Apex Furniture',
         description: 'Receiving, invoicing & financial control',
-        icon: '📦',
+        icon: '📊',
         steps: OPS_DEMO_STEPS,
         stepBehavior: OPS_DEMO_STEP_BEHAVIOR,
         stepMessages: OPS_DEMO_STEP_MESSAGES,
@@ -179,10 +207,12 @@ export const DEMO_PROFILES: DemoProfile[] = [
     },
     {
         id: 'coi',
+        title: 'Email RFQ → PO → Warranty',
+        subtitle: 'COI · Email Ingestion + Kanban + Expert Hub + CRM',
         name: 'COI',
         companyName: 'COI',
         description: 'Contract office interiors',
-        icon: '🏗️',
+        icon: '📧',
         steps: COI_DEMO_STEPS,
         stepBehavior: COI_DEMO_STEP_BEHAVIOR,
         stepMessages: COI_DEMO_STEP_MESSAGES,
@@ -190,10 +220,12 @@ export const DEMO_PROFILES: DemoProfile[] = [
     },
     {
         id: 'acme',
+        title: 'Dealer RFQ → PO',
+        subtitle: 'Acme Corp · Furniture dealer flow (COI legacy sin CRM steps)',
         name: 'Acme Corp',
         companyName: 'Acme Corp',
         description: 'Furniture dealer experience',
-        icon: '🪑',
+        icon: '🏭',
         steps: COI_STEPS,
         stepBehavior: COI_STEP_BEHAVIOR,
         stepMessages: COI_STEP_MESSAGES,

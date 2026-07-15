@@ -275,9 +275,9 @@ export default function Navbar({
                             leaveFrom="opacity-100 translate-y-0"
                             leaveTo="opacity-0 translate-y-1"
                         >
-                            <PopoverPanel className="absolute left-0 top-full mt-2 w-64 py-2 rounded-xl bg-card/95 backdrop-blur-xl border border-border shadow-2xl z-[200] max-h-[70vh] flex flex-col">
+                            <PopoverPanel className="absolute left-0 top-full mt-2 w-80 py-2 rounded-xl bg-card/95 backdrop-blur-xl border border-border shadow-2xl z-[200] max-h-[70vh] flex flex-col">
                                 <div className="px-3 py-2 border-b border-border mb-1 shrink-0">
-                                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Switch Demo</p>
+                                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Experiences</p>
                                 </div>
                                 <div className="overflow-y-auto flex-1 min-h-0">
                                     {profiles.map((profile) => (
@@ -285,15 +285,17 @@ export default function Navbar({
                                             as="button"
                                             key={profile.id}
                                             onClick={() => switchProfile(profile.id)}
-                                            className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-muted transition-colors text-left"
+                                            className="w-full flex items-start gap-3 px-3 py-2.5 hover:bg-muted transition-colors text-left"
                                         >
-                                            <span className="text-lg shrink-0">{profile.icon}</span>
+                                            <span className="text-lg shrink-0 leading-tight pt-0.5">{profile.icon}</span>
                                             <div className="flex-1 min-w-0">
-                                                <p className="text-sm font-semibold text-foreground">{profile.name}</p>
-                                                <p className="text-[11px] text-muted-foreground truncate">{profile.description}</p>
+                                                <p className="text-sm font-semibold text-foreground leading-tight">{profile.title ?? profile.name}</p>
+                                                {profile.subtitle && (
+                                                    <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{profile.subtitle}</p>
+                                                )}
                                             </div>
                                             {activeProfile.id === profile.id && (
-                                                <CheckIcon className="w-4 h-4 text-primary shrink-0" />
+                                                <CheckIcon className="w-4 h-4 text-primary shrink-0 mt-1" />
                                             )}
                                         </PopoverButton>
                                     ))}
