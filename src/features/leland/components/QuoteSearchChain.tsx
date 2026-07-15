@@ -16,6 +16,7 @@
 
 import { useEffect, useState } from 'react';
 import { CheckCircle2, Loader2, Search, FileSearch, ChevronRight } from 'lucide-react';
+import { Callout } from 'strata-design-system';
 import StatusBadge from '../../../components/shared/StatusBadge';
 import StepCompletionCta from './StepCompletionCta';
 import { usePauseAware } from '../../../context/usePauseAware';
@@ -205,9 +206,13 @@ export default function QuoteSearchChain({
                             );
                         })}
 
-                        <div className="mt-2 flex items-center gap-2 text-xs text-success bg-success/5 border border-success/20 rounded-lg px-3 py-2">
-                            <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
-                            <span>Pulling pricing, configuration and freight from <strong>{CANDIDATES[0].quoteNumber}</strong></span>
+                        <div className="mt-2">
+                            <Callout
+                                tone="success"
+                                variant="soft"
+                                icon={<CheckCircle2 className="h-4 w-4" />}
+                                body={<>Pulling pricing, configuration and freight from <strong>{CANDIDATES[0].quoteNumber}</strong></>}
+                            />
                         </div>
                     </div>
                 </div>

@@ -9,6 +9,7 @@
 
 import { useEffect, useState } from 'react';
 import { CheckCircle2, Loader2, Users, Package, Spool, Truck } from 'lucide-react';
+import { Callout } from 'strata-design-system';
 import StatusBadge from '../../../components/shared/StatusBadge';
 import StepCompletionCta from './StepCompletionCta';
 import { usePauseAware } from '../../../context/usePauseAware';
@@ -73,9 +74,13 @@ export default function ConfigOverviewCanvas({ autoplay = true, perSectionDelay 
             </ConfigSection>
 
             {phase >= SECTIONS.length && (
-                <div className="flex items-center gap-2 text-xs text-success bg-success/5 border border-success/20 rounded-lg px-3 py-2 animate-in fade-in duration-300">
-                    <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
-                    <span>All checks clean · ready for SO generation in Seradex</span>
+                <div className="animate-in fade-in duration-300">
+                    <Callout
+                        tone="success"
+                        variant="soft"
+                        icon={<CheckCircle2 className="h-4 w-4" />}
+                        body="All checks clean · ready for SO generation in Seradex"
+                    />
                 </div>
             )}
 

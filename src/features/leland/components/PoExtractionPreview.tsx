@@ -20,6 +20,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { FileText, Sparkles, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { ProgressBar, Callout } from 'strata-design-system';
 import StatusBadge from '../../../components/shared/StatusBadge';
 import StepCompletionCta from './StepCompletionCta';
 import { usePauseAware } from '../../../context/usePauseAware';
@@ -101,12 +102,12 @@ export default function PoExtractionPreview({ animate = true, stagger = 220 }: P
                         <div className="text-xs font-bold text-foreground tabular-nums">{progress}%</div>
                     </div>
                 </div>
-                <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-                    <div
-                        className={`h-full rounded-full transition-all duration-200 ${isComplete ? 'bg-success' : 'bg-ai'}`}
-                        style={{ width: `${progress}%` }}
-                    />
-                </div>
+                <ProgressBar
+                    value={progress}
+                    tone={isComplete ? 'success' : 'ai'}
+                    height="sm"
+                    aria-label="PO field extraction progress"
+                />
             </div>
 
             {/* Two-column body */}
@@ -154,11 +155,13 @@ export default function PoExtractionPreview({ animate = true, stagger = 220 }: P
                     </div>
 
                     {isComplete && (
-                        <div className="mt-3 flex items-center gap-2 text-xs text-success bg-success/5 border border-success/20 rounded-lg px-3 py-2 animate-in fade-in duration-300">
-                            <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
-                            <span>
-                                Order details captured · 3 line items · contract reference detected
-                            </span>
+                        <div className="mt-3 animate-in fade-in duration-300">
+                            <Callout
+                                tone="success"
+                                variant="soft"
+                                icon={<CheckCircle2 className="h-4 w-4" />}
+                                body="Order details captured · 3 line items · contract reference detected"
+                            />
                         </div>
                     )}
                 </div>
