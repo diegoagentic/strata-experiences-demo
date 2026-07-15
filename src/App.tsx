@@ -220,27 +220,96 @@ function App() {
   // Per Liliana team review: CRM placeholder + dealer-side widgets out of scope.
   const inboundOutboundHiddenPages = ['crm', 'inventory', 'catalogs', 'pricing', 'workspace'];
 
+  // Per-profile nav definitions · extracted so they render regardless of
+  // whether the guided tour is active. Users can now browse a profile's
+  // tabs immediately after picking it from the dropdown — no need to
+  // launch the tour first.
+  const continuaNav = [
+    { name: 'Dashboard', page: 'dashboard', icon: HomeIcon },
+    { name: 'Inventory', page: 'inventory', icon: ArchiveBoxIcon, badge: 'Connected' },
+    { name: 'Service Center', page: 'mac', icon: WrenchScrewdriverIcon },
+    { name: 'Transactions', page: 'transactions', icon: BanknotesIcon },
+  ];
+  const expertNav = [
+    { name: 'Dashboard', page: 'dashboard', icon: HomeIcon },
+    { name: 'Service Center', page: 'mac', icon: WrenchScrewdriverIcon },
+    { name: 'Transactions', page: 'transactions', icon: BanknotesIcon },
+  ];
+  const crmNav = [
+    { name: 'Dashboard', page: 'dashboard', icon: HomeIcon },
+    { name: 'CRM', page: 'crm', icon: UserGroupIcon },
+    { name: 'Transactions', page: 'transactions', icon: BanknotesIcon },
+  ];
+  const duplerNav = [
+    { name: 'Dashboard', page: 'dashboard', icon: HomeIcon },
+    { name: 'Inventory', page: 'inventory', icon: ArchiveBoxIcon },
+    { name: 'Transactions', page: 'transactions', icon: BanknotesIcon },
+  ];
+  const wrgNav: { name: string; page: string; icon: any; badge?: string }[] = [];
+  // MBI · 2 tabs (Design AI + Budget Builder kept in codebase but not in nav).
+  const mbiNav = [
+    { name: 'Accounting AI', page: 'mbi-accounting', icon: ReceiptIcon },
+    { name: 'Quotes AI', page: 'mbi-quotes', icon: FileSearchIcon },
+  ];
+  const lelandNav = [
+    { name: 'PO Workspace', page: 'leland-strata', icon: SparklesIcon },
+    { name: 'Inbox', page: 'leland-inbox', icon: MailIcon },
+    { name: 'Order System', page: 'leland-seradex', icon: DatabaseIcon },
+    { name: 'Review Queue', page: 'leland-review', icon: ShieldCheckIcon },
+  ];
+  const bfiNav = [
+    { name: 'Dashboard', page: 'bfi-dashboard', icon: LayoutDashboardIcon },
+    { name: 'Agency Fee AI', page: 'bfi-agency-fee', icon: Building2Icon },
+    { name: 'Receiving AI', page: 'bfi-receiving', icon: ReceiptIcon },
+  ];
+  const workspacesNav = [
+    { name: 'Expense Submission', page: 'workspaces-submit', icon: ReceiptIcon },
+    { name: 'AP & Reporting', page: 'workspaces-ap', icon: Building2Icon },
+    { name: 'Spend Dashboard', page: 'workspaces-reporting', icon: LayoutDashboardIcon },
+  ];
+  const officeworksNav = [
+    { name: 'Dashboard', page: 'officeworks-dashboard', icon: LayoutDashboardIcon },
+    { name: 'Intake AI', page: 'officeworks-intake', icon: InboxIcon },
+    { name: 'Design AI', page: 'officeworks-design', icon: PencilIcon },
+    { name: 'Spec Check AI', page: 'officeworks-spec-check', icon: ClipboardCheckIcon },
+    { name: 'Submission AI', page: 'officeworks-submission', icon: SendIcon },
+  ];
+  const clcNav = [
+    { name: 'Schedule AI', page: 'clc-calendar', icon: CalendarIcon },
+    { name: 'Asset Seeding AI', page: 'clc-sharepoint', icon: FolderIcon },
+    { name: 'Intake Validation', page: 'clc-intake', icon: ClipboardListIcon },
+    { name: 'Operations Dashboard', page: 'clc-dashboard', icon: LayoutDashboardIcon },
+  ];
+  const inboundOutboundNav = [
+    { name: 'Dashboard', page: 'dashboard', icon: HomeIcon },
+    { name: 'Quote Converter', page: 'quote-converter', icon: ArrowsRightLeftIcon },
+    { name: 'Transactions', page: 'transactions', icon: BanknotesIcon },
+    { name: 'Service Center', page: 'mac', icon: WrenchScrewdriverIcon },
+  ];
+
+  // Pick the nav for the active profile (works with or without demo tour).
+  const profileNav =
+    isCLC ? clcNav
+    : isOfficeworks ? officeworksNav
+    : isWorkspaces ? workspacesNav
+    : isBFI ? bfiNav
+    : isLeland ? lelandNav
+    : isMBI ? mbiNav
+    : isWRG ? wrgNav
+    : isDupler ? duplerNav
+    : isContinua ? continuaNav
+    : isInboundOutbound ? inboundOutboundNav
+    : expertNav;
+
   const getSimulationConfig = () => {
-    // Inbound-Outbound runs as a standalone platform (no guided tour required).
-    // Custom nav surfaces only Dashboard + Transactions regardless of demo state.
+    // Without an active demo tour, just return the profile's nav plus
+    // undefined app/company (Navbar falls back to profile defaults).
     if (!isDemoActive) {
-      if (isInboundOutbound) {
-        return {
-          appName: undefined,
-          companyName: undefined,
-          customNavigation: [
-            { name: 'Dashboard', page: 'dashboard', icon: HomeIcon },
-            // Quote Converter · PDF → SIF (replica de /quote-converter) · moved next to Dashboard per user request
-            { name: 'Quote Converter', page: 'quote-converter', icon: ArrowsRightLeftIcon },
-            { name: 'Transactions', page: 'transactions', icon: BanknotesIcon },
-            // v4.1 · Service Center restored per user request
-            { name: 'Service Center', page: 'mac', icon: WrenchScrewdriverIcon },
-            // Shipping moved inside Transactions as a tab per Wendy 51:59 (Neocon-review 2026-06-05).
-            // Standalone route kept for back-compat; Phase 6 will refactor Shipping.tsx into a sub-component.
-          ],
-        };
-      }
-      return { appName: undefined, companyName: undefined, customNavigation: undefined };
+      return {
+        appName: undefined,
+        companyName: undefined,
+        customNavigation: profileNav,
+      };
     }
 
     // Standardized app names and company per role
@@ -325,84 +394,9 @@ function App() {
       : isExpert || isDuplerExpert || isWrgExpert || isWrgDesigner ? 'Strata Services'
       : demoProfile.companyName;
 
-    // Continua profile: 4-tab nav including Inventory with "Connected" badge
-    const continuaNav = [
-      { name: 'Dashboard', page: 'dashboard', icon: HomeIcon },
-      { name: 'Inventory', page: 'inventory', icon: ArchiveBoxIcon, badge: 'Connected' },
-      { name: 'Service Center', page: 'mac', icon: WrenchScrewdriverIcon },
-      { name: 'Transactions', page: 'transactions', icon: BanknotesIcon },
-    ];
-    const expertNav = [
-      { name: 'Dashboard', page: 'dashboard', icon: HomeIcon },
-      { name: 'Service Center', page: 'mac', icon: WrenchScrewdriverIcon },
-      { name: 'Transactions', page: 'transactions', icon: BanknotesIcon },
-    ];
-    const crmNav = [
-      { name: 'Dashboard', page: 'dashboard', icon: HomeIcon },
-      { name: 'CRM', page: 'crm', icon: UserGroupIcon },
-      { name: 'Transactions', page: 'transactions', icon: BanknotesIcon },
-    ];
-    // Dupler profile: 3-tab nav (Dashboard, Inventory, Transactions)
-    const duplerNav = [
-      { name: 'Dashboard', page: 'dashboard', icon: HomeIcon },
-      { name: 'Inventory', page: 'inventory', icon: ArchiveBoxIcon },
-      { name: 'Transactions', page: 'transactions', icon: BanknotesIcon },
-    ];
-    // WRG profile: no center nav (demo auto-drives all steps)
-    const wrgNav: { name: string; page: string; icon: any; badge?: string }[] = [];
-
-    // MBI profile: 2-tab primary nav (Accounting + Quotes).
-    // - Budget Builder: removed per Apr 23 (Carlos · not in scope).
-    // - Design AI: removed from nav per Apr 27 user decision (was already
-    //   removed from the active tour — keeping the tab open after the
-    //   tour shrunk caused confusion). MBIDesignPage component + the
-    //   'mbi-design' route handler + appToTab entry stay in the codebase
-    //   for fast re-enable: paste the entry below back in.
-    const mbiNav = [
-      { name: 'Accounting AI', page: 'mbi-accounting', icon: ReceiptIcon },
-      { name: 'Quotes AI', page: 'mbi-quotes', icon: FileSearchIcon },
-    ];
-
-    // Leland profile: 4-tab primary nav (PO Workspace · Inbox · Order System · Review)
-    const lelandNav = [
-      { name: 'PO Workspace', page: 'leland-strata', icon: SparklesIcon },
-      { name: 'Inbox', page: 'leland-inbox', icon: MailIcon },
-      { name: 'Order System', page: 'leland-seradex', icon: DatabaseIcon },
-      { name: 'Review Queue', page: 'leland-review', icon: ShieldCheckIcon },
-    ];
-
-    // BFI profile: 3-tab primary nav (Dashboard · Agency Fee AI · Receiving AI)
-    const bfiNav = [
-      { name: 'Dashboard', page: 'bfi-dashboard', icon: LayoutDashboardIcon },
-      { name: 'Agency Fee AI', page: 'bfi-agency-fee', icon: Building2Icon },
-      { name: 'Receiving AI', page: 'bfi-receiving', icon: ReceiptIcon },
-    ];
-
-    // Workspaces profile: 3-tab primary nav (Expense Submission · AP & Reporting · Spend Dashboard)
-    const workspacesNav = [
-      { name: 'Expense Submission', page: 'workspaces-submit', icon: ReceiptIcon },
-      { name: 'AP & Reporting', page: 'workspaces-ap', icon: Building2Icon },
-      { name: 'Spend Dashboard', page: 'workspaces-reporting', icon: LayoutDashboardIcon },
-    ];
-
-    // Officeworks profile: 5-tab primary nav (Dashboard persistent + 4 module tabs · per plan Iter 1 decision)
-    const officeworksNav = [
-      { name: 'Dashboard', page: 'officeworks-dashboard', icon: LayoutDashboardIcon },
-      { name: 'Intake AI', page: 'officeworks-intake', icon: InboxIcon },
-      { name: 'Design AI', page: 'officeworks-design', icon: PencilIcon },
-      { name: 'Spec Check AI', page: 'officeworks-spec-check', icon: ClipboardCheckIcon },
-      { name: 'Submission AI', page: 'officeworks-submission', icon: SendIcon },
-    ];
-
-    // CLC profile: 4-tab primary nav (Schedule · Asset Seeding · Intake · Ops Dashboard)
-    const clcNav = [
-      { name: 'Schedule AI', page: 'clc-calendar', icon: CalendarIcon },
-      { name: 'Asset Seeding AI', page: 'clc-sharepoint', icon: FolderIcon },
-      { name: 'Intake Validation', page: 'clc-intake', icon: ClipboardListIcon },
-      { name: 'Operations Dashboard', page: 'clc-dashboard', icon: LayoutDashboardIcon },
-    ];
-
-    const nav = currentStep.app === 'crm' ? crmNav : isWRG ? wrgNav : isDupler ? duplerNav : isContinua ? continuaNav : isMBI ? mbiNav : isLeland ? lelandNav : isBFI ? bfiNav : isWorkspaces ? workspacesNav : isOfficeworks ? officeworksNav : isCLC ? clcNav : expertNav;
+    // In demo mode, CRM steps swap the nav to crmNav to surface the CRM tab.
+    // Everything else uses the profile's default nav (declared above).
+    const nav = currentStep.app === 'crm' ? crmNav : profileNav;
     return { appName: resolvedAppName, companyName: resolvedCompany, customNavigation: nav };
   };
 
