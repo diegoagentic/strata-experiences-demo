@@ -64,7 +64,7 @@ export default function JoshuaReviewCard() {
             </div>
 
             {/* Queue list */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <div className="px-4 py-3 border-b border-border bg-muted/20 flex items-center justify-between">
                     <div>
                         <div className="text-xs font-bold text-foreground">Today's queue</div>
@@ -110,7 +110,7 @@ export default function JoshuaReviewCard() {
                     {expanded && (
                         <div className="mt-3 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
                             {/* Side-by-side comparison */}
-                            <div className="rounded-xl border border-border bg-muted/40 dark:bg-zinc-900/40 p-4">
+                            <div className="rounded-xl border border-border bg-muted/40 p-4">
                                 <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-3 flex items-center gap-1.5">
                                     <ScaleIcon className="h-3 w-3" /> Line 1 · side by side
                                 </div>

@@ -20,7 +20,7 @@ export default function LelandInboxApp() {
             title="Inbox"
             subtitle="Support pipeline · where new orders arrive"
             icon={<Mail className="size-5" />}
-            iconTone="blue"
+            iconTone="info"
         >
             {isDemoActive && isBriefing ? (
                 <BriefingCanvas />

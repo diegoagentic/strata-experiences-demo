@@ -17,7 +17,7 @@ export default function LelandSeradexApp() {
             title="Order System"
             subtitle="Quotes · customers · sales orders"
             icon={<Database className="size-5" />}
-            iconTone="indigo"
+            iconTone="info"
         >
             <section className="rounded-2xl border border-border bg-card p-6 shadow-sm">
                 <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground">
@@ -25,7 +25,7 @@ export default function LelandSeradexApp() {
                 </div>
                 {isDemoActive && currentStep ? (
                     <>
-                        <div className="mt-1 text-[12px] font-mono text-indigo-600 dark:text-indigo-400">
+                        <div className="mt-1 text-[12px] font-mono text-info">
                             {currentStep.id} · {currentStep.role}
                         </div>
                         <h2 className="mt-3 text-lg font-bold text-foreground">{currentStep.title}</h2>

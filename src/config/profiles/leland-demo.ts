@@ -106,7 +106,7 @@ export const LELAND_STEPS: DemoStep[] = [
         groupTitle: 'Pipeline',
         title: 'Order built in the order system',
         description: 'Strata builds the sales order automatically. Watch the fields fill in one after another — header from the matched quote, then line items, then the rest. The order number is assigned at the end.',
-        app: 'leland-seradex',
+        app: 'leland-strata',
         role: 'System',
     },
     {
@@ -115,7 +115,7 @@ export const LELAND_STEPS: DemoStep[] = [
         groupTitle: 'Pipeline',
         title: 'Comments and rebate applied',
         description: 'The standard comments populate from templates, project metadata is filled in, and the contract-specific rebate line is added automatically — exactly the kind of detail that is easy to miss when typed by hand.',
-        app: 'leland-seradex',
+        app: 'leland-strata',
         role: 'System',
     },
     {

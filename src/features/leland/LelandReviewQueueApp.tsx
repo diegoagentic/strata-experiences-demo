@@ -20,7 +20,7 @@ export default function LelandReviewQueueApp() {
             title="Review queue"
             subtitle="The Reviewer only sees what needs a human decision"
             icon={<ShieldCheck className="size-5" />}
-            iconTone="amber"
+            iconTone="warning"
         >
             {isDemoActive && isReviewStep ? (
                 <JoshuaReviewCard />

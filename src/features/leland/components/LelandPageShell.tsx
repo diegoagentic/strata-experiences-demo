@@ -15,7 +15,7 @@
  * DS TOKENS USED:
  *   - bg-background · text-foreground · text-muted-foreground
  *   - border-border · max-w-7xl · pt-24 px-4
- *   - bg-brand-300/dark:bg-brand-500 · bg-blue-100 · bg-indigo-100 · bg-amber-100
+ *   - Icon tone map: primary / info / warning · all via semantic tokens.
  *
  * USED BY: LelandStrataShell, LelandInboxApp, LelandSeradexApp, LelandReviewQueueApp
  */
@@ -27,16 +27,15 @@ interface LelandPageShellProps {
     title: string;
     subtitle?: string;
     icon?: ReactNode;
-    iconTone?: 'brand' | 'blue' | 'indigo' | 'amber';
+    iconTone?: 'brand' | 'info' | 'warning';
     actions?: ReactNode;
     children: ReactNode;
 }
 
 const TONE_CLASSES: Record<NonNullable<LelandPageShellProps['iconTone']>, string> = {
-    brand: 'bg-brand-300 dark:bg-brand-500 text-zinc-900',
-    blue: 'bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400',
-    indigo: 'bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-400',
-    amber: 'bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400',
+    brand: 'bg-primary text-primary-foreground',
+    info: 'bg-info/10 text-info',
+    warning: 'bg-warning/10 text-warning',
 };
 
 export default function LelandPageShell({
@@ -48,7 +47,7 @@ export default function LelandPageShell({
     children,
 }: LelandPageShellProps) {
     return (
-        <div className="min-h-screen bg-background dark:bg-black pt-24 px-4 pb-20">
+        <div className="min-h-screen bg-background pt-24 px-4 pb-20">
             <div className="max-w-7xl mx-auto space-y-6">
                 {/* Page title row */}
                 <div className="flex items-center justify-between gap-4 pb-4 border-b border-border">

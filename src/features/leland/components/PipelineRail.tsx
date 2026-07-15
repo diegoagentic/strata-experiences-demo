@@ -57,7 +57,7 @@ export default function PipelineRail({ groupId, groupTitle, onStepClick }: Pipel
     };
 
     return (
-        <aside className="w-[260px] shrink-0 border-r border-border bg-muted/20 dark:bg-zinc-900/40 px-4 py-5">
+        <aside className="w-[260px] shrink-0 border-r border-border bg-muted/20 px-4 py-5">
             {groupTitle && (
                 <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground mb-4">
                     {groupTitle}
@@ -88,8 +88,8 @@ export default function PipelineRail({ groupId, groupTitle, onStepClick }: Pipel
                                     <div
                                         className={`
                                             shrink-0 size-7 rounded-full flex items-center justify-center text-[10px] font-bold border-2 z-10
-                                            ${state === 'done' ? 'bg-green-500 border-green-500 text-white' : ''}
-                                            ${state === 'active' ? 'bg-brand-300 dark:bg-brand-500 border-brand-400 dark:border-brand-500 text-zinc-900' : ''}
+                                            ${state === 'done' ? 'bg-success border-success text-success-foreground' : ''}
+                                            ${state === 'active' ? 'bg-primary border-primary text-primary-foreground' : ''}
                                             ${state === 'pending' ? 'bg-card border-border text-muted-foreground' : ''}
                                         `}
                                     >

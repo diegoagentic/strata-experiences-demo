@@ -83,7 +83,7 @@ export default function PoExtractionPreview({ animate = true, stagger = 220 }: P
 
     return (
         <div className="space-y-4">
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             {/* Header with progress */}
             <div className="px-4 py-3 border-b border-border bg-muted/20">
                 <div className="flex items-center justify-between mb-2">
@@ -130,7 +130,7 @@ export default function PoExtractionPreview({ animate = true, stagger = 220 }: P
                         {fields.slice(0, extractedCount).map((f) => (
                             <div
                                 key={f.key}
-                                className="flex items-center gap-2 bg-muted/50 dark:bg-zinc-900/40 border border-border rounded-lg px-3 py-2 text-xs animate-in fade-in slide-in-from-left-2 duration-300"
+                                className="flex items-center gap-2 bg-muted/50 border border-border rounded-lg px-3 py-2 text-xs animate-in fade-in slide-in-from-left-2 duration-300"
                             >
                                 <span className="font-mono text-muted-foreground truncate w-32 shrink-0">{f.label}</span>
                                 <ChevronRight className="h-3 w-3 text-muted-foreground shrink-0" />
@@ -143,7 +143,7 @@ export default function PoExtractionPreview({ animate = true, stagger = 220 }: P
                         {Array.from({ length: Math.max(0, fields.length - extractedCount) }).map((_, i) => (
                             <div
                                 key={`ph-${i}`}
-                                className="flex items-center gap-2 bg-zinc-100/40 dark:bg-zinc-800/30 border border-dashed border-border/50 rounded-lg px-3 py-2 text-xs opacity-60"
+                                className="flex items-center gap-2 bg-muted/30 border border-dashed border-border/50 rounded-lg px-3 py-2 text-xs opacity-60"
                             >
                                 <div className="h-2 bg-muted rounded w-32" />
                                 <div className="h-3 w-3 rounded-sm bg-muted shrink-0" />

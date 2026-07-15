@@ -90,7 +90,7 @@ export default function PriceComparisonTable({ animate = true, perRowDelay = 700
     return (
         <div className="space-y-4">
             {/* Comparison table card */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <div className="px-4 py-3 border-b border-border bg-muted/20 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                         <div className={`h-7 w-7 rounded-lg flex items-center justify-center ${allDone && mismatchCount > 0 ? 'bg-danger/10 text-danger' : 'bg-ai/10 text-ai'}`}>

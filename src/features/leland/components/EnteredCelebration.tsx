@@ -94,7 +94,7 @@ export default function EnteredCelebration({ autoplay = true }: { autoplay?: boo
                                     <div
                                         className={`
                                             shrink-0 size-6 rounded-full flex items-center justify-center text-[10px] -ml-4 z-10
-                                            ${state === 'done' ? 'bg-success text-white border-2 border-success' : ''}
+                                            ${state === 'done' ? 'bg-success text-success-foreground border-2 border-success' : ''}
                                             ${state === 'running' ? 'bg-ai/20 text-ai border-2 border-ai animate-pulse' : ''}
                                             ${state === 'pending' ? 'bg-card border-2 border-border text-muted-foreground' : ''}
                                         `}
