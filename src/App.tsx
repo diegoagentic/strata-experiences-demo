@@ -193,9 +193,15 @@ function App() {
 
   // If the URL carries `?block=<id>`, render the shared block preview in
   // isolation — no tour, no per-profile navigation, no role switcher.
+  // Wrapped in GenUIProvider because some blocks (Dashboard, Transactions,
+  // SmartQuoteHub) consume useGenUI internally.
   const activeBlock = findSharedBlock(blockId)
   if (activeBlock) {
-    return <SharedBlockShell block={activeBlock} onExit={handleExitBlock} />
+    return (
+      <GenUIProvider onNavigate={handleNavigate}>
+        <SharedBlockShell block={activeBlock} onExit={handleExitBlock} />
+      </GenUIProvider>
+    )
   }
 
   // --- SIMULATION CONFIGURATIONS ---
@@ -376,7 +382,7 @@ function App() {
     const workspacesNav = [
       { name: 'Expense Submission', page: 'workspaces-submit', icon: ReceiptIcon },
       { name: 'AP & Reporting', page: 'workspaces-ap', icon: Building2Icon },
-      { name: 'Spend Dashboard', page: 'workspaces-dashboard', icon: LayoutDashboardIcon },
+      { name: 'Spend Dashboard', page: 'workspaces-reporting', icon: LayoutDashboardIcon },
     ];
 
     // Officeworks profile: 5-tab primary nav (Dashboard persistent + 4 module tabs · per plan Iter 1 decision)
@@ -444,7 +450,7 @@ function App() {
       'workspaces-submit': 'workspaces-submit',
       'workspaces-approval': 'workspaces-submit',
       'workspaces-ap': 'workspaces-ap',
-      'workspaces-reporting': 'workspaces-dashboard',
+      'workspaces-reporting': 'workspaces-reporting',
       // Officeworks Demo: 5 tabs (Dashboard persistent + 4 module tabs)
       'officeworks-dashboard': 'officeworks-dashboard',
       'officeworks-intake': 'officeworks-intake',
