@@ -25,7 +25,7 @@ Fuente de verdad de qué se muestra por experiencia · `docs/experience-map.csv`
 | 6 | `leland` | PO-to-Order Automation | 🟡 | ⏳ F5 | 4 apps en tour · CSV solo formaliza 2 (Strata Shell + Review Queue). Inbox + Seradex son additions. |
 | 7 | `mbi` | Back-Office AI (AP + AR + Quotes) | 🟡 | ⏳ F10 | `MBIOverviewPage`/`MBIBudgetPage`/`MBIDesignPage` importadas + rutas cableadas pero inalcanzables (kept for "fast re-enable" per comment). |
 | 8 | `wrg` | Labor Estimation | 🟢 | ⏳ F11 | Auto-driven · nav vacío · Estimator dueño de sus tabs. |
-| 9 | `continua` | Project & Inventory Intelligence | 🟢 | ⏳ F9 | 21 steps · 8 apps. Único que rota nav (crmNav para step 3.5). |
+| 9 | `continua` | Project & Inventory Intelligence | 🟢 | 🟡 F9 | Landing modo normal via `defaultApp: 'inventory'` (Continua no tiene apps custom · toda personalización es `isContinua && stepId === 'X.X'` en 10 archivos shared: Dashboard, Inventory, Transactions, MACPunchList, ExpertHub, DealerKanban, CRMSim, ConversationalSurvey, AckDetail, OrderDetail). Refactor a primitivas cruza cross-profile · alto riesgo de romper coi/acme/inbound-outbound · pospuesto a F18. 21 steps · 8 apps · rota nav a crmNav para step 3.1. |
 | 10 | `dupler` | Vendor Data → SIF → Warehouse | 🟢 | ⏳ F12 | 16 steps · 4 apps · PDF + Warehouse + Reporting. |
 | 11 | `ops` | Receiving → Invoice → QB Sync | 🟢 | ⏳ F13 | 15 steps · 3-way match + ERP sync + CRM presentes. |
 | 12 | `coi` | Email RFQ → PO → Warranty | 🟢 | ⏳ F15 | 27 steps · consumidor más pesado del stack shared. |

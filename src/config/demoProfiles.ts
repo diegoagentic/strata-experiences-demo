@@ -234,6 +234,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         companyName: 'Continua',
         description: 'Project lifecycle, inventory intelligence & sustainability',
         icon: '🏗️',
+        defaultApp: 'inventory',
         steps: CONTINUA_DEMO_STEPS,
         stepBehavior: CONTINUA_DEMO_STEP_BEHAVIOR,
         stepMessages: CONTINUA_DEMO_STEP_MESSAGES,
