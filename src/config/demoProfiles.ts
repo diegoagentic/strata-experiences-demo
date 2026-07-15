@@ -20,6 +20,7 @@ import {
     INBOUND_OUTBOUND_STEP_MESSAGES,
     INBOUND_OUTBOUND_SELF_INDICATED,
 } from './profiles/inbound-outbound';
+import { CLC_STEPS, CLC_STEP_BEHAVIOR, CLC_STEP_MESSAGES, CLC_SELF_INDICATED } from './profiles/clc';
 
 export type SimulationApp =
     | 'dashboard' | 'expert-hub' | 'email-marketplace'
@@ -33,7 +34,8 @@ export type SimulationApp =
     | 'leland-strata' | 'leland-inbox' | 'leland-seradex' | 'leland-review'
     | 'bfi-agency-fee' | 'bfi-receiving'
     | 'workspaces-submit' | 'workspaces-approval' | 'workspaces-ap' | 'workspaces-reporting'
-    | 'officeworks-intake' | 'officeworks-design' | 'officeworks-spec-check' | 'officeworks-submission' | 'officeworks-dashboard';
+    | 'officeworks-intake' | 'officeworks-design' | 'officeworks-spec-check' | 'officeworks-submission' | 'officeworks-dashboard'
+    | 'clc-calendar' | 'clc-sharepoint' | 'clc-intake' | 'clc-dashboard';
 
 export interface DemoStep {
     id: string;
@@ -42,11 +44,13 @@ export interface DemoStep {
     title: string;
     description: string;
     app: SimulationApp;
-    role: 'Expert' | 'System' | 'Dealer' | 'End User' | 'Sales Rep' | 'Facility Manager' | 'Facility User' | 'Designer' | 'Sales Coordinator' | 'Estimator' | 'Project Manager' | 'Operations Manager' | 'AP Coordinator' | 'CFO' | 'CAO' | 'Employee' | 'Account Manager' | 'Receiving Coordinator' | 'Finance / AR' | 'Accountant' | 'BFI Manager' | 'Design Manager' | 'Order Entry' | 'Order Entry Manager' | 'Production Manager' | 'Logistics' | 'AR/AP';
+    role: 'Expert' | 'System' | 'Dealer' | 'End User' | 'Sales Rep' | 'Facility Manager' | 'Facility User' | 'Designer' | 'Sales Coordinator' | 'Estimator' | 'Project Manager' | 'Operations Manager' | 'AP Coordinator' | 'CFO' | 'CAO' | 'Employee' | 'Account Manager' | 'Receiving Coordinator' | 'Finance / AR' | 'Accountant' | 'BFI Manager' | 'Design Manager' | 'Order Entry' | 'Order Entry Manager' | 'Production Manager' | 'Logistics' | 'AR/AP' | 'Director of Operations' | 'Office Director';
     highlightId?: string;
+    /** Optional grouping key for multi-flow profiles (ej. CLC: 'calendar' | 'sharepoint' | 'intake' | 'data-lake'). */
+    flowId?: string;
 }
 
-export type DemoProfileId = 'acme' | 'coi' | 'dupler' | 'ops' | 'continua' | 'wrg' | 'mbi' | 'leland' | 'bfi' | 'workspaces' | 'officeworks' | 'inbound-outbound';
+export type DemoProfileId = 'acme' | 'coi' | 'dupler' | 'ops' | 'continua' | 'wrg' | 'mbi' | 'leland' | 'bfi' | 'workspaces' | 'officeworks' | 'inbound-outbound' | 'clc';
 
 export interface DemoProfile {
     id: DemoProfileId;
@@ -87,6 +91,20 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: INBOUND_OUTBOUND_STEP_BEHAVIOR,
         stepMessages: INBOUND_OUTBOUND_STEP_MESSAGES,
         selfIndicatedSteps: INBOUND_OUTBOUND_SELF_INDICATED,
+    },
+    {
+        id: 'clc',
+        title: 'Install Scheduling + Data Reconciliation',
+        subtitle: 'CLC · Calendar Sync + SharePoint Seeding + Intake Validation + Data Lake',
+        name: 'CLC',
+        companyName: 'Creative Library Concepts',
+        description: 'IQ × Outlook × SharePoint × M365 · install scheduling · asset seeding · intake validation · data lake',
+        icon: '📅',
+        experienceLabel: 'Operations Experience',
+        steps: CLC_STEPS,
+        stepBehavior: CLC_STEP_BEHAVIOR,
+        stepMessages: CLC_STEP_MESSAGES,
+        selfIndicatedSteps: CLC_SELF_INDICATED,
     },
     {
         id: 'officeworks',

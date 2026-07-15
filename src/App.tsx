@@ -52,7 +52,8 @@ import MBIDesignPage from "./components/mbi/MBIDesignPage"
 import BFIPage, { BFIDashboardPage } from "./components/bfi/BFIPage"
 import WorkspacesPage from "./components/workspaces/WorkspacesPage"
 import OfficeworksPage, { OfficeworksDashboardPage } from "./components/officeworks/OfficeworksPage"
-import { Calculator as CalculatorIcon, Receipt as ReceiptIcon, FileSearch as FileSearchIcon, Palette as PaletteIcon, Sparkles as SparklesIcon, Mail as MailIcon, Database as DatabaseIcon, ShieldCheck as ShieldCheckIcon, Building2 as Building2Icon, LayoutDashboard as LayoutDashboardIcon, Inbox as InboxIcon, Pencil as PencilIcon, ClipboardCheck as ClipboardCheckIcon, Send as SendIcon } from 'lucide-react'
+import CLCPage, { CLCDashboardPage } from "./components/clc/CLCPage"
+import { Calculator as CalculatorIcon, Receipt as ReceiptIcon, FileSearch as FileSearchIcon, Palette as PaletteIcon, Sparkles as SparklesIcon, Mail as MailIcon, Database as DatabaseIcon, ShieldCheck as ShieldCheckIcon, Building2 as Building2Icon, LayoutDashboard as LayoutDashboardIcon, Inbox as InboxIcon, Pencil as PencilIcon, ClipboardCheck as ClipboardCheckIcon, Send as SendIcon, Calendar as CalendarIcon, Folder as FolderIcon, ClipboardList as ClipboardListIcon } from 'lucide-react'
 
 // Leland Demo — 4 app shells (Phase L0 · expanded in L1-L5)
 import { LelandStrataShell, LelandInboxApp, LelandSeradexApp, LelandReviewQueueApp } from "./features/leland"
@@ -175,6 +176,7 @@ function App() {
   const isBFI = demoProfile.id === 'bfi';
   const isWorkspaces = demoProfile.id === 'workspaces';
   const isOfficeworks = demoProfile.id === 'officeworks';
+  const isCLC = demoProfile.id === 'clc';
   const isInboundOutbound = demoProfile.id === 'inbound-outbound';
 
   // Pages hidden for inbound-outbound profile (manufacturer scope only).
@@ -252,11 +254,20 @@ function App() {
       : 'Spec Check AI';
     const officeworksCompany = demoProfile.companyName;
 
+    // CLC — 4 flows, each maps to its own app label. Company is Creative Library Concepts.
+    const clcAppName = currentStep.app === 'clc-calendar' ? 'Schedule AI'
+      : currentStep.app === 'clc-sharepoint' ? 'Asset Seeding AI'
+      : currentStep.app === 'clc-intake' ? 'Intake Validation AI'
+      : currentStep.app === 'clc-dashboard' ? 'Operations Dashboard'
+      : 'Schedule AI';
+    const clcCompany = demoProfile.companyName;
+
     const resolvedAppName = isContinua ? continuaAppName
       : isLeland ? lelandAppName
       : isBFI ? bfiAppName
       : isWorkspaces ? workspacesAppName
       : isOfficeworks ? officeworksAppName
+      : isCLC ? clcAppName
       : currentStep.app === 'email-marketplace' ? (isWRG ? 'WRG Mail' : 'Wells Fargo Mail')
       : currentStep.app === 'catalog' ? 'Marketplace'
       : currentStep.app === 'service-now' ? 'ServiceNow'
@@ -273,6 +284,7 @@ function App() {
       : isBFI ? bfiCompany
       : isWorkspaces ? workspacesCompany
       : isOfficeworks ? officeworksCompany
+      : isCLC ? clcCompany
       : isExpert || isDuplerExpert || isWrgExpert || isWrgDesigner ? 'Strata Services'
       : demoProfile.companyName;
 
@@ -345,7 +357,15 @@ function App() {
       { name: 'Submission AI', page: 'officeworks-submission', icon: SendIcon },
     ];
 
-    const nav = currentStep.app === 'crm' ? crmNav : isWRG ? wrgNav : isDupler ? duplerNav : isContinua ? continuaNav : isMBI ? mbiNav : isLeland ? lelandNav : isBFI ? bfiNav : isWorkspaces ? workspacesNav : isOfficeworks ? officeworksNav : expertNav;
+    // CLC profile: 4-tab primary nav (Schedule · Asset Seeding · Intake · Ops Dashboard)
+    const clcNav = [
+      { name: 'Schedule AI', page: 'clc-calendar', icon: CalendarIcon },
+      { name: 'Asset Seeding AI', page: 'clc-sharepoint', icon: FolderIcon },
+      { name: 'Intake Validation', page: 'clc-intake', icon: ClipboardListIcon },
+      { name: 'Operations Dashboard', page: 'clc-dashboard', icon: LayoutDashboardIcon },
+    ];
+
+    const nav = currentStep.app === 'crm' ? crmNav : isWRG ? wrgNav : isDupler ? duplerNav : isContinua ? continuaNav : isMBI ? mbiNav : isLeland ? lelandNav : isBFI ? bfiNav : isWorkspaces ? workspacesNav : isOfficeworks ? officeworksNav : isCLC ? clcNav : expertNav;
     return { appName: resolvedAppName, companyName: resolvedCompany, customNavigation: nav };
   };
 
@@ -400,6 +420,11 @@ function App() {
       'officeworks-design': 'officeworks-design',
       'officeworks-spec-check': 'officeworks-spec-check',
       'officeworks-submission': 'officeworks-submission',
+      // CLC Demo: 4 tabs (Calendar · SharePoint · Intake · Dashboard)
+      'clc-calendar': 'clc-calendar',
+      'clc-sharepoint': 'clc-sharepoint',
+      'clc-intake': 'clc-intake',
+      'clc-dashboard': 'clc-dashboard',
     };
     if (isBFI && bfiDashboardActive) return 'bfi-dashboard'
     if (isOfficeworks && officeworksDashboardActive) return 'officeworks-dashboard'
@@ -514,6 +539,12 @@ function App() {
         return <OfficeworksPage />;
       case 'officeworks-dashboard':
         return <OfficeworksDashboardPage />;
+      case 'clc-calendar':
+      case 'clc-sharepoint':
+      case 'clc-intake':
+        return <CLCPage />;
+      case 'clc-dashboard':
+        return <CLCDashboardPage />;
       default:
         return (
           <ExpertHubTransactions
