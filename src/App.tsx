@@ -53,6 +53,8 @@ import BFIPage, { BFIDashboardPage } from "./components/bfi/BFIPage"
 import WorkspacesPage from "./components/workspaces/WorkspacesPage"
 import OfficeworksPage, { OfficeworksDashboardPage } from "./components/officeworks/OfficeworksPage"
 import CLCPage, { CLCDashboardPage } from "./components/clc/CLCPage"
+import SharedBlockShell from "./components/SharedBlockShell"
+import { findSharedBlock } from "./config/sharedBlocks"
 import { Calculator as CalculatorIcon, Receipt as ReceiptIcon, FileSearch as FileSearchIcon, Palette as PaletteIcon, Sparkles as SparklesIcon, Mail as MailIcon, Database as DatabaseIcon, ShieldCheck as ShieldCheckIcon, Building2 as Building2Icon, LayoutDashboard as LayoutDashboardIcon, Inbox as InboxIcon, Pencil as PencilIcon, ClipboardCheck as ClipboardCheckIcon, Send as SendIcon, Calendar as CalendarIcon, Folder as FolderIcon, ClipboardList as ClipboardListIcon } from 'lucide-react'
 
 // Leland Demo — 4 app shells (Phase L0 · expanded in L1-L5)
@@ -80,6 +82,28 @@ function App() {
   const [bfiLoginActive, setBfiLoginActive] = useState(false)
   const [bfiDashboardActive, setBfiDashboardActive] = useState(false)
   const [officeworksDashboardActive, setOfficeworksDashboardActive] = useState(false)
+
+  // Shared building blocks / widgets · surfaced via `?block=<id>` in the URL.
+  // When set, the app skips the normal experience shell and renders only the
+  // block preview via <SharedBlockShell>. See src/config/sharedBlocks.ts.
+  const [blockId, setBlockId] = useState<string | null>(() =>
+    typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('block') : null
+  )
+  useEffect(() => {
+    const sync = () => setBlockId(new URLSearchParams(window.location.search).get('block'))
+    window.addEventListener('popstate', sync)
+    window.addEventListener('block:change', sync)
+    return () => {
+      window.removeEventListener('popstate', sync)
+      window.removeEventListener('block:change', sync)
+    }
+  }, [])
+  const handleExitBlock = () => {
+    const url = new URL(window.location.href)
+    url.searchParams.delete('block')
+    window.history.pushState({}, '', url.toString())
+    setBlockId(null)
+  }
 
   // Browser tab title — adapts to active profile (e.g., "Manufacturer Experience · Inbound | Outbound")
   useEffect(() => {
@@ -165,6 +189,13 @@ function App() {
 
   if (!user) {
     return <Login />
+  }
+
+  // If the URL carries `?block=<id>`, render the shared block preview in
+  // isolation — no tour, no per-profile navigation, no role switcher.
+  const activeBlock = findSharedBlock(blockId)
+  if (activeBlock) {
+    return <SharedBlockShell block={activeBlock} onExit={handleExitBlock} />
   }
 
   // --- SIMULATION CONFIGURATIONS ---
