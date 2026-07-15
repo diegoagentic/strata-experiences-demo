@@ -70,6 +70,23 @@ export { DiscrepancyRow, DiscrepancyComparisonBlock,
     type DiscrepancyComparisonBlockProps, type DiscrepancyRowProps,
 } from './discrepancy-row';
 
+// ── F4.5 · shared demo primitives (extracted from Leland canvases) ──────
+export { MetricCard,
+    type MetricCardProps, type MetricTone, type MetricSize,
+} from './metric-card';
+export { Callout,
+    type CalloutProps, type CalloutTone, type CalloutVariant,
+} from './callout';
+export { ProgressBar,
+    type ProgressBarProps, type ProgressTone, type ProgressHeight,
+} from './progress-bar';
+export { PageShell,
+    type PageShellProps, type PageShellIconTone,
+} from './page-shell';
+export { PipelineRail,
+    type PipelineRailProps, type PipelineRailStep,
+} from './pipeline-rail';
+
 // Tokens & Utils
 export { tokens, type TokenKey } from '../tokens/tokens';
 export { cn } from '../utils/cn';
