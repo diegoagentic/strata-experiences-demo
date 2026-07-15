@@ -36,9 +36,8 @@ import NotificationCenterBlock from '../blocks/NotificationCenterBlock';
 import ThreeWayMatchBlock from '../blocks/ThreeWayMatchBlock';
 import SmartQuoteHubBlock from '../blocks/SmartQuoteHubBlock';
 import ConfidenceScoreBlock from '../blocks/ConfidenceScoreBlock';
-import PrimitivesPreviewBlock from '../blocks/PrimitivesPreviewBlock';
 
-export type SharedBlockKind = 'shared-block' | 'widget' | 'primitive';
+export type SharedBlockKind = 'shared-block' | 'widget';
 
 export interface SharedBlockEntry {
   id: string;                       // stable slug (matches ?block=<id> in URL)
@@ -228,16 +227,6 @@ export const SHARED_BLOCKS: SharedBlockEntry[] = [
     description: 'AI confidence indicator reused across quote & ack review.',
     usedByExperiences: ['coi', 'ops', 'dupler', 'mbi'],
     component: ConfidenceScoreBlock,
-  },
-
-  // ─── DS PRIMITIVES (F4.5) ─────────────────────────────────────────────────
-  {
-    id: 'ds-primitives-preview',
-    kind: 'primitive',
-    title: 'DS Primitives · F4.5 preview',
-    icon: '🧱',
-    description: 'MetricCard · Callout · ProgressBar · PageShell · PipelineRail · Button brand-glow. Gallery of every variant + tone before wiring them into F5-F16 refactors.',
-    component: PrimitivesPreviewBlock,
   },
 ];
 

@@ -10,6 +10,13 @@ import { cn } from '../utils/cn';
  *
  * When `indeterminate` is true, an animated pulse is rendered instead of
  * a value fill.
+ *
+ * ─── Relation to the canonical DS ─────────────────────────────────────
+ * The canonical Strata DS ships `Progress` (`application-ui/progress.tsx`)
+ * as a Radix wrapper with only `value + className` (fixed `h-2 bg-primary`).
+ * This atom is richer (tone · height · indeterminate) but bypasses Radix.
+ * NOT a drop-in replacement — a future canonical revision should extend
+ * `Progress` directly with these props while keeping the Radix primitive.
  */
 
 export type ProgressTone = 'brand' | 'success' | 'warning' | 'ai' | 'info' | 'danger';

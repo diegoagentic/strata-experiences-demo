@@ -14,6 +14,14 @@ import { cn } from '../utils/cn';
  *   · done    — before the active index
  *   · active  — the current step (Loader2 spinning)
  *   · pending — after the active index
+ *
+ * ─── Relation to the canonical DS ─────────────────────────────────────
+ * The canonical DS has `StageProgress` (vertical mode via
+ * `verticalDirection: asc | desc`) and `OrderTracking` (timeline flow-root
+ * with dates). Neither offers the sidebar envelope (`aside border-r
+ * bg-muted/20`), the click-driven `onStepClick`, the `Loader2`-spinning
+ * active state, or a sub-label per step. Candidate to promote as a new
+ * sidebar-rail variant of `StageProgress` — or as its own primitive.
  */
 
 export interface PipelineRailStep {

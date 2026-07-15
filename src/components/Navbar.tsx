@@ -353,30 +353,6 @@ export default function Navbar({
                                         </PopoverButton>
                                     ))}
 
-                                    {/* PRIMITIVES (F4.5 preview) */}
-                                    {SHARED_BLOCKS.some(b => b.kind === 'primitive') && (
-                                        <>
-                                            <div className="px-3 py-2 border-y border-border shrink-0 sticky top-0 bg-card/95 backdrop-blur-xl z-10 mt-2">
-                                                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">DS Primitives</p>
-                                            </div>
-                                            {SHARED_BLOCKS.filter(b => b.kind === 'primitive').map((block) => (
-                                                <PopoverButton
-                                                    as="button"
-                                                    key={block.id}
-                                                    onClick={() => {
-                                                        const url = new URL(window.location.href);
-                                                        url.searchParams.set('block', block.id);
-                                                        window.history.pushState({}, '', url.toString());
-                                                        window.dispatchEvent(new CustomEvent('block:change'));
-                                                    }}
-                                                    className="w-full flex items-center gap-3 px-3 py-2 hover:bg-muted transition-colors text-left"
-                                                >
-                                                    <span className="text-base shrink-0">{block.icon}</span>
-                                                    <p className="flex-1 text-sm text-foreground truncate">{block.title}</p>
-                                                </PopoverButton>
-                                            ))}
-                                        </>
-                                    )}
                                 </div>
                             </PopoverPanel>
                         </Transition>

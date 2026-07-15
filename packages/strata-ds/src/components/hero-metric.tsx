@@ -2,34 +2,42 @@ import * as React from 'react';
 import { cn } from '../utils/cn';
 
 /**
- * MetricCard — hero stat with uppercase eyebrow label, large tabular value,
- * optional sub-caption + icon. Used across demo canvases to surface KPIs
- * or before/after metrics (Leland BriefingCanvas painStats, JoshuaReviewCard
- * StatCard, RevealMetrics before/after · BFI dashboards · OPS financial cards).
+ * HeroMetric — hero stat card with uppercase eyebrow, large tabular
+ * value, optional icon + sub-caption, and a tone-tinted envelope
+ * (`border-${tone}/30 bg-${tone}/5 text-${tone}`).
  *
- * Replaces the inline `PainStat`/`StatCard` duplicates found in
- * `src/features/leland/components/*` and equivalents across other profiles.
+ * ─── Relation to the canonical DS ─────────────────────────────────────
+ * The canonical Strata DS (`Strata Design System/src/components/
+ * application-ui/kpi-card.tsx`) ships `KPICard`, which follows a
+ * *different* philosophy: neutral card surface + coloured icon pill,
+ * `value: number` (formatted via Intl), densities compact/default/
+ * comfortable/summary, trends/subMetrics/detailRows/primaryAction.
+ *
+ * `HeroMetric` is the tinted hero variant that Leland/BFI/OPS canvases
+ * use (accepts `value: React.ReactNode` for strings like "Half an hour",
+ * "18d"). It complements KPICard, not replaces it. Candidate to promote
+ * as a variant/mode of `KPICard` in the canonical DS.
  */
 
-export type MetricTone = 'brand' | 'success' | 'warning' | 'ai' | 'info' | 'danger' | 'neutral';
-export type MetricSize = 'sm' | 'md' | 'lg';
+export type HeroMetricTone = 'brand' | 'success' | 'warning' | 'ai' | 'info' | 'danger' | 'neutral';
+export type HeroMetricSize = 'sm' | 'md' | 'lg';
 
-export interface MetricCardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface HeroMetricProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
     /** Uppercase eyebrow label (ex: "Orders waiting for action"). */
     label: string;
     /** Big value ("Half an hour", "$142,300", "18d"). */
     value: React.ReactNode;
     /** Optional sub-caption below the value. */
     sub?: React.ReactNode;
-    /** Optional Lucide icon rendered as a pill in the top-left. */
+    /** Optional Lucide icon rendered as a pill in the top-right. */
     icon?: React.ReactNode;
     /** Semantic tone driving border/fill/text color. */
-    tone?: MetricTone;
+    tone?: HeroMetricTone;
     /** Visual density. */
-    size?: MetricSize;
+    size?: HeroMetricSize;
 }
 
-const TONE: Record<MetricTone, { border: string; fill: string; text: string; iconBg: string; iconFg: string }> = {
+const TONE: Record<HeroMetricTone, { border: string; fill: string; text: string; iconBg: string; iconFg: string }> = {
     brand:   { border: 'border-primary/30',    fill: 'bg-primary/5',    text: 'text-primary',    iconBg: 'bg-primary/10',    iconFg: 'text-primary' },
     success: { border: 'border-success/30',    fill: 'bg-success/5',    text: 'text-success',    iconBg: 'bg-success/10',    iconFg: 'text-success' },
     warning: { border: 'border-warning/30',    fill: 'bg-warning/5',    text: 'text-warning',    iconBg: 'bg-warning/10',    iconFg: 'text-warning' },
@@ -39,13 +47,13 @@ const TONE: Record<MetricTone, { border: string; fill: string; text: string; ico
     neutral: { border: 'border-border',        fill: 'bg-card',         text: 'text-foreground', iconBg: 'bg-muted',          iconFg: 'text-muted-foreground' },
 };
 
-const SIZE: Record<MetricSize, { padding: string; label: string; value: string; sub: string; iconBox: string; iconEl: string }> = {
+const SIZE: Record<HeroMetricSize, { padding: string; label: string; value: string; sub: string; iconBox: string; iconEl: string }> = {
     sm: { padding: 'p-3',   label: 'text-[10px]', value: 'text-xl',     sub: 'text-[11px]', iconBox: 'size-7',  iconEl: 'size-3.5' },
     md: { padding: 'p-4',   label: 'text-[11px]', value: 'text-2xl',    sub: 'text-xs',     iconBox: 'size-8',  iconEl: 'size-4' },
     lg: { padding: 'p-5',   label: 'text-xs',     value: 'text-3xl',    sub: 'text-sm',     iconBox: 'size-9',  iconEl: 'size-4.5' },
 };
 
-export function MetricCard({
+export function HeroMetric({
     label,
     value,
     sub,
@@ -54,7 +62,7 @@ export function MetricCard({
     size = 'md',
     className,
     ...rest
-}: MetricCardProps) {
+}: HeroMetricProps) {
     const t = TONE[tone];
     const s = SIZE[size];
     return (

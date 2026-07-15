@@ -71,9 +71,13 @@ export { DiscrepancyRow, DiscrepancyComparisonBlock,
 } from './discrepancy-row';
 
 // ── F4.5 · shared demo primitives (extracted from Leland canvases) ──────
-export { MetricCard,
-    type MetricCardProps, type MetricTone, type MetricSize,
-} from './metric-card';
+// Each carries a "Relation to the canonical DS" note in its file header
+// documenting overlap with canonical primitives (KPICard, InfoBanner,
+// Alert, Progress, PageLayout, StageProgress) and rationale for keeping
+// them here until promoted to `Strata Design System/src/components/`.
+export { HeroMetric,
+    type HeroMetricProps, type HeroMetricTone, type HeroMetricSize,
+} from './hero-metric';
 export { Callout,
     type CalloutProps, type CalloutTone, type CalloutVariant,
 } from './callout';

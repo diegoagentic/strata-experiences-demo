@@ -13,6 +13,14 @@ import { cn } from '../utils/cn';
  * Every experience gets the same header treatment: tenant crumb + title +
  * subtitle + iconed tone pill + right-aligned actions slot. The body slot
  * (`children`) is caller-owned.
+ *
+ * ─── Relation to the canonical DS ─────────────────────────────────────
+ * The canonical DS ships `PageLayout` + `Layout` (both hard-wired to the
+ * ExperiencesNavbar sidebar), and `PageHeader` (only heading + subheading,
+ * no icon/crumb/actions). Nothing standalone exists for pages that render
+ * *without* the full sidebar shell (like demo canvases).
+ * Candidate to promote to `Strata Design System/src/components/application-ui/
+ * page-shell.tsx` alongside PageLayout.
  */
 
 export type PageShellIconTone = 'brand' | 'success' | 'warning' | 'ai' | 'info' | 'danger' | 'neutral';

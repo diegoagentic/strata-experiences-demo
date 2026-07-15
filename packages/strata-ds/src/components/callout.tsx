@@ -11,6 +11,13 @@ import { cn } from '../utils/cn';
  * "ACTION REQUIRED", PoExtractionPreview success completion, JoshuaReviewCard
  * "Recommendation", CommentsRebateCanvas rebate warning, etc.) plus mirror
  * patterns in BFI / MBI / Officeworks banners.
+ *
+ * ─── Relation to the canonical DS ─────────────────────────────────────
+ * The canonical Strata DS has three overlapping surfaces (`InfoBanner`,
+ * `Alert`, `Banner`) but none exposes {eyebrow + title + body + icon +
+ * actions + tone-`ai` + variant-`strong`} together. Candidate to promote
+ * to `Strata Design System/src/components/application-ui/callout.tsx` and
+ * deprecate the overlap — see plan file for rollout notes.
  */
 
 export type CalloutTone = 'brand' | 'success' | 'warning' | 'ai' | 'info' | 'danger';
