@@ -588,6 +588,8 @@ function App() {
       case 'bfi-receiving':
         if (bfiDashboardActive) return <BFIDashboardPage />
         return <BFIPage />;
+      case 'bfi-dashboard':
+        return <BFIDashboardPage />;
       case 'workspaces-submit':
       case 'workspaces-approval':
       case 'workspaces-ap':

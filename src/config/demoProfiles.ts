@@ -179,6 +179,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         companyName: 'BFI',
         description: 'Agency Fee AI · CoNY receiving workflow',
         icon: '🏛️',
+        defaultApp: 'bfi-dashboard',
         steps: BFI_STEPS,
         stepBehavior: BFI_STEP_BEHAVIOR,
         stepMessages: BFI_STEP_MESSAGES,
