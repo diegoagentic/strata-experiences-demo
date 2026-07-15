@@ -3,6 +3,7 @@ import { GenUIProvider } from './context/GenUIContext'
 import { useAuth } from './context/AuthContext'
 import { useDemo } from './context/DemoContext'
 import { useDemoProfile } from './context/useDemoProfile'
+import type { SimulationApp } from './config/demoProfiles'
 import Login from "./Login"
 import Dashboard from "./Dashboard"
 import Detail from "./Detail"
@@ -83,6 +84,12 @@ function App() {
   const [bfiDashboardActive, setBfiDashboardActive] = useState(false)
   const [officeworksDashboardActive, setOfficeworksDashboardActive] = useState(false)
 
+  // When the user clicks a custom nav tab (leland-strata, bfi-agency-fee, etc.)
+  // WITHOUT the demo tour active, we render that app directly instead of
+  // silently failing (previous behavior was goToStep(-1) → no-op).
+  // Reset whenever the profile changes or the tour goes active.
+  const [currentAppOverride, setCurrentAppOverride] = useState<SimulationApp | null>(null)
+
   // Shared building blocks / widgets · surfaced via `?block=<id>` in the URL.
   // When set, the app skips the normal experience shell and renders only the
   // block preview via <SharedBlockShell>. See src/config/sharedBlocks.ts.
@@ -135,6 +142,18 @@ function App() {
     if (officeworksDashboardActive) setOfficeworksDashboardActive(false)
   }, [currentStep?.id])
 
+  // Clear the app override whenever the profile changes or the tour goes
+  // active (tour drives its own currentStep.app).
+  useEffect(() => {
+    setCurrentAppOverride(null)
+  }, [demoProfile.id, isDemoActive])
+
+  // Custom-prefix nav tabs that map to a SimulationApp when clicked outside
+  // the tour. Kept as a static list so handleNavigate can decide whether to
+  // (a) jump to the matching tour step if the tour is active, or (b) set
+  // the app override if the tour is idle.
+  const CUSTOM_APP_PREFIXES = ['mbi-', 'leland-', 'bfi-', 'officeworks-', 'workspaces-', 'clc-', 'dupler-', 'wrg-'] as const
+
   const handleNavigate = (page: string) => {
     if (page === 'overview') {
       setCurrentPage('dashboard')
@@ -144,15 +163,22 @@ function App() {
     } else if (page === 'officeworks-dashboard') {
       // Officeworks Dashboard is a permanent page — not a demo step
       setOfficeworksDashboardActive(true)
-    } else if (page.startsWith('mbi-') || page.startsWith('leland-') || page.startsWith('bfi-') || page.startsWith('officeworks-')) {
-      // MBI/Leland/BFI/Officeworks nav tabs jump to the first demo step matching that module's app
+    } else if (CUSTOM_APP_PREFIXES.some(pref => page.startsWith(pref))) {
+      // Custom-app tabs · during tour, jump to the matching step.
+      // Outside the tour, set the app override so renderCurrentPage
+      // delegates to renderApp(page).
       setBfiDashboardActive(false)
       setOfficeworksDashboardActive(false)
-      const idx = steps.findIndex(s => s.app === page)
-      if (idx >= 0) goToStep(idx)
+      if (isDemoActive) {
+        const idx = steps.findIndex(s => s.app === page)
+        if (idx >= 0) goToStep(idx)
+      } else {
+        setCurrentAppOverride(page as SimulationApp)
+      }
     } else {
       // @ts-ignore
       setCurrentPage(page)
+      setCurrentAppOverride(null)
     }
   }
 
@@ -404,7 +430,12 @@ function App() {
 
   // Determine the correct active nav tab during demo mode
   const getActiveTab = () => {
-    if (!isDemoActive) return currentPage;
+    // Outside the tour, the app override (or defaultApp landing) drives
+    // the highlighted tab. Falls back to currentPage.
+    if (!isDemoActive) {
+      const overrideApp = currentAppOverride ?? demoProfile.defaultApp;
+      return overrideApp ?? currentPage;
+    }
     const appToTab: Record<string, string> = {
       'dealer-kanban': 'transactions',
       'expert-hub': 'transactions',
@@ -462,16 +493,16 @@ function App() {
     return appToTab[currentStep.app] || currentPage;
   };
 
-  // --- INDEPENDENT SIMULATION ROUTING ---
-  const renderSimulation = () => {
-    // Allow in-demo navigation to detail pages (e.g. step 1.2 → order-detail)
-    if (currentPage === 'order-detail') {
-      return <OrderDetail onBack={() => setCurrentPage('transactions')} onLogout={handleLogout} onNavigateToWorkspace={() => setCurrentPage('workspace')} onNavigate={handleNavigate} />;
-    }
-    if (currentPage === 'ack-detail') {
-      return <AckDetail onBack={() => setCurrentPage('transactions')} onLogout={handleLogout} onNavigateToWorkspace={() => setCurrentPage('workspace')} onNavigate={handleNavigate} />;
-    }
-    switch (currentStep.app) {
+  // renderAppByName · pure app → shell mapping. Used both by the tour
+  // (renderSimulation drives via currentStep.app) and by the modo-normal
+  // landing (renderCurrentPage delegates when the profile declares
+  // defaultApp or the user clicks a custom nav tab).
+  //
+  // Returns null if the app has no dedicated shell — caller decides
+  // the fallback (ExpertHubTransactions in the tour, generic Dashboard
+  // outside).
+  const renderAppByName = (app: SimulationApp): React.ReactElement | null => {
+    switch (app) {
       case 'expert-hub':
         return (
           <ExpertHubTransactions
@@ -577,21 +608,46 @@ function App() {
       case 'clc-dashboard':
         return <CLCDashboardPage />;
       default:
-        return (
-          <ExpertHubTransactions
-            onLogout={handleLogout}
-            onNavigateToDetail={(id) => {
-              console.log('Navigate to detail', id);
-              setCurrentPage('detail');
-            }}
-            onNavigateToWorkspace={() => setCurrentPage('workspace')}
-            onNavigate={(p) => handleNavigate(p)}
-          />
-        );
+        return null;
     }
   };
 
+  const renderSimulation = () => {
+    // Allow in-demo navigation to detail pages (e.g. step 1.2 → order-detail)
+    if (currentPage === 'order-detail') {
+      return <OrderDetail onBack={() => setCurrentPage('transactions')} onLogout={handleLogout} onNavigateToWorkspace={() => setCurrentPage('workspace')} onNavigate={handleNavigate} />;
+    }
+    if (currentPage === 'ack-detail') {
+      return <AckDetail onBack={() => setCurrentPage('transactions')} onLogout={handleLogout} onNavigateToWorkspace={() => setCurrentPage('workspace')} onNavigate={handleNavigate} />;
+    }
+    // Tour path: route the current step's app to its shell. Fallback to
+    // ExpertHubTransactions when the app has no dedicated shell (kept for
+    // backward compat with older steps).
+    return renderAppByName(currentStep.app) ?? (
+      <ExpertHubTransactions
+        onLogout={handleLogout}
+        onNavigateToDetail={(id) => {
+          console.log('Navigate to detail', id);
+          setCurrentPage('detail');
+        }}
+        onNavigateToWorkspace={() => setCurrentPage('workspace')}
+        onNavigate={(p) => handleNavigate(p)}
+      />
+    );
+  };
+
   const renderCurrentPage = () => {
+    // Modo normal landing · when the profile declares defaultApp or the
+    // user clicked a custom nav tab (currentAppOverride), delegate to
+    // renderAppByName. Only applies when the app is idle on its default
+    // pages ('transactions' or 'dashboard') — deeper navigations like
+    // 'detail' / 'workspace' stay caller-owned.
+    const overrideApp = currentAppOverride ?? demoProfile.defaultApp;
+    if (overrideApp && (currentPage === 'transactions' || currentPage === 'dashboard')) {
+      const rendered = renderAppByName(overrideApp);
+      if (rendered) return rendered;
+    }
+
     // Inbound-Outbound profile redirects hidden pages to dashboard to avoid 404 on stale bookmarks.
     if (isInboundOutbound && inboundOutboundHiddenPages.includes(currentPage)) {
       setCurrentPage('dashboard');

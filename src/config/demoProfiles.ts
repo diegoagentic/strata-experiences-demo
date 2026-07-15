@@ -96,6 +96,15 @@ export interface DemoProfile {
     defaultRoleId?: string;
     /** When true, RoleSwitcher renders in the navbar. */
     hasRoleSwitcher?: boolean;
+
+    // ─── Landing modo normal (F5+) ──────────────────────────────────────────
+    /**
+     * SimulationApp to render when the user opens this experience WITHOUT
+     * launching the tour. Same canvas that scene-1 of the tour shows,
+     * without spotlight/overlays. Makes the profile self-explanatory
+     * before the user hits "Start Demo".
+     */
+    defaultApp?: SimulationApp;
 }
 
 // Order: most recently created demo first (newest at top of Switch Demo dropdown).
@@ -182,6 +191,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         companyName: 'Leland',
         description: 'Purchase order pipeline · materials review · exception handling',
         icon: '🪑',
+        defaultApp: 'leland-strata',
         steps: LELAND_STEPS,
         stepBehavior: LELAND_STEP_BEHAVIOR,
         stepMessages: LELAND_STEP_MESSAGES,
