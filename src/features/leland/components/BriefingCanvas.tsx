@@ -12,6 +12,7 @@
  */
 
 import { Mail, ArrowRight, Database, FileSpreadsheet, Globe, Clock, ShieldCheck, AlertCircle, Sparkles } from 'lucide-react';
+import { HeroMetric } from 'strata-design-system';
 import StatusBadge from '../../../components/shared/StatusBadge';
 import StepCompletionCta from './StepCompletionCta';
 import { useDemo } from '../../../context/DemoContext';
@@ -73,19 +74,19 @@ export default function BriefingCanvas() {
         <div className="space-y-4">
             {/* Top stats — today's friction at a glance */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <PainStat
+                <HeroMetric
                     icon={<Mail className="h-4 w-4" />}
                     value="Inbox piling up"
                     label="Orders waiting for action"
                     tone="info"
                 />
-                <PainStat
+                <HeroMetric
                     icon={<ShieldCheck className="h-4 w-4" />}
                     value="Every order"
                     label="Has to go through the Reviewer"
                     tone="warning"
                 />
-                <PainStat
+                <HeroMetric
                     icon={<Clock className="h-4 w-4" />}
                     value="Half an hour"
                     label="The Account Manager spends per order"
@@ -201,28 +202,3 @@ export default function BriefingCanvas() {
     );
 }
 
-// ─── Sub-components ─────────────────────────────────────────────────────────
-
-interface PainStatProps {
-    icon: React.ReactNode;
-    value: string;
-    label: string;
-    tone: 'info' | 'warning' | 'ai';
-}
-
-function PainStat({ icon, value, label, tone }: PainStatProps) {
-    const toneClasses = {
-        info: 'border-info/30 bg-info/5 text-info',
-        warning: 'border-warning/30 bg-warning/5 text-warning',
-        ai: 'border-ai/30 bg-ai/5 text-ai',
-    };
-    return (
-        <div className={`rounded-2xl border ${toneClasses[tone]} p-4`}>
-            <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider opacity-90">
-                {icon}
-                <span>{label}</span>
-            </div>
-            <div className="mt-2 text-2xl font-bold tabular-nums">{value}</div>
-        </div>
-    );
-}

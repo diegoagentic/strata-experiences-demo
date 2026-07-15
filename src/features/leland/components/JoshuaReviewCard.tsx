@@ -13,6 +13,7 @@
 
 import { useState } from 'react';
 import { CheckCircle2, AlertTriangle, ShieldCheck, ChevronRight, X, ArrowUpRight, ScaleIcon } from 'lucide-react';
+import { HeroMetric } from 'strata-design-system';
 import StatusBadge from '../../../components/shared/StatusBadge';
 import { useDemo } from '../../../context/DemoContext';
 import { HERO_PO_HAPPY, HERO_VALIDATION } from '../../../config/profiles/leland-data';
@@ -40,21 +41,21 @@ export default function JoshuaReviewCard() {
         <div className="space-y-4">
             {/* Top stats — today's review queue */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <StatCard
+                <HeroMetric
                     label="Approved automatically today"
                     value="Most"
                     sub="Standard orders never reach the queue"
                     tone="success"
                     icon={<CheckCircle2 className="h-4 w-4" />}
                 />
-                <StatCard
+                <HeroMetric
                     label="In the Reviewer's queue"
                     value="Only what matters"
                     sub="A fraction of yesterday's load"
                     tone="warning"
                     icon={<AlertTriangle className="h-4 w-4" />}
                 />
-                <StatCard
+                <HeroMetric
                     label="Time per review"
                     value="Seconds"
                     sub="Strata packs the full context"
@@ -201,32 +202,6 @@ export default function JoshuaReviewCard() {
 }
 
 // ─── Sub-components ─────────────────────────────────────────────────────────
-
-interface StatCardProps {
-    label: string;
-    value: string;
-    sub: string;
-    tone: 'success' | 'warning' | 'ai';
-    icon: React.ReactNode;
-}
-
-function StatCard({ label, value, sub, tone, icon }: StatCardProps) {
-    const toneClasses: Record<typeof tone, string> = {
-        success: 'border-success/30 bg-success/5 text-success',
-        warning: 'border-warning/30 bg-warning/5 text-warning',
-        ai: 'border-ai/30 bg-ai/5 text-ai',
-    };
-    return (
-        <div className={`rounded-2xl border ${toneClasses[tone]} p-4`}>
-            <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider opacity-90">
-                {icon}
-                <span>{label}</span>
-            </div>
-            <div className="mt-2 text-3xl font-bold tabular-nums">{value}</div>
-            <div className="mt-1 text-[11px] text-muted-foreground">{sub}</div>
-        </div>
-    );
-}
 
 function DiffPanel({ label, value, tone, sub }: { label: string; value: string; tone: 'danger' | 'success'; sub: string }) {
     const toneClass = tone === 'danger' ? 'border-danger/30 bg-danger/5' : 'border-success/30 bg-success/5';
