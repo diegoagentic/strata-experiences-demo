@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 // Metro Legal · Sales flow demo data
 //
-// Same project as Metro Legal_ORDER_META (manattOrderData.ts) + Metro Legal_LD_RFP
+// Same project as METRO_LEGAL_ORDER_META (manattOrderData.ts) + METRO_LEGAL_LD_RFP
 // (manattLaborData.ts) · PO-DC-0009642 · Metro Legal Firm · 4th Floor.
 // The Sales flow runs UPSTREAM of Spec Check + L&D · it produces the works
 // form that triggers them.

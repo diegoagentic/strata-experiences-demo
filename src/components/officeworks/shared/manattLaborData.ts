@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 // Metro Legal · Labor & Delivery Estimation demo data
 //
-// Same project as Metro Legal_ORDER_META (manattOrderData.ts) · PO-DC-0009642 ·
+// Same project as METRO_LEGAL_ORDER_META (manattOrderData.ts) · PO-DC-0009642 ·
 // Metro Legal Firm · 4th Floor · DC market · 1551 K St NW.
 //
 // The L&D flow runs IN PARALLEL to the Spec Check & Design flow per the
@@ -16,7 +16,7 @@
 //   - DC 2024 case:   Notion AS-IS §8 ($160k → $106k post-rebid)
 // ═══════════════════════════════════════════════════════════════════════════════
 
-export const Metro Legal_LD_RFP = {
+export const METRO_LEGAL_LD_RFP = {
     poNumber: 'PO-DC-0009642',                          // mismo PO sc1.x
     projectName: 'Metro Legal Firm · 4th Floor',
     market: 'DC',
@@ -33,7 +33,7 @@ export const Metro Legal_LD_RFP = {
     priorProjectsAtAddress: 5,
 } as const;
 
-export const Metro Legal_TAKEOFF = {
+export const METRO_LEGAL_TAKEOFF = {
     workstationCount: 127,
     crCount: 18,
     estimatedLaborHours: 320,
@@ -53,7 +53,7 @@ export const TAKEOFF_BULLETS = [
 
 export type ConditionConfidence = 'high' | 'medium' | 'low';
 
-export const Metro Legal_BUILDING_CONDITIONS = [
+export const METRO_LEGAL_BUILDING_CONDITIONS = [
     { id: 'freight',    label: 'Freight elevator',          value: "Yes · 8'×6'×9'",       confidence: 'high'   as ConditionConfidence, source: 'Building KB · 1551 K St NW (5 prior projects)' },
     { id: 'lift',       label: 'Single vs double lift',     value: 'Single lift',           confidence: 'high'   as ConditionConfidence, source: 'Building KB · 1551 K St NW' },
     { id: 'dock',       label: 'Loading dock',              value: 'Dock with leveler',     confidence: 'high'   as ConditionConfidence, source: 'Building KB · 1551 K St NW' },
@@ -68,7 +68,7 @@ export const Metro Legal_BUILDING_CONDITIONS = [
     { id: 'equipment',  label: 'Equipment provision',       value: '100% installer-provided', confidence: 'high' as ConditionConfidence, source: 'OW MSA policy · all special equipment by installer' },
 ] as const;
 
-export type BuildingCondition = (typeof Metro Legal_BUILDING_CONDITIONS)[number];
+export type BuildingCondition = (typeof METRO_LEGAL_BUILDING_CONDITIONS)[number];
 
 export const APPROVED_INSTALLERS_DC = [
     {
@@ -492,7 +492,7 @@ export function getActiveVerticalData(vertical: Vertical) {
     return {
         vertical,
         actor: ALAN_MCPHEE,
-        takeoff: Metro Legal_TAKEOFF,
+        takeoff: METRO_LEGAL_TAKEOFF,
         takeoffBullets: TAKEOFF_BULLETS,
         installers: APPROVED_INSTALLERS_DC,
         bids: BID_RESPONSES,
@@ -501,13 +501,13 @@ export function getActiveVerticalData(vertical: Vertical) {
         governance: null,
         volume: LD_VOLUME_FACTS,
         scopeUnitLabel: 'Workstations',
-        scopeUnitValue: `${Metro Legal_TAKEOFF.workstationCount}`,
-        scopeSecondary: `${Metro Legal_TAKEOFF.crCount} CRs`,
+        scopeUnitValue: `${METRO_LEGAL_TAKEOFF.workstationCount}`,
+        scopeSecondary: `${METRO_LEGAL_TAKEOFF.crCount} CRs`,
     } as const;
 }
 
 // ─── L&D Pipeline data · context cards + Metro Legal badges/subtitles per col ────
-// Mirrors the shape of CONTEXT_CARDS / Metro Legal_BADGE / Metro Legal_SUBTITLE in
+// Mirrors the shape of CONTEXT_CARDS / METRO_LEGAL_BADGE / METRO_LEGAL_SUBTITLE in
 // OfficeworksFunnel.tsx so the funnel can render the L&D flow consistently.
 
 export interface LDContextCard {
@@ -546,7 +546,7 @@ export const LD_CONTEXT_PROJECTS: LDContextCard[] = [
     },
 ];
 
-export const Metro Legal_LD_BADGE: Record<number, { label: string; className: string }> = {
+export const METRO_LEGAL_LD_BADGE: Record<number, { label: string; className: string }> = {
     0: { label: 'RFP routed',     className: 'bg-ai/10 text-ai border border-ai/20' },
     1: { label: 'Conditions OK',  className: 'bg-info/10 text-info border border-info/20' },
     2: { label: 'Bid sent',       className: 'bg-warning/10 text-warning border border-warning/20' },
@@ -554,7 +554,7 @@ export const Metro Legal_LD_BADGE: Record<number, { label: string; className: st
     4: { label: 'Quote uploaded', className: 'bg-success/10 text-success border border-success/20' },
 };
 
-export const Metro Legal_LD_BADGE_BY_STEP: Record<string, { label: string; className: string }> = {
+export const METRO_LEGAL_LD_BADGE_BY_STEP: Record<string, { label: string; className: string }> = {
     'sc-LD.0': { label: 'New RFP',          className: 'bg-ai/10 text-ai border border-ai/20' },
     'sc-LD.1': { label: 'Takeoff ready',    className: 'bg-info/10 text-info border border-info/20' },
     'sc-LD.2': { label: 'Conditions OK',    className: 'bg-info/10 text-info border border-info/20' },
@@ -564,7 +564,7 @@ export const Metro Legal_LD_BADGE_BY_STEP: Record<string, { label: string; class
     'sc-LD.6': { label: 'Winner picked',    className: 'bg-primary/10 text-primary border border-primary/20' },
 };
 
-export const Metro Legal_LD_SUBTITLE: Record<number, string> = {
+export const METRO_LEGAL_LD_SUBTITLE: Record<number, string> = {
     0: 'RFP from CBRE · 3 attachments · SLA 48h running',
     1: '12 conditions captured · 1551 K St NW · union IBEW 26',
     2: '3 installers DC · Pinnacle · Northeast · TriState',
@@ -572,7 +572,7 @@ export const Metro Legal_LD_SUBTITLE: Record<number, string> = {
     4: 'Net $20.9k + 18% margin = $24,662 · uploaded · BC-RFP-882041',
 };
 
-export const Metro Legal_LD_SUBTITLE_BY_STEP: Record<string, string> = {
+export const METRO_LEGAL_LD_SUBTITLE_BY_STEP: Record<string, string> = {
     'sc-LD.0': 'New RFP from the GC · awaiting acknowledge · SLA 48h',
     'sc-LD.1': 'RFP routed · ready to run AI takeoff on the drawing',
     'sc-LD.2': '8 of 12 conditions from Building KB · 2 medium-confidence pending confirm',

@@ -6,7 +6,7 @@
  * Designer-led, Strata-assisted:
  *   · Design Manager Ellis (designer) is the principal actor · she navigates the 5
  *     audit steps and toggles each item Verified / Flagged / Pending.
- *   · Strata pre-flags items that need attention (grounded in Metro Legal_AUDIT_ISSUES)
+ *   · Strata pre-flags items that need attention (grounded in METRO_LEGAL_AUDIT_ISSUES)
  *     so Kimberly knows where to look first · she still decides.
  *   · Per-item Metro Legal project values (71 lines, 30 stations, SQ #436533, ...)
  *     materialize SC2 as concrete data to compare, not generic checklist text.
@@ -49,7 +49,7 @@ type StepNum = 1 | 2 | 3 | 4 | 5
  * attention. Keys are `step-{stepNumber}-{itemIndex}`. The label and source
  * surface as a tooltip next to the badge.
  *
- * Counts match Metro Legal_AUDIT_ISSUES (2 critical · 3 advisory = 5 flags).
+ * Counts match METRO_LEGAL_AUDIT_ISSUES (2 critical · 3 advisory = 5 flags).
  */
 const STRATA_FLAGS: Record<string, { severity: 'critical' | 'advisory'; reason: string }> = {
     'step-1-1': {
@@ -82,7 +82,7 @@ const TOTAL_FLAGS_ADVISORY = Object.values(STRATA_FLAGS).filter(f => f.severity 
  * "designer compares specific numbers" instead of "designer reads generic
  * checklist text". Items without a value just show the checklist label.
  */
-const Metro Legal_AUDIT_VALUES: Record<string, string> = {
+const METRO_LEGAL_AUDIT_VALUES: Record<string, string> = {
     'step-1-0': '71 lines · 30 stations · 4 workstation groups · $1,541,392 list',
     'step-1-1': 'Washington D.C. · DC market · OWDC electrical code',
     'step-1-2': 'New build · no reconfigure scope',
@@ -335,7 +335,7 @@ export default function SelfAuditScene({ onValidate, peerName, onAssignPeerRevie
                             const key = `step-${activeStep}-${i}`
                             const state = itemStates[key] ?? 'pending'
                             const flag = STRATA_FLAGS[key]
-                            const projectValue = Metro Legal_AUDIT_VALUES[key]
+                            const projectValue = METRO_LEGAL_AUDIT_VALUES[key]
                             return (
                                 <li key={i}>
                                     <button

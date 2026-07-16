@@ -16,12 +16,12 @@
 import { useEffect, useState } from 'react'
 import { Search, LayoutGrid, MoreHorizontal, Users, Truck } from 'lucide-react'
 import { useDemo } from '../../context/DemoContext'
-import { Metro Legal_ORDER_META } from './shared/manattOrderData'
+import { METRO_LEGAL_ORDER_META } from './shared/manattOrderData'
 import { stepIdToColIdx } from './shared/funnelStages'
 import {
-    Metro Legal_LD_RFP, FINAL_QUOTE, WALLS_FINAL_QUOTE,
-    LD_CONTEXT_PROJECTS, Metro Legal_LD_BADGE, Metro Legal_LD_BADGE_BY_STEP,
-    Metro Legal_LD_SUBTITLE, Metro Legal_LD_SUBTITLE_BY_STEP,
+    METRO_LEGAL_LD_RFP, FINAL_QUOTE, WALLS_FINAL_QUOTE,
+    LD_CONTEXT_PROJECTS, METRO_LEGAL_LD_BADGE, METRO_LEGAL_LD_BADGE_BY_STEP,
+    METRO_LEGAL_LD_SUBTITLE, METRO_LEGAL_LD_SUBTITLE_BY_STEP,
 } from './shared/manattLaborData'
 import { SALES_ACTOR, SALES_OPPORTUNITIES, SALES_VOLUME_FACTS } from './shared/manattSalesData'
 import { useOfficeworksVertical } from './shared/verticalSignal'
@@ -252,10 +252,10 @@ export default function OfficeworksFunnel({ onOpenReview, hideReviewCta = false,
 
     // Active arrays per flow · same shape, different content.
     const PROCESS_COLUMNS = isSales ? SALES_COLUMNS : isLD ? LD_COLUMNS : SPEC_COLUMNS
-    const BADGE          = isSales ? SALES_BADGE          : isLD ? Metro Legal_LD_BADGE          : SPEC_BADGE
-    const BADGE_BY_STEP  = isSales ? SALES_BADGE_BY_STEP  : isLD ? Metro Legal_LD_BADGE_BY_STEP  : SPEC_BADGE_BY_STEP
-    const SUBTITLE       = isSales ? SALES_SUBTITLE       : isLD ? Metro Legal_LD_SUBTITLE       : SPEC_SUBTITLE
-    const SUBTITLE_BY_STEP = isSales ? SALES_SUBTITLE_BY_STEP : isLD ? Metro Legal_LD_SUBTITLE_BY_STEP : SPEC_SUBTITLE_BY_STEP
+    const BADGE          = isSales ? SALES_BADGE          : isLD ? METRO_LEGAL_LD_BADGE          : SPEC_BADGE
+    const BADGE_BY_STEP  = isSales ? SALES_BADGE_BY_STEP  : isLD ? METRO_LEGAL_LD_BADGE_BY_STEP  : SPEC_BADGE_BY_STEP
+    const SUBTITLE       = isSales ? SALES_SUBTITLE       : isLD ? METRO_LEGAL_LD_SUBTITLE       : SPEC_SUBTITLE
+    const SUBTITLE_BY_STEP = isSales ? SALES_SUBTITLE_BY_STEP : isLD ? METRO_LEGAL_LD_SUBTITLE_BY_STEP : SPEC_SUBTITLE_BY_STEP
     const CONTEXT_CARDS  = isSales ? SALES_CONTEXT_CARDS  : isLD ? LD_CONTEXT_PROJECTS      : SPEC_CONTEXT_CARDS
     const header         = isWalls ? HEADER_WALLS : HEADER_BY_FLOW[flowId]
 
@@ -372,7 +372,7 @@ export default function OfficeworksFunnel({ onOpenReview, hideReviewCta = false,
                                                 </div>
                                                 <span className="text-[11px] text-muted-foreground block truncate">
                                                     {isSales ? `Metro Legal Firm · 4F · Metro Legal-4F · ${SALES_OPPORTUNITIES[0].copperStage}%`
-                                                     : isLD ? `Metro Legal Firm · 4F · ${Metro Legal_LD_RFP.market}`
+                                                     : isLD ? `Metro Legal Firm · 4F · ${METRO_LEGAL_LD_RFP.market}`
                                                      : 'Metro Legal Firm LLC · DC'}
                                                 </span>
                                             </div>
@@ -381,12 +381,12 @@ export default function OfficeworksFunnel({ onOpenReview, hideReviewCta = false,
                                         <div className="space-y-1.5">
                                             <div className="flex justify-between text-xs">
                                                 <span className="text-muted-foreground">{isSales ? 'Opp' : 'PO'}</span>
-                                                <span className="font-medium text-foreground font-mono">{isSales ? SALES_OPPORTUNITIES[0].oppId : Metro Legal_ORDER_META.poNumber}</span>
+                                                <span className="font-medium text-foreground font-mono">{isSales ? SALES_OPPORTUNITIES[0].oppId : METRO_LEGAL_ORDER_META.poNumber}</span>
                                             </div>
                                             <div className="flex justify-between text-xs">
                                                 <span className="text-muted-foreground">{isSales ? 'Pipeline' : isLD ? 'Quote' : 'Net'}</span>
                                                 <span className="font-semibold text-foreground">
-                                                    ${isSales ? SALES_OPPORTUNITIES[0].estValueUSD.toLocaleString() : isLD ? ldQuotedTotal.toLocaleString() : Metro Legal_ORDER_META.netTotal.toLocaleString()}
+                                                    ${isSales ? SALES_OPPORTUNITIES[0].estValueUSD.toLocaleString() : isLD ? ldQuotedTotal.toLocaleString() : METRO_LEGAL_ORDER_META.netTotal.toLocaleString()}
                                                 </span>
                                             </div>
                                             <div className="flex justify-between text-xs">
@@ -401,8 +401,8 @@ export default function OfficeworksFunnel({ onOpenReview, hideReviewCta = false,
                                             <div className="pt-2 border-t border-border flex items-center justify-between">
                                                 <span className="text-[10px] text-muted-foreground">
                                                     {isSales ? `Copper · stage ${SALES_OPPORTUNITIES[0].copperStage}% · ${SALES_VOLUME_FACTS.totalOpenOpportunities.toLocaleString()} open` :
-                                                     isLD ? `Portal ${Metro Legal_LD_RFP.gcPortalRef}` :
-                                                     `SQ #${Metro Legal_ORDER_META.specialQuote}`}
+                                                     isLD ? `Portal ${METRO_LEGAL_LD_RFP.gcPortalRef}` :
+                                                     `SQ #${METRO_LEGAL_ORDER_META.specialQuote}`}
                                                 </span>
                                                 <div className="relative">
                                                     <span className="absolute -inset-1 rounded-xl bg-ai/20 animate-pulse pointer-events-none" />

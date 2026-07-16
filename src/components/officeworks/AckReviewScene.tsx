@@ -20,7 +20,7 @@ import {
 } from 'lucide-react'
 import { HeroMetric } from 'strata-design-system'
 import PDFPreviewModal, { OFFICEWORKS_PDFS } from './shared/PDFPreviewModal'
-import { Metro Legal_ORDER_META } from './shared/manattOrderData'
+import { METRO_LEGAL_ORDER_META } from './shared/manattOrderData'
 import { CHANGE_ORDER_REASONS } from './shared/auditChecklistSteps'
 
 interface Props { onContinue: () => void }
@@ -220,7 +220,7 @@ export default function AckReviewScene({ onContinue }: Props) {
                             <FileCheck className="h-5 w-5" />
                         </div>
                         <div>
-                            <h2 className="text-lg font-semibold text-foreground">Acknowledgment review · {Metro Legal_ORDER_META.poNumber}</h2>
+                            <h2 className="text-lg font-semibold text-foreground">Acknowledgment review · {METRO_LEGAL_ORDER_META.poNumber}</h2>
                             <p className="text-xs text-muted-foreground mt-0.5 flex items-center gap-1.5">
                                 <Sparkles className="h-3 w-3 text-primary" />
                                 Gemini already in use today at Officeworks — Strata supercharges the diff
@@ -317,8 +317,8 @@ export default function AckReviewScene({ onContinue }: Props) {
                 isOpen={showPDF}
                 onClose={() => setShowPDF(false)}
                 pdfSrc={OFFICEWORKS_PDFS.poAcknowledgment}
-                title={`Order Acknowledgment · ${Metro Legal_ORDER_META.poNumber}`}
-                subtitle={`Metro Legal Firm LLC · 4th Floor · 71 line items · Net $${Metro Legal_ORDER_META.netTotal.toLocaleString()}`}
+                title={`Order Acknowledgment · ${METRO_LEGAL_ORDER_META.poNumber}`}
+                subtitle={`Metro Legal Firm LLC · 4th Floor · 71 line items · Net $${METRO_LEGAL_ORDER_META.netTotal.toLocaleString()}`}
                 badge="Real document"
             />
         </div>

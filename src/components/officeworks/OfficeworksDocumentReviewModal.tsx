@@ -20,9 +20,9 @@ import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import { Dialog, Transition, TransitionChild, DialogPanel } from '@headlessui/react'
 import { X, Sparkles, FileText, MapPin, ClipboardCheck, ArrowRight, AlertCircle, CheckCircle2, FileWarning, Image as ImageIcon, Eye, UserCheck, Users, Paperclip, Mail, Loader2, HelpCircle, ShieldCheck, Search, AlertTriangle, DollarSign, Send, Calendar, Layers, Pencil, Inbox, Building2, Truck, ChevronDown, ChevronRight as ChevronRightIcon, Save, Edit3, Target, TrendingUp, MessageSquare, Smartphone, ExternalLink, Activity, Clock, Briefcase, Award } from 'lucide-react'
 import { useDemo } from '../../context/DemoContext'
-import { Metro Legal_ORDER_META } from './shared/manattOrderData'
+import { METRO_LEGAL_ORDER_META } from './shared/manattOrderData'
 import {
-    Metro Legal_LD_RFP, Metro Legal_TAKEOFF, TAKEOFF_BULLETS, Metro Legal_BUILDING_CONDITIONS,
+    METRO_LEGAL_LD_RFP, METRO_LEGAL_TAKEOFF, TAKEOFF_BULLETS, METRO_LEGAL_BUILDING_CONDITIONS,
     APPROVED_INSTALLERS_DC, BID_RESPONSES, INTERNAL_BENCHMARK, FINAL_QUOTE,
     PORTAL_UPLOAD_BULLETS, HISTORICAL_RECEIPTS, LD_VOLUME_FACTS, ALAN_MCPHEE,
     WALLS_TAKEOFF,
@@ -650,7 +650,7 @@ function WorksFormPreview({ stage }: { stage: OfficeworksReviewStage }) {
         { label: 'Co-submitter', value: 'Danielle Dunlap', status: 'complete', required: false },
         { label: 'CAD file (.dwg)', value: cadValue, status: isIntakePending ? 'missing' : 'complete', required: true, note: isIntakePending ? 'Required to start design in CET' : undefined },
         { label: 'PDF floor plan', value: 'manatt-4th-floor-floorplan.pdf', status: 'complete', required: false },
-        { label: 'SQ number (price-protected)', value: isIntakePending ? null : `#${Metro Legal_ORDER_META.specialQuote}`, status: isIntakePending ? 'missing' : 'complete', required: true, note: isIntakePending ? 'GSA client · price protection required' : undefined },
+        { label: 'SQ number (price-protected)', value: isIntakePending ? null : `#${METRO_LEGAL_ORDER_META.specialQuote}`, status: isIntakePending ? 'missing' : 'complete', required: true, note: isIntakePending ? 'GSA client · price protection required' : undefined },
         { label: 'Catalog effective', value: isIntakePending ? 'Strata suggests 2025' : '2025', status: 'complete', required: true },
         { label: 'Due date', value: '2026-03-20 (Sched Ship)', status: 'complete', required: true },
     ]
@@ -973,11 +973,11 @@ function FloorPlanPreview({ stage }: { stage: OfficeworksReviewStage }) {
                         zoneALabel="ZONE A · WORKSTATIONS WS-01/WS-02 ×22"
                         zoneBLabel="ZONE B · CONFERENCE + BREAK"
                         zoneCLabel="ZONE C · WS-02.A ×8 + STORAGE"
-                        footerLabel={`Metro Legal Firm LLC · ${Metro Legal_ORDER_META.poNumber} · by Designer Nova`}
+                        footerLabel={`Metro Legal Firm LLC · ${METRO_LEGAL_ORDER_META.poNumber} · by Designer Nova`}
                     />
                 </div>
                 <div className="px-4 py-2.5 bg-muted/30 border-t border-border text-[10px] text-muted-foreground text-center">
-                    {Metro Legal_ORDER_META.sqName} · {Metro Legal_ORDER_META.poNumber} · DC market · 4th Floor
+                    {METRO_LEGAL_ORDER_META.sqName} · {METRO_LEGAL_ORDER_META.poNumber} · DC market · 4th Floor
                 </div>
             </div>
         </div>
@@ -1088,9 +1088,9 @@ function AckPreview({ stage }: { stage: OfficeworksReviewStage }) {
             <div className="px-4 py-2.5 border-b border-border bg-muted/40 flex items-center gap-2 shrink-0">
                 <Eye className="h-3.5 w-3.5 text-muted-foreground" />
                 <div className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
-                    Real Teknion Acknowledgment · {Metro Legal_ORDER_META.poNumber}
+                    Real Teknion Acknowledgment · {METRO_LEGAL_ORDER_META.poNumber}
                 </div>
-                <span className="ml-auto text-[10px] text-success font-medium">Universal #{Metro Legal_ORDER_META.universal}</span>
+                <span className="ml-auto text-[10px] text-success font-medium">Universal #{METRO_LEGAL_ORDER_META.universal}</span>
             </div>
             <iframe
                 src={OFFICEWORKS_PDFS.poAcknowledgment}
@@ -1122,7 +1122,7 @@ function DefaultStagePanel({ stage }: PanelProps) {
         },
         'bom-gen': {
             headline: 'CAP exports BOM · 71 line items',
-            body: <p>Specifications + electrical coordination embedded here (not standalone steps). Subtotals grouped per Tag (Alias 1) + Level 4 (Alias 2). List Total ${Metro Legal_ORDER_META.listTotal.toLocaleString()}.</p>,
+            body: <p>Specifications + electrical coordination embedded here (not standalone steps). Subtotals grouped per Tag (Alias 1) + Level 4 (Alias 2). List Total ${METRO_LEGAL_ORDER_META.listTotal.toLocaleString()}.</p>,
             cta: 'Continue to validation',
         },
         'validation': {
@@ -1209,7 +1209,7 @@ const REQUEST_MESSAGE = `Hi Caitlin,
 Thanks for submitting the Works form for the Metro Legal 4th Floor build-out. To start the design in CET we need two items before we can route to a designer:
 
   · CAD floor plan (.dwg) · required for layout in CET (Task 3)
-  · SQ number for the GSA price-protected client · Strata suggests #${Metro Legal_ORDER_META.specialQuote} (catalog 2025) · please confirm
+  · SQ number for the GSA price-protected client · Strata suggests #${METRO_LEGAL_ORDER_META.specialQuote} (catalog 2025) · please confirm
 
 The rest of the form is complete. As soon as the CAD arrives we'll assign and kick off.
 
@@ -1237,7 +1237,7 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
                             </li>
                             <li className="flex items-start gap-2 text-xs text-warning">
                                 <AlertCircle className="h-3.5 w-3.5 shrink-0 mt-0.5" />
-                                <span><span className="font-semibold">SQ blank</span> · GSA price-protected · Strata suggests SQ #{Metro Legal_ORDER_META.specialQuote} · catalog 2025</span>
+                                <span><span className="font-semibold">SQ blank</span> · GSA price-protected · Strata suggests SQ #{METRO_LEGAL_ORDER_META.specialQuote} · catalog 2025</span>
                             </li>
                             <li className="flex items-start gap-2 text-xs text-success">
                                 <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" />
@@ -1252,7 +1252,7 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
                             </li>
                             <li className="flex items-start gap-2 text-xs text-success">
                                 <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" />
-                                <span><span className="font-semibold">SQ #{Metro Legal_ORDER_META.specialQuote} confirmed</span> · GSA price-protected · catalog 2025</span>
+                                <span><span className="font-semibold">SQ #{METRO_LEGAL_ORDER_META.specialQuote} confirmed</span> · GSA price-protected · catalog 2025</span>
                             </li>
                             <li className="flex items-start gap-2 text-xs text-success">
                                 <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" />
@@ -1433,7 +1433,7 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
                             { label: 'Client',  value: 'Metro Legal Firm LLC' },
                             { label: 'Project', value: 'Metro Legal · 4th Floor · ~30 stations' },
                             { label: 'Missing 1', value: 'CAD floor plan (.dwg)' },
-                            { label: 'Missing 2', value: `SQ number · GSA price-protected (Strata suggests #${Metro Legal_ORDER_META.specialQuote})` },
+                            { label: 'Missing 2', value: `SQ number · GSA price-protected (Strata suggests #${METRO_LEGAL_ORDER_META.specialQuote})` },
                         ],
                         successTitle: 'Clarification request sent',
                         successSubtitle: 'Awaiting CAD attachment + SQ confirmation',
@@ -2182,25 +2182,25 @@ const SQ_EMAIL_TO   = 'caitlin.barolet@officeworksinc.com'
 const SQ_EMAIL_CC   = 'felicia.miano-poles@officeworksinc.com, dc-coordinator@officeworksinc.com'
 
 function buildSQEmailSubject(): string {
-    return `SQ #${Metro Legal_ORDER_META.specialQuote} Confirmed · Metro Legal 4th Floor · Price Protected · 2025 Catalog`
+    return `SQ #${METRO_LEGAL_ORDER_META.specialQuote} Confirmed · Metro Legal 4th Floor · Price Protected · 2025 Catalog`
 }
 
 function buildSQEmailBody(): string {
-    const discountPct = Math.round((Metro Legal_ORDER_META.discountTotal / Metro Legal_ORDER_META.listTotal) * 100)
+    const discountPct = Math.round((METRO_LEGAL_ORDER_META.discountTotal / METRO_LEGAL_ORDER_META.listTotal) * 100)
     return `Hi Caitlin,
 
 Confirming pricing protection for Metro Legal 4th Floor before I submit the Order Preview to Teknion. Sharing for your records and so you can align with the client.
 
-· SQ #${Metro Legal_ORDER_META.specialQuote} (${Metro Legal_ORDER_META.sqName})
-· Catalog: 2025 · effective dates valid through Sched Ship ${Metro Legal_ORDER_META.schedShipDate}
-· List Total: $${Metro Legal_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-· Net Total: $${Metro Legal_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+· SQ #${METRO_LEGAL_ORDER_META.specialQuote} (${METRO_LEGAL_ORDER_META.sqName})
+· Catalog: 2025 · effective dates valid through Sched Ship ${METRO_LEGAL_ORDER_META.schedShipDate}
+· List Total: $${METRO_LEGAL_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+· Net Total: $${METRO_LEGAL_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}
 · Discount: ~${discountPct}% off list
 
 Verification trail (cross-referenced by Strata):
   ✓ Teknion Create platform · SQ lookup ACTIVE
   ✓ Officeworks-DC special pricing form · on file (filed at intake)
-  ✓ Prior acknowledgment ${Metro Legal_ORDER_META.poNumber} · terms consistent
+  ✓ Prior acknowledgment ${METRO_LEGAL_ORDER_META.poNumber} · terms consistent
   ✓ Catalog 2025 effective dates · valid
 
 The 4 documented risk checks (PZ column · all 71 items on SQ · Service Fees/T-code surcharges · catalog effective date) are all confirmed.
@@ -2265,7 +2265,7 @@ function SQConfirmationDialog({ isOpen, onSent, onCancel, emailConfig }: SQConfi
     const [subject, setSubject] = useState(cfg.subject ?? buildSQEmailSubject())
     const [message, setMessage] = useState(cfg.body ?? buildSQEmailBody())
     const [attachments, setAttachments] = useState(cfg.attachments ?? [
-        { name: `Metro Legal-SQ-${Metro Legal_ORDER_META.specialQuote}-confirmation.pdf`, size: '240 KB', badge: 'Auto-generated' },
+        { name: `Metro Legal-SQ-${METRO_LEGAL_ORDER_META.specialQuote}-confirmation.pdf`, size: '240 KB', badge: 'Auto-generated' },
         { name: 'verification-trail.json', size: '8 KB', badge: 'Sources log' },
     ])
     const [sending, setSending] = useState(false)
@@ -2410,7 +2410,7 @@ function SQCheckPanel({ onValidate }: SQCheckPanelProps) {
         setConfirmed(true)
     }
 
-    const discountPct = Math.round((Metro Legal_ORDER_META.discountTotal / Metro Legal_ORDER_META.listTotal) * 100)
+    const discountPct = Math.round((METRO_LEGAL_ORDER_META.discountTotal / METRO_LEGAL_ORDER_META.listTotal) * 100)
 
     return (
         <>
@@ -2465,20 +2465,20 @@ function SQCheckPanel({ onValidate }: SQCheckPanelProps) {
                 <div className="rounded-xl border border-border bg-card overflow-hidden">
                     <div className="px-4 py-3 bg-muted/30 border-b border-border flex items-center gap-2">
                         <DollarSign className="h-4 w-4 text-foreground" />
-                        <span className="text-xs font-bold uppercase tracking-wider text-foreground">Pricing terms locked under SQ #{Metro Legal_ORDER_META.specialQuote}</span>
+                        <span className="text-xs font-bold uppercase tracking-wider text-foreground">Pricing terms locked under SQ #{METRO_LEGAL_ORDER_META.specialQuote}</span>
                     </div>
                     <div className="grid grid-cols-2 gap-px bg-border">
                         <div className="bg-card px-3 py-2.5">
                             <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">List Total</div>
-                            <div className="text-base text-foreground tabular-nums mt-0.5">${Metro Legal_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                            <div className="text-base text-foreground tabular-nums mt-0.5">${METRO_LEGAL_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                         </div>
                         <div className="bg-card px-3 py-2.5">
                             <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Net Total</div>
-                            <div className="text-base font-bold text-success tabular-nums mt-0.5">${Metro Legal_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                            <div className="text-base font-bold text-success tabular-nums mt-0.5">${METRO_LEGAL_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                         </div>
                         <div className="bg-card px-3 py-2.5">
                             <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Discount Total</div>
-                            <div className="text-base text-foreground tabular-nums mt-0.5">${Metro Legal_ORDER_META.discountTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                            <div className="text-base text-foreground tabular-nums mt-0.5">${METRO_LEGAL_ORDER_META.discountTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                         </div>
                         <div className="bg-card px-3 py-2.5">
                             <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Implied %</div>
@@ -2500,7 +2500,7 @@ function SQCheckPanel({ onValidate }: SQCheckPanelProps) {
                         {[
                             {
                                 title: 'Teknion Create platform',
-                                detail: `SQ #${Metro Legal_ORDER_META.specialQuote} lookup`,
+                                detail: `SQ #${METRO_LEGAL_ORDER_META.specialQuote} lookup`,
                                 badge: 'ACTIVE',
                                 badgeClass: 'bg-success/10 text-success border-success/20',
                                 meta: 'verified just now',
@@ -2513,15 +2513,15 @@ function SQCheckPanel({ onValidate }: SQCheckPanelProps) {
                                 meta: '18h ago',
                             },
                             {
-                                title: `Prior acknowledgment ${Metro Legal_ORDER_META.poNumber}`,
-                                detail: 'terms consistent · Universal #' + Metro Legal_ORDER_META.universal,
+                                title: `Prior acknowledgment ${METRO_LEGAL_ORDER_META.poNumber}`,
+                                detail: 'terms consistent · Universal #' + METRO_LEGAL_ORDER_META.universal,
                                 badge: 'MATCH',
                                 badgeClass: 'bg-success/10 text-success border-success/20',
-                                meta: Metro Legal_ORDER_META.orderReceipt,
+                                meta: METRO_LEGAL_ORDER_META.orderReceipt,
                             },
                             {
                                 title: 'Catalog 2025 effective dates',
-                                detail: `Sched Ship ${Metro Legal_ORDER_META.schedShipDate} within window`,
+                                detail: `Sched Ship ${METRO_LEGAL_ORDER_META.schedShipDate} within window`,
                                 badge: 'VALID',
                                 badgeClass: 'bg-success/10 text-success border-success/20',
                                 meta: 'verified just now',
@@ -2546,7 +2546,7 @@ function SQCheckPanel({ onValidate }: SQCheckPanelProps) {
                     <div className="rounded-lg border border-success/30 bg-success/5 px-3 py-2 flex items-start gap-2 animate-in fade-in slide-in-from-top-1 duration-300">
                         <CheckCircle2 className="h-4 w-4 text-success shrink-0 mt-0.5" />
                         <div className="text-xs">
-                            <div className="font-semibold text-success">SQ #{Metro Legal_ORDER_META.specialQuote} confirmed · 2025 catalog locked</div>
+                            <div className="font-semibold text-success">SQ #{METRO_LEGAL_ORDER_META.specialQuote} confirmed · 2025 catalog locked</div>
                             <div className="text-muted-foreground">
                                 <strong className="text-foreground">Caitlin notified</strong> · Felicia &amp; Coordinator CC'd · proceed to Teknion Order Preview
                             </div>
@@ -2630,18 +2630,18 @@ function TeknionPreviewPanel({ onValidate }: TeknionPreviewPanelProps) {
         from: 'kimberly.tucker@officeworksinc.com',
         to: 'ack@teknion.example',
         cc: 'felicia.miano-poles@officeworksinc.com, caitlin.barolet@officeworksinc.com',
-        subject: `Order Preview · Metro Legal 4th Floor · ${Metro Legal_ORDER_META.poNumber} · Sched Ship ${Metro Legal_ORDER_META.schedShipDate}`,
+        subject: `Order Preview · Metro Legal 4th Floor · ${METRO_LEGAL_ORDER_META.poNumber} · Sched Ship ${METRO_LEGAL_ORDER_META.schedShipDate}`,
         body: `Hi Tifani,
 
 Submitting the order preview for Metro Legal 4th Floor for your review. Strata ran pre-flight validation against the 2025 catalog — all 4 checks passed before submission.
 
 Project summary:
-· PO: ${Metro Legal_ORDER_META.poNumber} · Universal #${Metro Legal_ORDER_META.universal}
+· PO: ${METRO_LEGAL_ORDER_META.poNumber} · Universal #${METRO_LEGAL_ORDER_META.universal}
 · 71 line items · 13 CRs (all with finish + grain spec)
-· Sched Ship: ${Metro Legal_ORDER_META.schedShipDate}
+· Sched Ship: ${METRO_LEGAL_ORDER_META.schedShipDate}
 · Longest CR lead time: 40 days (CR 2046138 Flintwood Add-On Screen) · buffered
 
-SQ #${Metro Legal_ORDER_META.specialQuote} confirmed at our end · 2025 catalog effective.
+SQ #${METRO_LEGAL_ORDER_META.specialQuote} confirmed at our end · 2025 catalog effective.
 
 Please let me know if you spot any spec gaps. Targeting your typical 1-2 week turnaround for the preview number.
 
@@ -2698,7 +2698,7 @@ Please let me know if you spot any spec gaps. Targeting your typical 1-2 week tu
                             >
                                 <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">List Total</span>
                             </RuleTooltip>
-                            <div className="text-base text-foreground tabular-nums mt-0.5">${Metro Legal_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                            <div className="text-base text-foreground tabular-nums mt-0.5">${METRO_LEGAL_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                         </div>
                         <div className="bg-card px-3 py-2.5">
                             <RuleTooltip
@@ -2707,19 +2707,19 @@ Please let me know if you spot any spec gaps. Targeting your typical 1-2 week tu
                             >
                                 <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Net Total</span>
                             </RuleTooltip>
-                            <div className="text-base font-bold text-success tabular-nums mt-0.5">${Metro Legal_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                            <div className="text-base font-bold text-success tabular-nums mt-0.5">${METRO_LEGAL_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                         </div>
                         <div className="bg-card px-3 py-2.5">
                             <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Discount Total</span>
-                            <div className="text-base text-foreground tabular-nums mt-0.5">${Metro Legal_ORDER_META.discountTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                            <div className="text-base text-foreground tabular-nums mt-0.5">${METRO_LEGAL_ORDER_META.discountTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                         </div>
                         <div className="bg-card px-3 py-2.5">
                             <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Implied %</span>
-                            <div className="text-base font-bold text-success tabular-nums mt-0.5">~{Math.round((Metro Legal_ORDER_META.discountTotal / Metro Legal_ORDER_META.listTotal) * 100)}% off list</div>
+                            <div className="text-base font-bold text-success tabular-nums mt-0.5">~{Math.round((METRO_LEGAL_ORDER_META.discountTotal / METRO_LEGAL_ORDER_META.listTotal) * 100)}% off list</div>
                         </div>
                     </div>
                     <div className="px-4 py-2.5 bg-muted/20 border-t border-border text-[11px] text-foreground/70">
-                        SQ #{Metro Legal_ORDER_META.specialQuote} · catalog effective May 26, 2025 · 71 lines covered · PO amount ${Metro Legal_ORDER_META.poAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                        SQ #{METRO_LEGAL_ORDER_META.specialQuote} · catalog effective May 26, 2025 · 71 lines covered · PO amount ${METRO_LEGAL_ORDER_META.poAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                     </div>
                 </div>
 
@@ -2767,7 +2767,7 @@ Please let me know if you spot any spec gaps. Targeting your typical 1-2 week tu
                     <ul className="divide-y divide-border text-xs">
                         <li className="px-4 py-2 flex items-center justify-between gap-3">
                             <span className="text-muted-foreground">Order receipt</span>
-                            <span className="text-foreground tabular-nums">{Metro Legal_ORDER_META.orderReceipt}</span>
+                            <span className="text-foreground tabular-nums">{METRO_LEGAL_ORDER_META.orderReceipt}</span>
                         </li>
                         <li className="px-4 py-2 flex items-center justify-between gap-3">
                             <RuleTooltip
@@ -2776,11 +2776,11 @@ Please let me know if you spot any spec gaps. Targeting your typical 1-2 week tu
                             >
                                 <span className="text-muted-foreground">Lockdown (no-change-after)</span>
                             </RuleTooltip>
-                            <span className="text-foreground tabular-nums">{Metro Legal_ORDER_META.noChangeAfter}</span>
+                            <span className="text-foreground tabular-nums">{METRO_LEGAL_ORDER_META.noChangeAfter}</span>
                         </li>
                         <li className="px-4 py-2 flex items-center justify-between gap-3">
                             <span className="text-muted-foreground">Sched Ship</span>
-                            <span className="text-foreground tabular-nums">{Metro Legal_ORDER_META.schedShipDate}</span>
+                            <span className="text-foreground tabular-nums">{METRO_LEGAL_ORDER_META.schedShipDate}</span>
                         </li>
                         <li className="px-4 py-2 flex items-center justify-between gap-3">
                             <span className="text-muted-foreground">Longest CR leadtime</span>
@@ -2956,7 +2956,7 @@ Quick follow-up on your spec gap for CR 2046138 (Solid Add-On Screen · Flintwoo
 
 Grain direction: vertical · matches the validation doc approved by Metro Legal and the other 4 Flintwood pieces in this project (CRs 2046131, 2046136, 2046139, 2046140 — all vertical).
 
-No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${Metro Legal_ORDER_META.schedShipDate}.
+No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${METRO_LEGAL_ORDER_META.schedShipDate}.
 
 — Design Manager Ellis
    Design Manager · PA · cross-market to DC
@@ -2968,7 +2968,7 @@ Quick follow-up on your spec gap for CR 2046138 (Solid Add-On Screen · Flintwoo
 
 Grain direction: horizontal. Note: this differs from the other 4 Flintwood pieces (CRs 2046131, 2046136, 2046139, 2046140) and from the validation doc page 7 (vertical). Confirming this is intentional.
 
-No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${Metro Legal_ORDER_META.schedShipDate}.
+No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${METRO_LEGAL_ORDER_META.schedShipDate}.
 
 — Design Manager Ellis
    Design Manager · PA · cross-market to DC
@@ -2979,7 +2979,7 @@ Quick follow-up on your spec gap for CR 2046138 (Solid Add-On Screen · Flintwoo
 
 Grain direction: ${chosenValue || '—'}.
 
-No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${Metro Legal_ORDER_META.schedShipDate}.
+No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${METRO_LEGAL_ORDER_META.schedShipDate}.
 
 — Design Manager Ellis
    Design Manager · PA · cross-market to DC
@@ -2989,7 +2989,7 @@ No other changes to the BOM. Resubmitting for your review · same Sched Ship tar
 
 Quick follow-up on your spec gap for CR 2046138 · attaching the corrected BOM with the grain direction updated. Strata flagged the change for your review.
 
-No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${Metro Legal_ORDER_META.schedShipDate}.
+No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${METRO_LEGAL_ORDER_META.schedShipDate}.
 
 — Design Manager Ellis
    Design Manager · PA · cross-market to DC
@@ -3318,7 +3318,7 @@ No other changes to the BOM. Resubmitting for your review · same Sched Ship tar
                         </div>
                         <div className="px-4 py-3 space-y-2.5 text-xs">
                             <p className="text-foreground">
-                                The 40-day Flintwood CRs combined with the resubmit cycle push the Must-Arrive Date close to the {Metro Legal_ORDER_META.schedShipDate} ship target. Strata drafted a 3-way phasing huddle to PM and Salesperson so phasing options are ready before Tifani returns.
+                                The 40-day Flintwood CRs combined with the resubmit cycle push the Must-Arrive Date close to the {METRO_LEGAL_ORDER_META.schedShipDate} ship target. Strata drafted a 3-way phasing huddle to PM and Salesperson so phasing options are ready before Tifani returns.
                             </p>
                             <div className="rounded-lg bg-muted/30 border border-border px-3 py-2 space-y-1">
                                 <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">3-way phasing thread</div>
@@ -3410,10 +3410,10 @@ const SUBMISSION_EMAIL_BODY = `Hi Caitlin,
 Submitting the BOM for Metro Legal 4th Floor · ready for NetSuite handoff.
 
 Project summary:
-· PO target: ${Metro Legal_ORDER_META.poNumber}
-· 71 line items · 13 CRs · ${Metro Legal_ORDER_META.manufacturer}
-· List ${Metro Legal_ORDER_META.listTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} · Net ${Metro Legal_ORDER_META.netTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (79% off · SQ #${Metro Legal_ORDER_META.specialQuote} GSA price-protected)
-· Sched Ship: ${Metro Legal_ORDER_META.schedShipDate}
+· PO target: ${METRO_LEGAL_ORDER_META.poNumber}
+· 71 line items · 13 CRs · ${METRO_LEGAL_ORDER_META.manufacturer}
+· List ${METRO_LEGAL_ORDER_META.listTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} · Net ${METRO_LEGAL_ORDER_META.netTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (79% off · SQ #${METRO_LEGAL_ORDER_META.specialQuote} GSA price-protected)
+· Sched Ship: ${METRO_LEGAL_ORDER_META.schedShipDate}
 
 Strata pre-validated the SP4 against the NetSuite schema before send · please forward to the Coordinator so they can upload to NetSuite and apply the discount. I'll standby for the Teknion acknowledgment.
 
@@ -3432,7 +3432,7 @@ function SubmissionEmailPanel({ onValidate }: SubmissionEmailPanelProps) {
         from: 'kimberly.tucker@officeworksinc.com',
         to: 'caitlin.barolet@officeworksinc.com',
         cc: 'coordinator-dc@officeworksinc.com, felicia.miano-poles@officeworksinc.com',
-        subject: `BOM Submission · Metro Legal 4th Floor · ${Metro Legal_ORDER_META.poNumber}`,
+        subject: `BOM Submission · Metro Legal 4th Floor · ${METRO_LEGAL_ORDER_META.poNumber}`,
         body: SUBMISSION_EMAIL_BODY,
         attachments: [
             { name: `Metro Legal-4F_BOM_v1.pdf`,        size: '212 KB', badge: 'BOM · 149 lines' },
@@ -3478,7 +3478,7 @@ function SubmissionEmailPanel({ onValidate }: SubmissionEmailPanelProps) {
                         </div>
                         <div className="flex justify-between gap-3">
                             <span className="text-muted-foreground">Subject</span>
-                            <span className="text-foreground">BOM Submission · Metro Legal 4th Floor · {Metro Legal_ORDER_META.poNumber}</span>
+                            <span className="text-foreground">BOM Submission · Metro Legal 4th Floor · {METRO_LEGAL_ORDER_META.poNumber}</span>
                         </div>
                     </div>
                 </section>
@@ -3735,7 +3735,7 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                             {variant === 'active' && step === 'step-1-upload' && (
                                 <div className="px-4 py-3 space-y-2.5">
                                     <p className="text-[11px] text-muted-foreground">
-                                        Drop the validated SP4 here · NetSuite will accept the {Metro Legal_ORDER_META.specialQuote} schema mapping.
+                                        Drop the validated SP4 here · NetSuite will accept the {METRO_LEGAL_ORDER_META.specialQuote} schema mapping.
                                     </p>
                                     <button
                                         type="button"
@@ -3807,7 +3807,7 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                                     <div className="text-xs font-bold uppercase tracking-wider text-foreground truncate">
                                         Apply 79% discount
                                     </div>
-                                    <div className="text-[10px] text-muted-foreground truncate">Sales Coordinator · SQ #{Metro Legal_ORDER_META.specialQuote}</div>
+                                    <div className="text-[10px] text-muted-foreground truncate">Sales Coordinator · SQ #{METRO_LEGAL_ORDER_META.specialQuote}</div>
                                 </div>
                                 <StatusChip variant={variant} />
                             </div>
@@ -3820,15 +3820,15 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                                     <ul className="divide-y divide-border text-[11px] rounded-lg border border-border overflow-hidden">
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3">
                                             <span className="text-muted-foreground">List total</span>
-                                            <span className="text-foreground tabular-nums">${Metro Legal_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                                            <span className="text-foreground tabular-nums">${METRO_LEGAL_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                                         </li>
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3">
                                             <span className="text-muted-foreground">Discount (79% off)</span>
-                                            <span className="text-foreground tabular-nums">−${Metro Legal_ORDER_META.discountTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                                            <span className="text-foreground tabular-nums">−${METRO_LEGAL_ORDER_META.discountTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                                         </li>
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3 bg-muted/30">
                                             <span className="text-foreground font-medium">Net total</span>
-                                            <span className="text-success font-bold tabular-nums">${Metro Legal_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                                            <span className="text-success font-bold tabular-nums">${METRO_LEGAL_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                                         </li>
                                     </ul>
                                     <button
@@ -3845,7 +3845,7 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                             {variant === 'done' && (
                                 <div className="px-4 py-2.5 text-xs text-foreground flex items-center gap-2">
                                     <CheckCircle2 className="h-3.5 w-3.5 text-success shrink-0" aria-hidden="true" />
-                                    <span><strong>Net ${Metro Legal_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong> applied · SQ #{Metro Legal_ORDER_META.specialQuote} · ready for sales handoff</span>
+                                    <span><strong>Net ${METRO_LEGAL_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong> applied · SQ #{METRO_LEGAL_ORDER_META.specialQuote} · ready for sales handoff</span>
                                 </div>
                             )}
                             {variant === 'pending' && (
@@ -3899,15 +3899,15 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                                         </li>
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3">
                                             <span className="text-muted-foreground">SQ #</span>
-                                            <span className="text-foreground tabular-nums">{Metro Legal_ORDER_META.specialQuote} · GSA price-protected</span>
+                                            <span className="text-foreground tabular-nums">{METRO_LEGAL_ORDER_META.specialQuote} · GSA price-protected</span>
                                         </li>
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3">
                                             <span className="text-muted-foreground">Net total</span>
-                                            <span className="text-success font-bold tabular-nums">${Metro Legal_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                                            <span className="text-success font-bold tabular-nums">${METRO_LEGAL_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                                         </li>
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3">
                                             <span className="text-muted-foreground">Sched ship</span>
-                                            <span className="text-foreground tabular-nums">{Metro Legal_ORDER_META.schedShipDate}</span>
+                                            <span className="text-foreground tabular-nums">{METRO_LEGAL_ORDER_META.schedShipDate}</span>
                                         </li>
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3">
                                             <span className="text-muted-foreground">Recipient</span>
@@ -3941,10 +3941,10 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                                 <div className="px-4 py-2.5 text-xs text-foreground space-y-1">
                                     <div className="flex items-center gap-2">
                                         <CheckCircle2 className="h-3.5 w-3.5 text-success shrink-0" aria-hidden="true" />
-                                        <span><strong>{Metro Legal_ORDER_META.poNumber}</strong> generated · sent to ack@teknion.example</span>
+                                        <span><strong>{METRO_LEGAL_ORDER_META.poNumber}</strong> generated · sent to ack@teknion.example</span>
                                     </div>
                                     <div className="pl-5 text-[11px] text-muted-foreground">
-                                        Universal #{Metro Legal_ORDER_META.universal} · order receipt {Metro Legal_ORDER_META.orderReceipt}
+                                        Universal #{METRO_LEGAL_ORDER_META.universal} · order receipt {METRO_LEGAL_ORDER_META.orderReceipt}
                                     </div>
                                 </div>
                             )}
@@ -4030,7 +4030,7 @@ function RFPIntakePanel({ onValidate }: LDPanelProps) {
                             <span className="text-[10px] font-black text-info">JS</span>
                         </div>
                         <div className="flex-1 min-w-0">
-                            <div className="text-xs font-bold text-foreground truncate">{Metro Legal_LD_RFP.gcContactName}</div>
+                            <div className="text-xs font-bold text-foreground truncate">{METRO_LEGAL_LD_RFP.gcContactName}</div>
                             <div className="text-[10px] text-muted-foreground truncate">CBRE · General Contractor</div>
                         </div>
                         <span className={`inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider rounded px-1.5 py-0.5 shrink-0 ${
@@ -4044,14 +4044,14 @@ function RFPIntakePanel({ onValidate }: LDPanelProps) {
                             <strong>Subject:</strong> Labor RFP · Metro Legal 4F · responses due Wed May 14 9 AM
                         </div>
                         <p className="text-[11px] text-muted-foreground leading-relaxed">
-                            Please quote labor + delivery for the {Metro Legal_LD_RFP.projectName}. Drawings + SIF attached. Submit pricing back via Building Connected — ref {Metro Legal_LD_RFP.gcPortalRef}.
+                            Please quote labor + delivery for the {METRO_LEGAL_LD_RFP.projectName}. Drawings + SIF attached. Submit pricing back via Building Connected — ref {METRO_LEGAL_LD_RFP.gcPortalRef}.
                         </p>
                         <div className="flex items-center gap-2 text-[10px] text-muted-foreground pt-1">
                             <Mail className="h-3 w-3" aria-hidden="true" />
-                            <span>{Metro Legal_LD_RFP.gcContact}</span>
+                            <span>{METRO_LEGAL_LD_RFP.gcContact}</span>
                             <span className="text-border">·</span>
                             <Calendar className="h-3 w-3" aria-hidden="true" />
-                            <span>Received {Metro Legal_LD_RFP.rfpReceivedAt}</span>
+                            <span>Received {METRO_LEGAL_LD_RFP.rfpReceivedAt}</span>
                         </div>
                     </div>
                 </div>
@@ -4088,7 +4088,7 @@ function RFPIntakePanel({ onValidate }: LDPanelProps) {
                     <div className="flex-1 min-w-0 text-xs">
                         <div className="font-semibold text-foreground">Strata routed this RFP to the labor inbox</div>
                         <div className="text-muted-foreground mt-0.5">
-                            Building KB · 1551 K St NW · 5 prior projects ({Metro Legal_LD_RFP.market} market). Metro Legal Spec Check is already in flight for the same project · Kimberly's BOM links here.
+                            Building KB · 1551 K St NW · 5 prior projects ({METRO_LEGAL_LD_RFP.market} market). Metro Legal Spec Check is already in flight for the same project · Kimberly's BOM links here.
                         </div>
                     </div>
                 </div>
@@ -4112,7 +4112,7 @@ function RFPIntakePanel({ onValidate }: LDPanelProps) {
                         <CheckCircle2 className="h-4 w-4 text-success shrink-0" aria-hidden="true" />
                         <div className="flex-1 min-w-0 text-xs">
                             <div className="font-semibold text-foreground">RFP acknowledged · routed to Alan McPhee</div>
-                            <div className="text-muted-foreground mt-0.5 tabular-nums">SLA · {Metro Legal_LD_RFP.slaDeadlineHours}h MSA · due {Metro Legal_LD_RFP.slaDeadlineAt}</div>
+                            <div className="text-muted-foreground mt-0.5 tabular-nums">SLA · {METRO_LEGAL_LD_RFP.slaDeadlineHours}h MSA · due {METRO_LEGAL_LD_RFP.slaDeadlineAt}</div>
                         </div>
                     </div>
                 )}
@@ -4174,7 +4174,7 @@ function TakeoffPanel({ onValidate }: LDPanelProps) {
                     <div className="flex-1 min-w-0 text-xs">
                         <div className="font-semibold text-foreground">Scope takeoff · the single most time-consuming step</div>
                         <div className="text-muted-foreground mt-0.5">
-                            Today: ~{VERTICAL_TAKEOFF.bluebeamTimeManualMin / 60}h manual count in Bluebeam (Alan + Paul · ~42:00). With Strata: {VERTICAL_TAKEOFF.strataTimeSec}s read of {Metro Legal_LD_RFP.drawingFile}.
+                            Today: ~{VERTICAL_TAKEOFF.bluebeamTimeManualMin / 60}h manual count in Bluebeam (Alan + Paul · ~42:00). With Strata: {VERTICAL_TAKEOFF.strataTimeSec}s read of {METRO_LEGAL_LD_RFP.drawingFile}.
                         </div>
                     </div>
                 </div>
@@ -4193,7 +4193,7 @@ function TakeoffPanel({ onValidate }: LDPanelProps) {
                         <div className="h-10 w-10 rounded-xl bg-muted/60 flex items-center justify-center" aria-hidden="true">
                             <MapPin className="h-5 w-5 text-muted-foreground" />
                         </div>
-                        <div className="text-xs font-semibold text-foreground">Run AI takeoff on {Metro Legal_LD_RFP.drawingFile}</div>
+                        <div className="text-xs font-semibold text-foreground">Run AI takeoff on {METRO_LEGAL_LD_RFP.drawingFile}</div>
                         <div className="text-[10px] text-muted-foreground italic">Click to simulate · same drawing as the design flow</div>
                     </button>
                 )}
@@ -4282,16 +4282,16 @@ function ConditionsChecklistPanel({ onValidate }: LDPanelProps) {
     const [expandedId, setExpandedId] = useState<string | null>(null)
     const [confirmedIds, setConfirmedIds] = useState<Set<string>>(() => {
         // High-confidence items are auto-confirmed
-        return new Set(Metro Legal_BUILDING_CONDITIONS.filter(c => c.confidence === 'high').map(c => c.id))
+        return new Set(METRO_LEGAL_BUILDING_CONDITIONS.filter(c => c.confidence === 'high').map(c => c.id))
     })
-    const mediumIds = Metro Legal_BUILDING_CONDITIONS.filter(c => c.confidence === 'medium').map(c => c.id)
+    const mediumIds = METRO_LEGAL_BUILDING_CONDITIONS.filter(c => c.confidence === 'medium').map(c => c.id)
     const allConfirmed = mediumIds.every(id => confirmedIds.has(id))
 
     const handleConfirm = (id: string) => {
         setConfirmedIds(prev => { const s = new Set(prev); s.add(id); return s })
     }
 
-    const highCount = Metro Legal_BUILDING_CONDITIONS.filter(c => c.confidence === 'high').length
+    const highCount = METRO_LEGAL_BUILDING_CONDITIONS.filter(c => c.confidence === 'high').length
 
     return (
         <>
@@ -4300,10 +4300,10 @@ function ConditionsChecklistPanel({ onValidate }: LDPanelProps) {
                     <Sparkles className="h-4 w-4 text-foreground shrink-0 mt-0.5" aria-hidden="true" />
                     <div className="flex-1 min-w-0 text-xs">
                         <div className="font-semibold text-foreground">
-                            Strata pulled {highCount} of {Metro Legal_BUILDING_CONDITIONS.length} conditions from Building KB · {Metro Legal_LD_RFP.buildingAddress}
+                            Strata pulled {highCount} of {METRO_LEGAL_BUILDING_CONDITIONS.length} conditions from Building KB · {METRO_LEGAL_LD_RFP.buildingAddress}
                         </div>
                         <div className="text-muted-foreground mt-0.5">
-                            {Metro Legal_LD_RFP.priorProjectsAtAddress} prior projects at this address · {mediumIds.length} medium-confidence items need Alan's confirm.
+                            {METRO_LEGAL_LD_RFP.priorProjectsAtAddress} prior projects at this address · {mediumIds.length} medium-confidence items need Alan's confirm.
                         </div>
                     </div>
                 </div>
@@ -4324,13 +4324,13 @@ function ConditionsChecklistPanel({ onValidate }: LDPanelProps) {
                 <div className="rounded-xl border border-border bg-card overflow-hidden">
                     <div className="px-4 py-2.5 bg-muted/30 border-b border-border flex items-center gap-2">
                         <Building2 className="h-3.5 w-3.5 text-foreground shrink-0" aria-hidden="true" />
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-foreground">Building & workforce conditions ({Metro Legal_BUILDING_CONDITIONS.length})</span>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-foreground">Building & workforce conditions ({METRO_LEGAL_BUILDING_CONDITIONS.length})</span>
                         <span className="ml-auto inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider rounded px-1.5 py-0.5 bg-success/10 text-success border border-success/20">
-                            {confirmedIds.size}/{Metro Legal_BUILDING_CONDITIONS.length} confirmed
+                            {confirmedIds.size}/{METRO_LEGAL_BUILDING_CONDITIONS.length} confirmed
                         </span>
                     </div>
                     <ul className="divide-y divide-border">
-                        {Metro Legal_BUILDING_CONDITIONS.map(cond => {
+                        {METRO_LEGAL_BUILDING_CONDITIONS.map(cond => {
                             const isExpanded = expandedId === cond.id
                             const isConfirmed = confirmedIds.has(cond.id)
                             const isMedium = cond.confidence === 'medium'
@@ -4592,17 +4592,17 @@ function BidRequestPanel({ onValidate, selectedVendorIds }: BidRequestPanelProps
                         </div>
                         <div className="grid grid-cols-[60px_1fr] gap-2 items-start">
                             <span className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground pt-0.5">Subject</span>
-                            <span className="text-foreground font-medium">Bid request · {Metro Legal_LD_RFP.projectName} · respond by {Metro Legal_LD_RFP.slaDeadlineAt}</span>
+                            <span className="text-foreground font-medium">Bid request · {METRO_LEGAL_LD_RFP.projectName} · respond by {METRO_LEGAL_LD_RFP.slaDeadlineAt}</span>
                         </div>
                         <div className="border-t border-border pt-2.5">
                             <div className="text-[11px] text-foreground leading-relaxed space-y-1.5">
                                 <p>Team,</p>
-                                <p>We have a labor + delivery RFP for {Metro Legal_LD_RFP.projectName} ({Metro Legal_LD_RFP.market} market · {Metro Legal_LD_RFP.buildingAddress}). Scope summary attached + drawings.</p>
+                                <p>We have a labor + delivery RFP for {METRO_LEGAL_LD_RFP.projectName} ({METRO_LEGAL_LD_RFP.market} market · {METRO_LEGAL_LD_RFP.buildingAddress}). Scope summary attached + drawings.</p>
                                 <p>
-                                    <strong>Scope</strong>: {vertical === 'walls' ? `${WALLS_TAKEOFF.linearFeet} linear feet · ${WALLS_TAKEOFF.doorCount} doors · ${WALLS_TAKEOFF.wallHeights}` : `${Metro Legal_TAKEOFF.workstationCount} workstations · ${Metro Legal_TAKEOFF.crCount} CRs`} · {(vertical === 'walls' ? WALLS_TAKEOFF : Metro Legal_TAKEOFF).estimatedLaborHours}h estimated labor · {(vertical === 'walls' ? WALLS_TAKEOFF : Metro Legal_TAKEOFF).estimatedDeliveryStops} delivery stops. Building is IBEW Local 26 union, dock-with-leveler, straight-time only.
+                                    <strong>Scope</strong>: {vertical === 'walls' ? `${WALLS_TAKEOFF.linearFeet} linear feet · ${WALLS_TAKEOFF.doorCount} doors · ${WALLS_TAKEOFF.wallHeights}` : `${METRO_LEGAL_TAKEOFF.workstationCount} workstations · ${METRO_LEGAL_TAKEOFF.crCount} CRs`} · {(vertical === 'walls' ? WALLS_TAKEOFF : METRO_LEGAL_TAKEOFF).estimatedLaborHours}h estimated labor · {(vertical === 'walls' ? WALLS_TAKEOFF : METRO_LEGAL_TAKEOFF).estimatedDeliveryStops} delivery stops. Building is IBEW Local 26 union, dock-with-leveler, straight-time only.
                                 </p>
                                 <p>
-                                    <strong>Deadline</strong>: respond by {Metro Legal_LD_RFP.slaDeadlineAt} ({Metro Legal_LD_RFP.slaDeadlineHours}h MSA window). Please separate labor and delivery in your quote.
+                                    <strong>Deadline</strong>: respond by {METRO_LEGAL_LD_RFP.slaDeadlineAt} ({METRO_LEGAL_LD_RFP.slaDeadlineHours}h MSA window). Please separate labor and delivery in your quote.
                                 </p>
                                 <p className="text-muted-foreground italic pt-1">— Alan McPhee · Sr Operations · drafted by Strata</p>
                             </div>
@@ -4620,7 +4620,7 @@ function BidRequestPanel({ onValidate, selectedVendorIds }: BidRequestPanelProps
                         {[
                             { label: `Recipient list complete (${selectedVendors.length})`, ok: selectedVendors.length > 0 },
                             { label: 'Attachments present (3) · drawings + conditions + bid form', ok: true },
-                            { label: `Deadline within ${Metro Legal_LD_RFP.slaDeadlineHours}h MSA window`, ok: true },
+                            { label: `Deadline within ${METRO_LEGAL_LD_RFP.slaDeadlineHours}h MSA window`, ok: true },
                         ].map(check => (
                             <li key={check.label} className="px-4 py-2 flex items-center gap-2 text-[11px]">
                                 <CheckCircle2 className={`h-3.5 w-3.5 shrink-0 ${check.ok ? 'text-success' : 'text-muted-foreground'}`} aria-hidden="true" />
@@ -5198,14 +5198,14 @@ function FinalQuotePanel({ onValidate }: LDPanelProps) {
                                 <span className="h-5 w-5 rounded-full bg-foreground text-background text-[10px] font-bold flex items-center justify-center shrink-0" aria-hidden="true">3</span>
                                 <Truck className="h-4 w-4 text-foreground shrink-0" aria-hidden="true" />
                                 <div className="flex-1 min-w-0">
-                                    <div className="text-xs font-bold uppercase tracking-wider text-foreground truncate">Upload to {Metro Legal_LD_RFP.gcPortal} portal</div>
+                                    <div className="text-xs font-bold uppercase tracking-wider text-foreground truncate">Upload to {METRO_LEGAL_LD_RFP.gcPortal} portal</div>
                                     <div className="text-[10px] text-muted-foreground truncate">Ref {finalQuote.portalRef}</div>
                                 </div>
                                 <StatusChip variant={variant} />
                             </div>
                             {variant === 'active' && step === 'step-3-upload' && (
                                 <div className="px-4 py-3 space-y-2.5">
-                                    <p className="text-[11px] text-muted-foreground">Submitting the final quote to {Metro Legal_LD_RFP.gcCompany} ({Metro Legal_LD_RFP.gcContactName}) before the GC deadline.</p>
+                                    <p className="text-[11px] text-muted-foreground">Submitting the final quote to {METRO_LEGAL_LD_RFP.gcCompany} ({METRO_LEGAL_LD_RFP.gcContactName}) before the GC deadline.</p>
                                     <button
                                         type="button"
                                         onClick={() => setStep('step-3-uploading')}
@@ -5213,7 +5213,7 @@ function FinalQuotePanel({ onValidate }: LDPanelProps) {
                                         className="w-full inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 text-xs font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                                     >
                                         <Send className="h-3.5 w-3.5" aria-hidden="true" />
-                                        Upload to {Metro Legal_LD_RFP.gcPortal}
+                                        Upload to {METRO_LEGAL_LD_RFP.gcPortal}
                                     </button>
                                 </div>
                             )}
@@ -5334,7 +5334,7 @@ function LDSifPreview() {
                     ))}
                 </ul>
             </div>
-            <div className="text-[10px] text-muted-foreground italic px-1">Source: CBRE Construction Management · {Metro Legal_LD_RFP.gcContact}</div>
+            <div className="text-[10px] text-muted-foreground italic px-1">Source: CBRE Construction Management · {METRO_LEGAL_LD_RFP.gcContact}</div>
         </LDPreviewShell>
     )
 }
@@ -5393,8 +5393,8 @@ function LDTakeoffReportPreview() {
                         </>
                     ) : (
                         <>
-                            <li className="px-4 py-2 flex items-center justify-between text-[11px]"><span className="text-muted-foreground">Workstations</span><span className="text-foreground font-bold tabular-nums">{Metro Legal_TAKEOFF.workstationCount}</span></li>
-                            <li className="px-4 py-2 flex items-center justify-between text-[11px]"><span className="text-muted-foreground">Configurable items (CRs)</span><span className="text-foreground font-bold tabular-nums">{Metro Legal_TAKEOFF.crCount}</span></li>
+                            <li className="px-4 py-2 flex items-center justify-between text-[11px]"><span className="text-muted-foreground">Workstations</span><span className="text-foreground font-bold tabular-nums">{METRO_LEGAL_TAKEOFF.workstationCount}</span></li>
+                            <li className="px-4 py-2 flex items-center justify-between text-[11px]"><span className="text-muted-foreground">Configurable items (CRs)</span><span className="text-foreground font-bold tabular-nums">{METRO_LEGAL_TAKEOFF.crCount}</span></li>
                         </>
                     )}
                     <li className="px-4 py-2 flex items-center justify-between text-[11px]"><span className="text-muted-foreground">Estimated labor hours</span><span className="text-foreground font-bold tabular-nums">{takeoff.estimatedLaborHours} h</span></li>
@@ -5416,7 +5416,7 @@ function LDConditionsRecordPreview() {
             <div className="rounded-xl border border-ai/30 bg-ai/5 px-3 py-2 flex items-start gap-2 text-[11px]">
                 <Sparkles className="h-3.5 w-3.5 text-foreground shrink-0 mt-0.5" aria-hidden="true" />
                 <div className="text-foreground leading-relaxed">
-                    Pulled from Building Knowledge Base · {Metro Legal_LD_RFP.buildingAddress} · {Metro Legal_LD_RFP.priorProjectsAtAddress} prior projects indexed.
+                    Pulled from Building Knowledge Base · {METRO_LEGAL_LD_RFP.buildingAddress} · {METRO_LEGAL_LD_RFP.priorProjectsAtAddress} prior projects indexed.
                 </div>
             </div>
             <div className="rounded-xl border border-border bg-card overflow-hidden">
@@ -5424,7 +5424,7 @@ function LDConditionsRecordPreview() {
                     <div className="text-[10px] uppercase font-bold tracking-wider text-foreground">12 Building & workforce conditions</div>
                 </div>
                 <ul className="divide-y divide-border">
-                    {Metro Legal_BUILDING_CONDITIONS.map(cond => (
+                    {METRO_LEGAL_BUILDING_CONDITIONS.map(cond => (
                         <li key={cond.id} className="px-4 py-2 flex items-start gap-3 text-[11px]">
                             <span className="text-muted-foreground w-32 shrink-0">{cond.label}</span>
                             <span className="text-foreground flex-1">{cond.value}</span>
