@@ -167,6 +167,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         companyName: 'Workscapes, Inc.',
         description: 'Expense report AI · GL auto-fill · CORE sync · spend dashboard',
         icon: '💰',
+        defaultApp: 'workspaces-submit',
         steps: WORKSPACES_STEPS,
         stepBehavior: WORKSPACES_STEP_BEHAVIOR,
         stepMessages: WORKSPACES_STEP_MESSAGES,
