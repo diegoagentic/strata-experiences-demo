@@ -142,7 +142,7 @@ export interface DealerOption {
 export const DEALERS: DealerOption[] = [
     {
         id: 'sara',
-        name: 'Sara Chen',
+        name: 'Account Manager Kai',
         role: 'Account Manager',
         photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face',
         badge: 'Primary',

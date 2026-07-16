@@ -1,6 +1,6 @@
 /**
  * COMPONENT: DesignerResponseScene  (a1.2)
- * PURPOSE: Agency Fee step 2 — Robert Chen (Miller Knoll Rep) reads Lauren's
+ * PURPOSE: Agency Fee step 2 — Account Manager Bly (Miller Knoll Rep) reads Lauren's
  *          confirmation email in his mail client and acknowledges receipt.
  */
 
@@ -42,7 +42,7 @@ export default function DesignerResponseScene({ onAcknowledge }: DesignerRespons
                         <span className="text-[9px] font-black text-info">RC</span>
                     </div>
                     <div className="min-w-0">
-                        <div className="text-[11px] font-bold text-foreground leading-none truncate">Robert Chen</div>
+                        <div className="text-[11px] font-bold text-foreground leading-none truncate">Account Manager Bly</div>
                         <div className="text-[9px] text-muted-foreground leading-none mt-0.5">Miller Knoll Rep</div>
                     </div>
                 </div>

@@ -32,12 +32,12 @@ import logoDarkBrand from '../assets/logo-dark-brand.png';
 // --- Demo Role Profiles ---
 const DEMO_PROFILES: Record<string, { name: string; role: string; photo: string }> = {
     Dealer: {
-        name: 'Sara Chen',
+        name: 'Account Manager Kai',
         role: 'Account Manager',
         photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face',
     },
     Expert: {
-        name: 'David Park',
+        name: 'Regional Sales Manager Reyes',
         role: 'Regional Sales Manager',
         photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
     },
@@ -68,7 +68,7 @@ const DEMO_PROFILES: Record<string, { name: string; role: string; photo: string 
     },
     // Workspaces demo personas
     Employee: {
-        name: 'John Smith',
+        name: 'Employee Alpha',
         role: 'Sales Rep',
         photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face',
     },
@@ -98,7 +98,7 @@ const DEMO_PROFILES: Record<string, { name: string; role: string; photo: string 
         photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
     },
     'BFI Project Manager': {
-        name: 'Walter Goley',
+        name: 'Operations Manager Bly',
         role: 'CoNY Project Manager',
         photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&h=80&fit=crop&crop=face',
     },
@@ -108,7 +108,7 @@ const DEMO_PROFILES: Record<string, { name: string; role: string; photo: string 
         photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop&crop=face',
     },
     'BFI Designer': {
-        name: 'Robert Chen',
+        name: 'Account Manager Bly',
         role: 'Miller Knoll Rep · Designer',
         photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
     },
@@ -119,12 +119,12 @@ const DEMO_PROFILES: Record<string, { name: string; role: string; photo: string 
     },
     // Officeworks demo personas
     'Officeworks Design Manager': {
-        name: 'Felicia Miano-Poles',
+        name: 'EVP Design',
         role: 'EVP Design & PM',
         photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face',
     },
     'Officeworks Designer': {
-        name: 'Kimberly Tucker',
+        name: 'Design Manager Ellis',
         role: 'Design Manager · PA',
         photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face',
     },

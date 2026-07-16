@@ -25,7 +25,7 @@ export const Metro Legal_ORDER_META = {
     schedShipDate: '2026/03/20',
     noChangeAfter: '2026/01/12',
     manufacturer: 'Teknion (TFS)',
-    salesreps: ['Caitlin Barolet', 'Danielle Dunlap'],
+    salesreps: ['Designer Nova', 'Danielle Dunlap'],
     shipTo: {
         company: 'TURN KEY OFFICE INSTALLATIONS',
         project: 'OWDC - Metro Legal - 4TH FLOOR - WORKSTATIONS',

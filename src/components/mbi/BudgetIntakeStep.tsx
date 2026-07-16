@@ -234,7 +234,7 @@ const INITIAL_FILES: IntakeFile[] = [
         statusLabel: 'CET export',
         description: '24 fields · 7 line items · CET v16.5.2',
         processingMs: 2200,
-        author: { name: 'Beth Gianino', role: 'Designer', channel: 'Teams · #design-handoffs' },
+        author: { name: 'Design Manager Fane', role: 'Designer', channel: 'Teams · #design-handoffs' },
     },
     {
         id: 'cap',
@@ -244,7 +244,7 @@ const INITIAL_FILES: IntakeFile[] = [
         statusLabel: 'Pricing worksheet',
         description: '7 discount overrides · 3 custom-pricing lines',
         processingMs: 1700,
-        author: { name: 'Amy Shoemaker', role: 'Senior Designer', channel: 'Teams · #design-handoffs' },
+        author: { name: 'AP Lead', role: 'Senior Designer', channel: 'Teams · #design-handoffs' },
     },
 ]
 

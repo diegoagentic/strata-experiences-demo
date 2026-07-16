@@ -25,7 +25,7 @@ const DEFAULT_CHECKS = [
     { label: 'Budget confirmed', detail: 'BDG-2026-002 · Enterprise Holdings · $372,500 · approved' },
     { label: 'Contract identified', detail: 'HNI Corporate · 55% discount confirmed' },
     { label: 'Scope locked', detail: '45 workstations · 8 offices · 1 lounge · no pending changes' },
-    { label: 'Design sign-off', detail: 'Beth Gianino · SIF v5 validated · no open spec flags' },
+    { label: 'Design sign-off', detail: 'Design Manager Fane · SIF v5 validated · no open spec flags' },
 ]
 
 const CHECK_DELAY_MS = 520

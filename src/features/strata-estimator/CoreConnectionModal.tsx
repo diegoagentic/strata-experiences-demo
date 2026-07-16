@@ -511,7 +511,7 @@ function CoreDashboard({
                         <div className="w-6 h-6 rounded-full bg-zinc-700 flex items-center justify-center text-[9px] font-bold text-foreground dark:text-white">
                             DP
                         </div>
-                        <span className="text-[10px] text-foreground dark:text-white">David Park</span>
+                        <span className="text-[10px] text-foreground dark:text-white">Regional Sales Manager Reyes</span>
                     </div>
                 </div>
             </div>

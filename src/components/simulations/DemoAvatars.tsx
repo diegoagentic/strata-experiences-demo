@@ -14,14 +14,14 @@ export interface Persona {
 
 const PERSONAS: Record<string, Persona> = {
     // ── Humans ──
-    'Sara Chen': {
-        name: 'Sara Chen',
+    'Account Manager Kai': {
+        name: 'Account Manager Kai',
         type: 'human',
         photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face',
         initials: 'SC',
     },
-    'David Park': {
-        name: 'David Park',
+    'Regional Sales Manager Reyes': {
+        name: 'Regional Sales Manager Reyes',
         type: 'human',
         photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
         initials: 'DP',

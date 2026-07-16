@@ -210,7 +210,7 @@ export const MBI_MODULE_PHASES: ModulePhase[] = [
         summary: "Q10 #1 priority shipped — Beth's 8/10 trust unlocks the team.",
         deliverables: [
             'Spec Check Engine v1 (BOM-only, 4 check types)',
-            'Beth Gianino early-adopter pilot (1 ICU project)',
+            'Design Manager Fane early-adopter pilot (1 ICU project)',
             'Severity ranking + CET cross-reference',
             'Findings review UI with accept/override/reject',
         ],

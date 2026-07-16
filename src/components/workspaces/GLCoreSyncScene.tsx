@@ -45,13 +45,13 @@ const RECEIPTS = [
 const POSTING_STEPS: { key: PostingStep; label: string }[] = [
     { key: 'validating', label: 'Validating GL codes...'          },
     { key: 'creating',   label: 'Creating CORE entry #CR-2847...' },
-    { key: 'notifying',  label: 'Notifying John Smith...'         },
+    { key: 'notifying',  label: 'Notifying Employee Alpha...'         },
 ]
 
 // ── Activity data ─────────────────────────────────────────────────────────────
 
 const AP_TIMELINE = [
-    { label: 'Submitted',      actor: 'John Smith',    initials: 'JS', time: 'May 5 · 10:32 AM', done: true,  current: false, ai: false },
+    { label: 'Submitted',      actor: 'Employee Alpha',    initials: 'JS', time: 'May 5 · 10:32 AM', done: true,  current: false, ai: false },
     { label: 'Mgr approved',   actor: 'Sarah Johnson', initials: 'SJ', time: 'May 6 · 9:15 AM',  done: true,  current: false, ai: false },
     { label: 'Routed to AP',   actor: 'Strata AI',     initials: '✦',  time: 'May 6 · 9:16 AM',  done: true,  current: false, ai: true  },
     { label: 'GL pre-filled',  actor: 'Strata AI',     initials: '✦',  time: 'May 6 · 9:16 AM',  done: true,  current: false, ai: true  },
@@ -169,7 +169,7 @@ export default function GLCoreSyncScene({ onPost, onBack }: { onPost?: () => voi
                     {/* Participant avatars */}
                     <div className="flex -space-x-1.5">
                         {[
-                            { initials: 'JS', title: 'John Smith' },
+                            { initials: 'JS', title: 'Employee Alpha' },
                             { initials: 'SJ', title: 'Sarah Johnson' },
                             { initials: 'LB', title: 'Letza Bombard' },
                         ].map(p => (
@@ -326,7 +326,7 @@ export default function GLCoreSyncScene({ onPost, onBack }: { onPost?: () => voi
                 {/* Expense header */}
                 <div className="bg-card border border-border rounded-xl px-4 py-3 flex items-center justify-between gap-3">
                     <div>
-                        <p className="text-sm font-bold text-foreground">John Smith · $95.00</p>
+                        <p className="text-sm font-bold text-foreground">Employee Alpha · $95.00</p>
                         <p className="text-xs text-muted-foreground mt-0.5">
                             Approved by Sarah Johnson · May 6 · <span className="text-success font-medium">on time ✓</span>
                         </p>
@@ -561,7 +561,7 @@ export default function GLCoreSyncScene({ onPost, onBack }: { onPost?: () => voi
         return (
             <div className="space-y-4 animate-in fade-in duration-300">
                 <div className="bg-card border border-border rounded-xl px-3 py-2.5">
-                    <p className="text-xs font-semibold text-foreground">John Smith · $95.00</p>
+                    <p className="text-xs font-semibold text-foreground">Employee Alpha · $95.00</p>
                     <p className="text-[10px] text-muted-foreground mt-0.5">Flagging for revision — message will be sent to the approving manager</p>
                 </div>
                 <div className="space-y-2">
@@ -617,7 +617,7 @@ export default function GLCoreSyncScene({ onPost, onBack }: { onPost?: () => voi
                         <AlertCircle className="h-3.5 w-3.5 text-destructive shrink-0" />
                         <p className="text-xs font-semibold text-destructive">Expense returned to manager</p>
                     </div>
-                    <p className="text-[10px] text-muted-foreground">John Smith · $95.00 · Mileage · Tolls / Cab / Parking</p>
+                    <p className="text-[10px] text-muted-foreground">Employee Alpha · $95.00 · Mileage · Tolls / Cab / Parking</p>
                     {rejectNote && (
                         <div className="bg-background border border-border rounded-lg px-2.5 py-2">
                             <p className="text-[10px] text-muted-foreground italic">"{rejectNote}"</p>
@@ -687,7 +687,7 @@ export default function GLCoreSyncScene({ onPost, onBack }: { onPost?: () => voi
                     <p className="text-xs text-muted-foreground">GL 6210 · $47.50 · Travel &amp; Transit</p>
                 </div>
                 <p className="text-xs text-muted-foreground pt-1 border-t border-success/20">
-                    John Smith notified: <span className="text-foreground font-medium">"Your expense was posted · payment processing"</span>
+                    Employee Alpha notified: <span className="text-foreground font-medium">"Your expense was posted · payment processing"</span>
                 </p>
             </div>
 

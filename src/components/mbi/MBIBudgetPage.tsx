@@ -164,7 +164,7 @@ export default function MBIBudgetPage() {
     return (
         <MBIPageShell
             title="Budget Builder"
-            subtitle="Prototype · Hero · 1 week → <24 hours · Amanda Renshaw (Account Manager)"
+            subtitle="Prototype · Hero · 1 week → <24 hours · Sales Rep Ash (Account Manager)"
             icon={<Calculator className="h-5 w-5" />}
             activeApp="mbi-budget"
         >
@@ -184,7 +184,7 @@ export default function MBIBudgetPage() {
                     canAdvance={canAdvance}
                     actionHint={stepMeta.hint}
                     nextLabel={stepMeta.nextLabel}
-                    persona={<MBIPersonaBadge name="Amanda Renshaw" role="Account Manager · Dealer" />}
+                    persona={<MBIPersonaBadge name="Sales Rep Ash" role="Account Manager · Dealer" />}
                 >
                     {activeStep === 0 && (
                         <BudgetIntakeStep

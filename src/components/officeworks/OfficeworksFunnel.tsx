@@ -179,7 +179,7 @@ const SALES_CONTEXT_CARDS: ContextCard[] = [
 const HEADER_BY_FLOW = {
     'spec-check': {
         title: 'Spec Check & Design · Pipeline',
-        sub: 'Felicia Miano-Poles · EVP Design & PM · ~30 designers across 3 regions',
+        sub: 'EVP Design · EVP Design & PM · ~30 designers across 3 regions',
         capacityLabel: 'View capacity',
         capacityCount: '~30 designers',
     },
@@ -223,7 +223,7 @@ function getMetro LegalOwner(stepId: string | undefined, flowId: 'spec-check' | 
     }
     // Spec Check (sin cambio)
     if (!stepId || stepId === 'sc1.0' || stepId === 'sc1.0b') return 'Pending assignment'
-    return 'Kimberly Tucker (PA · cross-market)'
+    return 'Design Manager Ellis (PA · cross-market)'
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────

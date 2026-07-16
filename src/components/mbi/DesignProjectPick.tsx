@@ -1,6 +1,6 @@
 ﻿/**
  * COMPONENT: DesignProjectPick
- * PURPOSE: Flow 4 · Scene 0 — Beth Gianino (Phase 1 Pilot · early adopter
+ * PURPOSE: Flow 4 · Scene 0 — Design Manager Fane (Phase 1 Pilot · early adopter
  *          8/10) selects a project and launches Spec Check. The pilot
  *          sequencing narrative is visible: only Beth uses this first, the
  *          rest of the design team adopts after her success.

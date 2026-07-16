@@ -1,6 +1,6 @@
 /**
  * COMPONENT: DesignerRFQScene  (a1.0)
- * PURPOSE: Agency Fee step 0 — Robert Chen (Miller Knoll Rep) sends a
+ * PURPOSE: Agency Fee step 0 — Account Manager Bly (Miller Knoll Rep) sends a
  *          Request for Quote to Lauren DeMarco (BFI) for the DOE-2847 project.
  *          Includes SIF, spec sheet, and floor plan attachments.
  */
@@ -49,7 +49,7 @@ export default function DesignerRFQScene({ onSend }: DesignerRFQSceneProps) {
                         <span className="text-[9px] font-black text-info">RC</span>
                     </div>
                     <div className="min-w-0">
-                        <div className="text-[11px] font-bold text-foreground leading-none truncate">Robert Chen</div>
+                        <div className="text-[11px] font-bold text-foreground leading-none truncate">Account Manager Bly</div>
                         <div className="text-[9px] text-muted-foreground leading-none mt-0.5">Miller Knoll Rep</div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@ export default function DesignerRFQScene({ onSend }: DesignerRFQSceneProps) {
                         </p>
 
                         <p className="text-muted-foreground">
-                            — Robert Chen<br />
+                            — Account Manager Bly<br />
                             Miller Knoll · NYC Government Accounts
                         </p>
                     </div>

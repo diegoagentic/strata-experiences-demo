@@ -1,6 +1,6 @@
 /**
  * COMPONENT: DesignerCapacityBoard
- * PURPOSE: Visualizes designer workload from the data Lisa Garretson previously
+ * PURPOSE: Visualizes designer workload from the data Collections Lead previously
  *          managed by intuition. Shows hours logged per designer + active project
  *          count, including the 3 designer-sales hybrids that are invisible to
  *          the Director of Design today.

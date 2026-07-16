@@ -62,7 +62,7 @@ const DEFAULT_DRAFT_BODY = [
     'Tap the link from your iPad to open · everything you need for the install day is in one place.',
     '',
     'Thanks,',
-    'Sara Chen · Account Manager',
+    'Account Manager Kai · Account Manager',
     'Creative Library Concepts',
 ].join('\n')
 const DRAFT_RECIPIENT = 'Install crew · Marcus Reed + Tomás Hernandez · iPad delivery'

@@ -27,7 +27,7 @@ type CatFilter    = 'all' | 'mileage' | 'meals' | 'airfare' | 'tolls' | 'misc'
 // ── All expenses visible in the list view ────────────────────────────────────
 
 const ALL_EXPENSES = [
-    { id: 'john',   name: 'John Smith',   category: 'Mileage · Tolls / Cab / Parking', catKey: 'mileage' as CatFilter, amount: '$95.00',  date: 'May 5',  status: 'pending',  receipts: 1, hasReceipt: true,  age: '< 1 day', focus: true,  rejectReason: ''                                      },
+    { id: 'john',   name: 'Employee Alpha',   category: 'Mileage · Tolls / Cab / Parking', catKey: 'mileage' as CatFilter, amount: '$95.00',  date: 'May 5',  status: 'pending',  receipts: 1, hasReceipt: true,  age: '< 1 day', focus: true,  rejectReason: ''                                      },
     { id: 'maria',  name: 'Maria Lopez',  category: 'Personal Meals',                  catKey: 'meals'   as CatFilter, amount: '$89.00',  date: 'May 4',  status: 'pending',  receipts: 1, hasReceipt: true,  age: '1 day',   focus: false, rejectReason: ''                                      },
     { id: 'carlos', name: 'Carlos Ruiz',  category: 'Air Fare',                        catKey: 'airfare' as CatFilter, amount: '$210.00', date: 'May 1',  status: 'pending',  receipts: 0, hasReceipt: false, age: '4 days',  focus: false, rejectReason: ''                                      },
     { id: 'ana',    name: 'Ana Kim',      category: 'Misc Cost',                       catKey: 'misc'    as CatFilter, amount: '$34.90',  date: 'Apr 30', status: 'approved', receipts: 1, hasReceipt: true,  age: '2 days',  focus: false, rejectReason: ''                                      },
@@ -223,7 +223,7 @@ function NotificationToast({ onReview, onDismiss }: {
                         <span className="text-[10px] font-bold text-ai uppercase tracking-wide">Strata · Action required</span>
                     </div>
                     <p className="text-sm font-semibold text-foreground leading-snug">
-                        John Smith submitted a $95.00 expense
+                        Employee Alpha submitted a $95.00 expense
                     </p>
                     <p className="text-[11px] text-muted-foreground mt-0.5">
                         Mileage · Tolls / Cab / Parking · May 5 · 1 receipt attached inline

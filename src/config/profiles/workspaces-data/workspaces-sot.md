@@ -155,7 +155,7 @@
 
 ### Primary expense (flows through demo)
 ```
-Employee:  John Smith (field staff)
+Employee:  Employee Alpha (field staff)
 Vendor:    The Capital Grille — Tampa, FL
 Date:      May 5, 2026
 Lines:     Fuel $95.00 + Parking $47.50
@@ -168,7 +168,7 @@ Approved by: Sarah Johnson (Operations · Tampa)
 ### Manager Approval Queue (Tammy sees)
 | Employee | Amount | Category | Receipts | Submitted | Status |
 |---|---|---|---|---|---|
-| John Smith | $142.50 | Fuel + Parking | 2 ✓ visible | May 5 | Pending |
+| Employee Alpha | $142.50 | Fuel + Parking | 2 ✓ visible | May 5 | Pending |
 | Maria Lopez | $89.00 | Client Meals | 1 ✓ visible | May 4 | Pending |
 | Carlos Ruiz | $210.00 | Travel | 1 | May 1 | ⚠️ 4 days · SLA exceeded |
 

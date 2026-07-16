@@ -55,15 +55,15 @@ const QUOTE_META = {
     endCustomer: 'Vertex Technologies',
     contract: 'GSA-28F-0015W',
     linkedPO: '#ORD-2055',
-    salesRep: 'David Park',
+    salesRep: 'Regional Sales Manager Reyes',
     salesRepRole: 'Sales Rep',
     // W3 · Revision Number (Wendy item 2d)
     revisionNumber: 3,
     revisionDate: '2026-01-18',
     revisionReason: 'Client requested CF-6036 → CF-6021 fabric swap on lounge',
     // W4 · Discount ownership (Wendy item 2e)
-    discountOwner: 'David Park · Sales Rep',
-    discountApprovedBy: 'Felicia M.-P. · Sales Mgr',
+    discountOwner: 'Regional Sales Manager Reyes · Sales Rep',
+    discountApprovedBy: 'EVP Design · Sales Mgr',
     discountApprovedAt: '2026-01-18 11:42',
 }
 
@@ -129,7 +129,7 @@ interface Message {
 
 
 const collaborators = [
-    { name: "David Park", role: "Regional Sales Mgr", status: "online", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" },
+    { name: "Regional Sales Manager Reyes", role: "Regional Sales Mgr", status: "online", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" },
     { name: "Mike Ross", role: "Warehouse Lead", status: "offline", avatar: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" },
     { name: "AI Agent", role: "System Bot", status: "online", avatar: "AI" },
 ]
@@ -387,7 +387,7 @@ export default function QuoteDetail({ onBack, onLogout, onNavigateToWorkspace, o
                             // Quote taxonomy: In Progress → Pending → Sent → Expired (E.1.i).
                             steps: (isRFQ ? [
                                 { name: 'New',                            status: 'completed', meta: 'Jan 18, 2026 · from NorthPoint' },
-                                { name: 'In Review',                      status: 'completed', meta: 'Jan 18 · DP David Park' },
+                                { name: 'In Review',                      status: 'completed', meta: 'Jan 18 · DP Regional Sales Manager Reyes' },
                                 { name: 'Additional Information Required', status: 'completed', meta: 'Jan 19 · waiting on dealer' },
                                 { name: 'Sent',                            status: 'current',   meta: `Jan 22 · QT-1025` },
                             ] : [
@@ -1382,7 +1382,7 @@ export default function QuoteDetail({ onBack, onLogout, onNavigateToWorkspace, o
                     isOpen={itemDrawerOpen}
                     onClose={() => setItemDrawerOpen(false)}
                     item={selectedItem}
-                    salesRep={{ name: 'David Park', initials: 'DP', role: 'Sales Rep' }}
+                    salesRep={{ name: 'Regional Sales Manager Reyes', initials: 'DP', role: 'Sales Rep' }}
                     revisionNumber={QUOTE_META.revisionNumber}
                     quickActions={[
                         // Generate Proforma moved to AckDetail (Asly feedback 2026-06-05).

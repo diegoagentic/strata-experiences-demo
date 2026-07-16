@@ -85,7 +85,7 @@ const FIELD_TEMPLATES: { section: FieldSection; label: string; suggestion: (n: n
     // Vendor
     { section: 'Vendor', label: 'Dealer',        conf: 98, suggestion: _ => 'Leland Furniture' },
     { section: 'Vendor', label: 'Ship-to',       conf: 88, suggestion: _ => 'Continua IL Warehouse, Lincolnshire IL 60069' },
-    { section: 'Vendor', label: 'Sales Rep',     conf: 52, suggestion: _ => 'David Park', wrong: _ => '' },
+    { section: 'Vendor', label: 'Sales Rep',     conf: 52, suggestion: _ => 'Regional Sales Manager Reyes', wrong: _ => '' },
     { section: 'Vendor', label: 'Contact Email', conf: 49, suggestion: _ => 'orders@leland.com', wrong: _ => 'orders@leLand.com' },
     // Terms
     { section: 'Terms', label: 'Discount Terms', conf: 95, suggestion: _ => 'Contract · 60.8% avg' },

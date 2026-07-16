@@ -621,7 +621,7 @@ BFI puede invoicear a la ciudad
 
 ### Step 2: Work Order Dispatch + Walter Notification
 **Análogo MBI:** ARAgingWrapScene
-**Qué muestra:** Una orden acaba de alcanzar 100% received. Strata muestra: "Orden #CNY-0847 — 100% received en CORE — 24 días en WIG (6 días antes del límite). Walter Goley notificado automáticamente. ¿Aprobar dispatch?" Lauren aprueba → Strata genera work order para imprimir (constraint externo: firma física requerida).
+**Qué muestra:** Una orden acaba de alcanzar 100% received. Strata muestra: "Orden #CNY-0847 — 100% received en CORE — 24 días en WIG (6 días antes del límite). Operations Manager Bly notificado automáticamente. ¿Aprobar dispatch?" Lauren aprueba → Strata genera work order para imprimir (constraint externo: firma física requerida).
 **Momento de valor (Kate explícita):** Kate pidió específicamente una notificación automática a todos los recursos del CORE cuando la orden está received en full.
 **🎯 Tour step:** `b2.2`
 

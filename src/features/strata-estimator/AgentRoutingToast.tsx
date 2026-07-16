@@ -6,7 +6,7 @@
 // Surfaces the missing Agent Step 1 (per WRG_CONSOLIDATED_REFERENCE.md §3):
 // 'Agent monitors CORE for estimating-ready requests. Identifies estimator
 // by location. Creates job record.' — we can't realistically show 12 s of
-// monitoring, but we CAN say 'routed JPS to David Park, Dallas' as a one-
+// monitoring, but we CAN say 'routed JPS to Regional Sales Manager Reyes, Dallas' as a one-
 // liner before the dossier loading beat takes over.
 // ═══════════════════════════════════════════════════════════════════════════════
 

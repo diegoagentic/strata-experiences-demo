@@ -126,9 +126,9 @@ function TreeRow({ indent = 0, icon, text, bold, muted }: { indent?: number; ico
 // ─── 3. VersionHistoryTimeline ───────────────────────────────────────────────
 function VersionHistoryTimeline() {
     const versions = [
-        { v: 'v5', author: 'Beth Gianino', timestamp: 'Apr 18 · 10:20 AM', note: 'Vertex Profile 72×36 swap (per CET assistant)', current: true },
-        { v: 'v4', author: 'Beth Gianino', timestamp: 'Apr 16 · 4:12 PM', note: 'Added 6 lounge seats · client request' },
-        { v: 'v3', author: 'Amy Shoemaker', timestamp: 'Apr 14 · 11:30 AM', note: 'Initial floor plan import' },
+        { v: 'v5', author: 'Design Manager Fane', timestamp: 'Apr 18 · 10:20 AM', note: 'Vertex Profile 72×36 swap (per CET assistant)', current: true },
+        { v: 'v4', author: 'Design Manager Fane', timestamp: 'Apr 16 · 4:12 PM', note: 'Added 6 lounge seats · client request' },
+        { v: 'v3', author: 'AP Lead', timestamp: 'Apr 14 · 11:30 AM', note: 'Initial floor plan import' },
     ]
     return (
         <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
@@ -204,7 +204,7 @@ function TeamsBotMessagePreview() {
                             🔍 Spec Check ready · STL-2847 · Enterprise Holdings
                         </div>
                         <div className="text-[11px] text-muted-foreground">
-                            Beth Gianino requested AI spec check on her Enterprise HQ F12 design.
+                            Design Manager Fane requested AI spec check on her Enterprise HQ F12 design.
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 pt-2 border-t border-border">

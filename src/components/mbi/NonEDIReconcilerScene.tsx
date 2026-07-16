@@ -172,7 +172,7 @@ function HealthTrustRebateCard() {
                             <div className="font-semibold text-foreground">
                                 {htStatus === 'approved' && <>Rebate posted · <span className="text-success tabular-nums">${rebate.toLocaleString()}</span> to GPO payable</>}
                                 {htStatus === 'overridden' && 'Rebate overridden · audit trail logged'}
-                                {htStatus === 'escalated' && 'Escalated to Lynda Alexander · #healthcare-gpo pinged'}
+                                {htStatus === 'escalated' && 'Escalated to Designer Quinn · #healthcare-gpo pinged'}
                             </div>
                             {htMeta?.notes && (
                                 <div className="text-[10px] text-muted-foreground italic mt-0.5 line-clamp-1">"{htMeta.notes}"</div>
@@ -227,7 +227,7 @@ function HealthTrustRebateCard() {
                     setHtStatus('escalated')
                     setHtMeta({ reasonCategory: payload.categoryId, notes: payload.notes })
                     setHtModal(null)
-                    pushHtToast('Escalated to Lynda Alexander · Teams ping sent to #healthcare-gpo')
+                    pushHtToast('Escalated to Designer Quinn · Teams ping sent to #healthcare-gpo')
                 }}
                 tone="danger"
                 icon={<Flag className="h-5 w-5" />}

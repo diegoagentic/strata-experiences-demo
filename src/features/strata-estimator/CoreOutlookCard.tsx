@@ -136,7 +136,7 @@ export default function CoreOutlookCard({
                                     <p className="text-xs text-muted-foreground mt-1 leading-snug">
                                         New estimating request assigned to{' '}
                                         <span className="font-bold text-foreground">
-                                            David Park
+                                            Regional Sales Manager Reyes
                                         </span>{' '}
                                         · Dallas office
                                     </p>
@@ -161,7 +161,7 @@ export default function CoreOutlookCard({
                                         Labor estimate written back to CORE with full
                                         audit trail · Outlook notification sent to{' '}
                                         <span className="font-bold text-foreground">
-                                            Sara Chen
+                                            Account Manager Kai
                                         </span>{' '}
                                         (Salesperson)
                                     </p>

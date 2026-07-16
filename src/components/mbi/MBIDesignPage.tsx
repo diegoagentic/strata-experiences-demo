@@ -1,6 +1,6 @@
 /**
  * COMPONENT: MBIDesignPage
- * PURPOSE: Flow 4 — Design AI. 3-scene wizard following Beth Gianino's
+ * PURPOSE: Flow 4 — Design AI. 3-scene wizard following Design Manager Fane's
  *          Spec Check pilot: project pick → animated scan → findings review
  *          + final multi-flow recap that closes the demo arc.
  *
@@ -74,7 +74,7 @@ export default function MBIDesignPage() {
     return (
         <MBIPageShell
             title="Design AI"
-            subtitle="Phase 4 · Pilot with Beth Gianino · 8/10 trust · design team Q4 avg 3.3/10 · sequenced rollout"
+            subtitle="Phase 4 · Pilot with Design Manager Fane · 8/10 trust · design team Q4 avg 3.3/10 · sequenced rollout"
             icon={<Palette className="h-5 w-5" />}
             activeApp="mbi-design"
         >
@@ -96,7 +96,7 @@ export default function MBIDesignPage() {
                     nextLabel={stepMeta.nextLabel}
                     persona={
                         <MBIPersonaBadge
-                            name="Beth Gianino"
+                            name="Design Manager Fane"
                             role="Designer · Phase 1 Pilot · 8/10 trust"
                             isPilot
                             tone="ai"

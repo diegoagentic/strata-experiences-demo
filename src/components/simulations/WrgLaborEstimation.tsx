@@ -172,9 +172,9 @@ const EXPERT_ADJUSTMENTS = [
 
 // ─── Approval Chain (for w2.4 — Dealer review) ─────────────────────────────
 const ESTIMATION_APPROVERS: Approver[] = [
-    { name: 'David Park', role: 'Strata Expert', status: 'approved' },
+    { name: 'Regional Sales Manager Reyes', role: 'Strata Expert', status: 'approved' },
     { name: 'Alex Rivera', role: 'Designer', status: 'approved' },
-    { name: 'Sara Chen', role: 'Dealer — WR', status: 'approved' },
+    { name: 'Account Manager Kai', role: 'Dealer — WR', status: 'approved' },
     { name: 'Jordan Park', role: 'Product Owner', status: 'current' },
 ];
 
@@ -282,7 +282,7 @@ const INTAKE_REPORT = {
         { label: 'Documents', value: 'Spec Narrative, Selection Doc, Site Requirements' },
     ],
     team: [
-        { name: 'David Park', role: 'Strata Expert', detail: 'Dallas, TX · 96.3% HC accuracy · 60% workload', photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face' },
+        { name: 'Regional Sales Manager Reyes', role: 'Strata Expert', detail: 'Dallas, TX · 96.3% HC accuracy · 60% workload', photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face' },
         { name: 'Alex Rivera', role: 'Designer', detail: 'Verified OFS Serpentine · 5 modules validated', photo: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80&h=80&fit=crop&crop=face' },
     ],
     registration: [
@@ -317,7 +317,7 @@ const PRODUCT_QUOTE_BREAKDOWN = [
 
 // ─── Dealer picker options (for w2.3 send) ──────────────────────────────────
 const DEALER_OPTIONS = [
-    { name: 'Sara Chen', role: 'Account Manager', photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face' },
+    { name: 'Account Manager Kai', role: 'Account Manager', photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face' },
     { name: 'Jordan Park', role: 'Product Owner', photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face' },
     { name: 'Michael Torres', role: 'Regional Director', photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face' },
 ];
@@ -924,7 +924,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                     <img src={EXPERT_PHOTO} alt="" className="w-10 h-10 rounded-full ring-2 ring-sky-400" />
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2">
-                                            <span className="text-xs font-bold text-foreground">Verification Request from David Park</span>
+                                            <span className="text-xs font-bold text-foreground">Verification Request from Regional Sales Manager Reyes</span>
                                             <span className="text-[9px] px-2 py-0.5 rounded-full bg-sky-500 text-white font-bold">ESCALATED</span>
                                         </div>
                                         <p className="text-[11px] text-muted-foreground mt-1">
@@ -1793,7 +1793,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                 <div className="space-y-1">
                                     <div className="flex items-center gap-2 text-[9px]">
                                         <CheckCircleIcon className="h-3 w-3 text-green-500 shrink-0" />
-                                        <span><span className="font-bold">David Park</span> (Expert) — 24 items reviewed, 5 adjustments, OFS escalated</span>
+                                        <span><span className="font-bold">Regional Sales Manager Reyes</span> (Expert) — 24 items reviewed, 5 adjustments, OFS escalated</span>
                                     </div>
                                     <div className="flex items-center gap-2 text-[9px]">
                                         <CheckCircleIcon className="h-3 w-3 text-sky-500 shrink-0" />
@@ -1846,7 +1846,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                 <div className="px-6 py-4 bg-muted border-b border-border flex items-center justify-between">
                                     <div>
                                         <div className="text-sm font-bold text-foreground tracking-wide">PROPOSAL — JPS HEALTH CENTER FOR WOMEN</div>
-                                        <div className="text-[10px] text-muted-foreground">Quote #WRG-2024-0847 · Prepared by David Park · {new Date().toLocaleDateString()}</div>
+                                        <div className="text-[10px] text-muted-foreground">Quote #WRG-2024-0847 · Prepared by Regional Sales Manager Reyes · {new Date().toLocaleDateString()}</div>
                                     </div>
                                     <button onClick={() => setShowProposalPreview(false)} className="p-1.5 rounded-lg hover:bg-muted transition-colors">
                                         <XMarkIcon className="h-4 w-4 text-muted-foreground" />
@@ -2088,7 +2088,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                         <div className="space-y-1.5">
                                             <div className="flex items-center gap-2 text-[9px]">
                                                 <CheckCircleIcon className="h-3 w-3 text-green-500 shrink-0" />
-                                                <span><span className="font-bold">David Park</span> (Expert) — 24 items reviewed, 5 adjustments, OFS escalated</span>
+                                                <span><span className="font-bold">Regional Sales Manager Reyes</span> (Expert) — 24 items reviewed, 5 adjustments, OFS escalated</span>
                                             </div>
                                             <div className="flex items-center gap-2 text-[9px]">
                                                 <CheckCircleIcon className="h-3 w-3 text-sky-500 shrink-0" />
@@ -2114,7 +2114,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                 </div>
                                 {/* Footer */}
                                 <div className="px-6 py-3 bg-muted dark:bg-zinc-800 border-t border-border flex items-center justify-between">
-                                    <div className="text-[9px] text-muted-foreground">Prepared by David Park, Expert — Strata Services · {new Date().toLocaleDateString()}</div>
+                                    <div className="text-[9px] text-muted-foreground">Prepared by Regional Sales Manager Reyes, Expert — Strata Services · {new Date().toLocaleDateString()}</div>
                                     <div className="flex gap-2">
                                         <button onClick={() => setShowProposalPreview(false)} className="px-4 py-2 rounded-lg text-[10px] font-bold border border-border bg-card text-foreground hover:bg-muted transition-colors">Close</button>
                                         <button onClick={() => setShowProposalPreview(false)} className="px-4 py-2 rounded-lg text-[10px] font-bold bg-brand-400 text-zinc-900 hover:bg-brand-300 transition-colors">Download PDF</button>
@@ -2374,7 +2374,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                             <img src={EXPERT_PHOTO} alt="" className="w-10 h-10 rounded-full ring-2 ring-brand-400 shrink-0" />
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-1">
-                                    <span className="text-xs font-bold text-foreground">David Park</span>
+                                    <span className="text-xs font-bold text-foreground">Regional Sales Manager Reyes</span>
                                     <span className="text-[9px] text-muted-foreground">Strata Expert · Just now</span>
                                 </div>
                                 <div className="text-[11px] text-foreground leading-relaxed mb-2">
@@ -2564,7 +2564,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                             <div className="space-y-1">
                                 <div className="flex items-center gap-1.5 text-[9px]">
                                     <CheckCircleIcon className="h-3 w-3 text-green-500 shrink-0" />
-                                    <span className="text-foreground"><span className="font-bold">David Park</span> — 24 items, {FLAGGED_COUNT} adjusted</span>
+                                    <span className="text-foreground"><span className="font-bold">Regional Sales Manager Reyes</span> — 24 items, {FLAGGED_COUNT} adjusted</span>
                                 </div>
                                 <div className="flex items-center gap-1.5 text-[9px]">
                                     <CheckCircleIcon className="h-3 w-3 text-sky-500 shrink-0" />
@@ -2661,7 +2661,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                             <div className="flex items-start gap-3">
                                 <img src={EXPERT_PHOTO} alt="" className="w-7 h-7 rounded-full ring-2 ring-sky-400" />
                                 <div className="flex-1">
-                                    <div className="text-[10px] font-bold text-foreground">Response from David Park</div>
+                                    <div className="text-[10px] font-bold text-foreground">Response from Regional Sales Manager Reyes</div>
                                     <div className="text-[9px] text-muted-foreground mt-1">
                                         The bariatric chair rate includes a 20% handling surcharge per Strata HC Standard. The OFS Serpentine assembly was verified by the designer — 14.0 hrs total, standard brackets confirmed. Section G charges include hospital surcharge ($114) as required for healthcare facilities.
                                     </div>
@@ -2712,7 +2712,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                             <CheckCircleIcon className="h-5 w-5 text-green-500 shrink-0" />
                             <div>
                                 <div className="text-[11px] font-bold text-foreground">Approval Chain Complete</div>
-                                <div className="text-[9px] text-muted-foreground">David Park, Alex Rivera, Sara Chen, Jordan Park — all approved</div>
+                                <div className="text-[9px] text-muted-foreground">Regional Sales Manager Reyes, Alex Rivera, Account Manager Kai, Jordan Park — all approved</div>
                             </div>
                         </div>
                     </div>
@@ -2748,7 +2748,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                             </div>
                             <div className="flex items-center gap-2 text-[10px]">
                                 <UserGroupIcon className="h-3 w-3 text-sky-500 shrink-0" />
-                                <span className="text-foreground"><span className="font-bold">David Park, Alex Rivera, Sara Chen</span> — Confirmation</span>
+                                <span className="text-foreground"><span className="font-bold">Regional Sales Manager Reyes, Alex Rivera, Account Manager Kai</span> — Confirmation</span>
                             </div>
                         </div>
                     </div>
@@ -2884,7 +2884,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                         </div>
                         <div className="flex items-center gap-2 p-2.5 rounded-lg bg-card border border-border">
                             <CheckCircleIcon className="h-3.5 w-3.5 text-green-500" />
-                            <span className="text-[10px] text-foreground">Stakeholders notified — David Park, Alex Rivera, Sara Chen</span>
+                            <span className="text-[10px] text-foreground">Stakeholders notified — Regional Sales Manager Reyes, Alex Rivera, Account Manager Kai</span>
                         </div>
                     </div>
                 </div>
@@ -2898,7 +2898,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                         <div className="px-6 py-4 bg-muted border-b border-border flex items-center justify-between">
                             <div>
                                 <div className="text-sm font-bold text-foreground tracking-wide">CLIENT PROPOSAL — JPS HEALTH CENTER FOR WOMEN</div>
-                                <div className="text-[10px] text-muted-foreground">Quote #WRG-2024-0847 · Prepared by David Park · {new Date().toLocaleDateString()}</div>
+                                <div className="text-[10px] text-muted-foreground">Quote #WRG-2024-0847 · Prepared by Regional Sales Manager Reyes · {new Date().toLocaleDateString()}</div>
                             </div>
                             <button onClick={() => setShowQuotePreview(false)} className="p-1.5 rounded-lg hover:bg-muted transition-colors">
                                 <XMarkIcon className="h-4 w-4 text-muted-foreground" />
@@ -3137,7 +3137,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                                 <div className="space-y-1.5">
                                     <div className="flex items-center gap-2 text-[9px]">
                                         <CheckCircleIcon className="h-3 w-3 text-green-500 shrink-0" />
-                                        <span><span className="font-bold">David Park</span> (Expert) — 24 items reviewed, 5 adjustments, OFS escalated</span>
+                                        <span><span className="font-bold">Regional Sales Manager Reyes</span> (Expert) — 24 items reviewed, 5 adjustments, OFS escalated</span>
                                     </div>
                                     <div className="flex items-center gap-2 text-[9px]">
                                         <CheckCircleIcon className="h-3 w-3 text-sky-500 shrink-0" />
@@ -3170,7 +3170,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                         </div>
                         {/* Footer */}
                         <div className="px-6 py-3 bg-muted dark:bg-zinc-800 border-t border-border flex items-center justify-between">
-                            <div className="text-[9px] text-muted-foreground">Prepared by David Park, Expert — Strata Services · {new Date().toLocaleDateString()}</div>
+                            <div className="text-[9px] text-muted-foreground">Prepared by Regional Sales Manager Reyes, Expert — Strata Services · {new Date().toLocaleDateString()}</div>
                             <div className="flex gap-2">
                                 <button onClick={() => setShowQuotePreview(false)} className="px-4 py-2 rounded-lg text-[10px] font-bold border border-border bg-card text-foreground hover:bg-muted transition-colors">Close</button>
                                 <button onClick={() => setShowQuotePreview(false)} className="px-4 py-2 rounded-lg text-[10px] font-bold bg-brand-400 text-zinc-900 hover:bg-brand-300 transition-colors">Download PDF</button>

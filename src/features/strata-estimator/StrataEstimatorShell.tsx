@@ -86,7 +86,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
     const connectedUser = getStepRole(stepId) ?? undefined
     const isProposalReview = stepState === 'proposal-review'
     // During w2.2 "Approve & Release", the Shell temporarily redirects to
-    // David Park's workspace so the audience watches the notification land
+    // Regional Sales Manager Reyes's workspace so the audience watches the notification land
     // in his actual interface before the chain modal opens.
     // See handleApproveRelease below.
 
@@ -282,7 +282,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
         setAuditLog([])
         logEvent(
             'AI Agent',
-            'Agent Step 1 · Routed JPS Health Network to David Park (Dallas)',
+            'Agent Step 1 · Routed JPS Health Network to Regional Sales Manager Reyes (Dallas)',
             'ai'
         )
         logEvent('System', 'Session opened · JPS Health Network', 'system')
@@ -296,7 +296,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
         // t=0 — outlook card is already visible (set above)
         logEvent(
             'System',
-            'CORE → Outlook · new estimating request assigned to David Park',
+            'CORE → Outlook · new estimating request assigned to Regional Sales Manager Reyes',
             'system'
         )
 
@@ -309,7 +309,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                 setHighlightImportButton(false)
                 setImportModalOpen(true)
                 setImportModalPhase('source-picker')
-                logEvent('David Park', 'Opened new project ingestion dialog', 'edit')
+                logEvent('Regional Sales Manager Reyes', 'Opened new project ingestion dialog', 'edit')
             }],
             [OUTLOOK_LEAD + 1500, () => setImportCursorTarget('connect-core')],
             [OUTLOOK_LEAD + 2500, () => setImportCursorClicked(true)],
@@ -328,7 +328,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
             }],
             [OUTLOOK_LEAD + 7500, () => {
                 setImportModalPhase('core-dashboard')
-                logEvent('David Park', 'Browsing CORE estimating queue · 5 projects pending', 'edit')
+                logEvent('Regional Sales Manager Reyes', 'Browsing CORE estimating queue · 5 projects pending', 'edit')
             }],
             [OUTLOOK_LEAD + 8500, () => setImportCursorTarget('project-jps')],
             [OUTLOOK_LEAD + 9500, () => setImportCursorClicked(true)],
@@ -336,7 +336,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                 setImportModalPhase('core-project-detail')
                 setImportCursorTarget(null)
                 setImportCursorClicked(false)
-                logEvent('David Park', 'Opened JPS Health Network project · 24 items · 3 attachments', 'edit')
+                logEvent('Regional Sales Manager Reyes', 'Opened JPS Health Network project · 24 items · 3 attachments', 'edit')
             }],
             [OUTLOOK_LEAD + 11500, () => setImportCursorTarget('pull-project')],
             [OUTLOOK_LEAD + 12300, () => setImportCursorClicked(true)],
@@ -490,7 +490,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
             }],
             [4500, () => setSaraCursorClicked(true)],
             [4700, () => {
-                logEvent('Sara Chen', 'Opened Request Clarification form · OFS Serpentine assembly', 'edit')
+                logEvent('Account Manager Kai', 'Opened Request Clarification form · OFS Serpentine assembly', 'edit')
                 setIsClarificationOpen(true)
                 setSaraCursorTarget(null)
                 setSaraCursorClicked(false)
@@ -498,11 +498,11 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
             }],
             [8600, () => {
                 setDavidReplyVisible(true)
-                logEvent('David Park', 'Replied to clarification · OFS Serpentine 14 h confirmed · +2 h buffer for alignment', 'edit')
+                logEvent('Regional Sales Manager Reyes', 'Replied to clarification · OFS Serpentine 14 h confirmed · +2 h buffer for alignment', 'edit')
             }],
             [11700, () => setDavidReplyAccepted(true)],
             [11900, () => {
-                logEvent('Sara Chen', "Accepted David's clarification · estimate confirmed", 'edit')
+                logEvent('Account Manager Kai', "Accepted David's clarification · estimate confirmed", 'edit')
             }],
             [13000, () => setDavidReplyVisible(false)],
             [13500, () => {
@@ -564,14 +564,14 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
             }],
             [2300, () => setRileyCursorClicked(true)],
             [2500, () => {
-                logEvent('Riley Morgan', 'Opened quote assembly · MillerKnoll + discount + markup', 'edit')
+                logEvent('Designer Riley', 'Opened quote assembly · MillerKnoll + discount + markup', 'edit')
                 setIsWaterfallOpen(true)
                 setRileyCursorTarget(null)
                 setRileyCursorClicked(false)
                 setRileyPulseAssemble(false)
             }],
             [7500, () => {
-                logEvent('Riley Morgan', 'Confirmed quote assembly math · net + labor + freight + markup', 'edit')
+                logEvent('Designer Riley', 'Confirmed quote assembly math · net + labor + freight + markup', 'edit')
                 setIsWaterfallOpen(false)
             }],
             [8000, () => {
@@ -580,7 +580,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
             }],
             [8800, () => setRileyCursorClicked(true)],
             [9000, () => {
-                logEvent('Riley Morgan', 'Previewed the release document', 'edit')
+                logEvent('Designer Riley', 'Previewed the release document', 'edit')
                 setIsProposalPdfOpen(true)
                 setRileyCursorTarget(null)
                 setRileyCursorClicked(false)
@@ -776,8 +776,8 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
             maximumFractionDigits: 0,
         })
         logEvent(
-            'Sara Chen',
-            `Forwarded $${formatted} labor estimate to Riley Morgan (SAC) for quote assembly`,
+            'Account Manager Kai',
+            `Forwarded $${formatted} labor estimate to Designer Riley (SAC) for quote assembly`,
             'approval'
         )
         triggerHandoff(
@@ -797,7 +797,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
             maximumFractionDigits: 0,
         })
         logEvent(
-            'Riley Morgan',
+            'Designer Riley',
             `Assembled $${formatted} quote · routing to ${dealer?.name ?? 'internal reviewer'}`,
             'approval'
         )
@@ -807,29 +807,29 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
     // ── w2.2 — Proposal review handlers ──────────────────────────────────────
     const handleRequestClarification = () => {
         // v8 · step-aware sender: Sara in w2.1, Riley in w2.2
-        const sender = stepId === 'w2.1' ? 'Sara Chen' : 'Riley Morgan'
+        const sender = stepId === 'w2.1' ? 'Account Manager Kai' : 'Designer Riley'
         logEvent(sender, 'Opened Request Clarification form', 'edit')
         setIsClarificationOpen(true)
     }
 
     const handleClarificationSent = (topic: string, _message: string) => {
-        const sender = stepId === 'w2.1' ? 'Sara Chen' : 'Riley Morgan'
+        const sender = stepId === 'w2.1' ? 'Account Manager Kai' : 'Designer Riley'
         logEvent(
             sender,
-            `Clarification request sent to David Park · ${topic}`,
+            `Clarification request sent to Regional Sales Manager Reyes · ${topic}`,
             'edit'
         )
     }
 
     const handlePreviewProposalPdf = () => {
-        const sender = stepId === 'w2.1' ? 'Sara Chen' : 'Riley Morgan'
+        const sender = stepId === 'w2.1' ? 'Account Manager Kai' : 'Designer Riley'
         logEvent(sender, 'Previewed proposal PDF before release', 'edit')
         setIsProposalPdfOpen(true)
     }
 
     const handleAssembleQuote = () => {
         logEvent(
-            'Riley Morgan',
+            'Designer Riley',
             'Opened quote assembly · MillerKnoll + discount + markup',
             'edit'
         )
@@ -839,7 +839,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
     const handleApproveRelease = () => {
         // Phase 1 — Sara initiates the chain. Open the modal with nobody
         // signed yet so the audience sees the empty chain for a beat.
-        logEvent('Sara Chen', 'Initiated approval chain', 'approval')
+        logEvent('Account Manager Kai', 'Initiated approval chain', 'approval')
         setDavidSigned(false)
         setIsApprovalOpen(true)
 
@@ -853,8 +853,8 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
         setTimeout(pauseAware(() => {
             setIsApprovalOpen(false)
             logEvent(
-                'Sara Chen',
-                'Sent proposal to David Park for approval',
+                'Account Manager Kai',
+                'Sent proposal to Regional Sales Manager Reyes for approval',
                 'approval'
             )
             setDavidApprovalActive(true)
@@ -874,7 +874,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
             // simulated cursor appears over the Approve button.
             setTimeout(pauseAware(() => {
                 logEvent(
-                    'David Park',
+                    'Regional Sales Manager Reyes',
                     'Reviewing proposal line items · OFS Serpentine, Canvas workstations, freight',
                     'edit'
                 )
@@ -890,7 +890,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
             // Jordan.
             setTimeout(pauseAware(() => {
                 logEvent(
-                    'David Park',
+                    'Regional Sales Manager Reyes',
                     'Approved proposal from his workspace',
                     'approval'
                 )
@@ -941,7 +941,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
         triggerHandoff(
             ROLE_PROFILES['Sales Coordinator'],
             ROLE_PROFILES['Project Manager'],
-            'Handing approved quote to James Ortiz for execution planning'
+            'Handing approved quote to PM James for execution planning'
         )
     }
 
@@ -1336,7 +1336,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex items-center gap-2 flex-wrap">
                                                         <span className="text-sm font-bold text-foreground">
-                                                            David Park replied
+                                                            Regional Sales Manager Reyes replied
                                                         </span>
                                                         <span className="text-[9px] px-2 py-0.5 rounded-full bg-indigo-500 text-white font-bold animate-pulse">
                                                             Just now
@@ -1424,7 +1424,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                                         reason="Custom product · designer verification recommended"
                                         onEscalate={() => {
                                             logEvent(
-                                                'David Park',
+                                                'Regional Sales Manager Reyes',
                                                 'Escalated OFS Serpentine to Alex Rivera',
                                                 'edit'
                                             )

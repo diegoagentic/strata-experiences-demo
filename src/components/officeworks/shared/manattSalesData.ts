@@ -82,7 +82,7 @@ export const SALES_INBOX_THREADS: SalesInboxThread[] = [
     {
         id: 'sit-001',
         channel: 'email',
-        from: 'Caitlin Barolet · Metro Legal Facilities',
+        from: 'Designer Nova · Metro Legal Facilities',
         fromOrg: 'Metro Legal Firm',
         subject: 'RE: Metro Legal 4th Floor · need to lock scope this week',
         snippet: 'Hi team, we are 26 hours past last touch on the proposal — please confirm the 120-workstation count and the GSA price.',
@@ -97,7 +97,7 @@ export const SALES_INBOX_THREADS: SalesInboxThread[] = [
     {
         id: 'sit-002',
         channel: 'teams',
-        from: 'Caitlin Barolet · Metro Legal Facilities',
+        from: 'Designer Nova · Metro Legal Facilities',
         fromOrg: 'Metro Legal Firm',
         subject: 'Quick ping — same scope question',
         snippet: 'Just emailed but also pinging here in case email is buried · need scope lock today.',
@@ -150,7 +150,7 @@ export const SALES_INBOX_THREADS: SalesInboxThread[] = [
     {
         id: 'sit-006',
         channel: 'email',
-        from: 'Felicia Miano-Poles · Design',
+        from: 'EVP Design · Design',
         fromOrg: 'Officeworks · Design',
         subject: 'Works form for OPP-2026-0884 is incomplete',
         snippet: 'CAD missing, SQ blank, scope vague · please clarify before we start drawing.',
@@ -425,7 +425,7 @@ export interface DiscoveryField {
 
 export const SALES_DISCOVERY_TEMPLATE: DiscoveryField[] = [
     { key: 'budget',       label: 'Budget',                framework: 'BANT', value: '$400–600K', source: 'sit-001', confidence: 'medium' },
-    { key: 'authority',    label: 'Authority',             framework: 'BANT', value: 'Caitlin Barolet · Metro Legal facilities lead', source: 'sit-001', confidence: 'high' },
+    { key: 'authority',    label: 'Authority',             framework: 'BANT', value: 'Designer Nova · Metro Legal facilities lead', source: 'sit-001', confidence: 'high' },
     { key: 'need',         label: 'Need',                  framework: 'BANT', value: '4F refresh · GSA SQ price-protected · 120 workstations', source: 'sit-004', confidence: 'high' },
     { key: 'timing',       label: 'Timing',                framework: 'BANT', value: 'Move-in 2026-08-30 · 14 weeks out', source: 'sit-007', confidence: 'high' },
     { key: 'metrics',      label: 'Success metrics',       framework: 'MEDDIC', value: 'Quote in by 14-May 17:00 · install Aug 26-30', source: 'sit-004', confidence: 'high' },
@@ -584,7 +584,7 @@ export const SALES_AT_RISK = [
 ]
 
 export const SALES_ENGAGEMENT_FEED = [
-    { id: 'evt-001', icon: 'mail',     channel: 'email',  text: 'Reply sent to Caitlin Barolet · Metro Legal 4F scope lock',   at: '2026-05-13 09:14' },
+    { id: 'evt-001', icon: 'mail',     channel: 'email',  text: 'Reply sent to Designer Nova · Metro Legal 4F scope lock',   at: '2026-05-13 09:14' },
     { id: 'evt-002', icon: 'message',  channel: 'teams',  text: 'Teams ping to Jonathan Spence · proposal Friday 12:00',   at: '2026-05-13 09:12' },
     { id: 'evt-003', icon: 'upload',   channel: 'portal', text: 'GC quote uploaded · BC-RFP-882041',                       at: '2026-05-13 09:02' },
     { id: 'evt-004', icon: 'flag',     channel: 'system', text: 'SLA timer started · JPM-ATL pricing · 48h',                at: '2026-05-13 08:55' },

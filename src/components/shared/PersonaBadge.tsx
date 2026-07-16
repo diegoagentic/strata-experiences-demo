@@ -9,7 +9,7 @@
  *          demos + the main app (previously MBI-only).
  *
  * PROPS:
- *   - name: string                — 'Kathy Belleville'
+ *   - name: string                — 'Operations Manager Rowe'
  *   - role: string                — 'Controller · Accounting'
  *   - marker?: { label, icon? }   — optional chip (e.g. 'Phase 1 Pilot')
  *   - size?: 'sm' | 'md'

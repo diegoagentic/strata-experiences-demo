@@ -514,7 +514,7 @@ const DiscrepancyActionCard = ({ msg }: { msg: Message }) => {
 }
 
 const collaborators = [
-    { name: "David Park", role: "Regional Sales Mgr", status: "online", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" },
+    { name: "Regional Sales Manager Reyes", role: "Regional Sales Mgr", status: "online", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" },
     { name: "Mike Ross", role: "Warehouse Lead", status: "offline", avatar: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" },
     { name: "AI Agent", role: "System Bot", status: "online", avatar: "AI" },
 ]
@@ -724,7 +724,7 @@ export default function AckDetail({ onBack, onLogout, onNavigateToWorkspace, onN
                             })()}
                         </div>
                         )}
-                        <SalesRepChip name="David Park" role="Sales Rep" />
+                        <SalesRepChip name="Regional Sales Manager Reyes" role="Sales Rep" />
                         <span
                             title={`Ack revision 1 · 2026-01-22 · Re-issued after fabric substitution`}
                             className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-info/10 border border-info/30 text-info"
@@ -1346,7 +1346,7 @@ export default function AckDetail({ onBack, onLogout, onNavigateToWorkspace, onN
                     isOpen={itemDrawerOpen}
                     onClose={() => setItemDrawerOpen(false)}
                     item={{ ...selectedItem, exceptionDetail: (selectedItem as { exceptionDetail?: string }).exceptionDetail }}
-                    salesRep={{ name: 'David Park', initials: 'DP', role: 'Sales Rep' }}
+                    salesRep={{ name: 'Regional Sales Manager Reyes', initials: 'DP', role: 'Sales Rep' }}
                     revisionNumber={1}
                     quickActions={[
                         { icon: ScaleIcon, label: '3-way reconcile', onClick: () => setIsReconciliationOpen(true), tone: 'primary' },

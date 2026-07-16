@@ -59,7 +59,7 @@ const FLOWS: FlowCard[] = [
     {
         number: 1,
         title: 'Accounting AI',
-        persona: 'Kathy Belleville',
+        persona: 'Operations Manager Rowe',
         personaRole: 'Controller',
         personaInitials: 'KB',
         isPilot: true,
@@ -76,7 +76,7 @@ const FLOWS: FlowCard[] = [
     {
         number: 2,
         title: 'Quotes AI',
-        persona: 'Marcia Ludwig',
+        persona: 'Design Coordinator',
         personaRole: 'Director of PM · 3.5 PCs for 29 staff',
         personaInitials: 'ML',
         pain: '2 hours of manual SIF re-entry into CORE + 4 sequential audit loops per proposal',
@@ -91,7 +91,7 @@ const FLOWS: FlowCard[] = [
     {
         number: 3,
         title: 'Design AI',
-        persona: 'Beth Gianino',
+        persona: 'Design Manager Fane',
         personaRole: 'Designer · 8/10 trust',
         personaInitials: 'BG',
         isPilot: true,
@@ -247,8 +247,8 @@ export default function MBIOverviewPage() {
                     </div>
                     <div className="text-xs text-muted-foreground mt-1 leading-relaxed">
                         MBI's AI-trust scores vary wildly (design team Q4 avg <strong className="text-foreground">3.3/10</strong>, Carrie at 1/10).
-                        Rogers Diffusion says start with the early adopters — <strong className="text-foreground">Kathy Belleville</strong> (8/10, Controller) and
-                        <strong className="text-foreground"> Beth Gianino</strong> (8/10, Designer). Their visible wins unlock team-wide adoption in Phase 2.
+                        Rogers Diffusion says start with the early adopters — <strong className="text-foreground">Operations Manager Rowe</strong> (8/10, Controller) and
+                        <strong className="text-foreground"> Design Manager Fane</strong> (8/10, Designer). Their visible wins unlock team-wide adoption in Phase 2.
                     </div>
                 </div>
             </div>

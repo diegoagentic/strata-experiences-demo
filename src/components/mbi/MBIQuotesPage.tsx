@@ -4,8 +4,8 @@
  *          proposal creation: incoming budget → GP review + CORE Quote →
  *          AI validation (4→1+1 audit loop collapse) → send + handoff.
  *
- *          Mirrors Flow 1 wizard pattern. Marcia Ludwig (Director of PM)
- *          renders as persona — though the 'doers' are Amy Behl + Mario +
+ *          Mirrors Flow 1 wizard pattern. Design Coordinator (Director of PM)
+ *          renders as persona — though the 'doers' are Estimator Nova + Mario +
  *          Erin (hybrid PC/designer). For the demo, Marcia owns the flow.
  *
  * DEMO TOUR: m3.3 / m3.2 / m3.4 map 1:1 to wizard scenes 0–2.
@@ -107,7 +107,7 @@ export default function MBIQuotesPage() {
                     persona={
                         <div className="flex flex-col gap-1.5">
                             <MBIPersonaBadge
-                                name="Marcia Ludwig"
+                                name="Design Coordinator"
                                 role="Director of PM · 3.5 PCs for 29 staff"
                                 tone="neutral"
                             />

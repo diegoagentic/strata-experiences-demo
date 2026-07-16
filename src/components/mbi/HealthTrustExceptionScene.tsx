@@ -3,7 +3,7 @@
  * PURPOSE: Flow 2 · Scene 2 — the HealthTrust GPO 3% rebate moment. Strata
  *          detects a healthcare invoice against an MBI HealthTrust contract
  *          and auto-calculates the rebate line. Kathy approves, overrides,
- *          or escalates to Lynda Alexander (Director of Healthcare).
+ *          or escalates to Designer Quinn (Director of Healthcare).
  *
  *          Reuses the ValidationCard grammar: Expected vs Actual (with AI
  *          suggestion), Accept / Override / Flag actions wired through
@@ -75,7 +75,7 @@ export default function HealthTrustExceptionScene() {
         setStatus('escalated')
         setMeta(payload)
         setModalKind(null)
-        pushToast(`Escalated to Lynda Alexander · Teams ping sent to #healthcare-gpo`)
+        pushToast(`Escalated to Designer Quinn · Teams ping sent to #healthcare-gpo`)
     }
 
     const handleReopen = () => {
@@ -242,7 +242,7 @@ export default function HealthTrustExceptionScene() {
                                         <div className="text-foreground font-semibold">
                                             {status === 'approved' && <>Rebate posted · <span className="text-success tabular-nums">${rebate.toLocaleString()}</span> to GPO payable</>}
                                             {status === 'overridden' && <>Rebate overridden · audit trail logged</>}
-                                            {status === 'escalated' && <>Escalated to Lynda Alexander · awaiting GPO review</>}
+                                            {status === 'escalated' && <>Escalated to Designer Quinn · awaiting GPO review</>}
                                         </div>
                                         {meta?.reasonCategory && (
                                             <div className="text-[10px] text-muted-foreground mt-0.5">
@@ -284,7 +284,7 @@ export default function HealthTrustExceptionScene() {
                         <UserCheck className="h-4 w-4" />
                     </div>
                     <div className="text-xs min-w-0">
-                        <div className="font-bold text-foreground">Lynda Alexander</div>
+                        <div className="font-bold text-foreground">Designer Quinn</div>
                         <div className="text-[10px] text-muted-foreground">Director of Healthcare · owns HealthTrust contract</div>
                         <div className="text-[10px] text-muted-foreground mt-0.5">Teams · #healthcare-gpo · responds ~1h</div>
                     </div>

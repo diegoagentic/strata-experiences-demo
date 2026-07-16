@@ -221,7 +221,7 @@ export default function DesignFindingsReview() {
                     <div className="text-xs">
                         <div className="font-bold text-foreground">Proof point unlocked</div>
                         <div className="text-muted-foreground mt-0.5">
-                            Beth caught it, Strata suggested the swap, she approved in one click. This is the story Lisa needs to roll the tool out to Amy Shoemaker (4/10) and Carrie Numelin (1/10) next.
+                            Beth caught it, Strata suggested the swap, she approved in one click. This is the story Lisa needs to roll the tool out to AP Lead (4/10) and Operations Lead (1/10) next.
                         </div>
                     </div>
                 </div>

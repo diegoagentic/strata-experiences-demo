@@ -2994,7 +2994,7 @@ IEA*1*000002055~`}
                                 <div className="space-y-0 relative">
                                     {[
                                         { name: 'System Policy Engine', role: 'Auto-approval' },
-                                        { name: 'David Park', role: 'Regional Sales Manager' },
+                                        { name: 'Regional Sales Manager Reyes', role: 'Regional Sales Manager' },
                                         { name: 'James Liu', role: 'Finance Director' },
                                     ].map((approver, i) => (
                                         <div key={i} className="flex items-start gap-4 relative pb-5 last:pb-0">
@@ -3995,7 +3995,7 @@ IEA*1*000002055~`}
                                                 <div className="flex items-center justify-center gap-3">
                                                     {[
                                                         { initials: 'CR', name: 'Carlos Rivera', color: 'from-blue-500 to-blue-700' },
-                                                        { initials: 'SC', name: 'Sara Chen', color: 'from-emerald-500 to-emerald-700' },
+                                                        { initials: 'SC', name: 'Account Manager Kai', color: 'from-emerald-500 to-emerald-700' },
                                                         { initials: 'PI', name: 'ProInstall LLC', color: 'from-orange-500 to-orange-700' },
                                                     ].map((p, i) => (
                                                         <div key={i} className="flex items-center gap-1.5 animate-in fade-in slide-in-from-bottom-2 duration-300" style={{ animationDelay: `${i * 200}ms` }}>

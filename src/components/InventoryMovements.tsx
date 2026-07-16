@@ -71,7 +71,7 @@ const INITIAL_MOVEMENTS: MovementRequest[] = [
         status: 'Ordered',
         priority: 'High',
         requestDate: '2/2/2026',
-        requestedBy: 'John Smith',
+        requestedBy: 'Employee Alpha',
         notes: 'Asset relocation from inventory - Executive Desk (Furniture)',
         trackingId: 'TRK-2026-001',
         costData: [

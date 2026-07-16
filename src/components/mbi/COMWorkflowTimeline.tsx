@@ -25,7 +25,7 @@ interface TimelineStep {
 
 const STEPS: TimelineStep[] = [
     { id: '1', label: 'COM sample requested', detail: 'Designer spec · marine blue for Enterprise lounge', timestamp: 'Apr 15, 10:20 AM', status: 'done', icon: <Palette className="h-3.5 w-3.5" /> },
-    { id: '2', label: 'Client approval via Teams', detail: 'Jordan Hart · approved with note "match throughout palette"', timestamp: 'Apr 15, 3:45 PM', status: 'done', icon: <MessageSquare className="h-3.5 w-3.5" /> },
+    { id: '2', label: 'Client approval via Teams', detail: 'Controller Hart · approved with note "match throughout palette"', timestamp: 'Apr 15, 3:45 PM', status: 'done', icon: <MessageSquare className="h-3.5 w-3.5" /> },
     { id: '3', label: 'PO to fabric vendor', detail: 'Pacific Fabrics · 45 yards · ETA April 28', timestamp: 'Apr 15, 4:10 PM', status: 'done', icon: <Package className="h-3.5 w-3.5" /> },
     { id: '4', label: 'Fabric receipt confirmation', detail: 'Expected April 28 · warehouse notification will auto-fire', timestamp: 'Pending · ETA Apr 28', status: 'in-progress', icon: <Clock className="h-3.5 w-3.5" /> },
     { id: '5', label: 'Route to manufacturer for application', detail: 'CaseWorks · ship to Birmingham plant', timestamp: 'Pending · after receipt', status: 'pending', icon: <Package className="h-3.5 w-3.5" /> },

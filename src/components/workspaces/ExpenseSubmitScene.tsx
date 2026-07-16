@@ -345,7 +345,7 @@ export default function ExpenseSubmitScene({ onSubmit, initialScreen }: { onSubm
                             <p className="text-[11px] text-muted-foreground mt-0.5">
                                 Sent to <span className="font-semibold text-foreground">{DEFAULT_MANAGER.name}</span> for approval
                             </p>
-                            <p className="text-[11px] text-muted-foreground">John Smith · {formattedTotal} · {receipts.length} receipt{receipts.length !== 1 ? 's' : ''}</p>
+                            <p className="text-[11px] text-muted-foreground">Employee Alpha · {formattedTotal} · {receipts.length} receipt{receipts.length !== 1 ? 's' : ''}</p>
                         </div>
                     </div>
 
@@ -792,13 +792,13 @@ export function MobileNavbar({ title }: { title: string }) {
                 <Bell className="h-3.5 w-3.5 text-muted-foreground" />
                 <div className="flex items-center gap-1.5">
                     <div className="text-right">
-                        <p className="text-[10px] font-semibold text-foreground leading-none">John Smith</p>
+                        <p className="text-[10px] font-semibold text-foreground leading-none">Employee Alpha</p>
                         <p className="text-[9px] text-muted-foreground leading-none">Sales Rep</p>
                     </div>
                     <div className="h-6 w-6 rounded-full bg-muted overflow-hidden shrink-0">
                         <img
                             src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face"
-                            alt="John Smith"
+                            alt="Employee Alpha"
                             className="h-full w-full object-cover"
                         />
                     </div>

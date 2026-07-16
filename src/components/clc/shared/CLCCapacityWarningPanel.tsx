@@ -25,7 +25,7 @@ const OUTREACH_DRAFT = {
         'Please confirm by Thu end-of-day so we can lock the schedule.',
         '',
         'Thanks,',
-        'Sara Chen · Account Manager',
+        'Account Manager Kai · Account Manager',
         'Creative Library Concepts',
     ].join('\n'),
 }
@@ -44,7 +44,7 @@ const DISPATCHER_DRAFT = {
         'Can you confirm the subcontract path or surface an alternative crew?',
         '',
         'Thanks,',
-        'Sara Chen · Account Manager',
+        'Account Manager Kai · Account Manager',
     ].join('\n'),
 }
 

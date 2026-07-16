@@ -22,7 +22,7 @@ export interface AtRiskProject {
 }
 
 export const SPEC_CHECK_AT_RISK: AtRiskProject[] = [
-    { code: 'Metro Legal-4F',     client: 'Metro Legal Firm · DC',  phase: 'Spec Check',       daysInPhase: 4,  slaDays: 5,  designer: 'Kimberly Tucker' },
+    { code: 'Metro Legal-4F',     client: 'Metro Legal Firm · DC',  phase: 'Spec Check',       daysInPhase: 4,  slaDays: 5,  designer: 'Design Manager Ellis' },
     { code: 'JPM-ATL-4471',  client: 'JPMorgan · Atlanta HQ',          phase: 'Teknion Preview',  daysInPhase: 11, slaDays: 14, designer: 'James O\'Brien' },
     { code: 'NYC-DOH-2847',  client: 'NYC Dept of Health · Brooklyn',  phase: 'Intake',           daysInPhase: 2,  slaDays: 3,  designer: 'Unassigned' },
     { code: 'GSA-DC2-0892',  client: 'GSA · DC2 (price-protected)',    phase: 'Submission',       daysInPhase: 1,  slaDays: 2,  designer: 'Sandra Park' },

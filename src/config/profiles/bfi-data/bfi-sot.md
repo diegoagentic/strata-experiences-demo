@@ -32,12 +32,12 @@
 | **Lauren DeMarco** | CoNY Account Lead / Data Coordinator | Propietaria end-to-end de ambos procesos en scope. Trust threshold: 8/10 — early adopter. Proceso CoNY vive casi completamente con ella. |
 | **Michael Boyle** | Director Strategic Accounts & PM | Revisa labor quotes, relays CPR revisions a Nancy Bos. Boss de Lauren. Contacto para document samples de receiving. |
 | **Jessica Young** (Avanto) | Sales Assistant embedded en BFI | Canal de confianza clave. Propuso los flows al assessment. Conoce CORE y los procesos. Habla ambos lenguajes (Avanto + BFI). |
-| **Wendy Marchuck** (Avanto) | SME — Operations | Su equipo soporta BFI actualmente (2 personas PC). Experta en direct bill y warehouse. SME crítica para feasibility. |
+| **Strata Sales Director** (Avanto) | SME — Operations | Su equipo soporta BFI actualmente (2 personas PC). Experta en direct bill y warehouse. SME crítica para feasibility. |
 | **Lena Cisowski** | BFI — Receiving (company-wide) | Ingresa confirmaciones de WIG en CORE. Sin SLA. Puede tardar hasta 7 días. No notifica a Lauren cuando hay 100% receipt. |
 | **Diana Bonilla** | Acknowledgement Checker | **EXCLUIDA del scope** — Kate no quiere que sepa del AI assessment. Change management risk alto. |
 | **Donna Banks** | Director of Sales Administration | Supervisa sales admins. Resistente al cambio ("knows everything, doesn't want to hear anything"). No respondió questionnaire. Cámara apagada en kickoff. |
 | **Patricia Hilger** | Finance / AR | Aplica el agency fee, cierra la orden en CORE. No respondió questionnaire. |
-| **Walter Goley** | PM CoNY (BFI) | Zero visibilidad del proceso hasta que Lauren le entrega el work order impreso. No puede pre-coordinar con la agencia. |
+| **Operations Manager Bly** | PM CoNY (BFI) | Zero visibilidad del proceso hasta que Lauren le entrega el work order impreso. No puede pre-coordinar con la agencia. |
 | **Nancy Bos** | Invoice Processor — Miller Knoll (CoNY) | BFI depende de sus datos de agency fee sin poder verificarlos (blind spot). Recibe labor revision relay vía Michael. |
 | **Andy** | Contacto Lauren en Miller Knoll | Fuente de Proof of Delivery (POD) para shipments FedEx no confirmados por WIG. |
 | **Patrick Dunne** | COO | No respondió AI Readiness questionnaire. |
@@ -165,7 +165,7 @@
 ## 6. Proceso 2 — Product Receiving: Third-Party Warehouse (CoNY / WIG)
 
 **Warehouse:** WIG = Workplace Installation Group — tercero principal para CoNY. BFI no tiene instalación ni warehouse propio.
-**Actores:** Lauren DeMarco (verifica + gestiona), Lena Cisowski (ingresa en CORE), WIG staff (confirman physical receipt), Walter Goley (PM, recibe work order), Michael Boyle (coordina CPR relay).
+**Actores:** Lauren DeMarco (verifica + gestiona), Lena Cisowski (ingresa en CORE), WIG staff (confirman physical receipt), Operations Manager Bly (PM, recibe work order), Michael Boyle (coordina CPR relay).
 
 **Contexto:** Cubre desde que el producto llega a WIG hasta que Lauren imprime el work order y se lo entrega a Walter. La mayor parte de la logística es externa (WIG). Lauren es el cuello de botella de verificación.
 

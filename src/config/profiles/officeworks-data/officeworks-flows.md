@@ -10,7 +10,7 @@
 | 2 | **Designer (Kimberly — protagonist)** | 1A, 2, 3, 4, 5, 5A, 5B, 6A, 7, 7A, 7B, 8, 8A, 9, 10, 12, 12A + all designer gateways |
 | 3 | Project Manager (Abigail's team) | Task 6 (con Designer) |
 | 4 | Sales Coordinator | Task 11 |
-| 5 | Salesperson / WPC (Caitlin Barolet · Danielle Dunlap for Metro Legal) | SE1 + Task 11A + receives messages |
+| 5 | Salesperson / WPC (Designer Nova · Danielle Dunlap for Metro Legal) | SE1 + Task 11A + receives messages |
 
 ## Mapping BPMN → demo steps (17 incluyendo small-project alt path)
 

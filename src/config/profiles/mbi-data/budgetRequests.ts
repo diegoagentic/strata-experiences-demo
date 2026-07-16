@@ -1,6 +1,6 @@
 ﻿import type { BudgetRequest, Scenario, Validation } from './types';
 
-// ═══ HERO BUDGET — Enterprise Holdings · Mark Kielhafner's $18K story ═══
+// ═══ HERO BUDGET — Enterprise Holdings · Executive Sponsor's $18K story ═══
 // This is the demo's emotional peak. The validation step catches an Allsteel
 // worksurface mismatch with $18,240 prevented impact (94% AI confidence).
 

@@ -137,7 +137,7 @@ export default function CoNYMorningQueue({ onSelectOrder }: CoNYMorningQueueProp
                                             <span className="text-[10px] font-black text-info">RC</span>
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-[12px] font-bold text-foreground">Robert Chen</p>
+                                            <p className="text-[12px] font-bold text-foreground">Account Manager Bly</p>
                                             <p className="text-[10px] text-muted-foreground">Miller Knoll Rep · robert.chen@millerknoll.com</p>
                                         </div>
                                         <CheckCircle2 className="h-4 w-4 text-success shrink-0" />
@@ -157,7 +157,7 @@ export default function CoNYMorningQueue({ onSelectOrder }: CoNYMorningQueueProp
                                     {sendStep === 'sent' && (
                                         <div className="flex items-center gap-2 p-3 bg-success/5 border border-success/20 rounded-xl animate-in fade-in duration-300">
                                             <CheckCircle2 className="h-4 w-4 text-success shrink-0" />
-                                            <p className="text-[12px] font-bold text-success">Sent to Robert Chen · May 6 · 8:21 AM</p>
+                                            <p className="text-[12px] font-bold text-success">Sent to Account Manager Bly · May 6 · 8:21 AM</p>
                                         </div>
                                     )}
                                 </div>

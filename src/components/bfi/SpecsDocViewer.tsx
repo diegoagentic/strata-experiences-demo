@@ -68,7 +68,7 @@ export default function SpecsDocViewer({ confirmed = false }: SpecsDocViewerProp
                                 </div>
                                 <div className="text-right">
                                     <div className="text-[10px] font-black uppercase tracking-wide text-foreground">MILLER KNOLL</div>
-                                    <div className="text-[7px] text-muted-foreground dark:text-muted-foreground font-mono">Robert Chen · Rep</div>
+                                    <div className="text-[7px] text-muted-foreground dark:text-muted-foreground font-mono">Account Manager Bly · Rep</div>
                                 </div>
                             </div>
                             {/* Band */}
@@ -148,11 +148,11 @@ export default function SpecsDocViewer({ confirmed = false }: SpecsDocViewerProp
                                         ))}
                                     </svg>
                                     <div className="text-[7px] text-muted-foreground dark:text-muted-foreground mt-1">
-                                        NYC Dept. of Education · DOE-2847 · by Robert Chen · Miller Knoll
+                                        NYC Dept. of Education · DOE-2847 · by Account Manager Bly · Miller Knoll
                                     </div>
                                 </div>
                             </div>
-                            <div className="text-[9px] text-muted-foreground mt-2 pb-2 text-center">Read-only · Submitted by Robert Chen · Miller Knoll</div>
+                            <div className="text-[9px] text-muted-foreground mt-2 pb-2 text-center">Read-only · Submitted by Account Manager Bly · Miller Knoll</div>
                         </div>
                     </div>
                 )}

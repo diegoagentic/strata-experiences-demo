@@ -54,7 +54,7 @@
 | Michael Boyle | Director of Strategic Accounts |
 | Lena Cisowski | Receiving Coordinator |
 | Nancy Bos (Miller Knoll) | MK Invoice Processor |
-| Walter Goley | CoNY Project Manager |
+| Operations Manager Bly | CoNY Project Manager |
 | Patricia Hilger | Finance / AR |
 
 ---

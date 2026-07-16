@@ -29,7 +29,7 @@ const REVISIONS: QuoteRevision[] = [
     {
         number: 3,
         date: '2026-01-18 11:42',
-        author: 'David Park · Sales Rep',
+        author: 'Regional Sales Manager Reyes · Sales Rep',
         reason: 'Client requested CF-6036 → CF-6021 fabric swap on lounge (item F-SSC346030C)',
         netValue: 25398,
         netDelta: -376,
@@ -43,7 +43,7 @@ const REVISIONS: QuoteRevision[] = [
     {
         number: 2,
         date: '2026-01-15 09:14',
-        author: 'David Park · Sales Rep',
+        author: 'Regional Sales Manager Reyes · Sales Rep',
         reason: 'Added 2 additional Triple Door Lockers per client expansion',
         netValue: 25774,
         netDelta: 1395,
@@ -57,7 +57,7 @@ const REVISIONS: QuoteRevision[] = [
     {
         number: 1,
         date: '2026-01-09 16:32',
-        author: 'David Park · Sales Rep',
+        author: 'Regional Sales Manager Reyes · Sales Rep',
         reason: 'Initial quote from RFQ-2026-001',
         netValue: 24379,
         netDelta: 0,

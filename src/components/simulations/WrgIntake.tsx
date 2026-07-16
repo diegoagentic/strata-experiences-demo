@@ -212,12 +212,12 @@ export default function WrgIntake({ onNavigate }: { onNavigate?: (page: string) 
             {/* ── Strata Expert — Assigned ── */}
             <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Strata Expert — Assigned</div>
             <div className="grid grid-cols-2 gap-3">
-                {/* David Park — ASSIGNED */}
+                {/* Regional Sales Manager Reyes — ASSIGNED */}
                 <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
                     <div className="flex items-center gap-3 mb-3">
                         <div className="w-10 h-10 rounded-full bg-green-200 dark:bg-green-500/20 flex items-center justify-center text-sm font-black text-green-700 dark:text-green-400 ring-2 ring-green-400">DP</div>
                         <div>
-                            <div className="text-[11px] font-bold text-foreground">David Park</div>
+                            <div className="text-[11px] font-bold text-foreground">Regional Sales Manager Reyes</div>
                             <div className="text-[10px] text-muted-foreground">Strata Expert — Dallas, 32 mi</div>
                         </div>
                         <CheckCircleIcon className="h-5 w-5 text-green-500 ml-auto" />
@@ -407,9 +407,9 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
         },
         {
             key: 'assignment', label: 'Expert Assignment', badge: 'ASSIGNED', badgeColor: 'green',
-            summary: 'David Park — Dallas, 96.3% accuracy, 60% workload',
+            summary: 'Regional Sales Manager Reyes — Dallas, 96.3% accuracy, 60% workload',
             details: [
-                { k: 'Assigned To', v: 'David Park — Strata Expert' },
+                { k: 'Assigned To', v: 'Regional Sales Manager Reyes — Strata Expert' },
                 { k: 'Location', v: 'Dallas, TX — 32 miles from site' },
                 { k: 'Healthcare Accuracy', v: '96.3% on similar projects' },
                 { k: 'Current Workload', v: '3 active projects (60% capacity)' },
@@ -457,10 +457,10 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
             ],
         },
         {
-            key: 'expert', label: 'Expert Assignment', value: 'David Park — HIGH priority', color: 'green',
-            reviewTitle: 'Expert Assignment — David Park',
+            key: 'expert', label: 'Expert Assignment', value: 'Regional Sales Manager Reyes — HIGH priority', color: 'green',
+            reviewTitle: 'Expert Assignment — Regional Sales Manager Reyes',
             reviewFields: [
-                { k: 'Expert', v: 'David Park — Strata Expert' },
+                { k: 'Expert', v: 'Regional Sales Manager Reyes — Strata Expert' },
                 { k: 'Priority', v: 'HIGH' },
                 { k: 'Location', v: 'Dallas, TX — 32 mi from site' },
                 { k: 'HC Accuracy', v: '96.3%' },
@@ -486,7 +486,7 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
                                     <span className="text-[9px] px-2 py-0.5 rounded-full bg-red-500 text-white font-bold">ACTION REQUIRED</span>
                                 </div>
                                 <p className="text-[11px] text-muted-foreground mt-1">
-                                    AI-generated intake — assigned to David Park (Dallas), Smartsheet #2026-JPS-HCW populated
+                                    AI-generated intake — assigned to Regional Sales Manager Reyes (Dallas), Smartsheet #2026-JPS-HCW populated
                                 </p>
                                 <p className="text-[10px] text-brand-600 dark:text-brand-400 mt-2 flex items-center gap-1">Click to review <ArrowRightIcon className="h-3 w-3" /></p>
                             </div>
@@ -503,7 +503,7 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
                         {[
                             { label: 'Project', value: 'JPS Health Center', detail: '14,200 sqft · 6 floors', icon: '🏥' },
                             { label: 'Vertical', value: 'Healthcare', detail: 'Hospital delivery site', color: 'amber' as const, icon: '⚕️' },
-                            { label: 'Expert', value: 'David Park', detail: 'Dallas · 96.3% accuracy', color: 'green' as const, icon: '👤' },
+                            { label: 'Expert', value: 'Regional Sales Manager Reyes', detail: 'Dallas · 96.3% accuracy', color: 'green' as const, icon: '👤' },
                             { label: 'Estimation', value: 'Complex Sheet', detail: '24 items · >50 threshold', color: 'purple' as const, icon: '📋' },
                         ].map(c => (
                             <div key={c.label} className={`p-3 rounded-lg border ${
@@ -621,7 +621,7 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
                             {!returnSent ? (
                                 <>
                                     <div className="p-3 rounded-lg bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/20 mb-3">
-                                        <div className="text-[10px] font-bold text-amber-700 dark:text-amber-400 mb-1">To: David Park — Strata Expert</div>
+                                        <div className="text-[10px] font-bold text-amber-700 dark:text-amber-400 mb-1">To: Regional Sales Manager Reyes — Strata Expert</div>
                                         <div className="text-[10px] text-foreground leading-relaxed">
                                             Hi David, I've reviewed the intake summary for JPS Health Center and have some questions before approving.
                                             Could you verify the delivery logistics for the hospital site? Restricted hours and freight elevator access
@@ -648,7 +648,7 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
                             ) : (
                                 <div className="flex items-center gap-2 p-3 rounded-lg bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
                                     <CheckCircleIcon className="h-4 w-4 text-green-500 shrink-0" />
-                                    <span className="text-[11px] font-bold text-green-700 dark:text-green-400">Review request sent to David Park — returned to Expert Hub</span>
+                                    <span className="text-[11px] font-bold text-green-700 dark:text-green-400">Review request sent to Regional Sales Manager Reyes — returned to Expert Hub</span>
                                 </div>
                             )}
                         </div>
@@ -668,7 +668,7 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
                                         {confirmDone ? 'Revisado con éxito — listo para estimaciones' : 'Enviando confirmación...'}
                                     </span>
                                     <p className="text-[10px] text-muted-foreground">
-                                        {confirmDone ? 'Intake approved — estimation phase authorized for David Park' : 'Validating intake summary and notifying expert...'}
+                                        {confirmDone ? 'Intake approved — estimation phase authorized for Regional Sales Manager Reyes' : 'Validating intake summary and notifying expert...'}
                                     </p>
                                 </div>
                                 {confirmDone && <span className={`text-[9px] px-2 py-0.5 rounded-full ${colorStyles.green} font-bold`}>SENT</span>}

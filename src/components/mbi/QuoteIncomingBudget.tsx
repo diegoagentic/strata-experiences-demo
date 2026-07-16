@@ -73,7 +73,7 @@ export default function QuoteIncomingBudget() {
                             Enterprise Holdings · New HQ Floor 12
                         </div>
                         <div className="text-xs text-muted-foreground mt-0.5">
-                            Budget BDG-2026-002 · approved by Amanda Renshaw · signed by client last week
+                            Budget BDG-2026-002 · approved by Sales Rep Ash · signed by client last week
                         </div>
                     </div>
                 </div>

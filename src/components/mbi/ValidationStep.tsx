@@ -3,7 +3,7 @@
  * PURPOSE: ⭐ HERO MOMENT of the entire demo. Shows AI-detected validations
  *          that the Budget Builder catches BEFORE the budget reaches the client.
  *          Primary: the $18,240 Vertex Modular worksurface mismatch — the story
- *          Mark Kielhafner cited during the MBI AI Readiness assessment.
+ *          Executive Sponsor cited during the MBI AI Readiness assessment.
  *
  *          Secondary: a warning-level finish inconsistency ($320 impact).
  *

@@ -16,7 +16,7 @@ import type { ConnectedUser } from './StrataEstimatorNavbar'
 
 export const ROLE_PROFILES: Record<string, ConnectedUser> = {
     Expert: {
-        name: 'David Park',
+        name: 'Regional Sales Manager Reyes',
         role: 'Senior Estimator',
         photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
     },
@@ -26,17 +26,17 @@ export const ROLE_PROFILES: Record<string, ConnectedUser> = {
         photo: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80&h=80&fit=crop&crop=face',
     },
     Dealer: {
-        name: 'Sara Chen',
+        name: 'Account Manager Kai',
         role: 'Salesperson',
         photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face',
     },
     'Sales Coordinator': {
-        name: 'Riley Morgan',
+        name: 'Designer Riley',
         role: 'Sales Account Coordinator',
         photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face',
     },
     'Project Manager': {
-        name: 'James Ortiz',
+        name: 'PM James',
         role: 'Senior Project Manager',
         photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face',
     },

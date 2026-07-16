@@ -885,7 +885,7 @@ export default function QuickMovementsModal({ isOpen, onClose }: QuickMovementsM
                                                 <div className="bg-muted/50 rounded-xl p-4 border border-border mb-6 text-left space-y-2">
                                                     <div className="flex items-center gap-2 text-sm">
                                                         <SparklesIcon className="w-4 h-4 text-indigo-500 shrink-0" />
-                                                        <span className="text-muted-foreground">Notification sent to <span className="font-semibold text-foreground">Expert David Park</span></span>
+                                                        <span className="text-muted-foreground">Notification sent to <span className="font-semibold text-foreground">Expert Regional Sales Manager Reyes</span></span>
                                                     </div>
                                                     <div className="flex items-center gap-2 text-sm">
                                                         <CheckCircleIcon className="w-4 h-4 text-green-500 shrink-0" />

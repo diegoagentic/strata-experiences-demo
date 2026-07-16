@@ -25,10 +25,10 @@
 |---|---|---|
 | Mark Loughlin | Founder & Owner | — |
 | Bill Palmer | Co-Founder & Owner (Officeworks South) | — |
-| Chris Hanes | CEO (2025 transition) | Confirmó top 7 pain points por email |
+| CEO Hart | CEO (2025 transition) | Confirmó top 7 pain points por email |
 | Sarah Finnegan | CRO | National sales process owner |
 | Steve Grillo Jr | President | — |
-| Felicia Miano-Poles | EVP Design & PM (DC + Southern) | 25 años exp · tacit knowledge dramatizado sc1.7 |
+| EVP Design | EVP Design & PM (DC + Southern) | 25 años exp · tacit knowledge dramatizado sc1.7 |
 | George Dakin | EVP Finance | — |
 | Christy Gallo | EVP HR & Culture | — |
 
@@ -36,9 +36,9 @@
 
 | Persona | Rol | Demo role |
 |---|---|---|
-| **Felicia Miano-Poles** | EVP Design & PM · DC + S | Manager · escalation · tacit knowledge surface |
+| **EVP Design** | EVP Design & PM · DC + S | Manager · escalation · tacit knowledge surface |
 | **Rebecca Warren** | Design Manager · MA + NY + NJ | Peer auditor (sc1.7) |
-| **Kimberly Tucker** | Design Manager · PA + Pittsburgh + Ancillary | **Protagonist · cross-market assignment to Metro Legal DC** |
+| **Design Manager Ellis** | Design Manager · PA + Pittsburgh + Ancillary | **Protagonist · cross-market assignment to Metro Legal DC** |
 | ~30 designers | Distributed across markets | Capacity heatmap (sc1.0b + Dashboard) |
 
 ## 4. Sistemas
@@ -67,7 +67,7 @@
 | Special Quote # | **436533** (price-protected · law firm) |
 | Dealer | U01042 OFFICEWORKS-DC (McLean VA · IRS# 84-3813627) |
 | Ship to | Turn Key Office Installations · 10001 Franklin Square Dr Ste H · Nottingham MD 21236 |
-| Salesreps | Caitlin Barolet · Danielle Dunlap |
+| Salesreps | Designer Nova · Danielle Dunlap |
 | Manufacturer | Teknion (TFS) |
 | Total | List $296,228.13 · Discount $234,763.33 · **Net $61,464.80** · PO Amount $58,711.68 |
 | Sched Ship | 2026/03/20 |
@@ -78,7 +78,7 @@
 
 **Activa pain points:** SC1 (incomplete CAD) + SC2 (71-line spec check) + SC3 (13 CR lookups) + SC4 (SQ required) + SC5 (Kimberly cross-market) + SC7 (Felicia tacit) — 6 of 7 SC pain points en un solo flujo.
 
-## 6. CEO Top 7 pain points (Chris Hanes confirmed via email)
+## 6. CEO Top 7 pain points (CEO Hart confirmed via email)
 
 | Rank | ID | Pain Point | Demo coverage |
 |---|---|---|---|

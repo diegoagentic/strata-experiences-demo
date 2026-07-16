@@ -58,7 +58,7 @@ const KPI_BY_DEPT: Record<DeptFilter, { month: string; pending: number; onTime: 
 }
 
 const FUEL_DRILL = [
-    { name: 'John Smith',  amount: '$95.00',  receipt: true, purpose: 'Field ops — Tampa',     location: 'Tampa'   },
+    { name: 'Employee Alpha',  amount: '$95.00',  receipt: true, purpose: 'Field ops — Tampa',     location: 'Tampa'   },
     { name: 'Maria G.',    amount: '$140.00', receipt: true, purpose: 'Client site — Orlando', location: 'Orlando' },
     { name: 'Carlos Ruiz', amount: '$180.00', receipt: true, purpose: 'Field ops — Miami',     location: 'Miami'   },
 ]
@@ -766,7 +766,7 @@ const TOP_APPROVERS = [
     { initials: 'TF', name: 'Tammy Flick',      role: 'CAO, Operations', amount: '$58.5k', width: 100 },
     { initials: 'MC', name: 'Mike Chen',         role: 'Sales Director',  amount: '$42.3k', width: 72  },
     { initials: 'SR', name: 'Sarah Reynolds',    role: 'PM Lead',         amount: '$38.1k', width: 65  },
-    { initials: 'DP', name: 'David Park',        role: 'Install Manager', amount: '$28.7k', width: 49  },
+    { initials: 'DP', name: 'Regional Sales Manager Reyes',        role: 'Install Manager', amount: '$28.7k', width: 49  },
     { initials: 'MB', name: 'Mehmet Bakkaloglu', role: 'CFO',             amount: '$20.4k', width: 35  },
 ]
 

@@ -93,7 +93,7 @@ export default function MBIAccountingPage() {
 
     const persona = (
         <MBIPersonaBadge
-            name="Kathy Belleville"
+            name="Operations Manager Rowe"
             role="Controller · Accounting"
             isPilot
             tone="ai"
@@ -122,8 +122,8 @@ export default function MBIAccountingPage() {
             preHeader={tabSwitcher}
             title={activeTab === 'accounting' ? 'Accounting AI' : 'Collections AI'}
             subtitle={activeTab === 'accounting'
-                ? 'Prototype · Phase 1 (Mark\'s pick) · Kathy Belleville (Controller) · daily accounting queue · 4h → 18 min'
-                : 'Flow 2 · AR aging + collection follow-ups · Kathy Belleville (Controller)'}
+                ? 'Prototype · Phase 1 (Mark\'s pick) · Operations Manager Rowe (Controller) · daily accounting queue · 4h → 18 min'
+                : 'Flow 2 · AR aging + collection follow-ups · Operations Manager Rowe (Controller)'}
             icon={<Receipt className="h-5 w-5" />}
             activeApp="mbi-accounting"
         >

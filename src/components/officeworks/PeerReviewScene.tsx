@@ -140,7 +140,7 @@ export default function PeerReviewScene({ onContinue, peerName }: Props) {
                 <Bell className="h-4 w-4 text-ai shrink-0 mt-0.5" aria-hidden="true" />
                 <div className="flex-1 min-w-0 text-xs">
                     <div className="font-semibold text-foreground">
-                        Review request from Kimberly Tucker
+                        Review request from Design Manager Ellis
                     </div>
                     <div className="text-muted-foreground mt-0.5">
                         Kimberly sent her Metro Legal 4th Floor self-audit for peer review · 2 min ago · 5 items pre-flagged by Strata · Metro Legal-4F_audit-notes-v1.pdf
@@ -196,7 +196,7 @@ export default function PeerReviewScene({ onContinue, peerName }: Props) {
                             <div>
                                 <div className="font-medium text-foreground">Past incident warning</div>
                                 <div className="text-muted-foreground italic mt-0.5">
-                                    &quot;Recent project: three people checked it · 2 lines accidentally deleted during revision · missing shelves discovered at installation day.&quot; — Felicia Miano-Poles
+                                    &quot;Recent project: three people checked it · 2 lines accidentally deleted during revision · missing shelves discovered at installation day.&quot; — EVP Design
                                 </div>
                             </div>
                         </div>
@@ -378,7 +378,7 @@ export default function PeerReviewScene({ onContinue, peerName }: Props) {
                                                     <div className="text-[10px] italic text-muted-foreground">{rule.context}</div>
                                                 )}
                                                 <div className="text-[10px] text-muted-foreground">
-                                                    Source: Felicia Miano-Poles · 25 yrs OW · tacit knowledge captured by Strata
+                                                    Source: EVP Design · 25 yrs OW · tacit knowledge captured by Strata
                                                 </div>
                                                 {!isSaved && (
                                                     <button

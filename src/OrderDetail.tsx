@@ -387,7 +387,7 @@ const DiscrepancyActionCard = ({ msg }: { msg: Message }) => {
 }
 
 const collaborators = [
-    { name: "David Park", role: "Regional Sales Mgr", status: "online", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" },
+    { name: "Regional Sales Manager Reyes", role: "Regional Sales Mgr", status: "online", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" },
     { name: "Mike Ross", role: "Warehouse Lead", status: "offline", avatar: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" },
     { name: "AI Agent", role: "System Bot", status: "online", avatar: "AI" },
 ]
@@ -964,7 +964,7 @@ export default function OrderDetail({ onBack, onLogout, onNavigateToWorkspace, o
                                 )
                             })()}
                         </div>
-                        <SalesRepChip name="David Park" role="Sales Rep" />
+                        <SalesRepChip name="Regional Sales Manager Reyes" role="Sales Rep" />
                         {/* CBD chip · Kenya symmetry · only when delay info carries a call-before-delivery line. */}
                         {isDelayedOrder && delayInfo?.callBeforeDelivery && (
                             <span
@@ -1704,7 +1704,7 @@ export default function OrderDetail({ onBack, onLogout, onNavigateToWorkspace, o
                     isOpen={itemDrawerOpen}
                     onClose={() => setItemDrawerOpen(false)}
                     item={selectedItem}
-                    salesRep={{ name: 'David Park', initials: 'DP', role: 'Sales Rep' }}
+                    salesRep={{ name: 'Regional Sales Manager Reyes', initials: 'DP', role: 'Sales Rep' }}
                     revisionNumber={2}
                     quickActions={[
                         { icon: ArrowsRightLeftIcon, label: 'Convert to ACK', onClick: () => setIsConversionOpen(true), tone: 'primary' },

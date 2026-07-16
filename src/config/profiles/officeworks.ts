@@ -5,7 +5,7 @@
 //         Teknion 30-year partner · GSA contract · 2022 Teknion Orion Award)
 //
 // DEMO PROCESS: Spec Check & Design (Furniture vertical · 30 designers · 3 mgrs)
-// PROTAGONIST: Kimberly Tucker (Design Manager · PA/Pittsburgh/Ancillary)
+// PROTAGONIST: Design Manager Ellis (Design Manager · PA/Pittsburgh/Ancillary)
 // DEMO CLIENT: Metro Legal Firm LLC · DC market · price-protected SQ
 //
 // STRUCTURE: 17 steps mapped from BPMN (12 numbered tasks + 9 sub-steps +
@@ -17,7 +17,7 @@
 //   Group 4 — Spec Check  ⭐ HEROES     sc1.6 (SC2+SC3), sc1.7 (SC7)
 //   Group 5 — Submission & Confirm      sc1.8, sc1.8b, sc1.9 ⭐ (Gemini)
 //
-// CEO TOP 4 PAIN POINTS (Chris Hanes confirmed):
+// CEO TOP 4 PAIN POINTS (CEO Hart confirmed):
 //   #1 SC2 → sc1.6  |  #2 SC5 → Dashboard
 //   #3 SC7 → sc1.7  |  #4 SC6 → Dashboard
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -399,11 +399,11 @@ export const OFFICEWORKS_STEP_MESSAGES: Record<string, string[]> = {
         'Form received · Metro Legal 4th Floor · DC market',
         'Scanning attachments · CAD file required: not found',
         'GSA client detected · SQ number required: not provided',
-        'Drafting clarification email back to Caitlin Barolet',
+        'Drafting clarification email back to Designer Nova',
         'Designer assignment blocked until reply with CAD + SQ',
     ],
     'sc1.0b': [
-        'Reply received from Caitlin Barolet · 2026-04-17 11:08',
+        'Reply received from Designer Nova · 2026-04-17 11:08',
         'CAD attachment parsed · manatt-4th-floor.dwg · 4.8 MB',
         'SQ #436533 confirmed · GSA price-protected · catalog 2025',
         'Form completeness · all required fields satisfied',
@@ -419,9 +419,9 @@ export const OFFICEWORKS_STEP_MESSAGES: Record<string, string[]> = {
         'Pricing parsed · $1,541,392 List · AI Validator queued · 894 checks',
         'Validation deck attached · Metro Legal-Validation-Doc-v1.pptx · 24 slides',
         'Strata read 6 sections · floor plan · 2D · 3D · finishes · wire mgmt · electrical',
-        'Proposal sent to Caitlin Barolet · BOM PDF + Validation Doc attached',
+        'Proposal sent to Designer Nova · BOM PDF + Validation Doc attached',
         'GW2A gate · SQ + Teknion submission blocked until client sign-off',
-        'Felicia Miano-Poles approved · proposal locked · proceed to SQ check',
+        'EVP Design approved · proposal locked · proceed to SQ check',
     ],
     'sc1.4': [
         'GW2C: client = Metro Legal · GSA contract · SQ required',
@@ -461,7 +461,7 @@ export const OFFICEWORKS_STEP_MESSAGES: Record<string, string[]> = {
         'Drafting BOM Submission email · standard template',
         'Attaching BOM PDF + SP4 file',
         'Pre-validating SP4 vs NetSuite schema',
-        'Sent to Caitlin Barolet + Sales Coordinator',
+        'Sent to Designer Nova + Sales Coordinator',
     ],
     'sc1.8b': [
         'Coordinator: uploading SP4 to NetSuite · 4 min',
@@ -571,7 +571,7 @@ export const OFFICEWORKS_STEP_MESSAGES: Record<string, string[]> = {
         'Reading 7-message email thread · 3 weeks of context',
         'Auto-summarized into BANT + MEDDIC template',
         'Budget · est $400-600k (anchored on CBRE prior projects)',
-        'Authority · Caitlin Barolet · Metro Legal facilities lead',
+        'Authority · Designer Nova · Metro Legal facilities lead',
         'Need · 4F refresh · GSA SQ price-protected · 120 workstations',
         'Timing · move-in target 2026-08-30 · 14 weeks out',
         '2 missing MEDDIC fields flagged · Champion · Decision criteria',

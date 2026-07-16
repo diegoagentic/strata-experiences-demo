@@ -646,7 +646,7 @@ function WorksFormPreview({ stage }: { stage: OfficeworksReviewStage }) {
         { label: 'Project', value: 'Metro Legal · 4th Floor · Workstations', status: 'complete', required: true },
         { label: 'Market', value: 'DC (Washington D.C.)', status: 'complete', required: true },
         { label: 'Scope', value: '~30 workstations · Standard/Large', status: 'complete', required: true },
-        { label: 'Submitted by', value: 'Caitlin Barolet · DC Salesrep', status: 'complete', required: true },
+        { label: 'Submitted by', value: 'Designer Nova · DC Salesrep', status: 'complete', required: true },
         { label: 'Co-submitter', value: 'Danielle Dunlap', status: 'complete', required: false },
         { label: 'CAD file (.dwg)', value: cadValue, status: isIntakePending ? 'missing' : 'complete', required: true, note: isIntakePending ? 'Required to start design in CET' : undefined },
         { label: 'PDF floor plan', value: 'manatt-4th-floor-floorplan.pdf', status: 'complete', required: false },
@@ -684,7 +684,7 @@ function WorksFormPreview({ stage }: { stage: OfficeworksReviewStage }) {
                     <div className="px-4 py-2 bg-ai/5 border-b border-ai/20 flex items-start gap-2">
                         <Sparkles className="h-3.5 w-3.5 text-ai shrink-0 mt-0.5" />
                         <div className="text-[11px] text-ai">
-                            <span className="font-bold">Strata flagged {missingCount} missing required fields</span> · email drafted to Caitlin Barolet · CAD must arrive before design can start in CET (Task 3)
+                            <span className="font-bold">Strata flagged {missingCount} missing required fields</span> · email drafted to Designer Nova · CAD must arrive before design can start in CET (Task 3)
                         </div>
                     </div>
                 )}
@@ -973,7 +973,7 @@ function FloorPlanPreview({ stage }: { stage: OfficeworksReviewStage }) {
                         zoneALabel="ZONE A · WORKSTATIONS WS-01/WS-02 ×22"
                         zoneBLabel="ZONE B · CONFERENCE + BREAK"
                         zoneCLabel="ZONE C · WS-02.A ×8 + STORAGE"
-                        footerLabel={`Metro Legal Firm LLC · ${Metro Legal_ORDER_META.poNumber} · by Caitlin Barolet`}
+                        footerLabel={`Metro Legal Firm LLC · ${Metro Legal_ORDER_META.poNumber} · by Designer Nova`}
                     />
                 </div>
                 <div className="px-4 py-2.5 bg-muted/30 border-t border-border text-[10px] text-muted-foreground text-center">
@@ -1046,7 +1046,7 @@ function AttachmentsPreview({ stage }: { stage: OfficeworksReviewStage }) {
                     <div className="px-4 py-3 bg-ai/5 border-t border-ai/20 flex items-start gap-2">
                         <Sparkles className="h-3.5 w-3.5 text-ai shrink-0 mt-0.5" />
                         <div className="text-[11px] text-ai">
-                            <span className="font-bold">Clarification email drafted to Caitlin Barolet.</span> CAD must arrive before design can start in CET (Task 3).
+                            <span className="font-bold">Clarification email drafted to Designer Nova.</span> CAD must arrive before design can start in CET (Task 3).
                         </div>
                     </div>
                 ) : (
@@ -1110,7 +1110,7 @@ function DefaultStagePanel({ stage }: PanelProps) {
         'intake': {
             headline: 'Form completeness · Assign designer',
             body: <>
-                <p>Caitlin Barolet submitted the Works form for Metro Legal 4th Floor. <span className="text-warning font-medium">CAD file missing</span>, <span className="text-warning font-medium">SQ blank</span>.</p>
+                <p>Designer Nova submitted the Works form for Metro Legal 4th Floor. <span className="text-warning font-medium">CAD file missing</span>, <span className="text-warning font-medium">SQ blank</span>.</p>
                 <p className="mt-2">Strata drafted a clarifying email to Caitlin and surfaced the capacity heatmap. Felicia reviews the form and assigns the designer (GW1 soft check).</p>
             </>,
             cta: 'Request CAD + assign designer',
@@ -1213,7 +1213,7 @@ Thanks for submitting the Works form for the Metro Legal 4th Floor build-out. To
 
 The rest of the form is complete. As soon as the CAD arrives we'll assign and kick off.
 
-— Strata (drafted on behalf of Felicia Miano-Poles · EVP Design & PM)
+— Strata (drafted on behalf of EVP Design · EVP Design & PM)
 strata-ai@officeworks.com`
 
 function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValidate }: IntakeAssignPanelProps) {
@@ -1233,7 +1233,7 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
                         <ul className="mt-2 space-y-1.5">
                             <li className="flex items-start gap-2 text-xs text-warning">
                                 <AlertCircle className="h-3.5 w-3.5 shrink-0 mt-0.5" />
-                                <span><span className="font-semibold">CAD file missing</span> · Strata drafted email to Caitlin Barolet</span>
+                                <span><span className="font-semibold">CAD file missing</span> · Strata drafted email to Designer Nova</span>
                             </li>
                             <li className="flex items-start gap-2 text-xs text-warning">
                                 <AlertCircle className="h-3.5 w-3.5 shrink-0 mt-0.5" />
@@ -1275,7 +1275,7 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
                             </span>
                         </div>
                         <p className="text-xs text-muted-foreground">
-                            Strata drafted a clarification email to <span className="font-medium text-foreground">Caitlin Barolet</span> requesting the CAD file (.dwg) and SQ number. Designer assignment unlocks once the response arrives.
+                            Strata drafted a clarification email to <span className="font-medium text-foreground">Designer Nova</span> requesting the CAD file (.dwg) and SQ number. Designer assignment unlocks once the response arrives.
                         </p>
                         <div className="bg-muted/40 border border-border rounded-lg p-3 text-xs space-y-1">
                             <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
@@ -1291,7 +1291,7 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
 
                 {/* sc1.0b · resolved · designer list */}
                 {isIntakeComplete && (() => {
-                    const kim = findDesigner('Kimberly Tucker')
+                    const kim = findDesigner('Design Manager Ellis')
                     const kimCap = kim ? computeCapacity(kim) : null
                     const kimRationale = kimCap
                         ? `${kimCap.freeHours}h free this week / ${kimCap.availableHours}h available · prior Metro Legal · cross-market`
@@ -1302,7 +1302,7 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
                             <CheckCircle2 className="h-4 w-4 text-success shrink-0 mt-0.5" />
                             <div className="text-xs">
                                 <div className="font-semibold text-success">Caitlin replied with CAD + SQ confirmed · received 2026-04-17 11:08</div>
-                                <div className="text-muted-foreground">Ready to assign · Felicia recommends Kimberly Tucker · {kimRationale}</div>
+                                <div className="text-muted-foreground">Ready to assign · Felicia recommends Design Manager Ellis · {kimRationale}</div>
                             </div>
                         </div>
 
@@ -1348,7 +1348,7 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
                         <CapacityHeatmap
                             onSelect={onAssignDesigner}
                             selectedName={assignedDesigner}
-                            highlightName="Kimberly Tucker"
+                            highlightName="Design Manager Ellis"
                             priorClientHighlight={{
                                 label: 'Worked with Metro Legal',
                                 predicate: d => !!d.priorMetroLegal,
@@ -1951,7 +1951,7 @@ function DesignBOMPanel({ onValidate, onBOMUploaded, onValidationStarted, onVali
                                 <div className="flex-1 min-w-0">
                                     <div className="text-sm font-semibold text-foreground">Proposal ready to send</div>
                                     <div className="text-[11px] text-muted-foreground mt-0.5">
-                                        BOM (149 lines · $1.54M list) + Validation Document (24 slides · 6 sections). Sales (Caitlin Barolet) will forward to Felicia Miano-Poles at Metro Legal.
+                                        BOM (149 lines · $1.54M list) + Validation Document (24 slides · 6 sections). Sales (Designer Nova) will forward to EVP Design at Metro Legal.
                                     </div>
                                 </div>
                             </div>
@@ -2008,7 +2008,7 @@ function DesignBOMPanel({ onValidate, onBOMUploaded, onValidationStarted, onVali
                                 <div className="flex-1 min-w-0">
                                     <div className="text-sm font-semibold text-foreground">Client approved the proposal</div>
                                     <div className="text-[11px] text-muted-foreground mt-0.5">
-                                        Felicia Miano-Poles signed off · BOM + validation locked · GW2A gate cleared
+                                        EVP Design signed off · BOM + validation locked · GW2A gate cleared
                                     </div>
                                 </div>
                             </div>
@@ -2129,7 +2129,7 @@ function DesignBOMPanel({ onValidate, onBOMUploaded, onValidationStarted, onVali
                     alertRows: [
                         { label: 'Project',   value: 'Metro Legal 4th Floor · DC market' },
                         { label: 'Documents', value: 'BOM + Validation Document' },
-                        { label: 'Sent to',   value: 'Caitlin Barolet (Sales) → Felicia Miano-Poles (Metro Legal)' },
+                        { label: 'Sent to',   value: 'Designer Nova (Sales) → EVP Design (Metro Legal)' },
                     ],
                     successTitle: 'Proposal sent to client',
                     successSubtitle: "Awaiting Felicia's sign-off · typical reply 1-2 business days",
@@ -2207,7 +2207,7 @@ The 4 documented risk checks (PZ column · all 71 items on SQ · Service Fees/T-
 
 Next step: submitting the Order Preview to Tifani at Teknion. I'll notify you when she returns the preview number.
 
-— Kimberly Tucker
+— Design Manager Ellis
    Design Manager · PA · cross-market to DC
    Officeworks Inc.`
 }
@@ -2507,7 +2507,7 @@ function SQCheckPanel({ onValidate }: SQCheckPanelProps) {
                             },
                             {
                                 title: 'Officeworks-DC special pricing form',
-                                detail: 'on file · filed by Caitlin Barolet at intake',
+                                detail: 'on file · filed by Designer Nova at intake',
                                 badge: 'ON FILE',
                                 badgeClass: 'bg-success/10 text-success border-success/20',
                                 meta: '18h ago',
@@ -2645,7 +2645,7 @@ SQ #${Metro Legal_ORDER_META.specialQuote} confirmed at our end · 2025 catalog 
 
 Please let me know if you spot any spec gaps. Targeting your typical 1-2 week turnaround for the preview number.
 
-— Kimberly Tucker
+— Design Manager Ellis
    Design Manager · PA · cross-market to DC
    Officeworks Inc.`,
         attachments: [
@@ -2958,7 +2958,7 @@ Grain direction: vertical · matches the validation doc approved by Metro Legal 
 
 No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${Metro Legal_ORDER_META.schedShipDate}.
 
-— Kimberly Tucker
+— Design Manager Ellis
    Design Manager · PA · cross-market to DC
    Officeworks Inc.`
             : selectedOption === 'horizontal'
@@ -2970,7 +2970,7 @@ Grain direction: horizontal. Note: this differs from the other 4 Flintwood piece
 
 No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${Metro Legal_ORDER_META.schedShipDate}.
 
-— Kimberly Tucker
+— Design Manager Ellis
    Design Manager · PA · cross-market to DC
    Officeworks Inc.`
             : `Hi Tifani,
@@ -2981,7 +2981,7 @@ Grain direction: ${chosenValue || '—'}.
 
 No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${Metro Legal_ORDER_META.schedShipDate}.
 
-— Kimberly Tucker
+— Design Manager Ellis
    Design Manager · PA · cross-market to DC
    Officeworks Inc.`
 
@@ -2991,7 +2991,7 @@ Quick follow-up on your spec gap for CR 2046138 · attaching the corrected BOM w
 
 No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${Metro Legal_ORDER_META.schedShipDate}.
 
-— Kimberly Tucker
+— Design Manager Ellis
    Design Manager · PA · cross-market to DC
    Officeworks Inc.`
 
@@ -3323,13 +3323,13 @@ No other changes to the BOM. Resubmitting for your review · same Sched Ship tar
                             <div className="rounded-lg bg-muted/30 border border-border px-3 py-2 space-y-1">
                                 <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">3-way phasing thread</div>
                                 <div className="flex justify-between gap-2 text-foreground">
-                                    <span>Designer</span><span className="font-mono text-[11px]">Kimberly Tucker (you)</span>
+                                    <span>Designer</span><span className="font-mono text-[11px]">Design Manager Ellis (you)</span>
                                 </div>
                                 <div className="flex justify-between gap-2 text-foreground">
                                     <span>PM</span><span className="font-mono text-[11px]">Abigail's team · Furniture PMs</span>
                                 </div>
                                 <div className="flex justify-between gap-2 text-foreground">
-                                    <span>Salesperson</span><span className="font-mono text-[11px]">Caitlin Barolet · DC</span>
+                                    <span>Salesperson</span><span className="font-mono text-[11px]">Designer Nova · DC</span>
                                 </div>
                             </div>
                             <p className="text-muted-foreground italic text-[11px]">
@@ -3401,7 +3401,7 @@ const PRE_FLIGHT_SUBMISSION = [
     },
     {
         label: 'Recipient list verified · Coordinator role auto-resolved',
-        detail: 'Caitlin Barolet (DC Salesperson) + Sales Coordinator · Felicia CC for oversight',
+        detail: 'Designer Nova (DC Salesperson) + Sales Coordinator · Felicia CC for oversight',
     },
 ] as const
 
@@ -3470,11 +3470,11 @@ function SubmissionEmailPanel({ onValidate }: SubmissionEmailPanelProps) {
                         </div>
                         <div className="flex justify-between gap-3">
                             <span className="text-muted-foreground">To</span>
-                            <span className="text-foreground">Caitlin Barolet · Salesperson (DC)</span>
+                            <span className="text-foreground">Designer Nova · Salesperson (DC)</span>
                         </div>
                         <div className="flex justify-between gap-3">
                             <span className="text-muted-foreground">Cc</span>
-                            <span className="text-foreground">Sales Coordinator · Felicia Miano-Poles</span>
+                            <span className="text-foreground">Sales Coordinator · EVP Design</span>
                         </div>
                         <div className="flex justify-between gap-3">
                             <span className="text-muted-foreground">Subject</span>
@@ -3882,7 +3882,7 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                                     <div className="text-xs font-bold uppercase tracking-wider text-foreground truncate">
                                         Release PO to Teknion
                                     </div>
-                                    <div className="text-[10px] text-muted-foreground truncate">Salesperson · Caitlin Barolet</div>
+                                    <div className="text-[10px] text-muted-foreground truncate">Salesperson · Designer Nova</div>
                                 </div>
                                 <StatusChip variant={variant} />
                             </div>
@@ -6093,7 +6093,7 @@ function SalesOppIntakePanel({ onValidate }: LDPanelProps) {
                     </ul>
                 </div>
 
-                <SalesSourceCite source={`Felicia Miano-Poles · Spec Check 30-Apr · ~${SALES_VOLUME_FACTS.worksFormIncompletePctMin}-${SALES_VOLUME_FACTS.worksFormIncompletePctMax}% of Works forms arrive incomplete`} />
+                <SalesSourceCite source={`EVP Design · Spec Check 30-Apr · ~${SALES_VOLUME_FACTS.worksFormIncompletePctMin}-${SALES_VOLUME_FACTS.worksFormIncompletePctMax}% of Works forms arrive incomplete`} />
             </div>
             <SalesStickyCTA
                 label={missingCount > 0 ? 'Save opp record · request missing fields' : 'Save opp record · proceed'}

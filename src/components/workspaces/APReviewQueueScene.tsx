@@ -27,7 +27,7 @@ const QUICK_REASONS = [
 const PENDING_EXPENSES = [
     {
         id: 'john',
-        name: 'John Smith',
+        name: 'Employee Alpha',
         amount: '$95.00',
         approvedBy: 'Sarah Johnson',
         approvedDate: 'May 6',
@@ -200,7 +200,7 @@ export default function APReviewQueueScene({ onReview }: { onReview?: () => void
                             <AlertCircle className="h-3.5 w-3.5 text-destructive shrink-0" />
                             <p className="text-xs font-semibold text-destructive">Expense returned before GL review</p>
                         </div>
-                        <p className="text-[10px] text-muted-foreground">John Smith · $95.00 · removed from AP queue</p>
+                        <p className="text-[10px] text-muted-foreground">Employee Alpha · $95.00 · removed from AP queue</p>
                         {rejectNote && (
                             <div className="bg-background border border-border rounded-lg px-2.5 py-2">
                                 <p className="text-[10px] text-muted-foreground italic">"{rejectNote}"</p>
@@ -297,7 +297,7 @@ function APQueueToast({ onReview, onDismiss, onFlag }: { onReview?: () => void; 
                 <div className="flex-1 min-w-0">
                     <p className="text-[10px] font-bold text-ai uppercase tracking-wide mb-0.5">Strata · AP Queue ready</p>
                     <p className="text-xs font-semibold text-foreground leading-snug">
-                        John Smith · $95.00 · Mileage · Tolls / Cab / Parking — approved by Sarah Johnson
+                        Employee Alpha · $95.00 · Mileage · Tolls / Cab / Parking — approved by Sarah Johnson
                     </p>
                     <p className="text-[10px] text-muted-foreground mt-0.5">
                         Categories mapped · ready to confirm and post
@@ -315,7 +315,7 @@ function APQueueToast({ onReview, onDismiss, onFlag }: { onReview?: () => void; 
                 onClick={onReview}
                 className="w-full flex items-center justify-center gap-1.5 bg-primary text-primary-foreground text-xs font-bold py-2.5 rounded-lg hover:opacity-90 transition-opacity"
             >
-                Review GL — John Smith
+                Review GL — Employee Alpha
                 <ChevronRight className="h-3.5 w-3.5" />
             </button>
             <button

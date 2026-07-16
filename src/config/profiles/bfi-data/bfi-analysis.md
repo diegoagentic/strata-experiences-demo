@@ -116,7 +116,7 @@ Los dos procesos en scope están documentados en bfi-sot.md:
 
 ### 2.6 Stakeholders MBI — Perspectiva de Danny & Wendy (correcciones del mundo real)
 
-**Wendy Marchuck — SME Operations:**
+**Strata Sales Director — SME Operations:**
 - "Warehouse receiving is an animal of its own." OCR nunca funcionó en Audubon. No comprometerse con OCR de documentos de baja calidad hasta ver los docs reales.
 - "The agency fee calculation itself is doable. It's their process that's making it difficult." → El AI puede calcular el fee, pero el proceso alrededor necesita rediseñarse.
 - Su equipo ya soporta a BFI (2 personas en PC role) → tiene contexto real del día a día, no solo lo del assessment.
@@ -222,7 +222,7 @@ Los dos procesos en scope están documentados en bfi-sot.md:
 
 | Tarea | Owner | Notas |
 |---|---|---|
-| Obtener document samples de WIG (labor quotes + receiving docs) | Michael Boyle → David Penagos | Sin esto no se puede confirmar approach para WIG parsing |
+| Obtener document samples de WIG (labor quotes + receiving docs) | Michael Boyle → Product Manager Pen | Sin esto no se puede confirmar approach para WIG parsing |
 | Confirmar formato de CPR docs (structured PDF vs scanned) | Lauren DeMarco → David | Define si OCR es necesario o no para CPR |
 | Validar acceso a T-codes del contrato CoNY | David / Jessica | Noel & Miller website — ¿son accesibles sin login? |
 | Confirmar status CORE API License | Avanto Tech | Blocker para producción (no para el demo) |

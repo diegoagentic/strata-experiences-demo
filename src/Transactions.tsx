@@ -65,8 +65,8 @@ type ApprovalChainPhase = 'idle' | 'notification' | 'chain' | 'done'
 
 const CONVERSION_APPROVAL_STEPS = [
     { id: 'ai' as const, role: 'AI Compliance Agent', detail: 'Validating PO-ACK data integrity, pricing compliance, contract terms...', status: 'pending' as const },
-    { id: 'expert' as const, role: 'Expert — David Park', detail: 'Reviewing manufacturer confirmations, lead times, volume discounts...', status: 'pending' as const },
-    { id: 'dealer' as const, role: 'Dealer — Sara Chen', detail: 'Final approval: PO-to-ACK conversion for $3.2M project package', status: 'pending' as const },
+    { id: 'expert' as const, role: 'Expert — Regional Sales Manager Reyes', detail: 'Reviewing manufacturer confirmations, lead times, volume discounts...', status: 'pending' as const },
+    { id: 'dealer' as const, role: 'Dealer — Account Manager Kai', detail: 'Final approval: PO-to-ACK conversion for $3.2M project package', status: 'pending' as const },
 ]
 
 // ─── PO Review Data (Step 3.2 sub-phases) ─────────────────────────────────────
@@ -136,7 +136,7 @@ const DEMO_PROJECTS = [
         id: 'PRJ-2026-002',
         name: 'Apex Furniture — New HQ Fitout',
         client: 'Apex Furniture',
-        pm: 'Diego Morales',
+        pm: 'Strata PM Beta',
         fm: 'Carlos Rivera',
         status: 'Planning' as const,
         totalBudget: '$540K',
@@ -292,7 +292,7 @@ const recentRFQs = [
 ]
 
 // Pipeline stages
-// Post-Neocon-review taxonomies (2026-06-05). Authority: Wendy Marchuck > PDF > others.
+// Post-Neocon-review taxonomies (2026-06-05). Authority: Strata Sales Director > PDF > others.
 // Purchase Orders tab · 3 statuses (Wendy 40:53 / 41:34 / 43:03). Removed: PO Reviewed, In Production, Ready to ship, Shipped, Delivered (moved to Orders tab).
 const pipelineStages = ['PO Received', 'More Information Required', 'Pending Deposit']
 // Quotes tab · 4 statuses (Wendy 31:39 / 32:11 / 33:51 / 34:24). Removed: Draft (→ In Progress), Negotiating ("you don't negotiate a quote"), Approved ("becomes a PO"), Lost.
@@ -777,7 +777,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
         const dealerSlug = String(dealer).toLowerCase().replace(/[^a-z0-9]+/g, '.').replace(/^\.|\.$/g, '')
         const to = `${dealerSlug || 'contact'}@example.com`
         const project = row.project ? ` for ${row.project}` : ''
-        const signature = `\n\nBest,\nSara Chen\nAccount Manager`
+        const signature = `\n\nBest,\nAccount Manager Kai\nAccount Manager`
 
         // Template selection branches on tab + status so the prefilled draft matches
         // the moment in the workflow (e.g. backorder vs delivery confirmation).
@@ -2288,7 +2288,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                 <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-600 text-white font-bold">3-Level</span>
                                                             </div>
                                                             <p className="text-[11px] text-muted-foreground mt-1">
-                                                                Sequential approval required: AI Compliance Agent, Expert David Park, and Dealer Sara Chen must approve the $3.2M conversion.
+                                                                Sequential approval required: AI Compliance Agent, Expert Regional Sales Manager Reyes, and Dealer Account Manager Kai must approve the $3.2M conversion.
                                                             </p>
                                                             <div className="flex items-center gap-1 mt-2 text-[10px] text-brand-700 dark:text-brand-400 font-medium">
                                                                 <span>Click to start approval chain</span>
@@ -2720,7 +2720,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                                 <div className="flex items-center gap-2 mt-1">
                                                                                     <span className="inline-flex items-center gap-1 text-[10px] text-muted-foreground">
                                                                                         <span className="h-3.5 w-3.5 rounded-full bg-primary/20 text-foreground text-[7px] font-bold uppercase tracking-wider flex items-center justify-center">DP</span>
-                                                                                        Rep · <strong className="text-foreground font-medium not-italic">David Park</strong>
+                                                                                        Rep · <strong className="text-foreground font-medium not-italic">Regional Sales Manager Reyes</strong>
                                                                                     </span>
                                                                                     {(lifecycleTab === 'quotes' || lifecycleTab === 'orders' || lifecycleTab === 'acknowledgments') && (
                                                                                         <span className="inline-flex items-center gap-0.5 px-1 py-0 rounded text-[9px] font-bold uppercase tracking-wider bg-info/10 text-info border border-info/20">

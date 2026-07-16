@@ -126,7 +126,7 @@ export default function WrgDesigner({ onNavigate }: { onNavigate?: (page: string
                                     <span className="text-[9px] px-2 py-0.5 rounded-full bg-brand-500 text-zinc-900 font-bold">Just now</span>
                                 </div>
                                 <div className="text-[11px] text-muted-foreground mt-1">
-                                    David Park sent 1 item for your review — custom configuration requires designer verification.
+                                    Regional Sales Manager Reyes sent 1 item for your review — custom configuration requires designer verification.
                                 </div>
                             </div>
                         </div>
@@ -153,7 +153,7 @@ export default function WrgDesigner({ onNavigate }: { onNavigate?: (page: string
                                 className="w-8 h-8 rounded-full ring-2 ring-sky-400 shrink-0"
                             />
                             <div className="flex-1 min-w-0">
-                                <div className="text-[11px] font-bold text-foreground">David Park</div>
+                                <div className="text-[11px] font-bold text-foreground">Regional Sales Manager Reyes</div>
                                 <div className="text-[10px] text-muted-foreground">Strata Expert — Mismatch Detection (Step 1.2)</div>
                             </div>
                             <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold shrink-0 ${colorStyles.blue}`}>SENT TO YOU</span>

@@ -131,7 +131,7 @@ export function seniorityClass(s: Seniority): string {
 export const DESIGNER_PROFILES: DesignerProfile[] = [
     // ── DC + Southern (Felicia's region · 10 designers) ──
     {
-        name: 'Felicia Miano-Poles', region: 'dc', seniority: 'Lead', yearsAtOW: 25, utilization: 95, isLead: true, priorMetroLegal: true,
+        name: 'EVP Design', region: 'dc', seniority: 'Lead', yearsAtOW: 25, utilization: 95, isLead: true, priorMetroLegal: true,
         availableHoursPerWeek: 40,
         obligations: [{ label: 'Lead 1:1s + reviews', hoursPerWeek: 2 }],
         projects: { active: [
@@ -276,7 +276,7 @@ export const DESIGNER_PROFILES: DesignerProfile[] = [
 
     // ── PA + Pittsburgh + Ancillary (Kimberly's region · 10 designers) ──
     {
-        name: 'Kimberly Tucker', region: 'pa', seniority: 'Lead', yearsAtOW: 12, utilization: 45, isLead: true, priorMetroLegal: true,
+        name: 'Design Manager Ellis', region: 'pa', seniority: 'Lead', yearsAtOW: 12, utilization: 45, isLead: true, priorMetroLegal: true,
         availableHoursPerWeek: 40,
         projects: { active: [
             { code: 'PHI-LAW-2204', client: 'Philly Law Firm', value: 286000, stage: 'Design',     progress: 40, weeklyHours: 14 },
@@ -400,6 +400,6 @@ export const RECENT_ACTIVITY = [
     { when: '1 hr ago',   text: 'JPM Atlanta · spec check started by James O\'Brien',                       kind: 'progress' },
     { when: '2 hr ago',   text: 'GSA DC2 · Sandra Park submitted BOM (PDF + SP4)',                          kind: 'progress' },
     { when: 'Yesterday',  text: 'NYC DOH · peer review completed by Rebecca Warren',                       kind: 'success' },
-    { when: '2 days ago', text: 'Philly Law Firm · designer reassigned · Kimberly Tucker (cross-market)',  kind: 'progress' },
+    { when: '2 days ago', text: 'Philly Law Firm · designer reassigned · Design Manager Ellis (cross-market)',  kind: 'progress' },
     { when: '3 days ago', text: 'CMU Ancillary · acknowledgment discrepancy resolved with Teknion',        kind: 'success' },
 ]

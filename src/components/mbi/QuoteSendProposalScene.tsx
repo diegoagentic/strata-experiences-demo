@@ -245,7 +245,7 @@ function FormalProposalPanel({ sent, sentAt, onSend }: { sent: boolean; sentAt: 
                 </p>
 
                 <div className="space-y-1 text-[12px]">
-                    <div className="font-bold">Marcia Ludwig</div>
+                    <div className="font-bold">Design Coordinator</div>
                     <div className="text-muted-foreground">Director of Project Management</div>
                     <div className="text-muted-foreground">Modern Business Interiors</div>
                 </div>

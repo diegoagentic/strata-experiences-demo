@@ -107,7 +107,7 @@ const urgentActions = [
                 { label: 'Client', value: 'Office Images Inc.' },
                 { label: 'Quote Value', value: '$18,450.00 (Net after 55% disc.)' },
                 { label: 'Items', value: '12 line items · 3 categories' },
-                { label: 'Created', value: 'Mar 8, 2026 by David Park' },
+                { label: 'Created', value: 'Mar 8, 2026 by Regional Sales Manager Reyes' },
                 { label: 'Expiration Date', value: 'Mar 10, 2026 at 4:00 PM' },
             ],
             topItems: ['6× Ergonomic Task Chair ($471.60 ea)', '4× WORKSURFACE 30Dx72W ($249.28 ea)', '2× LATERAL FILE 36" ($566.96 ea)'],
@@ -146,13 +146,13 @@ const urgentActions = [
                 { label: 'Order', value: '#OR-999 · Apex Furniture' },
                 { label: 'Total Value', value: '$43,750.00' },
                 { label: 'Items', value: '125 × Ergonomic Task Chair' },
-                { label: 'Requested By', value: 'David Park · Regional Sales Mgr' },
+                { label: 'Requested By', value: 'Regional Sales Manager Reyes · Regional Sales Mgr' },
                 { label: 'Cost Center', value: 'Marketing-101' },
                 { label: 'Ship To', value: 'Austin, TX Distribution Center' },
             ],
             approvalChain: [
-                { name: 'David Park', role: 'Requester', status: 'done' },
-                { name: 'Sara Chen', role: 'Account Mgr', status: 'current' },
+                { name: 'Regional Sales Manager Reyes', role: 'Requester', status: 'done' },
+                { name: 'Account Manager Kai', role: 'Account Mgr', status: 'current' },
                 { name: 'Finance', role: 'Final Approval', status: 'pending' },
             ],
         }
@@ -179,7 +179,7 @@ const recentActivity = [
                 { label: 'PO NUMBER', value: '#PO-8841' },
                 { label: 'LINE ITEMS', value: '12 items' },
                 { label: 'DISCOUNT', value: '8% volume' },
-                { label: 'CONVERTED BY', value: 'Sara Chen' },
+                { label: 'CONVERTED BY', value: 'Account Manager Kai' },
             ],
             timeline: [
                 { step: 'Quote Created', date: 'Mar 5', done: true },
@@ -620,7 +620,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
         return () => t.forEach(clearTimeout);
     }, [currentStep?.id, pauseAware, isOps]);
 
-    // Step 1.6 — Quote Approval Chain (2 approvers: System Policy auto → David Park → auto-advance) — COI only
+    // Step 1.6 — Quote Approval Chain (2 approvers: System Policy auto → Regional Sales Manager Reyes → auto-advance) — COI only
     const [approvalStates16, setApprovalStates16] = useState<('pending' | 'approved')[]>(['pending', 'pending'])
     useEffect(() => {
         if (currentStep?.id !== '1.6' || isOps) {
@@ -1097,7 +1097,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 </div>
                                 <div>
                                     <p className="text-[10px] text-muted-foreground font-medium leading-none">Sales Analyst</p>
-                                    <p className="text-xs font-bold text-foreground leading-tight">Diego Sabatini</p>
+                                    <p className="text-xs font-bold text-foreground leading-tight">Strata PM Alpha</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-2">
@@ -1212,7 +1212,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 </div>
                                 <div>
                                     <p className="text-[10px] text-muted-foreground font-medium leading-none">End User</p>
-                                    <p className="text-xs font-bold text-foreground leading-tight">Diego Sabatini</p>
+                                    <p className="text-xs font-bold text-foreground leading-tight">Strata PM Alpha</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-2">
@@ -1222,7 +1222,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 </div>
                                 <img
                                     src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face"
-                                    alt="Diego Sabatini"
+                                    alt="Strata PM Alpha"
                                     className="w-7 h-7 rounded-full object-cover ring-1 ring-border"
                                 />
                             </div>
@@ -1458,7 +1458,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                         className="w-6 h-6 rounded-full object-cover shrink-0"
                                     />
                                     <div>
-                                        <p className="text-[10px] font-bold text-foreground">Diego Sabatini</p>
+                                        <p className="text-[10px] font-bold text-foreground">Strata PM Alpha</p>
                                         <p className="text-[11px] text-muted-foreground">Thank you for the quick resolution. Please notify me when the replacement ships.</p>
                                     </div>
                                 </div>
@@ -1695,7 +1695,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 <div className="space-y-0">
                                     {[
                                         { name: 'System Policy Engine', role: 'Automated Compliance Check', reason: 'Pricing + discount + policy validation', level: 'Level 1' },
-                                        { name: 'David Park', role: 'Regional Sales Manager', reason: 'Quote value > $100k', level: 'Level 2' },
+                                        { name: 'Regional Sales Manager Reyes', role: 'Regional Sales Manager', reason: 'Quote value > $100k', level: 'Level 2' },
                                     ].map((approver, i) => (
                                         <div key={i}>
                                             {i > 0 && <div className="ml-5 h-6 border-l-2 border-dashed border-border" />}
@@ -1757,7 +1757,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 flex items-center gap-2">
                                         <ClockIcon className="w-4 h-4 text-amber-500 shrink-0" />
                                         <span className="text-[10px] text-amber-700 dark:text-amber-300">
-                                            {approvedCount16 === 0 ? 'System Policy Engine running compliance check...' : 'Awaiting manager approval — notification sent to David Park'}
+                                            {approvedCount16 === 0 ? 'System Policy Engine running compliance check...' : 'Awaiting manager approval — notification sent to Regional Sales Manager Reyes'}
                                         </span>
                                     </div>
                                 )}
@@ -1783,13 +1783,13 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 <CheckCircleIcon className="w-5 h-5 text-success shrink-0" />
                                 <div className="flex-1">
                                     <p className="text-xs font-bold text-emerald-700 dark:text-emerald-300">Quote Approval Chain — Complete</p>
-                                    <p className="text-[10px] text-success dark:text-success">QT-1025 approved by System Policy Engine + David Park</p>
+                                    <p className="text-[10px] text-success dark:text-success">QT-1025 approved by System Policy Engine + Regional Sales Manager Reyes</p>
                                 </div>
                             </div>
                             <div className="p-4 flex items-center gap-6">
                                 {[
                                     { name: 'System Policy Engine', status: 'Auto-Approved' },
-                                    { name: 'David Park', status: 'Approved' },
+                                    { name: 'Regional Sales Manager Reyes', status: 'Approved' },
                                 ].map((a, i) => (
                                     <div key={i} className="flex items-center gap-2">
                                         <div className="relative">

@@ -101,7 +101,7 @@ export default function WalterNotifScene({ onConfirm }: WalterNotifSceneProps) {
                     <div className="h-6 w-6 rounded-full bg-muted flex items-center justify-center">
                         <span className="text-[9px] font-bold text-muted-foreground">WG</span>
                     </div>
-                    <span className="text-[11px] text-muted-foreground">Walter Goley</span>
+                    <span className="text-[11px] text-muted-foreground">Operations Manager Bly</span>
                 </div>
             </div>
 

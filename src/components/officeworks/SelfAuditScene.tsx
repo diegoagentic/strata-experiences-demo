@@ -4,7 +4,7 @@
  * PAIN: SC2 (CEO #1 · Manual BOM spec check) + SC3 (CR Lookup context switch)
  *
  * Designer-led, Strata-assisted:
- *   · Kimberly Tucker (designer) is the principal actor · she navigates the 5
+ *   · Design Manager Ellis (designer) is the principal actor · she navigates the 5
  *     audit steps and toggles each item Verified / Flagged / Pending.
  *   · Strata pre-flags items that need attention (grounded in Metro Legal_AUDIT_ISSUES)
  *     so Kimberly knows where to look first · she still decides.
@@ -252,7 +252,7 @@ export default function SelfAuditScene({ onValidate, peerName, onAssignPeerRevie
                                 Strata pre-checked 71 lines × 6 attributes · {TOTAL_FLAGS_CRITICAL} critical · {TOTAL_FLAGS_ADVISORY} advisory
                             </div>
                             <div className="text-muted-foreground mt-0.5">
-                                Kimberly Tucker · 5-step audit · cross-referenced with floor plan + validation doc + Create CR DB.
+                                Design Manager Ellis · 5-step audit · cross-referenced with floor plan + validation doc + Create CR DB.
                             </div>
                         </div>
                         <div className="flex items-center gap-1.5 shrink-0">
@@ -515,8 +515,8 @@ export default function SelfAuditScene({ onValidate, peerName, onAssignPeerRevie
                         </div>
                         <PeerAssignPopover
                             assigneeName={peerName}
-                            currentDesignerName="Kimberly Tucker"
-                            excludeManagerName="Felicia Miano-Poles"
+                            currentDesignerName="Design Manager Ellis"
+                            excludeManagerName="EVP Design"
                             onAssign={onAssignPeerReviewer}
                         />
                     </div>

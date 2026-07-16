@@ -32,7 +32,7 @@ const CATEGORIES = ['Mileage', 'Tolls / Cab / Parking', 'Personal Meals', 'Busin
 // ── Activity & Discussion data ─────────────────────────────────────────────────
 
 const TIMELINE_STEPS = [
-    { label: 'Submitted',     actor: 'John Smith',    initials: 'JS', time: 'May 5 · 10:32 AM', done: true,  current: false },
+    { label: 'Submitted',     actor: 'Employee Alpha',    initials: 'JS', time: 'May 5 · 10:32 AM', done: true,  current: false },
     { label: 'Mgr notified',  actor: 'Sarah Johnson', initials: 'SJ', time: 'May 5 · 10:33 AM', done: true,  current: false },
     { label: 'In review',     actor: 'Sarah Johnson', initials: 'SJ', time: 'May 6 · 9:15 AM',  done: true,  current: true  },
     { label: 'Routed to AP',  actor: 'Letza Bombard', initials: 'LB', time: 'Pending',           done: false, current: false },
@@ -49,7 +49,7 @@ const INITIAL_THREADS: Thread[] = [
         messages: [
             {
                 id: 'm1',
-                author: 'John Smith',
+                author: 'Employee Alpha',
                 initials: 'JS',
                 side: 'employee',
                 text: 'Hi Sarah — FYI on the Capital Grille receipt: that\'s the gas station on Suncoast Pkwy that uses that brand name. "Server: Maria V." is just the cashier. Definitely fuel, not dining.',
@@ -175,7 +175,7 @@ export default function ApproveWithReceiptScene({ onApprove }: { onApprove?: () 
                     <div className="flex items-start justify-between gap-3">
                         <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2">
-                                <p className="text-sm font-bold text-foreground">John Smith</p>
+                                <p className="text-sm font-bold text-foreground">Employee Alpha</p>
                                 <span className="text-[10px] bg-muted text-muted-foreground px-1.5 py-0.5 rounded-full">Sales Rep</span>
                             </div>
                             <p className="text-xs text-muted-foreground mt-0.5">{editCategory} · May 5, 2026 · The Capital Grille — Tampa, FL</p>
@@ -482,7 +482,7 @@ export default function ApproveWithReceiptScene({ onApprove }: { onApprove?: () 
                             {/* Participant avatars */}
                             <div className="flex -space-x-1.5">
                                 {[
-                                    { initials: 'JS', title: 'John Smith' },
+                                    { initials: 'JS', title: 'Employee Alpha' },
                                     { initials: 'SJ', title: 'Sarah Johnson' },
                                     { initials: 'LB', title: 'Letza Bombard' },
                                 ].map(p => (
@@ -846,7 +846,7 @@ export default function ApproveWithReceiptScene({ onApprove }: { onApprove?: () 
                         </div>
                         <div className="text-center space-y-1">
                             <p className="text-sm font-bold text-foreground">Approving expense...</p>
-                            <p className="text-xs text-muted-foreground">Routing to AP · Pre-filling GL codes · Notifying John Smith</p>
+                            <p className="text-xs text-muted-foreground">Routing to AP · Pre-filling GL codes · Notifying Employee Alpha</p>
                         </div>
                         <div className="w-full bg-muted rounded-full h-1 overflow-hidden">
                             <div className="h-full bg-primary rounded-full animate-pulse" style={{ width: '70%' }} />
@@ -902,14 +902,14 @@ export default function ApproveWithReceiptScene({ onApprove }: { onApprove?: () 
                     <div className="bg-destructive/10 border border-destructive/20 rounded-xl px-4 py-3">
                         <div className="flex items-center gap-2">
                             <XCircle className="h-4 w-4 text-destructive" />
-                            <p className="text-sm font-bold text-destructive">Returned to John Smith</p>
+                            <p className="text-sm font-bold text-destructive">Returned to Employee Alpha</p>
                         </div>
                         <p className="text-xs text-muted-foreground mt-1">Rejection note attached · John notified immediately</p>
                     </div>
                     <div className="bg-card border border-border rounded-xl px-4 py-4 space-y-2">
                         <div className="flex items-center gap-2">
                             <RotateCcw className="h-4 w-4 text-muted-foreground" />
-                            <p className="text-sm font-semibold text-foreground">John Smith received the rejection note ✓</p>
+                            <p className="text-sm font-semibold text-foreground">Employee Alpha received the rejection note ✓</p>
                         </div>
                         <p className="text-xs text-muted-foreground italic">"{rejectNote || overrideNote}"</p>
                         <p className="text-xs text-muted-foreground pt-1">

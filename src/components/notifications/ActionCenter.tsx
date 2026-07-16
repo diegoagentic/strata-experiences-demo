@@ -157,7 +157,7 @@ const BFI_A11_NOTIFICATIONS: Notification[] = [
         type: 'quote_update',
         priority: 'high',
         title: 'New quote request · Miller Knoll',
-        message: 'Robert Chen sent SIF + PDF specs for DOE-2847 · NYC Dept. of Education · Q-2026-0089',
+        message: 'Account Manager Bly sent SIF + PDF specs for DOE-2847 · NYC Dept. of Education · Q-2026-0089',
         meta: 'robert.chen@millerknoll.com · May 6 · 8:14 AM',
         timestamp: 'May 6 · 8:14 AM',
         unread: true,
@@ -632,7 +632,7 @@ export default function ActionCenter() {
                                 {/* Email meta */}
                                 <div className="px-4 py-3 space-y-1 border-b border-border">
                                     {[
-                                        { label: 'From', value: 'Robert Chen · Miller Knoll Rep' },
+                                        { label: 'From', value: 'Account Manager Bly · Miller Knoll Rep' },
                                         { label: 'Re',   value: 'DOE-2847 · NYC Dept. of Education · quote request' },
                                     ].map(f => (
                                         <div key={f.label} className="flex gap-2 text-[11px]">

@@ -4,7 +4,7 @@
 //
 //   1st open (davidSigned=false): renders the chain with everyone pending
 //     and DOES NOT auto-advance. The Shell keeps it open for ~2 s, then
-//     closes it to redirect the audience to David Park's real workspace.
+//     closes it to redirect the audience to Regional Sales Manager Reyes's real workspace.
 //
 //   2nd open (davidSigned=true): David is pre-checked and the modal
 //     auto-chains through Alex → Sara → Jordan → fires onComplete.
@@ -34,7 +34,7 @@ const CHAIN: ApprovalRole[] = [
         photo: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80&h=80&fit=crop&crop=face',
     },
     {
-        name: 'Sara Chen',
+        name: 'Account Manager Kai',
         role: 'Salesperson',
         photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face',
     },
@@ -44,7 +44,7 @@ const CHAIN: ApprovalRole[] = [
         photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face',
     },
     {
-        name: 'David Park',
+        name: 'Regional Sales Manager Reyes',
         role: 'Senior Estimator',
         photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
     },
@@ -245,7 +245,7 @@ export default function ApprovalChainModal({
                                     </div>
                                 ) : !davidSigned ? (
                                     <p className="text-xs text-muted-foreground">
-                                        Strata is routing the quote to David Park's (Senior
+                                        Strata is routing the quote to Regional Sales Manager Reyes's (Senior
                                         Estimator) workspace for the first sign-off…
                                     </p>
                                 ) : (

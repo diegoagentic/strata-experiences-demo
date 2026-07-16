@@ -155,13 +155,13 @@ const FM_RESOLUTION_AGENTS = [
     { name: 'AssetSwap', detail: 'Old AER-2024-3214-07 removed → warranty return initiated...' },
     { name: 'WarrantyClaim', detail: 'Claim CLM-FM-2026-018 auto-filed with Herman Miller...' },
     { name: 'InventorySync', detail: 'Consignment Aeron assigned to Office 3-214 — inventory updated...' },
-    { name: 'StakeholderNotify', detail: 'Notifying Carlos Rivera, Sara Chen, David Park...' },
+    { name: 'StakeholderNotify', detail: 'Notifying Carlos Rivera, Account Manager Kai, Regional Sales Manager Reyes...' },
 ]
 
 const FM_RESOLUTION_NOTIFICATIONS = [
     { initials: 'CR', name: 'Carlos Rivera', role: 'End User', message: 'Your chair has been replaced — you can return to Office 3-214', color: 'from-blue-500 to-blue-700' },
-    { initials: 'SC', name: 'Sara Chen', role: 'Dealer', message: 'Consignment swap completed — inventory updated, warranty claim filed', color: 'from-emerald-500 to-emerald-700' },
-    { initials: 'DP', name: 'David Park', role: 'Expert', message: 'Service request REQ-FM-2026-018 resolved — $0 cost, 26h total', color: 'from-violet-500 to-violet-700' },
+    { initials: 'SC', name: 'Account Manager Kai', role: 'Dealer', message: 'Consignment swap completed — inventory updated, warranty claim filed', color: 'from-emerald-500 to-emerald-700' },
+    { initials: 'DP', name: 'Regional Sales Manager Reyes', role: 'Expert', message: 'Service request REQ-FM-2026-018 resolved — $0 cost, 26h total', color: 'from-violet-500 to-violet-700' },
 ]
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -2023,7 +2023,7 @@ export default function MACPunchList() {
                                                 {[
                                                     { title: 'Service Request Filed', desc: 'Carlos Rivera reported broken Aeron chair + flickering desk lamp', time: 'Mar 17, 9:14 AM', actor: 'Carlos Rivera', location: 'Office 3-214', status: 'completed' as const },
                                                     { title: 'AI Triage Completed', desc: 'TriageAgent cross-referenced 4 databases — resolution plan generated', time: 'Mar 17, 9:15 AM', actor: 'TriageAgent', location: 'System', status: 'completed' as const },
-                                                    { title: 'Temp Relocation Executed', desc: 'Workstation assets moved: Laptop Dock, 2× Monitor, Keyboard + Mouse, Desk Lamp', time: 'Mar 17, 10:30 AM', actor: 'Sara Chen', location: 'Office 3-214 → 3-216', status: 'completed' as const,
+                                                    { title: 'Temp Relocation Executed', desc: 'Workstation assets moved: Laptop Dock, 2× Monitor, Keyboard + Mouse, Desk Lamp', time: 'Mar 17, 10:30 AM', actor: 'Account Manager Kai', location: 'Office 3-214 → 3-216', status: 'completed' as const,
                                                       evidence: [
                                                           { type: 'photo' as const, label: 'Office 3-216 — Setup complete' },
                                                           { type: 'note' as const, label: 'Carlos confirmed workspace functional' },
@@ -2037,7 +2037,7 @@ export default function MACPunchList() {
                                                           { type: 'signature' as const, label: 'QC sign-off — James Mercer' },
                                                       ]
                                                     },
-                                                    { title: 'Return Relocation', desc: "Carlos's assets returned from Office 3-216 to 3-214. Temp workspace released.", time: 'Mar 18, 11:15 AM', actor: 'Sara Chen', location: 'Office 3-216 to 3-214', status: 'completed' as const },
+                                                    { title: 'Return Relocation', desc: "Carlos's assets returned from Office 3-216 to 3-214. Temp workspace released.", time: 'Mar 18, 11:15 AM', actor: 'Account Manager Kai', location: 'Office 3-216 to 3-214', status: 'completed' as const },
                                                 ].map((step, i) => (
                                                     <div key={i} className="relative flex items-start">
                                                         {/* Dot */}

@@ -44,7 +44,7 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 | **Formato de cada fila** | 🧾 ícono + nombre + monto + categoría + recibos visibles | Nombre + monto + categoría + estado de recibos + edad del gasto |
 | **Recibos visibles** | "2 receipts ✅ visible" junto al nombre | Ícono de recibo + cantidad + checkmark verde |
 | **Alerta de SLA** | Carlos Ruiz: borde rojo + "⚠️ Aging 4 days — SLA exceeded" | Carlos Ruiz: badge naranja con días transcurridos |
-| **Notificación** | No aparece | Toast aparece desde arriba a los 2s: *"John Smith · $142.50 — listo para revisar"* |
+| **Notificación** | No aparece | Toast aparece desde arriba a los 2s: *"Employee Alpha · $142.50 — listo para revisar"* |
 | **Botones por fila (John)** | ✓ Approve + ✗ Reject directamente en la fila | "Review >" + ícono ✓ verde + ícono ✗ rojo |
 | **Botones otras filas** | ✓ Approve + ✗ Reject en cada fila | Badge de estado (Pending / SLA / Approved) — sin acción directa |
 | **Decisión en este paso** | Sí — aprueba o rechaza desde la lista | No — cualquier botón lleva al detalle (w1.3) |
@@ -107,12 +107,12 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 | **Entra porque** | Tiene gastos manager-aprobados para procesar | Gastos aprobados llegaron a su cola con códigos ya sugeridos |
 | **Qué ve al abrir** | Directamente el gasto de John con los 2 códigos listos | Cola de gastos con leyenda de confianza + KPIs de AP |
 | **Leyenda de confianza** | No existe | `≥90% = safe · 75–89% = review · <75% = manual` |
-| **Formato del gasto de John** | `John Smith — $142.50 · Ready for GL` con 2 líneas de código | Tarjeta de John con 2 líneas de código + porcentaje + color por confianza |
+| **Formato del gasto de John** | `Employee Alpha — $142.50 · Ready for GL` con 2 líneas de código | Tarjeta de John con 2 líneas de código + porcentaje + color por confianza |
 | **Línea 1** | `Fuel $95.00 → GL 6200 · Vehicle ✨ AI` | `6200 · Vehicle Expenses · $95.00 · 94%` — borde verde |
 | **Línea 2** | `Parking $47.50 → GL 6210 · Travel ✨ AI` | `6210 · Travel & Transit · $47.50 · 72%` — borde rojo + "Manual review" |
 | **Recibos** | `2 receipts verified inline ✅` | Accesibles en este paso vía carrusel |
-| **Notificación** | No existe | Toast a los 2s: *"John Smith · $142.50 · approved by Sarah Johnson · GL pre-filled"* |
-| **Acción** | Botón "Confirm & Auto-Post to CORE →" (en la misma pantalla) | Botón "Review GL — John Smith" en el toast → abre w2.2 |
+| **Notificación** | No existe | Toast a los 2s: *"Employee Alpha · $142.50 · approved by Sarah Johnson · GL pre-filled"* |
+| **Acción** | Botón "Confirm & Auto-Post to CORE →" (en la misma pantalla) | Botón "Review GL — Employee Alpha" en el toast → abre w2.2 |
 | **Sale hacia** | CORE (confirmación directa) | w2.2 — pantalla de confirmación detallada |
 | **Alineado** | ✅ Datos idénticos · Demo mejora con % de confianza y color semántico · La separación en 2 pasos hace la narrativa más clara |
 

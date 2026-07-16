@@ -44,7 +44,7 @@ interface RequestClarificationModalProps {
     autoSendAfter?: number
     /** Preselects a topic by id on open. */
     initialTopicId?: string
-    /** Sender name shown in the "sent" state copy (default: "David Park"). */
+    /** Sender name shown in the "sent" state copy (default: "Regional Sales Manager Reyes"). */
     senderName?: string
 }
 
@@ -200,7 +200,7 @@ export default function RequestClarificationModal({
                                         Request Clarification
                                     </DialogTitle>
                                     <p className="text-xs text-muted-foreground mt-0.5">
-                                        Ask David Park (Regional Sales Manager) to walk you through a line item before release.
+                                        Ask Regional Sales Manager Reyes (Regional Sales Manager) to walk you through a line item before release.
                                     </p>
                                 </div>
                                 {phase === 'compose' && (
@@ -220,12 +220,12 @@ export default function RequestClarificationModal({
                                     <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-muted/40 border border-border">
                                         <img
                                             src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face"
-                                            alt="David Park"
+                                            alt="Regional Sales Manager Reyes"
                                             className="w-9 h-9 rounded-full object-cover ring-2 ring-primary/40"
                                         />
                                         <div className="flex-1 min-w-0">
                                             <p className="text-xs font-bold text-foreground leading-tight">
-                                                David Park
+                                                Regional Sales Manager Reyes
                                             </p>
                                             <p className="text-[10px] text-muted-foreground leading-tight">
                                                 Regional Sales Manager · author of this proposal
@@ -330,7 +330,7 @@ export default function RequestClarificationModal({
                                 <div className="px-6 py-10 flex flex-col items-center justify-center gap-3">
                                     <span className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
                                     <p className="text-xs font-semibold text-foreground">
-                                        Routing question to David Park…
+                                        Routing question to Regional Sales Manager Reyes…
                                     </p>
                                     <p className="text-[10px] text-muted-foreground">
                                         Logging request into the audit trail

@@ -49,7 +49,7 @@ export const BFI_STEPS: DemoStep[] = [
         groupId: 1,
         groupTitle: 'Flow 1: Pre-award',
         title: 'Quote request arrives',
-        description: 'Robert Chen (Miller Knoll) sends a quote request for a Herman Miller installation at 30 Court Street, Brooklyn. Specs, floor plan, and the pricing file land directly in Strata — no email tracking needed.',
+        description: 'Account Manager Bly (Miller Knoll) sends a quote request for a Herman Miller installation at 30 Court Street, Brooklyn. Specs, floor plan, and the pricing file land directly in Strata — no email tracking needed.',
         app: 'bfi-agency-fee',
         role: 'Designer',
     },
@@ -179,7 +179,7 @@ export const BFI_STEPS: DemoStep[] = [
 // ─── STEP BEHAVIOR (presenter guide · action-forward) ────────────────────────
 
 export const BFI_STEP_BEHAVIOR: Record<string, StepBehavior> = {
-    'a1.0': { mode: 'interactive', userAction: 'Watch Robert Chen send the request to Lauren · specs, floor plan and pricing file arrive in Strata' },
+    'a1.0': { mode: 'interactive', userAction: 'Watch Account Manager Bly send the request to Lauren · specs, floor plan and pricing file arrive in Strata' },
     'a1.1': { mode: 'interactive', userAction: 'Open the ingestion queue · DOE-2847 surfaces as priority · click to investigate' },
     'a1.2': { mode: 'interactive', userAction: 'Read Robert\'s acknowledgment · quote Q-2026-0089 confirmed · move on to validate pricing' },
     'a1.2b': { mode: 'interactive', userAction: '① Review Quote Tool: HMI-FU-300 corrected $1,350 → $1,260 · service fees variable per product (avg 4.0%) · ② Review the CMF Free line CORE prepared (single line item · Cost −$9,255.24 · Sell $0 · Day-1 GP +$9,255.24 · Calc Code 7 · Direct Bill-HMI · GL 4200-Agency-Fees) · confirm to open the labor request · ③ Open the labor request email to WIG · send · wait for Michael\'s compiled response (within contract caps) · continue to proposal' },
@@ -210,7 +210,7 @@ export const BFI_STEP_MESSAGES: Record<string, string[]> = {
         'DOE-2847 ranked top · ready for review',
     ],
     'a1.2': [
-        'Confirmation sent to Robert Chen',
+        'Confirmation sent to Account Manager Bly',
         'Quote Q-2026-0089 logged',
         'Specs and floor plan attached',
         'Receipt acknowledged · moving to pricing validation',

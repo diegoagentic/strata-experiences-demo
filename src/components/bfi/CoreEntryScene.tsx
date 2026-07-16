@@ -225,10 +225,10 @@ export default function CoreEntryScene({ onConfirm }: CoreEntrySceneProps) {
                         <div className="border border-ai/20 bg-ai/5 rounded-xl overflow-hidden animate-in fade-in duration-300">
                             <div className="flex items-center gap-2 px-3 py-2 border-b border-ai/10">
                                 <Bell className="h-3 w-3 text-ai shrink-0" />
-                                <span className="text-[10px] font-bold text-ai">Push notification · Walter Goley (CoNY PM)</span>
+                                <span className="text-[10px] font-bold text-ai">Push notification · Operations Manager Bly (CoNY PM)</span>
                             </div>
                             <div className="px-3 py-2 space-y-1 border-b border-ai/10 text-[10px]">
-                                <div className="flex gap-2"><span className="text-muted-foreground w-8 shrink-0">To:</span><span className="font-medium text-foreground">Walter Goley · CoNY Project Manager</span></div>
+                                <div className="flex gap-2"><span className="text-muted-foreground w-8 shrink-0">To:</span><span className="font-medium text-foreground">Operations Manager Bly · CoNY Project Manager</span></div>
                                 <div className="flex gap-2"><span className="text-muted-foreground w-8 shrink-0">Via:</span><span className="text-muted-foreground">Strata mobile push notification</span></div>
                             </div>
                             <div className="px-3 py-2">

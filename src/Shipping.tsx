@@ -349,7 +349,7 @@ export function ShippingContent() {
                                                 <div className="flex items-center gap-2 mt-1">
                                                     <span className="inline-flex items-center gap-1 text-[10px] text-muted-foreground">
                                                         <span className="h-3.5 w-3.5 rounded-full bg-primary/20 text-foreground text-[7px] font-bold uppercase tracking-wider flex items-center justify-center">DP</span>
-                                                        Rep · <strong className="text-foreground font-medium">David Park</strong>
+                                                        Rep · <strong className="text-foreground font-medium">Regional Sales Manager Reyes</strong>
                                                     </span>
                                                     <span className="inline-flex items-center gap-0.5 px-1 py-0 rounded text-[9px] font-bold uppercase tracking-wider bg-info/10 text-info border border-info/20">
                                                         Revision # 2

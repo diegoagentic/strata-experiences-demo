@@ -6,7 +6,7 @@
 // PREPARED BY: Avanto
 // DATE: May 2026
 //
-// DEMO NARRATIVE: 1 unified flow — the story of a $142.50 expense (John Smith)
+// DEMO NARRATIVE: 1 unified flow — the story of a $142.50 expense (Employee Alpha)
 //   travelling through 4 roles and 2 platforms, end to end.
 //
 //   John (Employee, Mobile) submits a receipt → Sarah (Ops Manager, Desktop)

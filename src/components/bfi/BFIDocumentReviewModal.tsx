@@ -246,7 +246,7 @@ function QuoteDocumentTab({ ovniqLines, isPO, validated = true }: { ovniqLines: 
                         </div>
                         <div className="text-right">
                             <div className="text-[11px] font-black uppercase tracking-widest text-foreground">MILLER KNOLL</div>
-                            <div className="text-xs text-muted-foreground mt-0.5">Robert Chen · Rep · May 6, 2026</div>
+                            <div className="text-xs text-muted-foreground mt-0.5">Account Manager Bly · Rep · May 6, 2026</div>
                         </div>
                     </div>
                     <div className="bg-zinc-800 dark:bg-zinc-700 px-6 py-1.5 flex items-center justify-between">
@@ -552,7 +552,7 @@ const FIELDS_FEE_GAP: ReviewField[] = [
         id: 'fe4', name: 'Agency fee total', category: 'fee',
         extractedValue: '$4,505', expectedValue: '$4,820', ovniqSuggestion: '$4,820',
         status: 'inconsistent',
-        reason: 'MK Invoice muestra $4,505. Expected $4,820 — gap de −$315. Contactar Robert Chen.',
+        reason: 'MK Invoice muestra $4,505. Expected $4,820 — gap de −$315. Contactar Account Manager Bly.',
     },
 ]
 
@@ -2341,12 +2341,12 @@ function LaborReadyPanel({ onValidate, onCustomValue, ovniqLines, onUpdateLine, 
     }
 
     const NOTIFY = [
-        { initials: 'RC', label: 'Robert Chen',   sub: 'Miller Knoll Rep', color: 'bg-info/20 text-info' },
+        { initials: 'RC', label: 'Account Manager Bly',   sub: 'Miller Knoll Rep', color: 'bg-info/20 text-info' },
         { initials: 'MB', label: 'Michael Boyle',  sub: 'BFI Manager',      color: 'bg-ai/15 text-ai' },
         { initials: 'DOE', label: 'NYC DOE',      sub: 'Procurement',      color: 'bg-success/15 text-success' },
     ]
     const RECIPIENTS = {
-        designer: { initials: 'RC', name: 'Robert Chen',  role: 'Miller Knoll Rep', color: 'bg-info/20 text-info' },
+        designer: { initials: 'RC', name: 'Account Manager Bly',  role: 'Miller Knoll Rep', color: 'bg-info/20 text-info' },
         manager:  { initials: 'MB', name: 'Michael Boyle', role: 'BFI Manager',       color: 'bg-ai/15 text-ai'    },
     }
     const recipient = RECIPIENTS[askTo]
@@ -3368,7 +3368,7 @@ export default function BFIDocumentReviewModal({
                             </div>
                             <div className="px-3.5 py-2 bg-muted/20 border-t border-border">
                                 <p className="text-[10px] text-muted-foreground">
-                                    NYC Dept. of Education · DOE-2847 · by Robert Chen · Miller Knoll
+                                    NYC Dept. of Education · DOE-2847 · by Account Manager Bly · Miller Knoll
                                 </p>
                             </div>
                         </div>

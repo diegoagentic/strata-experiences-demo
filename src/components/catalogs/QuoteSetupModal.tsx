@@ -113,7 +113,7 @@ export default function QuoteSetupModal({ isOpen, onClose, catalogName }: QuoteS
                                                 defaultValue="currentUser"
                                             >
                                                 <option value="currentUser">Me (Jane Doe)</option>
-                                                <option value="john">John Smith - Sales Director</option>
+                                                <option value="john">Employee Alpha - Sales Director</option>
                                                 <option value="sarah">Sarah Connor - Account Manager</option>
                                             </select>
                                             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-muted-foreground">

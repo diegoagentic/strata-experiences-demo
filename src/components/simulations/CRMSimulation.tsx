@@ -1793,7 +1793,7 @@ const DAILY_LOG_ENTRIES = [
             original: { rate: '$85/hr', hours: 6, total: '$510' },
             adjusted: { rate: '$99/hr', hours: 5, total: '$495' },
             reason: 'Technician completed installation ahead of schedule',
-            approvedBy: 'David Park (Expert)',
+            approvedBy: 'Regional Sales Manager Reyes (Expert)',
         },
     },
     {

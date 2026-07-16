@@ -12,7 +12,7 @@
 //   w2.2: SAC quote assembly & release · Riley combines labor + product +
 //         markup, runs the internal release checklist, and publishes the
 //         client quote through CORE
-//   w2.3: PM execution handoff · James Ortiz picks up the approved quote
+//   w2.3: PM execution handoff · PM James picks up the approved quote
 //         and builds the internal execution plan (crews, tools, logistics)
 //
 // All roles are WRG internal. Client delivery is Phase 2 / out of scope.

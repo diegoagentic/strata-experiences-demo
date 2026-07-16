@@ -181,7 +181,7 @@ export default function AIEmailDraftsPanel() {
                                     Strata has a question before sending the escalation
                                 </div>
                                 <div className="text-[11px] text-muted-foreground mb-3">
-                                    Lindenwood University is 32 days past due with no response. Should I copy the Account Manager (Keyla Gettings) on this email? She can apply direct pressure if the AP team ignores it.
+                                    Lindenwood University is 32 days past due with no response. Should I copy the Account Manager (Coordinator Blake) on this email? She can apply direct pressure if the AP team ignores it.
                                 </div>
                                 <div className="flex flex-col sm:flex-row gap-2">
                                     <button
@@ -189,7 +189,7 @@ export default function AIEmailDraftsPanel() {
                                         className="flex-1 flex items-center gap-2 px-3 py-2 text-xs font-bold text-primary-foreground bg-primary rounded-lg hover:opacity-90 transition-opacity shadow-sm"
                                     >
                                         <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
-                                        Yes · CC Keyla Gettings
+                                        Yes · CC Coordinator Blake
                                     </button>
                                     <button
                                         onClick={() => handleAiChoice('direct')}
@@ -233,7 +233,7 @@ export default function AIEmailDraftsPanel() {
                                             {draft.id === 'DRAFT-001' && aiChoice && (
                                                 <div className="text-[10px] text-muted-foreground mt-0.5">
                                                     {aiChoice === 'cc-am'
-                                                        ? '· CC\'d Keyla Gettings (Account Manager)'
+                                                        ? '· CC\'d Coordinator Blake (Account Manager)'
                                                         : '· Sent directly to AP team only'}
                                                 </div>
                                             )}

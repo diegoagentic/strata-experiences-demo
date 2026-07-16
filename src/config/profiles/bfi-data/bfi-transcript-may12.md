@@ -1,6 +1,6 @@
 # BFI Demo Review — Transcript
 **Fecha:** May 12, 2026  
-**Participantes:** Diego Zuluaga, David Penagos (dpenagos@goavanto.com), Jenniffer Vargas  
+**Participantes:** Strata Lead, Product Manager Pen (dpenagos@goavanto.com), Designer Vega  
 **Archivo adjunto:** BFI Demo Review
 
 ---
@@ -31,9 +31,9 @@ La reunión reorganizó los flujos de trabajo del demo e integró automatizació
 
 ### 00:01:09 — Intro y orden de flujos
 
-Diego Zuluaga: Acuerdan cambiar orden: primero Agency Fee, luego Product Receiving.
+Strata Lead: Acuerdan cambiar orden: primero Agency Fee, luego Product Receiving.
 
-David Penagos: "El product receiving es un punto intermedio casi inmerso dentro del agency fee."
+Product Manager Pen: "El product receiving es un punto intermedio casi inmerso dentro del agency fee."
 
 David agregó documentos de ejemplo en Notion (Product Receiving) que le mandaron de Dani Bermúes.
 
@@ -41,7 +41,7 @@ David agregó documentos de ejemplo en Notion (Product Receiving) que le mandaro
 
 ### 00:06:31 — Roles en el flujo Agency Fee
 
-David Penagos: "En el de [Agency Fee] son cuatro roles. La mayoría es Lauren de Marco, que es la account manager de ese cliente."
+Product Manager Pen: "En el de [Agency Fee] son cuatro roles. La mayoría es Lauren de Marco, que es la account manager de ese cliente."
 
 Lauren ejecuta casi todas las acciones principales.
 
@@ -60,7 +60,7 @@ Lauren ejecuta casi todas las acciones principales.
 > Diego: "**Falta como referenciar eso ahí.**"
 > David: "Sí."
 
-→ **GAP IDENTIFICADO:** El PDF adjunto en el email de Robert Chen debe mostrar:
+→ **GAP IDENTIFICADO:** El PDF adjunto en el email de Account Manager Bly debe mostrar:
   1. Especificaciones de producto (ya implementado como `specs.pdf`)
   2. **Dibujo arquitectónico / plano de distribución del mobiliario** (NO implementado)
   3. El SIF (ya implementado como tab separado)
@@ -176,7 +176,7 @@ David confirma que el contrato está en el drive de la empresa → evaluar VPN p
 
 | Gap | Descripción | Step afectado | Severidad |
 |---|---|---|---|
-| **Plano arquitectónico** | El PDF del email de Robert Chen debe incluir un dibujo de distribución del mobiliario, no solo specs de producto | a1.2 (QuoteIntakePricingScene — tab PDF) | 🟠 Mencionado explícitamente en transcript 00:11:56 |
+| **Plano arquitectónico** | El PDF del email de Account Manager Bly debe incluir un dibujo de distribución del mobiliario, no solo specs de producto | a1.2 (QuoteIntakePricingScene — tab PDF) | 🟠 Mencionado explícitamente en transcript 00:11:56 |
 | **Documentos CPR trazabilidad** | Factura Workplace + firma manual + colilla de pago deben referenciarse en el flujo CPR | a1.3 (CPRScene) | 🟡 Contexto — David mostró estos docs como referencia |
 | **Acknowledgement (Diana)** | Excluido del demo intencionalmente — Diana tiene resistencia al cambio | Excluido | ✅ Decisión correcta |
 | **Disco R / VPN** | Contrato guardado en servidor local, requiere VPN — David lo revisará | Contexto futuro | 🟡 Info, no demo |

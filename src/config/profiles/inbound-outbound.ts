@@ -2,7 +2,7 @@
 // Inbound | Outbound — Manufacturer order entry demo
 //
 // Target: Senator Group manufacturer pitch (presentation Sunday 2026-06-07).
-// Wendy Marchuck (Leland team) owns SME feedback. See:
+// Strata Sales Director (Leland team) owns SME feedback. See:
 //   docs/inbound-outbound-flow.md         · step-by-step narrative
 //   /.claude/plans/cuddly-greeting-meadow.md · implementation plan
 //

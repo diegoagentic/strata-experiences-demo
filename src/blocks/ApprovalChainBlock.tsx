@@ -3,10 +3,10 @@ import ApprovalChainModal, { type Approver } from '../components/modals/Approval
 import { CheckBadgeIcon } from '@heroicons/react/24/outline';
 
 const MOCK_APPROVERS: Approver[] = [
-  { name: 'Sara Chen',    role: 'Account Manager', status: 'approved', timestamp: '10:12 AM' },
-  { name: 'Marcus Reid',  role: 'Sales Director',  status: 'approved', timestamp: '10:34 AM' },
-  { name: 'Priya Nair',   role: 'Finance Lead',    status: 'current' },
-  { name: 'Ken Osei',     role: 'CFO',             status: 'pending' },
+  { name: 'Account Manager Kai',    role: 'Account Manager', status: 'approved', timestamp: '10:12 AM' },
+  { name: 'Sales Director Rio',  role: 'Sales Director',  status: 'approved', timestamp: '10:34 AM' },
+  { name: 'Finance Lead Wren',   role: 'Finance Lead',    status: 'current' },
+  { name: 'CFO Osen',     role: 'CFO',             status: 'pending' },
 ];
 
 export default function ApprovalChainBlock() {

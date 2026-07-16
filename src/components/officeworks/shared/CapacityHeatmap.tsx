@@ -44,7 +44,7 @@ export interface Designer {
 
 export const DESIGNERS: Designer[] = [
     // DC + Southern (Felicia)
-    { name: 'Felicia Miano-Poles', region: 'dc', utilization: 95, isLead: true, priorMetroLegal: true },
+    { name: 'EVP Design', region: 'dc', utilization: 95, isLead: true, priorMetroLegal: true },
     { name: 'Sandra Park',         region: 'dc', utilization: 72 },
     { name: 'James O\'Brien',      region: 'dc', utilization: 88 },
     { name: 'Maya Patel',          region: 'dc', utilization: 45, priorMetroLegal: true },
@@ -66,7 +66,7 @@ export const DESIGNERS: Designer[] = [
     { name: 'Nora Singh',          region: 'ma', utilization: 49 },
     { name: 'Devin Hayes',         region: 'ma', utilization: 66 },
     // PA + Pittsburgh + Ancillary (Kimberly)
-    { name: 'Kimberly Tucker',     region: 'pa', utilization: 45, isLead: true, priorMetroLegal: true },
+    { name: 'Design Manager Ellis',     region: 'pa', utilization: 45, isLead: true, priorMetroLegal: true },
     { name: 'Olivia Berg',         region: 'pa', utilization: 71 },
     { name: 'Connor Walsh',        region: 'pa', utilization: 84 },
     { name: 'Yasmin El-Sayed',     region: 'pa', utilization: 47 },
@@ -79,9 +79,9 @@ export const DESIGNERS: Designer[] = [
 ]
 
 export const REGION_LABELS = {
-    dc: { label: 'DC + Southern', manager: 'Felicia Miano-Poles' },
+    dc: { label: 'DC + Southern', manager: 'EVP Design' },
     ma: { label: 'MA / NY / NJ', manager: 'Rebecca Warren' },
-    pa: { label: 'PA / Pittsburgh / Ancillary', manager: 'Kimberly Tucker' },
+    pa: { label: 'PA / Pittsburgh / Ancillary', manager: 'Design Manager Ellis' },
 } as const
 
 export function utilizationStatus(u: number): UtilizationStatus {

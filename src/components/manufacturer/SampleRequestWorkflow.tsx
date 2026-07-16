@@ -85,7 +85,7 @@ export default function SampleRequestWorkflow({ sku, productName, finish, linked
 
     const goCompose = () => {
         const lines = selectedSwatches.map(s => `· ${s.code} ${s.name}${s.vendor ? ` (${s.vendor}${s.grade ? `, ${s.grade}` : ''})` : ''}`).join('\n')
-        setBody(`Hi,\n\nWe'd like to request physical swatches for ${productName ?? sku} before approving ${linkedTo}:\n${lines}\n\nPlease confirm availability and ship to our showroom.\n\nThanks,\nSara Chen · Northline Furniture Group`)
+        setBody(`Hi,\n\nWe'd like to request physical swatches for ${productName ?? sku} before approving ${linkedTo}:\n${lines}\n\nPlease confirm availability and ship to our showroom.\n\nThanks,\nAccount Manager Kai · Northline Furniture Group`)
         setPhase('compose')
     }
 

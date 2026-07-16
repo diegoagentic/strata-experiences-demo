@@ -2,7 +2,7 @@
  * COMPONENT: AdoptionProgressStrip
  * PURPOSE: Visualizes Rogers Diffusion of Innovations applied to MBI's design
  *          team. Sets the story: AI trust 3.3/10 avg in Design — careful
- *          sequenced rollout starting with Beth Gianino (8/10 Early Adopter).
+ *          sequenced rollout starting with Design Manager Fane (8/10 Early Adopter).
  *
  *          5 tiers from Innovators → Laggards with team members tagged + counts.
  *
