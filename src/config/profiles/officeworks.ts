@@ -475,7 +475,7 @@ export const OFFICEWORKS_STEP_MESSAGES: Record<string, string[]> = {
         'Gemini cross-reference: 71 lines · 13 CRs',
         'Diff scan: line 6 part # variant · within spec',
         'GW6: 70/71 lines match · 1 discrepancy on shipping date',
-        'Drafting Change Order to tekco1@teknion.com',
+        'Drafting Change Order to ack@teknion.example',
     ],
 
     // ─── L&D flow messages ──────────────────────────────────────────────────

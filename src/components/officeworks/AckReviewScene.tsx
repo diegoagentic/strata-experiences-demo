@@ -97,7 +97,7 @@ export default function AckReviewScene({ onContinue }: Props) {
         const descLabel = isHeld
             ? 'Discrepancy could not be resolved with Teknion. Order on hold pending action outside this process. (BPMN: End Event Terminate)'
             : terminal === 'resolved'
-                ? 'Change Order submitted to tekco1@teknion.com · Teknion resolved discrepancy. (BPMN: End Event None)'
+                ? 'Change Order submitted to ack@teknion.example · Teknion resolved discrepancy. (BPMN: End Event None)'
                 : 'Acknowledgment matches BOM · order ready for fulfillment. (BPMN: End Event None)'
         return (
             <div className="bg-card border border-border rounded-xl p-8 space-y-6 animate-in fade-in duration-500 max-w-2xl mx-auto">
@@ -147,7 +147,7 @@ export default function AckReviewScene({ onContinue }: Props) {
                         <div>
                             <h2 className="text-lg font-semibold text-foreground">Resolve discrepancy with Teknion</h2>
                             <p className="text-xs text-muted-foreground mt-0.5">
-                                Task 12A · draft Change Order to tekco1@teknion.com · select Change Order Reason from real Design Checklist 2026 list
+                                Task 12A · draft Change Order to ack@teknion.example · select Change Order Reason from real Design Checklist 2026 list
                             </p>
                         </div>
                     </div>

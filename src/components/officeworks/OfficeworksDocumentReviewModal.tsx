@@ -2628,7 +2628,7 @@ function TeknionPreviewPanel({ onValidate }: TeknionPreviewPanelProps) {
         title: 'Order Preview Submission · Metro Legal 4th Floor',
         subtitle: 'Strata pre-validated · ready to send',
         from: 'kimberly.tucker@officeworksinc.com',
-        to: 'tifani.cooper@teknion.com',
+        to: 'ack@teknion.example',
         cc: 'felicia.miano-poles@officeworksinc.com, caitlin.barolet@officeworksinc.com',
         subject: `Order Preview · Metro Legal 4th Floor · ${Metro Legal_ORDER_META.poNumber} · Sched Ship ${Metro Legal_ORDER_META.schedShipDate}`,
         body: `Hi Tifani,
@@ -2999,7 +2999,7 @@ No other changes to the BOM. Resubmitting for your review · same Sched Ship tar
         title: 'Resubmit · CR 2046138 grain direction',
         subtitle: 'Strata drafted the answer · review and send',
         from: 'kimberly.tucker@officeworksinc.com',
-        to: 'tifani.cooper@teknion.com',
+        to: 'ack@teknion.example',
         cc: 'felicia.miano-poles@officeworksinc.com',
         subject: `Re: Order Preview · Metro Legal 4th Floor · CR 2046138 grain direction`,
         body: mode === 'strata' ? strataBody : uploadBody,
@@ -3911,7 +3911,7 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                                         </li>
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3">
                                             <span className="text-muted-foreground">Recipient</span>
-                                            <span className="text-foreground font-mono">tekco1@teknion.com</span>
+                                            <span className="text-foreground font-mono">ack@teknion.example</span>
                                         </li>
                                     </ul>
                                     {step === 'step-3-review' ? (
@@ -3941,7 +3941,7 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                                 <div className="px-4 py-2.5 text-xs text-foreground space-y-1">
                                     <div className="flex items-center gap-2">
                                         <CheckCircle2 className="h-3.5 w-3.5 text-success shrink-0" aria-hidden="true" />
-                                        <span><strong>{Metro Legal_ORDER_META.poNumber}</strong> generated · sent to tekco1@teknion.com</span>
+                                        <span><strong>{Metro Legal_ORDER_META.poNumber}</strong> generated · sent to ack@teknion.example</span>
                                     </div>
                                     <div className="pl-5 text-[11px] text-muted-foreground">
                                         Universal #{Metro Legal_ORDER_META.universal} · order receipt {Metro Legal_ORDER_META.orderReceipt}

@@ -1,6 +1,6 @@
 # BFI Demo Review — Transcript
 **Fecha:** May 12, 2026  
-**Participantes:** Strata Lead, Product Manager Pen (dpenagos@goavanto.com), Designer Vega  
+**Participantes:** Strata Lead, Product Manager Pen (pm@strata.example), Designer Vega  
 **Archivo adjunto:** BFI Demo Review
 
 ---

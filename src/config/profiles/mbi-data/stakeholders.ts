@@ -4,7 +4,7 @@ import type { Stakeholder } from './types';
 export const MBI_STAKEHOLDERS: Stakeholder[] = [
     // Leadership
     { id: 'jordan-hart', name: 'Controller Hart', role: 'Owner & President', team: 'leadership', q4Trust: 9, adoption: 'innovator' },
-    { id: 'mark-kielhafner', name: 'Executive Sponsor', role: 'Director of Business Operations', team: 'leadership', email: 'mkielhafner@mbioffice.com', q4Trust: 7, adoption: 'early-adopter' },
+    { id: 'mark-kielhafner', name: 'Executive Sponsor', role: 'Director of Business Operations', team: 'leadership', email: 'contact@dealer-ivory.example', q4Trust: 7, adoption: 'early-adopter' },
     { id: 'justin-laramie', name: 'Sales Lead', role: 'BD Manager & Process Leader', team: 'bd', q4Trust: 8, adoption: 'early-adopter', isEarlyAdopter: true },
 
     // Design

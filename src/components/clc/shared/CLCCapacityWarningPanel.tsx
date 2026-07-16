@@ -13,7 +13,7 @@ type ComposerMode = 'outreach' | 'dispatcher' | null
 
 /** Outreach to the vetted third-party · Albany Install Co. */
 const OUTREACH_DRAFT = {
-    to: 'dispatch@albanyinstall.co · Pat Reilly',
+    to: 'dispatch@install-partner.example · Pat Reilly',
     subject: 'Subcontract request · CLC NY install support · week of Jun 1',
     body: [
         'Hi Pat,',
