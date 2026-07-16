@@ -3994,7 +3994,7 @@ IEA*1*000002055~`}
                                                 </div>
                                                 <div className="flex items-center justify-center gap-3">
                                                     {[
-                                                        { initials: 'CR', name: 'Carlos Rivera', color: 'from-blue-500 to-blue-700' },
+                                                        { initials: 'CR', name: 'Facilities Coord Cardo', color: 'from-blue-500 to-blue-700' },
                                                         { initials: 'SC', name: 'Account Manager Kai', color: 'from-emerald-500 to-emerald-700' },
                                                         { initials: 'PI', name: 'ProInstall LLC', color: 'from-orange-500 to-orange-700' },
                                                     ].map((p, i) => (

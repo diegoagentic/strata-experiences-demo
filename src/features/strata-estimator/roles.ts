@@ -21,7 +21,7 @@ export const ROLE_PROFILES: Record<string, ConnectedUser> = {
         photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
     },
     Designer: {
-        name: 'Alex Rivera',
+        name: 'Designer Alden',
         role: 'Designer',
         photo: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80&h=80&fit=crop&crop=face',
     },

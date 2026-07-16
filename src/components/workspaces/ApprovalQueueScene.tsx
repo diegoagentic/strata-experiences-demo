@@ -106,7 +106,7 @@ export default function ApprovalQueueScene({ onReview }: { onReview?: () => void
                     <div className="h-9 w-9 rounded-xl overflow-hidden border border-border">
                         <img
                             src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop&crop=face"
-                            alt="Sarah Johnson"
+                            alt="Operations Manager Solano"
                             className="h-full w-full object-cover"
                         />
                     </div>

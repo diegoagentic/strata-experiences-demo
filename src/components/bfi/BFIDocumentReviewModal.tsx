@@ -592,7 +592,7 @@ Invoice details:
 
 Please proceed with agency fee verification at your earliest convenience.
 
-— Lauren DeMarco
+— Account Manager DeMar
   BFI Furniture · CoNY Account Manager`
 
 function PatriciaDialog({ isOpen, onSent }: { isOpen: boolean; onSent: () => void }) {
@@ -768,7 +768,7 @@ function AttachmentsPanel({ invoiceUpload, michaelMode, onValidate }: { invoiceU
                         <Sparkles className="h-3.5 w-3.5 text-ai shrink-0 mt-0.5" />
                         <div className="text-[11px]">
                             <p className="font-bold text-ai">Strata AI · Manager approval detected</p>
-                            <p className="text-muted-foreground mt-0.5">Michael Boyle approved CPR reconciliation · Invoice upload unlocked for DOE-2847</p>
+                            <p className="text-muted-foreground mt-0.5">Manager Boyle approved CPR reconciliation · Invoice upload unlocked for DOE-2847</p>
                         </div>
                     </div>
                 )}
@@ -977,7 +977,7 @@ Signed sign-in sheet (DOE-2847-signin.pdf) is attached as NYC backup. CPR + sign
 
 Please confirm so we can proceed to agency fee verification.
 
-— Lauren DeMarco
+— Account Manager DeMar
   BFI Furniture · CoNY Account Manager`
     )
     const [sending, setSending] = useState(false)
@@ -1139,12 +1139,12 @@ function CPRReviewPanel({ onValidate, michaelMode, invoiceUpload, onResolveChang
     }
 
     const COMMENT_RECIPIENTS = {
-        lauren:  { initials: 'LD',  name: 'Lauren DeMarco',       role: 'BFI · Account Manager',         color: 'bg-info/20 text-info'       },
-        michael: { initials: 'MB',  name: 'Michael Boyle',         role: 'BFI Manager',                   color: 'bg-ai/15 text-ai'           },
+        lauren:  { initials: 'LD',  name: 'Account Manager DeMar',       role: 'BFI · Account Manager',         color: 'bg-info/20 text-info'       },
+        michael: { initials: 'MB',  name: 'Manager Boyle',         role: 'BFI Manager',                   color: 'bg-ai/15 text-ai'           },
         doe:     { initials: 'DOE', name: 'NYC DOE Procurement',  role: 'nycdoe-procurement@schools.nyc.gov', color: 'bg-success/15 text-success' },
     } as const
     const commentRecipient = COMMENT_RECIPIENTS[commentTo]
-    const commentMessage = `Hi ${commentRecipient.name.split(' ')[0]} — update on DOE-2847 CPR reconciliation: both labor adjustments (Carpenters −5h · OT −2h · total impact −$720) have been reviewed and approved. Figures are now reflected in CORE.\n\n— Lauren DeMarco, BFI Furniture`
+    const commentMessage = `Hi ${commentRecipient.name.split(' ')[0]} — update on DOE-2847 CPR reconciliation: both labor adjustments (Carpenters −5h · OT −2h · total impact −$720) have been reviewed and approved. Figures are now reflected in CORE.\n\n— Account Manager DeMar, BFI Furniture`
 
     const handleCommentSend = () => {
         setCommentSent(true)
@@ -1376,7 +1376,7 @@ function CPRReviewPanel({ onValidate, michaelMode, invoiceUpload, onResolveChang
                                     </div>
                                     <div>
                                         <p className="text-[13px] font-bold text-foreground">Return to Lauren</p>
-                                        <p className="text-[11px] text-muted-foreground">DOE-2847 · Add a note for Lauren DeMarco</p>
+                                        <p className="text-[11px] text-muted-foreground">DOE-2847 · Add a note for Account Manager DeMar</p>
                                     </div>
                                     <button onClick={() => setShowReject(false)} className="ml-auto p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors">
                                         <X className="h-4 w-4" />
@@ -1393,7 +1393,7 @@ function CPRReviewPanel({ onValidate, michaelMode, invoiceUpload, onResolveChang
                                         </div>
                                     ))}
                                     <textarea
-                                        defaultValue={`Hi Lauren,\n\nReturning DOE-2847 for review before I sign off on the final quote.\n\nPlease double-check the adjusted labor hours against the Quote Tool invoice and confirm before I forward to the client.\n\n— Michael Boyle\n  BFI Furniture · Account Manager`}
+                                        defaultValue={`Hi Lauren,\n\nReturning DOE-2847 for review before I sign off on the final quote.\n\nPlease double-check the adjusted labor hours against the Quote Tool invoice and confirm before I forward to the client.\n\n— Manager Boyle\n  BFI Furniture · Account Manager`}
                                         rows={7}
                                         className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-[11px] text-foreground leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-primary/30"
                                     />
@@ -1431,7 +1431,7 @@ Please verify that the CPR-adjusted hours (Carpenters 45h, OT 6h) are correctly 
 
 Let me know once confirmed and I'll approve.
 
-— Patricia Hilger
+— Finance Lead Halbert
   BFI Furniture · Finance & AR`
 
 function AskLaurenDialog({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
@@ -1479,7 +1479,7 @@ function AskLaurenDialog({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
                                     </div>
                                     <div>
                                         <p className="text-[13px] font-bold text-foreground">Return to Lauren</p>
-                                        <p className="text-[11px] text-muted-foreground">DOE-2847 · Add a note for Lauren DeMarco</p>
+                                        <p className="text-[11px] text-muted-foreground">DOE-2847 · Add a note for Account Manager DeMar</p>
                                     </div>
                                 </div>
                                 <button onClick={onClose} className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors">
@@ -1563,7 +1563,7 @@ function FeeReviewPanel({ scenario, onValidate }: { scenario: 'match' | 'gap'; o
                     <h4 className="text-[13px] font-bold text-muted-foreground uppercase tracking-widest">AGENCY FEE VERIFICATION</h4>
                     <span className="text-[8px] font-bold text-ai bg-ai/10 border border-ai/20 px-1.5 py-0.5 rounded uppercase tracking-wider">CMF Free · per-line match</span>
                 </div>
-                <p className="text-[11px] text-muted-foreground/70 mt-0.5">Patricia Hilger · Finance & AR · DOE-2847</p>
+                <p className="text-[11px] text-muted-foreground/70 mt-0.5">Finance Lead Halbert · Finance & AR · DOE-2847</p>
             </div>
 
             <div className="flex-1 overflow-y-auto">
@@ -1808,7 +1808,7 @@ Attached is the floor plan and product list for your reference.
 
 Thanks,
 
-— Lauren DeMarco
+— Account Manager DeMar
 BFI Furniture · CoNY Account Manager`
     )
     const [attachments, setAttachments] = useState([
@@ -1924,8 +1924,8 @@ BFI Furniture · CoNY Account Manager`
                                                 <div className="font-bold text-foreground">Sent to WIG · May 6 · 2:47 PM</div>
                                                 <div className="text-muted-foreground mt-0.5">
                                                     {phase === 'sent'
-                                                        ? 'Awaiting labor quote · Michael Boyle (BFI) will compile WIG response'
-                                                        : 'Labor quote received · Michael Boyle (BFI) compiled WIG response below'
+                                                        ? 'Awaiting labor quote · Manager Boyle (BFI) will compile WIG response'
+                                                        : 'Labor quote received · Manager Boyle (BFI) compiled WIG response below'
                                                     }
                                                 </div>
                                             </div>
@@ -1948,7 +1948,7 @@ BFI Furniture · CoNY Account Manager`
                                                     <span className="text-[9px] font-black text-ai">MB</span>
                                                 </div>
                                                 <div className="flex-1 min-w-0">
-                                                    <p className="text-[11px] font-bold text-foreground">Michael Boyle · BFI → Lauren DeMarco</p>
+                                                    <p className="text-[11px] font-bold text-foreground">Manager Boyle · BFI → Account Manager DeMar</p>
                                                     <p className="text-[9px] text-muted-foreground">May 6, 2026 · 3:15 PM · RE: Labor Quote Request · DOE-2847</p>
                                                 </div>
                                                 <span className="text-[8px] font-bold text-success bg-success/10 border border-success/20 px-1.5 py-0.5 rounded shrink-0">Compiled</span>
@@ -1997,7 +1997,7 @@ BFI Furniture · CoNY Account Manager`
                                                     </div>
                                                 </div>
                                                 <p className="text-[10px] text-muted-foreground">
-                                                    — Michael Boyle<br />
+                                                    — Manager Boyle<br />
                                                     BFI · Director of Strategic Accounts
                                                 </p>
                                             </div>
@@ -2342,15 +2342,15 @@ function LaborReadyPanel({ onValidate, onCustomValue, ovniqLines, onUpdateLine, 
 
     const NOTIFY = [
         { initials: 'RC', label: 'Account Manager Bly',   sub: 'Miller Knoll Rep', color: 'bg-info/20 text-info' },
-        { initials: 'MB', label: 'Michael Boyle',  sub: 'BFI Manager',      color: 'bg-ai/15 text-ai' },
+        { initials: 'MB', label: 'Manager Boyle',  sub: 'BFI Manager',      color: 'bg-ai/15 text-ai' },
         { initials: 'DOE', label: 'NYC DOE',      sub: 'Procurement',      color: 'bg-success/15 text-success' },
     ]
     const RECIPIENTS = {
         designer: { initials: 'RC', name: 'Account Manager Bly',  role: 'Miller Knoll Rep', color: 'bg-info/20 text-info' },
-        manager:  { initials: 'MB', name: 'Michael Boyle', role: 'BFI Manager',       color: 'bg-ai/15 text-ai'    },
+        manager:  { initials: 'MB', name: 'Manager Boyle', role: 'BFI Manager',       color: 'bg-ai/15 text-ai'    },
     }
     const recipient = RECIPIENTS[askTo]
-    const askMessage = `Hi ${recipient.name.split(' ')[0]} — quick check on PO DOE-2847 before we confirm: can you verify the labor schedule (Carpenters 45h · OT 6h) matches your records? We're ready to transmit to CORE.\n\n— Lauren DeMarco, BFI Furniture`
+    const askMessage = `Hi ${recipient.name.split(' ')[0]} — quick check on PO DOE-2847 before we confirm: can you verify the labor schedule (Carpenters 45h · OT 6h) matches your records? We're ready to transmit to CORE.\n\n— Account Manager DeMar, BFI Furniture`
 
     const handleAskSend = () => {
         setAskSent(true)

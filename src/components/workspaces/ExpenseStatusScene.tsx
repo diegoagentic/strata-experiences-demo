@@ -4,7 +4,7 @@
  *
  * State machine (shared across both scenario modes):
  *   'watching'    — timeline in progress, waiting for next event
- *   'notified'    — notification slides in (Strata AI or Sarah Johnson rejection)
+ *   'notified'    — notification slides in (Strata AI or Operations Manager Solano rejection)
  *   'updated'     — tap notification → timeline updated + mode-specific content
  *   'fixing'      — (rejected mode only) Fix and Resubmit → re-attachment form (Screen 6)
  *   'resubmitted' — (rejected mode only) Resubmit → success + new timeline
@@ -29,8 +29,8 @@ type ScenarioMode  = 'approved' | 'rejected'
 
 const TIMELINE_BASE = [
     { label: 'Submitted',        time: 'May 5, 10:32 AM', note: 'Form submitted via mobile',             done: true,  isRejection: false },
-    { label: 'Manager Notified', time: 'May 5, 10:33 AM', note: 'Push sent to Sarah Johnson',            done: true,  isRejection: false },
-    { label: 'Approved',         time: 'May 6, 9:15 AM',  note: 'Sarah Johnson · 1 day · on time ✓',  done: true,  isRejection: false },
+    { label: 'Manager Notified', time: 'May 5, 10:33 AM', note: 'Push sent to Operations Manager Solano',            done: true,  isRejection: false },
+    { label: 'Approved',         time: 'May 6, 9:15 AM',  note: 'Operations Manager Solano · 1 day · on time ✓',  done: true,  isRejection: false },
     { label: 'In AP Review',     time: 'May 6, 9:16 AM',  note: "Routed to Letza's queue",               done: true,  isRejection: false },
     { label: 'Posted to CORE',   time: 'Pending',          note: '',                                       done: false, isRejection: false },
     { label: 'Payment Issued',   time: 'Pending',          note: '',                                       done: false, isRejection: false },
@@ -38,8 +38,8 @@ const TIMELINE_BASE = [
 
 const TIMELINE_UPDATED = [
     { label: 'Submitted',        time: 'May 5, 10:32 AM', note: 'Form submitted via mobile',             done: true, isRejection: false },
-    { label: 'Manager Notified', time: 'May 5, 10:33 AM', note: 'Push sent to Sarah Johnson',            done: true, isRejection: false },
-    { label: 'Approved',         time: 'May 6, 9:15 AM',  note: 'Sarah Johnson · 1 day · on time ✓',  done: true, isRejection: false },
+    { label: 'Manager Notified', time: 'May 5, 10:33 AM', note: 'Push sent to Operations Manager Solano',            done: true, isRejection: false },
+    { label: 'Approved',         time: 'May 6, 9:15 AM',  note: 'Operations Manager Solano · 1 day · on time ✓',  done: true, isRejection: false },
     { label: 'In AP Review',     time: 'May 6, 9:16 AM',  note: "Letza confirmed · GL 6200 + 6210 · auto-posted to CORE", done: true, isRejection: false },
     { label: 'Posted to CORE',   time: 'May 6, 2:48 PM',  note: 'Entry #CR-2847 · no manual re-entry',  done: true, isRejection: false },
     { label: 'Payment Issued',   time: 'May 8, 9:00 AM',  note: 'Check #44821 · 3 days total · within avg ✓', done: true, isRejection: false },
@@ -47,8 +47,8 @@ const TIMELINE_UPDATED = [
 
 const TIMELINE_REJECTED_BASE = [
     { label: 'Submitted',        time: 'May 5, 10:32 AM', note: 'Form submitted via mobile',  done: true,  isRejection: false },
-    { label: 'Manager Notified', time: 'May 5, 10:33 AM', note: 'Push sent to Sarah Johnson', done: true,  isRejection: false },
-    { label: 'In Review',        time: 'May 6, 9:15 AM',  note: 'Sarah Johnson reviewing',    done: true,  isRejection: false },
+    { label: 'Manager Notified', time: 'May 5, 10:33 AM', note: 'Push sent to Operations Manager Solano', done: true,  isRejection: false },
+    { label: 'In Review',        time: 'May 6, 9:15 AM',  note: 'Operations Manager Solano reviewing',    done: true,  isRejection: false },
     { label: 'Returned',         time: 'Pending',          note: 'Receipt unclear — see note', done: false, isRejection: true  },
     { label: 'Posted to CORE',   time: 'Pending',          note: '',                           done: false, isRejection: false },
     { label: 'Payment Issued',   time: 'Pending',          note: '',                           done: false, isRejection: false },
@@ -56,8 +56,8 @@ const TIMELINE_REJECTED_BASE = [
 
 const TIMELINE_REJECTED_UPDATED = [
     { label: 'Submitted',        time: 'May 5, 10:32 AM', note: 'Form submitted via mobile',                done: true, isRejection: false },
-    { label: 'Manager Notified', time: 'May 5, 10:33 AM', note: 'Push sent to Sarah Johnson',              done: true, isRejection: false },
-    { label: 'In Review',        time: 'May 6, 9:15 AM',  note: 'Sarah Johnson reviewing',                 done: true, isRejection: false },
+    { label: 'Manager Notified', time: 'May 5, 10:33 AM', note: 'Push sent to Operations Manager Solano',              done: true, isRejection: false },
+    { label: 'In Review',        time: 'May 6, 9:15 AM',  note: 'Operations Manager Solano reviewing',                 done: true, isRejection: false },
     { label: 'Returned',         time: 'May 6, 9:22 AM',  note: 'Receipt unclear — reattach fuel receipt', done: true, isRejection: true  },
     { label: 'Posted to CORE',   time: 'Pending',          note: '',                                        done: false, isRejection: false },
     { label: 'Payment Issued',   time: 'Pending',          note: '',                                        done: false, isRejection: false },
@@ -65,7 +65,7 @@ const TIMELINE_REJECTED_UPDATED = [
 
 const TIMELINE_RESUBMITTED = [
     { label: 'Resubmitted',      time: 'May 6, 9:45 AM', note: 'Corrected fuel receipt attached', done: true,  isRejection: false },
-    { label: 'Manager Notified', time: 'May 6, 9:45 AM', note: 'Push sent to Sarah Johnson',      done: true,  isRejection: false },
+    { label: 'Manager Notified', time: 'May 6, 9:45 AM', note: 'Push sent to Operations Manager Solano',      done: true,  isRejection: false },
     { label: 'Approved',         time: 'Pending',          note: '',                               done: false, isRejection: false },
     { label: 'Posted to CORE',   time: 'Pending',          note: '',                               done: false, isRejection: false },
     { label: 'Payment Issued',   time: 'Pending',          note: '',                               done: false, isRejection: false },
@@ -232,7 +232,7 @@ export default function ExpenseStatusScene({ onBack }: { onBack?: () => void }) 
                             <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-destructive border-2 border-card animate-pulse" />
                         </div>
                         <div className="flex-1 min-w-0">
-                            <p className="text-[10px] font-bold text-destructive uppercase tracking-wide mb-0.5">Sarah Johnson · Returned</p>
+                            <p className="text-[10px] font-bold text-destructive uppercase tracking-wide mb-0.5">Operations Manager Solano · Returned</p>
                             <p className="text-xs font-semibold text-foreground leading-snug">
                                 Receipt is unclear — correction needed
                             </p>
@@ -249,7 +249,7 @@ export default function ExpenseStatusScene({ onBack }: { onBack?: () => void }) 
                         <div className="flex items-start gap-2">
                             <AlertCircle className="h-3.5 w-3.5 text-destructive shrink-0 mt-0.5" />
                             <div>
-                                <p className="text-xs font-bold text-destructive">Returned by Sarah Johnson</p>
+                                <p className="text-xs font-bold text-destructive">Returned by Operations Manager Solano</p>
                                 <p className="text-[10px] text-muted-foreground mt-0.5">
                                     Receipt is unclear — please reattach the Fuel receipt with the full amount visible.
                                 </p>
@@ -275,7 +275,7 @@ export default function ExpenseStatusScene({ onBack }: { onBack?: () => void }) 
 
                         {/* Rejection note */}
                         <div className="bg-destructive/5 border border-destructive/20 rounded-xl px-3 py-2.5">
-                            <p className="text-[10px] font-semibold text-destructive mb-0.5">Sarah Johnson wrote:</p>
+                            <p className="text-[10px] font-semibold text-destructive mb-0.5">Operations Manager Solano wrote:</p>
                             <p className="text-[10px] text-muted-foreground italic">
                                 "Receipt is unclear — please reattach the Fuel receipt with the full amount visible."
                             </p>
@@ -392,7 +392,7 @@ export default function ExpenseStatusScene({ onBack }: { onBack?: () => void }) 
                             <div>
                                 <p className="text-xs font-bold text-success">Resubmitted ✓</p>
                                 <p className="text-[10px] text-muted-foreground mt-0.5">
-                                    Corrected receipt attached · Sarah Johnson notified
+                                    Corrected receipt attached · Operations Manager Solano notified
                                 </p>
                             </div>
                         </div>

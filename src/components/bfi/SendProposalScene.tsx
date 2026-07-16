@@ -33,7 +33,7 @@ Please find attached the quote for DOE-2847.
 
 Please let me know if you have any questions.
 
-— Lauren DeMarco
+— Account Manager DeMar
 BFI Furniture · CoNY Account Manager`
     )
     const [attachments, setAttachments] = useState([

@@ -250,7 +250,7 @@ export default function PricingValidationScene() {
                             <p className="text-foreground leading-relaxed">
                                 "The Panel System (custom config, $4,200) is not included in the CoNY contract catalog. Please provide a substitute item from the approved list or remove this line before we can proceed."
                             </p>
-                            <div className="text-muted-foreground text-[10px]">— Lauren DeMarco, CoNY Account Manager · BFI Furniture</div>
+                            <div className="text-muted-foreground text-[10px]">— Account Manager DeMar, CoNY Account Manager · BFI Furniture</div>
                         </div>
                         <div className="flex justify-end pt-0.5">
                             <button

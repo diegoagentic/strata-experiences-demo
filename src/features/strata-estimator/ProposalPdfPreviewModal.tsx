@@ -225,7 +225,7 @@ export default function ProposalPdfPreviewModal({
                         <ul className="grid grid-cols-2 gap-2">
                             {[
                                 'Regional Sales Manager Reyes · Regional Sales Manager',
-                                'Alex Rivera · Designer',
+                                'Designer Alden · Designer',
                                 'Account Manager Kai · Account Manager',
                                 'Jordan Park · VP Sales',
                             ].map((line) => (

@@ -1425,7 +1425,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                                         onEscalate={() => {
                                             logEvent(
                                                 'Regional Sales Manager Reyes',
-                                                'Escalated OFS Serpentine to Alex Rivera',
+                                                'Escalated OFS Serpentine to Designer Alden',
                                                 'edit'
                                             )
                                             setEscalatedAt(Date.now())
@@ -1575,7 +1575,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                 isOpen={stepState === 'estimation-escalated' && designerTaskOpened}
                 onSendBack={() => {
                     logEvent(
-                        'Alex Rivera',
+                        'Designer Alden',
                         'Verified OFS Serpentine · 14 h install (modular assembly confirmed) · sent for approval',
                         'edit'
                     )

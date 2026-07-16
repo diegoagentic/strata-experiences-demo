@@ -37,7 +37,7 @@ The CORE work order (WO-2026-0089) has been updated. All items are now cleared f
 
 Please approve the scheduling so we can coordinate with the Workplace labor team.
 
-— Lauren DeMarco
+— Account Manager DeMar
   BFI Furniture · CoNY Account Manager`
 
 const WO_LINES = [

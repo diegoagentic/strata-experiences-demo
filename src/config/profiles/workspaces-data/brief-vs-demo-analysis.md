@@ -24,7 +24,7 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 | **Qué hace el sistema** | Detecta monto, fecha, categoría automáticamente | Animación OCR: campos se llenan uno por uno en tiempo real |
 | **Resultado del AI** | `$47.50 · Dining · 05/06/26` (ejemplo del brief) | `$142.50 · Fuel + Parking · May 5, 2026` (gasto canónico) |
 | **Campo Categoría** | Dropdown seleccionable ▾ | Tappable — abre selector inline con 5 opciones para confirmar o cambiar |
-| **Campo Manager** | Dropdown seleccionable ▾ (Sarah Johnson) | Read-only (configurado por el admin, no editable por el empleado) |
+| **Campo Manager** | Dropdown seleccionable ▾ (Operations Manager Solano) | Read-only (configurado por el admin, no editable por el empleado) |
 | **Múltiples recibos** | "📎 Receipt attached · + Add another" | Botón "+ Add another receipt" — escanea y adjunta automáticamente |
 | **Nota al manager** | No aparece | Campo opcional de texto libre antes de enviar |
 | **Acción principal** | Botón "Submit Expense →" | Botón "Submit Expense →" |
@@ -38,7 +38,7 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 
 | | **HTML Brief (Screen 2)** | **Demo (w1.2)** |
 |---|---|---|
-| **Rol** | Manager · 🖥 Desktop | Manager (Sarah Johnson) · 🖥 Desktop |
+| **Rol** | Manager · 🖥 Desktop | Manager (Operations Manager Solano) · 🖥 Desktop |
 | **Entra porque** | Tiene gastos pendientes de aprobar | Le llegó notificación de un gasto nuevo |
 | **Qué ve al abrir** | Lista de 3 gastos con título "Pending Approvals (3)" | Cola de 5 gastos con filtros, búsqueda y categorías |
 | **Formato de cada fila** | 🧾 ícono + nombre + monto + categoría + recibos visibles | Nombre + monto + categoría + estado de recibos + edad del gasto |
@@ -59,7 +59,7 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 
 | | **HTML Brief** | **Demo (w1.3)** |
 |---|---|---|
-| **Rol** | Manager · 🖥 Desktop *(no existe como pantalla separada)* | Manager (Sarah Johnson) · 🖥 Desktop |
+| **Rol** | Manager · 🖥 Desktop *(no existe como pantalla separada)* | Manager (Operations Manager Solano) · 🖥 Desktop |
 | **Entra porque** | — | Quiere ver el recibo antes de tomar la decisión |
 | **Qué ve al abrir** | — | Recibo visible inline + datos del gasto + selector de escenario para el presentador |
 | **Selector de escenario** | — | Pills: "✓ Normal approval" / "↩ Return path" / "⚠ Policy flag" |
@@ -88,7 +88,7 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 | **Handoff a AP** | No existe | Card "Send confirmation to:" — selecciona AP Coordinator o Finance Team → "Send confirmation" → w2.1 |
 | **— PATH RECHAZADO —** | | |
 | **Notificación** | No definida para este momento | Push rojo de Sarah: *"Receipt is unclear — correction needed"* |
-| **Rejection card** | S6: `❌ Rejected by Sarah Johnson · "Receipt is unclear"` | Card roja con nota exacta de Sarah |
+| **Rejection card** | S6: `❌ Rejected by Operations Manager Solano · "Receipt is unclear"` | Card roja con nota exacta de Sarah |
 | **Ítem específico a corregir** | `📎 Fuel — $95.00 · Receipt missing` destacado | `Fuel · $95.00 · Receipt unclear — reattach required` en card roja |
 | **Re-adjuntar** | Camera box: "Re-attach corrected receipt" | Camera box idéntico + opción de galería |
 | **Nota al manager** | Campo "Note to manager (optional)" | Campo de texto libre opcional |
@@ -111,7 +111,7 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 | **Línea 1** | `Fuel $95.00 → GL 6200 · Vehicle ✨ AI` | `6200 · Vehicle Expenses · $95.00 · 94%` — borde verde |
 | **Línea 2** | `Parking $47.50 → GL 6210 · Travel ✨ AI` | `6210 · Travel & Transit · $47.50 · 72%` — borde rojo + "Manual review" |
 | **Recibos** | `2 receipts verified inline ✅` | Accesibles en este paso vía carrusel |
-| **Notificación** | No existe | Toast a los 2s: *"Employee Alpha · $142.50 · approved by Sarah Johnson · GL pre-filled"* |
+| **Notificación** | No existe | Toast a los 2s: *"Employee Alpha · $142.50 · approved by Operations Manager Solano · GL pre-filled"* |
 | **Acción** | Botón "Confirm & Auto-Post to CORE →" (en la misma pantalla) | Botón "Review GL — Employee Alpha" en el toast → abre w2.2 |
 | **Sale hacia** | CORE (confirmación directa) | w2.2 — pantalla de confirmación detallada |
 | **Alineado** | ✅ Datos idénticos · Demo mejora con % de confianza y color semántico · La separación en 2 pasos hace la narrativa más clara |
@@ -142,7 +142,7 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 |---|---|---|
 | **Rol** | AP Coordinator (Letza) · 🖥 Desktop | AP Coordinator (Letza) · 🖥 Desktop |
 | **Entra porque** | Necesita actualizar la configuración | Necesita actualizar managers, categorías o jerarquía |
-| **Sección: Managers** | Sarah Johnson (Ops · Tampa) + Mike Torres (Sales · Orlando) con botón "Edit" | Mismos managers + formulario expandible inline por fila + toggle activo/inactivo |
+| **Sección: Managers** | Operations Manager Solano (Ops · Tampa) + Mike Torres (Sales · Orlando) con botón "Edit" | Mismos managers + formulario expandible inline por fila + toggle activo/inactivo |
 | **Agregar manager** | Botón "+ Add Manager" | Botón "+ Add Manager" → abre formulario con nombre, depto, email |
 | **Sección: Categorías** | `Fuel · Meals · Travel · Parking · Office · +8 más` + botón "Manage Categories" | Mismas categorías + campo para agregar custom + botón eliminar por categoría |
 | **Sección: Jerarquía** | `Employee → Manager → Dept Head → CFO/AP` + botón "Edit Hierarchy" | Misma jerarquía en lectura → al editar: filas arrastrables con drag & drop |

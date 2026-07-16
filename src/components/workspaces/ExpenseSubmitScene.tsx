@@ -26,7 +26,7 @@ type AddState    = 'idle' | 'scanning' | 'done'
 
 const DEFAULT_MANAGER = {
     id: 'sarah',
-    name: 'Sarah Johnson',
+    name: 'Operations Manager Solano',
     dept: 'Operations · Tampa',
     photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop&crop=face',
 }
@@ -388,7 +388,7 @@ export default function ExpenseSubmitScene({ onSubmit, initialScreen }: { onSubm
                         <Clock className="h-3.5 w-3.5 text-muted-foreground" />
                         <p className="text-[11px] text-muted-foreground">
                             Expected: <span className="font-semibold text-foreground">3-day turnaround</span>
-                            <span className="text-muted-foreground/70"> · With: Sarah Johnson</span>
+                            <span className="text-muted-foreground/70"> · With: Operations Manager Solano</span>
                         </p>
                     </div>
 

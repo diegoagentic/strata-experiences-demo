@@ -338,13 +338,13 @@ export const BFI_DOCS = {
     },
     INVOICE_EMAIL_17706: {
         src:        '/docs/bfi/invoices/invoice-email-17706.pdf',
-        label:      'Invoice Package Email · Thomas Conroy → Michael Boyle',
+        label:      'Invoice Package Email · Invoice Analyst Conley → Manager Boyle',
         badgeColor: 'muted' as const,
         sampleLabel: 'NYPL Q27216 (17706)',
         extractedFields: [
             { label: 'Subject',      value: 'Invoice Package for NYPL Q27216 (17706)' },
-            { label: 'From',         value: 'Thomas Conroy · Workplace Installation Group' },
-            { label: 'To',           value: 'Michael Boyle · BFI' },
+            { label: 'From',         value: 'Invoice Analyst Conley · Workplace Installation Group' },
+            { label: 'To',           value: 'Manager Boyle · BFI' },
             { label: 'Date',         value: '05/11/2026 · 3:03 PM' },
             { label: 'Attachments',  value: '3 files (729 KB)', highlight: true },
             { label: 'File 1',       value: 'Invoice (17706-27340) NYPL 27216.pdf' },
@@ -365,7 +365,7 @@ export const BFI_DOCS = {
             { label: 'Period',      value: '03/21/2026 – 04/25/2026' },
             { label: 'Workers',     value: '10 (T. Holcombe, E. Britton, D. Vaz, +7)' },
             { label: 'Roles',       value: 'Carpenter/Foreman Local 254, Journeyperson Local 157/253' },
-            { label: 'Signed by',   value: 'Thomas Conroy, President' },
+            { label: 'Signed by',   value: 'Invoice Analyst Conley, President' },
         ],
     },
     CPR_NYPL_17706: {
@@ -385,7 +385,7 @@ export const BFI_DOCS = {
             { label: 'Rate',          value: '$65.05 / hr' },
             { label: 'Gross Pay',     value: '$260.20' },
             { label: 'Net Pay',       value: '$170.32' },
-            { label: 'Signed by',     value: 'Thomas Conroy, President · Apr 17' },
+            { label: 'Signed by',     value: 'Invoice Analyst Conley, President · Apr 17' },
         ],
     },
     SIGNIN_NYPL_17706: {
@@ -404,7 +404,7 @@ export const BFI_DOCS = {
             { label: 'Time in',            value: '1:00 PM' },
             { label: 'Time out',           value: '3:30 PM' },
             { label: 'Employee signature', value: 'Mark Mross ✓' },
-            { label: 'Supervisor',         value: 'Thomas Conroy, President · 4-9-26' },
+            { label: 'Supervisor',         value: 'Invoice Analyst Conley, President · 4-9-26' },
         ],
     },
 } as const

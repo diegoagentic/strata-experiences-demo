@@ -1,6 +1,6 @@
 # BFI Furniture — Blueprint V0 & Process Reference
 
-> Fuente: Sesión Notion AI (May 2026) — transcripción de proceso E2E con Lauren DeMarco y Michael Boyle.
+> Fuente: Sesión Notion AI (May 2026) — transcripción de proceso E2E con Account Manager DeMar y Manager Boyle.
 > Complementa: `bfi-flows.md` (análisis de cuellos de botella) y `bfi-sot.md` (source of truth de empresa y personas).
 > Uso: referencia autoritativa para datos demo, lógica de scenes, y matching de documentos.
 
@@ -335,11 +335,11 @@ Los 7 puntos de conexión documentados en el lifecycle CoNY:
 
 | Persona | Rol en demo | Email demo | Aparece en |
 |---|---|---|---|
-| Lauren DeMarco | CoNY Account Lead — principal | lauren@bfifurniture.com | b1.1–b1.6, b2.1, b2.4–b2.5, b2.7–b2.8 |
-| Michael Boyle | Director of Strategic Accounts | michael@bfifurniture.com | b1.4, b1.7 |
+| Account Manager DeMar | CoNY Account Lead — principal | lauren@bfifurniture.com | b1.1–b1.6, b2.1, b2.4–b2.5, b2.7–b2.8 |
+| Manager Boyle | Director of Strategic Accounts | michael@bfifurniture.com | b1.4, b1.7 |
 | Lena Cisowski | Receiving Coordinator | lena@bfifurniture.com | b2.3 |
 | Operations Manager Bly | CoNY PM | walter@bfifurniture.com | b2.6 |
-| Patricia Hilger | Finance / AR | patricia@bfifurniture.com | b1.8 |
+| Finance Lead Halbert | Finance / AR | patricia@bfifurniture.com | b1.8 |
 | Nancy Bos | MK Invoice Processor (externo) | nancy.bos@millerknoll.com | b1.7, b1.8 |
 | Andy | MK Contact (externo) | andy@millerknoll.com | b2.2 |
 | MK Designer | Trigger de quote intake (externo) | designer@millerknoll.com | b1.1, b1.2 |

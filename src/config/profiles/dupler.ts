@@ -206,7 +206,7 @@ export const DUPLER_STEP_MESSAGES: Record<string, string[]> = {
         'TraceabilityArchiver: archiving source document and expert notes for audit trail',
     ],
     'd1.4': [
-        'SPEC-MH-0412.pmx received from Designer Alex Rivera — specification ready',
+        'SPEC-MH-0412.pmx received from Designer Designer Alden — specification ready',
         'UpchargeDetector: 2 option selections trigger upcharges — $1,470 total',
         'DiscountAdvisor: suggesting Meridian Workspace dealer discount tiers...',
         'MarginCalculator: computing margins after discounts and upcharges',

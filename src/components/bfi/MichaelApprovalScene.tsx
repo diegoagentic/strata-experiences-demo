@@ -1,6 +1,6 @@
 /**
  * COMPONENT: MichaelApprovalScene (a1.3b)
- * PURPOSE: Michael Boyle (Lauren's manager, BFI) sees the Agency Fee CPR funnel,
+ * PURPOSE: Manager Boyle (Lauren's manager, BFI) sees the Agency Fee CPR funnel,
  *          receives Lauren's CPR approval notification, reviews the same CPR detail
  *          as step 1.8 (pre-approved), and sends the final quote to Nancy Bos
  *          (Herman Miller invoice processor) requesting the invoice.
@@ -26,7 +26,7 @@ import BFIProcessKanban from './BFIProcessKanban'
 
 const NOTIF = {
     title: 'CPR approved · Final quote ready · DOE-2847',
-    desc: 'Lauren DeMarco completed CPR reconciliation — Carpenters −5h, OT −2h · Total −$2,340 · Pending: send final quote to Herman Miller',
+    desc: 'Account Manager DeMar completed CPR reconciliation — Carpenters −5h, OT −2h · Total −$2,340 · Pending: send final quote to Herman Miller',
     cta: 'Review & send final quote to Nancy →',
 }
 
@@ -49,7 +49,7 @@ Following CPR reconciliation, the labor hours have been adjusted and approved:
 Please issue the final invoice for $6,920 and send it to ar@bfifurniture.com at your earliest convenience.
 
 Thank you,
-Michael Boyle
+Manager Boyle
 BFI Furniture · Account Manager`
 
 // ─── Nancy Send Dialog ────────────────────────────────────────────────────────

@@ -25,7 +25,7 @@ type CategoryFilter = 'all' | 'Mileage' | 'Personal Meals' | 'Air Fare' | 'Misc 
 // ── Data ─────────────────────────────────────────────────────────────────────
 
 const EXPENSE_CYCLES = [
-    { period: 'May 2026',      total: '$48K', count: 23, status: 'processing', postedBy: 'Letza Bombard', time: '2:48 PM' },
+    { period: 'May 2026',      total: '$48K', count: 23, status: 'processing', postedBy: 'AP Coordinator Bell', time: '2:48 PM' },
     { period: 'April 2026',    total: '$43K', count: 19, status: 'closed' },
     { period: 'March 2026',    total: '$41K', count: 21, status: 'closed' },
     { period: 'February 2026', total: '$38K', count: 18, status: 'closed' },
@@ -65,7 +65,7 @@ const FUEL_DRILL = [
 
 const OVERDUE_ALERTS = [
     { name: 'Carlos Ruiz', amount: '$210', manager: 'Mike Torres',   days: 4 },
-    { name: 'Ana Kim',     amount: '$312', manager: 'Sarah Johnson', days: 3 },
+    { name: 'Ana Kim',     amount: '$312', manager: 'Operations Manager Solano', days: 3 },
 ]
 
 const DIVISION_DEPTS = [
@@ -396,7 +396,7 @@ function ReportPreviewModal({ onClose }: { onClose: () => void }) {
                         <p className="text-xs font-bold text-foreground uppercase tracking-widest">Strata Financial</p>
                         <p className="text-[10px] text-muted-foreground">Expense Report — May 2026</p>
                         <p className="text-[10px] text-muted-foreground">Generated May 8, 2026 · 2:48 PM</p>
-                        <p className="text-[10px] text-muted-foreground">Posted to CORE by Letza Bombard · Accountant</p>
+                        <p className="text-[10px] text-muted-foreground">Posted to CORE by AP Coordinator Bell · Accountant</p>
                     </div>
 
                     <div className="border-t border-border" />
@@ -728,7 +728,7 @@ function OpsSpendReport({ onBack }: { onBack: () => void }) {
 // ── ApprovalTrendsReport — Supervisor approval response times ─────────────────
 
 const APPROVAL_MANAGERS = [
-    { name: 'Sarah Johnson', dept: 'Operations',   avgDays: 0.9, onTime: '98%', total: 14, color: 'bg-success/60' },
+    { name: 'Operations Manager Solano', dept: 'Operations',   avgDays: 0.9, onTime: '98%', total: 14, color: 'bg-success/60' },
     { name: 'Mike Torres',   dept: 'Procurement',  avgDays: 1.4, onTime: '93%', total: 11, color: 'bg-success/40' },
     { name: 'Ana Reyes',     dept: 'Sales',        avgDays: 2.1, onTime: '88%', total:  8, color: 'bg-warning/50' },
     { name: 'Jorge Mata',    dept: 'Install',      avgDays: 3.8, onTime: '72%', total:  4, color: 'bg-destructive/40' },
@@ -1564,7 +1564,7 @@ function CompanyView({
             <div className="bg-card border border-border rounded-xl px-4 py-3 space-y-2">
                 <div className="flex items-center gap-1.5">
                     <Sparkles className="h-3 w-3 text-ai shrink-0" />
-                    <p className="text-[10px] font-semibold text-ai">May 2026 · Cycle closed by Letza Bombard · 2:48 PM</p>
+                    <p className="text-[10px] font-semibold text-ai">May 2026 · Cycle closed by AP Coordinator Bell · 2:48 PM</p>
                 </div>
                 <div className="grid grid-cols-3 gap-2 text-center">
                     {[

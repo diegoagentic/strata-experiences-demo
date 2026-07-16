@@ -604,7 +604,7 @@ export default function Pricing({ onLogout, onNavigateToDetail, onNavigateToWork
                                                                                 <div className="flex items-center gap-3">
                                                                                     <div className="h-10 w-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center"><UserIcon className="w-6 h-6 text-muted-foreground" /></div>
                                                                                     <div>
-                                                                                        <p className="text-sm font-medium text-foreground">Sarah Johnson</p>
+                                                                                        <p className="text-sm font-medium text-foreground">Operations Manager Solano</p>
                                                                                         <p className="text-xs text-muted-foreground">Project Manager</p>
                                                                                     </div>
                                                                                 </div>
@@ -726,7 +726,7 @@ export default function Pricing({ onLogout, onNavigateToDetail, onNavigateToWork
                                                                         <UserIcon className="h-4 w-4" />
                                                                     </div>
                                                                     <div>
-                                                                        <p className="text-sm font-bold text-foreground">Sarah Johnson</p>
+                                                                        <p className="text-sm font-bold text-foreground">Operations Manager Solano</p>
                                                                         <p className="text-xs text-muted-foreground">Project Manager</p>
                                                                     </div>
                                                                 </div>

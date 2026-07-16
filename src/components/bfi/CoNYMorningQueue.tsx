@@ -22,7 +22,7 @@ interface CoNYMorningQueueProps {
 
 const NOTIFY_MESSAGE = `Hi Robert — SIF for DOE-2847 has been ingested and validated. Quote Q-2026-0089 is being processed. We'll follow up shortly with confirmation.
 
-— Lauren DeMarco, BFI Furniture`
+— Account Manager DeMar, BFI Furniture`
 
 export default function CoNYMorningQueue({ onSelectOrder }: CoNYMorningQueueProps) {
     const { nextStep, isPaused } = useDemo()

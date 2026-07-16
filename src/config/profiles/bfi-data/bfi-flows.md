@@ -113,7 +113,7 @@ Lauren envía request a WIG para labor quote
 WIG devuelve quote en formato libre
         │
         ▼
-Michael Boyle extrae y categoriza manualmente:
+Manager Boyle extrae y categoriza manualmente:
   - Inside delivery
   - Teamsters (+ OT differential)
   - Carpenters (+ OT differential)

@@ -52,10 +52,10 @@ const POSTING_STEPS: { key: PostingStep; label: string }[] = [
 
 const AP_TIMELINE = [
     { label: 'Submitted',      actor: 'Employee Alpha',    initials: 'JS', time: 'May 5 · 10:32 AM', done: true,  current: false, ai: false },
-    { label: 'Mgr approved',   actor: 'Sarah Johnson', initials: 'SJ', time: 'May 6 · 9:15 AM',  done: true,  current: false, ai: false },
+    { label: 'Mgr approved',   actor: 'Operations Manager Solano', initials: 'SJ', time: 'May 6 · 9:15 AM',  done: true,  current: false, ai: false },
     { label: 'Routed to AP',   actor: 'Strata AI',     initials: '✦',  time: 'May 6 · 9:16 AM',  done: true,  current: false, ai: true  },
     { label: 'GL pre-filled',  actor: 'Strata AI',     initials: '✦',  time: 'May 6 · 9:16 AM',  done: true,  current: false, ai: true  },
-    { label: 'AP review',      actor: 'Letza Bombard', initials: 'LB', time: 'May 6 · 2:47 PM',  done: true,  current: true,  ai: false },
+    { label: 'AP review',      actor: 'AP Coordinator Bell', initials: 'LB', time: 'May 6 · 2:47 PM',  done: true,  current: true,  ai: false },
     { label: 'Post to CORE',   actor: '',              initials: '',   time: 'Pending',            done: false, current: false, ai: false },
 ]
 
@@ -66,7 +66,7 @@ const AP_INITIAL_THREADS: ApThread[] = [
         messages: [
             {
                 id: 'ap-m1',
-                author: 'Sarah Johnson',
+                author: 'Operations Manager Solano',
                 initials: 'SJ',
                 side: 'incoming',
                 text: 'Approval note: John confirmed the Capital Grille is a gas station on Suncoast Pkwy — GL 6200 is correct, not meals. Receipts match amounts.',
@@ -132,7 +132,7 @@ export default function GLCoreSyncScene({ onPost, onBack }: { onPost?: () => voi
     const addReply = (threadId: string) => {
         const text = (replyTexts[threadId] ?? '').trim()
         if (!text) return
-        const msg: ApMessage = { id: Date.now().toString(), author: 'Letza Bombard', initials: 'LB', side: 'ap', text, time: 'Just now' }
+        const msg: ApMessage = { id: Date.now().toString(), author: 'AP Coordinator Bell', initials: 'LB', side: 'ap', text, time: 'Just now' }
         setApThreads(ts => ts.map(t => t.id === threadId ? { ...t, messages: [...t.messages, msg] } : t))
         setReplyTexts(r => ({ ...r, [threadId]: '' }))
     }
@@ -143,7 +143,7 @@ export default function GLCoreSyncScene({ onPost, onBack }: { onPost?: () => voi
         const thread: ApThread = {
             id: Date.now().toString(),
             status: 'open',
-            messages: [{ id: Date.now().toString(), author: 'Letza Bombard', initials: 'LB', side: 'ap', text, time: 'Just now' }],
+            messages: [{ id: Date.now().toString(), author: 'AP Coordinator Bell', initials: 'LB', side: 'ap', text, time: 'Just now' }],
         }
         setApThreads(ts => [...ts, thread])
         setNewNote('')
@@ -170,8 +170,8 @@ export default function GLCoreSyncScene({ onPost, onBack }: { onPost?: () => voi
                     <div className="flex -space-x-1.5">
                         {[
                             { initials: 'JS', title: 'Employee Alpha' },
-                            { initials: 'SJ', title: 'Sarah Johnson' },
-                            { initials: 'LB', title: 'Letza Bombard' },
+                            { initials: 'SJ', title: 'Operations Manager Solano' },
+                            { initials: 'LB', title: 'AP Coordinator Bell' },
                         ].map(p => (
                             <div key={p.initials} title={p.title}
                                 className="h-5 w-5 rounded-full bg-muted border-2 border-card flex items-center justify-center text-[8px] font-bold text-muted-foreground"
@@ -328,7 +328,7 @@ export default function GLCoreSyncScene({ onPost, onBack }: { onPost?: () => voi
                     <div>
                         <p className="text-sm font-bold text-foreground">Employee Alpha · $95.00</p>
                         <p className="text-xs text-muted-foreground mt-0.5">
-                            Approved by Sarah Johnson · May 6 · <span className="text-success font-medium">on time ✓</span>
+                            Approved by Operations Manager Solano · May 6 · <span className="text-success font-medium">on time ✓</span>
                         </p>
                     </div>
                     <span className="text-[10px] bg-success/10 text-success border border-success/20 px-2 py-0.5 rounded-full font-medium shrink-0">

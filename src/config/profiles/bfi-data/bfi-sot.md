@@ -29,14 +29,14 @@
 | Persona | Rol | Notas críticas |
 |---|---|---|
 | **Kate Kerpchar** | President & CEO | Stakeholder principal. Define scope. Confía en Jessica y Matt. Protectora de su equipo. Trust threshold: 5/10. 5 adoption prerequisites. |
-| **Lauren DeMarco** | CoNY Account Lead / Data Coordinator | Propietaria end-to-end de ambos procesos en scope. Trust threshold: 8/10 — early adopter. Proceso CoNY vive casi completamente con ella. |
-| **Michael Boyle** | Director Strategic Accounts & PM | Revisa labor quotes, relays CPR revisions a Nancy Bos. Boss de Lauren. Contacto para document samples de receiving. |
+| **Account Manager DeMar** | CoNY Account Lead / Data Coordinator | Propietaria end-to-end de ambos procesos en scope. Trust threshold: 8/10 — early adopter. Proceso CoNY vive casi completamente con ella. |
+| **Manager Boyle** | Director Strategic Accounts & PM | Revisa labor quotes, relays CPR revisions a Nancy Bos. Boss de Lauren. Contacto para document samples de receiving. |
 | **Jessica Young** (Avanto) | Sales Assistant embedded en BFI | Canal de confianza clave. Propuso los flows al assessment. Conoce CORE y los procesos. Habla ambos lenguajes (Avanto + BFI). |
 | **Strata Sales Director** (Avanto) | SME — Operations | Su equipo soporta BFI actualmente (2 personas PC). Experta en direct bill y warehouse. SME crítica para feasibility. |
 | **Lena Cisowski** | BFI — Receiving (company-wide) | Ingresa confirmaciones de WIG en CORE. Sin SLA. Puede tardar hasta 7 días. No notifica a Lauren cuando hay 100% receipt. |
 | **Diana Bonilla** | Acknowledgement Checker | **EXCLUIDA del scope** — Kate no quiere que sepa del AI assessment. Change management risk alto. |
 | **Donna Banks** | Director of Sales Administration | Supervisa sales admins. Resistente al cambio ("knows everything, doesn't want to hear anything"). No respondió questionnaire. Cámara apagada en kickoff. |
-| **Patricia Hilger** | Finance / AR | Aplica el agency fee, cierra la orden en CORE. No respondió questionnaire. |
+| **Finance Lead Halbert** | Finance / AR | Aplica el agency fee, cierra la orden en CORE. No respondió questionnaire. |
 | **Operations Manager Bly** | PM CoNY (BFI) | Zero visibilidad del proceso hasta que Lauren le entrega el work order impreso. No puede pre-coordinar con la agencia. |
 | **Nancy Bos** | Invoice Processor — Miller Knoll (CoNY) | BFI depende de sus datos de agency fee sin poder verificarlos (blind spot). Recibe labor revision relay vía Michael. |
 | **Andy** | Contacto Lauren en Miller Knoll | Fuente de Proof of Delivery (POD) para shipments FedEx no confirmados por WIG. |
@@ -81,7 +81,7 @@
 
 ## 5. Proceso 1 — Agency Fee / Direct Bill Pricing Verification
 
-**Actores:** Lauren De Mark (principal), Michael Boyle (labor), Patricia (finance)
+**Actores:** Lauren De Mark (principal), Manager Boyle (labor), Patricia (finance)
 **Modelo:** cost = sale, 0% GP en order entry. Agency fee cobrado después separado a Miller Knoll.
 
 ### 5a. Flujo de tareas
@@ -110,7 +110,7 @@
 **Fase E — Labor Quote (en paralelo con Fase B/C/D)**
 14. Lauren solicita a Workplace (WIC) labor quote: inside delivery, installation (Teamsters, OT differential, Carpenters, OT differential), strike truck charges (si >600 cubes — 100% BFI profit)
 15. Workplace devuelve labor quote (formato no estandarizado)
-16. Michael Boyle revisa y categoriza manualmente las líneas
+16. Manager Boyle revisa y categoriza manualmente las líneas
 17. Lauren sube SIF template de labor desde CORE, ingresa manualmente los números de Michael
 18. **Pain point:** Sin formato estándar de intake. Michael debe extraer y categorizar a mano desde cualquier formato que mande Workplace.
 
@@ -165,7 +165,7 @@
 ## 6. Proceso 2 — Product Receiving: Third-Party Warehouse (CoNY / WIG)
 
 **Warehouse:** WIG = Workplace Installation Group — tercero principal para CoNY. BFI no tiene instalación ni warehouse propio.
-**Actores:** Lauren DeMarco (verifica + gestiona), Lena Cisowski (ingresa en CORE), WIG staff (confirman physical receipt), Operations Manager Bly (PM, recibe work order), Michael Boyle (coordina CPR relay).
+**Actores:** Account Manager DeMar (verifica + gestiona), Lena Cisowski (ingresa en CORE), WIG staff (confirman physical receipt), Operations Manager Bly (PM, recibe work order), Manager Boyle (coordina CPR relay).
 
 **Contexto:** Cubre desde que el producto llega a WIG hasta que Lauren imprime el work order y se lo entrega a Walter. La mayor parte de la logística es externa (WIG). Lauren es el cuello de botella de verificación.
 
@@ -213,7 +213,7 @@
 - Walter coordina delivery e instalación con la city agency.
 - Post-instalación: si hay daños o service items, Lauren ingresa warranty/service record en CORE.
 - WIG / installer envía **invoice package** con CPRs (certified payroll records) con horas reales (ej: 45h carpenter vs 50h cotizadas).
-- Lauren reconcilia CPR vs quoted hours: actualiza CORE, verifica monto, emailea a Michael Boyle con revised install dollar amount → Michael notifica a Nancy Bos (Miller Knoll) para actualizar invoice.
+- Lauren reconcilia CPR vs quoted hours: actualiza CORE, verifica monto, emailea a Manager Boyle con revised install dollar amount → Michael notifica a Nancy Bos (Miller Knoll) para actualizar invoice.
 - **Pain point crítico:** La ciudad no paga si CPR y la invoice no coinciden exactamente. Proceso 100% manual, multi-sistema, multi-partie.
 - **Pain point:** Cada city agency requiere documentación diferente. La variación no está sistematizada — depende del conocimiento institucional de Lauren y Michael.
 
@@ -318,7 +318,7 @@ Los dos procesos no son independientes — forman 3 fases secuenciales del mismo
 ## 9b. AI Readiness Score (Apr 2026)
 
 **Score:** 2.2/5.0 — **AI Explorer** tier
-**Respondentes:** 2 de 8 personas clave (Kate Kerpchar + Lauren DeMarco). 6 no respondieron: Donna, Diana, Lena, Patricia, Patrick Dunne, Walter.
+**Respondentes:** 2 de 8 personas clave (Kate Kerpchar + Account Manager DeMar). 6 no respondieron: Donna, Diana, Lena, Patricia, Patrick Dunne, Walter.
 
 | Dimensión | Score | Peso | Nota |
 |---|---|---|---|
@@ -329,7 +329,7 @@ Los dos procesos no son independientes — forman 3 fases secuenciales del mismo
 | Governance & Strategy | 1.5/5 | 10% | AI strategy early stage. Kate no tenía referencia de lo que AI puede hacer. |
 
 **Perfiles de adopción:**
-- **Lauren DeMarco:** Trust threshold 8/10. Prefiere self-directed onboarding. Define éxito como "ver que completa la tarea de principio a fin." Early adopter — es el único deployment path que importa para los 2 procesos en scope.
+- **Account Manager DeMar:** Trust threshold 8/10. Prefiere self-directed onboarding. Define éxito como "ver que completa la tarea de principio a fin." Early adopter — es el único deployment path que importa para los 2 procesos en scope.
 - **Kate Kerpchar:** Trust threshold 5/10. 5 prerequisites antes de adoptar: (1) demo con órdenes reales, (2) velocidad, (3) capability de override, (4) walkthrough one-on-one, (5) entender cómo maneja errores.
 
 **Gate de deployment:** El AI Readiness Report identifica que la documentación de procesos es el gate primario. Los E2E sessions de Apr 2026 son la primera documentación sistemática — ninguna herramienta debería deployarse en producción en un proceso que no fue documentado hasta este assessment.

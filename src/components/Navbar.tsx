@@ -42,27 +42,27 @@ const DEMO_PROFILES: Record<string, { name: string; role: string; photo: string 
         photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
     },
     'End User': {
-        name: 'Carlos Rivera',
+        name: 'Facilities Coord Cardo',
         role: 'Facilities Coordinator',
         photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face',
     },
     'Sales Rep': {
-        name: 'Michelle Torres',
+        name: 'Sales Rep Marín',
         role: 'Sales Rep',
         photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop&crop=face',
     },
     Designer: {
-        name: 'Alex Rivera',
+        name: 'Designer Alden',
         role: 'Designer',
         photo: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80&h=80&fit=crop&crop=face',
     },
     SC: {
-        name: 'Randy Martinez',
+        name: 'Sales Coordinator Marks',
         role: 'Sales Coordinator',
         photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face',
     },
     Estimator: {
-        name: 'Mark Williams',
+        name: 'Estimator Wells',
         role: 'Senior Estimator',
         photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=face',
     },
@@ -73,27 +73,27 @@ const DEMO_PROFILES: Record<string, { name: string; role: string; photo: string 
         photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face',
     },
     'Operations Manager': {
-        name: 'Sarah Johnson',
+        name: 'Operations Manager Solano',
         role: 'Operations Manager',
         photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop&crop=face',
     },
     'AP Coordinator': {
-        name: 'Letza Bombard',
+        name: 'AP Coordinator Bell',
         role: 'AP Coordinator',
         photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face',
     },
     CFO: {
-        name: 'Mehmet Yildiz',
+        name: 'CFO Yale',
         role: 'CFO',
         photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&h=80&fit=crop&crop=face',
     },
     'BFI Account Manager': {
-        name: 'Lauren D.',
+        name: 'Account Manager DeMar',
         role: 'CoNY Account Manager',
         photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face',
     },
     'BFI Manager': {
-        name: 'Michael Boyle',
+        name: 'Manager Boyle',
         role: 'Director of Strategic Accounts · BFI',
         photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
     },
@@ -103,7 +103,7 @@ const DEMO_PROFILES: Record<string, { name: string; role: string; photo: string 
         photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&h=80&fit=crop&crop=face',
     },
     'BFI Finance': {
-        name: 'Patricia Hilger',
+        name: 'Finance Lead Halbert',
         role: 'Finance / AR',
         photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop&crop=face',
     },
@@ -113,7 +113,7 @@ const DEMO_PROFILES: Record<string, { name: string; role: string; photo: string 
         photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
     },
     'BFI Receiving': {
-        name: 'Lena C.',
+        name: 'Receiving Coordinator Lynn',
         role: 'Receiving Coordinator',
         photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face',
     },
@@ -129,7 +129,7 @@ const DEMO_PROFILES: Record<string, { name: string; role: string; photo: string 
         photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face',
     },
     'Officeworks Sales Coordinator': {
-        name: 'Randy Martinez',
+        name: 'Sales Coordinator Marks',
         role: 'Sales Coordinator',
         photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face',
     },

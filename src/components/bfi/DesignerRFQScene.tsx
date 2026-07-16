@@ -1,7 +1,7 @@
 /**
  * COMPONENT: DesignerRFQScene  (a1.0)
  * PURPOSE: Agency Fee step 0 — Account Manager Bly (Miller Knoll Rep) sends a
- *          Request for Quote to Lauren DeMarco (BFI) for the DOE-2847 project.
+ *          Request for Quote to Account Manager DeMar (BFI) for the DOE-2847 project.
  *          Includes SIF, spec sheet, and floor plan attachments.
  */
 

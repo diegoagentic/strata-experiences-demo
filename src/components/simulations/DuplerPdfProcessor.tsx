@@ -1338,7 +1338,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[210] animate-in fade-in slide-in-from-top-2 duration-300">
                             <div className="px-4 py-2.5 rounded-xl bg-green-600 text-white text-xs font-bold shadow-lg shadow-green-500/30 flex items-center gap-2">
                                 <CheckCircleIcon className="h-4 w-4 shrink-0" />
-                                {SPEC_ID}.pmx sent to Randy Martinez (SC) — pricing handoff complete
+                                {SPEC_ID}.pmx sent to Sales Coordinator Marks (SC) — pricing handoff complete
                             </div>
                         </div>
                     )}
@@ -1615,7 +1615,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                     </div>
                                     <div className="grid grid-cols-3 gap-x-6 gap-y-1 text-[10px] pt-2 border-t border-border">
                                         <div className="flex justify-between"><span className="text-muted-foreground">Spec ID:</span><span className="font-mono font-bold text-foreground">{SPEC_ID}.pmx</span></div>
-                                        <div className="flex justify-between"><span className="text-muted-foreground">Designer:</span><span className="text-foreground">Alex Rivera</span></div>
+                                        <div className="flex justify-between"><span className="text-muted-foreground">Designer:</span><span className="text-foreground">Designer Alden</span></div>
                                         <div className="flex justify-between"><span className="text-muted-foreground">Manufacturer:</span><span className="text-foreground">{MANUFACTURER}</span></div>
                                         <div className="flex justify-between"><span className="text-muted-foreground">Project:</span><span className="text-foreground">Mercy Health Phase 2</span></div>
                                         <div className="flex justify-between"><span className="text-muted-foreground">Items:</span><span className="font-bold text-foreground">{CATALOG_ITEMS_TOTAL}</span></div>
@@ -1640,7 +1640,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                             </div>
                                             <div className="p-2 space-y-0.5">
                                                 {[
-                                                    { name: 'Randy Martinez', role: 'Sales Coordinator', initials: 'RM', isSC: true },
+                                                    { name: 'Sales Coordinator Marks', role: 'Sales Coordinator', initials: 'RM', isSC: true },
                                                     { name: 'James Mitchell', role: 'Account Executive', initials: 'JM', isSC: false },
                                                     { name: 'Mike Torres', role: 'Operations Lead', initials: 'MT', isSC: false },
                                                 ].map(user => (
@@ -1760,7 +1760,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                         <div className="flex-1">
                                             <p className="text-[11px] font-bold text-amber-800 dark:text-amber-300">Pending SC Review</p>
                                             <p className="text-[10px] text-amber-700/80 dark:text-amber-400/70">
-                                                Randy Martinez (SC) will validate upcharges, apply discounts, and generate priced SIF.
+                                                Sales Coordinator Marks (SC) will validate upcharges, apply discounts, and generate priced SIF.
                                             </p>
                                         </div>
                                         <ArrowRightIcon className="h-4 w-4 text-amber-500 dark:text-amber-400 shrink-0 animate-pulse" />
@@ -2005,7 +2005,7 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                         <div className="flex items-start gap-3">
                             {/* Sender avatar */}
                             <div className="relative shrink-0">
-                                <img src={DESIGNER_PHOTO} alt="Alex Rivera" className="w-10 h-10 rounded-full object-cover ring-2 ring-brand-300 dark:ring-brand-500/40" />
+                                <img src={DESIGNER_PHOTO} alt="Designer Alden" className="w-10 h-10 rounded-full object-cover ring-2 ring-brand-300 dark:ring-brand-500/40" />
                                 <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-brand-500 flex items-center justify-center ring-2 ring-background">
                                     <PaperAirplaneIcon className="h-2.5 w-2.5 text-zinc-900" />
                                 </div>
@@ -2016,7 +2016,7 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                     <span className="text-[9px] px-2 py-0.5 rounded-full bg-brand-500 text-zinc-900 font-bold animate-pulse">Just now</span>
                                 </div>
                                 <p className="text-xs text-muted-foreground mt-1">
-                                    <span className="font-bold text-foreground">Alex Rivera</span> (Designer) sent {SPEC_ID}.pmx — {CATALOG_ITEMS_TOTAL} items, ${PROJECT_TOTAL.toLocaleString()}. Vendor-verified, source-linked.
+                                    <span className="font-bold text-foreground">Designer Alden</span> (Designer) sent {SPEC_ID}.pmx — {CATALOG_ITEMS_TOTAL} items, ${PROJECT_TOTAL.toLocaleString()}. Vendor-verified, source-linked.
                                 </p>
 
                                 <div className="flex items-center gap-2 flex-wrap mt-3 mb-2">
@@ -2045,10 +2045,10 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                 <div className="animate-in fade-in duration-500">
                     <div className="p-4 bg-purple-50 dark:bg-ai/5 border-b border-purple-200 dark:border-purple-500/20 flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                            <img src={DESIGNER_PHOTO} alt="Alex Rivera" className="w-7 h-7 rounded-full object-cover ring-2 ring-purple-300 dark:ring-purple-500/40" />
+                            <img src={DESIGNER_PHOTO} alt="Designer Alden" className="w-7 h-7 rounded-full object-cover ring-2 ring-purple-300 dark:ring-purple-500/40" />
                             <div>
                                 <span className="text-xs font-bold text-purple-800 dark:text-purple-200">{SPEC_ID}.pmx — awaiting pricing</span>
-                                <p className="text-[10px] text-ai dark:text-purple-400">From <span className="font-bold">Alex Rivera</span> (Designer) · {CATALOG_ITEMS_TOTAL} items · ${PROJECT_TOTAL.toLocaleString()}</p>
+                                <p className="text-[10px] text-ai dark:text-purple-400">From <span className="font-bold">Designer Alden</span> (Designer) · {CATALOG_ITEMS_TOTAL} items · ${PROJECT_TOTAL.toLocaleString()}</p>
                             </div>
                         </div>
                         <span className="text-[8px] px-1.5 py-0.5 rounded bg-purple-200 dark:bg-ai/20 text-purple-700 dark:text-purple-400 font-bold">PMX</span>
@@ -2077,7 +2077,7 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                     <span className="text-xs font-bold text-foreground">{SPEC_ID}.pmx</span>
                                     <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-500/20">VALIDATED</span>
                                 </div>
-                                <span className="text-[10px] text-muted-foreground">Received from Alex Rivera (Designer)</span>
+                                <span className="text-[10px] text-muted-foreground">Received from Designer Alden (Designer)</span>
                             </div>
                             <div className="p-4 space-y-3">
                                 <div className="grid grid-cols-4 gap-2">
@@ -2098,7 +2098,7 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                     <div className="flex justify-between"><span className="text-muted-foreground">Project:</span><span className="text-foreground">Mercy Health Phase 2</span></div>
                                     <div className="flex justify-between"><span className="text-muted-foreground">List Total:</span><span className="font-bold text-foreground">${PROJECT_TOTAL.toLocaleString()}</span></div>
                                     <div className="flex justify-between"><span className="text-muted-foreground">Items:</span><span className="font-bold text-foreground">{CATALOG_ITEMS_TOTAL}</span></div>
-                                    <div className="flex justify-between"><span className="text-muted-foreground">Designer:</span><span className="text-foreground">Alex Rivera</span></div>
+                                    <div className="flex justify-between"><span className="text-muted-foreground">Designer:</span><span className="text-foreground">Designer Alden</span></div>
                                     <div className="flex justify-between"><span className="text-muted-foreground">Manufacturer:</span><span className="text-foreground">{MANUFACTURER}</span></div>
                                 </div>
                             </div>
@@ -2602,11 +2602,11 @@ CatalogRegion   = Healthcare Office
 CatalogURL      = meridian-workspace.com/catalog/healthcare-office
 Project         = Mercy Health Phase 2
 ProjectPhase    = Furniture Procurement
-Designer        = Alex Rivera
+Designer        = Designer Alden
 DesignerRole    = Interior Designer
 Dealer          = Workspace Solutions Inc.
-DealerContact   = Randy Martinez (SC)
-PricedBy        = Randy Martinez (SC)
+DealerContact   = Sales Coordinator Marks (SC)
+PricedBy        = Sales Coordinator Marks (SC)
 PricingDate     = ${new Date().toISOString().split('T')[0]}
 Items           = ${CATALOG_ITEMS_TOTAL}
 TotalListPrice  = $${PROJECT_TOTAL.toLocaleString()}
@@ -2785,7 +2785,7 @@ Checksum        = sha256:b7d3e1...f92a
                                         </div>
                                         <div className="p-2 space-y-0.5">
                                             {[
-                                                { id: 'designer', name: 'Alex Rivera', subtitle: 'Designer — Interior Design', photo: DESIGNER_PHOTO },
+                                                { id: 'designer', name: 'Designer Alden', subtitle: 'Designer — Interior Design', photo: DESIGNER_PHOTO },
                                                 { id: 'client', name: 'Mercy Health', subtitle: 'Client — Procurement Dept.', initials: 'MH', photo: null },
                                                 { id: 'ae', name: 'James Mitchell', subtitle: 'Account Executive', initials: 'JM', photo: null },
                                             ].map(r => {
@@ -2843,7 +2843,7 @@ Checksum        = sha256:b7d3e1...f92a
                         <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300">
                             <CheckCircleIcon className="h-4 w-4 text-green-600 dark:text-green-400 shrink-0" />
                             <p className="text-xs font-bold text-green-800 dark:text-green-200">
-                                {SPEC_ID}_priced.sif approved & sent to Alex Rivera, Mercy Health
+                                {SPEC_ID}_priced.sif approved & sent to Designer Alden, Mercy Health
                             </p>
                         </div>
                     )}

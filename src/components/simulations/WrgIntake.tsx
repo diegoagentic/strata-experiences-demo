@@ -278,14 +278,14 @@ export default function WrgIntake({ onNavigate }: { onNavigate?: (page: string) 
                     <div className="flex items-center gap-3 p-3 rounded-xl bg-card border border-brand-300 dark:border-brand-500/30 mb-3">
                         <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80&h=80&fit=crop&crop=face" alt="" className="w-10 h-10 rounded-full object-cover ring-2 ring-brand-400 shrink-0" />
                         <div className="flex-1 min-w-0">
-                            <div className="text-[11px] font-bold text-foreground">Alex Rivera</div>
+                            <div className="text-[11px] font-bold text-foreground">Designer Alden</div>
                             <div className="text-[10px] text-muted-foreground">Designer — External</div>
                         </div>
                         <span className={`text-[9px] px-2 py-0.5 rounded-full ${colorStyles.green} font-bold`}>ASSIGNED</span>
                     </div>
 
                     <button
-                        onClick={() => handleSendToUser('Alex Rivera')}
+                        onClick={() => handleSendToUser('Designer Alden')}
                         className="w-full py-3 rounded-xl text-xs font-bold bg-brand-400 text-zinc-900 hover:bg-brand-300 shadow-lg shadow-brand-500/20 transition-all flex items-center justify-center gap-2"
                     >
                         <EnvelopeIcon className="h-4 w-4" />

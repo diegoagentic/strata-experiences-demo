@@ -110,7 +110,7 @@ const DEMO_PROJECTS = [
         name: 'United Airlines HQ — 8 Floor Buildout',
         client: 'United Airlines',
         pm: 'Sarah Mitchell',
-        fm: 'Carlos Rivera',
+        fm: 'Facilities Coord Cardo',
         status: 'In Progress' as const,
         totalBudget: '$3.2M',
         spent: '$2.1M',
@@ -137,7 +137,7 @@ const DEMO_PROJECTS = [
         name: 'Apex Furniture — New HQ Fitout',
         client: 'Apex Furniture',
         pm: 'Strata PM Beta',
-        fm: 'Carlos Rivera',
+        fm: 'Facilities Coord Cardo',
         status: 'Planning' as const,
         totalBudget: '$540K',
         spent: '$43K',
@@ -156,7 +156,7 @@ const DEMO_PROJECTS = [
         name: 'BioLife Inc — Lab Expansion',
         client: 'BioLife Inc',
         pm: 'Sarah Mitchell',
-        fm: 'Carlos Rivera',
+        fm: 'Facilities Coord Cardo',
         status: 'In Progress' as const,
         totalBudget: '$890K',
         spent: '$210K',
@@ -2887,7 +2887,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                                 <>
                                                                                     <div>
                                                                                         <p className="font-medium text-muted-foreground mb-1">Contact Details</p>
-                                                                                        <p className="text-foreground">Sarah Johnson</p>
+                                                                                        <p className="text-foreground">Operations Manager Solano</p>
                                                                                         <p className="text-muted-foreground text-xs">sarah.j@example.com</p>
                                                                                     </div>
                                                                                     <div>

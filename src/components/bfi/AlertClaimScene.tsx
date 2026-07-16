@@ -28,7 +28,7 @@ Line 24 — Chair Frame Assembly ×1 is missing from the Bingo Sheet.
 
 Can you confirm the shipment and share the Proof of Delivery (POD)?
 
-— Lauren D., BFI Furniture`
+— Account Manager DeMar, BFI Furniture`
 
 const CLAIM_REASONS = [
     'Short shipped — carton not received at warehouse',

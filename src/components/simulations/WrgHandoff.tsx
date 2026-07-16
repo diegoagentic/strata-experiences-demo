@@ -442,7 +442,7 @@ export default function WrgHandoff({ onNavigate }: { onNavigate?: (page: string)
                                                                     {resolved === 'requested' ? (
                                                                         <>
                                                                             <PaperAirplaneIcon className="h-3.5 w-3.5 text-sky-500 shrink-0" />
-                                                                            <span className="text-[10px] text-sky-700 dark:text-sky-400">Sent to Alex Rivera (Designer) for verification</span>
+                                                                            <span className="text-[10px] text-sky-700 dark:text-sky-400">Sent to Designer Alden (Designer) for verification</span>
                                                                         </>
                                                                     ) : (
                                                                         <>
@@ -493,7 +493,7 @@ export default function WrgHandoff({ onNavigate }: { onNavigate?: (page: string)
                                                     className="w-8 h-8 rounded-full ring-2 ring-brand-400 shrink-0"
                                                 />
                                                 <div className="flex-1 min-w-0">
-                                                    <div className="text-[11px] font-bold text-foreground">Alex Rivera</div>
+                                                    <div className="text-[11px] font-bold text-foreground">Designer Alden</div>
                                                     <div className="text-[10px] text-muted-foreground">Designer — External</div>
                                                 </div>
                                                 <CheckCircleIcon className="h-4 w-4 text-brand-500 shrink-0" />
@@ -504,7 +504,7 @@ export default function WrgHandoff({ onNavigate }: { onNavigate?: (page: string)
                                                     setResolutions(prev => ({ ...prev, [requestModal]: 'requested' }));
                                                     setRequestModal(null);
                                                     setExpandedAction(null);
-                                                    setActionToast(`Discrepancy sent to Alex Rivera for review`);
+                                                    setActionToast(`Discrepancy sent to Designer Alden for review`);
                                                     setTimeout(() => setActionToast(null), 2500);
                                                 }}
                                                 className="w-full py-2.5 rounded-lg text-[10px] font-bold bg-brand-400 text-zinc-900 hover:bg-brand-300 transition-all flex items-center justify-center gap-1.5"

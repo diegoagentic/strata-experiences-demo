@@ -155,11 +155,11 @@ const FM_RESOLUTION_AGENTS = [
     { name: 'AssetSwap', detail: 'Old AER-2024-3214-07 removed → warranty return initiated...' },
     { name: 'WarrantyClaim', detail: 'Claim CLM-FM-2026-018 auto-filed with Herman Miller...' },
     { name: 'InventorySync', detail: 'Consignment Aeron assigned to Office 3-214 — inventory updated...' },
-    { name: 'StakeholderNotify', detail: 'Notifying Carlos Rivera, Account Manager Kai, Regional Sales Manager Reyes...' },
+    { name: 'StakeholderNotify', detail: 'Notifying Facilities Coord Cardo, Account Manager Kai, Regional Sales Manager Reyes...' },
 ]
 
 const FM_RESOLUTION_NOTIFICATIONS = [
-    { initials: 'CR', name: 'Carlos Rivera', role: 'End User', message: 'Your chair has been replaced — you can return to Office 3-214', color: 'from-blue-500 to-blue-700' },
+    { initials: 'CR', name: 'Facilities Coord Cardo', role: 'End User', message: 'Your chair has been replaced — you can return to Office 3-214', color: 'from-blue-500 to-blue-700' },
     { initials: 'SC', name: 'Account Manager Kai', role: 'Dealer', message: 'Consignment swap completed — inventory updated, warranty claim filed', color: 'from-emerald-500 to-emerald-700' },
     { initials: 'DP', name: 'Regional Sales Manager Reyes', role: 'Expert', message: 'Service request REQ-FM-2026-018 resolved — $0 cost, 26h total', color: 'from-violet-500 to-violet-700' },
 ]
@@ -929,9 +929,9 @@ export default function MACPunchList() {
                                     {/* Contact Requester Card */}
                                     <div className="mt-4 p-4 bg-card border border-border rounded-xl flex items-center justify-between">
                                         <div className="flex items-center gap-3">
-                                            <DemoAvatar name="Carlos Rivera" size="md" />
+                                            <DemoAvatar name="Facilities Coord Cardo" size="md" />
                                             <div>
-                                                <p className="text-sm font-bold text-foreground">Carlos Rivera</p>
+                                                <p className="text-sm font-bold text-foreground">Facilities Coord Cardo</p>
                                                 <p className="text-xs text-muted-foreground">Site Supervisor — Facilities</p>
                                             </div>
                                         </div>
@@ -1027,9 +1027,9 @@ export default function MACPunchList() {
                             {/* Contact Requester Card */}
                             <div className="p-4 bg-card border border-border rounded-xl flex items-center justify-between">
                                 <div className="flex items-center gap-3">
-                                    <DemoAvatar name="Carlos Rivera" size="md" />
+                                    <DemoAvatar name="Facilities Coord Cardo" size="md" />
                                     <div>
-                                        <p className="text-sm font-bold text-foreground">Carlos Rivera</p>
+                                        <p className="text-sm font-bold text-foreground">Facilities Coord Cardo</p>
                                         <p className="text-xs text-muted-foreground">Site Supervisor — Facilities</p>
                                     </div>
                                 </div>
@@ -1710,7 +1710,7 @@ export default function MACPunchList() {
                                                 <span className="text-xs font-bold text-foreground">New Service Request — Email Received</span>
                                                 <span className="text-[9px] px-2 py-0.5 rounded-full bg-red-500 text-white font-bold">SAFETY</span>
                                             </div>
-                                            <p className="text-[11px] text-muted-foreground mt-1">From: <span className="font-semibold text-foreground">Carlos Rivera</span> (Facilities Coordinator)</p>
+                                            <p className="text-[11px] text-muted-foreground mt-1">From: <span className="font-semibold text-foreground">Facilities Coord Cardo</span> (Facilities Coordinator)</p>
                                             <div className="mt-3 p-3 rounded-lg bg-card border border-border text-[11px] text-foreground/80 space-y-1">
                                                 <p className="font-semibold">Subject: Broken chair + damaged lamp — Office 3-214</p>
                                                 <p>Hi, the Aeron chair in my office has a broken gas cylinder — it keeps sinking and I can't work safely. Also the desk lamp stopped working. Can someone look at this ASAP?</p>
@@ -2021,7 +2021,7 @@ export default function MACPunchList() {
 
                                             <div className="space-y-5">
                                                 {[
-                                                    { title: 'Service Request Filed', desc: 'Carlos Rivera reported broken Aeron chair + flickering desk lamp', time: 'Mar 17, 9:14 AM', actor: 'Carlos Rivera', location: 'Office 3-214', status: 'completed' as const },
+                                                    { title: 'Service Request Filed', desc: 'Facilities Coord Cardo reported broken Aeron chair + flickering desk lamp', time: 'Mar 17, 9:14 AM', actor: 'Facilities Coord Cardo', location: 'Office 3-214', status: 'completed' as const },
                                                     { title: 'AI Triage Completed', desc: 'TriageAgent cross-referenced 4 databases — resolution plan generated', time: 'Mar 17, 9:15 AM', actor: 'TriageAgent', location: 'System', status: 'completed' as const },
                                                     { title: 'Temp Relocation Executed', desc: 'Workstation assets moved: Laptop Dock, 2× Monitor, Keyboard + Mouse, Desk Lamp', time: 'Mar 17, 10:30 AM', actor: 'Account Manager Kai', location: 'Office 3-214 → 3-216', status: 'completed' as const,
                                                       evidence: [

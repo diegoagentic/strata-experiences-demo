@@ -278,7 +278,7 @@ export default function DualEngineCalculation({
                                 <span className="font-bold text-purple-700 dark:text-purple-400">
                                     From memory today:
                                 </span>{' '}
-                                Mark Williams · "Nothing documented · all based on my
+                                Estimator Wells · "Nothing documented · all based on my
                                 100 years of experience." Strata now captures every
                                 rate as structured data.
                             </p>

@@ -320,7 +320,7 @@ export default function ConversationalSurvey() {
                                 <div className="bg-blue-50 dark:bg-blue-500/5 border border-blue-200 dark:border-blue-500/20 rounded-2xl p-4 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
                                     <div className="flex items-center gap-2 mb-3">
                                         <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 text-white flex items-center justify-center text-[8px] font-bold">CR</div>
-                                        <span className="text-[10px] font-bold text-blue-700 dark:text-blue-300">Carlos Rivera — Facilities Actions</span>
+                                        <span className="text-[10px] font-bold text-blue-700 dark:text-blue-300">Facilities Coord Cardo — Facilities Actions</span>
                                     </div>
                                     <div className="space-y-1.5 text-[10px] text-foreground/80">
                                         <div className="flex items-center gap-1.5"><span className="text-green-500">✓</span> Maintenance ticket: AV recalibration rooms 401-404</div>

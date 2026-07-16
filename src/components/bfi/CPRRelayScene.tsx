@@ -22,7 +22,7 @@ const ADJUSTMENTS = [
     { category: 'OT Carpenters', change: '8h → 6h (−2h)',    impact: '−$540'   },
 ]
 
-const DRAFT_DEFAULT = `Lauren has reconciled the CPR for order DOE-2847. Adjusted amounts:\n• Carpenters: 50h → 45h (−5h, −$1,800)\n• OT Carpenters: 8h → 6h (−2h, −$540)\n• Total adjustment: −$2,340\n\nPlease update the Miller Knoll invoice accordingly.\n\n— Michael Boyle, Director of Strategic Accounts`
+const DRAFT_DEFAULT = `Lauren has reconciled the CPR for order DOE-2847. Adjusted amounts:\n• Carpenters: 50h → 45h (−5h, −$1,800)\n• OT Carpenters: 8h → 6h (−2h, −$540)\n• Total adjustment: −$2,340\n\nPlease update the Miller Knoll invoice accordingly.\n\n— Manager Boyle, Director of Strategic Accounts`
 
 export default function CPRRelayScene({ onSend, onRoleChange }: CPRRelaySceneProps) {
     const { nextStep, isPaused } = useDemo()

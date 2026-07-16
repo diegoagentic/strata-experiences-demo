@@ -66,7 +66,7 @@ Los dos procesos en scope están documentados en bfi-sot.md:
 - **Dependencies:**
   - CORE API License — no activa hoy. Sin ella, no hay integración directa con CORE. ¿Puede ser un blocker?
   - Acceso a contract T-codes de Miller Knoll (Noel & Miller website) — necesario para agency fee calculator.
-  - Document samples de WIG (labor quotes + receiving docs) — Michael Boyle es el owner de conseguirlos.
+  - Document samples de WIG (labor quotes + receiving docs) — Manager Boyle es el owner de conseguirlos.
 - **Riesgo de scope creep:** El análisis cross-proceso muestra 7 conexiones. Hay tentación de resolver todo. El PO debe proteger el scope: CPR + agency fee calculator primero, receiving después.
 - **Change management risk:** Donna y Diana no respondieron questionnaire. Cualquier herramienta que toque sus workflows necesita un plan de adopción separado.
 
@@ -150,7 +150,7 @@ Los dos procesos en scope están documentados en bfi-sot.md:
 | **ARAgingReviewScene** (MBI) | Review de aging con AI-suggested actions por cuenta | Agency Fee Blind Spot: review de fees esperados vs recibidos de Miller Knoll, línea por línea |
 | **AISpecCheckSimulation** (Quotes) | Validación AI de BOM contra specs, con decisiones y recap | Agency Fee Calculator: validar pricing de SIF contra contrato CoNY T-codes, retornar corrected pricing |
 | **MBIWizardShell** | Shell de wizard 2-step con tour steps, nav, persona badge | Shell reutilizable para demo BFI — 2 tabs (Agency Fee / Receiving), 2-3 steps cada uno |
-| **MBIPersonaBadge** | Badge de persona con nombre + rol + tone | Lauren DeMarco · CoNY Account Lead |
+| **MBIPersonaBadge** | Badge de persona con nombre + rol + tone | Account Manager DeMar · CoNY Account Lead |
 | **MBIModuleHeader** | Header con módulo, tint, outcome statement | "Lauren recupera 4h diarias — fee calculado automáticamente, CPR reconciled antes del Friday." |
 | **ReasonDialog/MBIReasonModal** | Modal de escalación con categorías + notas | Override AI: cuando Lauren no está de acuerdo con el fee calculado, puede editarlo con razón |
 | **DataSourcesBar** | Barra de fuentes de datos (DS tokens, specs) | Agency Fee: mostrar fuentes (Contrato CoNY, OmniQuote, CORE) |
@@ -163,7 +163,7 @@ Los dos procesos en scope están documentados en bfi-sot.md:
 
 **Lo que podemos reusar directamente (bajo costo):**
 - MBIWizardShell — el shell del demo BFI
-- MBIPersonaBadge — Lauren DeMarco
+- MBIPersonaBadge — Account Manager DeMar
 - MBIModuleHeader — con outcome text BFI-specific
 - Patrón de tour steps (demoStepId → wizard index sync)
 - ARAgingWrapScene como referencia para el "wrap up" screen de CPR resolved
@@ -181,7 +181,7 @@ Los dos procesos en scope están documentados en bfi-sot.md:
 | Omni (HM portal) integration | EDI saliente desde CORE ya existe. ¿Shipment notification feed? | Medio — la alternativa de packing list pull desde Omni ya fue evaluada. |
 | WIG Word doc parsing | Formato consistente (Word). Parseable. | Bajo-medio — LLM puede extraer carton count + packing slip data. |
 | FedEx tracking detection | Requiere acceso a tracking data (FedEx API o HM Omni feed). | Medio — dependencia en fuente de datos externa. |
-| CPR docs format | ¿Son PDFs estructurados o escaneados? No confirmado. | Alto si escaneados — OCR risk. Necesita doc samples de Michael Boyle. |
+| CPR docs format | ¿Son PDFs estructurados o escaneados? No confirmado. | Alto si escaneados — OCR risk. Necesita doc samples de Manager Boyle. |
 | R Drive (VPN required) | No cloud. Acceso requiere VPN o migración. | Bajo para el demo (mock). Alto para producción. |
 
 **Para el demo:** Todo es mock data — no se necesita integración real. El stack del demo es React + TypeScript + Tailwind (demo-2026-strata). Los componentes Strata están disponibles.
@@ -222,8 +222,8 @@ Los dos procesos en scope están documentados en bfi-sot.md:
 
 | Tarea | Owner | Notas |
 |---|---|---|
-| Obtener document samples de WIG (labor quotes + receiving docs) | Michael Boyle → Product Manager Pen | Sin esto no se puede confirmar approach para WIG parsing |
-| Confirmar formato de CPR docs (structured PDF vs scanned) | Lauren DeMarco → David | Define si OCR es necesario o no para CPR |
+| Obtener document samples de WIG (labor quotes + receiving docs) | Manager Boyle → Product Manager Pen | Sin esto no se puede confirmar approach para WIG parsing |
+| Confirmar formato de CPR docs (structured PDF vs scanned) | Account Manager DeMar → David | Define si OCR es necesario o no para CPR |
 | Validar acceso a T-codes del contrato CoNY | David / Jessica | Noel & Miller website — ¿son accesibles sin login? |
 | Confirmar status CORE API License | Avanto Tech | Blocker para producción (no para el demo) |
 | Definir datos de prueba para el demo | Diego + David | Órdenes BFI-like con números realistas |
@@ -239,7 +239,7 @@ Los dos procesos en scope están documentados en bfi-sot.md:
 | Componente | Base existente | Esfuerzo |
 |---|---|---|
 | `BFIAccountingPage` (shell) | MBIAccountingPage | Bajo — copiar estructura, cambiar tabs |
-| `BFIPersonaBadge` (Lauren DeMarco) | MBIPersonaBadge | Mínimo |
+| `BFIPersonaBadge` (Account Manager DeMar) | MBIPersonaBadge | Mínimo |
 | `AgencyFeeCalculatorScene` | AISpecCheckSimulation | Medio — adaptar flujo de validación |
 | `CPRReconciliationScene` | NonEDIReconcilerScene | Medio — tabla de hours con AI diff |
 | `CoNYOrderMonitorScene` | ARAgingReviewScene | Medio — adaptar a order status view |

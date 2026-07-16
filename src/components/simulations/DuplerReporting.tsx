@@ -992,7 +992,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                 {[
                                     { channel: 'Teams', icon: '💬', recipient: '@Randy', message: 'Acuity Chairs below safety stock — reorder recommended', color: 'bg-indigo-50 dark:bg-indigo-500/5 border-indigo-200 dark:border-indigo-500/20' },
                                     { channel: 'Email', icon: '📧', recipient: 'mercy-health-team@dupler.com', message: 'Mercy Health Phase 2 — 68% inventory staged, on track', color: 'bg-blue-50 dark:bg-blue-500/5 border-blue-200 dark:border-blue-500/20' },
-                                    { channel: 'SMS', icon: '📱', recipient: 'Randy Martinez', message: 'URGENT: Park Table backorder — ETA Apr 7', color: 'bg-red-50 dark:bg-red-500/5 border-red-200 dark:border-red-500/20' },
+                                    { channel: 'SMS', icon: '📱', recipient: 'Sales Coordinator Marks', message: 'URGENT: Park Table backorder — ETA Apr 7', color: 'bg-red-50 dark:bg-red-500/5 border-red-200 dark:border-red-500/20' },
                                 ].map(notif => (
                                     <div key={notif.channel} className={`p-3 rounded-xl border ${notif.color} flex items-start gap-3`}>
                                         <span className="text-lg">{notif.icon}</span>
@@ -1068,7 +1068,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                             </div>
                                             <div className="p-2 space-y-0.5">
                                                 {[
-                                                    { id: 'randy', name: 'Randy Martinez', role: 'Sales Coordinator', initials: 'RM', recommended: true },
+                                                    { id: 'randy', name: 'Sales Coordinator Marks', role: 'Sales Coordinator', initials: 'RM', recommended: true },
                                                     { id: 'tara', name: 'Tara Collins', role: 'Project Manager', initials: 'TC', recommended: true },
                                                     { id: 'james', name: 'James Mitchell', role: 'Account Executive', initials: 'JM', recommended: false },
                                                     { id: 'sarah', name: 'Sarah Chen', role: 'Dealer Principal', initials: 'SC', recommended: false },
@@ -1315,7 +1315,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                         </div>
                                         <div className="p-2 space-y-0.5">
                                             {[
-                                                { id: 'randy', name: 'Randy Martinez', role: 'Sales Coordinator', initials: 'RM', recommended: true },
+                                                { id: 'randy', name: 'Sales Coordinator Marks', role: 'Sales Coordinator', initials: 'RM', recommended: true },
                                                 { id: 'tara', name: 'Tara Collins', role: 'Project Manager', initials: 'TC', recommended: true },
                                                 { id: 'james', name: 'James Mitchell', role: 'Account Executive', initials: 'JM', recommended: false },
                                                 { id: 'sarah', name: 'Sarah Chen', role: 'Dealer Principal', initials: 'SC', recommended: false },

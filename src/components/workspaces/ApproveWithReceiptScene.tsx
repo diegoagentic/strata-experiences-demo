@@ -33,9 +33,9 @@ const CATEGORIES = ['Mileage', 'Tolls / Cab / Parking', 'Personal Meals', 'Busin
 
 const TIMELINE_STEPS = [
     { label: 'Submitted',     actor: 'Employee Alpha',    initials: 'JS', time: 'May 5 · 10:32 AM', done: true,  current: false },
-    { label: 'Mgr notified',  actor: 'Sarah Johnson', initials: 'SJ', time: 'May 5 · 10:33 AM', done: true,  current: false },
-    { label: 'In review',     actor: 'Sarah Johnson', initials: 'SJ', time: 'May 6 · 9:15 AM',  done: true,  current: true  },
-    { label: 'Routed to AP',  actor: 'Letza Bombard', initials: 'LB', time: 'Pending',           done: false, current: false },
+    { label: 'Mgr notified',  actor: 'Operations Manager Solano', initials: 'SJ', time: 'May 5 · 10:33 AM', done: true,  current: false },
+    { label: 'In review',     actor: 'Operations Manager Solano', initials: 'SJ', time: 'May 6 · 9:15 AM',  done: true,  current: true  },
+    { label: 'Routed to AP',  actor: 'AP Coordinator Bell', initials: 'LB', time: 'Pending',           done: false, current: false },
 ]
 
 type ThreadStatus = 'open' | 'resolved'
@@ -109,7 +109,7 @@ export default function ApproveWithReceiptScene({ onApprove }: { onApprove?: () 
     const addReply = (threadId: string) => {
         const text = (replyTexts[threadId] ?? '').trim()
         if (!text) return
-        const msg: Message = { id: Date.now().toString(), author: 'Sarah Johnson', initials: 'SJ', side: 'manager', text, time: 'Just now' }
+        const msg: Message = { id: Date.now().toString(), author: 'Operations Manager Solano', initials: 'SJ', side: 'manager', text, time: 'Just now' }
         setThreads(ts => ts.map(t => t.id === threadId ? { ...t, messages: [...t.messages, msg] } : t))
         setReplyTexts(r => ({ ...r, [threadId]: '' }))
     }
@@ -120,7 +120,7 @@ export default function ApproveWithReceiptScene({ onApprove }: { onApprove?: () 
         const thread: Thread = {
             id: Date.now().toString(),
             status: 'open',
-            messages: [{ id: Date.now().toString(), author: 'Sarah Johnson', initials: 'SJ', side: 'manager', text, time: 'Just now' }],
+            messages: [{ id: Date.now().toString(), author: 'Operations Manager Solano', initials: 'SJ', side: 'manager', text, time: 'Just now' }],
         }
         setThreads(ts => [...ts, thread])
         setNewQuestion('')
@@ -179,7 +179,7 @@ export default function ApproveWithReceiptScene({ onApprove }: { onApprove?: () 
                                 <span className="text-[10px] bg-muted text-muted-foreground px-1.5 py-0.5 rounded-full">Sales Rep</span>
                             </div>
                             <p className="text-xs text-muted-foreground mt-0.5">{editCategory} · May 5, 2026 · The Capital Grille — Tampa, FL</p>
-                            <p className="text-xs text-muted-foreground">Approved by: Sarah Johnson — Operations · Tampa</p>
+                            <p className="text-xs text-muted-foreground">Approved by: Operations Manager Solano — Operations · Tampa</p>
                         </div>
                         <div className="text-right shrink-0">
                             <p className="text-sm font-bold text-foreground">{editAmount}</p>
@@ -483,8 +483,8 @@ export default function ApproveWithReceiptScene({ onApprove }: { onApprove?: () 
                             <div className="flex -space-x-1.5">
                                 {[
                                     { initials: 'JS', title: 'Employee Alpha' },
-                                    { initials: 'SJ', title: 'Sarah Johnson' },
-                                    { initials: 'LB', title: 'Letza Bombard' },
+                                    { initials: 'SJ', title: 'Operations Manager Solano' },
+                                    { initials: 'LB', title: 'AP Coordinator Bell' },
                                 ].map(p => (
                                     <div key={p.initials} title={p.title}
                                         className="h-5 w-5 rounded-full bg-muted border-2 border-card flex items-center justify-center text-[8px] font-bold text-muted-foreground"

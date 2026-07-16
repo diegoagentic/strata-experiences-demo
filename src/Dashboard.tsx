@@ -959,7 +959,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 </div>
                                 <div>
                                     <p className="text-[10px] text-muted-foreground font-medium leading-none">Facilities Coordinator</p>
-                                    <p className="text-xs font-bold text-foreground leading-tight">Carlos Rivera</p>
+                                    <p className="text-xs font-bold text-foreground leading-tight">Facilities Coord Cardo</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-2">
@@ -1067,7 +1067,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                             <CheckCircleIcon className="w-5 h-5 text-green-500" />
                                             <div>
                                                 <p className="text-xs font-bold text-green-700 dark:text-green-300">REQ-FM-2026-018 Created</p>
-                                                <p className="text-[10px] text-green-600/80 dark:text-green-400/70">Carlos Rivera · Routed to Service Center</p>
+                                                <p className="text-[10px] text-green-600/80 dark:text-green-400/70">Facilities Coord Cardo · Routed to Service Center</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1107,7 +1107,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 </div>
                                 <img
                                     src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face"
-                                    alt="Carlos Rivera"
+                                    alt="Facilities Coord Cardo"
                                     className="w-7 h-7 rounded-full object-cover ring-1 ring-border"
                                 />
                             </div>
@@ -1552,7 +1552,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                 {[
                                                     { label: 'Product', value: '2x Conference Chairs (Azure)' },
                                                     { label: 'Claim ID', value: 'CLM-2026-114' },
-                                                    { label: 'Requester', value: 'Carlos Rivera — Apex Furniture' },
+                                                    { label: 'Requester', value: 'Facilities Coord Cardo — Apex Furniture' },
                                                     { label: 'Resolution', value: 'Replacement Unit' },
                                                 ].map(item => (
                                                     <div key={item.label} className="flex items-center justify-between">
@@ -4197,7 +4197,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                                                                         <div className="flex items-center gap-3">
                                                                                                             <div className="h-10 w-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center"><UserIcon className="w-6 h-6 text-muted-foreground" /></div>
                                                                                                             <div>
-                                                                                                                <p className="text-sm font-medium text-foreground">Sarah Johnson</p>
+                                                                                                                <p className="text-sm font-medium text-foreground">Operations Manager Solano</p>
                                                                                                                 <p className="text-xs text-muted-foreground">Project Manager</p>
                                                                                                             </div>
                                                                                                         </div>
@@ -4319,7 +4319,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                                                                 <UserIcon className="h-4 w-4" />
                                                                                             </div>
                                                                                             <div>
-                                                                                                <p className="text-sm font-bold text-foreground">Sarah Johnson</p>
+                                                                                                <p className="text-sm font-bold text-foreground">Operations Manager Solano</p>
                                                                                                 <p className="text-xs text-muted-foreground">Project Manager</p>
                                                                                             </div>
                                                                                         </div>

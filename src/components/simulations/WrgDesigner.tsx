@@ -211,7 +211,7 @@ export default function WrgDesigner({ onNavigate }: { onNavigate?: (page: string
                                 className="w-8 h-8 rounded-full ring-2 ring-brand-400"
                             />
                             <div>
-                                <span className="text-[11px] font-bold text-foreground">Alex Rivera</span>
+                                <span className="text-[11px] font-bold text-foreground">Designer Alden</span>
                                 <span className="text-[10px] text-muted-foreground ml-2">Designer — Field Review</span>
                             </div>
                         </div>

@@ -39,8 +39,8 @@ const PERSONAS: Record<string, Persona> = {
         initials: 'MR',
     },
 
-    'Carlos Rivera': {
-        name: 'Carlos Rivera',
+    'Facilities Coord Cardo': {
+        name: 'Facilities Coord Cardo',
         type: 'human',
         photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face',
         initials: 'CR',

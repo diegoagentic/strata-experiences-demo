@@ -659,7 +659,7 @@ export default function DesignerVerificationOverlay({
         <VerificationPdfPreviewModal
             isOpen={pdfPreviewOpen}
             modules={moduleSummaries}
-            designerName="Alex Rivera"
+            designerName="Designer Alden"
             projectName="JPS Health Center for Women"
             onClose={() => setPdfPreviewOpen(false)}
         />

@@ -76,7 +76,7 @@ const DOE_SUBTITLE: Record<number, string> = {
     1: 'Quote Tool validation · 1 price corrected',
     2: 'PO received · WIG labor quote compiled',
     3: 'CPR reconciliation · 2 lines to approve',
-    4: 'Agency fee verification · Patricia Hilger',
+    4: 'Agency fee verification · Finance Lead Halbert',
 }
 
 // ─── New Order Modal ──────────────────────────────────────────────────────────

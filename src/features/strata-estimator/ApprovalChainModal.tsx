@@ -29,7 +29,7 @@ interface ApprovalRole {
 // pending — matching the stakeholder feedback for a more realistic demo.
 const CHAIN: ApprovalRole[] = [
     {
-        name: 'Alex Rivera',
+        name: 'Designer Alden',
         role: 'Designer',
         photo: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80&h=80&fit=crop&crop=face',
     },

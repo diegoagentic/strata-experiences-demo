@@ -29,7 +29,7 @@ const PENDING_EXPENSES = [
         id: 'john',
         name: 'Employee Alpha',
         amount: '$95.00',
-        approvedBy: 'Sarah Johnson',
+        approvedBy: 'Operations Manager Solano',
         approvedDate: 'May 6',
         glLines: [
             { code: 'Mileage',               amount: '$95.00',  confidence: 94 },
@@ -44,7 +44,7 @@ const PENDING_EXPENSES = [
         id: 'maria',
         name: 'Maria Lopez',
         amount: '$89.00',
-        approvedBy: 'Sarah Johnson',
+        approvedBy: 'Operations Manager Solano',
         approvedDate: 'May 5',
         glLines: [
             { code: 'Personal Meals', amount: '$89.00', confidence: 96 },
@@ -77,7 +77,7 @@ const POSTED_EXPENSES = [
         id: 'ana',
         name: 'Ana Kim',
         amount: '$65.00',
-        approvedBy: 'Sarah Johnson',
+        approvedBy: 'Operations Manager Solano',
         approvedDate: 'May 3',
         glLines: [{ code: 'Personal Meals', amount: '$65.00', confidence: 98 }],
         ageDays: 4,
@@ -297,7 +297,7 @@ function APQueueToast({ onReview, onDismiss, onFlag }: { onReview?: () => void; 
                 <div className="flex-1 min-w-0">
                     <p className="text-[10px] font-bold text-ai uppercase tracking-wide mb-0.5">Strata · AP Queue ready</p>
                     <p className="text-xs font-semibold text-foreground leading-snug">
-                        Employee Alpha · $95.00 · Mileage · Tolls / Cab / Parking — approved by Sarah Johnson
+                        Employee Alpha · $95.00 · Mileage · Tolls / Cab / Parking — approved by Operations Manager Solano
                     </p>
                     <p className="text-[10px] text-muted-foreground mt-0.5">
                         Categories mapped · ready to confirm and post

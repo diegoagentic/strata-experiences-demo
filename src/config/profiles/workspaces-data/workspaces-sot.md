@@ -162,7 +162,7 @@ Lines:     Fuel $95.00 + Parking $47.50
 Total:     $142.50
 Receipts:  2 attached
 Category:  Fuel + Parking → GL 6200 Vehicle + GL 6210 Travel
-Approved by: Sarah Johnson (Operations · Tampa)
+Approved by: Operations Manager Solano (Operations · Tampa)
 ```
 
 ### Manager Approval Queue (Tammy sees)
@@ -192,7 +192,7 @@ Approved by: Sarah Johnson (Operations · Tampa)
 ### Admin — Manager List
 | Manager | Department | Location |
 |---|---|---|
-| Sarah Johnson | Operations | Tampa |
+| Operations Manager Solano | Operations | Tampa |
 | Mike Torres | Sales | Orlando |
 | Ana Reyes | Procurement | Miami |
 

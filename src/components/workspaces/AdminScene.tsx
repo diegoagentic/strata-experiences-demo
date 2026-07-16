@@ -11,7 +11,7 @@ import DataSourcesBar, { SOURCES } from '../mbi/DataSourcesBar'
 import { useDemo } from '../../context/DemoContext'
 
 const INITIAL_MANAGERS = [
-    { name: 'Sarah Johnson', dept: 'Operations', location: 'Tampa' },
+    { name: 'Operations Manager Solano', dept: 'Operations', location: 'Tampa' },
     { name: 'Mike Torres',   dept: 'Sales',      location: 'Orlando' },
     { name: 'Ana Reyes',     dept: 'Procurement', location: 'Miami' },
 ]

@@ -83,7 +83,7 @@ export default function DesignerResponseScene({ onAcknowledge }: DesignerRespons
                             follow up shortly with next steps.
                         </p>
                         <p className="text-muted-foreground">
-                            — Lauren DeMarco<br />BFI Furniture · CoNY Account Manager
+                            — Account Manager DeMar<br />BFI Furniture · CoNY Account Manager
                         </p>
                     </div>
 

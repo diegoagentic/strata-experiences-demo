@@ -55,7 +55,7 @@ const MOCK_ASSETS: Asset[] = [
 const INITIAL_ZONES: DropZone[] = [
     {
         id: 'zone-3-214',
-        name: 'Office 3-214 — Carlos Rivera',
+        name: 'Office 3-214 — Facilities Coord Cardo',
         type: 'office',
         capacity: 20,
         items: [
@@ -317,7 +317,7 @@ export default function QuickMovementsModal({ isOpen, onClose }: QuickMovementsM
 
         setTimeout(() => {
             setAiSuggestions([
-                "Relocate Carlos Rivera's workstation to Office 3-216",
+                "Relocate Facilities Coord Cardo's workstation to Office 3-216",
                 "Transfer all electronics + furniture from 3-214 → 3-216",
                 "Optimal route: direct transfer (same floor, adjacent wing)"
             ]);
@@ -387,7 +387,7 @@ export default function QuickMovementsModal({ isOpen, onClose }: QuickMovementsM
                                             <ArrowPathIcon className="w-6 h-6 text-indigo-500" />
                                             Quick Transfer — Office Relocation
                                         </Dialog.Title>
-                                        <p className="text-sm text-muted-foreground">Relocate Carlos Rivera's assets from Office 3-214 to Office 3-216</p>
+                                        <p className="text-sm text-muted-foreground">Relocate Facilities Coord Cardo's assets from Office 3-214 to Office 3-216</p>
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <button
@@ -889,7 +889,7 @@ export default function QuickMovementsModal({ isOpen, onClose }: QuickMovementsM
                                                     </div>
                                                     <div className="flex items-center gap-2 text-sm">
                                                         <CheckCircleIcon className="w-4 h-4 text-green-500 shrink-0" />
-                                                        <span className="text-muted-foreground"><span className="font-semibold text-foreground">Carlos Rivera</span> notified of relocation</span>
+                                                        <span className="text-muted-foreground"><span className="font-semibold text-foreground">Facilities Coord Cardo</span> notified of relocation</span>
                                                     </div>
                                                     <div className="flex items-center gap-2 text-sm">
                                                         <ArrowPathIcon className="w-4 h-4 text-blue-500 shrink-0" />

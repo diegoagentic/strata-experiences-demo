@@ -173,7 +173,7 @@ const EXPERT_ADJUSTMENTS = [
 // ─── Approval Chain (for w2.4 — Dealer review) ─────────────────────────────
 const ESTIMATION_APPROVERS: Approver[] = [
     { name: 'Regional Sales Manager Reyes', role: 'Strata Expert', status: 'approved' },
-    { name: 'Alex Rivera', role: 'Designer', status: 'approved' },
+    { name: 'Designer Alden', role: 'Designer', status: 'approved' },
     { name: 'Account Manager Kai', role: 'Dealer — WR', status: 'approved' },
     { name: 'Jordan Park', role: 'Product Owner', status: 'current' },
 ];
@@ -283,7 +283,7 @@ const INTAKE_REPORT = {
     ],
     team: [
         { name: 'Regional Sales Manager Reyes', role: 'Strata Expert', detail: 'Dallas, TX · 96.3% HC accuracy · 60% workload', photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face' },
-        { name: 'Alex Rivera', role: 'Designer', detail: 'Verified OFS Serpentine · 5 modules validated', photo: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80&h=80&fit=crop&crop=face' },
+        { name: 'Designer Alden', role: 'Designer', detail: 'Verified OFS Serpentine · 5 modules validated', photo: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80&h=80&fit=crop&crop=face' },
     ],
     registration: [
         { label: 'Smartsheet Row', value: '#2026-JPS-HCW' },
@@ -1354,7 +1354,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                 </div>
                                 {/* PDF footer */}
                                 <div className="px-6 py-3 bg-muted dark:bg-zinc-800 border-t border-border flex items-center justify-between">
-                                    <div className="text-[9px] text-muted-foreground">Verified by Alex Rivera, Designer — {new Date().toLocaleDateString()}</div>
+                                    <div className="text-[9px] text-muted-foreground">Verified by Designer Alden, Designer — {new Date().toLocaleDateString()}</div>
                                     <div className="flex gap-2">
                                         <button onClick={() => setShowPdfPreview(false)} className="px-4 py-2 rounded-lg text-[10px] font-bold border border-border bg-card text-foreground hover:bg-muted transition-colors">Close</button>
                                         <button onClick={() => setShowPdfPreview(false)} className="px-4 py-2 rounded-lg text-[10px] font-bold bg-sky-600 text-white hover:bg-sky-700 transition-colors">Download PDF</button>
@@ -1797,7 +1797,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                     </div>
                                     <div className="flex items-center gap-2 text-[9px]">
                                         <CheckCircleIcon className="h-3 w-3 text-sky-500 shrink-0" />
-                                        <span><span className="font-bold">Alex Rivera</span> (Designer) — 5 modules validated, OFS Serpentine confirmed</span>
+                                        <span><span className="font-bold">Designer Alden</span> (Designer) — 5 modules validated, OFS Serpentine confirmed</span>
                                     </div>
                                     <div className="flex items-center gap-2 text-[9px]">
                                         <SparklesIcon className="h-3 w-3 text-indigo-500 shrink-0" />
@@ -2092,7 +2092,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                             </div>
                                             <div className="flex items-center gap-2 text-[9px]">
                                                 <CheckCircleIcon className="h-3 w-3 text-sky-500 shrink-0" />
-                                                <span><span className="font-bold">Alex Rivera</span> (Designer) — 5 modules validated, OFS Serpentine confirmed</span>
+                                                <span><span className="font-bold">Designer Alden</span> (Designer) — 5 modules validated, OFS Serpentine confirmed</span>
                                             </div>
                                             <div className="flex items-center gap-2 text-[9px]">
                                                 <SparklesIcon className="h-3 w-3 text-indigo-500 shrink-0" />
@@ -2568,7 +2568,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                                 </div>
                                 <div className="flex items-center gap-1.5 text-[9px]">
                                     <CheckCircleIcon className="h-3 w-3 text-sky-500 shrink-0" />
-                                    <span className="text-foreground"><span className="font-bold">Alex Rivera</span> — 5 modules verified</span>
+                                    <span className="text-foreground"><span className="font-bold">Designer Alden</span> — 5 modules verified</span>
                                 </div>
                                 <div className="flex items-center gap-1.5 text-[9px]">
                                     <SparklesIcon className="h-3 w-3 text-indigo-500 shrink-0" />
@@ -2712,7 +2712,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                             <CheckCircleIcon className="h-5 w-5 text-green-500 shrink-0" />
                             <div>
                                 <div className="text-[11px] font-bold text-foreground">Approval Chain Complete</div>
-                                <div className="text-[9px] text-muted-foreground">Regional Sales Manager Reyes, Alex Rivera, Account Manager Kai, Jordan Park — all approved</div>
+                                <div className="text-[9px] text-muted-foreground">Regional Sales Manager Reyes, Designer Alden, Account Manager Kai, Jordan Park — all approved</div>
                             </div>
                         </div>
                     </div>
@@ -2748,7 +2748,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                             </div>
                             <div className="flex items-center gap-2 text-[10px]">
                                 <UserGroupIcon className="h-3 w-3 text-sky-500 shrink-0" />
-                                <span className="text-foreground"><span className="font-bold">Regional Sales Manager Reyes, Alex Rivera, Account Manager Kai</span> — Confirmation</span>
+                                <span className="text-foreground"><span className="font-bold">Regional Sales Manager Reyes, Designer Alden, Account Manager Kai</span> — Confirmation</span>
                             </div>
                         </div>
                     </div>
@@ -2884,7 +2884,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                         </div>
                         <div className="flex items-center gap-2 p-2.5 rounded-lg bg-card border border-border">
                             <CheckCircleIcon className="h-3.5 w-3.5 text-green-500" />
-                            <span className="text-[10px] text-foreground">Stakeholders notified — Regional Sales Manager Reyes, Alex Rivera, Account Manager Kai</span>
+                            <span className="text-[10px] text-foreground">Stakeholders notified — Regional Sales Manager Reyes, Designer Alden, Account Manager Kai</span>
                         </div>
                     </div>
                 </div>
@@ -3141,7 +3141,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                                     </div>
                                     <div className="flex items-center gap-2 text-[9px]">
                                         <CheckCircleIcon className="h-3 w-3 text-sky-500 shrink-0" />
-                                        <span><span className="font-bold">Alex Rivera</span> (Designer) — 5 modules validated, OFS Serpentine confirmed</span>
+                                        <span><span className="font-bold">Designer Alden</span> (Designer) — 5 modules validated, OFS Serpentine confirmed</span>
                                     </div>
                                     <div className="flex items-center gap-2 text-[9px]">
                                         <SparklesIcon className="h-3 w-3 text-indigo-500 shrink-0" />

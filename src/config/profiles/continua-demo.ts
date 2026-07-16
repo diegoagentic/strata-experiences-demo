@@ -98,7 +98,7 @@ export const CONTINUA_DEMO_STEPS: DemoStep[] = [
         groupId: 2,
         groupTitle: 'Flow 2: Facility Management & Service Center',
         title: 'Service Request Intake',
-        description: 'Carlos Rivera (Facilities Coordinator) reports a broken Aeron chair (gas cylinder failure — safety concern) and a flickering desk lamp in Office 3-214 via the Service Center. ServiceIntakeAgent extracts request details, identifies affected assets (AST-1847, AST-2103), cross-references warranty coverage, and classifies as Priority: HIGH with safety flag. Request REQ-FM-2026-018 created.',
+        description: 'Facilities Coord Cardo (Facilities Coordinator) reports a broken Aeron chair (gas cylinder failure — safety concern) and a flickering desk lamp in Office 3-214 via the Service Center. ServiceIntakeAgent extracts request details, identifies affected assets (AST-1847, AST-2103), cross-references warranty coverage, and classifies as Priority: HIGH with safety flag. Request REQ-FM-2026-018 created.',
         app: 'dashboard',
         role: 'Facility User',
         highlightId: 'mobile-service-request',
@@ -118,7 +118,7 @@ export const CONTINUA_DEMO_STEPS: DemoStep[] = [
         groupId: 2,
         groupTitle: 'Flow 2: Facility Management & Service Center',
         title: 'Expert Review & Dispatch',
-        description: 'Regional Sales Manager Reyes (Regional Sales Manager) reviews AI resolution plan in Expert Hub. Warranty claim CLM-2026-019 auto-drafted, consignment Aeron Remastered available ($0 cost — 98% match to original), ProInstall LLC dispatched for tomorrow. Expert validates consignment selection, approves dispatch, and sends notifications to Carlos Rivera (end user), Account Manager Kai (dealer), and ProInstall LLC (installer) with resolution timeline.',
+        description: 'Regional Sales Manager Reyes (Regional Sales Manager) reviews AI resolution plan in Expert Hub. Warranty claim CLM-2026-019 auto-drafted, consignment Aeron Remastered available ($0 cost — 98% match to original), ProInstall LLC dispatched for tomorrow. Expert validates consignment selection, approves dispatch, and sends notifications to Facilities Coord Cardo (end user), Account Manager Kai (dealer), and ProInstall LLC (installer) with resolution timeline.',
         app: 'expert-hub',
         role: 'Expert',
         highlightId: 'fm-expert-dispatch',
@@ -333,7 +333,7 @@ export const CONTINUA_DEMO_STEP_MESSAGES: Record<string, string[]> = {
 
     // Flow 2: Facility Management & Service Center
     '2.1': [
-        'ServiceIntakeAgent: incoming request from Carlos Rivera — Office 3-214...',
+        'ServiceIntakeAgent: incoming request from Facilities Coord Cardo — Office 3-214...',
         'Extracting: broken Aeron chair (gas cylinder failure) + flickering desk lamp',
         'Warranty check: AST-1847 covered until Mar 2027 — auto-claim eligible',
         'Priority classified: HIGH (safety concern — gas cylinder failure)',

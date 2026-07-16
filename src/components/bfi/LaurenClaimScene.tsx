@@ -22,7 +22,7 @@ import EmailMetadataBlock from './EmailMetadataBlock'
 
 const LAUREN_NOTIFICATION = {
     title: 'DOE-2847 · Carton #34 missing · Receiving complete',
-    desc: 'Lena C. · 34/35 cartons received · carton #34 missing · CORE updated',
+    desc: 'Receiving Coordinator Lynn · 34/35 cartons received · carton #34 missing · CORE updated',
     cta: 'Review report & file claim →',
 }
 
@@ -38,7 +38,7 @@ Shipment summary:
 
 Please review the attached receiving report (RR-37577) and confirm receipt of this claim. We request a replacement unit within 5 business days.
 
-— Lauren DeMarco
+— Account Manager DeMar
   BFI Furniture · CoNY Account Manager
   lauren.demarco@bfifurniture.com`
 
@@ -303,7 +303,7 @@ export default function LaurenClaimScene() {
                     <p className="text-destructive font-medium">
                         Monitor Arm Dual Adjustable · carton #34 is missing.
                     </p>
-                    <p className="text-muted-foreground text-[10px]">— Lena C. · Receiving Coordinator</p>
+                    <p className="text-muted-foreground text-[10px]">— Receiving Coordinator Lynn · Receiving Coordinator</p>
                 </div>
             </div>
 

@@ -55,7 +55,7 @@ Monitor Arm Dual Adjustable · carton #34 is missing.
 
 CORE flagged — claim pending.
 
-— Lena C. · Receiving Coordinator`
+— Receiving Coordinator Lynn · Receiving Coordinator`
 
 // ─── Enhanced Bingo Grid ──────────────────────────────────────────────────────
 
@@ -241,7 +241,7 @@ function LaurenNotificationDialog({ isOpen, notes, onSent, onClose }: { isOpen: 
                                     <span className="text-[10px] font-black text-info">LD</span>
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <div className="text-[12px] font-bold text-foreground">Lauren DeMarco</div>
+                                    <div className="text-[12px] font-bold text-foreground">Account Manager DeMar</div>
                                     <div className="text-[10px] text-muted-foreground">lauren.demarco@bfifurniture.com · CoNY Account Manager</div>
                                 </div>
                                 <button onClick={onClose} className="p-1 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors shrink-0" aria-label="Close">

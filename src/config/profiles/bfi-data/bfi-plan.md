@@ -50,12 +50,12 @@
 
 | Persona real | Rol en la UI |
 |---|---|
-| Lauren DeMarco | CoNY Account Lead |
-| Michael Boyle | Director of Strategic Accounts |
+| Account Manager DeMar | CoNY Account Lead |
+| Manager Boyle | Director of Strategic Accounts |
 | Lena Cisowski | Receiving Coordinator |
 | Nancy Bos (Miller Knoll) | MK Invoice Processor |
 | Operations Manager Bly | CoNY Project Manager |
-| Patricia Hilger | Finance / AR |
+| Finance Lead Halbert | Finance / AR |
 
 ---
 
@@ -170,7 +170,7 @@ FedEx gap DCAS-1182: `FX284920 · FX284921 · FX284922` — POD request enviado 
 | # | Blocker | Acción | Owner |
 |---|---|---|---|
 | 1 | CORE API License no activa | BFI activa license con RPC vendor | BFI + Avanto |
-| 2 | Formato CPR docs no confirmado | Director Strategic Accounts envía 3–5 samples | Michael Boyle |
+| 2 | Formato CPR docs no confirmado | Director Strategic Accounts envía 3–5 samples | Manager Boyle |
 | 3 | T-codes CoNY no exportados | Confirmar acceso Noel & Miller site | Kate / Michael |
 | 4 | R Drive local (VPN) | Decisión de migrar a SharePoint | BFI (Kate) |
 

@@ -22,7 +22,7 @@ const SYNC_LINES = [
     'PMO-2026-0412 · 34/35 cartons',
     'Line 24 flagged EXCLUDED',
     'Claim #OM-2026-0412 attached',
-    'Entry timestamped · Lauren D. · May 11 · 2:30 PM',
+    'Entry timestamped · Account Manager DeMar · May 11 · 2:30 PM',
 ]
 
 export default function CoreEntryScene({ onConfirm }: CoreEntrySceneProps) {
