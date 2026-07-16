@@ -222,6 +222,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         companyName: 'WRG',
         description: 'Quoting lifecycle — intake to client proposal',
         icon: '🔧',
+        defaultApp: 'wrg-estimator',
         steps: WRG_DEMO_STEPS,
         stepBehavior: WRG_DEMO_STEP_BEHAVIOR,
         stepMessages: WRG_DEMO_STEP_MESSAGES,
