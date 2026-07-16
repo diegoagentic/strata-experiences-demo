@@ -278,38 +278,52 @@ export default function Navbar({
                         >
                             <PopoverPanel className="absolute left-0 top-full mt-2 w-80 py-2 rounded-xl bg-card/95 backdrop-blur-xl border border-border shadow-2xl z-[200] max-h-[70vh] flex flex-col">
                                 <div className="overflow-y-auto flex-1 min-h-0">
-                                    {/* EXPERIENCES */}
-                                    <div className="px-3 py-2 border-b border-border shrink-0 sticky top-0 bg-card/95 backdrop-blur-xl z-10">
-                                        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Experiences</p>
-                                    </div>
-                                    {profiles.map((profile) => (
-                                        <PopoverButton
-                                            as="button"
-                                            key={profile.id}
-                                            onClick={() => {
-                                                // If a block is active, clear it before switching profile.
-                                                const url = new URL(window.location.href);
-                                                if (url.searchParams.has('block')) {
-                                                    url.searchParams.delete('block');
-                                                    window.history.pushState({}, '', url.toString());
-                                                    window.dispatchEvent(new CustomEvent('block:change'));
-                                                }
-                                                switchProfile(profile.id);
-                                            }}
-                                            className="w-full flex items-start gap-3 px-3 py-2.5 hover:bg-muted transition-colors text-left"
-                                        >
-                                            <span className="text-lg shrink-0 leading-tight pt-0.5">{profile.icon}</span>
-                                            <div className="flex-1 min-w-0">
-                                                <p className="text-sm font-semibold text-foreground leading-tight">{profile.title ?? profile.name}</p>
-                                                {profile.subtitle && (
-                                                    <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{profile.subtitle}</p>
+                                    {(() => {
+                                        // F16.5 · split Experiences into 2 sub-groups matching the CSV
+                                        // taxonomy: Feature modules (own CSV row) vs Tour profiles
+                                        // (only consumers of shared modules).
+                                        const featureModules = profiles.filter(p => p.experienceKind === 'feature-module');
+                                        const tourProfiles  = profiles.filter(p => p.experienceKind !== 'feature-module');
+                                        const renderProfile = (profile: typeof profiles[number]) => (
+                                            <PopoverButton
+                                                as="button"
+                                                key={profile.id}
+                                                onClick={() => {
+                                                    const url = new URL(window.location.href);
+                                                    if (url.searchParams.has('block')) {
+                                                        url.searchParams.delete('block');
+                                                        window.history.pushState({}, '', url.toString());
+                                                        window.dispatchEvent(new CustomEvent('block:change'));
+                                                    }
+                                                    switchProfile(profile.id);
+                                                }}
+                                                className="w-full flex items-start gap-3 px-3 py-2.5 hover:bg-muted transition-colors text-left"
+                                            >
+                                                <span className="text-lg shrink-0 leading-tight pt-0.5">{profile.icon}</span>
+                                                <div className="flex-1 min-w-0">
+                                                    <p className="text-sm font-semibold text-foreground leading-tight">{profile.title ?? profile.name}</p>
+                                                    {profile.subtitle && (
+                                                        <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{profile.subtitle}</p>
+                                                    )}
+                                                </div>
+                                                {activeProfile.id === profile.id && (
+                                                    <CheckIcon className="w-4 h-4 text-primary shrink-0 mt-1" />
                                                 )}
-                                            </div>
-                                            {activeProfile.id === profile.id && (
-                                                <CheckIcon className="w-4 h-4 text-primary shrink-0 mt-1" />
-                                            )}
-                                        </PopoverButton>
-                                    ))}
+                                            </PopoverButton>
+                                        );
+                                        return (
+                                            <>
+                                                <div className="px-3 py-2 border-b border-border shrink-0 sticky top-0 bg-card/95 backdrop-blur-xl z-10">
+                                                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Feature Modules</p>
+                                                </div>
+                                                {featureModules.map(renderProfile)}
+                                                <div className="px-3 py-2 border-y border-border shrink-0 sticky top-0 bg-card/95 backdrop-blur-xl z-10 mt-2">
+                                                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Tour Profiles</p>
+                                                </div>
+                                                {tourProfiles.map(renderProfile)}
+                                            </>
+                                        );
+                                    })()}
 
                                     {/* SHARED BUILDING BLOCKS */}
                                     <div className="px-3 py-2 border-y border-border shrink-0 sticky top-0 bg-card/95 backdrop-blur-xl z-10 mt-2">

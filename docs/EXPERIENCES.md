@@ -30,6 +30,23 @@ Fuente de verdad de qué se muestra por experiencia · `docs/experience-map.csv`
 | 11 | `ops` | Receiving → Invoice → QB Sync | 🟢 | 🟡 F13 | Landing modo normal via `defaultApp: 'dashboard'` (Apex Furniture usa Dashboard shared con branch `dashboardVariant: 'ops'` cuando aplique). Sin apps custom (`ops-*`) · como Continua, personalización vive en ramas `isOps && stepId === 'X.X'` en shared files. Refactor primitivas cross-profile skipped scope. |
 | 12 | `coi` | Email RFQ → PO → Warranty | 🟢 | 🟡 F15 | Landing modo normal via `defaultApp: 'email-marketplace'` (RFQ intake · primer step del flow). 27 steps · consumidor más pesado del stack shared (Email + Kanban + Expert Hub + MAC + CRM + Dashboard). Refactor cross-profile pospuesto a F18. |
 | 13 | `acme` | Dealer RFQ → PO | 🟢 | 🟡 F15 | Landing igual a COI (`defaultApp: 'email-marketplace'`) · reutiliza `COI_STEPS` (23 steps · sin CRM). |
+| 14 | `crm` | CRM Standalone | 🟢 | ⏳ F18 | **[F16.5]** Nueva 14ª experiencia agregada por CSV alignment · row `CRM Standalone App · Feature module · Strata CRM` (fila 34 del CSV). Landing modo normal via `defaultApp: 'crm'`. Reutiliza `<CRMSimulation>` shared. 8 steps existentes (previamente dead-code en `src/config/profiles/crm.ts`). |
+
+## CSV alignment (F16.5)
+
+El dropdown Experiences se reordenó según el orden del CSV
+`docs/experience-map.csv` + se agregó una división visual en 2 subgrupos
+via el nuevo field `experienceKind`:
+
+- **Feature modules** (8) · rows con `Category: Feature module` en CSV.
+  Orden CSV literal: WRG · Dupler · CLC · Officeworks · BFI · Leland ·
+  MBI · Strata CRM.
+- **Tour profiles** (6) · rows que solo aparecen en `Profile(s)` como
+  consumers de shared modules. Orden: Inbound|Outbound · Workscapes ·
+  Continua · OPS · COI · Acme.
+
+Los subtitles Officeworks / MBI se mantienen "honest tour" (reflejan lo
+que hay implementado, no literal CSV) por decisión Diego (2026-07-16).
 
 ## 14 shared building blocks
 

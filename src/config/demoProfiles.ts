@@ -21,6 +21,7 @@ import {
     INBOUND_OUTBOUND_SELF_INDICATED,
 } from './profiles/inbound-outbound';
 import { CLC_STEPS, CLC_STEP_BEHAVIOR, CLC_STEP_MESSAGES, CLC_SELF_INDICATED } from './profiles/clc';
+import { CRM_STEPS, CRM_STEP_BEHAVIOR, CRM_STEP_MESSAGES, CRM_SELF_INDICATED } from './profiles/crm';
 
 export type SimulationApp =
     | 'dashboard' | 'expert-hub' | 'email-marketplace'
@@ -50,7 +51,7 @@ export interface DemoStep {
     flowId?: string;
 }
 
-export type DemoProfileId = 'acme' | 'coi' | 'dupler' | 'ops' | 'continua' | 'wrg' | 'mbi' | 'leland' | 'bfi' | 'workspaces' | 'officeworks' | 'inbound-outbound' | 'clc';
+export type DemoProfileId = 'acme' | 'coi' | 'dupler' | 'ops' | 'continua' | 'wrg' | 'mbi' | 'leland' | 'bfi' | 'workspaces' | 'officeworks' | 'inbound-outbound' | 'clc' | 'crm';
 
 /** Icon aliases surface as Lucide icons via components/RoleSwitcher.tsx's ICON_MAP. */
 export type RoleIcon =
@@ -105,30 +106,59 @@ export interface DemoProfile {
      * before the user hits "Start Demo".
      */
     defaultApp?: SimulationApp;
+
+    // ─── CSV categorization (F16.5) ────────────────────────────────────────
+    /**
+     * Sub-section within the dropdown "Experiences" category:
+     *  · 'feature-module' — matches a `Category: Feature module` row in the
+     *    docs/experience-map.csv (8 experiences: WRG · Dupler · CLC ·
+     *    Officeworks · BFI · Leland · MBI · Strata CRM).
+     *  · 'tour-profile'   — profiles that only appear in the CSV as `Profile(s)`
+     *    consumers of shared modules (6 tours: Inbound|Outbound · Workscapes ·
+     *    Continua · OPS · COI · Acme).
+     * Undefined defaults to 'tour-profile' for backward compat.
+     */
+    experienceKind?: 'feature-module' | 'tour-profile';
 }
 
-// Order: most recently created demo first (newest at top of Switch Demo dropdown).
-// To add a new demo, prepend its entry — do not append.
+// ═══════════════════════════════════════════════════════════════════════════════
+// DEMO_PROFILES · ordered by the CSV `demo-2026-strata-modules-x-experiences`.
+// First: 8 Feature-module experiences (Category='Feature module' in CSV).
+// Then: 6 Tour-profile experiences (only appear as Profile(s) consumers of
+// shared modules · not their own CSV row).
+// Sub-header split rendered by Navbar via `experienceKind` field.
+// ═══════════════════════════════════════════════════════════════════════════════
 export const DEMO_PROFILES: DemoProfile[] = [
+    // ─── FEATURE MODULES (8) · in CSV row order ────────────────────────────
     {
-        id: 'inbound-outbound',
-        title: 'Manufacturer Order Entry',
-        subtitle: 'Senator pitch · Inbound RFQ / Outbound Ack · Dealer↔Manufacturer',
-        name: 'Inbound | Outbound',
-        companyName: 'Inbound | Outbound',
-        description: 'Manufacturer order entry · inbound RFQ + PO · outbound quote + ack + shipping + invoice · 12 steps · 2 flows',
-        icon: '📦',
-        experienceLabel: 'Manufacturer Experience',
-        steps: INBOUND_OUTBOUND_STEPS,
-        stepBehavior: INBOUND_OUTBOUND_STEP_BEHAVIOR,
-        stepMessages: INBOUND_OUTBOUND_STEP_MESSAGES,
-        selfIndicatedSteps: INBOUND_OUTBOUND_SELF_INDICATED,
-        hasRoleSwitcher: true,
-        defaultRoleId: 'manufacturer',
-        roles: [
-            { id: 'manufacturer', label: 'Manufacturer', icon: 'factory' },
-            { id: 'dealer',       label: 'Dealer',       icon: 'store' },
-        ],
+        id: 'wrg',
+        title: 'Labor Estimation',
+        subtitle: 'WRG · Estimator + Designer Verification + Sales Review + Handoff',
+        name: 'WRG',
+        companyName: 'WRG',
+        description: 'Quoting lifecycle — intake to client proposal',
+        icon: '🔧',
+        defaultApp: 'wrg-estimator',
+        experienceKind: 'feature-module',
+        steps: WRG_DEMO_STEPS,
+        stepBehavior: WRG_DEMO_STEP_BEHAVIOR,
+        stepMessages: WRG_DEMO_STEP_MESSAGES,
+        selfIndicatedSteps: WRG_DEMO_SELF_INDICATED,
+    },
+    {
+        id: 'dupler',
+        title: 'Vendor Data → SIF → Warehouse',
+        subtitle: 'Dupler · PDF Extraction + Warehouse & Transit + Reporting',
+        name: 'Dupler',
+        companyName: 'Dupler',
+        description: 'PDF→SIF, Warehouse & Transit, Unified Reporting',
+        icon: '📄',
+        defaultApp: 'dupler-pdf',
+        experienceKind: 'feature-module',
+        steps: DUPLER_STEPS,
+        stepBehavior: DUPLER_STEP_BEHAVIOR,
+        stepMessages: DUPLER_STEP_MESSAGES,
+        selfIndicatedSteps: DUPLER_SELF_INDICATED,
     },
     {
         id: 'clc',
@@ -140,6 +170,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         icon: '📅',
         experienceLabel: 'Operations Experience',
         defaultApp: 'clc-dashboard',
+        experienceKind: 'feature-module',
         steps: CLC_STEPS,
         stepBehavior: CLC_STEP_BEHAVIOR,
         stepMessages: CLC_STEP_MESSAGES,
@@ -154,24 +185,11 @@ export const DEMO_PROFILES: DemoProfile[] = [
         description: 'Spec Check & Design AI · Teknion BOM validation · MANATT 4th Floor',
         icon: '📐',
         defaultApp: 'officeworks-dashboard',
+        experienceKind: 'feature-module',
         steps: OFFICEWORKS_STEPS,
         stepBehavior: OFFICEWORKS_STEP_BEHAVIOR,
         stepMessages: OFFICEWORKS_STEP_MESSAGES,
         selfIndicatedSteps: OFFICEWORKS_SELF_INDICATED,
-    },
-    {
-        id: 'workspaces',
-        title: 'Expense Management End-to-End',
-        subtitle: 'Workscapes · Mobile OCR + Approval + GL Sync + CFO Dashboard',
-        name: 'Workscapes',
-        companyName: 'Workscapes, Inc.',
-        description: 'Expense report AI · GL auto-fill · CORE sync · spend dashboard',
-        icon: '💰',
-        defaultApp: 'workspaces-submit',
-        steps: WORKSPACES_STEPS,
-        stepBehavior: WORKSPACES_STEP_BEHAVIOR,
-        stepMessages: WORKSPACES_STEP_MESSAGES,
-        selfIndicatedSteps: WORKSPACES_SELF_INDICATED,
     },
     {
         id: 'bfi',
@@ -182,6 +200,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         description: 'Agency Fee AI · CoNY receiving workflow',
         icon: '🏛️',
         defaultApp: 'bfi-dashboard',
+        experienceKind: 'feature-module',
         steps: BFI_STEPS,
         stepBehavior: BFI_STEP_BEHAVIOR,
         stepMessages: BFI_STEP_MESSAGES,
@@ -196,6 +215,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         description: 'Purchase order pipeline · materials review · exception handling',
         icon: '🪑',
         defaultApp: 'leland-strata',
+        experienceKind: 'feature-module',
         steps: LELAND_STEPS,
         stepBehavior: LELAND_STEP_BEHAVIOR,
         stepMessages: LELAND_STEP_MESSAGES,
@@ -210,24 +230,64 @@ export const DEMO_PROFILES: DemoProfile[] = [
         description: 'Modern Business Interiors · Budget Builder prototype + Accounting/Quotes/Design AI',
         icon: '🏢',
         defaultApp: 'mbi-accounting',
+        experienceKind: 'feature-module',
         steps: MBI_STEPS,
         stepBehavior: MBI_STEP_BEHAVIOR,
         stepMessages: MBI_STEP_MESSAGES,
         selfIndicatedSteps: MBI_SELF_INDICATED,
     },
     {
-        id: 'wrg',
-        title: 'Labor Estimation',
-        subtitle: 'WRG · Estimator + Designer Verification + Sales Review + Handoff',
-        name: 'WRG',
-        companyName: 'WRG',
-        description: 'Quoting lifecycle — intake to client proposal',
-        icon: '🔧',
-        defaultApp: 'wrg-estimator',
-        steps: WRG_DEMO_STEPS,
-        stepBehavior: WRG_DEMO_STEP_BEHAVIOR,
-        stepMessages: WRG_DEMO_STEP_MESSAGES,
-        selfIndicatedSteps: WRG_DEMO_SELF_INDICATED,
+        id: 'crm',
+        title: 'CRM Standalone',
+        subtitle: 'Strata CRM · Pipeline + Forecast + Design Intake + Opportunity Detail + AI Import',
+        name: 'Strata CRM',
+        companyName: 'Strata CRM',
+        description: 'Pipeline · Forecast · Design Intake · Opportunity Detail · AI Import',
+        icon: '👥',
+        defaultApp: 'crm',
+        experienceKind: 'feature-module',
+        steps: CRM_STEPS,
+        stepBehavior: CRM_STEP_BEHAVIOR,
+        stepMessages: CRM_STEP_MESSAGES,
+        selfIndicatedSteps: CRM_SELF_INDICATED,
+    },
+
+    // ─── TOUR PROFILES (6) · CSV `Profile(s)` consumers of shared modules ──
+    {
+        id: 'inbound-outbound',
+        title: 'Manufacturer Order Entry',
+        subtitle: 'Senator pitch · Inbound RFQ / Outbound Ack · Dealer↔Manufacturer',
+        name: 'Inbound | Outbound',
+        companyName: 'Inbound | Outbound',
+        description: 'Manufacturer order entry · inbound RFQ + PO · outbound quote + ack + shipping + invoice · 12 steps · 2 flows',
+        icon: '📦',
+        experienceLabel: 'Manufacturer Experience',
+        experienceKind: 'tour-profile',
+        steps: INBOUND_OUTBOUND_STEPS,
+        stepBehavior: INBOUND_OUTBOUND_STEP_BEHAVIOR,
+        stepMessages: INBOUND_OUTBOUND_STEP_MESSAGES,
+        selfIndicatedSteps: INBOUND_OUTBOUND_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'manufacturer',
+        roles: [
+            { id: 'manufacturer', label: 'Manufacturer', icon: 'factory' },
+            { id: 'dealer',       label: 'Dealer',       icon: 'store' },
+        ],
+    },
+    {
+        id: 'workspaces',
+        title: 'Expense Management End-to-End',
+        subtitle: 'Workscapes · Mobile OCR + Approval + GL Sync + CFO Dashboard',
+        name: 'Workscapes',
+        companyName: 'Workscapes, Inc.',
+        description: 'Expense report AI · GL auto-fill · CORE sync · spend dashboard',
+        icon: '💰',
+        defaultApp: 'workspaces-submit',
+        experienceKind: 'tour-profile',
+        steps: WORKSPACES_STEPS,
+        stepBehavior: WORKSPACES_STEP_BEHAVIOR,
+        stepMessages: WORKSPACES_STEP_MESSAGES,
+        selfIndicatedSteps: WORKSPACES_SELF_INDICATED,
     },
     {
         id: 'continua',
@@ -238,24 +298,11 @@ export const DEMO_PROFILES: DemoProfile[] = [
         description: 'Project lifecycle, inventory intelligence & sustainability',
         icon: '🏗️',
         defaultApp: 'inventory',
+        experienceKind: 'tour-profile',
         steps: CONTINUA_DEMO_STEPS,
         stepBehavior: CONTINUA_DEMO_STEP_BEHAVIOR,
         stepMessages: CONTINUA_DEMO_STEP_MESSAGES,
         selfIndicatedSteps: CONTINUA_DEMO_SELF_INDICATED,
-    },
-    {
-        id: 'dupler',
-        title: 'Vendor Data → SIF → Warehouse',
-        subtitle: 'Dupler · PDF Extraction + Warehouse & Transit + Reporting',
-        name: 'Dupler',
-        companyName: 'Dupler',
-        description: 'PDF→SIF, Warehouse & Transit, Unified Reporting',
-        icon: '📄',
-        defaultApp: 'dupler-pdf',
-        steps: DUPLER_STEPS,
-        stepBehavior: DUPLER_STEP_BEHAVIOR,
-        stepMessages: DUPLER_STEP_MESSAGES,
-        selfIndicatedSteps: DUPLER_SELF_INDICATED,
     },
     {
         id: 'ops',
@@ -266,6 +313,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         description: 'Receiving, invoicing & financial control',
         icon: '📊',
         defaultApp: 'dashboard',
+        experienceKind: 'tour-profile',
         steps: OPS_DEMO_STEPS,
         stepBehavior: OPS_DEMO_STEP_BEHAVIOR,
         stepMessages: OPS_DEMO_STEP_MESSAGES,
@@ -280,6 +328,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         description: 'Contract office interiors',
         icon: '📧',
         defaultApp: 'email-marketplace',
+        experienceKind: 'tour-profile',
         steps: COI_DEMO_STEPS,
         stepBehavior: COI_DEMO_STEP_BEHAVIOR,
         stepMessages: COI_DEMO_STEP_MESSAGES,
@@ -294,6 +343,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         description: 'Furniture dealer experience',
         icon: '🏭',
         defaultApp: 'email-marketplace',
+        experienceKind: 'tour-profile',
         steps: COI_STEPS,
         stepBehavior: COI_STEP_BEHAVIOR,
         stepMessages: COI_STEP_MESSAGES,
