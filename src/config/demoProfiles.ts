@@ -250,6 +250,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         companyName: 'Dupler',
         description: 'PDF→SIF, Warehouse & Transit, Unified Reporting',
         icon: '📄',
+        defaultApp: 'dupler-pdf',
         steps: DUPLER_STEPS,
         stepBehavior: DUPLER_STEP_BEHAVIOR,
         stepMessages: DUPLER_STEP_MESSAGES,
