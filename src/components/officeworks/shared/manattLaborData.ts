@@ -1,8 +1,8 @@
 // ═══════════════════════════════════════════════════════════════════════════════
-// MANATT · Labor & Delivery Estimation demo data
+// Metro Legal · Labor & Delivery Estimation demo data
 //
-// Same project as MANATT_ORDER_META (manattOrderData.ts) · PO-DC-0009642 ·
-// MANATT Phelps & Phillips · 4th Floor · DC market · 1551 K St NW.
+// Same project as Metro Legal_ORDER_META (manattOrderData.ts) · PO-DC-0009642 ·
+// Metro Legal Firm · 4th Floor · DC market · 1551 K St NW.
 //
 // The L&D flow runs IN PARALLEL to the Spec Check & Design flow per the
 // AS-IS BPMN: while Kimberly's BOM is being designed, Alan's ops team is
@@ -16,9 +16,9 @@
 //   - DC 2024 case:   Notion AS-IS §8 ($160k → $106k post-rebid)
 // ═══════════════════════════════════════════════════════════════════════════════
 
-export const MANATT_LD_RFP = {
+export const Metro Legal_LD_RFP = {
     poNumber: 'PO-DC-0009642',                          // mismo PO sc1.x
-    projectName: 'MANATT Phelps & Phillips · 4th Floor',
+    projectName: 'Metro Legal Firm · 4th Floor',
     market: 'DC',
     gcCompany: 'CBRE',
     gcContact: 'jonathan.spence@cbre.com',
@@ -33,7 +33,7 @@ export const MANATT_LD_RFP = {
     priorProjectsAtAddress: 5,
 } as const;
 
-export const MANATT_TAKEOFF = {
+export const Metro Legal_TAKEOFF = {
     workstationCount: 127,
     crCount: 18,
     estimatedLaborHours: 320,
@@ -53,7 +53,7 @@ export const TAKEOFF_BULLETS = [
 
 export type ConditionConfidence = 'high' | 'medium' | 'low';
 
-export const MANATT_BUILDING_CONDITIONS = [
+export const Metro Legal_BUILDING_CONDITIONS = [
     { id: 'freight',    label: 'Freight elevator',          value: "Yes · 8'×6'×9'",       confidence: 'high'   as ConditionConfidence, source: 'Building KB · 1551 K St NW (5 prior projects)' },
     { id: 'lift',       label: 'Single vs double lift',     value: 'Single lift',           confidence: 'high'   as ConditionConfidence, source: 'Building KB · 1551 K St NW' },
     { id: 'dock',       label: 'Loading dock',              value: 'Dock with leveler',     confidence: 'high'   as ConditionConfidence, source: 'Building KB · 1551 K St NW' },
@@ -68,7 +68,7 @@ export const MANATT_BUILDING_CONDITIONS = [
     { id: 'equipment',  label: 'Equipment provision',       value: '100% installer-provided', confidence: 'high' as ConditionConfidence, source: 'OW MSA policy · all special equipment by installer' },
 ] as const;
 
-export type BuildingCondition = (typeof MANATT_BUILDING_CONDITIONS)[number];
+export type BuildingCondition = (typeof Metro Legal_BUILDING_CONDITIONS)[number];
 
 export const APPROVED_INSTALLERS_DC = [
     {
@@ -348,11 +348,11 @@ export const COVER_LETTER_BODY = {
     fromEmail: 'jonathan.spence@cbre.com',
     to: 'Alan McPhee',
     toTitle: 'Sr Operations · Officeworks',
-    subject: 'Labor RFP · MANATT 4F · responses due Wed May 14 9 AM',
+    subject: 'Labor RFP · Metro Legal 4F · responses due Wed May 14 9 AM',
     receivedAt: '2026-05-12 09:14',
     body: [
         'Alan,',
-        'Please quote labor + delivery for the MANATT Phelps & Phillips project (4th Floor build-out, 1551 K St NW, Washington DC).',
+        'Please quote labor + delivery for the Metro Legal Firm project (4th Floor build-out, 1551 K St NW, Washington DC).',
         'Drawings + SIF attached. Submit pricing back via Building Connected — ref BC-RFP-882041.',
         'Deadline 48h MSA window. Reach out if anything is unclear.',
         'Thanks,',
@@ -362,7 +362,7 @@ export const COVER_LETTER_BODY = {
 
 export const SIF_FURNITURE = {
     title: 'Scope of Information File',
-    project: 'MANATT 4th Floor · Build-out',
+    project: 'Metro Legal 4th Floor · Build-out',
     market: 'DC',
     deliveryAddress: '1551 K St NW · Washington DC',
     scope: [
@@ -378,7 +378,7 @@ export const SIF_FURNITURE = {
 
 export const SIF_WALLS = {
     title: 'Scope of Information File',
-    project: 'MANATT 4th Floor · Build-out',
+    project: 'Metro Legal 4th Floor · Build-out',
     market: 'DC',
     deliveryAddress: '1551 K St NW · Washington DC',
     scope: [
@@ -394,10 +394,10 @@ export const SIF_WALLS = {
 
 export const BID_REQUEST_EMAIL_FURNITURE = {
     from: 'Alan McPhee <alan.mcphee@officeworks.com>',
-    subject: 'Bid request · MANATT 4F · respond by Wed May 14 9 AM',
+    subject: 'Bid request · Metro Legal 4F · respond by Wed May 14 9 AM',
     body: [
         'Team,',
-        'We have a labor + delivery RFP for MANATT 4th Floor (DC market · 1551 K St NW). Scope summary + drawings attached.',
+        'We have a labor + delivery RFP for Metro Legal 4th Floor (DC market · 1551 K St NW). Scope summary + drawings attached.',
         'Scope: 127 workstations · 18 CRs · ~320h estimated labor · 2 delivery stops. Union building (IBEW Local 26), dock leveler, straight-time only.',
         'Deadline: respond by Wed May 14 9 AM (48h MSA window). Please separate labor and delivery in your quote.',
         '— Alan',
@@ -413,7 +413,7 @@ export const WALLS_BID_REQUEST_SECTIONS_A_G = {
     title: 'Installation Quote Request',
     template: 'Walls Group · standard form · Sections A-G',
     sections: [
-        { id: 'A', label: 'Project Information',     fields: ['Project name: MANATT 4F', 'Market: DC', 'GC: CBRE', 'PO ref: BC-RFP-882041'] },
+        { id: 'A', label: 'Project Information',     fields: ['Project name: Metro Legal 4F', 'Market: DC', 'GC: CBRE', 'PO ref: BC-RFP-882041'] },
         { id: 'B', label: 'Scope of Work',           fields: ['482 linear feet', '18 doors', '9–12 ft wall heights', '24 glass panels'] },
         { id: 'C', label: 'Site Conditions',         fields: ['IBEW Local 26 union', 'Dock leveler · single lift', 'M-F 7am-4pm receiving', 'OSHA-30 + badging required'] },
         { id: 'D', label: 'Labor Rates',             fields: ['MSA blended rate per market', 'Prevailing wage: No', 'OT vs straight-time: ST only'] },
@@ -425,26 +425,26 @@ export const WALLS_BID_REQUEST_SECTIONS_A_G = {
 
 export const NOTIFICATION_DRAFTS = {
     winner: {
-        subject: 'Award notification · MANATT 4F',
+        subject: 'Award notification · Metro Legal 4F',
         body: [
-            'Congratulations · TriState Labor Solutions has been selected for the MANATT 4F installation.',
+            'Congratulations · TriState Labor Solutions has been selected for the Metro Legal 4F installation.',
             'Net contract: $20,900 (labor + delivery).',
             'Next steps: kickoff call to schedule mobilization. Reach out to coordinate.',
             '— Alan',
         ],
     },
     loserPinnacle: {
-        subject: 'Bid decision · MANATT 4F',
+        subject: 'Bid decision · Metro Legal 4F',
         body: [
-            'Thank you for submitting your bid for MANATT 4F. We have selected another installer this round.',
+            'Thank you for submitting your bid for Metro Legal 4F. We have selected another installer this round.',
             'Your scorecard remains strong · we will continue to invite you to upcoming RFPs.',
             '— Alan',
         ],
     },
     loserNortheast: {
-        subject: 'Bid decision · MANATT 4F',
+        subject: 'Bid decision · Metro Legal 4F',
         body: [
-            'Thank you for your bid for MANATT 4F. We have selected another installer this round.',
+            'Thank you for your bid for Metro Legal 4F. We have selected another installer this round.',
             'We appreciate the timely response and will continue inviting you to future RFPs.',
             '— Alan',
         ],
@@ -492,7 +492,7 @@ export function getActiveVerticalData(vertical: Vertical) {
     return {
         vertical,
         actor: ALAN_MCPHEE,
-        takeoff: MANATT_TAKEOFF,
+        takeoff: Metro Legal_TAKEOFF,
         takeoffBullets: TAKEOFF_BULLETS,
         installers: APPROVED_INSTALLERS_DC,
         bids: BID_RESPONSES,
@@ -501,13 +501,13 @@ export function getActiveVerticalData(vertical: Vertical) {
         governance: null,
         volume: LD_VOLUME_FACTS,
         scopeUnitLabel: 'Workstations',
-        scopeUnitValue: `${MANATT_TAKEOFF.workstationCount}`,
-        scopeSecondary: `${MANATT_TAKEOFF.crCount} CRs`,
+        scopeUnitValue: `${Metro Legal_TAKEOFF.workstationCount}`,
+        scopeSecondary: `${Metro Legal_TAKEOFF.crCount} CRs`,
     } as const;
 }
 
-// ─── L&D Pipeline data · context cards + MANATT badges/subtitles per col ────
-// Mirrors the shape of CONTEXT_CARDS / MANATT_BADGE / MANATT_SUBTITLE in
+// ─── L&D Pipeline data · context cards + Metro Legal badges/subtitles per col ────
+// Mirrors the shape of CONTEXT_CARDS / Metro Legal_BADGE / Metro Legal_SUBTITLE in
 // OfficeworksFunnel.tsx so the funnel can render the L&D flow consistently.
 
 export interface LDContextCard {
@@ -546,7 +546,7 @@ export const LD_CONTEXT_PROJECTS: LDContextCard[] = [
     },
 ];
 
-export const MANATT_LD_BADGE: Record<number, { label: string; className: string }> = {
+export const Metro Legal_LD_BADGE: Record<number, { label: string; className: string }> = {
     0: { label: 'RFP routed',     className: 'bg-ai/10 text-ai border border-ai/20' },
     1: { label: 'Conditions OK',  className: 'bg-info/10 text-info border border-info/20' },
     2: { label: 'Bid sent',       className: 'bg-warning/10 text-warning border border-warning/20' },
@@ -554,7 +554,7 @@ export const MANATT_LD_BADGE: Record<number, { label: string; className: string 
     4: { label: 'Quote uploaded', className: 'bg-success/10 text-success border border-success/20' },
 };
 
-export const MANATT_LD_BADGE_BY_STEP: Record<string, { label: string; className: string }> = {
+export const Metro Legal_LD_BADGE_BY_STEP: Record<string, { label: string; className: string }> = {
     'sc-LD.0': { label: 'New RFP',          className: 'bg-ai/10 text-ai border border-ai/20' },
     'sc-LD.1': { label: 'Takeoff ready',    className: 'bg-info/10 text-info border border-info/20' },
     'sc-LD.2': { label: 'Conditions OK',    className: 'bg-info/10 text-info border border-info/20' },
@@ -564,7 +564,7 @@ export const MANATT_LD_BADGE_BY_STEP: Record<string, { label: string; className:
     'sc-LD.6': { label: 'Winner picked',    className: 'bg-primary/10 text-primary border border-primary/20' },
 };
 
-export const MANATT_LD_SUBTITLE: Record<number, string> = {
+export const Metro Legal_LD_SUBTITLE: Record<number, string> = {
     0: 'RFP from CBRE · 3 attachments · SLA 48h running',
     1: '12 conditions captured · 1551 K St NW · union IBEW 26',
     2: '3 installers DC · Pinnacle · Northeast · TriState',
@@ -572,7 +572,7 @@ export const MANATT_LD_SUBTITLE: Record<number, string> = {
     4: 'Net $20.9k + 18% margin = $24,662 · uploaded · BC-RFP-882041',
 };
 
-export const MANATT_LD_SUBTITLE_BY_STEP: Record<string, string> = {
+export const Metro Legal_LD_SUBTITLE_BY_STEP: Record<string, string> = {
     'sc-LD.0': 'New RFP from the GC · awaiting acknowledge · SLA 48h',
     'sc-LD.1': 'RFP routed · ready to run AI takeoff on the drawing',
     'sc-LD.2': '8 of 12 conditions from Building KB · 2 medium-confidence pending confirm',

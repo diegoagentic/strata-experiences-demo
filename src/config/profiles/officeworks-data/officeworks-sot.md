@@ -38,7 +38,7 @@
 |---|---|---|
 | **Felicia Miano-Poles** | EVP Design & PM · DC + S | Manager · escalation · tacit knowledge surface |
 | **Rebecca Warren** | Design Manager · MA + NY + NJ | Peer auditor (sc1.7) |
-| **Kimberly Tucker** | Design Manager · PA + Pittsburgh + Ancillary | **Protagonist · cross-market assignment to MANATT DC** |
+| **Kimberly Tucker** | Design Manager · PA + Pittsburgh + Ancillary | **Protagonist · cross-market assignment to Metro Legal DC** |
 | ~30 designers | Distributed across markets | Capacity heatmap (sc1.0b + Dashboard) |
 
 ## 4. Sistemas
@@ -56,11 +56,11 @@
 | **PlanGrid** | Construction docs (post-field verification) |
 | **Gemini AI** | Already in use experimentally para BOM vs Ack cross-reference (Task 12) |
 
-## 5. Demo Client — MANATT Phelps & Phillips LLP
+## 5. Demo Client — Metro Legal Firm LLC
 
 | Campo | Valor |
 |---|---|
-| Project | MANATT · 4th Floor · Workstations |
+| Project | Metro Legal · 4th Floor · Workstations |
 | Market | DC (Washington D.C.) — Felicia's region |
 | Universal # | 2-10468963 |
 | PO # | PO-DC-0009642 |

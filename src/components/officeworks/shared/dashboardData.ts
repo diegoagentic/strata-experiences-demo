@@ -22,7 +22,7 @@ export interface AtRiskProject {
 }
 
 export const SPEC_CHECK_AT_RISK: AtRiskProject[] = [
-    { code: 'MANATT-4F',     client: 'Manatt Phelps & Phillips · DC',  phase: 'Spec Check',       daysInPhase: 4,  slaDays: 5,  designer: 'Kimberly Tucker' },
+    { code: 'Metro Legal-4F',     client: 'Metro Legal Firm · DC',  phase: 'Spec Check',       daysInPhase: 4,  slaDays: 5,  designer: 'Kimberly Tucker' },
     { code: 'JPM-ATL-4471',  client: 'JPMorgan · Atlanta HQ',          phase: 'Teknion Preview',  daysInPhase: 11, slaDays: 14, designer: 'James O\'Brien' },
     { code: 'NYC-DOH-2847',  client: 'NYC Dept of Health · Brooklyn',  phase: 'Intake',           daysInPhase: 2,  slaDays: 3,  designer: 'Unassigned' },
     { code: 'GSA-DC2-0892',  client: 'GSA · DC2 (price-protected)',    phase: 'Submission',       daysInPhase: 1,  slaDays: 2,  designer: 'Sandra Park' },
@@ -40,7 +40,7 @@ export interface SpecCheckAlert {
 export const SPEC_CHECK_ALERTS: SpecCheckAlert[] = [
     { id: 1, severity: 'high',   text: 'JPM-ATL-4471 · Teknion preview 3 days overdue · escalate to Sr Designer', actionLabel: 'Escalate' },
     { id: 2, severity: 'medium', text: 'NYC-DOH-2847 · designer assignment pending · 22h to SLA breach',          actionLabel: 'Assign now' },
-    { id: 3, severity: 'medium', text: 'MANATT-4F · spec check nearing SLA (4/5 days) · Strata recommends peer review queue', actionLabel: 'Open audit' },
+    { id: 3, severity: 'medium', text: 'Metro Legal-4F · spec check nearing SLA (4/5 days) · Strata recommends peer review queue', actionLabel: 'Open audit' },
 ];
 
 export const SPEC_CHECK_SLA_SUMMARY = {

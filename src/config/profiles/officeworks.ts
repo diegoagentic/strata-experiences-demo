@@ -6,7 +6,7 @@
 //
 // DEMO PROCESS: Spec Check & Design (Furniture vertical · 30 designers · 3 mgrs)
 // PROTAGONIST: Kimberly Tucker (Design Manager · PA/Pittsburgh/Ancillary)
-// DEMO CLIENT: MANATT Phelps & Phillips LLP · DC market · price-protected SQ
+// DEMO CLIENT: Metro Legal Firm LLC · DC market · price-protected SQ
 //
 // STRUCTURE: 17 steps mapped from BPMN (12 numbered tasks + 9 sub-steps +
 //            13 gateways + 3 end events) in 5 swimlanes
@@ -163,7 +163,7 @@ export const OFFICEWORKS_STEPS: DemoStep[] = [
     // ─────────────────────────────────────────────────────────────────────
     // Furniture vertical · Alan McPhee (Sr Operations · Burlington MA) is the
     // operational equivalent of Felicia. Runs the labor RFP to 3 approved DC
-    // installers for MANATT 4F while Kimberly's BOM is being designed.
+    // installers for Metro Legal 4F while Kimberly's BOM is being designed.
     // BPMN: Furniture path (F1-F6 · V1-V3 · Q0-Q1 · EE1) — 8 steps.
     // ═══════════════════════════════════════════════════════════════════════
 
@@ -396,7 +396,7 @@ export const OFFICEWORKS_STEP_BEHAVIOR: Record<string, StepBehavior> = {
 
 export const OFFICEWORKS_STEP_MESSAGES: Record<string, string[]> = {
     'sc1.0': [
-        'Form received · MANATT 4th Floor · DC market',
+        'Form received · Metro Legal 4th Floor · DC market',
         'Scanning attachments · CAD file required: not found',
         'GSA client detected · SQ number required: not provided',
         'Drafting clarification email back to Caitlin Barolet',
@@ -408,7 +408,7 @@ export const OFFICEWORKS_STEP_MESSAGES: Record<string, string[]> = {
         'SQ #436533 confirmed · GSA price-protected · catalog 2025',
         'Form completeness · all required fields satisfied',
         'Pulling designer capacity across 3 regions',
-        'Cross-referencing prior MANATT assignments',
+        'Cross-referencing prior Metro Legal assignments',
     ],
     'sc1.2': [
         'Designer building BOM externally in CET / CAP',
@@ -417,14 +417,14 @@ export const OFFICEWORKS_STEP_MESSAGES: Record<string, string[]> = {
         '11 areas tagged · 22 Custom Requests flagged for spec-check',
         '1 finish inconsistency surfaced · Item 73 · XS vs area XG Very White',
         'Pricing parsed · $1,541,392 List · AI Validator queued · 894 checks',
-        'Validation deck attached · MANATT-Validation-Doc-v1.pptx · 24 slides',
+        'Validation deck attached · Metro Legal-Validation-Doc-v1.pptx · 24 slides',
         'Strata read 6 sections · floor plan · 2D · 3D · finishes · wire mgmt · electrical',
         'Proposal sent to Caitlin Barolet · BOM PDF + Validation Doc attached',
         'GW2A gate · SQ + Teknion submission blocked until client sign-off',
         'Felicia Miano-Poles approved · proposal locked · proceed to SQ check',
     ],
     'sc1.4': [
-        'GW2C: client = MANATT · GSA contract · SQ required',
+        'GW2C: client = Metro Legal · GSA contract · SQ required',
         'Opening Create platform inline · NO context switch',
         'SQ #436533 confirmed · price-protected effective 2025',
         'PZ Description column verified vs current catalog',
@@ -480,7 +480,7 @@ export const OFFICEWORKS_STEP_MESSAGES: Record<string, string[]> = {
 
     // ─── L&D flow messages ──────────────────────────────────────────────────
     'sc-LD.0': [
-        'RFP received · MANATT 4F · CBRE via Building Connected',
+        'RFP received · Metro Legal 4F · CBRE via Building Connected',
         '3 attachments detected · manatt-4th-floor.dwg + 2 PDFs',
         'GC contact: Jonathan Spence · jonathan.spence@cbre.com',
         'SLA deadline: 2026-05-14 09:14 · 48h MSA window',
@@ -540,38 +540,38 @@ export const OFFICEWORKS_STEP_MESSAGES: Record<string, string[]> = {
     // ─── Sales flow messages ───────────────────────────────────────────────
     'sc-S.0': [
         '12 inbound threads parsed · email (8) · Teams (3) · portal (1)',
-        '2 duplicates surfaced · same MANATT spec question via email + Teams',
+        '2 duplicates surfaced · same Metro Legal spec question via email + Teams',
         'Intent classification · 4 action · 3 FYI · 5 urgent (SLA-at-risk)',
-        'Urgency score · MANATT-4F decision request flagged red · 26h since last touch',
+        'Urgency score · Metro Legal-4F decision request flagged red · 26h since last touch',
         'Saved to Sales Lead queue · 5 require action today',
     ],
     'sc-S.1': [
-        'Opening triaged thread · MANATT-4F · CBRE referral',
+        'Opening triaged thread · Metro Legal-4F · CBRE referral',
         'Auto-extracted · company · est size 120 wks · budget hint $400-600k',
         'Pre-flight check on Works form · 4/9 fields missing (CAD · SQ · scope · timeline)',
         'Flagging missing fields BEFORE Works submit · saves 75-80% incomplete cycle',
-        'Opportunity record saved · MANATT-4F · stage 25% · ready to qualify',
+        'Opportunity record saved · Metro Legal-4F · stage 25% · ready to qualify',
     ],
     'sc-S.2': [
         'Pulling rep capacity ledger from Copper events · 5 reps in Mid-Atlantic',
-        'Rep A · 67 open opps · $12.4M qualified · 78% quota · 2 prior MANATT wins',
+        'Rep A · 67 open opps · $12.4M qualified · 78% quota · 2 prior Metro Legal wins',
         'Rep B · 84 open opps · OVERLOADED · capacity Low flag',
         'Rep C · 41 open opps · $6.8M qualified · 92% quota · territory match',
         'Rep D · 58 open opps · $9.1M qualified · 71% quota',
         'Rep E · 23 open opps · $3.2M qualified · 54% quota · ramp-up',
     ],
     'sc-S.3': [
-        'Strata recommends Rep A · territory + 2 prior MANATT wins',
+        'Strata recommends Rep A · territory + 2 prior Metro Legal wins',
         'Alternative Rep C · best quota progress, territory match',
         'Confirming assignment · SLA timer starts · 24h qualify · 48h proposal',
         'Auto-escalation set · Sales Manager notified if breached',
-        'Rep A notified · opp MANATT-4F assigned · SLA timer running',
+        'Rep A notified · opp Metro Legal-4F assigned · SLA timer running',
     ],
     'sc-S.4': [
         'Reading 7-message email thread · 3 weeks of context',
         'Auto-summarized into BANT + MEDDIC template',
         'Budget · est $400-600k (anchored on CBRE prior projects)',
-        'Authority · Caitlin Barolet · MANATT facilities lead',
+        'Authority · Caitlin Barolet · Metro Legal facilities lead',
         'Need · 4F refresh · GSA SQ price-protected · 120 workstations',
         'Timing · move-in target 2026-08-30 · 14 weeks out',
         '2 missing MEDDIC fields flagged · Champion · Decision criteria',
@@ -584,7 +584,7 @@ export const OFFICEWORKS_STEP_MESSAGES: Record<string, string[]> = {
         'Drafts queued · Sales Lead reviews and confirms · never auto-send',
     ],
     'sc-S.6': [
-        'Pulling Spec Check BOM · MANATT-4F · 71 lines · $1,541,392 list',
+        'Pulling Spec Check BOM · Metro Legal-4F · 71 lines · $1,541,392 list',
         'Pulling L&D labor quote · TriState · $20,900 net + OW margin 18%',
         'Pulling NetSuite catalog (read-only mock) · GSA SQ #436533 price-protected',
         'Assembling proposal PDF · cover · scope · BOM · labor · pricing · terms',

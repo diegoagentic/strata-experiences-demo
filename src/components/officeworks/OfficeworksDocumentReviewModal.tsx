@@ -1,7 +1,7 @@
 /**
  * COMPONENT: OfficeworksDocumentReviewModal
  * PURPOSE: Stage-adaptive document review modal · Manager opens it from
- *          the OfficeworksFunnel to drill into MANATT project at any stage.
+ *          the OfficeworksFunnel to drill into Metro Legal project at any stage.
  *
  * CLONE OF: src/components/bfi/BFIDocumentReviewModal.tsx (simplified shell)
  *
@@ -20,9 +20,9 @@ import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import { Dialog, Transition, TransitionChild, DialogPanel } from '@headlessui/react'
 import { X, Sparkles, FileText, MapPin, ClipboardCheck, ArrowRight, AlertCircle, CheckCircle2, FileWarning, Image as ImageIcon, Eye, UserCheck, Users, Paperclip, Mail, Loader2, HelpCircle, ShieldCheck, Search, AlertTriangle, DollarSign, Send, Calendar, Layers, Pencil, Inbox, Building2, Truck, ChevronDown, ChevronRight as ChevronRightIcon, Save, Edit3, Target, TrendingUp, MessageSquare, Smartphone, ExternalLink, Activity, Clock, Briefcase, Award } from 'lucide-react'
 import { useDemo } from '../../context/DemoContext'
-import { MANATT_ORDER_META } from './shared/manattOrderData'
+import { Metro Legal_ORDER_META } from './shared/manattOrderData'
 import {
-    MANATT_LD_RFP, MANATT_TAKEOFF, TAKEOFF_BULLETS, MANATT_BUILDING_CONDITIONS,
+    Metro Legal_LD_RFP, Metro Legal_TAKEOFF, TAKEOFF_BULLETS, Metro Legal_BUILDING_CONDITIONS,
     APPROVED_INSTALLERS_DC, BID_RESPONSES, INTERNAL_BENCHMARK, FINAL_QUOTE,
     PORTAL_UPLOAD_BULLETS, HISTORICAL_RECEIPTS, LD_VOLUME_FACTS, ALAN_MCPHEE,
     WALLS_TAKEOFF,
@@ -120,7 +120,7 @@ const STAGE_AI_BANNER: Record<OfficeworksReviewStage, string> = {
     'bom-gen':          'CAP generates BOM · 71 lines across 4 Tags · List $296,228 / Net $61,464.80 · 13 CRs (25-40 days)',
     'validation':       'Google Slides auto-compiled · client approval gate · GW2A revision type sub-gateway',
     'field-verify':     'Pre-installation drawings sent to Abigail PM · field verification BEFORE Teknion order',
-    'sq-check':         'MANATT GSA · SQ #436533 confirmed · Create platform inline · 2025 catalog vigente',
+    'sq-check':         'Metro Legal GSA · SQ #436533 confirmed · Create platform inline · 2025 catalog vigente',
     'teknion-preview':  'Tifani returns preview · 1-2 weeks · GW3: clean / spec gap / timeline conflict',
     'spec-gap':         'Spec gap on CR 2046138 (40-day leadtime) · Strata suggests fix · resubmit preview',
     'phasing':          'Teknion can\'t meet date · 3-way huddle Designer + PM + Salesperson · phased plan',
@@ -130,7 +130,7 @@ const STAGE_AI_BANNER: Record<OfficeworksReviewStage, string> = {
     'handoff':          'Coordinator uploads SP4 to NetSuite · 79% discount · Caitlin releases PO to Teknion',
     'ack-review':       'Gemini already in use · Strata supercharges · 71-line diff · 2 EE terminal states',
     // L&D flow banners
-    'ld-rfp-intake':    'CBRE submitted the MANATT 4F labor RFP via Building Connected · 3 attachments · SLA 48h · Strata routes the email into the labor inbox.',
+    'ld-rfp-intake':    'CBRE submitted the Metro Legal 4F labor RFP via Building Connected · 3 attachments · SLA 48h · Strata routes the email into the labor inbox.',
     'ld-takeoff':       'Today: ~2.5h manual workstation count in Bluebeam · the single most time-consuming step. With Strata: 18s read of manatt-4th-floor.dwg + reviewable overrides.',
     'ld-conditions':    'Today this knowledge is "nowhere — only in my head" (Alan, ~6:54). Strata pulls 8 of 12 conditions from the Building KB at 1551 K St NW · Alan confirms the 2 medium-confidence ones.',
     'ld-vendor-pool':   'DC pool consolidated May/2026 · 3 approved installers. Strata flags Pinnacle (3 active jobs · capacity Low) and recommends TriState (96% on-time · 2% CO).',
@@ -390,7 +390,7 @@ export default function OfficeworksDocumentReviewModal({
                                         </div>
                                         <div className="min-w-0">
                                             <h3 className="text-[15px] font-bold text-foreground leading-tight truncate">
-                                                Document Review — MANATT 4th Floor
+                                                Document Review — Metro Legal 4th Floor
                                             </h3>
                                         </div>
                                     </div>
@@ -642,15 +642,15 @@ function WorksFormPreview({ stage }: { stage: OfficeworksReviewStage }) {
             : 'manatt-4th-floor.dwg · received 18h after submission'
 
     const fields: FormField[] = [
-        { label: 'Client', value: 'Manatt Phelps & Phillips LLP', status: 'complete', required: true },
-        { label: 'Project', value: 'MANATT · 4th Floor · Workstations', status: 'complete', required: true },
+        { label: 'Client', value: 'Metro Legal Firm LLC', status: 'complete', required: true },
+        { label: 'Project', value: 'Metro Legal · 4th Floor · Workstations', status: 'complete', required: true },
         { label: 'Market', value: 'DC (Washington D.C.)', status: 'complete', required: true },
         { label: 'Scope', value: '~30 workstations · Standard/Large', status: 'complete', required: true },
         { label: 'Submitted by', value: 'Caitlin Barolet · DC Salesrep', status: 'complete', required: true },
         { label: 'Co-submitter', value: 'Danielle Dunlap', status: 'complete', required: false },
         { label: 'CAD file (.dwg)', value: cadValue, status: isIntakePending ? 'missing' : 'complete', required: true, note: isIntakePending ? 'Required to start design in CET' : undefined },
         { label: 'PDF floor plan', value: 'manatt-4th-floor-floorplan.pdf', status: 'complete', required: false },
-        { label: 'SQ number (price-protected)', value: isIntakePending ? null : `#${MANATT_ORDER_META.specialQuote}`, status: isIntakePending ? 'missing' : 'complete', required: true, note: isIntakePending ? 'GSA client · price protection required' : undefined },
+        { label: 'SQ number (price-protected)', value: isIntakePending ? null : `#${Metro Legal_ORDER_META.specialQuote}`, status: isIntakePending ? 'missing' : 'complete', required: true, note: isIntakePending ? 'GSA client · price protection required' : undefined },
         { label: 'Catalog effective', value: isIntakePending ? 'Strata suggests 2025' : '2025', status: 'complete', required: true },
         { label: 'Due date', value: '2026-03-20 (Sched Ship)', status: 'complete', required: true },
     ]
@@ -761,14 +761,14 @@ function BOMPreview({ bomUploaded }: { stage: OfficeworksReviewStage; bomUploade
             <div className="px-4 py-2.5 border-b border-border bg-muted/40 flex items-center gap-2 shrink-0">
                 <ClipboardCheck className="h-3.5 w-3.5 text-muted-foreground" />
                 <div className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
-                    MANATT-4F_BOM_v1.pdf · 149 line items · $1,541,392 List
+                    Metro Legal-4F_BOM_v1.pdf · 149 line items · $1,541,392 List
                 </div>
                 <span className="ml-auto text-[10px] text-success font-medium">Uploaded</span>
             </div>
             <iframe
                 // #navpanes=0 hides the native thumbnail sidebar · view=FitH fits page width
                 src={`${OFFICEWORKS_PDFS.manattBOM}#navpanes=0&view=FitH`}
-                title="MANATT 4F BOM"
+                title="Metro Legal 4F BOM"
                 className="flex-1 w-full border-0 bg-card"
             />
         </div>
@@ -849,7 +849,7 @@ function ValidationDocPreview({ validationCompiled, clientApproved = false }: Va
                     </div>
                     <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                            <span className="text-sm font-semibold text-foreground truncate">MANATT-Validation-Doc-v1.pptx</span>
+                            <span className="text-sm font-semibold text-foreground truncate">Metro Legal-Validation-Doc-v1.pptx</span>
                             <span className="text-[10px] font-bold uppercase tracking-wider bg-success/10 text-success border border-success/20 rounded px-1.5 py-0.5 shrink-0">
                                 Uploaded
                             </span>
@@ -874,7 +874,7 @@ function ValidationDocPreview({ validationCompiled, clientApproved = false }: Va
                         type="button"
                         onClick={handleDownload}
                         disabled={downloadState === 'downloading'}
-                        aria-label="Download MANATT validation document"
+                        aria-label="Download Metro Legal validation document"
                         aria-busy={downloadState === 'downloading'}
                         className="inline-flex items-center gap-1.5 h-8 px-3 rounded-md border border-border bg-card hover:bg-muted text-xs font-medium text-foreground transition-colors disabled:opacity-60"
                     >
@@ -955,7 +955,7 @@ function FloorPlanPreview({ stage }: { stage: OfficeworksReviewStage }) {
                         <div className="text-xs font-bold uppercase tracking-wide text-muted-foreground">
                             {headerLabel}
                         </div>
-                        <div className="text-[10px] text-muted-foreground mt-0.5">MANATT 4th Floor · 71 stations · WS-01(10) + WS-02(6)×2 + WS-02.A(8)</div>
+                        <div className="text-[10px] text-muted-foreground mt-0.5">Metro Legal 4th Floor · 71 stations · WS-01(10) + WS-02(6)×2 + WS-02.A(8)</div>
                     </div>
                     {isIntakePending && (
                         <span className="text-[10px] text-muted-foreground font-medium">PDF · 4 pages · 2.1 MB</span>
@@ -969,15 +969,15 @@ function FloorPlanPreview({ stage }: { stage: OfficeworksReviewStage }) {
                 </div>
                 <div className="p-4 bg-muted/10">
                     <BlueprintFloorPlan
-                        locationLabel="Architectural Layout · MANATT 4th Floor"
+                        locationLabel="Architectural Layout · Metro Legal 4th Floor"
                         zoneALabel="ZONE A · WORKSTATIONS WS-01/WS-02 ×22"
                         zoneBLabel="ZONE B · CONFERENCE + BREAK"
                         zoneCLabel="ZONE C · WS-02.A ×8 + STORAGE"
-                        footerLabel={`Manatt Phelps & Phillips LLP · ${MANATT_ORDER_META.poNumber} · by Caitlin Barolet`}
+                        footerLabel={`Metro Legal Firm LLC · ${Metro Legal_ORDER_META.poNumber} · by Caitlin Barolet`}
                     />
                 </div>
                 <div className="px-4 py-2.5 bg-muted/30 border-t border-border text-[10px] text-muted-foreground text-center">
-                    {MANATT_ORDER_META.sqName} · {MANATT_ORDER_META.poNumber} · DC market · 4th Floor
+                    {Metro Legal_ORDER_META.sqName} · {Metro Legal_ORDER_META.poNumber} · DC market · 4th Floor
                 </div>
             </div>
         </div>
@@ -1088,9 +1088,9 @@ function AckPreview({ stage }: { stage: OfficeworksReviewStage }) {
             <div className="px-4 py-2.5 border-b border-border bg-muted/40 flex items-center gap-2 shrink-0">
                 <Eye className="h-3.5 w-3.5 text-muted-foreground" />
                 <div className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
-                    Real Teknion Acknowledgment · {MANATT_ORDER_META.poNumber}
+                    Real Teknion Acknowledgment · {Metro Legal_ORDER_META.poNumber}
                 </div>
-                <span className="ml-auto text-[10px] text-success font-medium">Universal #{MANATT_ORDER_META.universal}</span>
+                <span className="ml-auto text-[10px] text-success font-medium">Universal #{Metro Legal_ORDER_META.universal}</span>
             </div>
             <iframe
                 src={OFFICEWORKS_PDFS.poAcknowledgment}
@@ -1110,7 +1110,7 @@ function DefaultStagePanel({ stage }: PanelProps) {
         'intake': {
             headline: 'Form completeness · Assign designer',
             body: <>
-                <p>Caitlin Barolet submitted the Works form for MANATT 4th Floor. <span className="text-warning font-medium">CAD file missing</span>, <span className="text-warning font-medium">SQ blank</span>.</p>
+                <p>Caitlin Barolet submitted the Works form for Metro Legal 4th Floor. <span className="text-warning font-medium">CAD file missing</span>, <span className="text-warning font-medium">SQ blank</span>.</p>
                 <p className="mt-2">Strata drafted a clarifying email to Caitlin and surfaced the capacity heatmap. Felicia reviews the form and assigns the designer (GW1 soft check).</p>
             </>,
             cta: 'Request CAD + assign designer',
@@ -1122,12 +1122,12 @@ function DefaultStagePanel({ stage }: PanelProps) {
         },
         'bom-gen': {
             headline: 'CAP exports BOM · 71 line items',
-            body: <p>Specifications + electrical coordination embedded here (not standalone steps). Subtotals grouped per Tag (Alias 1) + Level 4 (Alias 2). List Total ${MANATT_ORDER_META.listTotal.toLocaleString()}.</p>,
+            body: <p>Specifications + electrical coordination embedded here (not standalone steps). Subtotals grouped per Tag (Alias 1) + Level 4 (Alias 2). List Total ${Metro Legal_ORDER_META.listTotal.toLocaleString()}.</p>,
             cta: 'Continue to validation',
         },
         'validation': {
             headline: 'Client approval gate (GW2A)',
-            body: <p>Google Slides validation doc compiled (2D/3D drawings, finishes, electrical). Sent to MANATT for approval. <span className="text-warning font-medium">Primary delay driver.</span> If revisions: layout change → Task 3 (CET) · BOM-only → Task 4 (CAP).</p>,
+            body: <p>Google Slides validation doc compiled (2D/3D drawings, finishes, electrical). Sent to Metro Legal for approval. <span className="text-warning font-medium">Primary delay driver.</span> If revisions: layout change → Task 3 (CET) · BOM-only → Task 4 (CAP).</p>,
             cta: 'Client approved · proceed',
         },
         'field-verify': {
@@ -1137,7 +1137,7 @@ function DefaultStagePanel({ stage }: PanelProps) {
         },
         'sq-check': {
             headline: 'SQ #436533 · price-protected GSA',
-            body: <p>MANATT is a price-protected law firm. Strata embeds the Teknion Create platform inline (no context switch · SC3 dramatized). Verifying SQ #436533 + 2025 catalog effective date.</p>,
+            body: <p>Metro Legal is a price-protected law firm. Strata embeds the Teknion Create platform inline (no context switch · SC3 dramatized). Verifying SQ #436533 + 2025 catalog effective date.</p>,
             cta: 'Confirm SQ · use 2025 catalog',
         },
         'teknion-preview': {
@@ -1164,7 +1164,7 @@ function DefaultStagePanel({ stage }: PanelProps) {
         'ack-review':  { headline: 'Acknowledgment review', body: <p>Hero panel · see right side.</p> },
         // L&D stages · all rendered via dedicated full-pane panels (see dispatch).
         'intake-complete': { headline: 'Form complete', body: <p>Dispatched · see right panel.</p> },
-        'ld-rfp-intake':   { headline: 'RFP intake panel · CBRE / MANATT 4F', body: <p>Dispatched · see right panel.</p> },
+        'ld-rfp-intake':   { headline: 'RFP intake panel · CBRE / Metro Legal 4F', body: <p>Dispatched · see right panel.</p> },
         'ld-takeoff':      { headline: 'AI scope takeoff', body: <p>Dispatched · see right panel.</p> },
         'ld-conditions':   { headline: 'Building & workforce conditions', body: <p>Dispatched · see right panel.</p> },
         'ld-vendor-pool':  { headline: 'Installer pool selection', body: <p>Dispatched · see right panel.</p> },
@@ -1206,10 +1206,10 @@ interface IntakeAssignPanelProps {
 
 const REQUEST_MESSAGE = `Hi Caitlin,
 
-Thanks for submitting the Works form for the MANATT 4th Floor build-out. To start the design in CET we need two items before we can route to a designer:
+Thanks for submitting the Works form for the Metro Legal 4th Floor build-out. To start the design in CET we need two items before we can route to a designer:
 
   · CAD floor plan (.dwg) · required for layout in CET (Task 3)
-  · SQ number for the GSA price-protected client · Strata suggests #${MANATT_ORDER_META.specialQuote} (catalog 2025) · please confirm
+  · SQ number for the GSA price-protected client · Strata suggests #${Metro Legal_ORDER_META.specialQuote} (catalog 2025) · please confirm
 
 The rest of the form is complete. As soon as the CAD arrives we'll assign and kick off.
 
@@ -1237,7 +1237,7 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
                             </li>
                             <li className="flex items-start gap-2 text-xs text-warning">
                                 <AlertCircle className="h-3.5 w-3.5 shrink-0 mt-0.5" />
-                                <span><span className="font-semibold">SQ blank</span> · GSA price-protected · Strata suggests SQ #{MANATT_ORDER_META.specialQuote} · catalog 2025</span>
+                                <span><span className="font-semibold">SQ blank</span> · GSA price-protected · Strata suggests SQ #{Metro Legal_ORDER_META.specialQuote} · catalog 2025</span>
                             </li>
                             <li className="flex items-start gap-2 text-xs text-success">
                                 <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" />
@@ -1252,7 +1252,7 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
                             </li>
                             <li className="flex items-start gap-2 text-xs text-success">
                                 <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" />
-                                <span><span className="font-semibold">SQ #{MANATT_ORDER_META.specialQuote} confirmed</span> · GSA price-protected · catalog 2025</span>
+                                <span><span className="font-semibold">SQ #{Metro Legal_ORDER_META.specialQuote} confirmed</span> · GSA price-protected · catalog 2025</span>
                             </li>
                             <li className="flex items-start gap-2 text-xs text-success">
                                 <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" />
@@ -1283,8 +1283,8 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
                                 Email preview
                             </div>
                             <div className="text-foreground"><span className="text-muted-foreground">To: </span>caitlin.barolet@manatt.com</div>
-                            <div className="text-foreground"><span className="text-muted-foreground">Subject: </span>MANATT 4th Floor · clarification needed · CAD file + SQ number</div>
-                            <div className="text-muted-foreground line-clamp-2 pt-1">Thanks for submitting the Works form for the MANATT 4th Floor build-out. To start the design in CET we need two items before we can route to a designer…</div>
+                            <div className="text-foreground"><span className="text-muted-foreground">Subject: </span>Metro Legal 4th Floor · clarification needed · CAD file + SQ number</div>
+                            <div className="text-muted-foreground line-clamp-2 pt-1">Thanks for submitting the Works form for the Metro Legal 4th Floor build-out. To start the design in CET we need two items before we can route to a designer…</div>
                         </div>
                     </div>
                 )}
@@ -1294,8 +1294,8 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
                     const kim = findDesigner('Kimberly Tucker')
                     const kimCap = kim ? computeCapacity(kim) : null
                     const kimRationale = kimCap
-                        ? `${kimCap.freeHours}h free this week / ${kimCap.availableHours}h available · prior MANATT · cross-market`
-                        : 'prior MANATT · cross-market'
+                        ? `${kimCap.freeHours}h free this week / ${kimCap.availableHours}h available · prior Metro Legal · cross-market`
+                        : 'prior Metro Legal · cross-market'
                     return (
                     <div className="border-t border-border pt-4 space-y-3 animate-in fade-in slide-in-from-top-1 duration-300">
                         <div className="rounded-lg border border-success/30 bg-success/5 px-3 py-2 flex items-start gap-2">
@@ -1315,7 +1315,7 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
                             <div className="text-xs text-foreground">
                                 Identified as{' '}
                                 <RuleTooltip
-                                    rule="GW1B project-size gateway: Small projects (1-5 stations) bypass several design tasks; Standard/Large run the full flow. MANATT is ~30 stations → Standard/Large."
+                                    rule="GW1B project-size gateway: Small projects (1-5 stations) bypass several design tasks; Standard/Large run the full flow. Metro Legal is ~30 stations → Standard/Large."
                                     source="Source: officeworks-sot.md (project size) + BPMN gateway GW1B"
                                 >
                                     <strong>Standard / Large</strong>
@@ -1350,8 +1350,8 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
                             selectedName={assignedDesigner}
                             highlightName="Kimberly Tucker"
                             priorClientHighlight={{
-                                label: 'Worked with MANATT',
-                                predicate: d => !!d.priorMANATT,
+                                label: 'Worked with Metro Legal',
+                                predicate: d => !!d.priorMetroLegal,
                             }}
                             compact
                         />
@@ -1425,15 +1425,15 @@ function IntakeAssignPanel({ stage, assignedDesigner, onAssignDesigner, onValida
                         to: 'caitlin.barolet@manatt.com',
                         cc: 'felicia.miano-poles@officeworks.com · EVP Design & PM',
                         date: '2026-04-16 · 10:48 AM',
-                        subject: 'MANATT 4th Floor · clarification needed · CAD file + SQ number',
+                        subject: 'Metro Legal 4th Floor · clarification needed · CAD file + SQ number',
                         message: REQUEST_MESSAGE,
                         attachments: [{ name: 'manatt-works-form-summary.pdf', meta: '1 page · auto-generated' }],
                         alertTitle: 'Missing Required Information',
                         alertRows: [
-                            { label: 'Client',  value: 'Manatt Phelps & Phillips LLP' },
-                            { label: 'Project', value: 'MANATT · 4th Floor · ~30 stations' },
+                            { label: 'Client',  value: 'Metro Legal Firm LLC' },
+                            { label: 'Project', value: 'Metro Legal · 4th Floor · ~30 stations' },
                             { label: 'Missing 1', value: 'CAD floor plan (.dwg)' },
-                            { label: 'Missing 2', value: `SQ number · GSA price-protected (Strata suggests #${MANATT_ORDER_META.specialQuote})` },
+                            { label: 'Missing 2', value: `SQ number · GSA price-protected (Strata suggests #${Metro Legal_ORDER_META.specialQuote})` },
                         ],
                         successTitle: 'Clarification request sent',
                         successSubtitle: 'Awaiting CAD attachment + SQ confirmation',
@@ -1464,18 +1464,18 @@ interface DesignBOMPanelProps {
 // Email body for the unified proposal (BOM + Validation Doc) sent to the client.
 const PROPOSAL_MESSAGE = `Hi Caitlin,
 
-Attached please find the proposal for MANATT 4th Floor:
+Attached please find the proposal for Metro Legal 4th Floor:
 • BOM · 149 line items · $1,541,392 list (Teknion T25)
 • Validation Document · 24 slides · floor plan, 2D/3D drawings, finishes, wire mgmt, electrical
 
-Please forward to Felicia at MANATT for sign-off before we proceed to SQ verification and Teknion submission.
+Please forward to Felicia at Metro Legal for sign-off before we proceed to SQ verification and Teknion submission.
 
 Thanks,
 Kimberly`
 
 // Bullets shown in 'processing-validation' phase · sub-step 2.
 const VALIDATION_BULLETS = [
-    'Parsing MANATT-Validation-Doc-v1.pptx · 24 slides',
+    'Parsing Metro Legal-Validation-Doc-v1.pptx · 24 slides',
     'Detecting sections · floor plan · 2D · 3D · finishes · wire · electrical',
     'Cross-referencing with the 149-line BOM finishes',
     '6 sections detected · ready for client review',
@@ -1505,7 +1505,7 @@ const RELATED_PROCESSES = [
 ]
 
 /**
- * Findings derived from the REAL MANATT-4F_BOM_v1.pdf (149 line items, 11
+ * Findings derived from the REAL Metro Legal-4F_BOM_v1.pdf (149 line items, 11
  * areas, 22 CRs, $1.54M list). Each finding has an actual page/item citation
  * the user can verify by clicking "View in BOM" — the iframe of the real PDF
  * loads in the BOM tab and the user can navigate to the cited page.
@@ -1816,7 +1816,7 @@ function DesignBOMPanel({ onValidate, onBOMUploaded, onValidationStarted, onVali
                                     <Paperclip className="h-5 w-5 text-muted-foreground" />
                                 </div>
                                 <div className="text-xs font-semibold text-foreground">Drop BOM file here · or click to browse</div>
-                                <div className="text-[10px] text-muted-foreground italic">Demo · click to simulate the upload of MANATT-4F_BOM_v1.sp4 (212 KB)</div>
+                                <div className="text-[10px] text-muted-foreground italic">Demo · click to simulate the upload of Metro Legal-4F_BOM_v1.sp4 (212 KB)</div>
                             </button>
                         </div>
                         <div>
@@ -1862,7 +1862,7 @@ function DesignBOMPanel({ onValidate, onBOMUploaded, onValidationStarted, onVali
                             <div className="text-xs flex-1 min-w-0">
                                 <div className="font-semibold text-success">BOM uploaded · 149 line items · $1,541,392 list</div>
                                 <div className="text-muted-foreground">
-                                    MANATT-4F_BOM_v1.pdf · Teknion T25 · 11 areas · 22 CRs · largest: Office_WO.1 (20 units · $419,660){ddpEnabled ? ' · DDP parallel queued' : ''}
+                                    Metro Legal-4F_BOM_v1.pdf · Teknion T25 · 11 areas · 22 CRs · largest: Office_WO.1 (20 units · $419,660){ddpEnabled ? ' · DDP parallel queued' : ''}
                                 </div>
                                 <div className="flex items-center gap-2 mt-1.5">
                                     <button type="button" onClick={focusBOMTab} className="text-[10px] font-bold text-foreground bg-primary/20 rounded px-1.5 py-0.5 hover:bg-primary/30 transition-colors">
@@ -1917,7 +1917,7 @@ function DesignBOMPanel({ onValidate, onBOMUploaded, onValidationStarted, onVali
                                 <Paperclip className="h-5 w-5 text-muted-foreground" />
                             </div>
                             <div className="text-xs font-semibold text-foreground">Drop validation deck here · or click to attach</div>
-                            <div className="text-[10px] text-muted-foreground italic">Demo · click to simulate the upload of MANATT-Validation-Doc-v1.pptx (1.8 MB · 24 slides)</div>
+                            <div className="text-[10px] text-muted-foreground italic">Demo · click to simulate the upload of Metro Legal-Validation-Doc-v1.pptx (1.8 MB · 24 slides)</div>
                         </button>
                     </div>
                 )}
@@ -1951,7 +1951,7 @@ function DesignBOMPanel({ onValidate, onBOMUploaded, onValidationStarted, onVali
                                 <div className="flex-1 min-w-0">
                                     <div className="text-sm font-semibold text-foreground">Proposal ready to send</div>
                                     <div className="text-[11px] text-muted-foreground mt-0.5">
-                                        BOM (149 lines · $1.54M list) + Validation Document (24 slides · 6 sections). Sales (Caitlin Barolet) will forward to Felicia Miano-Poles at MANATT.
+                                        BOM (149 lines · $1.54M list) + Validation Document (24 slides · 6 sections). Sales (Caitlin Barolet) will forward to Felicia Miano-Poles at Metro Legal.
                                     </div>
                                 </div>
                             </div>
@@ -1987,7 +1987,7 @@ function DesignBOMPanel({ onValidate, onBOMUploaded, onValidationStarted, onVali
                                     <Loader2 className="h-5 w-5 animate-spin" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <div className="text-sm font-semibold text-foreground">Sending proposal to MANATT…</div>
+                                    <div className="text-sm font-semibold text-foreground">Sending proposal to Metro Legal…</div>
                                     <div className="text-[11px] text-muted-foreground mt-0.5">
                                         Designer → Sales → client · waiting for sign-off…
                                     </div>
@@ -2119,17 +2119,17 @@ function DesignBOMPanel({ onValidate, onBOMUploaded, onValidationStarted, onVali
                     to: 'caitlin.barolet@manatt.com',
                     cc: 'felicia.miano-poles@officeworks.com',
                     date: '2026-04-22 · 2:15 PM',
-                    subject: 'MANATT 4th Floor · Proposal for Client Approval',
+                    subject: 'Metro Legal 4th Floor · Proposal for Client Approval',
                     message: PROPOSAL_MESSAGE,
                     attachments: [
-                        { name: 'MANATT-4F_BOM_v1.pdf',          meta: '149 lines · 212 KB' },
-                        { name: 'MANATT-Validation-Doc-v1.pptx', meta: '24 slides · 1.8 MB' },
+                        { name: 'Metro Legal-4F_BOM_v1.pdf',          meta: '149 lines · 212 KB' },
+                        { name: 'Metro Legal-Validation-Doc-v1.pptx', meta: '24 slides · 1.8 MB' },
                     ],
                     alertTitle: 'Client approval required (GW2A)',
                     alertRows: [
-                        { label: 'Project',   value: 'MANATT 4th Floor · DC market' },
+                        { label: 'Project',   value: 'Metro Legal 4th Floor · DC market' },
                         { label: 'Documents', value: 'BOM + Validation Document' },
-                        { label: 'Sent to',   value: 'Caitlin Barolet (Sales) → Felicia Miano-Poles (MANATT)' },
+                        { label: 'Sent to',   value: 'Caitlin Barolet (Sales) → Felicia Miano-Poles (Metro Legal)' },
                     ],
                     successTitle: 'Proposal sent to client',
                     successSubtitle: "Awaiting Felicia's sign-off · typical reply 1-2 business days",
@@ -2182,25 +2182,25 @@ const SQ_EMAIL_TO   = 'caitlin.barolet@officeworksinc.com'
 const SQ_EMAIL_CC   = 'felicia.miano-poles@officeworksinc.com, dc-coordinator@officeworksinc.com'
 
 function buildSQEmailSubject(): string {
-    return `SQ #${MANATT_ORDER_META.specialQuote} Confirmed · MANATT 4th Floor · Price Protected · 2025 Catalog`
+    return `SQ #${Metro Legal_ORDER_META.specialQuote} Confirmed · Metro Legal 4th Floor · Price Protected · 2025 Catalog`
 }
 
 function buildSQEmailBody(): string {
-    const discountPct = Math.round((MANATT_ORDER_META.discountTotal / MANATT_ORDER_META.listTotal) * 100)
+    const discountPct = Math.round((Metro Legal_ORDER_META.discountTotal / Metro Legal_ORDER_META.listTotal) * 100)
     return `Hi Caitlin,
 
-Confirming pricing protection for MANATT 4th Floor before I submit the Order Preview to Teknion. Sharing for your records and so you can align with the client.
+Confirming pricing protection for Metro Legal 4th Floor before I submit the Order Preview to Teknion. Sharing for your records and so you can align with the client.
 
-· SQ #${MANATT_ORDER_META.specialQuote} (${MANATT_ORDER_META.sqName})
-· Catalog: 2025 · effective dates valid through Sched Ship ${MANATT_ORDER_META.schedShipDate}
-· List Total: $${MANATT_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-· Net Total: $${MANATT_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+· SQ #${Metro Legal_ORDER_META.specialQuote} (${Metro Legal_ORDER_META.sqName})
+· Catalog: 2025 · effective dates valid through Sched Ship ${Metro Legal_ORDER_META.schedShipDate}
+· List Total: $${Metro Legal_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+· Net Total: $${Metro Legal_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}
 · Discount: ~${discountPct}% off list
 
 Verification trail (cross-referenced by Strata):
   ✓ Teknion Create platform · SQ lookup ACTIVE
   ✓ Officeworks-DC special pricing form · on file (filed at intake)
-  ✓ Prior acknowledgment ${MANATT_ORDER_META.poNumber} · terms consistent
+  ✓ Prior acknowledgment ${Metro Legal_ORDER_META.poNumber} · terms consistent
   ✓ Catalog 2025 effective dates · valid
 
 The 4 documented risk checks (PZ column · all 71 items on SQ · Service Fees/T-code surcharges · catalog effective date) are all confirmed.
@@ -2265,7 +2265,7 @@ function SQConfirmationDialog({ isOpen, onSent, onCancel, emailConfig }: SQConfi
     const [subject, setSubject] = useState(cfg.subject ?? buildSQEmailSubject())
     const [message, setMessage] = useState(cfg.body ?? buildSQEmailBody())
     const [attachments, setAttachments] = useState(cfg.attachments ?? [
-        { name: `MANATT-SQ-${MANATT_ORDER_META.specialQuote}-confirmation.pdf`, size: '240 KB', badge: 'Auto-generated' },
+        { name: `Metro Legal-SQ-${Metro Legal_ORDER_META.specialQuote}-confirmation.pdf`, size: '240 KB', badge: 'Auto-generated' },
         { name: 'verification-trail.json', size: '8 KB', badge: 'Sources log' },
     ])
     const [sending, setSending] = useState(false)
@@ -2286,7 +2286,7 @@ function SQConfirmationDialog({ isOpen, onSent, onCancel, emailConfig }: SQConfi
     const fromEmail = cfg.from ?? SQ_EMAIL_FROM
     const toEmail   = cfg.to   ?? SQ_EMAIL_TO
     const ccEmail   = cfg.cc   ?? SQ_EMAIL_CC
-    const title       = cfg.title       ?? 'SQ Confirmation · MANATT 4th Floor'
+    const title       = cfg.title       ?? 'SQ Confirmation · Metro Legal 4th Floor'
     const subtitle    = cfg.subtitle    ?? 'Strata drafted on your behalf · review and send'
     const sentMessage = cfg.sentMessage ?? 'Sent · recipients notified'
 
@@ -2410,7 +2410,7 @@ function SQCheckPanel({ onValidate }: SQCheckPanelProps) {
         setConfirmed(true)
     }
 
-    const discountPct = Math.round((MANATT_ORDER_META.discountTotal / MANATT_ORDER_META.listTotal) * 100)
+    const discountPct = Math.round((Metro Legal_ORDER_META.discountTotal / Metro Legal_ORDER_META.listTotal) * 100)
 
     return (
         <>
@@ -2430,7 +2430,7 @@ function SQCheckPanel({ onValidate }: SQCheckPanelProps) {
                 <div className="rounded-xl border border-border bg-card overflow-hidden">
                     <div className="px-4 py-2.5 bg-muted/30 border-b border-border flex items-center gap-2">
                         <span className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground">Question</span>
-                        <span className="text-xs text-foreground">Is MANATT GSA price-protected? Which catalog applies?</span>
+                        <span className="text-xs text-foreground">Is Metro Legal GSA price-protected? Which catalog applies?</span>
                     </div>
                     <div className="px-4 py-3">
                         <div className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground mb-1">Answer</div>
@@ -2465,20 +2465,20 @@ function SQCheckPanel({ onValidate }: SQCheckPanelProps) {
                 <div className="rounded-xl border border-border bg-card overflow-hidden">
                     <div className="px-4 py-3 bg-muted/30 border-b border-border flex items-center gap-2">
                         <DollarSign className="h-4 w-4 text-foreground" />
-                        <span className="text-xs font-bold uppercase tracking-wider text-foreground">Pricing terms locked under SQ #{MANATT_ORDER_META.specialQuote}</span>
+                        <span className="text-xs font-bold uppercase tracking-wider text-foreground">Pricing terms locked under SQ #{Metro Legal_ORDER_META.specialQuote}</span>
                     </div>
                     <div className="grid grid-cols-2 gap-px bg-border">
                         <div className="bg-card px-3 py-2.5">
                             <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">List Total</div>
-                            <div className="text-base text-foreground tabular-nums mt-0.5">${MANATT_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                            <div className="text-base text-foreground tabular-nums mt-0.5">${Metro Legal_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                         </div>
                         <div className="bg-card px-3 py-2.5">
                             <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Net Total</div>
-                            <div className="text-base font-bold text-success tabular-nums mt-0.5">${MANATT_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                            <div className="text-base font-bold text-success tabular-nums mt-0.5">${Metro Legal_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                         </div>
                         <div className="bg-card px-3 py-2.5">
                             <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Discount Total</div>
-                            <div className="text-base text-foreground tabular-nums mt-0.5">${MANATT_ORDER_META.discountTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                            <div className="text-base text-foreground tabular-nums mt-0.5">${Metro Legal_ORDER_META.discountTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                         </div>
                         <div className="bg-card px-3 py-2.5">
                             <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Implied %</div>
@@ -2500,7 +2500,7 @@ function SQCheckPanel({ onValidate }: SQCheckPanelProps) {
                         {[
                             {
                                 title: 'Teknion Create platform',
-                                detail: `SQ #${MANATT_ORDER_META.specialQuote} lookup`,
+                                detail: `SQ #${Metro Legal_ORDER_META.specialQuote} lookup`,
                                 badge: 'ACTIVE',
                                 badgeClass: 'bg-success/10 text-success border-success/20',
                                 meta: 'verified just now',
@@ -2513,15 +2513,15 @@ function SQCheckPanel({ onValidate }: SQCheckPanelProps) {
                                 meta: '18h ago',
                             },
                             {
-                                title: `Prior acknowledgment ${MANATT_ORDER_META.poNumber}`,
-                                detail: 'terms consistent · Universal #' + MANATT_ORDER_META.universal,
+                                title: `Prior acknowledgment ${Metro Legal_ORDER_META.poNumber}`,
+                                detail: 'terms consistent · Universal #' + Metro Legal_ORDER_META.universal,
                                 badge: 'MATCH',
                                 badgeClass: 'bg-success/10 text-success border-success/20',
-                                meta: MANATT_ORDER_META.orderReceipt,
+                                meta: Metro Legal_ORDER_META.orderReceipt,
                             },
                             {
                                 title: 'Catalog 2025 effective dates',
-                                detail: `Sched Ship ${MANATT_ORDER_META.schedShipDate} within window`,
+                                detail: `Sched Ship ${Metro Legal_ORDER_META.schedShipDate} within window`,
                                 badge: 'VALID',
                                 badgeClass: 'bg-success/10 text-success border-success/20',
                                 meta: 'verified just now',
@@ -2546,7 +2546,7 @@ function SQCheckPanel({ onValidate }: SQCheckPanelProps) {
                     <div className="rounded-lg border border-success/30 bg-success/5 px-3 py-2 flex items-start gap-2 animate-in fade-in slide-in-from-top-1 duration-300">
                         <CheckCircle2 className="h-4 w-4 text-success shrink-0 mt-0.5" />
                         <div className="text-xs">
-                            <div className="font-semibold text-success">SQ #{MANATT_ORDER_META.specialQuote} confirmed · 2025 catalog locked</div>
+                            <div className="font-semibold text-success">SQ #{Metro Legal_ORDER_META.specialQuote} confirmed · 2025 catalog locked</div>
                             <div className="text-muted-foreground">
                                 <strong className="text-foreground">Caitlin notified</strong> · Felicia &amp; Coordinator CC'd · proceed to Teknion Order Preview
                             </div>
@@ -2608,7 +2608,7 @@ const PRE_FLIGHT_CHECKS = [
         id: 'leadtime',
         label: 'Longest CR leadtime fits Sched Ship 2026/03/20',
         tooltip: 'Strata computed longest CR leadtime (40 days · CR 2046138 Flintwood Add-On Screen) against the Sched Ship date. Buffer remains for Teknion factory queue.',
-        source: 'Source: Manatt order data · CR leadtime ledger',
+        source: 'Source: Metro Legal order data · CR leadtime ledger',
     },
 ] as const
 
@@ -2625,23 +2625,23 @@ function TeknionPreviewPanel({ onValidate }: TeknionPreviewPanelProps) {
     const [emailDialogOpen, setEmailDialogOpen] = useState(false)
 
     const tifaniSubmissionConfig = {
-        title: 'Order Preview Submission · MANATT 4th Floor',
+        title: 'Order Preview Submission · Metro Legal 4th Floor',
         subtitle: 'Strata pre-validated · ready to send',
         from: 'kimberly.tucker@officeworksinc.com',
         to: 'tifani.cooper@teknion.com',
         cc: 'felicia.miano-poles@officeworksinc.com, caitlin.barolet@officeworksinc.com',
-        subject: `Order Preview · MANATT 4th Floor · ${MANATT_ORDER_META.poNumber} · Sched Ship ${MANATT_ORDER_META.schedShipDate}`,
+        subject: `Order Preview · Metro Legal 4th Floor · ${Metro Legal_ORDER_META.poNumber} · Sched Ship ${Metro Legal_ORDER_META.schedShipDate}`,
         body: `Hi Tifani,
 
-Submitting the order preview for MANATT 4th Floor for your review. Strata ran pre-flight validation against the 2025 catalog — all 4 checks passed before submission.
+Submitting the order preview for Metro Legal 4th Floor for your review. Strata ran pre-flight validation against the 2025 catalog — all 4 checks passed before submission.
 
 Project summary:
-· PO: ${MANATT_ORDER_META.poNumber} · Universal #${MANATT_ORDER_META.universal}
+· PO: ${Metro Legal_ORDER_META.poNumber} · Universal #${Metro Legal_ORDER_META.universal}
 · 71 line items · 13 CRs (all with finish + grain spec)
-· Sched Ship: ${MANATT_ORDER_META.schedShipDate}
+· Sched Ship: ${Metro Legal_ORDER_META.schedShipDate}
 · Longest CR lead time: 40 days (CR 2046138 Flintwood Add-On Screen) · buffered
 
-SQ #${MANATT_ORDER_META.specialQuote} confirmed at our end · 2025 catalog effective.
+SQ #${Metro Legal_ORDER_META.specialQuote} confirmed at our end · 2025 catalog effective.
 
 Please let me know if you spot any spec gaps. Targeting your typical 1-2 week turnaround for the preview number.
 
@@ -2649,8 +2649,8 @@ Please let me know if you spot any spec gaps. Targeting your typical 1-2 week tu
    Design Manager · PA · cross-market to DC
    Officeworks Inc.`,
         attachments: [
-            { name: `MANATT-4F-BOM-v1.pdf`, size: '1.4 MB', badge: 'BOM · 149 lines' },
-            { name: `MANATT-validation-doc.pdf`, size: '380 KB', badge: 'Approved by client' },
+            { name: `Metro Legal-4F-BOM-v1.pdf`, size: '1.4 MB', badge: 'BOM · 149 lines' },
+            { name: `Metro Legal-validation-doc.pdf`, size: '380 KB', badge: 'Approved by client' },
             { name: `pre-flight-validation.json`, size: '12 KB', badge: 'Strata · 4 checks passed' },
         ],
         sentMessage: 'Sent · recipients notified',
@@ -2694,11 +2694,11 @@ Please let me know if you spot any spec gaps. Targeting your typical 1-2 week tu
                         <div className="bg-card px-3 py-2.5">
                             <RuleTooltip
                                 rule="List Total is the full Teknion catalog price before SQ discount. Used as the baseline for the implied % off."
-                                source="Source: MANATT-4F_BOM_v1 · 149 lines"
+                                source="Source: Metro Legal-4F_BOM_v1 · 149 lines"
                             >
                                 <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">List Total</span>
                             </RuleTooltip>
-                            <div className="text-base text-foreground tabular-nums mt-0.5">${MANATT_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                            <div className="text-base text-foreground tabular-nums mt-0.5">${Metro Legal_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                         </div>
                         <div className="bg-card px-3 py-2.5">
                             <RuleTooltip
@@ -2707,19 +2707,19 @@ Please let me know if you spot any spec gaps. Targeting your typical 1-2 week tu
                             >
                                 <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Net Total</span>
                             </RuleTooltip>
-                            <div className="text-base font-bold text-success tabular-nums mt-0.5">${MANATT_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                            <div className="text-base font-bold text-success tabular-nums mt-0.5">${Metro Legal_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                         </div>
                         <div className="bg-card px-3 py-2.5">
                             <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Discount Total</span>
-                            <div className="text-base text-foreground tabular-nums mt-0.5">${MANATT_ORDER_META.discountTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                            <div className="text-base text-foreground tabular-nums mt-0.5">${Metro Legal_ORDER_META.discountTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                         </div>
                         <div className="bg-card px-3 py-2.5">
                             <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Implied %</span>
-                            <div className="text-base font-bold text-success tabular-nums mt-0.5">~{Math.round((MANATT_ORDER_META.discountTotal / MANATT_ORDER_META.listTotal) * 100)}% off list</div>
+                            <div className="text-base font-bold text-success tabular-nums mt-0.5">~{Math.round((Metro Legal_ORDER_META.discountTotal / Metro Legal_ORDER_META.listTotal) * 100)}% off list</div>
                         </div>
                     </div>
                     <div className="px-4 py-2.5 bg-muted/20 border-t border-border text-[11px] text-foreground/70">
-                        SQ #{MANATT_ORDER_META.specialQuote} · catalog effective May 26, 2025 · 71 lines covered · PO amount ${MANATT_ORDER_META.poAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                        SQ #{Metro Legal_ORDER_META.specialQuote} · catalog effective May 26, 2025 · 71 lines covered · PO amount ${Metro Legal_ORDER_META.poAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                     </div>
                 </div>
 
@@ -2767,7 +2767,7 @@ Please let me know if you spot any spec gaps. Targeting your typical 1-2 week tu
                     <ul className="divide-y divide-border text-xs">
                         <li className="px-4 py-2 flex items-center justify-between gap-3">
                             <span className="text-muted-foreground">Order receipt</span>
-                            <span className="text-foreground tabular-nums">{MANATT_ORDER_META.orderReceipt}</span>
+                            <span className="text-foreground tabular-nums">{Metro Legal_ORDER_META.orderReceipt}</span>
                         </li>
                         <li className="px-4 py-2 flex items-center justify-between gap-3">
                             <RuleTooltip
@@ -2776,11 +2776,11 @@ Please let me know if you spot any spec gaps. Targeting your typical 1-2 week tu
                             >
                                 <span className="text-muted-foreground">Lockdown (no-change-after)</span>
                             </RuleTooltip>
-                            <span className="text-foreground tabular-nums">{MANATT_ORDER_META.noChangeAfter}</span>
+                            <span className="text-foreground tabular-nums">{Metro Legal_ORDER_META.noChangeAfter}</span>
                         </li>
                         <li className="px-4 py-2 flex items-center justify-between gap-3">
                             <span className="text-muted-foreground">Sched Ship</span>
-                            <span className="text-foreground tabular-nums">{MANATT_ORDER_META.schedShipDate}</span>
+                            <span className="text-foreground tabular-nums">{Metro Legal_ORDER_META.schedShipDate}</span>
                         </li>
                         <li className="px-4 py-2 flex items-center justify-between gap-3">
                             <span className="text-muted-foreground">Longest CR leadtime</span>
@@ -2954,9 +2954,9 @@ function SpecGapResolvePanel({ onValidate }: SpecGapResolvePanelProps) {
 
 Quick follow-up on your spec gap for CR 2046138 (Solid Add-On Screen · Flintwood White Oak 5N).
 
-Grain direction: vertical · matches the validation doc approved by Manatt and the other 4 Flintwood pieces in this project (CRs 2046131, 2046136, 2046139, 2046140 — all vertical).
+Grain direction: vertical · matches the validation doc approved by Metro Legal and the other 4 Flintwood pieces in this project (CRs 2046131, 2046136, 2046139, 2046140 — all vertical).
 
-No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${MANATT_ORDER_META.schedShipDate}.
+No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${Metro Legal_ORDER_META.schedShipDate}.
 
 — Kimberly Tucker
    Design Manager · PA · cross-market to DC
@@ -2968,7 +2968,7 @@ Quick follow-up on your spec gap for CR 2046138 (Solid Add-On Screen · Flintwoo
 
 Grain direction: horizontal. Note: this differs from the other 4 Flintwood pieces (CRs 2046131, 2046136, 2046139, 2046140) and from the validation doc page 7 (vertical). Confirming this is intentional.
 
-No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${MANATT_ORDER_META.schedShipDate}.
+No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${Metro Legal_ORDER_META.schedShipDate}.
 
 — Kimberly Tucker
    Design Manager · PA · cross-market to DC
@@ -2979,7 +2979,7 @@ Quick follow-up on your spec gap for CR 2046138 (Solid Add-On Screen · Flintwoo
 
 Grain direction: ${chosenValue || '—'}.
 
-No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${MANATT_ORDER_META.schedShipDate}.
+No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${Metro Legal_ORDER_META.schedShipDate}.
 
 — Kimberly Tucker
    Design Manager · PA · cross-market to DC
@@ -2989,7 +2989,7 @@ No other changes to the BOM. Resubmitting for your review · same Sched Ship tar
 
 Quick follow-up on your spec gap for CR 2046138 · attaching the corrected BOM with the grain direction updated. Strata flagged the change for your review.
 
-No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${MANATT_ORDER_META.schedShipDate}.
+No other changes to the BOM. Resubmitting for your review · same Sched Ship target ${Metro Legal_ORDER_META.schedShipDate}.
 
 — Kimberly Tucker
    Design Manager · PA · cross-market to DC
@@ -3001,7 +3001,7 @@ No other changes to the BOM. Resubmitting for your review · same Sched Ship tar
         from: 'kimberly.tucker@officeworksinc.com',
         to: 'tifani.cooper@teknion.com',
         cc: 'felicia.miano-poles@officeworksinc.com',
-        subject: `Re: Order Preview · MANATT 4th Floor · CR 2046138 grain direction`,
+        subject: `Re: Order Preview · Metro Legal 4th Floor · CR 2046138 grain direction`,
         body: mode === 'strata' ? strataBody : uploadBody,
         attachments: mode === 'strata'
             ? [
@@ -3018,7 +3018,7 @@ No other changes to the BOM. Resubmitting for your review · same Sched Ship tar
         setUploadPhase('uploading')
         if (uploadTimeoutRef.current !== null) window.clearTimeout(uploadTimeoutRef.current)
         uploadTimeoutRef.current = window.setTimeout(() => {
-            setUploadedFile({ name: 'MANATT-4F_BOM_v1.1.pdf', size: '215 KB' })
+            setUploadedFile({ name: 'Metro Legal-4F_BOM_v1.1.pdf', size: '215 KB' })
             setUploadPhase('uploaded')
         }, 1200)
     }
@@ -3132,7 +3132,7 @@ No other changes to the BOM. Resubmitting for your review · same Sched Ship tar
                                         <Paperclip className="h-5 w-5 text-muted-foreground" />
                                     </div>
                                     <div className="text-xs font-semibold text-foreground">Drop corrected file here · or click to attach</div>
-                                    <div className="text-[10px] text-muted-foreground italic">Demo · click to simulate the upload of MANATT-4F_BOM_v1.1.pdf (215 KB)</div>
+                                    <div className="text-[10px] text-muted-foreground italic">Demo · click to simulate the upload of Metro Legal-4F_BOM_v1.1.pdf (215 KB)</div>
                                 </button>
                             )}
                             {uploadPhase === 'uploading' && (
@@ -3196,8 +3196,8 @@ No other changes to the BOM. Resubmitting for your review · same Sched Ship tar
                                         <div className="flex items-center gap-1.5 flex-wrap">
                                             <span className="text-xs font-semibold text-foreground">Vertical</span>
                                             <RuleTooltip
-                                                rule="Vertical grain matches the validation doc Manatt approved on page 7 and the other 4 Flintwood CRs in this BOM (2046131, 2046136, 2046139, 2046140)."
-                                                source="Source: Validation doc page 7 · MANATT CR ledger 4 of 4 Flintwood"
+                                                rule="Vertical grain matches the validation doc Metro Legal approved on page 7 and the other 4 Flintwood CRs in this BOM (2046131, 2046136, 2046139, 2046140)."
+                                                source="Source: Validation doc page 7 · Metro Legal CR ledger 4 of 4 Flintwood"
                                             >
                                                 <span className="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider bg-ai/10 text-ai border border-ai/20 rounded px-1.5 py-0.5">
                                                     <Sparkles className="h-2.5 w-2.5" aria-hidden="true" />
@@ -3284,7 +3284,7 @@ No other changes to the BOM. Resubmitting for your review · same Sched Ship tar
                                 Strata&apos;s recommendation: <strong className="text-foreground not-italic">vertical grain</strong> · matches validation doc page 7 + the other 4 Flintwood CRs (2046131, 2046136, 2046139, 2046140).
                             </p>
                             <p className="text-[10px] italic text-muted-foreground">
-                                Source: Spec Check AS-IS · §Step 8A + MANATT CR ledger (4/4 Flintwood = vertical)
+                                Source: Spec Check AS-IS · §Step 8A + Metro Legal CR ledger (4/4 Flintwood = vertical)
                             </p>
                         </div>
                     </div>
@@ -3318,7 +3318,7 @@ No other changes to the BOM. Resubmitting for your review · same Sched Ship tar
                         </div>
                         <div className="px-4 py-3 space-y-2.5 text-xs">
                             <p className="text-foreground">
-                                The 40-day Flintwood CRs combined with the resubmit cycle push the Must-Arrive Date close to the {MANATT_ORDER_META.schedShipDate} ship target. Strata drafted a 3-way phasing huddle to PM and Salesperson so phasing options are ready before Tifani returns.
+                                The 40-day Flintwood CRs combined with the resubmit cycle push the Must-Arrive Date close to the {Metro Legal_ORDER_META.schedShipDate} ship target. Strata drafted a 3-way phasing huddle to PM and Salesperson so phasing options are ready before Tifani returns.
                             </p>
                             <div className="rounded-lg bg-muted/30 border border-border px-3 py-2 space-y-1">
                                 <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">3-way phasing thread</div>
@@ -3407,13 +3407,13 @@ const PRE_FLIGHT_SUBMISSION = [
 
 const SUBMISSION_EMAIL_BODY = `Hi Caitlin,
 
-Submitting the BOM for MANATT 4th Floor · ready for NetSuite handoff.
+Submitting the BOM for Metro Legal 4th Floor · ready for NetSuite handoff.
 
 Project summary:
-· PO target: ${MANATT_ORDER_META.poNumber}
-· 71 line items · 13 CRs · ${MANATT_ORDER_META.manufacturer}
-· List ${MANATT_ORDER_META.listTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} · Net ${MANATT_ORDER_META.netTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (79% off · SQ #${MANATT_ORDER_META.specialQuote} GSA price-protected)
-· Sched Ship: ${MANATT_ORDER_META.schedShipDate}
+· PO target: ${Metro Legal_ORDER_META.poNumber}
+· 71 line items · 13 CRs · ${Metro Legal_ORDER_META.manufacturer}
+· List ${Metro Legal_ORDER_META.listTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} · Net ${Metro Legal_ORDER_META.netTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (79% off · SQ #${Metro Legal_ORDER_META.specialQuote} GSA price-protected)
+· Sched Ship: ${Metro Legal_ORDER_META.schedShipDate}
 
 Strata pre-validated the SP4 against the NetSuite schema before send · please forward to the Coordinator so they can upload to NetSuite and apply the discount. I'll standby for the Teknion acknowledgment.
 
@@ -3427,16 +3427,16 @@ function SubmissionEmailPanel({ onValidate }: SubmissionEmailPanelProps) {
     const [emailDialogOpen, setEmailDialogOpen] = useState(false)
 
     const submissionEmailConfig = {
-        title: 'BOM Submission · MANATT 4th Floor',
+        title: 'BOM Submission · Metro Legal 4th Floor',
         subtitle: 'Strata pre-validated · ready for NetSuite handoff',
         from: 'kimberly.tucker@officeworksinc.com',
         to: 'caitlin.barolet@officeworksinc.com',
         cc: 'coordinator-dc@officeworksinc.com, felicia.miano-poles@officeworksinc.com',
-        subject: `BOM Submission · MANATT 4th Floor · ${MANATT_ORDER_META.poNumber}`,
+        subject: `BOM Submission · Metro Legal 4th Floor · ${Metro Legal_ORDER_META.poNumber}`,
         body: SUBMISSION_EMAIL_BODY,
         attachments: [
-            { name: `MANATT-4F_BOM_v1.pdf`,        size: '212 KB', badge: 'BOM · 149 lines' },
-            { name: `MANATT-4F-SP4.json`,           size: '54 KB',  badge: 'Schema validated' },
+            { name: `Metro Legal-4F_BOM_v1.pdf`,        size: '212 KB', badge: 'BOM · 149 lines' },
+            { name: `Metro Legal-4F-SP4.json`,           size: '54 KB',  badge: 'Schema validated' },
         ],
         sentMessage: 'BOM submission sent · Coordinator + Salesperson notified',
     }
@@ -3478,7 +3478,7 @@ function SubmissionEmailPanel({ onValidate }: SubmissionEmailPanelProps) {
                         </div>
                         <div className="flex justify-between gap-3">
                             <span className="text-muted-foreground">Subject</span>
-                            <span className="text-foreground">BOM Submission · MANATT 4th Floor · {MANATT_ORDER_META.poNumber}</span>
+                            <span className="text-foreground">BOM Submission · Metro Legal 4th Floor · {Metro Legal_ORDER_META.poNumber}</span>
                         </div>
                     </div>
                 </section>
@@ -3518,7 +3518,7 @@ function SubmissionEmailPanel({ onValidate }: SubmissionEmailPanelProps) {
                         <li className="px-4 py-2.5 flex items-center gap-3">
                             <FileText className="h-4 w-4 text-muted-foreground shrink-0" aria-hidden="true" />
                             <div className="flex-1 min-w-0">
-                                <div className="text-xs font-semibold text-foreground">MANATT-4F_BOM_v1.pdf</div>
+                                <div className="text-xs font-semibold text-foreground">Metro Legal-4F_BOM_v1.pdf</div>
                                 <div className="text-[11px] text-muted-foreground mt-0.5">212 KB · 149 lines · 13 CRs cited</div>
                             </div>
                             <span className="text-[9px] font-bold uppercase tracking-wider bg-muted text-foreground border border-border rounded px-1.5 py-0.5 shrink-0">BOM</span>
@@ -3526,7 +3526,7 @@ function SubmissionEmailPanel({ onValidate }: SubmissionEmailPanelProps) {
                         <li className="px-4 py-2.5 flex items-center gap-3">
                             <FileText className="h-4 w-4 text-muted-foreground shrink-0" aria-hidden="true" />
                             <div className="flex-1 min-w-0">
-                                <div className="text-xs font-semibold text-foreground">MANATT-4F-SP4.json</div>
+                                <div className="text-xs font-semibold text-foreground">Metro Legal-4F-SP4.json</div>
                                 <div className="text-[11px] text-muted-foreground mt-0.5">54 KB · NetSuite-ready · all field gaps resolved</div>
                             </div>
                             <span className="text-[9px] font-bold uppercase tracking-wider bg-success/10 text-success border border-success/20 rounded px-1.5 py-0.5 shrink-0">Schema validated</span>
@@ -3735,7 +3735,7 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                             {variant === 'active' && step === 'step-1-upload' && (
                                 <div className="px-4 py-3 space-y-2.5">
                                     <p className="text-[11px] text-muted-foreground">
-                                        Drop the validated SP4 here · NetSuite will accept the {MANATT_ORDER_META.specialQuote} schema mapping.
+                                        Drop the validated SP4 here · NetSuite will accept the {Metro Legal_ORDER_META.specialQuote} schema mapping.
                                     </p>
                                     <button
                                         type="button"
@@ -3747,7 +3747,7 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                                             <Paperclip className="h-4 w-4 text-muted-foreground" />
                                         </div>
                                         <div className="text-xs font-semibold text-foreground">Drop SP4 here · or click to upload</div>
-                                        <div className="text-[10px] text-muted-foreground italic">Demo · click to simulate the upload of MANATT-4F-SP4.json (54 KB)</div>
+                                        <div className="text-[10px] text-muted-foreground italic">Demo · click to simulate the upload of Metro Legal-4F-SP4.json (54 KB)</div>
                                     </button>
                                 </div>
                             )}
@@ -3770,7 +3770,7 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                             {variant === 'done' && (
                                 <div className="px-4 py-2.5 text-xs text-foreground flex items-center gap-2">
                                     <FileText className="h-3.5 w-3.5 text-success shrink-0" aria-hidden="true" />
-                                    <span><strong>MANATT-4F-SP4.json</strong> · 54 KB · 149 lines mapped · NetSuite-ready</span>
+                                    <span><strong>Metro Legal-4F-SP4.json</strong> · 54 KB · 149 lines mapped · NetSuite-ready</span>
                                 </div>
                             )}
                             {variant === 'pending' && (
@@ -3807,7 +3807,7 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                                     <div className="text-xs font-bold uppercase tracking-wider text-foreground truncate">
                                         Apply 79% discount
                                     </div>
-                                    <div className="text-[10px] text-muted-foreground truncate">Sales Coordinator · SQ #{MANATT_ORDER_META.specialQuote}</div>
+                                    <div className="text-[10px] text-muted-foreground truncate">Sales Coordinator · SQ #{Metro Legal_ORDER_META.specialQuote}</div>
                                 </div>
                                 <StatusChip variant={variant} />
                             </div>
@@ -3820,15 +3820,15 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                                     <ul className="divide-y divide-border text-[11px] rounded-lg border border-border overflow-hidden">
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3">
                                             <span className="text-muted-foreground">List total</span>
-                                            <span className="text-foreground tabular-nums">${MANATT_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                                            <span className="text-foreground tabular-nums">${Metro Legal_ORDER_META.listTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                                         </li>
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3">
                                             <span className="text-muted-foreground">Discount (79% off)</span>
-                                            <span className="text-foreground tabular-nums">−${MANATT_ORDER_META.discountTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                                            <span className="text-foreground tabular-nums">−${Metro Legal_ORDER_META.discountTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                                         </li>
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3 bg-muted/30">
                                             <span className="text-foreground font-medium">Net total</span>
-                                            <span className="text-success font-bold tabular-nums">${MANATT_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                                            <span className="text-success font-bold tabular-nums">${Metro Legal_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                                         </li>
                                     </ul>
                                     <button
@@ -3845,7 +3845,7 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                             {variant === 'done' && (
                                 <div className="px-4 py-2.5 text-xs text-foreground flex items-center gap-2">
                                     <CheckCircle2 className="h-3.5 w-3.5 text-success shrink-0" aria-hidden="true" />
-                                    <span><strong>Net ${MANATT_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong> applied · SQ #{MANATT_ORDER_META.specialQuote} · ready for sales handoff</span>
+                                    <span><strong>Net ${Metro Legal_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong> applied · SQ #{Metro Legal_ORDER_META.specialQuote} · ready for sales handoff</span>
                                 </div>
                             )}
                             {variant === 'pending' && (
@@ -3899,15 +3899,15 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                                         </li>
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3">
                                             <span className="text-muted-foreground">SQ #</span>
-                                            <span className="text-foreground tabular-nums">{MANATT_ORDER_META.specialQuote} · GSA price-protected</span>
+                                            <span className="text-foreground tabular-nums">{Metro Legal_ORDER_META.specialQuote} · GSA price-protected</span>
                                         </li>
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3">
                                             <span className="text-muted-foreground">Net total</span>
-                                            <span className="text-success font-bold tabular-nums">${MANATT_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                                            <span className="text-success font-bold tabular-nums">${Metro Legal_ORDER_META.netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                                         </li>
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3">
                                             <span className="text-muted-foreground">Sched ship</span>
-                                            <span className="text-foreground tabular-nums">{MANATT_ORDER_META.schedShipDate}</span>
+                                            <span className="text-foreground tabular-nums">{Metro Legal_ORDER_META.schedShipDate}</span>
                                         </li>
                                         <li className="px-3 py-1.5 flex items-center justify-between gap-3">
                                             <span className="text-muted-foreground">Recipient</span>
@@ -3941,10 +3941,10 @@ function HandoffPanel({ onValidate }: HandoffPanelProps) {
                                 <div className="px-4 py-2.5 text-xs text-foreground space-y-1">
                                     <div className="flex items-center gap-2">
                                         <CheckCircle2 className="h-3.5 w-3.5 text-success shrink-0" aria-hidden="true" />
-                                        <span><strong>{MANATT_ORDER_META.poNumber}</strong> generated · sent to tekco1@teknion.com</span>
+                                        <span><strong>{Metro Legal_ORDER_META.poNumber}</strong> generated · sent to tekco1@teknion.com</span>
                                     </div>
                                     <div className="pl-5 text-[11px] text-muted-foreground">
-                                        Universal #{MANATT_ORDER_META.universal} · order receipt {MANATT_ORDER_META.orderReceipt}
+                                        Universal #{Metro Legal_ORDER_META.universal} · order receipt {Metro Legal_ORDER_META.orderReceipt}
                                     </div>
                                 </div>
                             )}
@@ -4030,7 +4030,7 @@ function RFPIntakePanel({ onValidate }: LDPanelProps) {
                             <span className="text-[10px] font-black text-info">JS</span>
                         </div>
                         <div className="flex-1 min-w-0">
-                            <div className="text-xs font-bold text-foreground truncate">{MANATT_LD_RFP.gcContactName}</div>
+                            <div className="text-xs font-bold text-foreground truncate">{Metro Legal_LD_RFP.gcContactName}</div>
                             <div className="text-[10px] text-muted-foreground truncate">CBRE · General Contractor</div>
                         </div>
                         <span className={`inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider rounded px-1.5 py-0.5 shrink-0 ${
@@ -4041,17 +4041,17 @@ function RFPIntakePanel({ onValidate }: LDPanelProps) {
                     </div>
                     <div className="px-4 py-3 space-y-2">
                         <div className="text-xs text-foreground">
-                            <strong>Subject:</strong> Labor RFP · MANATT 4F · responses due Wed May 14 9 AM
+                            <strong>Subject:</strong> Labor RFP · Metro Legal 4F · responses due Wed May 14 9 AM
                         </div>
                         <p className="text-[11px] text-muted-foreground leading-relaxed">
-                            Please quote labor + delivery for the {MANATT_LD_RFP.projectName}. Drawings + SIF attached. Submit pricing back via Building Connected — ref {MANATT_LD_RFP.gcPortalRef}.
+                            Please quote labor + delivery for the {Metro Legal_LD_RFP.projectName}. Drawings + SIF attached. Submit pricing back via Building Connected — ref {Metro Legal_LD_RFP.gcPortalRef}.
                         </p>
                         <div className="flex items-center gap-2 text-[10px] text-muted-foreground pt-1">
                             <Mail className="h-3 w-3" aria-hidden="true" />
-                            <span>{MANATT_LD_RFP.gcContact}</span>
+                            <span>{Metro Legal_LD_RFP.gcContact}</span>
                             <span className="text-border">·</span>
                             <Calendar className="h-3 w-3" aria-hidden="true" />
-                            <span>Received {MANATT_LD_RFP.rfpReceivedAt}</span>
+                            <span>Received {Metro Legal_LD_RFP.rfpReceivedAt}</span>
                         </div>
                     </div>
                 </div>
@@ -4088,7 +4088,7 @@ function RFPIntakePanel({ onValidate }: LDPanelProps) {
                     <div className="flex-1 min-w-0 text-xs">
                         <div className="font-semibold text-foreground">Strata routed this RFP to the labor inbox</div>
                         <div className="text-muted-foreground mt-0.5">
-                            Building KB · 1551 K St NW · 5 prior projects ({MANATT_LD_RFP.market} market). MANATT Spec Check is already in flight for the same project · Kimberly's BOM links here.
+                            Building KB · 1551 K St NW · 5 prior projects ({Metro Legal_LD_RFP.market} market). Metro Legal Spec Check is already in flight for the same project · Kimberly's BOM links here.
                         </div>
                     </div>
                 </div>
@@ -4112,7 +4112,7 @@ function RFPIntakePanel({ onValidate }: LDPanelProps) {
                         <CheckCircle2 className="h-4 w-4 text-success shrink-0" aria-hidden="true" />
                         <div className="flex-1 min-w-0 text-xs">
                             <div className="font-semibold text-foreground">RFP acknowledged · routed to Alan McPhee</div>
-                            <div className="text-muted-foreground mt-0.5 tabular-nums">SLA · {MANATT_LD_RFP.slaDeadlineHours}h MSA · due {MANATT_LD_RFP.slaDeadlineAt}</div>
+                            <div className="text-muted-foreground mt-0.5 tabular-nums">SLA · {Metro Legal_LD_RFP.slaDeadlineHours}h MSA · due {Metro Legal_LD_RFP.slaDeadlineAt}</div>
                         </div>
                     </div>
                 )}
@@ -4174,7 +4174,7 @@ function TakeoffPanel({ onValidate }: LDPanelProps) {
                     <div className="flex-1 min-w-0 text-xs">
                         <div className="font-semibold text-foreground">Scope takeoff · the single most time-consuming step</div>
                         <div className="text-muted-foreground mt-0.5">
-                            Today: ~{VERTICAL_TAKEOFF.bluebeamTimeManualMin / 60}h manual count in Bluebeam (Alan + Paul · ~42:00). With Strata: {VERTICAL_TAKEOFF.strataTimeSec}s read of {MANATT_LD_RFP.drawingFile}.
+                            Today: ~{VERTICAL_TAKEOFF.bluebeamTimeManualMin / 60}h manual count in Bluebeam (Alan + Paul · ~42:00). With Strata: {VERTICAL_TAKEOFF.strataTimeSec}s read of {Metro Legal_LD_RFP.drawingFile}.
                         </div>
                     </div>
                 </div>
@@ -4193,7 +4193,7 @@ function TakeoffPanel({ onValidate }: LDPanelProps) {
                         <div className="h-10 w-10 rounded-xl bg-muted/60 flex items-center justify-center" aria-hidden="true">
                             <MapPin className="h-5 w-5 text-muted-foreground" />
                         </div>
-                        <div className="text-xs font-semibold text-foreground">Run AI takeoff on {MANATT_LD_RFP.drawingFile}</div>
+                        <div className="text-xs font-semibold text-foreground">Run AI takeoff on {Metro Legal_LD_RFP.drawingFile}</div>
                         <div className="text-[10px] text-muted-foreground italic">Click to simulate · same drawing as the design flow</div>
                     </button>
                 )}
@@ -4282,16 +4282,16 @@ function ConditionsChecklistPanel({ onValidate }: LDPanelProps) {
     const [expandedId, setExpandedId] = useState<string | null>(null)
     const [confirmedIds, setConfirmedIds] = useState<Set<string>>(() => {
         // High-confidence items are auto-confirmed
-        return new Set(MANATT_BUILDING_CONDITIONS.filter(c => c.confidence === 'high').map(c => c.id))
+        return new Set(Metro Legal_BUILDING_CONDITIONS.filter(c => c.confidence === 'high').map(c => c.id))
     })
-    const mediumIds = MANATT_BUILDING_CONDITIONS.filter(c => c.confidence === 'medium').map(c => c.id)
+    const mediumIds = Metro Legal_BUILDING_CONDITIONS.filter(c => c.confidence === 'medium').map(c => c.id)
     const allConfirmed = mediumIds.every(id => confirmedIds.has(id))
 
     const handleConfirm = (id: string) => {
         setConfirmedIds(prev => { const s = new Set(prev); s.add(id); return s })
     }
 
-    const highCount = MANATT_BUILDING_CONDITIONS.filter(c => c.confidence === 'high').length
+    const highCount = Metro Legal_BUILDING_CONDITIONS.filter(c => c.confidence === 'high').length
 
     return (
         <>
@@ -4300,10 +4300,10 @@ function ConditionsChecklistPanel({ onValidate }: LDPanelProps) {
                     <Sparkles className="h-4 w-4 text-foreground shrink-0 mt-0.5" aria-hidden="true" />
                     <div className="flex-1 min-w-0 text-xs">
                         <div className="font-semibold text-foreground">
-                            Strata pulled {highCount} of {MANATT_BUILDING_CONDITIONS.length} conditions from Building KB · {MANATT_LD_RFP.buildingAddress}
+                            Strata pulled {highCount} of {Metro Legal_BUILDING_CONDITIONS.length} conditions from Building KB · {Metro Legal_LD_RFP.buildingAddress}
                         </div>
                         <div className="text-muted-foreground mt-0.5">
-                            {MANATT_LD_RFP.priorProjectsAtAddress} prior projects at this address · {mediumIds.length} medium-confidence items need Alan's confirm.
+                            {Metro Legal_LD_RFP.priorProjectsAtAddress} prior projects at this address · {mediumIds.length} medium-confidence items need Alan's confirm.
                         </div>
                     </div>
                 </div>
@@ -4324,13 +4324,13 @@ function ConditionsChecklistPanel({ onValidate }: LDPanelProps) {
                 <div className="rounded-xl border border-border bg-card overflow-hidden">
                     <div className="px-4 py-2.5 bg-muted/30 border-b border-border flex items-center gap-2">
                         <Building2 className="h-3.5 w-3.5 text-foreground shrink-0" aria-hidden="true" />
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-foreground">Building & workforce conditions ({MANATT_BUILDING_CONDITIONS.length})</span>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-foreground">Building & workforce conditions ({Metro Legal_BUILDING_CONDITIONS.length})</span>
                         <span className="ml-auto inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider rounded px-1.5 py-0.5 bg-success/10 text-success border border-success/20">
-                            {confirmedIds.size}/{MANATT_BUILDING_CONDITIONS.length} confirmed
+                            {confirmedIds.size}/{Metro Legal_BUILDING_CONDITIONS.length} confirmed
                         </span>
                     </div>
                     <ul className="divide-y divide-border">
-                        {MANATT_BUILDING_CONDITIONS.map(cond => {
+                        {Metro Legal_BUILDING_CONDITIONS.map(cond => {
                             const isExpanded = expandedId === cond.id
                             const isConfirmed = confirmedIds.has(cond.id)
                             const isMedium = cond.confidence === 'medium'
@@ -4592,17 +4592,17 @@ function BidRequestPanel({ onValidate, selectedVendorIds }: BidRequestPanelProps
                         </div>
                         <div className="grid grid-cols-[60px_1fr] gap-2 items-start">
                             <span className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground pt-0.5">Subject</span>
-                            <span className="text-foreground font-medium">Bid request · {MANATT_LD_RFP.projectName} · respond by {MANATT_LD_RFP.slaDeadlineAt}</span>
+                            <span className="text-foreground font-medium">Bid request · {Metro Legal_LD_RFP.projectName} · respond by {Metro Legal_LD_RFP.slaDeadlineAt}</span>
                         </div>
                         <div className="border-t border-border pt-2.5">
                             <div className="text-[11px] text-foreground leading-relaxed space-y-1.5">
                                 <p>Team,</p>
-                                <p>We have a labor + delivery RFP for {MANATT_LD_RFP.projectName} ({MANATT_LD_RFP.market} market · {MANATT_LD_RFP.buildingAddress}). Scope summary attached + drawings.</p>
+                                <p>We have a labor + delivery RFP for {Metro Legal_LD_RFP.projectName} ({Metro Legal_LD_RFP.market} market · {Metro Legal_LD_RFP.buildingAddress}). Scope summary attached + drawings.</p>
                                 <p>
-                                    <strong>Scope</strong>: {vertical === 'walls' ? `${WALLS_TAKEOFF.linearFeet} linear feet · ${WALLS_TAKEOFF.doorCount} doors · ${WALLS_TAKEOFF.wallHeights}` : `${MANATT_TAKEOFF.workstationCount} workstations · ${MANATT_TAKEOFF.crCount} CRs`} · {(vertical === 'walls' ? WALLS_TAKEOFF : MANATT_TAKEOFF).estimatedLaborHours}h estimated labor · {(vertical === 'walls' ? WALLS_TAKEOFF : MANATT_TAKEOFF).estimatedDeliveryStops} delivery stops. Building is IBEW Local 26 union, dock-with-leveler, straight-time only.
+                                    <strong>Scope</strong>: {vertical === 'walls' ? `${WALLS_TAKEOFF.linearFeet} linear feet · ${WALLS_TAKEOFF.doorCount} doors · ${WALLS_TAKEOFF.wallHeights}` : `${Metro Legal_TAKEOFF.workstationCount} workstations · ${Metro Legal_TAKEOFF.crCount} CRs`} · {(vertical === 'walls' ? WALLS_TAKEOFF : Metro Legal_TAKEOFF).estimatedLaborHours}h estimated labor · {(vertical === 'walls' ? WALLS_TAKEOFF : Metro Legal_TAKEOFF).estimatedDeliveryStops} delivery stops. Building is IBEW Local 26 union, dock-with-leveler, straight-time only.
                                 </p>
                                 <p>
-                                    <strong>Deadline</strong>: respond by {MANATT_LD_RFP.slaDeadlineAt} ({MANATT_LD_RFP.slaDeadlineHours}h MSA window). Please separate labor and delivery in your quote.
+                                    <strong>Deadline</strong>: respond by {Metro Legal_LD_RFP.slaDeadlineAt} ({Metro Legal_LD_RFP.slaDeadlineHours}h MSA window). Please separate labor and delivery in your quote.
                                 </p>
                                 <p className="text-muted-foreground italic pt-1">— Alan McPhee · Sr Operations · drafted by Strata</p>
                             </div>
@@ -4620,7 +4620,7 @@ function BidRequestPanel({ onValidate, selectedVendorIds }: BidRequestPanelProps
                         {[
                             { label: `Recipient list complete (${selectedVendors.length})`, ok: selectedVendors.length > 0 },
                             { label: 'Attachments present (3) · drawings + conditions + bid form', ok: true },
-                            { label: `Deadline within ${MANATT_LD_RFP.slaDeadlineHours}h MSA window`, ok: true },
+                            { label: `Deadline within ${Metro Legal_LD_RFP.slaDeadlineHours}h MSA window`, ok: true },
                         ].map(check => (
                             <li key={check.label} className="px-4 py-2 flex items-center gap-2 text-[11px]">
                                 <CheckCircle2 className={`h-3.5 w-3.5 shrink-0 ${check.ok ? 'text-success' : 'text-muted-foreground'}`} aria-hidden="true" />
@@ -5198,14 +5198,14 @@ function FinalQuotePanel({ onValidate }: LDPanelProps) {
                                 <span className="h-5 w-5 rounded-full bg-foreground text-background text-[10px] font-bold flex items-center justify-center shrink-0" aria-hidden="true">3</span>
                                 <Truck className="h-4 w-4 text-foreground shrink-0" aria-hidden="true" />
                                 <div className="flex-1 min-w-0">
-                                    <div className="text-xs font-bold uppercase tracking-wider text-foreground truncate">Upload to {MANATT_LD_RFP.gcPortal} portal</div>
+                                    <div className="text-xs font-bold uppercase tracking-wider text-foreground truncate">Upload to {Metro Legal_LD_RFP.gcPortal} portal</div>
                                     <div className="text-[10px] text-muted-foreground truncate">Ref {finalQuote.portalRef}</div>
                                 </div>
                                 <StatusChip variant={variant} />
                             </div>
                             {variant === 'active' && step === 'step-3-upload' && (
                                 <div className="px-4 py-3 space-y-2.5">
-                                    <p className="text-[11px] text-muted-foreground">Submitting the final quote to {MANATT_LD_RFP.gcCompany} ({MANATT_LD_RFP.gcContactName}) before the GC deadline.</p>
+                                    <p className="text-[11px] text-muted-foreground">Submitting the final quote to {Metro Legal_LD_RFP.gcCompany} ({Metro Legal_LD_RFP.gcContactName}) before the GC deadline.</p>
                                     <button
                                         type="button"
                                         onClick={() => setStep('step-3-uploading')}
@@ -5213,7 +5213,7 @@ function FinalQuotePanel({ onValidate }: LDPanelProps) {
                                         className="w-full inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 text-xs font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                                     >
                                         <Send className="h-3.5 w-3.5" aria-hidden="true" />
-                                        Upload to {MANATT_LD_RFP.gcPortal}
+                                        Upload to {Metro Legal_LD_RFP.gcPortal}
                                     </button>
                                 </div>
                             )}
@@ -5334,7 +5334,7 @@ function LDSifPreview() {
                     ))}
                 </ul>
             </div>
-            <div className="text-[10px] text-muted-foreground italic px-1">Source: CBRE Construction Management · {MANATT_LD_RFP.gcContact}</div>
+            <div className="text-[10px] text-muted-foreground italic px-1">Source: CBRE Construction Management · {Metro Legal_LD_RFP.gcContact}</div>
         </LDPreviewShell>
     )
 }
@@ -5393,8 +5393,8 @@ function LDTakeoffReportPreview() {
                         </>
                     ) : (
                         <>
-                            <li className="px-4 py-2 flex items-center justify-between text-[11px]"><span className="text-muted-foreground">Workstations</span><span className="text-foreground font-bold tabular-nums">{MANATT_TAKEOFF.workstationCount}</span></li>
-                            <li className="px-4 py-2 flex items-center justify-between text-[11px]"><span className="text-muted-foreground">Configurable items (CRs)</span><span className="text-foreground font-bold tabular-nums">{MANATT_TAKEOFF.crCount}</span></li>
+                            <li className="px-4 py-2 flex items-center justify-between text-[11px]"><span className="text-muted-foreground">Workstations</span><span className="text-foreground font-bold tabular-nums">{Metro Legal_TAKEOFF.workstationCount}</span></li>
+                            <li className="px-4 py-2 flex items-center justify-between text-[11px]"><span className="text-muted-foreground">Configurable items (CRs)</span><span className="text-foreground font-bold tabular-nums">{Metro Legal_TAKEOFF.crCount}</span></li>
                         </>
                     )}
                     <li className="px-4 py-2 flex items-center justify-between text-[11px]"><span className="text-muted-foreground">Estimated labor hours</span><span className="text-foreground font-bold tabular-nums">{takeoff.estimatedLaborHours} h</span></li>
@@ -5416,7 +5416,7 @@ function LDConditionsRecordPreview() {
             <div className="rounded-xl border border-ai/30 bg-ai/5 px-3 py-2 flex items-start gap-2 text-[11px]">
                 <Sparkles className="h-3.5 w-3.5 text-foreground shrink-0 mt-0.5" aria-hidden="true" />
                 <div className="text-foreground leading-relaxed">
-                    Pulled from Building Knowledge Base · {MANATT_LD_RFP.buildingAddress} · {MANATT_LD_RFP.priorProjectsAtAddress} prior projects indexed.
+                    Pulled from Building Knowledge Base · {Metro Legal_LD_RFP.buildingAddress} · {Metro Legal_LD_RFP.priorProjectsAtAddress} prior projects indexed.
                 </div>
             </div>
             <div className="rounded-xl border border-border bg-card overflow-hidden">
@@ -5424,7 +5424,7 @@ function LDConditionsRecordPreview() {
                     <div className="text-[10px] uppercase font-bold tracking-wider text-foreground">12 Building & workforce conditions</div>
                 </div>
                 <ul className="divide-y divide-border">
-                    {MANATT_BUILDING_CONDITIONS.map(cond => (
+                    {Metro Legal_BUILDING_CONDITIONS.map(cond => (
                         <li key={cond.id} className="px-4 py-2 flex items-start gap-3 text-[11px]">
                             <span className="text-muted-foreground w-32 shrink-0">{cond.label}</span>
                             <span className="text-foreground flex-1">{cond.value}</span>
@@ -6034,7 +6034,7 @@ function UnifiedInboxFeed({ threads }: { threads: SalesInboxThread[] }) {
 
 // ─── sc-S.1 · Opportunity Intake ────────────────────────────────────────────
 function SalesOppIntakePanel({ onValidate }: LDPanelProps) {
-    const opp = SALES_OPPORTUNITIES[0] // MANATT-4F
+    const opp = SALES_OPPORTUNITIES[0] // Metro Legal-4F
     const missing = useMemo(() => {
         const fields: { label: string; status: 'missing' | 'present'; value?: string }[] = [
             { label: 'CAD file',            status: opp.specAttached ? 'present' : 'missing' },
@@ -6183,7 +6183,7 @@ function SalesAssignmentPanel({ onValidate }: LDPanelProps) {
                 <SalesPanelHero
                     stage="sales-assign"
                     title="Assign rep · SLA gate starts"
-                    subtitle="MANATT-4F · Strata recommends Rep A (DC + NoVA · 2 prior MANATT wins · 78% quota)"
+                    subtitle="Metro Legal-4F · Strata recommends Rep A (DC + NoVA · 2 prior Metro Legal wins · 78% quota)"
                     kpiRow={
                         <div className="flex items-center gap-2 flex-wrap">
                             <SLATimerChip hoursLeft={24} label="Qualify SLA" />
@@ -6578,7 +6578,7 @@ function SalesInboxFeedPreview() {
 
 // ─── sales-thread-detail ────────────────────────────────────────────────────
 function SalesThreadDetailPreview() {
-    const t = SALES_INBOX_THREADS[0] // MANATT urgent email
+    const t = SALES_INBOX_THREADS[0] // Metro Legal urgent email
     return (
         <SalesPreviewShell icon={Mail} filename={`thread-${t.id}.eml`} size="14 KB" statusBadge={{ label: t.intent, tone: t.intent === 'urgent' ? 'danger' : t.intent === 'action' ? 'warning' : 'neutral' }}>
             <div className="rounded-xl border border-border bg-card overflow-hidden">
@@ -6735,7 +6735,7 @@ function SalesProposalPDFPreview() {
         <SalesPreviewShell icon={FileText} filename={SALES_PROPOSAL_META.quotePDFFile} size="248 KB" statusBadge={{ label: 'Cell audit complete', tone: 'success' }}>
             <div className="rounded-xl border border-border bg-card overflow-hidden">
                 <div className="px-4 py-3 bg-muted/30 border-b border-border">
-                    <div className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground">Officeworks proposal · MANATT 4F</div>
+                    <div className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground">Officeworks proposal · Metro Legal 4F</div>
                     <div className="text-sm font-bold text-foreground mt-0.5">{SALES_PROPOSAL_META.quotePDFFile}</div>
                     <div className="text-[11px] text-muted-foreground mt-0.5">CBRE portal · {SALES_PROPOSAL_META.cbrePortalRef} · due {SALES_PROPOSAL_META.gcQuoteDueAt}</div>
                 </div>
@@ -6789,7 +6789,7 @@ function SalesWinLossPreview() {
                 <div className="flex items-start gap-2">
                     <Award className="h-5 w-5 text-success shrink-0 mt-0.5" aria-hidden="true" />
                     <div>
-                        <div className="text-sm font-bold text-foreground">MANATT-4F · WON</div>
+                        <div className="text-sm font-bold text-foreground">Metro Legal-4F · WON</div>
                         <div className="text-[11px] text-muted-foreground">${SALES_OPPORTUNITIES[0].estValueUSD.toLocaleString()} · 2026-06-12 close · 90 → 100% transition</div>
                     </div>
                 </div>

@@ -31,7 +31,7 @@ type FunnelStage = 'pulled' | 'reviewed' | 'scheduled' | 'in-flight' | 'complete
  * Column header uses `text-foreground` (high contrast) for the label and
  * a small colored dot for the per-stage semantic accent — keeps the visual
  * variety without sacrificing readability. Officeworks does the same:
- * semantic color tokens only paint the column with the "active" MANATT
+ * semantic color tokens only paint the column with the "active" Metro Legal
  * card · everything else is text-foreground.
  */
 const STAGES: { id: FunnelStage; label: string; dot: string }[] = [

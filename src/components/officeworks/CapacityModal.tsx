@@ -57,8 +57,8 @@ const SORT_OPTIONS: Array<{ value: SortBy; label: string }> = [
 
 const PRIOR_CLIENT_OPTIONS: Array<{ value: PriorClientFilter; label: string }> = [
     { value: 'all', label: 'All clients' },
-    { value: 'manatt', label: 'Worked with MANATT' },
-    { value: 'no-manatt', label: 'No MANATT history' },
+    { value: 'manatt', label: 'Worked with Metro Legal' },
+    { value: 'no-manatt', label: 'No Metro Legal history' },
 ]
 
 // Shared className for all 3 dropdowns — consistent visual language
@@ -80,8 +80,8 @@ export default function CapacityModal({ isOpen, onClose }: CapacityModalProps) {
         const byPriorClient = priorClientFilter === 'all'
             ? byStatus
             : priorClientFilter === 'manatt'
-                ? byStatus.filter(d => d.priorMANATT === true)
-                : byStatus.filter(d => d.priorMANATT !== true)
+                ? byStatus.filter(d => d.priorMetroLegal === true)
+                : byStatus.filter(d => d.priorMetroLegal !== true)
         const sorted = [...byPriorClient]
         if (sortBy === 'available')      sorted.sort((a, b) => a.utilization - b.utilization)
         else if (sortBy === 'utilized')  sorted.sort((a, b) => b.utilization - a.utilization)

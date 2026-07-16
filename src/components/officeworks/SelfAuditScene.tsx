@@ -6,9 +6,9 @@
  * Designer-led, Strata-assisted:
  *   · Kimberly Tucker (designer) is the principal actor · she navigates the 5
  *     audit steps and toggles each item Verified / Flagged / Pending.
- *   · Strata pre-flags items that need attention (grounded in MANATT_AUDIT_ISSUES)
+ *   · Strata pre-flags items that need attention (grounded in Metro Legal_AUDIT_ISSUES)
  *     so Kimberly knows where to look first · she still decides.
- *   · Per-item MANATT project values (71 lines, 30 stations, SQ #436533, ...)
+ *   · Per-item Metro Legal project values (71 lines, 30 stations, SQ #436533, ...)
  *     materialize SC2 as concrete data to compare, not generic checklist text.
  *   · Optional supporting file upload mirrors the sc1.5b upload pattern.
  *   · At the end Kimberly picks the peer reviewer via PeerAssignPopover and
@@ -49,12 +49,12 @@ type StepNum = 1 | 2 | 3 | 4 | 5
  * attention. Keys are `step-{stepNumber}-{itemIndex}`. The label and source
  * surface as a tooltip next to the badge.
  *
- * Counts match MANATT_AUDIT_ISSUES (2 critical · 3 advisory = 5 flags).
+ * Counts match Metro Legal_AUDIT_ISSUES (2 critical · 3 advisory = 5 flags).
  */
 const STRATA_FLAGS: Record<string, { severity: 'critical' | 'advisory'; reason: string }> = {
     'step-1-1': {
         severity: 'critical',
-        reason: 'MANATT is a DC market project · Strata confirmed Washington D.C. electrical code requirements apply. Cross-reference the validation doc page 21.',
+        reason: 'Metro Legal is a DC market project · Strata confirmed Washington D.C. electrical code requirements apply. Cross-reference the validation doc page 21.',
     },
     'step-2-3': {
         severity: 'advisory',
@@ -70,7 +70,7 @@ const STRATA_FLAGS: Record<string, { severity: 'critical' | 'advisory'; reason: 
     },
     'step-5-4': {
         severity: 'advisory',
-        reason: 'Washington D.C. aisle dimension code · double-check the floor plan against MANATT 4th Floor layout.',
+        reason: 'Washington D.C. aisle dimension code · double-check the floor plan against Metro Legal 4th Floor layout.',
     },
 }
 
@@ -78,11 +78,11 @@ const TOTAL_FLAGS_CRITICAL = Object.values(STRATA_FLAGS).filter(f => f.severity 
 const TOTAL_FLAGS_ADVISORY = Object.values(STRATA_FLAGS).filter(f => f.severity === 'advisory').length
 
 /**
- * Concrete MANATT values for selected checklist items · materializes SC2 as
+ * Concrete Metro Legal values for selected checklist items · materializes SC2 as
  * "designer compares specific numbers" instead of "designer reads generic
  * checklist text". Items without a value just show the checklist label.
  */
-const MANATT_AUDIT_VALUES: Record<string, string> = {
+const Metro Legal_AUDIT_VALUES: Record<string, string> = {
     'step-1-0': '71 lines · 30 stations · 4 workstation groups · $1,541,392 list',
     'step-1-1': 'Washington D.C. · DC market · OWDC electrical code',
     'step-1-2': 'New build · no reconfigure scope',
@@ -93,7 +93,7 @@ const MANATT_AUDIT_VALUES: Record<string, string> = {
     'step-4-0': '13 CRs · 71 lines · all parts match',
     'step-4-3': 'CR 2075919 unit list $1,927 · BIFMA advisory',
     'step-5-3': 'SQ #436533 · catalog effective May 26, 2025',
-    'step-5-4': 'floor plan checked against MANATT 4th Floor',
+    'step-5-4': 'floor plan checked against Metro Legal 4th Floor',
 }
 
 function stepIcon(n: StepNum) {
@@ -175,7 +175,7 @@ export default function SelfAuditScene({ onValidate, peerName, onAssignPeerRevie
         setUploadPhase('uploading')
         if (uploadTimeoutRef.current !== null) window.clearTimeout(uploadTimeoutRef.current)
         uploadTimeoutRef.current = window.setTimeout(() => {
-            setUploadedFile({ name: 'MANATT-4F_audit-notes-v1.pdf', size: '180 KB' })
+            setUploadedFile({ name: 'Metro Legal-4F_audit-notes-v1.pdf', size: '180 KB' })
             setUploadPhase('uploaded')
         }, 1200)
     }
@@ -335,7 +335,7 @@ export default function SelfAuditScene({ onValidate, peerName, onAssignPeerRevie
                             const key = `step-${activeStep}-${i}`
                             const state = itemStates[key] ?? 'pending'
                             const flag = STRATA_FLAGS[key]
-                            const projectValue = MANATT_AUDIT_VALUES[key]
+                            const projectValue = Metro Legal_AUDIT_VALUES[key]
                             return (
                                 <li key={i}>
                                     <button
@@ -356,7 +356,7 @@ export default function SelfAuditScene({ onValidate, peerName, onAssignPeerRevie
                                             </div>
                                             {projectValue && (
                                                 <div className="text-[10px] text-foreground tabular-nums mt-0.5">
-                                                    <span className="font-bold uppercase tracking-wider text-muted-foreground mr-1">MANATT:</span>
+                                                    <span className="font-bold uppercase tracking-wider text-muted-foreground mr-1">Metro Legal:</span>
                                                     {projectValue}
                                                 </div>
                                             )}
@@ -425,7 +425,7 @@ export default function SelfAuditScene({ onValidate, peerName, onAssignPeerRevie
                                     <Paperclip className="h-4 w-4 text-muted-foreground" />
                                 </div>
                                 <div className="text-[11px] font-semibold text-foreground">Drop supporting file here · or click to attach</div>
-                                <div className="text-[10px] text-muted-foreground italic">Demo · click to simulate the upload of MANATT-4F_audit-notes-v1.pdf (180 KB)</div>
+                                <div className="text-[10px] text-muted-foreground italic">Demo · click to simulate the upload of Metro Legal-4F_audit-notes-v1.pdf (180 KB)</div>
                             </button>
                         )}
                         {uploadPhase === 'uploading' && (

@@ -232,7 +232,7 @@ export const FELICIA_TACIT_KNOWLEDGE: TacitKnowledgeRule[] = [
         context: 'DC market specific code requirement — Felicia\'s region.',
     },
     {
-        rule: 'hiSpace Slide best for MANATT-style finish (Platinum/Ebony/Very White)',
+        rule: 'hiSpace Slide best for Metro Legal-style finish (Platinum/Ebony/Very White)',
         context: 'Switch to C-Leg only if finish other than these three OR width >72".',
     },
 ];

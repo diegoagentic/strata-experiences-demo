@@ -38,16 +38,16 @@ export interface Designer {
     name: string
     region: 'dc' | 'ma' | 'pa'
     utilization: number
-    priorMANATT?: boolean
+    priorMetroLegal?: boolean
     isLead?: boolean
 }
 
 export const DESIGNERS: Designer[] = [
     // DC + Southern (Felicia)
-    { name: 'Felicia Miano-Poles', region: 'dc', utilization: 95, isLead: true, priorMANATT: true },
+    { name: 'Felicia Miano-Poles', region: 'dc', utilization: 95, isLead: true, priorMetroLegal: true },
     { name: 'Sandra Park',         region: 'dc', utilization: 72 },
     { name: 'James O\'Brien',      region: 'dc', utilization: 88 },
-    { name: 'Maya Patel',          region: 'dc', utilization: 45, priorMANATT: true },
+    { name: 'Maya Patel',          region: 'dc', utilization: 45, priorMetroLegal: true },
     { name: 'Tom Hartford',        region: 'dc', utilization: 67 },
     { name: 'Lisa Cheng',          region: 'dc', utilization: 82 },
     { name: 'David Ruiz',          region: 'dc', utilization: 59 },
@@ -66,7 +66,7 @@ export const DESIGNERS: Designer[] = [
     { name: 'Nora Singh',          region: 'ma', utilization: 49 },
     { name: 'Devin Hayes',         region: 'ma', utilization: 66 },
     // PA + Pittsburgh + Ancillary (Kimberly)
-    { name: 'Kimberly Tucker',     region: 'pa', utilization: 45, isLead: true, priorMANATT: true },
+    { name: 'Kimberly Tucker',     region: 'pa', utilization: 45, isLead: true, priorMetroLegal: true },
     { name: 'Olivia Berg',         region: 'pa', utilization: 71 },
     { name: 'Connor Walsh',        region: 'pa', utilization: 84 },
     { name: 'Yasmin El-Sayed',     region: 'pa', utilization: 47 },
@@ -137,7 +137,7 @@ interface Props {
     selectedName?: string | null
     /** Render an extra group at the top showing designers matching a client-history predicate.
      *  When set, matching designers are removed from their regional sections (exclusive),
-     *  and the per-row Prior MANATT chip is suppressed. */
+     *  and the per-row Prior Metro Legal chip is suppressed. */
     priorClientHighlight?: {
         label: string
         predicate: (d: Designer) => boolean
@@ -182,7 +182,7 @@ export default function CapacityHeatmap({
         ? 'text-[9px] px-1.5 py-0'
         : 'text-[10px] px-2 py-0.5'
     const statusDot   = compact ? 'h-1 w-1' : 'h-1.5 w-1.5'
-    const showChipPriorMANATT = !priorClientHighlight
+    const showChipPriorMetro Legal = !priorClientHighlight
     const showLeadBadge = !compact
 
     // Auto-expand the highlighted (recommended) designer on mount
@@ -244,9 +244,9 @@ export default function CapacityHeatmap({
                                 Lead
                             </span>
                         )}
-                        {showChipPriorMANATT && d.priorMANATT && (
+                        {showChipPriorMetro Legal && d.priorMetroLegal && (
                             <span className="text-[8px] uppercase tracking-wide font-bold bg-info/10 text-info border border-info/20 rounded px-1 py-0.5">
-                                Prior MANATT
+                                Prior Metro Legal
                             </span>
                         )}
                     </span>
@@ -417,7 +417,7 @@ export default function CapacityHeatmap({
 
     return (
         <div className="space-y-5">
-            {/* Client-history highlighted section (e.g., "Worked with MANATT") */}
+            {/* Client-history highlighted section (e.g., "Worked with Metro Legal") */}
             {priorClientHighlight && highlightedDesigners.length > 0 && (
                 <div className="space-y-2">
                     <div className="flex items-center gap-2 px-1">

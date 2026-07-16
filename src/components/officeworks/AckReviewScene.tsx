@@ -20,7 +20,7 @@ import {
 } from 'lucide-react'
 import { HeroMetric } from 'strata-design-system'
 import PDFPreviewModal, { OFFICEWORKS_PDFS } from './shared/PDFPreviewModal'
-import { MANATT_ORDER_META } from './shared/manattOrderData'
+import { Metro Legal_ORDER_META } from './shared/manattOrderData'
 import { CHANGE_ORDER_REASONS } from './shared/auditChecklistSteps'
 
 interface Props { onContinue: () => void }
@@ -43,7 +43,7 @@ const DIFF_FIELDS: DiffField[] = [
     { field: 'PO Number', category: 'header', bomValue: 'PO-DC-0009642', ackValue: 'PO-DC-0009642', status: 'match' },
     { field: 'Universal #', category: 'header', bomValue: '2-10468963', ackValue: '2-10468963', status: 'match' },
     { field: 'Special Quote #', category: 'header', bomValue: '436533', ackValue: '436533', status: 'match' },
-    { field: 'SQ Name', category: 'header', bomValue: 'Manatt Phelps & Phillips LLP', ackValue: 'Manatt Phelps & Phillips LLP', status: 'match' },
+    { field: 'SQ Name', category: 'header', bomValue: 'Metro Legal Firm LLC', ackValue: 'Metro Legal Firm LLC', status: 'match' },
     { field: 'PO Amount', category: 'pricing', bomValue: '$58,711.68', ackValue: '$58,711.68', status: 'match' },
     { field: 'List Total', category: 'pricing', bomValue: '$296,228.13', ackValue: '$296,228.13', status: 'match' },
     { field: 'Net Total', category: 'pricing', bomValue: '$61,464.80', ackValue: '$61,464.80', status: 'match' },
@@ -220,7 +220,7 @@ export default function AckReviewScene({ onContinue }: Props) {
                             <FileCheck className="h-5 w-5" />
                         </div>
                         <div>
-                            <h2 className="text-lg font-semibold text-foreground">Acknowledgment review · {MANATT_ORDER_META.poNumber}</h2>
+                            <h2 className="text-lg font-semibold text-foreground">Acknowledgment review · {Metro Legal_ORDER_META.poNumber}</h2>
                             <p className="text-xs text-muted-foreground mt-0.5 flex items-center gap-1.5">
                                 <Sparkles className="h-3 w-3 text-primary" />
                                 Gemini already in use today at Officeworks — Strata supercharges the diff
@@ -317,8 +317,8 @@ export default function AckReviewScene({ onContinue }: Props) {
                 isOpen={showPDF}
                 onClose={() => setShowPDF(false)}
                 pdfSrc={OFFICEWORKS_PDFS.poAcknowledgment}
-                title={`Order Acknowledgment · ${MANATT_ORDER_META.poNumber}`}
-                subtitle={`MANATT Phelps & Phillips LLP · 4th Floor · 71 line items · Net $${MANATT_ORDER_META.netTotal.toLocaleString()}`}
+                title={`Order Acknowledgment · ${Metro Legal_ORDER_META.poNumber}`}
+                subtitle={`Metro Legal Firm LLC · 4th Floor · 71 line items · Net $${Metro Legal_ORDER_META.netTotal.toLocaleString()}`}
                 badge="Real document"
             />
         </div>

@@ -1,5 +1,5 @@
 /**
- * MANATT Phelps & Phillips LLP · 4th Floor Workstations
+ * Metro Legal Firm LLC · 4th Floor Workstations
  * Real data extracted from Order Acknowledgment PO-DC-0009642 (Universal #2-10468963)
  *
  * 71 line items + 13 CRs + 4 Tags (WS-01·10 / WS-02·6 / WS-02·6 / WS-02.A·8)
@@ -9,11 +9,11 @@
  * Source: src/assets/officeworks-pdfs/PO-DC-0009642.pdf (real)
  */
 
-export const MANATT_ORDER_META = {
+export const Metro Legal_ORDER_META = {
     poNumber: 'PO-DC-0009642',
     universal: '2-10468963',
     specialQuote: '436533',
-    sqName: 'Manatt Phelps & Phillips LLP',
+    sqName: 'Metro Legal Firm LLC',
     revisionNumber: 1,
     dealer: 'U01042 OFFICEWORKS-DC',
     dealerIRS: '84-3813627',
@@ -28,7 +28,7 @@ export const MANATT_ORDER_META = {
     salesreps: ['Caitlin Barolet', 'Danielle Dunlap'],
     shipTo: {
         company: 'TURN KEY OFFICE INSTALLATIONS',
-        project: 'OWDC - MANATT - 4TH FLOOR - WORKSTATIONS',
+        project: 'OWDC - Metro Legal - 4TH FLOOR - WORKSTATIONS',
         address: '10001 FRANKLIN SQUARE DRIVE STE H',
         city: 'NOTTINGHAM, MD 21236-4911',
     },
@@ -41,10 +41,10 @@ export const MANATT_ORDER_META = {
     shipVia: 'BEST WAY',
     cbd: 'Receiving 24 HRS · (410) 870-1240',
     afterHours: 'Receiving · (410) 870-1240',
-    shippingNotes: 'OP-2025-0001605 Manatt - Teknion - PO & Wks',
+    shippingNotes: 'OP-2025-0001605 Metro Legal - Teknion - PO & Wks',
 } as const;
 
-export const MANATT_TAGS = [
+export const Metro Legal_TAGS = [
     { tag: 1, field1: 'WS-01(10)', field2: 'LEVEL 4', count: 10 },
     { tag: 2, field1: 'WS-02(6)', field2: 'LEVEL 4', count: 6 },
     { tag: 3, field1: 'WS-02 (6)', field2: 'LEVEL 4', count: 6 },
@@ -81,7 +81,7 @@ export interface BOMLine {
  * Selected lines (representative subset for the demo BOM table).
  * Numbers match the Dealer PO Seq No / Teknion Seq No from the real document.
  */
-export const MANATT_BOM_LINES: BOMLine[] = [
+export const Metro Legal_BOM_LINES: BOMLine[] = [
     // Surcharge line (Teknion Seq 72)
     {
         seq: 0, partNumber: 'T5062', description: 'Surcharge',
@@ -323,7 +323,7 @@ export interface CRDetail {
     pzNote?: string;
 }
 
-export const MANATT_CRS: CRDetail[] = [
+export const Metro Legal_CRS: CRDetail[] = [
     { crNumber: '2087978', leadDays: 30, description: 'Smooth Felt Sqr Crn Desk Edge Screen Right · 42" Datum Ht', specialFeatures: 'Screen depth & width to match surface depth & width', drawing: 'TBA', unitList: 1710.00, timesUsed: 5 },
     { crNumber: '2046129', leadDays: 30, description: 'Smooth Felt Sqr Crn Desk Edge Screen Left · 42" Datum Ht', specialFeatures: 'Install with CR 2042261', drawing: 'TBA', unitList: 1621.00, timesUsed: 5 },
     { crNumber: '2046130', leadDays: 30, description: 'Smooth Felt Side Desk Edge Screen 29"w', specialFeatures: 'Install with CR 2042261 + CR 2046129', drawing: 'TBA', unitList: 552.00, timesUsed: 10 },
@@ -340,7 +340,7 @@ export const MANATT_CRS: CRDetail[] = [
 ];
 
 /** Demo issues surfaced during self-audit · used by sc1.6 issues counter */
-export const MANATT_AUDIT_ISSUES = {
+export const Metro Legal_AUDIT_ISSUES = {
     critical: 2,
     advisory: 3,
     autoFixable: 1,
@@ -349,7 +349,7 @@ export const MANATT_AUDIT_ISSUES = {
 /** Per-Tag subtotals (computed from BOM lines) */
 export function getTagSubtotals() {
     const subtotals = new Map<number, number>();
-    for (const line of MANATT_BOM_LINES) {
+    for (const line of Metro Legal_BOM_LINES) {
         subtotals.set(line.tag, (subtotals.get(line.tag) ?? 0) + line.extList);
     }
     return Array.from(subtotals.entries()).map(([tag, subtotal]) => ({ tag, subtotal }));

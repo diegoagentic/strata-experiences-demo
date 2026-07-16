@@ -7,7 +7,7 @@
  *   · seniority (Lead > Senior > Mid > Junior)
  *   · peer reviews YTD
  *   · utilization headroom (< 95% preferred)
- *   · cross-region acceptable for Leads (Rebecca Warren is MA Lead, MANATT is DC)
+ *   · cross-region acceptable for Leads (Rebecca Warren is MA Lead, Metro Legal is DC)
  *
  * Pattern cloned from smart-comparator/app/src/components/team/AssignPopover.tsx
  * (portal-based popover · avatar gradient · click-to-reassign chip) and adapted

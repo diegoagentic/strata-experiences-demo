@@ -1,8 +1,8 @@
 // ═══════════════════════════════════════════════════════════════════════════════
-// MANATT · Sales flow demo data
+// Metro Legal · Sales flow demo data
 //
-// Same project as MANATT_ORDER_META (manattOrderData.ts) + MANATT_LD_RFP
-// (manattLaborData.ts) · PO-DC-0009642 · MANATT Phelps & Phillips · 4th Floor.
+// Same project as Metro Legal_ORDER_META (manattOrderData.ts) + Metro Legal_LD_RFP
+// (manattLaborData.ts) · PO-DC-0009642 · Metro Legal Firm · 4th Floor.
 // The Sales flow runs UPSTREAM of Spec Check + L&D · it produces the works
 // form that triggers them.
 //
@@ -82,9 +82,9 @@ export const SALES_INBOX_THREADS: SalesInboxThread[] = [
     {
         id: 'sit-001',
         channel: 'email',
-        from: 'Caitlin Barolet · MANATT Facilities',
-        fromOrg: 'MANATT Phelps & Phillips',
-        subject: 'RE: MANATT 4th Floor · need to lock scope this week',
+        from: 'Caitlin Barolet · Metro Legal Facilities',
+        fromOrg: 'Metro Legal Firm',
+        subject: 'RE: Metro Legal 4th Floor · need to lock scope this week',
         snippet: 'Hi team, we are 26 hours past last touch on the proposal — please confirm the 120-workstation count and the GSA price.',
         receivedAt: '2026-05-13 08:42',
         intentScore: 96,
@@ -97,8 +97,8 @@ export const SALES_INBOX_THREADS: SalesInboxThread[] = [
     {
         id: 'sit-002',
         channel: 'teams',
-        from: 'Caitlin Barolet · MANATT Facilities',
-        fromOrg: 'MANATT Phelps & Phillips',
+        from: 'Caitlin Barolet · Metro Legal Facilities',
+        fromOrg: 'Metro Legal Firm',
         subject: 'Quick ping — same scope question',
         snippet: 'Just emailed but also pinging here in case email is buried · need scope lock today.',
         receivedAt: '2026-05-13 08:45',
@@ -127,7 +127,7 @@ export const SALES_INBOX_THREADS: SalesInboxThread[] = [
         channel: 'portal',
         from: 'Building Connected · GC portal',
         fromOrg: 'CBRE',
-        subject: 'BC-RFP-882041 · MANATT 4F · GC quote due 2026-05-14 17:00',
+        subject: 'BC-RFP-882041 · Metro Legal 4F · GC quote due 2026-05-14 17:00',
         snippet: 'Portal RFP · GC quote template attached · deadline 24h.',
         receivedAt: '2026-05-13 09:00',
         intentScore: 99,
@@ -164,7 +164,7 @@ export const SALES_INBOX_THREADS: SalesInboxThread[] = [
         channel: 'email',
         from: 'Jonathan Spence · CBRE',
         fromOrg: 'CBRE Construction Management',
-        subject: 'FYI · MANATT 4F construction milestones update',
+        subject: 'FYI · Metro Legal 4F construction milestones update',
         snippet: 'Wall framing starts week of May 19 · furniture install window May 26-30.',
         receivedAt: '2026-05-12 14:18',
         intentScore: 76,
@@ -214,7 +214,7 @@ export const SALES_INBOX_THREADS: SalesInboxThread[] = [
         from: 'Tifani Burgess · Teknion',
         fromOrg: 'Teknion',
         subject: 'CR 2046138 leadtime confirmation',
-        snippet: 'Spec gap response for the MANATT order preview · standard 6 weeks.',
+        snippet: 'Spec gap response for the Metro Legal order preview · standard 6 weeks.',
         receivedAt: '2026-05-13 08:10',
         intentScore: 71,
         urgency: 'med',
@@ -235,7 +235,7 @@ export const SALES_INBOX_THREADS: SalesInboxThread[] = [
     },
 ]
 
-// ─── Opportunities (3 hero · MANATT-4F · JPM-ATL · DLA-NYC) ──────────────────
+// ─── Opportunities (3 hero · Metro Legal-4F · JPM-ATL · DLA-NYC) ──────────────────
 
 export type SalesVertical = 'furniture' | 'walls'
 
@@ -259,8 +259,8 @@ export interface SalesOpportunity {
 export const SALES_OPPORTUNITIES: SalesOpportunity[] = [
     {
         oppId: 'opp-manatt-4f',
-        company: 'MANATT Phelps & Phillips',
-        projectCode: 'MANATT-4F',
+        company: 'Metro Legal Firm',
+        projectCode: 'Metro Legal-4F',
         vertical: 'furniture',
         estValueUSD: 1_541_392,
         copperStage: 75,
@@ -357,7 +357,7 @@ export const SALES_REPS: SalesRep[] = [
         openOpps: 67,
         qualifiedPipelineValueUSD: 12_400_000,
         quotaProgressPct: 78,
-        priorWinsWithAccount: { MANATT: 2, CBRE: 4 },
+        priorWinsWithAccount: { Metro Legal: 2, CBRE: 4 },
         onTimeResponseRatePct: 84,
         capacityFlag: 'optimal',
         lastActivityAt: '2026-05-13 09:02',
@@ -425,11 +425,11 @@ export interface DiscoveryField {
 
 export const SALES_DISCOVERY_TEMPLATE: DiscoveryField[] = [
     { key: 'budget',       label: 'Budget',                framework: 'BANT', value: '$400–600K', source: 'sit-001', confidence: 'medium' },
-    { key: 'authority',    label: 'Authority',             framework: 'BANT', value: 'Caitlin Barolet · MANATT facilities lead', source: 'sit-001', confidence: 'high' },
+    { key: 'authority',    label: 'Authority',             framework: 'BANT', value: 'Caitlin Barolet · Metro Legal facilities lead', source: 'sit-001', confidence: 'high' },
     { key: 'need',         label: 'Need',                  framework: 'BANT', value: '4F refresh · GSA SQ price-protected · 120 workstations', source: 'sit-004', confidence: 'high' },
     { key: 'timing',       label: 'Timing',                framework: 'BANT', value: 'Move-in 2026-08-30 · 14 weeks out', source: 'sit-007', confidence: 'high' },
     { key: 'metrics',      label: 'Success metrics',       framework: 'MEDDIC', value: 'Quote in by 14-May 17:00 · install Aug 26-30', source: 'sit-004', confidence: 'high' },
-    { key: 'economic',     label: 'Economic buyer',        framework: 'MEDDIC', value: 'MANATT COO (pending intro)', source: 'inferred', confidence: 'medium' },
+    { key: 'economic',     label: 'Economic buyer',        framework: 'MEDDIC', value: 'Metro Legal COO (pending intro)', source: 'inferred', confidence: 'medium' },
     { key: 'decisionCrit', label: 'Decision criteria',     framework: 'MEDDIC', value: undefined, source: 'missing', confidence: 'low' },
     { key: 'decisionProc', label: 'Decision process',      framework: 'MEDDIC', value: 'CBRE GC owns portal · GSA SOP', source: 'sit-004', confidence: 'medium' },
     { key: 'identifyPain', label: 'Pain identified',       framework: 'MEDDIC', value: 'Existing furniture EoL · ergonomic complaints from associates', source: 'sit-001', confidence: 'medium' },
@@ -452,11 +452,11 @@ export const SALES_OUTREACH_DRAFTS: SalesChannelDraft[] = [
         channel: 'email',
         label: 'Email · primary thread',
         suggestedAsChannelOfRecord: true,
-        subjectOrPreview: 'RE: MANATT 4F — scope confirmed, proposal Friday 14-May 12:00',
+        subjectOrPreview: 'RE: Metro Legal 4F — scope confirmed, proposal Friday 14-May 12:00',
         body: [
             'Hi Caitlin,',
             '',
-            'Confirming the scope on MANATT 4F:',
+            'Confirming the scope on Metro Legal 4F:',
             '· 120 workstations (Teknion T25 District) · 18 CRs',
             '· GSA SQ #436533 · 2025 catalog · price-protected',
             '· 4th-floor refresh · install window 2026-08-26 → 08-30',
@@ -466,13 +466,13 @@ export const SALES_OUTREACH_DRAFTS: SalesChannelDraft[] = [
             'Talk soon,',
             'Sales Lead · Mid-Atlantic',
         ],
-        attachments: ['MANATT-4F-scope-summary.pdf'],
+        attachments: ['Metro Legal-4F-scope-summary.pdf'],
     },
     {
         channel: 'teams',
         label: 'Teams · back-channel ping to CBRE',
         suggestedAsChannelOfRecord: false,
-        subjectOrPreview: 'Heads-up · MANATT 4F proposal on Friday',
+        subjectOrPreview: 'Heads-up · Metro Legal 4F proposal on Friday',
         body: [
             'FYI Jonathan — proposal lands Friday 12:00. Quote in GC portal same morning.',
         ],
@@ -513,7 +513,7 @@ export const SALES_PROPOSAL_META = {
     listTotalUSD: 1_541_392,
     gsaDiscountPct: 79,
     netToClientUSD: 323_692,
-    quotePDFFile: 'MANATT-4F-OW-Proposal-v1.pdf',
+    quotePDFFile: 'Metro Legal-4F-OW-Proposal-v1.pdf',
     quoteSource: 'NetSuite catalog (read-only mock) · GSA SQ #436533 · 2025',
     cbrePortalRef: 'BC-RFP-882041',
     gcQuoteDueAt: '2026-05-14 17:00',
@@ -528,9 +528,9 @@ export interface HandoffPacketField {
 }
 
 export const SALES_HANDOFF_PACKET: HandoffPacketField[] = [
-    { label: 'Project code',         value: 'MANATT-4F',                           source: 'Sales opp record' },
+    { label: 'Project code',         value: 'Metro Legal-4F',                           source: 'Sales opp record' },
     { label: 'NetSuite SO',          value: 'SO-WIP-088421 (to create on award)',  source: 'NetSuite (read-only mock)' },
-    { label: 'Ignite folder',        value: '/2026/MANATT/4F/',                    source: 'Sales Coordinator' },
+    { label: 'Ignite folder',        value: '/2026/Metro Legal/4F/',                    source: 'Sales Coordinator' },
     { label: 'Works post-award',     value: 'Auto-populated from opp record',      source: 'Strata orchestrator' },
     { label: 'Furniture PM lead',    value: 'Furniture PM team (Abigail\'s team)',  source: 'Org chart' },
     { label: 'Labor / install PM',   value: 'Service/Delivery team',               source: 'Org chart' },
@@ -576,7 +576,7 @@ export const SALES_SLA_DISTRIBUTION = [
 ]
 
 export const SALES_AT_RISK = [
-    { id: 'opp-manatt-4f',   projectCode: 'MANATT-4F',     copperStage: '75% · awarded · no LOI', daysOver: 1,  slaHoursLeft: -2, dollarValueK: 1_541, accountType: 'GC referral · CBRE' },
+    { id: 'opp-manatt-4f',   projectCode: 'Metro Legal-4F',     copperStage: '75% · awarded · no LOI', daysOver: 1,  slaHoursLeft: -2, dollarValueK: 1_541, accountType: 'GC referral · CBRE' },
     { id: 'opp-jpm-atl',     projectCode: 'JPM-ATL-4471',  copperStage: '50% · strong conviction', daysOver: 0,  slaHoursLeft: 22, dollarValueK: 3_280, accountType: 'Strategic' },
     { id: 'opp-pnc-pit',     projectCode: 'PNC-PIT-22',    copperStage: '25% · pricing requested', daysOver: 2,  slaHoursLeft: -28, dollarValueK: 480,  accountType: 'Standard' },
     { id: 'opp-bofa-uplift', projectCode: 'BOFA-UPLIFT-7', copperStage: '50% · strong conviction', daysOver: 1,  slaHoursLeft: -6, dollarValueK: 920,  accountType: 'Strategic' },
@@ -584,7 +584,7 @@ export const SALES_AT_RISK = [
 ]
 
 export const SALES_ENGAGEMENT_FEED = [
-    { id: 'evt-001', icon: 'mail',     channel: 'email',  text: 'Reply sent to Caitlin Barolet · MANATT 4F scope lock',   at: '2026-05-13 09:14' },
+    { id: 'evt-001', icon: 'mail',     channel: 'email',  text: 'Reply sent to Caitlin Barolet · Metro Legal 4F scope lock',   at: '2026-05-13 09:14' },
     { id: 'evt-002', icon: 'message',  channel: 'teams',  text: 'Teams ping to Jonathan Spence · proposal Friday 12:00',   at: '2026-05-13 09:12' },
     { id: 'evt-003', icon: 'upload',   channel: 'portal', text: 'GC quote uploaded · BC-RFP-882041',                       at: '2026-05-13 09:02' },
     { id: 'evt-004', icon: 'flag',     channel: 'system', text: 'SLA timer started · JPM-ATL pricing · 48h',                at: '2026-05-13 08:55' },

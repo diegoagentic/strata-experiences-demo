@@ -13,7 +13,7 @@
 4. **OfficeworksDashboardScene** (SC5 + SC6 · CEO #2 + #4) — capacity heatmap + KPIs (persistent tab)
 
 ### Shared components
-- `BOMTable` (reusable · 71 MANATT lines)
+- `BOMTable` (reusable · 71 Metro Legal lines)
 - `CapacityHeatmap` (~30 designers · 3 regions)
 - `PDFPreviewModal` (iframe-based · 3 PDFs assets)
 - `manattOrderData.ts` (constants from real PO)
@@ -24,7 +24,7 @@
 - `App.tsx` — isOfficeworks + nav + appName + appToTab + renderSimulation cases
 
 ## Real data sources (3 PDFs)
-- `src/assets/officeworks-pdfs/PO-DC-0009642.pdf` (MANATT Ack · 71 lines · real)
+- `src/assets/officeworks-pdfs/PO-DC-0009642.pdf` (Metro Legal Ack · 71 lines · real)
 - `src/assets/officeworks-pdfs/OW_Design_Checklist_-_2026.pdf` (12 sections)
 - `src/assets/officeworks-pdfs/OW_Audit_Checklist_-_2026.pdf` (5 steps · self + peer)
 

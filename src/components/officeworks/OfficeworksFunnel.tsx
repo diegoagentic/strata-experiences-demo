@@ -1,13 +1,13 @@
 /**
  * COMPONENT: OfficeworksFunnel
  * PURPOSE: Manager-centric kanban view (Felicia's POV) — 5-stage funnel
- *          for Spec Check & Design process. MANATT (active) moves between
+ *          for Spec Check & Design process. Metro Legal (active) moves between
  *          columns as demo advances. 3 context projects sit in fixed columns.
  *
  * CLONE OF: src/components/bfi/BFIProcessKanban.tsx (simplified · kanban-only)
  *
  * 5 STAGES: Intake → Design → Spec Check → Submission → Acknowledgment
- * MAPPING: see stepIdToColIdx() · maps currentStep.id → MANATT column index
+ * MAPPING: see stepIdToColIdx() · maps currentStep.id → Metro Legal column index
  *
  * DS TOKENS: bg-card · bg-muted · bg-ai/10 · bg-info/10 · bg-warning/10 ·
  *            bg-primary/10 · bg-success/10 · text-foreground · text-muted-foreground
@@ -16,12 +16,12 @@
 import { useEffect, useState } from 'react'
 import { Search, LayoutGrid, MoreHorizontal, Users, Truck } from 'lucide-react'
 import { useDemo } from '../../context/DemoContext'
-import { MANATT_ORDER_META } from './shared/manattOrderData'
+import { Metro Legal_ORDER_META } from './shared/manattOrderData'
 import { stepIdToColIdx } from './shared/funnelStages'
 import {
-    MANATT_LD_RFP, FINAL_QUOTE, WALLS_FINAL_QUOTE,
-    LD_CONTEXT_PROJECTS, MANATT_LD_BADGE, MANATT_LD_BADGE_BY_STEP,
-    MANATT_LD_SUBTITLE, MANATT_LD_SUBTITLE_BY_STEP,
+    Metro Legal_LD_RFP, FINAL_QUOTE, WALLS_FINAL_QUOTE,
+    LD_CONTEXT_PROJECTS, Metro Legal_LD_BADGE, Metro Legal_LD_BADGE_BY_STEP,
+    Metro Legal_LD_SUBTITLE, Metro Legal_LD_SUBTITLE_BY_STEP,
 } from './shared/manattLaborData'
 import { SALES_ACTOR, SALES_OPPORTUNITIES, SALES_VOLUME_FACTS } from './shared/manattSalesData'
 import { useOfficeworksVertical } from './shared/verticalSignal'
@@ -53,7 +53,7 @@ const SALES_COLUMNS = [
     { id: 's-close',    label: 'Close',    color: 'text-success', border: 'border-success/30', pill: 'bg-success/10 text-success border border-success/20' },
 ] as const
 
-// ─── Sales flow · MANATT card content per column ────────────────────────────
+// ─── Sales flow · Metro Legal card content per column ────────────────────────────
 
 const SALES_BADGE: Record<number, { label: string; className: string }> = {
     0: { label: 'Triaged',       className: 'bg-ai/10 text-ai border border-ai/20' },
@@ -70,7 +70,7 @@ const SALES_BADGE_BY_STEP: Record<string, { label: string; className: string }> 
 }
 
 const SALES_SUBTITLE: Record<number, string> = {
-    0: 'Inbound thread · MANATT 4F · 26h since last touch · urgent',
+    0: 'Inbound thread · Metro Legal 4F · 26h since last touch · urgent',
     1: 'Sales Rep · DC + NoVA recommended · SLA 24h qualify / 48h proposal',
     2: 'BANT + MEDDIC capture · 2 missing fields flagged before client call',
     3: 'Proposal assembled · BOM + labor + pricing · CBRE portal due 14-May 17:00',
@@ -82,7 +82,7 @@ const SALES_SUBTITLE_BY_STEP: Record<string, string> = {
     'sc-S.5': 'Multi-channel outreach drafted · email + Teams + SMS · drafts only',
 }
 
-// ─── MANATT contextual content per column · Spec Check flow ──────────────────
+// ─── Metro Legal contextual content per column · Spec Check flow ──────────────────
 
 const SPEC_BADGE: Record<number, { label: string; className: string }> = {
     0: { label: 'New Form',        className: 'bg-ai/10 text-ai border border-ai/20' },
@@ -92,7 +92,7 @@ const SPEC_BADGE: Record<number, { label: string; className: string }> = {
     4: { label: 'Ack received',    className: 'bg-success/10 text-success border border-success/20' },
 }
 
-// Per-step overrides on MANATT card badge/subtitle (when the funnel column alone
+// Per-step overrides on Metro Legal card badge/subtitle (when the funnel column alone
 // doesn't capture the state — e.g. sc1.0b shares the Intake column with sc1.0
 // but represents a different moment in the arc).
 const SPEC_BADGE_BY_STEP: Record<string, { label: string; className: string }> = {
@@ -149,7 +149,7 @@ const SPEC_CONTEXT_CARDS: ContextCard[] = [
     },
 ]
 
-// Sales · 3 context opps live in non-MANATT columns
+// Sales · 3 context opps live in non-Metro Legal columns
 const SALES_CONTEXT_CARDS: ContextCard[] = [
     {
         code: 'JPM-ATL-4471', initials: 'JPM', client: 'JPMorgan · Atlanta HQ · pricing burst',
@@ -205,9 +205,9 @@ const HEADER_WALLS = {
     capacityCount: '3 approved Walls',
 } as const
 
-// ─── MANATT card · owner per step + flow ─────────────────────────────────────
+// ─── Metro Legal card · owner per step + flow ─────────────────────────────────────
 
-function getMANATTOwner(stepId: string | undefined, flowId: 'spec-check' | 'labor-delivery' | 'sales', vertical: 'furniture' | 'walls' = 'furniture'): string {
+function getMetro LegalOwner(stepId: string | undefined, flowId: 'spec-check' | 'labor-delivery' | 'sales', vertical: 'furniture' | 'walls' = 'furniture'): string {
     if (flowId === 'sales') {
         if (!stepId || stepId === 'sc-S.0') return `${SALES_ACTOR.role} · routing`
         if (stepId === 'sc-S.1' || stepId === 'sc-S.2') return `${SALES_ACTOR.role} · ${SALES_ACTOR.territoryLabel}`
@@ -230,14 +230,14 @@ function getMANATTOwner(stepId: string | undefined, flowId: 'spec-check' | 'labo
 
 interface Props {
     onOpenReview: () => void
-    /** Optional: hide the "Review" CTA on the MANATT card (used when modal already open) */
+    /** Optional: hide the "Review" CTA on the Metro Legal card (used when modal already open) */
     hideReviewCta?: boolean
-    /** Currently assigned designer for MANATT · overrides the default getMANATTOwner() inference */
+    /** Currently assigned designer for Metro Legal · overrides the default getMetro LegalOwner() inference */
     assignedDesigner?: string | null
     /**
      * Active flow · Officeworks runs Spec Check & Design and Labor & Delivery
      * in parallel per the AS-IS BPMN. The funnel renders 5 columns + 3 context
-     * cards + the MANATT card consistently across both, but the data swaps.
+     * cards + the Metro Legal card consistently across both, but the data swaps.
      */
     flowId?: 'spec-check' | 'labor-delivery' | 'sales'
 }
@@ -252,10 +252,10 @@ export default function OfficeworksFunnel({ onOpenReview, hideReviewCta = false,
 
     // Active arrays per flow · same shape, different content.
     const PROCESS_COLUMNS = isSales ? SALES_COLUMNS : isLD ? LD_COLUMNS : SPEC_COLUMNS
-    const BADGE          = isSales ? SALES_BADGE          : isLD ? MANATT_LD_BADGE          : SPEC_BADGE
-    const BADGE_BY_STEP  = isSales ? SALES_BADGE_BY_STEP  : isLD ? MANATT_LD_BADGE_BY_STEP  : SPEC_BADGE_BY_STEP
-    const SUBTITLE       = isSales ? SALES_SUBTITLE       : isLD ? MANATT_LD_SUBTITLE       : SPEC_SUBTITLE
-    const SUBTITLE_BY_STEP = isSales ? SALES_SUBTITLE_BY_STEP : isLD ? MANATT_LD_SUBTITLE_BY_STEP : SPEC_SUBTITLE_BY_STEP
+    const BADGE          = isSales ? SALES_BADGE          : isLD ? Metro Legal_LD_BADGE          : SPEC_BADGE
+    const BADGE_BY_STEP  = isSales ? SALES_BADGE_BY_STEP  : isLD ? Metro Legal_LD_BADGE_BY_STEP  : SPEC_BADGE_BY_STEP
+    const SUBTITLE       = isSales ? SALES_SUBTITLE       : isLD ? Metro Legal_LD_SUBTITLE       : SPEC_SUBTITLE
+    const SUBTITLE_BY_STEP = isSales ? SALES_SUBTITLE_BY_STEP : isLD ? Metro Legal_LD_SUBTITLE_BY_STEP : SPEC_SUBTITLE_BY_STEP
     const CONTEXT_CARDS  = isSales ? SALES_CONTEXT_CARDS  : isLD ? LD_CONTEXT_PROJECTS      : SPEC_CONTEXT_CARDS
     const header         = isWalls ? HEADER_WALLS : HEADER_BY_FLOW[flowId]
 
@@ -264,15 +264,15 @@ export default function OfficeworksFunnel({ onOpenReview, hideReviewCta = false,
     const stepKey = currentStep?.id ?? ''
     const badge = BADGE_BY_STEP[stepKey] ?? BADGE[activeCol]
     const subtitle = SUBTITLE_BY_STEP[stepKey] ?? SUBTITLE[activeCol]
-    const owner = assignedDesigner ?? getMANATTOwner(currentStep?.id, flowId, vertical)
-    // Quote amount for MANATT card · uses Walls FQ when Walls vertical is active.
+    const owner = assignedDesigner ?? getMetro LegalOwner(currentStep?.id, flowId, vertical)
+    // Quote amount for Metro Legal card · uses Walls FQ when Walls vertical is active.
     const ldQuotedTotal = isWalls ? WALLS_FINAL_QUOTE.quotedTotal : FINAL_QUOTE.quotedTotal
 
     const firstStepId = isSales ? 'sc-S.0' : isLD ? 'sc-LD.0' : 'sc1.0'
     const ingestEvent = isSales ? 'officeworks:sales-inbox-ingest' : isLD ? 'officeworks:ld-rfp-ingest' : 'officeworks:intake-ingest'
     const isJustArrived = currentStep?.id === firstStepId
 
-    // First-step gate · MANATT card is hidden until ActionCenter finishes the
+    // First-step gate · Metro Legal card is hidden until ActionCenter finishes the
     // ingest animation (dispatches officeworks:intake-ingest or :ld-rfp-ingest).
     const [manattIngested, setManattIngested] = useState(() => currentStep?.id !== firstStepId)
 
@@ -349,7 +349,7 @@ export default function OfficeworksFunnel({ onOpenReview, hideReviewCta = false,
                                     </button>
                                 </div>
 
-                                {/* MANATT card — highlighted (moves between columns) */}
+                                {/* Metro Legal card — highlighted (moves between columns) */}
                                 {isManattCol && (
                                     <div className={`relative rounded-2xl border-2 ${col.border} bg-card p-3.5 space-y-3 shadow-md animate-in fade-in slide-in-from-top-2 duration-700 ${
                                         isJustArrived ? 'ring-2 ring-ai/40 ring-offset-2 ring-offset-background' : ''
@@ -365,15 +365,15 @@ export default function OfficeworksFunnel({ onOpenReview, hideReviewCta = false,
                                             </div>
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center justify-between gap-1 mb-0.5">
-                                                    <span className="text-sm font-bold text-foreground truncate min-w-0">MANATT</span>
+                                                    <span className="text-sm font-bold text-foreground truncate min-w-0">Metro Legal</span>
                                                     <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full shrink-0 ${badge.className}`}>
                                                         {badge.label}
                                                     </span>
                                                 </div>
                                                 <span className="text-[11px] text-muted-foreground block truncate">
-                                                    {isSales ? `Manatt Phelps & Phillips · 4F · MANATT-4F · ${SALES_OPPORTUNITIES[0].copperStage}%`
-                                                     : isLD ? `Manatt Phelps & Phillips · 4F · ${MANATT_LD_RFP.market}`
-                                                     : 'Manatt Phelps & Phillips LLP · DC'}
+                                                    {isSales ? `Metro Legal Firm · 4F · Metro Legal-4F · ${SALES_OPPORTUNITIES[0].copperStage}%`
+                                                     : isLD ? `Metro Legal Firm · 4F · ${Metro Legal_LD_RFP.market}`
+                                                     : 'Metro Legal Firm LLC · DC'}
                                                 </span>
                                             </div>
                                         </div>
@@ -381,12 +381,12 @@ export default function OfficeworksFunnel({ onOpenReview, hideReviewCta = false,
                                         <div className="space-y-1.5">
                                             <div className="flex justify-between text-xs">
                                                 <span className="text-muted-foreground">{isSales ? 'Opp' : 'PO'}</span>
-                                                <span className="font-medium text-foreground font-mono">{isSales ? SALES_OPPORTUNITIES[0].oppId : MANATT_ORDER_META.poNumber}</span>
+                                                <span className="font-medium text-foreground font-mono">{isSales ? SALES_OPPORTUNITIES[0].oppId : Metro Legal_ORDER_META.poNumber}</span>
                                             </div>
                                             <div className="flex justify-between text-xs">
                                                 <span className="text-muted-foreground">{isSales ? 'Pipeline' : isLD ? 'Quote' : 'Net'}</span>
                                                 <span className="font-semibold text-foreground">
-                                                    ${isSales ? SALES_OPPORTUNITIES[0].estValueUSD.toLocaleString() : isLD ? ldQuotedTotal.toLocaleString() : MANATT_ORDER_META.netTotal.toLocaleString()}
+                                                    ${isSales ? SALES_OPPORTUNITIES[0].estValueUSD.toLocaleString() : isLD ? ldQuotedTotal.toLocaleString() : Metro Legal_ORDER_META.netTotal.toLocaleString()}
                                                 </span>
                                             </div>
                                             <div className="flex justify-between text-xs">
@@ -401,8 +401,8 @@ export default function OfficeworksFunnel({ onOpenReview, hideReviewCta = false,
                                             <div className="pt-2 border-t border-border flex items-center justify-between">
                                                 <span className="text-[10px] text-muted-foreground">
                                                     {isSales ? `Copper · stage ${SALES_OPPORTUNITIES[0].copperStage}% · ${SALES_VOLUME_FACTS.totalOpenOpportunities.toLocaleString()} open` :
-                                                     isLD ? `Portal ${MANATT_LD_RFP.gcPortalRef}` :
-                                                     `SQ #${MANATT_ORDER_META.specialQuote}`}
+                                                     isLD ? `Portal ${Metro Legal_LD_RFP.gcPortalRef}` :
+                                                     `SQ #${Metro Legal_ORDER_META.specialQuote}`}
                                                 </span>
                                                 <div className="relative">
                                                     <span className="absolute -inset-1 rounded-xl bg-ai/20 animate-pulse pointer-events-none" />

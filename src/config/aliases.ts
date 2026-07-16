@@ -56,13 +56,16 @@ export function tenantAlias(id: TenantId | string): { name: string; short: strin
 
 /**
  * CLIENT_OF_CLIENT_ALIASES · demo scenarios reference real end-customers of
- * the tenants (MANATT law firm, Fairport Library, etc.). These get generic
+ * the tenants (Metro Legal law firm, Fairport Library, etc.). These get generic
  * regional/sector labels.
  */
 export const CLIENT_OF_CLIENT_ALIASES = {
-    'MANATT Phelps & Phillips LLP': 'Metro Legal Firm',
+    'MANATT Phelps & Phillips LLP': 'Metro Legal Firm LLC',
     'MANATT Phelps & Phillips':     'Metro Legal Firm',
     'MANATT':                       'Metro Legal',
+    'Manatt Phelps & Phillips LLP': 'Metro Legal Firm LLC',
+    'Manatt Phelps & Phillips':     'Metro Legal Firm',
+    'Manatt':                       'Metro Legal',
     'Fairport Public Library':      'Regional Public Library',
     'Tappé Architects':             'North Architects Group',
     'SWBR Architects':              'West Architects Partners',

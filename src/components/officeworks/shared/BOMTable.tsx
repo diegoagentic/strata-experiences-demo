@@ -1,6 +1,6 @@
 /**
  * COMPONENT: BOMTable
- * PURPOSE: Reusable BOM table with real MANATT data (71 lines + 13 CRs).
+ * PURPOSE: Reusable BOM table with real Metro Legal data (71 lines + 13 CRs).
  *          Used by sc1.6 SelfAuditScene + sc1.7 PeerReviewScene + sc1.9 AckReviewScene
  *
  * Features:
@@ -18,7 +18,7 @@
 
 import { useState } from 'react'
 import { CheckCircle2, AlertTriangle, AlertCircle, Circle } from 'lucide-react'
-import { MANATT_BOM_LINES, MANATT_TAGS, type BOMLine, type BOMLineStatus } from './manattOrderData'
+import { Metro Legal_BOM_LINES, Metro Legal_TAGS, type BOMLine, type BOMLineStatus } from './manattOrderData'
 
 interface Props {
     /** When set, filters lines to specific status (used by audit scene for "Issues only" view) */
@@ -56,8 +56,8 @@ export default function BOMTable({ filterStatus, onCRClick, highlightSeq, compac
     const [expandedTooltipSeq, setExpandedTooltipSeq] = useState<number | null>(null)
 
     const lines = filterStatus
-        ? MANATT_BOM_LINES.filter(l => l.status === filterStatus)
-        : MANATT_BOM_LINES
+        ? Metro Legal_BOM_LINES.filter(l => l.status === filterStatus)
+        : Metro Legal_BOM_LINES
 
     const linesByTag = new Map<number, BOMLine[]>()
     for (const line of lines) {
@@ -83,7 +83,7 @@ export default function BOMTable({ filterStatus, onCRClick, highlightSeq, compac
                         </tr>
                     </thead>
                     <tbody>
-                        {MANATT_TAGS.map(tagInfo => {
+                        {Metro Legal_TAGS.map(tagInfo => {
                             const tagLines = linesByTag.get(tagInfo.tag) ?? []
                             if (tagLines.length === 0) return null
                             const tagSubtotal = tagLines.reduce((acc, l) => acc + l.extList, 0)

@@ -143,7 +143,7 @@ export default function PeerReviewScene({ onContinue, peerName }: Props) {
                         Review request from Kimberly Tucker
                     </div>
                     <div className="text-muted-foreground mt-0.5">
-                        Kimberly sent her MANATT 4th Floor self-audit for peer review · 2 min ago · 5 items pre-flagged by Strata · MANATT-4F_audit-notes-v1.pdf
+                        Kimberly sent her Metro Legal 4th Floor self-audit for peer review · 2 min ago · 5 items pre-flagged by Strata · Metro Legal-4F_audit-notes-v1.pdf
                     </div>
                 </div>
                 <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider bg-ai text-ai-foreground border border-ai rounded px-1.5 py-0.5 shrink-0">

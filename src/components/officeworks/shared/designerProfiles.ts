@@ -62,7 +62,7 @@ export interface DesignerProfile {
         revisionsPerProject: number
         peerReviewsCompletedYTD: number
     }
-    priorMANATT?: boolean
+    priorMetroLegal?: boolean
     isLead?: boolean
 }
 
@@ -131,7 +131,7 @@ export function seniorityClass(s: Seniority): string {
 export const DESIGNER_PROFILES: DesignerProfile[] = [
     // ── DC + Southern (Felicia's region · 10 designers) ──
     {
-        name: 'Felicia Miano-Poles', region: 'dc', seniority: 'Lead', yearsAtOW: 25, utilization: 95, isLead: true, priorMANATT: true,
+        name: 'Felicia Miano-Poles', region: 'dc', seniority: 'Lead', yearsAtOW: 25, utilization: 95, isLead: true, priorMetroLegal: true,
         availableHoursPerWeek: 40,
         obligations: [{ label: 'Lead 1:1s + reviews', hoursPerWeek: 2 }],
         projects: { active: [
@@ -161,7 +161,7 @@ export const DESIGNER_PROFILES: DesignerProfile[] = [
         kpis: { avgCycleTime: 4.1, errorRate: 0.020, revisionsPerProject: 2.6, peerReviewsCompletedYTD: 28 },
     },
     {
-        name: 'Maya Patel', region: 'dc', seniority: 'Mid', yearsAtOW: 4, utilization: 45, priorMANATT: true,
+        name: 'Maya Patel', region: 'dc', seniority: 'Mid', yearsAtOW: 4, utilization: 45, priorMetroLegal: true,
         availableHoursPerWeek: 40,
         projects: { active: [
             { code: 'AMD-DC-3320', client: 'American Diabetes Assoc.', value: 38500, stage: 'Design', progress: 50, weeklyHours: 18 },
@@ -276,7 +276,7 @@ export const DESIGNER_PROFILES: DesignerProfile[] = [
 
     // ── PA + Pittsburgh + Ancillary (Kimberly's region · 10 designers) ──
     {
-        name: 'Kimberly Tucker', region: 'pa', seniority: 'Lead', yearsAtOW: 12, utilization: 45, isLead: true, priorMANATT: true,
+        name: 'Kimberly Tucker', region: 'pa', seniority: 'Lead', yearsAtOW: 12, utilization: 45, isLead: true, priorMetroLegal: true,
         availableHoursPerWeek: 40,
         projects: { active: [
             { code: 'PHI-LAW-2204', client: 'Philly Law Firm', value: 286000, stage: 'Design',     progress: 40, weeklyHours: 14 },
@@ -395,7 +395,7 @@ export const ERROR_RATE_BY_MONTH = [
 
 /** Mock recent activity (Dashboard timeline) */
 export const RECENT_ACTIVITY = [
-    { when: '2 min ago',  text: 'MANATT 4th Floor · arrived in Intake · awaiting designer assignment',     kind: 'arrive' },
+    { when: '2 min ago',  text: 'Metro Legal 4th Floor · arrived in Intake · awaiting designer assignment',     kind: 'arrive' },
     { when: '14 min ago', text: 'HSBC Hudson Yards · acknowledgment confirmed by Teknion',                 kind: 'success' },
     { when: '1 hr ago',   text: 'JPM Atlanta · spec check started by James O\'Brien',                       kind: 'progress' },
     { when: '2 hr ago',   text: 'GSA DC2 · Sandra Park submitted BOM (PDF + SP4)',                          kind: 'progress' },

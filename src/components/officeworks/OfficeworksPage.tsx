@@ -128,10 +128,10 @@ const STEP_TITLES_BY_APP: Record<string, string> = {
 
 export default function OfficeworksPage() {
     const { currentStep, nextStep } = useDemo()
-    // Funnel-first: modal opens via the MANATT card's "Review →" button OR
+    // Funnel-first: modal opens via the Metro Legal card's "Review →" button OR
     // when any officeworks:* notification CTA is dispatched from ActionCenter.
     const [isModalOpen, setIsModalOpen] = useState(false)
-    // Active designer assignment for MANATT · selected via IntakeAssignPanel or Dashboard
+    // Active designer assignment for Metro Legal · selected via IntakeAssignPanel or Dashboard
     const [assignedDesigner, setAssignedDesigner] = useState<string | null>(null)
     // Peer reviewer picked at sc1.6 (SelfAuditScene → PeerAssignPopover) · propagated to sc1.7
     const [peerReviewerName, setPeerReviewerName] = useState<string | null>(null)

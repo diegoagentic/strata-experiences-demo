@@ -2,7 +2,7 @@
  * COMPONENT: DesignerDetailModal
  * PURPOSE: Per-designer drill-in modal opened from Dashboard CapacityHeatmap or
  *          from IntakeAssignPanel. Shows profile + active projects + KPIs +
- *          areas + optional "Assign to MANATT" CTA when in intake step.
+ *          areas + optional "Assign to Metro Legal" CTA when in intake step.
  *
  * Sidebar-aware: respects DemoSidebar `pl-80` like the main review modal.
  *
@@ -22,9 +22,9 @@ interface Props {
     isOpen: boolean
     onClose: () => void
     designer: DesignerProfile | null
-    /** When set, shows "Assign to MANATT" CTA (passed from Dashboard during intake) */
-    canAssignToMANATT?: boolean
-    onAssignToMANATT?: () => void
+    /** When set, shows "Assign to Metro Legal" CTA (passed from Dashboard during intake) */
+    canAssignToMetro Legal?: boolean
+    onAssignToMetro Legal?: () => void
 }
 
 const STAGE_BADGE: Record<string, string> = {
@@ -36,14 +36,14 @@ const STAGE_BADGE: Record<string, string> = {
 }
 
 export default function DesignerDetailModal({
-    isOpen, onClose, designer, canAssignToMANATT = false, onAssignToMANATT,
+    isOpen, onClose, designer, canAssignToMetro Legal = false, onAssignToMetro Legal,
 }: Props) {
     const { isSidebarCollapsed, isDemoActive } = useDemo()
     const leftOffset = isDemoActive && !isSidebarCollapsed ? 'left-80' : 'left-0'
 
     if (!designer) return null
 
-    const { name, region, seniority, yearsAtOW, utilization, projects, areas, kpis, priorMANATT, isLead } = designer
+    const { name, region, seniority, yearsAtOW, utilization, projects, areas, kpis, priorMetroLegal, isLead } = designer
     const initials = name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()
     const totalProjects = projects.largeProjects + projects.mediumProjects + projects.smallProjects
     const utilizationColor = utilization >= 85 ? 'text-destructive' : utilization >= 60 ? 'text-warning' : 'text-success'
@@ -84,9 +84,9 @@ export default function DesignerDetailModal({
                                                         Region Lead
                                                     </span>
                                                 )}
-                                                {priorMANATT && (
+                                                {priorMetroLegal && (
                                                     <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-success/10 text-success border border-success/20">
-                                                        Prior MANATT
+                                                        Prior Metro Legal
                                                     </span>
                                                 )}
                                             </div>
@@ -261,19 +261,19 @@ export default function DesignerDetailModal({
                                     </div>
                                 </div>
 
-                                {/* Footer (optional Assign to MANATT) */}
-                                {canAssignToMANATT && (
+                                {/* Footer (optional Assign to Metro Legal) */}
+                                {canAssignToMetro Legal && (
                                     <div className="border-t border-border px-6 py-3 shrink-0 bg-card flex items-center justify-between gap-3">
                                         <div className="text-xs text-muted-foreground">
-                                            <span className="font-medium text-foreground">{name}</span> can take on MANATT 4th Floor (~30 stations · DC GSA)
+                                            <span className="font-medium text-foreground">{name}</span> can take on Metro Legal 4th Floor (~30 stations · DC GSA)
                                         </div>
                                         <button
                                             type="button"
-                                            onClick={onAssignToMANATT}
+                                            onClick={onAssignToMetro Legal}
                                             className="inline-flex items-center gap-2 h-10 px-4 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-medium transition-colors"
                                         >
                                             <UserCheck className="h-4 w-4" />
-                                            Assign to MANATT
+                                            Assign to Metro Legal
                                         </button>
                                     </div>
                                 )}

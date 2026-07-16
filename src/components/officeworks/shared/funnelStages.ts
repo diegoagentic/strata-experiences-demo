@@ -12,7 +12,7 @@ export const OFFICEWORKS_FUNNEL = [
     { id: 'ack',        label: 'Acknowledgment' },
 ] as const
 
-/** Map demo currentStep.id → MANATT column index (0-4) in the funnel.
+/** Map demo currentStep.id → Metro Legal column index (0-4) in the funnel.
  *  Same mapping shape for both Spec Check and Labor & Delivery flows: the
  *  funnel renders 5 columns regardless, only the labels + data differ. */
 export function stepIdToColIdx(stepId: string | undefined): number {
