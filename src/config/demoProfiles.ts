@@ -208,6 +208,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         companyName: 'MBI',
         description: 'Modern Business Interiors · Budget Builder prototype + Accounting/Quotes/Design AI',
         icon: '🏢',
+        defaultApp: 'mbi-accounting',
         steps: MBI_STEPS,
         stepBehavior: MBI_STEP_BEHAVIOR,
         stepMessages: MBI_STEP_MESSAGES,
