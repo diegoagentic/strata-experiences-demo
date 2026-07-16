@@ -2,36 +2,43 @@ import { useMemo } from 'react';
 import { XMarkIcon, ExclamationTriangleIcon, DevicePhoneMobileIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import type { SharedBlockEntry } from '../config/sharedBlocks';
 import { DEMO_PROFILES } from '../config/demoProfiles';
+import { useAuth } from '../context/AuthContext';
+
+import NavbarPill from './navbar/NavbarPill';
+import ExperienceSwitcher from './navbar/ExperienceSwitcher';
+import ThemeToggleButton from './navbar/ThemeToggleButton';
+import UserAvatarMenu from './navbar/UserAvatarMenu';
+import ActionCenter from './notifications/ActionCenter';
+import RoleSwitcher from './RoleSwitcher';
+
 import logoLightBrand from '../assets/logo-light-brand.png';
 import logoDarkBrand from '../assets/logo-dark-brand.png';
 
 interface SharedBlockShellProps {
   block: SharedBlockEntry;
   onExit: () => void;
+  onLogout: () => void;
 }
 
 /**
  * SharedBlockShell · frame around a shared building block preview.
  *
- * Uses the same floating-pill navbar look as the real Strata experiences
- * (Navbar.tsx) so previews sit inside the ecosystem visually. Three modes:
- *
- *  · 'strata-shell'     (default) — floating pill navbar with Strata logo +
- *    experience-style eyebrow ("SHARED BUILDING BLOCK · PREVIEW IN DEALER X")
- *    + block title. Below the navbar, a small breadcrumb "Shared Blocks ›
- *    Block Name". Body renders with the same pt-24 max-w-7xl treatment as
- *    Strata's PageShell.
- *
+ * Three modes:
+ *  · 'strata-shell'     (default) — consumes NavbarPill so the preview sits
+ *    inside the real Strata platform chrome: logo · ExperienceSwitcher (with
+ *    block active) · RoleSwitcher · ThemeToggleButton · ActionCenter ·
+ *    UserAvatarMenu · Exit. Below the pill, a breadcrumb + PageShell-style
+ *    header render the block title with its icon.
  *  · 'external-preview'          — warning-tinted top strip "External System
  *    Preview · Legacy tool Strata replaces" + body in a tinted warning
  *    envelope. Explicit signal that this is NOT Strata.
- *
  *  · 'mobile-preview'            — info-tinted top strip + body wrapped in
- *    a phone frame (max-w-[420px] rounded corners + border).
+ *    a phone frame.
  */
-export default function SharedBlockShell({ block, onExit }: SharedBlockShellProps) {
+export default function SharedBlockShell({ block, onExit, onLogout }: SharedBlockShellProps) {
   const frameMode = block.frameMode ?? 'strata-shell';
   const Component = block.component;
+  const { user } = useAuth();
 
   // Rotating tenant crumb · picks one usedByExperiences entry per open
   // (memoized on block.id so it stays stable during the session).
@@ -45,49 +52,51 @@ export default function SharedBlockShell({ block, onExit }: SharedBlockShellProp
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [block.id]);
 
-  const kindLabel =
-    block.kind === 'widget' ? 'Widget'
-    : 'Shared Building Block';
+  const kindLabel = block.kind === 'widget' ? 'Widget' : 'Shared Building Block';
 
-  // ─── strata-shell (default) · floating-pill navbar + breadcrumb ────────
+  // ─── strata-shell (default) · NavbarPill + breadcrumb ─────────────────
   if (frameMode === 'strata-shell') {
+    const displayName = user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'User';
+    const userInitials = displayName.split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2);
+
+    const leading = (
+      <>
+        <div className="px-2 shrink-0">
+          <img src={logoLightBrand} alt="Strata" className="h-8 w-20 object-contain block dark:hidden" />
+          <img src={logoDarkBrand}  alt="Strata" className="h-8 w-20 object-contain hidden dark:block" />
+        </div>
+        <div className="h-6 w-px bg-border mx-1 hidden lg:block" />
+        <ExperienceSwitcher activeBlockId={block.id} />
+      </>
+    );
+
+    const trailing = (
+      <>
+        <div className="hidden lg:block">
+          <RoleSwitcher />
+        </div>
+        <ThemeToggleButton />
+        <ActionCenter />
+        <UserAvatarMenu
+          onLogout={onLogout}
+          demoProfile={null}
+          displayName={displayName}
+          userInitials={userInitials}
+        />
+        <button
+          onClick={onExit}
+          className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full text-xs font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+          aria-label="Exit block preview"
+        >
+          <XMarkIcon className="w-4 h-4" />
+          Exit preview
+        </button>
+      </>
+    );
+
     return (
       <div className="min-h-screen bg-background">
-        {/* Floating-pill navbar · mimics src/components/Navbar.tsx */}
-        <div className="fixed top-6 z-50 flex justify-center px-4 left-0 right-0">
-          <div className="relative flex items-center lg:justify-between px-3 py-2 rounded-full gap-1 bg-card/80 backdrop-blur-xl border border-border shadow-lg dark:shadow-glow-md w-full max-w-7xl">
-            {/* Left · logo + experience-style title */}
-            <div className="flex items-center gap-1">
-              <div className="px-2 shrink-0">
-                <img src={logoLightBrand} alt="Strata" className="h-8 w-20 object-contain block dark:hidden" />
-                <img src={logoDarkBrand}  alt="Strata" className="h-8 w-20 object-contain hidden dark:block" />
-              </div>
-              <div className="h-6 w-px bg-border mx-1 hidden lg:block" />
-              <div className="flex flex-col items-start text-left px-2 py-1.5">
-                <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider leading-none">
-                  {kindLabel}
-                  {tenantCrumb && <> · preview in <span className="text-foreground">{tenantCrumb}</span></>}
-                </span>
-                <span className="text-sm font-bold text-foreground leading-tight flex items-center gap-1.5 mt-0.5">
-                  <span className="text-base">{block.icon}</span>
-                  {block.title}
-                </span>
-              </div>
-            </div>
-
-            {/* Right · exit button (no theme/user/notifs · this is a preview) */}
-            <div className="flex items-center gap-1 pr-1">
-              <button
-                onClick={onExit}
-                className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full text-xs font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
-                aria-label="Exit block preview"
-              >
-                <XMarkIcon className="w-4 h-4" />
-                Exit preview
-              </button>
-            </div>
-          </div>
-        </div>
+        <NavbarPill leading={leading} trailing={trailing} respectSidebar={false} />
 
         {/* Body · pt-24 matches Strata PageShell top padding */}
         <div className="pt-24 px-4 pb-20">

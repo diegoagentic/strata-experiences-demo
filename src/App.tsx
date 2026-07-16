@@ -225,7 +225,7 @@ function App() {
   if (activeBlock) {
     return (
       <GenUIProvider onNavigate={handleNavigate}>
-        <SharedBlockShell block={activeBlock} onExit={handleExitBlock} />
+        <SharedBlockShell block={activeBlock} onExit={handleExitBlock} onLogout={handleLogout} />
       </GenUIProvider>
     )
   }
