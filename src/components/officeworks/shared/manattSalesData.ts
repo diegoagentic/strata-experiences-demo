@@ -357,7 +357,7 @@ export const SALES_REPS: SalesRep[] = [
         openOpps: 67,
         qualifiedPipelineValueUSD: 12_400_000,
         quotaProgressPct: 78,
-        priorWinsWithAccount: { Metro Legal: 2, CBRE: 4 },
+        priorWinsWithAccount: { 'Metro Legal': 2, CBRE: 4 },
         onTimeResponseRatePct: 84,
         capacityFlag: 'optimal',
         lastActivityAt: '2026-05-13 09:02',
