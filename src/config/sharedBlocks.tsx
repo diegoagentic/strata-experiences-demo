@@ -39,6 +39,14 @@ import ConfidenceScoreBlock from '../blocks/ConfidenceScoreBlock';
 
 export type SharedBlockKind = 'shared-block' | 'widget';
 
+/**
+ * F18.polish · determines the frame around the block preview:
+ *  · 'strata-shell'     — Strata-branded compact navbar (default · Strata primitives).
+ *  · 'external-preview' — warning banner "legacy tool Strata replaces" (Email/ServiceNow clones).
+ *  · 'mobile-preview'   — phone-shaped frame around the body (mobile scenes).
+ */
+export type SharedBlockFrameMode = 'strata-shell' | 'external-preview' | 'mobile-preview';
+
 export interface SharedBlockEntry {
   id: string;                       // stable slug (matches ?block=<id> in URL)
   kind: SharedBlockKind;
@@ -46,6 +54,7 @@ export interface SharedBlockEntry {
   icon: string;                     // emoji
   description: string;              // one-liner shown in block header
   usedByExperiences?: string[];     // profile ids that consume this block (traceability)
+  frameMode?: SharedBlockFrameMode; // rendering frame · defaults to 'strata-shell'
   component: ComponentType;
 }
 
@@ -80,6 +89,7 @@ export const SHARED_BLOCKS: SharedBlockEntry[] = [
     icon: '📧',
     description: 'RFQ email intake · auto-queues for AI processing.',
     usedByExperiences: ['coi', 'acme'],
+    frameMode: 'external-preview',
     component: wrapSimulation(EmailSimulation),
   },
   {
@@ -143,6 +153,7 @@ export const SHARED_BLOCKS: SharedBlockEntry[] = [
     icon: '💬',
     description: 'Structured AI-guided survey (post-occupancy / intake).',
     usedByExperiences: ['continua', 'clc'],
+    frameMode: 'mobile-preview',
     component: wrapSimulation(ConversationalSurvey),
   },
   {
