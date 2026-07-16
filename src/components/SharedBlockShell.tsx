@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { XMarkIcon, ExclamationTriangleIcon, DevicePhoneMobileIcon } from '@heroicons/react/24/outline';
+import { XMarkIcon, ExclamationTriangleIcon, DevicePhoneMobileIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import type { SharedBlockEntry } from '../config/sharedBlocks';
 import { DEMO_PROFILES } from '../config/demoProfiles';
 import logoLightBrand from '../assets/logo-light-brand.png';
@@ -11,33 +11,30 @@ interface SharedBlockShellProps {
 }
 
 /**
- * SharedBlockShell · frame around a shared building block or widget preview.
+ * SharedBlockShell · frame around a shared building block preview.
  *
- * Renders one of three frames depending on `block.frameMode`:
+ * Uses the same floating-pill navbar look as the real Strata experiences
+ * (Navbar.tsx) so previews sit inside the ecosystem visually. Three modes:
  *
- *  · 'strata-shell'     (default) — top navbar with Strata logo + tenant crumb
- *    rotated from a random `usedByExperiences` entry. Signals "this block
- *    lives INSIDE a Strata experience".
+ *  · 'strata-shell'     (default) — floating pill navbar with Strata logo +
+ *    experience-style eyebrow ("SHARED BUILDING BLOCK · PREVIEW IN DEALER X")
+ *    + block title. Below the navbar, a small breadcrumb "Shared Blocks ›
+ *    Block Name". Body renders with the same pt-24 max-w-7xl treatment as
+ *    Strata's PageShell.
  *
- *  · 'external-preview'          — warning banner "External System Preview ·
- *    Legacy tool that Strata replaces". Body wrapped in a tinted warning
- *    envelope. Signals "this is what the user's existing tool looks like,
- *    before Strata".
+ *  · 'external-preview'          — warning-tinted top strip "External System
+ *    Preview · Legacy tool Strata replaces" + body in a tinted warning
+ *    envelope. Explicit signal that this is NOT Strata.
  *
- *  · 'mobile-preview'            — phone-shaped frame (max-w-[420px] rounded
- *    corners + border) around the body. Signals "this scene targets a mobile
- *    device".
- *
- * All three modes keep the top `Exit` button and the block's short
- * description below the frame chrome.
+ *  · 'mobile-preview'            — info-tinted top strip + body wrapped in
+ *    a phone frame (max-w-[420px] rounded corners + border).
  */
 export default function SharedBlockShell({ block, onExit }: SharedBlockShellProps) {
   const frameMode = block.frameMode ?? 'strata-shell';
   const Component = block.component;
 
-  // Tenant crumb: pick one usedByExperiences entry at random per open.
-  // Use useMemo(block.id) so the same block keeps the same crumb between
-  // re-renders within a session, but a fresh visit rerolls.
+  // Rotating tenant crumb · picks one usedByExperiences entry per open
+  // (memoized on block.id so it stays stable during the session).
   const tenantCrumb = useMemo(() => {
     const consumers = block.usedByExperiences ?? [];
     if (consumers.length === 0) return null;
@@ -49,45 +46,95 @@ export default function SharedBlockShell({ block, onExit }: SharedBlockShellProp
   }, [block.id]);
 
   const kindLabel =
-    frameMode === 'external-preview' ? 'External System Preview'
-    : frameMode === 'mobile-preview' ? 'Mobile Scene Preview'
-    : block.kind === 'widget' ? 'Widget'
+    block.kind === 'widget' ? 'Widget'
     : 'Shared Building Block';
 
-  // ─── strata-shell (default) ────────────────────────────────────────────
+  // ─── strata-shell (default) · floating-pill navbar + breadcrumb ────────
   if (frameMode === 'strata-shell') {
     return (
       <div className="min-h-screen bg-background">
-        {/* Strata-style compact navbar */}
-        <div className="sticky top-0 z-40 border-b border-border bg-card/85 backdrop-blur-xl">
-          <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-4 min-w-0">
-              <img src={logoLightBrand} alt="Strata" className="h-6 w-auto object-contain block dark:hidden shrink-0" />
-              <img src={logoDarkBrand}  alt="Strata" className="h-6 w-auto object-contain hidden dark:block shrink-0" />
-              <div className="h-6 w-px bg-border shrink-0" />
-              <div className="flex flex-col min-w-0">
-                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider leading-none">
+        {/* Floating-pill navbar · mimics src/components/Navbar.tsx */}
+        <div className="fixed top-6 z-50 flex justify-center px-4 left-0 right-0">
+          <div className="relative flex items-center lg:justify-between px-3 py-2 rounded-full gap-1 bg-card/80 backdrop-blur-xl border border-border shadow-lg dark:shadow-glow-md w-full max-w-7xl">
+            {/* Left · logo + experience-style title */}
+            <div className="flex items-center gap-1">
+              <div className="px-2 shrink-0">
+                <img src={logoLightBrand} alt="Strata" className="h-8 w-20 object-contain block dark:hidden" />
+                <img src={logoDarkBrand}  alt="Strata" className="h-8 w-20 object-contain hidden dark:block" />
+              </div>
+              <div className="h-6 w-px bg-border mx-1 hidden lg:block" />
+              <div className="flex flex-col items-start text-left px-2 py-1.5">
+                <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider leading-none">
                   {kindLabel}
-                  {tenantCrumb && <> · previewed inside <span className="text-foreground">{tenantCrumb}</span></>}
-                </p>
-                <h1 className="text-sm font-semibold text-foreground leading-tight truncate flex items-center gap-2 mt-0.5">
-                  <span className="text-base shrink-0">{block.icon}</span>
+                  {tenantCrumb && <> · preview in <span className="text-foreground">{tenantCrumb}</span></>}
+                </span>
+                <span className="text-sm font-bold text-foreground leading-tight flex items-center gap-1.5 mt-0.5">
+                  <span className="text-base">{block.icon}</span>
                   {block.title}
-                </h1>
+                </span>
               </div>
             </div>
-            <ExitButton onExit={onExit} />
-          </div>
-          {block.description && (
-            <div className="max-w-7xl mx-auto px-6 pb-3">
-              <p className="text-xs text-muted-foreground">{block.description}</p>
+
+            {/* Right · exit button (no theme/user/notifs · this is a preview) */}
+            <div className="flex items-center gap-1 pr-1">
+              <button
+                onClick={onExit}
+                className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full text-xs font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                aria-label="Exit block preview"
+              >
+                <XMarkIcon className="w-4 h-4" />
+                Exit preview
+              </button>
             </div>
-          )}
+          </div>
         </div>
 
-        {/* Block body — rendered as if it were inside a Strata page */}
-        <div>
-          <Component />
+        {/* Body · pt-24 matches Strata PageShell top padding */}
+        <div className="pt-24 px-4 pb-20">
+          <div className="max-w-7xl mx-auto">
+            {/* Breadcrumbs · matches Strata Dashboard › Transactions pattern */}
+            <nav className="flex items-center gap-1.5 text-xs text-muted-foreground mb-4" aria-label="Breadcrumb">
+              <button
+                onClick={onExit}
+                className="hover:text-foreground transition-colors"
+              >
+                Shared Blocks
+              </button>
+              <ChevronRightIcon className="w-3 h-3 shrink-0" />
+              <span className="text-foreground font-medium">{block.title}</span>
+            </nav>
+
+            {/* Title + description · matches Strata PageShell header */}
+            <header className="pb-4 mb-6 border-b border-border">
+              <div className="flex items-start gap-3">
+                <div className="h-10 w-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 text-lg">
+                  {block.icon}
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <span className="font-medium uppercase tracking-wider">{kindLabel}</span>
+                    {tenantCrumb && (
+                      <>
+                        <span>·</span>
+                        <span>Preview inside {tenantCrumb}</span>
+                      </>
+                    )}
+                  </div>
+                  <h1 className="text-2xl font-bold text-foreground leading-tight mt-0.5">
+                    {block.title}
+                  </h1>
+                  {block.description && (
+                    <p className="text-sm text-muted-foreground mt-1 max-w-3xl">
+                      {block.description}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </header>
+
+            {/* Block body */}
+            <Component />
+          </div>
         </div>
       </div>
     );
@@ -97,7 +144,6 @@ export default function SharedBlockShell({ block, onExit }: SharedBlockShellProp
   if (frameMode === 'external-preview') {
     return (
       <div className="min-h-screen bg-background">
-        {/* Warning banner · signals legacy external tool */}
         <div className="sticky top-0 z-40 border-b border-warning/30 bg-warning/10 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
             <div className="flex items-center gap-3 min-w-0">
@@ -124,7 +170,6 @@ export default function SharedBlockShell({ block, onExit }: SharedBlockShellProp
           )}
         </div>
 
-        {/* Block body — framed in a warning envelope */}
         <div className="p-4 max-w-7xl mx-auto">
           <div className="rounded-2xl border-2 border-dashed border-warning/40 bg-muted/20 overflow-hidden">
             <Component />
@@ -137,7 +182,6 @@ export default function SharedBlockShell({ block, onExit }: SharedBlockShellProp
   // ─── mobile-preview ────────────────────────────────────────────────────
   return (
     <div className="min-h-screen bg-background">
-      {/* Compact Strata-style header */}
       <div className="sticky top-0 z-40 border-b border-border bg-card/85 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0">
@@ -146,7 +190,7 @@ export default function SharedBlockShell({ block, onExit }: SharedBlockShellProp
             </div>
             <div className="min-w-0">
               <p className="text-[10px] font-bold text-info uppercase tracking-wider leading-none">
-                {kindLabel}
+                Mobile Scene Preview
                 {tenantCrumb && <> · previewed inside <span className="text-foreground">{tenantCrumb}</span></>}
               </p>
               <h1 className="text-sm font-semibold text-foreground leading-tight truncate flex items-center gap-2 mt-0.5">
@@ -164,7 +208,6 @@ export default function SharedBlockShell({ block, onExit }: SharedBlockShellProp
         )}
       </div>
 
-      {/* Phone frame around the body */}
       <div className="py-10 flex items-start justify-center bg-muted/10">
         <div className="w-full max-w-[420px] rounded-[2.5rem] border-[10px] border-foreground/85 bg-background shadow-2xl overflow-hidden">
           <Component />
