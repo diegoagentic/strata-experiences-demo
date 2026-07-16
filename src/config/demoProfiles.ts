@@ -35,7 +35,7 @@ export type SimulationApp =
     | 'leland-strata' | 'leland-inbox' | 'leland-seradex' | 'leland-review'
     | 'bfi-agency-fee' | 'bfi-receiving'
     | 'workspaces-submit' | 'workspaces-approval' | 'workspaces-ap' | 'workspaces-reporting'
-    | 'officeworks-intake' | 'officeworks-design' | 'officeworks-spec-check' | 'officeworks-submission' | 'officeworks-dashboard'
+    | 'officeworks-intake' | 'officeworks-design' | 'officeworks-spec-check' | 'officeworks-submission' | 'officeworks-dashboard' | 'officeworks-labor' | 'officeworks-sales'
     | 'clc-calendar' | 'clc-sharepoint' | 'clc-intake' | 'clc-dashboard';
 
 export interface DemoStep {

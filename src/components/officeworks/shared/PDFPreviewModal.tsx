@@ -122,6 +122,7 @@ export default function PDFPreviewModal({ isOpen, onClose, pdfSrc, title, subtit
 /** Convenience helper: PDF asset paths (served from public/officeworks-pdfs/) */
 export const OFFICEWORKS_PDFS = {
     poAcknowledgment: '/officeworks-pdfs/PO-DC-0009642.pdf',
-    designChecklist: '/officeworks-pdfs/OW_Design_Checklist_-_2026.pdf',
-    auditChecklist: '/officeworks-pdfs/OW_Audit_Checklist_-_2026.pdf',
+    manattBOM:        '/officeworks-pdfs/MANATT-4F_BOM_v1.pdf',
+    designChecklist:  '/officeworks-pdfs/OW_Design_Checklist_-_2026.pdf',
+    auditChecklist:   '/officeworks-pdfs/OW_Audit_Checklist_-_2026.pdf',
 } as const

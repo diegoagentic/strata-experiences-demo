@@ -16,7 +16,7 @@ import {
     X, Briefcase, Clock, AlertTriangle, TrendingUp, MapPin, Award, UserCheck, CheckCircle2,
 } from 'lucide-react'
 import { useDemo } from '../../../context/DemoContext'
-import { type DesignerProfile, regionLabel, seniorityClass } from './designerProfiles'
+import { type DesignerProfile, regionLabel, seniorityClass, computeCapacity } from './designerProfiles'
 
 interface Props {
     isOpen: boolean
@@ -119,7 +119,12 @@ export default function DesignerDetailModal({
                                         <div className="bg-card border border-border rounded-xl p-3">
                                             <div className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1">Utilization</div>
                                             <div className={`text-2xl font-semibold tabular-nums ${utilizationColor}`}>{utilization}%</div>
-                                            <div className="text-[10px] text-muted-foreground mt-0.5">live capacity</div>
+                                            <div className="text-[10px] text-muted-foreground mt-0.5">
+                                                {(() => {
+                                                    const c = computeCapacity(designer)
+                                                    return `${c.committedHours}h committed · ${c.availableHours}h available · ${c.freeHours}h free`
+                                                })()}
+                                            </div>
                                         </div>
                                         <div className="bg-card border border-border rounded-xl p-3">
                                             <div className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1">Active</div>

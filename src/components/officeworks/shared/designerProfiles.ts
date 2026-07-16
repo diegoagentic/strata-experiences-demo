@@ -16,6 +16,19 @@ export interface ActiveProject {
     value: number
     stage: 'Intake' | 'Design' | 'Spec Check' | 'Submission' | 'Acknowledgment'
     progress: number  // 0-100
+    /**
+     * Committed hours this week for this project · participates in the SUMIF on
+     * Form Responses 1 (column O = designer, column P = hours). Optional so the
+     * fallback in computeCapacity() can derive committed hours from utilization
+     * for designers without per-project hour entries yet.
+     */
+    weeklyHours?: number
+}
+
+/** Obligation that reduces a designer's available hours (PTO, training, lead 1:1s, etc.) */
+export interface Obligation {
+    label: string
+    hoursPerWeek: number
 }
 
 export interface DesignerProfile {
@@ -23,7 +36,17 @@ export interface DesignerProfile {
     region: Region
     seniority: Seniority
     yearsAtOW: number
-    utilization: number  // matches CapacityHeatmap exactly
+    /**
+     * Stored utilization · drives chip color + sort order. May differ from
+     * computeCapacity(...).utilization by ±2% when project hours don't divide
+     * exactly into the available bucket — the breakdown is the source of truth
+     * for the math display.
+     */
+    utilization: number
+    /** Standard hours per week before obligations. Defaults to 40 in computeCapacity. */
+    availableHoursPerWeek?: number
+    /** PTO / training / lead time / etc — subtracted from availableHoursPerWeek. */
+    obligations?: Obligation[]
     projects: {
         active: ActiveProject[]
         completedYTD: number
@@ -41,6 +64,47 @@ export interface DesignerProfile {
     }
     priorMANATT?: boolean
     isLead?: boolean
+}
+
+/** Capacity breakdown as the stakeholder's spreadsheet describes it. */
+export interface CapacityBreakdown {
+    standardHours: number      // 40 default
+    obligations: Obligation[]
+    obligationHours: number    // sum
+    availableHours: number     // max(0, standardHours − obligationHours)
+    projectHours: number       // Σ active.weeklyHours
+    committedHours: number     // = projectHours, or fallback to stored utilization
+    freeHours: number          // max(0, availableHours − committedHours)
+    utilization: number        // round(committed / available × 100)
+}
+
+/**
+ * Reproduce the stakeholder's spreadsheet formula:
+ *   Utilization % = Committed Hours ÷ Available Hours
+ *   Committed   = =SUMIF('Form Responses 1'!O:O, designer, 'Form Responses 1'!P:P)
+ *   Available   = standard hours per week − PTO / training / other obligations
+ *
+ * Fallback: when a profile has no per-project hours yet (active: [] or no
+ * weeklyHours), derive committed from the stored utilization so the displayed
+ * numbers stay consistent with chip colors and sort order.
+ */
+export function computeCapacity(profile: DesignerProfile): CapacityBreakdown {
+    const standardHours = profile.availableHoursPerWeek ?? 40
+    const obligations = profile.obligations ?? []
+    const obligationHours = obligations.reduce((s, o) => s + o.hoursPerWeek, 0)
+    const availableHours = Math.max(0, standardHours - obligationHours)
+    const projectHours = profile.projects.active.reduce((s, p) => s + (p.weeklyHours ?? 0), 0)
+    const committedHours = projectHours > 0
+        ? projectHours
+        : Math.round((profile.utilization / 100) * availableHours)
+    const freeHours = Math.max(0, availableHours - committedHours)
+    const utilization = availableHours > 0
+        ? Math.round((committedHours / availableHours) * 100)
+        : 0
+    return {
+        standardHours, obligations, obligationHours,
+        availableHours, projectHours, committedHours, freeHours, utilization,
+    }
 }
 
 const REGION_LABEL: Record<Region, string> = {
@@ -68,34 +132,39 @@ export const DESIGNER_PROFILES: DesignerProfile[] = [
     // ── DC + Southern (Felicia's region · 10 designers) ──
     {
         name: 'Felicia Miano-Poles', region: 'dc', seniority: 'Lead', yearsAtOW: 25, utilization: 95, isLead: true, priorMANATT: true,
+        availableHoursPerWeek: 40,
+        obligations: [{ label: 'Lead 1:1s + reviews', hoursPerWeek: 2 }],
         projects: { active: [
-            { code: 'NYC-DOH-2847', client: 'NYC Dept. of Health', value: 148200, stage: 'Intake', progress: 5 },
-            { code: 'GSA-DC-1102', client: 'GSA · DC2 expansion', value: 642000, stage: 'Spec Check', progress: 65 },
+            { code: 'NYC-DOH-2847', client: 'NYC Dept. of Health', value: 148200, stage: 'Intake', progress: 5,   weeklyHours: 6 },
+            { code: 'GSA-DC-1102',  client: 'GSA · DC2 expansion', value: 642000, stage: 'Spec Check', progress: 65, weeklyHours: 30 },
         ], completedYTD: 28, largeProjects: 6, mediumProjects: 14, smallProjects: 8, totalValueYTD: 8_400_000 },
         areas: ['DC', 'GSA', 'Government', 'Healthcare', 'Higher Ed'],
         kpis: { avgCycleTime: 3.2, errorRate: 0.012, revisionsPerProject: 2.1, peerReviewsCompletedYTD: 54 },
     },
     {
         name: 'Sandra Park', region: 'dc', seniority: 'Senior', yearsAtOW: 9, utilization: 72,
+        availableHoursPerWeek: 40,
         projects: { active: [
-            { code: 'GSA-DC2-0892', client: 'GSA · DC2', value: 76500, stage: 'Submission', progress: 88 },
-            { code: 'NYC-DCAS-1182', client: 'NYC DCAS', value: 127400, stage: 'Design', progress: 35 },
+            { code: 'GSA-DC2-0892',  client: 'GSA · DC2', value: 76500, stage: 'Submission', progress: 88, weeklyHours: 10 },
+            { code: 'NYC-DCAS-1182', client: 'NYC DCAS', value: 127400, stage: 'Design',     progress: 35, weeklyHours: 19 },
         ], completedYTD: 19, largeProjects: 2, mediumProjects: 10, smallProjects: 7, totalValueYTD: 3_200_000 },
         areas: ['DC', 'Federal', 'GSA'],
         kpis: { avgCycleTime: 3.6, errorRate: 0.018, revisionsPerProject: 2.4, peerReviewsCompletedYTD: 32 },
     },
     {
         name: 'James O\'Brien', region: 'dc', seniority: 'Senior', yearsAtOW: 7, utilization: 88,
+        availableHoursPerWeek: 40,
         projects: { active: [
-            { code: 'JPM-ATL-4471', client: 'JPMorgan · Atlanta HQ', value: 892400, stage: 'Spec Check', progress: 70 },
+            { code: 'JPM-ATL-4471', client: 'JPMorgan · Atlanta HQ', value: 892400, stage: 'Spec Check', progress: 70, weeklyHours: 35 },
         ], completedYTD: 15, largeProjects: 4, mediumProjects: 8, smallProjects: 3, totalValueYTD: 5_800_000 },
         areas: ['DC', 'Atlanta', 'Financial Services'],
         kpis: { avgCycleTime: 4.1, errorRate: 0.020, revisionsPerProject: 2.6, peerReviewsCompletedYTD: 28 },
     },
     {
         name: 'Maya Patel', region: 'dc', seniority: 'Mid', yearsAtOW: 4, utilization: 45, priorMANATT: true,
+        availableHoursPerWeek: 40,
         projects: { active: [
-            { code: 'AMD-DC-3320', client: 'American Diabetes Assoc.', value: 38500, stage: 'Design', progress: 50 },
+            { code: 'AMD-DC-3320', client: 'American Diabetes Assoc.', value: 38500, stage: 'Design', progress: 50, weeklyHours: 18 },
         ], completedYTD: 22, largeProjects: 1, mediumProjects: 8, smallProjects: 13, totalValueYTD: 1_400_000 },
         areas: ['DC', 'Nonprofit', 'Healthcare'],
         kpis: { avgCycleTime: 3.4, errorRate: 0.015, revisionsPerProject: 2.2, peerReviewsCompletedYTD: 18 },
@@ -140,8 +209,12 @@ export const DESIGNER_PROFILES: DesignerProfile[] = [
     // ── MA / NY / NJ (Rebecca's region · 10 designers) ──
     {
         name: 'Rebecca Warren', region: 'ma', seniority: 'Lead', yearsAtOW: 15, utilization: 89, isLead: true,
+        availableHoursPerWeek: 40,
+        obligations: [{ label: 'Lead 1:1s + peer reviews', hoursPerWeek: 4 }],
         projects: { active: [
-            { code: 'HSBC-HY-9921', client: 'HSBC · Hudson Yards', value: 1_240_000, stage: 'Acknowledgment', progress: 95 },
+            { code: 'HSBC-HY-9921',  client: 'HSBC · Hudson Yards',   value: 1_240_000, stage: 'Acknowledgment', progress: 95, weeklyHours: 4 },
+            { code: 'BNY-NJ-2293',   client: 'BNY Mellon · Jersey C.', value: 720_000,  stage: 'Design',         progress: 60, weeklyHours: 18 },
+            { code: 'MIT-LAB-0917',  client: 'MIT · Lab fit-out',     value: 380_000,  stage: 'Spec Check',     progress: 40, weeklyHours: 10 },
         ], completedYTD: 31, largeProjects: 8, mediumProjects: 15, smallProjects: 8, totalValueYTD: 11_200_000 },
         areas: ['NYC', 'NJ', 'Boston', 'Financial Services', 'Corporate', 'LEED'],
         kpis: { avgCycleTime: 3.0, errorRate: 0.009, revisionsPerProject: 1.8, peerReviewsCompletedYTD: 62 },
@@ -203,10 +276,11 @@ export const DESIGNER_PROFILES: DesignerProfile[] = [
 
     // ── PA + Pittsburgh + Ancillary (Kimberly's region · 10 designers) ──
     {
-        name: 'Kimberly Tucker', region: 'pa', seniority: 'Lead', yearsAtOW: 12, utilization: 65, isLead: true, priorMANATT: true,
+        name: 'Kimberly Tucker', region: 'pa', seniority: 'Lead', yearsAtOW: 12, utilization: 45, isLead: true, priorMANATT: true,
+        availableHoursPerWeek: 40,
         projects: { active: [
-            { code: 'PHI-LAW-2204', client: 'Philly Law Firm', value: 286000, stage: 'Design', progress: 40 },
-            { code: 'CMU-ANC-0118', client: 'CMU Ancillary', value: 92500, stage: 'Submission', progress: 85 },
+            { code: 'PHI-LAW-2204', client: 'Philly Law Firm', value: 286000, stage: 'Design',     progress: 40, weeklyHours: 14 },
+            { code: 'CMU-ANC-0118', client: 'CMU Ancillary',  value: 92500,  stage: 'Submission', progress: 85, weeklyHours: 4 },
         ], completedYTD: 26, largeProjects: 5, mediumProjects: 14, smallProjects: 7, totalValueYTD: 7_800_000 },
         areas: ['Philly', 'Pittsburgh', 'Ancillary', 'Higher Ed', 'Corporate'],
         kpis: { avgCycleTime: 3.1, errorRate: 0.011, revisionsPerProject: 1.9, peerReviewsCompletedYTD: 48 },

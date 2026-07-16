@@ -299,6 +299,8 @@ function App() {
     { name: 'Design AI', page: 'officeworks-design', icon: PencilIcon },
     { name: 'Spec Check AI', page: 'officeworks-spec-check', icon: ClipboardCheckIcon },
     { name: 'Submission AI', page: 'officeworks-submission', icon: SendIcon },
+    { name: 'Labor & Delivery', page: 'officeworks-labor', icon: WrenchScrewdriverIcon },
+    { name: 'Sales AI', page: 'officeworks-sales', icon: BanknotesIcon },
   ];
   const clcNav = [
     { name: 'Schedule AI', page: 'clc-calendar', icon: CalendarIcon },
@@ -482,6 +484,8 @@ function App() {
       'officeworks-design': 'officeworks-design',
       'officeworks-spec-check': 'officeworks-spec-check',
       'officeworks-submission': 'officeworks-submission',
+      'officeworks-labor': 'officeworks-labor',
+      'officeworks-sales': 'officeworks-sales',
       // CLC Demo: 4 tabs (Calendar · SharePoint · Intake · Dashboard)
       'clc-calendar': 'clc-calendar',
       'clc-sharepoint': 'clc-sharepoint',
@@ -599,6 +603,8 @@ function App() {
       case 'officeworks-design':
       case 'officeworks-spec-check':
       case 'officeworks-submission':
+      case 'officeworks-labor':
+      case 'officeworks-sales':
         if (officeworksDashboardActive) return <OfficeworksDashboardPage />
         return <OfficeworksPage />;
       case 'officeworks-dashboard':

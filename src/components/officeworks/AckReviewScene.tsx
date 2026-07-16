@@ -240,27 +240,9 @@ export default function AckReviewScene({ onContinue }: Props) {
 
             {/* Summary cards */}
             <div className="grid grid-cols-3 gap-3">
-                <HeroMetric
-                    tone="success"
-                    label="Match"
-                    value={matchCount}
-                    sub="fields aligned"
-                    icon={<CheckCircle2 className="h-4 w-4" />}
-                />
-                <HeroMetric
-                    tone="warning"
-                    label="Partial"
-                    value={partialCount}
-                    sub="auto-resolvable"
-                    icon={<AlertTriangle className="h-4 w-4" />}
-                />
-                <HeroMetric
-                    tone="danger"
-                    label="Mismatch"
-                    value={mismatchCount}
-                    sub="requires review"
-                    icon={<XCircle className="h-4 w-4" />}
-                />
+                <HeroMetric tone="success" label="Match"    value={matchCount}    sub="fields aligned"  icon={<CheckCircle2 className="h-4 w-4" />} />
+                <HeroMetric tone="warning" label="Partial"  value={partialCount}  sub="auto-resolvable" icon={<AlertTriangle className="h-4 w-4" />} />
+                <HeroMetric tone="danger"  label="Mismatch" value={mismatchCount} sub="requires review" icon={<XCircle className="h-4 w-4" />} />
             </div>
 
             {/* Diff table */}
