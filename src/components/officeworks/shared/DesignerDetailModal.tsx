@@ -23,8 +23,8 @@ interface Props {
     onClose: () => void
     designer: DesignerProfile | null
     /** When set, shows "Assign to Metro Legal" CTA (passed from Dashboard during intake) */
-    canAssignToMetro Legal?: boolean
-    onAssignToMetro Legal?: () => void
+    canAssignToClient?: boolean
+    onAssignToClient?: () => void
 }
 
 const STAGE_BADGE: Record<string, string> = {
@@ -36,7 +36,7 @@ const STAGE_BADGE: Record<string, string> = {
 }
 
 export default function DesignerDetailModal({
-    isOpen, onClose, designer, canAssignToMetro Legal = false, onAssignToMetro Legal,
+    isOpen, onClose, designer, canAssignToClient = false, onAssignToClient,
 }: Props) {
     const { isSidebarCollapsed, isDemoActive } = useDemo()
     const leftOffset = isDemoActive && !isSidebarCollapsed ? 'left-80' : 'left-0'
@@ -262,14 +262,14 @@ export default function DesignerDetailModal({
                                 </div>
 
                                 {/* Footer (optional Assign to Metro Legal) */}
-                                {canAssignToMetro Legal && (
+                                {canAssignToClient && (
                                     <div className="border-t border-border px-6 py-3 shrink-0 bg-card flex items-center justify-between gap-3">
                                         <div className="text-xs text-muted-foreground">
                                             <span className="font-medium text-foreground">{name}</span> can take on Metro Legal 4th Floor (~30 stations · DC GSA)
                                         </div>
                                         <button
                                             type="button"
-                                            onClick={onAssignToMetro Legal}
+                                            onClick={onAssignToClient}
                                             className="inline-flex items-center gap-2 h-10 px-4 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-medium transition-colors"
                                         >
                                             <UserCheck className="h-4 w-4" />
