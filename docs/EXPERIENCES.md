@@ -138,3 +138,65 @@ Basado en # experiencias touched del CSV + prioridad comercial:
   en dropdown).
 - RoleSwitcher generalizado · **F3 done** (`roleSignal` + `<RoleSwitcher />`
   registry-driven).
+
+## Referente Strata · mapping a plataformas del monorepo (F18.polish.v2 Paso E)
+
+Cada experience / shared block / widget del catálogo tiene un **referente**
+en el monorepo `strata-projects/config-evolution/`. El referente es la fuente
+canónica del canvas (código de producción o proto avanzado) que este demo
+adapta para presentación end-to-end. Sirve para decidir dónde iterar la UI
+"real" vs dónde iterar solo la narrativa demo.
+
+### Experiences (14)
+
+| Profile | Referente Strata |
+|---|---|
+| `wrg` | `strata-experiences-demo/src/features/strata-estimator/` (self-contained) |
+| `dupler` | `strata-experiences-demo/src/components/simulations/Dupler*.tsx` (self) |
+| `clc` | `demo-2026-strata/src/components/clc/` (importado F2.5) |
+| `officeworks` | `demo-2026-strata/src/components/officeworks/` (importado F16.5.6) · gemelo `demo-officeworks/` |
+| `bfi` | `bfi-research/` + `inbound-outbound/src/components/bfi/` |
+| `leland` | `strata-experiences-demo/src/features/leland/` (self, importado F5) |
+| `mbi` | `inbound-outbound/src/components/mbi/` |
+| `crm` | `demo-2026-strata/src/components/crm/` |
+| `inbound-outbound` | `inbound-outbound/` (base repo del clon · F1) |
+| `workspaces` | `demo-2026-strata/src/components/workspaces/` |
+| `continua` | `UI-Dealer/` (branches `isContinua && stepId==='X.X'`) |
+| `ops` | `UI-Dealer/` (branches `isOps && stepId==='X.X'`) |
+| `coi` | `UI-Dealer/` (Email + Kanban + ExpertHub + MAC + CRM + Dashboard) |
+| `acme` | `UI-Dealer/` (mismo stack que COI · sin steps CRM) |
+
+### Shared building blocks (14)
+
+| Block | Referente Strata |
+|---|---|
+| `email-ingestion` | `expert-catalog/` email intake + `UI-Dealer/` EmailSimulation |
+| `dealer-kanban` | `UI-Manufacturer/src/components/simulations/DealerMonitorKanban.tsx` |
+| `expert-hub-tx` | `expert-hub/` + `UI-Dealer/` ExpertHubTransactions |
+| `mac` | `UI-Dealer/` MAC page (Service Center) |
+| `dashboard-shell` | `UI-Dealer/` Dashboard (rollups + approvals + financials) |
+| `crm-sim` | `demo-2026-strata/src/components/crm/` (compartido con experience `crm`) |
+| `approval-chain` | `UI-Dealer/src/components/modals/ApprovalChainModal.tsx` |
+| `conv-survey` | `demo-2026-strata/src/components/clc/` + `continua/` survey scenes |
+| `inventory-mgmt` | `UI-Dealer/` Inventory page |
+| `tx-screen` | `UI-Dealer/` Transactions page |
+| `catalog-rules` | `UI-Dealer/` Catalogs page |
+| `order-forms` | `UI-Dealer/src/components/modals/OrderCreationForm.tsx` |
+| `erp-sync` | `UI-Dealer/src/components/modals/ERPSyncModal.tsx` |
+| `notif-center` | `UI-Dealer/src/components/notifications/ActionCenter.tsx` |
+
+### Widgets (3)
+
+| Widget | Referente Strata |
+|---|---|
+| `three-way-match` | `UI-Dealer/` ThreeWayMatchView (dentro de AckDetail/OrderDetail) |
+| `smart-quote-hub` | `quote-converter/` + `expert-catalog/smartquote/` |
+| `confidence-score` | Primitiva DS `strata-design-system/ConfidenceIndicator` |
+
+### Convención
+
+- **`(self)`** — el canvas vive dentro del propio `strata-experiences-demo`
+  (importado en F2/F5/F16.5.6 desde el referente y evoluciona in-place).
+- **`monorepo path`** sin `(self)` — el canvas equivalente en producción
+  está en el path indicado · tocar UI grande aquí implica back-port al
+  referente (o marcar drift).
