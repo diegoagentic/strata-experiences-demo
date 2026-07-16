@@ -61,11 +61,11 @@ interface ShipmentRow {
 }
 
 const SHIPMENTS: ShipmentRow[] = [
-    { id: 'SHP-2026-018', orderId: '#ORD-2055', dealer: 'NorthPoint Furniture Group', project: 'Tech HQ Buildout', eta: 'Mar 20, 2026', carrier: 'FedEx Freight LTL', trackingNumber: '129483-AB-2055', status: 'Ready to ship', source: 'Email', daysToETA: 8, lastNotificationAt: '2026-01-22 09:14' },
+    { id: 'SHP-2026-018', orderId: '#ORD-2055', dealer: 'Northline Furniture Group', project: 'Tech HQ Buildout', eta: 'Mar 20, 2026', carrier: 'FedEx Freight LTL', trackingNumber: '129483-AB-2055', status: 'Ready to ship', source: 'Email', daysToETA: 8, lastNotificationAt: '2026-01-22 09:14' },
     { id: 'SHP-2026-017', orderId: '#ORD-2053', dealer: 'Pacific Workspaces', project: 'Lobby Refresh', eta: 'Jan 30, 2026', carrier: 'XPO Logistics', trackingNumber: 'XPO-558122', status: 'Shipped', source: 'Email', daysToETA: 2, lastNotificationAt: '2026-01-21 16:30' },
     { id: 'SHP-2026-016', orderId: '#ORD-2054', dealer: 'Cascade Workplace Co', project: 'HQ Upgrade · Floor 18', eta: 'Feb 15, 2026', carrier: 'YRC Worldwide', trackingNumber: 'YRC-118876', status: 'Shipped', source: 'Email', daysToETA: 18, lastNotificationAt: '2026-01-19 11:42' },
     { id: 'SHP-2026-015', orderId: '#ORD-2052', dealer: 'Global Furniture Partners', project: 'Warehouse Office', eta: 'Dec 15, 2025', carrier: 'DB Schenker', trackingNumber: 'DBS-998012', status: 'Delivered', source: 'Email', daysToETA: -8, lastNotificationAt: '2025-12-15 17:20' },
-    { id: 'SHP-2026-014', orderId: '#ORD-2050', dealer: 'Heritage Office Group', project: 'Residential A', eta: 'Apr 2, 2026', carrier: 'Estes Express', trackingNumber: 'EXP-440891', status: 'Shipped', delayed: true, source: 'Email', daysToETA: 26, lastNotificationAt: '2026-01-20 14:08' },
+    { id: 'SHP-2026-014', orderId: '#ORD-2050', dealer: 'Legacy Office Group', project: 'Residential A', eta: 'Apr 2, 2026', carrier: 'Estes Express', trackingNumber: 'EXP-440891', status: 'Shipped', delayed: true, source: 'Email', daysToETA: 26, lastNotificationAt: '2026-01-20 14:08' },
     { id: 'SHP-2026-013', orderId: '#ORD-2048', dealer: 'Midwest Contract Furniture', project: 'Mountain Retreat Lodge', eta: 'Feb 20, 2026', carrier: 'FedEx Freight LTL', trackingNumber: 'FDX-7700521', status: 'Ready to ship', source: 'Email', daysToETA: 24, lastNotificationAt: '2026-01-18 08:55' },
     { id: 'SHP-2026-012', orderId: '#ORD-2047', dealer: 'Apex Office Design', project: 'Sky Vista · Tower 3', eta: 'Feb 5, 2026', carrier: 'XPO Logistics', trackingNumber: 'XPO-558118', status: 'Shipped', source: 'Email', daysToETA: 9, lastNotificationAt: '2026-01-21 10:14' },
 ]

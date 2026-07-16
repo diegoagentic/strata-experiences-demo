@@ -37,21 +37,21 @@ interface IngestionEvent {
 
 // Seed of recent events — what "just arrived" via the monitored Inbox.
 const INITIAL_EVENTS: IngestionEvent[] = [
-    { id: 'INB-001', type: 'RFQ', vendor: 'NorthPoint Furniture Group', source: 'Email', minutesAgo: 2 },
+    { id: 'INB-001', type: 'RFQ', vendor: 'Northline Furniture Group', source: 'Email', minutesAgo: 2 },
     { id: 'INB-002', type: 'PO',  vendor: 'Cascade Workplace Co',        source: 'Email', minutesAgo: 5 },
     { id: 'INB-003', type: 'RFQ', vendor: 'Pacific Workspaces',          source: 'Email', minutesAgo: 9 },
-    { id: 'INB-004', type: 'Ack', vendor: 'Heritage Office Group',       source: 'Email', minutesAgo: 14 },
+    { id: 'INB-004', type: 'Ack', vendor: 'Legacy Office Group',       source: 'Email', minutesAgo: 14 },
     { id: 'INB-005', type: 'PO',  vendor: 'Summit Office Solutions',     source: 'Email', minutesAgo: 22 },
-    { id: 'INB-006', type: 'RFQ', vendor: 'Beacon Hill Furnishings',     source: 'Email', minutesAgo: 31 },
+    { id: 'INB-006', type: 'RFQ', vendor: 'Bayline Furnishings',     source: 'Email', minutesAgo: 31 },
 ]
 
 // Pool used by auto-spawn — cycle so the feed feels alive during the demo.
 const SPAWN_POOL: Omit<IngestionEvent, 'id' | 'minutesAgo'>[] = [
     { type: 'RFQ', vendor: 'Apex Office Design',         source: 'Email' },
     { type: 'PO',  vendor: 'Midwest Contract Furniture', source: 'Email' },
-    { type: 'Ack', vendor: 'NorthPoint Furniture Group', source: 'Email' },
-    { type: 'RFQ', vendor: 'Coastal Hospitality Group',  source: 'Email' },
-    { type: 'PO',  vendor: 'Heritage Office Group',      source: 'Email' },
+    { type: 'Ack', vendor: 'Northline Furniture Group', source: 'Email' },
+    { type: 'RFQ', vendor: 'Waterside Hospitality Group',  source: 'Email' },
+    { type: 'PO',  vendor: 'Legacy Office Group',      source: 'Email' },
     { type: 'RFQ', vendor: 'Global Furniture Partners',  source: 'Email' },
     { type: 'Ack', vendor: 'Pacific Workspaces',         source: 'Email' },
 ]

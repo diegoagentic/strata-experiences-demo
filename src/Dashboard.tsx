@@ -257,7 +257,7 @@ const recentActivity = [
         details: {
             fields: [
                 { label: 'CARRIER', value: 'FedEx Freight LTL — Pro #FF884712' },
-                { label: 'DEALER', value: 'NorthPoint Furniture Group' },
+                { label: 'DEALER', value: 'Northline Furniture Group' },
                 { label: 'ORIGIN', value: 'Leland Furniture · Grand Rapids, MI' },
                 { label: 'DESTINATION', value: 'Continua IL Warehouse · Lincolnshire, IL' },
                 { label: 'ORIGINAL ETA', value: 'Mar 20, 2026' },

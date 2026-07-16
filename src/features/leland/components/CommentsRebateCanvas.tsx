@@ -37,7 +37,7 @@ const UDFS: UdfField[] = [
     { label: 'Project Name', value: HERO_PO_HAPPY.project },
     { label: 'Bill To Contact', value: 'ndiaks@northeast.example' },
     { label: 'Industry', value: 'Higher Education' },
-    { label: 'Specifier', value: 'Northeast Office Group' },
+    { label: 'Specifier', value: 'Coastal Office Group' },
 ];
 
 const STAGGER_MS = 350;

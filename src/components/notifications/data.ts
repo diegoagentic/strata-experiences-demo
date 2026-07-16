@@ -8,7 +8,7 @@ export const mockNotifications: Notification[] = [
         priority: 'high',
         title: 'Shipment Delayed — ORD-2056',
         message: 'Carrier weather hold on I-80 · +8d delay. New ETA Mar 28 (was Mar 20). Dealer notification recommended · 24hr call-before-delivery required.',
-        meta: 'CarrierTrackingAgent · NorthPoint Furniture Group',
+        meta: 'CarrierTrackingAgent · Northline Furniture Group',
         timestamp: 'Just now',
         unread: true,
         actions: [

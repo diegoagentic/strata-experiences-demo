@@ -137,8 +137,8 @@ interface ListDoc {
 }
 
 const LIST_SEED: { id: string; name: string; vendor: string; kind: DocKind; status: ListStatus; reviewStatus: ReviewStatus; dateLabel: string; assignee: string }[] = [
-    { id: 'D-001', name: 'NorthPoint RFQ-2026-001', vendor: 'NorthPoint Furniture Group', kind: 'RFQ', status: 'ready', reviewStatus: 'pending', dateLabel: '2 days ago', assignee: 'SC' },
-    { id: 'D-002', name: 'Quote QT-1025', vendor: 'NorthPoint Furniture Group', kind: 'Quote', status: 'ready', reviewStatus: 'reviewed', dateLabel: '2 days ago', assignee: 'SC' },
+    { id: 'D-001', name: 'NorthPoint RFQ-2026-001', vendor: 'Northline Furniture Group', kind: 'RFQ', status: 'ready', reviewStatus: 'pending', dateLabel: '2 days ago', assignee: 'SC' },
+    { id: 'D-002', name: 'Quote QT-1025', vendor: 'Northline Furniture Group', kind: 'Quote', status: 'ready', reviewStatus: 'reviewed', dateLabel: '2 days ago', assignee: 'SC' },
     { id: 'D-003', name: 'Leland Order SO2604102', vendor: 'Leland Furniture', kind: 'Order', status: 'completed', reviewStatus: 'reviewed', dateLabel: '3 days ago', assignee: 'DP' },
     { id: 'D-004', name: 'Acknowledgement ORD-2055', vendor: 'AIS · Affordable Interior Systems', kind: 'Acknowledgement', status: 'ready', reviewStatus: 'pending', dateLabel: '1 day ago', assignee: 'SC' },
     // Post-Neocon-review (2026-06-05): was status 'ingesting' (stuck spinner forever)
@@ -146,7 +146,7 @@ const LIST_SEED: { id: string; name: string; vendor: string; kind: DocKind; stat
     // when the user just uploaded a file (resolved by finishUpload after ~4s).
     { id: 'D-005', name: 'Cascade PO ORD-2054', vendor: 'Cascade Workplace Co', kind: 'Order', status: 'ready', reviewStatus: 'pending', dateLabel: 'Just now', assignee: 'DP' },
     { id: 'D-006', name: 'Pacific Quote QT-1024', vendor: 'Pacific Workspaces', kind: 'Quote', status: 'completed', reviewStatus: 'reviewed', dateLabel: '5 days ago', assignee: 'SC' },
-    { id: 'D-007', name: 'Heritage Ack ORD-2050', vendor: 'Heritage Office Group', kind: 'Acknowledgement', status: 'ready', reviewStatus: 'pending', dateLabel: '4 days ago', assignee: 'DP' },
+    { id: 'D-007', name: 'Heritage Ack ORD-2050', vendor: 'Legacy Office Group', kind: 'Acknowledgement', status: 'ready', reviewStatus: 'pending', dateLabel: '4 days ago', assignee: 'DP' },
     { id: 'D-008', name: 'Summit RFQ-2026-009', vendor: 'Summit Office Solutions', kind: 'RFQ', status: 'deprecated', reviewStatus: 'pending', dateLabel: '2 weeks ago', assignee: 'SC' },
     { id: 'D-009', name: 'Gunlocke Ack ORD-2048', vendor: 'The Gunlocke Company', kind: 'Acknowledgement', status: 'ready', reviewStatus: 'pending', dateLabel: '6 days ago', assignee: 'DP' },
 ]

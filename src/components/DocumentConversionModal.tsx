@@ -64,17 +64,17 @@ const ELIGIBLE_ORDERS: DocItem[] = [
 ];
 
 const ELIGIBLE_RFQS: DocItem[] = [
-    { id: 'RFQ-2026-001', customer: 'NorthPoint Furniture Group', project: 'Tech HQ Buildout · West Wing', amount: '$67,240', status: 'Pending Review', date: 'Jan 18, 2026', initials: 'NP' },
+    { id: 'RFQ-2026-001', customer: 'Northline Furniture Group', project: 'Tech HQ Buildout · West Wing', amount: '$67,240', status: 'Pending Review', date: 'Jan 18, 2026', initials: 'NP' },
     { id: 'RFQ-2026-002', customer: 'Pacific Workspaces', project: 'Lab Expansion · Phase 3', amount: '$120,800', status: 'Pending Review', date: 'Jan 16, 2026', initials: 'PW' },
     { id: 'RFQ-2026-003', customer: 'Cascade Workplace Co', project: 'Floor 22 Refresh', amount: '$45,300', status: 'In Review', date: 'Jan 14, 2026', initials: 'CW' },
     { id: 'RFQ-2026-004', customer: 'Summit Office Solutions', project: 'Branch Office · Phoenix', amount: '$89,500', status: 'Pending Review', date: 'Jan 13, 2026', initials: 'SO' },
-    { id: 'RFQ-2026-005', customer: 'Heritage Office Group', project: 'Executive Suite', amount: '$210,000', status: 'In Review', date: 'Jan 10, 2026', initials: 'HO' },
+    { id: 'RFQ-2026-005', customer: 'Legacy Office Group', project: 'Executive Suite', amount: '$210,000', status: 'In Review', date: 'Jan 10, 2026', initials: 'HO' },
     { id: 'RFQ-2026-006', customer: 'Beacon Hill Interiors', project: 'University Library Wing', amount: '$156,500', status: 'Pending Review', date: 'Jan 09, 2026', initials: 'BH' },
 ];
 
 const RFQ_COMPARISON: ComparisonField[] = [
-    { field: 'Dealer / Requester', category: 'header', docValue: 'NorthPoint Furniture Group', sourceValue: 'NorthPoint Furniture Group', status: 'match' },
-    { field: 'End Customer', category: 'header', docValue: 'Helix Technologies', sourceValue: 'Helix Technologies', status: 'match' },
+    { field: 'Dealer / Requester', category: 'header', docValue: 'Northline Furniture Group', sourceValue: 'Northline Furniture Group', status: 'match' },
+    { field: 'End Customer', category: 'header', docValue: 'Vertex Technologies', sourceValue: 'Vertex Technologies', status: 'match' },
     { field: 'Contract Reference', category: 'header', docValue: 'GSA-28F-0015W', sourceValue: 'GSA-28F-0015W', status: 'match' },
     { field: 'Project Location', category: 'logistics', docValue: 'Austin, TX', sourceValue: 'Austin, TX', status: 'match' },
     { field: 'Line 1: Qty (Executive Workstation)', category: 'line-item', docValue: '24', sourceValue: '24', status: 'match' },

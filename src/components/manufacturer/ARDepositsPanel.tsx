@@ -55,7 +55,7 @@ interface EmailDraft {
 const AR_RECORDS: ARRecord[] = [
     {
         id: 'AR-001',
-        dealer: 'NorthPoint Furniture Group',
+        dealer: 'Northline Furniture Group',
         project: 'Tech HQ Buildout',
         poNumber: '#ORD-2055',
         docType: 'Deposit',
@@ -86,7 +86,7 @@ const AR_RECORDS: ARRecord[] = [
     },
     {
         id: 'AR-004',
-        dealer: 'Heritage Office Group',
+        dealer: 'Legacy Office Group',
         project: 'Residential A',
         poNumber: '#ORD-2050',
         docType: 'Deposit',
@@ -146,10 +146,10 @@ interface CreditRecord {
 }
 
 const CREDIT_RECORDS: CreditRecord[] = [
-    { dealer: 'NorthPoint Furniture Group', creditLimit: 500000, used: 385000, available: 115000, status: 'good-standing', lastReview: '2025-11-12' },
+    { dealer: 'Northline Furniture Group', creditLimit: 500000, used: 385000, available: 115000, status: 'good-standing', lastReview: '2025-11-12' },
     { dealer: 'Cascade Workplace Co', creditLimit: 250000, used: 81250, available: 168750, status: 'good-standing', lastReview: '2026-01-08' },
     { dealer: 'Pacific Workspaces', creditLimit: 200000, used: 145600, available: 54400, status: 'watch', lastReview: '2026-01-15' },
-    { dealer: 'Heritage Office Group', creditLimit: 150000, used: 175500, available: -25500, status: 'hold', lastReview: '2026-01-18' },
+    { dealer: 'Legacy Office Group', creditLimit: 150000, used: 175500, available: -25500, status: 'hold', lastReview: '2026-01-18' },
 ]
 
 // W5 · Payment history (Wendy item 7)
@@ -164,11 +164,11 @@ interface PaymentRecord {
 }
 
 const PAYMENT_HISTORY: PaymentRecord[] = [
-    { id: 'PAY-2026-018', dealer: 'NorthPoint Furniture Group', poNumber: '#ORD-2055', amount: 115500, method: 'Wire', receivedAt: '2026-01-22 09:14', appliedTo: 'Deposit' },
+    { id: 'PAY-2026-018', dealer: 'Northline Furniture Group', poNumber: '#ORD-2055', amount: 115500, method: 'Wire', receivedAt: '2026-01-22 09:14', appliedTo: 'Deposit' },
     { id: 'PAY-2026-017', dealer: 'Summit Office Solutions', poNumber: '#ORD-2051', amount: 36000, method: 'ACH', receivedAt: '2026-01-20 14:28', appliedTo: 'Deposit' },
     { id: 'PAY-2026-016', dealer: 'Cascade Workplace Co', poNumber: '#ORD-2054', amount: 18750, method: 'Check', receivedAt: '2026-01-18 11:02', appliedTo: 'Invoice' },
     { id: 'PAY-2026-015', dealer: 'Apex Office Design', poNumber: '#ORD-2047', amount: 450000, method: 'Wire', receivedAt: '2026-01-15 16:45', appliedTo: 'Final balance' },
-    { id: 'PAY-2026-014', dealer: 'Beacon Hill Furnishings', poNumber: '#ORD-2049', amount: 63000, method: 'ACH', receivedAt: '2026-01-14 10:33', appliedTo: 'Deposit' },
+    { id: 'PAY-2026-014', dealer: 'Bayline Furnishings', poNumber: '#ORD-2049', amount: 63000, method: 'ACH', receivedAt: '2026-01-14 10:33', appliedTo: 'Deposit' },
 ]
 
 const CREDIT_STATUS_LABEL: Record<CreditStatus, string> = {

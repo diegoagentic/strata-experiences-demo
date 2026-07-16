@@ -51,8 +51,8 @@ const QUOTE_SOURCE: TransactionSource = 'Email'
 
 // Manufacturer-relevant metadata for QT-1025 (synced with recentQuotes in Transactions.tsx · P32)
 const QUOTE_META = {
-    dealer: 'NorthPoint Furniture Group',
-    endCustomer: 'Helix Technologies',
+    dealer: 'Northline Furniture Group',
+    endCustomer: 'Vertex Technologies',
     contract: 'GSA-28F-0015W',
     linkedPO: '#ORD-2055',
     salesRep: 'David Park',
@@ -169,7 +169,7 @@ export default function QuoteDetail({ onBack, onLogout, onNavigateToWorkspace, o
             sender: "System",
             avatar: "",
             content: isRFQ
-                ? "RFQ-2026-001 received from NorthPoint Furniture Group · 8 line items requested · Awaiting manufacturer pricing."
+                ? "RFQ-2026-001 received from Northline Furniture Group · 8 line items requested · Awaiting manufacturer pricing."
                 : "Quote #QT-1025 created from NorthPoint RFQ #2026-001. 8 line items, Gross Value: $67,240.00, Net Value: $25,398.72.",
             time: "10 mins ago",
             type: "system",
@@ -1358,11 +1358,11 @@ export default function QuoteDetail({ onBack, onLogout, onNavigateToWorkspace, o
                     to: 'orders@northpoint-furniture.com · david.park@strata-mfg.com',
                     subject: `${docId} · ${isRFQ ? 'RFQ received — pricing in progress' : 'Quote ready for your approval'}`,
                     body: isRFQ
-                        ? `Hi,\n\nWe received RFQ ${docId} (NorthPoint Furniture Group). Our team is pricing the line items now and you will have the quote shortly.\n\nReply here with any spec changes in the meantime.\n\nBest,\nStrata · Sales`
+                        ? `Hi,\n\nWe received RFQ ${docId} (Northline Furniture Group). Our team is pricing the line items now and you will have the quote shortly.\n\nReply here with any spec changes in the meantime.\n\nBest,\nStrata · Sales`
                         // Post-Neocon-review (2026-06-05) · Wendy PDF item 6: removed "Approve here and we will convert it
                         // to a PO and request the production deposit" line — the manufacturer doesn't issue the PO; the
                         // dealer sends the PO upon acceptance. Proforma + deposit live on PO detail (per Wendy 41:16).
-                        : `Hi,\n\nQuote ${docId} for NorthPoint Furniture Group is ready for your review (List $67,240.00, contract GSA-28F-0015W). The PDF is attached.\n\nLet us know if you have any questions before ${'expiration'}.\n\nBest,\nStrata · Sales`,
+                        : `Hi,\n\nQuote ${docId} for Northline Furniture Group is ready for your review (List $67,240.00, contract GSA-28F-0015W). The PDF is attached.\n\nLet us know if you have any questions before ${'expiration'}.\n\nBest,\nStrata · Sales`,
                 }}
             />
 

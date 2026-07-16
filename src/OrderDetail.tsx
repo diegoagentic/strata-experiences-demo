@@ -52,9 +52,9 @@ const ORDER_SOURCE: TransactionSource = 'Email'
 
 // Manufacturer-relevant metadata for ORD-2055 (synced with recentOrders in Transactions.tsx · P32)
 const ORDER_META = {
-    dealer: 'NorthPoint Furniture Group',
+    dealer: 'Northline Furniture Group',
     dealerPO: 'PO-NP-2025-001605',
-    endCustomer: 'Helix Technologies',
+    endCustomer: 'Vertex Technologies',
     manufacturerNo: 'MFG-2-10468963',
     contract: 'GSA-28F-0015W',
     linkedQuote: 'QT-1025',
@@ -480,7 +480,7 @@ export default function OrderDetail({ onBack, onLogout, onNavigateToWorkspace, o
             sender: "System",
             avatar: "",
             content: isInboundOutbound
-                ? `Purchase Order ${orderId} received from NorthPoint Furniture Group · 8 line items · $25,398.72 · Ship Via: Best Way. Awaiting acknowledgement preparation.`
+                ? `Purchase Order ${orderId} received from Northline Furniture Group · 8 line items · $25,398.72 · Ship Via: Best Way. Awaiting acknowledgement preparation.`
                 : `Order ${orderId} placed — 8 line items, $25,398.72 total. Ship Via: Best Way.`,
             time: "Just now",
             type: "system",
@@ -1343,7 +1343,7 @@ export default function OrderDetail({ onBack, onLogout, onNavigateToWorkspace, o
                                             {/* C5 · Order outbound actions · Asly N1 narrative (Send Ack + Send Shipping) */}
                                             <OrderActionsBar
                                                 orderId="#ORD-2055"
-                                                dealer="NorthPoint Furniture Group"
+                                                dealer="Northline Furniture Group"
                                                 project="Tech HQ Buildout"
                                                 status="In production"
                                                 eta="Mar 20, 2026"
@@ -1728,7 +1728,7 @@ export default function OrderDetail({ onBack, onLogout, onNavigateToWorkspace, o
                 isOpen={trackingOpen}
                 onClose={() => setTrackingOpen(false)}
                 onBack={isDelayedOrder ? () => { setTrackingOpen(false); setDelayAlertOpen(true) } : undefined}
-                title={`${orderId} · NorthPoint Furniture Group`}
+                title={`${orderId} · Northline Furniture Group`}
                 type="movement"
                 {...(isDelayedOrder && delayInfo ? {
                     trackingId: 'FF884712',
@@ -1797,12 +1797,12 @@ export default function OrderDetail({ onBack, onLogout, onNavigateToWorkspace, o
                     label: 'Shipment delay notice',
                     to: 'orders@northpoint-furniture.com · david.park@strata-mfg.com',
                     subject: `${orderId} · shipment delay notice — new ETA ${delayInfo.newEta}`,
-                    body: `Hi,\n\nHeads-up that ${orderId} (NorthPoint Furniture Group · Tech HQ Buildout Phase 2) has been delayed by ${delayInfo.delayDays} days. Original ETA was ${delayInfo.originalEta}; the new ETA is ${delayInfo.newEta}.\n\nReason: ${delayInfo.reason}\n\n${delayInfo.affectedItems.length} line items are affected. Carrier (FedEx Freight LTL) is monitoring the I-80 corridor for clearance. We'll send a follow-up when the shipment resumes movement.\n\nThanks,\nStrata · Order Management`,
+                    body: `Hi,\n\nHeads-up that ${orderId} (Northline Furniture Group · Tech HQ Buildout Phase 2) has been delayed by ${delayInfo.delayDays} days. Original ETA was ${delayInfo.originalEta}; the new ETA is ${delayInfo.newEta}.\n\nReason: ${delayInfo.reason}\n\n${delayInfo.affectedItems.length} line items are affected. Carrier (FedEx Freight LTL) is monitoring the I-80 corridor for clearance. We'll send a follow-up when the shipment resumes movement.\n\nThanks,\nStrata · Order Management`,
                 } : {
                     label: 'Backorder follow-up',
                     to: 'fulfillment@ais-furniture.com · david.park@strata-mfg.com',
                     subject: `${orderId} · backorder status — 4 items pending fulfillment`,
-                    body: `Hi,\n\nWe have 4 items backordered on ${orderId} (NorthPoint Furniture Group · Tech HQ Buildout). Could you confirm the current ETA per SKU and whether any can be expedited?\n\nIf there are substitutions at the same grade/price, send them over and we will route for approval.\n\nThanks,\nStrata · Order Management`,
+                    body: `Hi,\n\nWe have 4 items backordered on ${orderId} (Northline Furniture Group · Tech HQ Buildout). Could you confirm the current ETA per SKU and whether any can be expedited?\n\nIf there are substitutions at the same grade/price, send them over and we will route for approval.\n\nThanks,\nStrata · Order Management`,
                 }}
             />
 

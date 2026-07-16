@@ -4,13 +4,13 @@ import type { HeroPo, HeroValidation } from './types';
 // (real customer data anonymized — see strata-projects/leland/LELAND_DEMO_DEVELOPMENT_PLAN.md).
 export const HERO_PO_HAPPY: HeroPo = {
     poNumber: 'A173125-2',
-    project: 'State University · Teaching & Learning Center',
-    dealer: 'Northeast Office Group',
-    endCustomer: 'State University Project Office',
+    project: 'Regional University · Learning Center',
+    dealer: 'Coastal Office Group',
+    endCustomer: 'Regional University Project Office',
     shipTo: {
         name: 'Project Logistics Co.',
         street: '3580 Coastal Road, Unit 6',
-        city: 'Coastal City',
+        city: 'Waterside City',
         state: 'NY',
         zip: '11572',
     },
@@ -63,7 +63,7 @@ export const HERO_PO_HAPPY: HeroPo = {
 export const HERO_PO_EXCEPTION: HeroPo = {
     ...HERO_PO_HAPPY,
     poNumber: 'A173144',
-    project: 'State University · Teaching & Learning · Phase 2',
+    project: 'Regional University · Teaching & Learning · Phase 2',
     quoteRef: 'Q18406',
     lineItems: [
         {

@@ -42,7 +42,7 @@ interface QuoteSnapshot {
 const QUOTE_A: QuoteSnapshot = {
     id: 'QT-1025',
     label: 'Quote v1 · current',
-    dealer: 'NorthPoint Furniture Group',
+    dealer: 'Northline Furniture Group',
     grossValue: 67240,
     netValue: 25398,
     avgDiscount: 60.8,
@@ -60,7 +60,7 @@ const QUOTE_A: QuoteSnapshot = {
 const QUOTE_B: QuoteSnapshot = {
     id: 'QT-1031',
     label: 'Quote v2 · scope-down option',
-    dealer: 'NorthPoint Furniture Group',
+    dealer: 'Northline Furniture Group',
     grossValue: 58420,
     netValue: 22106,
     avgDiscount: 62.2,

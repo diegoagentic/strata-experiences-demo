@@ -34,7 +34,7 @@ const FIELDS: FillField[] = [
     { id: 'so-date',       label: 'SO Date',            value: '2026-04-17',        colSpan: 1 },
     { id: 'order-status',  label: 'Order Status',       value: 'Processing',        colSpan: 1 },
     { id: 'commission',    label: 'Commission deduct',  value: '-$831.02',          colSpan: 1 },
-    { id: 'project-udf',   label: 'UDF · Project',      value: 'State University',  colSpan: 2 },
+    { id: 'project-udf',   label: 'UDF · Project',      value: 'Regional University',  colSpan: 2 },
     { id: 'industry-udf',  label: 'UDF · Industry',     value: 'Higher Education',  colSpan: 1 },
     { id: 'specifier-udf', label: 'UDF · Specifier',    value: 'Northeast Office',  colSpan: 2 },
     { id: 'comment-tag',   label: 'Comment · PO# TAG',  value: 'A173125-2',         colSpan: 1 },

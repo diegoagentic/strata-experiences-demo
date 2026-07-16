@@ -45,8 +45,8 @@ const ACK_SOURCE: TransactionSource = 'Email'
 
 // Manufacturer-relevant metadata for Ack-8839 (synced with recentAcknowledgments in Transactions.tsx · P32)
 const ACK_META = {
-    dealer: 'NorthPoint Furniture Group',
-    endCustomer: 'Helix Technologies',
+    dealer: 'Northline Furniture Group',
+    endCustomer: 'Vertex Technologies',
     shipmentNo: 'SHP-7437123',
     linkedOrder: '#ORD-2055',
 }
