@@ -182,7 +182,7 @@ export default function CapacityHeatmap({
         ? 'text-[9px] px-1.5 py-0'
         : 'text-[10px] px-2 py-0.5'
     const statusDot   = compact ? 'h-1 w-1' : 'h-1.5 w-1.5'
-    const showChipPriorMetro Legal = !priorClientHighlight
+    const showChipPriorClient = !priorClientHighlight
     const showLeadBadge = !compact
 
     // Auto-expand the highlighted (recommended) designer on mount
@@ -244,7 +244,7 @@ export default function CapacityHeatmap({
                                 Lead
                             </span>
                         )}
-                        {showChipPriorMetro Legal && d.priorMetroLegal && (
+                        {showChipPriorClient && d.priorMetroLegal && (
                             <span className="text-[8px] uppercase tracking-wide font-bold bg-info/10 text-info border border-info/20 rounded px-1 py-0.5">
                                 Prior Metro Legal
                             </span>
