@@ -1,13 +1,15 @@
 import type { LelandTenant } from './types';
 
+// F16.6.c.2 · aliased for public demo (see src/config/aliases.ts).
+// Original: Leland (Grand Rapids MI dealer, real client).
 export const LELAND_TENANT: LelandTenant = {
-    name: 'Leland',
-    short: 'LF',
-    hq: 'Grand Rapids, MI',
-    address: '5695 Eagle Dr SE',
-    nysVendorId: '1000008256',
+    name: 'Dealer Bear',
+    short: 'DB',
+    hq: 'Northern City, MI',
+    address: '100 Example Ave',
+    nysVendorId: '1000000000',
     founded: 1953,
-    primarySystems: ['HubSpot', 'Seradex', 'Rica AI'],
+    primarySystems: ['CRM', 'Order System', 'Strata AI'],
     aiReadiness: {
         current: 2.1,
         target: 3.5,

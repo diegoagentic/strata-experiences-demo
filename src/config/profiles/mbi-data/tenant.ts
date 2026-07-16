@@ -1,11 +1,13 @@
 ﻿import type { Tenant } from './types';
 
+// F16.6.c.2 · aliased for public demo (see src/config/aliases.ts).
+// Original: Modern Business Interiors (St. Charles MO dealer, real client).
 export const MBI_TENANT: Tenant = {
-    name: 'Modern Business Interiors',
-    short: 'MBI',
-    hq: 'St. Charles, MO',
-    satellite: 'Lenexa, KS',
-    remoteDesigners: ['Kansas City', 'Iowa', 'Topeka'],
+    name: 'Dealer Ivory',
+    short: 'DI',
+    hq: 'Midwest City, MO',
+    satellite: 'Midwest City, KS',
+    remoteDesigners: ['Regional Hub A', 'Regional Hub B', 'Regional Hub C'],
     employees: 42,
     revenue: '~$17M',
     founded: 1987,

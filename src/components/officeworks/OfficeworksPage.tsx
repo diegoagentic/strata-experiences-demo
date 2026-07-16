@@ -184,8 +184,8 @@ export default function OfficeworksPage() {
     return (
         <MBIPageShell
             title={pageTitle}
-            tenantLabel="Officeworks"
-            productLabel="Strata for Officeworks"
+            tenantLabel="Dealer Falcon"
+            productLabel="Strata for Dealer Falcon"
             icon={icon}
         >
             <div className="space-y-4 animate-in fade-in duration-500">
@@ -225,8 +225,8 @@ export function OfficeworksDashboardPage() {
     return (
         <MBIPageShell
             title="Design Dashboard"
-            tenantLabel="Officeworks"
-            productLabel="Strata for Officeworks"
+            tenantLabel="Dealer Falcon"
+            productLabel="Strata for Dealer Falcon"
             icon={<LayoutDashboard className="h-5 w-5" />}
         >
             <div className="animate-in fade-in duration-500">

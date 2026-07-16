@@ -81,8 +81,8 @@ export default function WorkspacesPage() {
             subtitle={subtitle}
             icon={icon}
             activeApp={activeApp}
-            tenantLabel="Workscapes"
-            productLabel="Strata for Workscapes"
+            tenantLabel="Dealer Slate"
+            productLabel="Strata for Dealer Slate"
         >
             <div key={stepId} className="space-y-4 animate-in fade-in duration-500">
                 {stepId === 'w1.2' && <ApprovalQueueScene  onReview={nextStep} />}

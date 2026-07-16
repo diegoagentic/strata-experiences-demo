@@ -72,8 +72,8 @@ export default function BFIPage() {
     return (
         <MBIPageShell
             title={STEP_TITLES[stepId] ?? 'BFI Demo'}
-            tenantLabel="BFI"
-            productLabel="Strata for BFI"
+            tenantLabel="Dealer Copper"
+            productLabel="Strata for Dealer Copper"
             icon={icon}
         >
             <div key={stepId} className="space-y-4 animate-in fade-in duration-500">
@@ -108,8 +108,8 @@ export function BFIDashboardPage() {
     return (
         <MBIPageShell
             title="Operations Dashboard"
-            tenantLabel="BFI"
-            productLabel="Strata for BFI"
+            tenantLabel="Dealer Copper"
+            productLabel="Strata for Dealer Copper"
             icon={<LayoutDashboard className="h-5 w-5" />}
         >
             <BFIDashboardScene staticMode />
