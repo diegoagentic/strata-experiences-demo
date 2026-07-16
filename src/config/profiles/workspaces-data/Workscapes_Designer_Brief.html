@@ -315,7 +315,7 @@
     <div class="summary-grid">
       <div class="summary-card">
         <h3>🔴 The Problem</h3>
-        <p>Workscapes runs expense reports across <strong>4 disconnected systems</strong> (Intranet → GlobalSearch → Email → CORE) with <strong>no integration</strong>. The entire process bottlenecks at AP (Letza) due to manual GL categorization and manual re-entry into CORE. Managers approve expenses without seeing receipts. Leadership has zero spend visibility.</p>
+        <p>Workscapes runs expense reports across <strong>4 disconnected systems</strong> (Intranet → GlobalSearch → Email → CORE) with <strong>no integration</strong>. The entire process bottlenecks at AP (Accountant) due to manual GL categorization and manual re-entry into CORE. Managers approve expenses without seeing receipts. Leadership has zero spend visibility.</p>
       </div>
       <div class="summary-card">
         <h3>🟢 The Solution</h3>
@@ -356,21 +356,21 @@
       </div>
       <div class="stakeholder">
         <div class="sh-avatar" style="background:#e0e7ff;">🏦</div>
-        <div class="sh-name">Letza (AP)</div>
+        <div class="sh-name">Accountant (AP)</div>
         <div class="sh-role">Accounts Payable</div>
         <div class="sh-need">GL pre-filled by AI, she confirms or overrides. Manage managers list and categories herself. Auto-post to CORE.</div>
         <span class="sh-tag" style="background:#fef3c7;color:#92400e;">Admin power user</span>
       </div>
       <div class="stakeholder">
         <div class="sh-avatar" style="background:#d1fae5;">📊</div>
-        <div class="sh-name">Mehmet (CFO)</div>
+        <div class="sh-name">CFO (CFO)</div>
         <div class="sh-role">Chief Financial Officer</div>
         <div class="sh-need">Company-wide spend dashboard. Category vs time comparisons (fuel vs dining by month). Export to CSV/PDF.</div>
         <span class="sh-tag" style="background:#e0e7ff;color:#3730a3;">Dashboard</span>
       </div>
       <div class="stakeholder">
         <div class="sh-avatar" style="background:#f0effe;">🏢</div>
-        <div class="sh-name">Tammy (CAO)</div>
+        <div class="sh-name">AP Coordinator (CAO)</div>
         <div class="sh-role">Chief Administrative Officer</div>
         <div class="sh-need">Ops & Procurement rollup view. Cross-location visibility. Approval aging/SLA alerts (&gt;3 days).</div>
         <span class="sh-tag" style="background:#fee2e2;color:#b91c1c;">Division rollup</span>
@@ -415,7 +415,7 @@
           </div>
         </div>
         <div class="flow-row">
-          <div class="actor-label">AP (Letza)</div>
+          <div class="actor-label">AP (Accountant)</div>
           <div class="steps">
             <div class="step pain"><span class="badge badge-pain">PP6·7</span>Review in<br>GlobalSearch</div>
             <span class="arrow">→</span>
@@ -468,7 +468,7 @@
           </div>
         </div>
         <div class="flow-row">
-          <div class="actor-label">AP (Letza)</div>
+          <div class="actor-label">AP (Accountant)</div>
           <div class="steps">
             <div class="step new">AP Queue<br>(auto-routed)</div>
             <span class="arrow">→</span>
@@ -488,7 +488,7 @@
           </div>
         </div>
         <div class="flow-row">
-          <div class="actor-label">Admin (Letza)</div>
+          <div class="actor-label">Admin (Accountant)</div>
           <div class="steps">
             <div class="step new"><span class="badge badge-new">NEW</span>Manage managers<br>+ categories</div>
           </div>
@@ -547,13 +547,13 @@
           </tr>
           <tr>
             <td><strong>6</strong></td>
-            <td>Letza manually breaks down GL line by line (PP #8)</td>
-            <td>GL pre-filled by rules engine — Letza confirms or overrides</td>
+            <td>Accountant manually breaks down GL line by line (PP #8)</td>
+            <td>GL pre-filled by rules engine — Accountant confirms or overrides</td>
             <td><span class="badge-inline bi-strong">Major time save — AP keeps control</span></td>
           </tr>
           <tr>
             <td><strong>7</strong></td>
-            <td>Letza manually re-keys data into CORE (PP #8)</td>
+            <td>Accountant manually re-keys data into CORE (PP #8)</td>
             <td>Auto-post via API or RPA after AP confirms</td>
             <td><span class="badge-inline bi-strong">Eliminated entirely</span></td>
           </tr>
@@ -651,7 +651,7 @@
           <div class="pp-num">1</div>
           <div class="pp-title">Cannot see receipts during approval</div>
         </div>
-        <div class="pp-where">📍 Step 4 — Manager Approval (GlobalSearch) · Actor: Tammy / Managers</div>
+        <div class="pp-where">📍 Step 4 — Manager Approval (GlobalSearch) · Actor: AP Coordinator / Managers</div>
         <div class="pp-fix">✅ Fix: Inline receipt display directly in the approval view. Manager sees all attachments without extra clicks.</div>
         <div class="pp-status status-strong">● STRONG coverage — Priority: CRITICAL for prototype</div>
       </div>
@@ -660,7 +660,7 @@
           <div class="pp-num">2</div>
           <div class="pp-title">No departmental spending visibility</div>
         </div>
-        <div class="pp-where">📍 Post-payment reporting · Actor: Tammy (CAO), Mehmet (CFO)</div>
+        <div class="pp-where">📍 Post-payment reporting · Actor: AP Coordinator (CAO), CFO (CFO)</div>
         <div class="pp-fix">✅ Fix: Reporting Dashboard with full Ops &amp; Procurement rollup. Cross-location visibility per division head.</div>
         <div class="pp-status status-strong">● STRONG coverage — Priority: CRITICAL for prototype</div>
       </div>
@@ -669,7 +669,7 @@
           <div class="pp-num">3</div>
           <div class="pp-title">No summary reports or dashboards exist</div>
         </div>
-        <div class="pp-where">📍 Reporting — Mehmet, Tammy, Letza</div>
+        <div class="pp-where">📍 Reporting — CFO, AP Coordinator, Accountant</div>
         <div class="pp-fix">✅ Fix: Company-wide dashboard with weekly / monthly / custom range filters, category breakdown, CSV/PDF export.</div>
         <div class="pp-status status-strong">● STRONG coverage — Priority: CRITICAL for prototype</div>
       </div>
@@ -687,7 +687,7 @@
           <div class="pp-num">5</div>
           <div class="pp-title">GlobalSearch approval UI is grayed out / non-functional</div>
         </div>
-        <div class="pp-where">📍 Step 4 — blocks Gate G2 (approval) · Shown live in Letza demo</div>
+        <div class="pp-where">📍 Step 4 — blocks Gate G2 (approval) · Shown live in Accountant demo</div>
         <div class="pp-fix">✅ Fix: New platform has a clean, functional approval UX. Explicitly resolves the broken GlobalSearch view.</div>
         <div class="pp-status status-strong">● STRONG coverage — Priority: HIGH for prototype demo</div>
       </div>
@@ -696,8 +696,8 @@
           <div class="pp-num">6</div>
           <div class="pp-title">Cannot add managers to the approval dropdown</div>
         </div>
-        <div class="pp-where">📍 Step 1 — Submission form + Admin · Letza's #1 top ask</div>
-        <div class="pp-fix">✅ Fix: Self-service Admin module — Letza can add/edit/remove managers herself, no IT dependency.</div>
+        <div class="pp-where">📍 Step 1 — Submission form + Admin · Accountant's #1 top ask</div>
+        <div class="pp-fix">✅ Fix: Self-service Admin module — Accountant can add/edit/remove managers herself, no IT dependency.</div>
         <div class="pp-status status-strong">● STRONG coverage — Priority: HIGH for prototype</div>
       </div>
       <div class="pp-card resolved">
@@ -714,7 +714,7 @@
           <div class="pp-num">8</div>
           <div class="pp-title">Manual re-entry from GlobalSearch into CORE</div>
         </div>
-        <div class="pp-where">📍 Step 7 — BIGGEST bottleneck. Actor: Letza (AP) · Handoff H4</div>
+        <div class="pp-where">📍 Step 7 — BIGGEST bottleneck. Actor: Accountant (AP) · Handoff H4</div>
         <div class="pp-fix">✅ Fix: After AP confirms GL, data auto-posts to CORE via API (Option A) or RPA (Option B). Manual re-entry eliminated entirely.</div>
         <div class="pp-status status-strong">● STRONG coverage — The #1 efficiency win of the whole solution</div>
       </div>
@@ -732,7 +732,7 @@
           <div class="pp-num">10</div>
           <div class="pp-title">Must open each report one by one</div>
         </div>
-        <div class="pp-where">📍 Reporting — Mehmet (CFO) explicit complaint</div>
+        <div class="pp-where">📍 Reporting — CFO (CFO) explicit complaint</div>
         <div class="pp-fix">✅ Fix: Dashboard with filters, list view, drill-down to individual reports, and bulk export (CSV/PDF).</div>
         <div class="pp-status status-strong">● STRONG coverage</div>
       </div>
@@ -804,25 +804,25 @@
         <div class="feat-card">
           <div class="feat-icon">📬</div>
           <div class="feat-name">Email + Push Notifications</div>
-          <div class="feat-desc">Manager notified on new submission. Employee notified on approval or rejection. SLA aging alert if report sits &gt;3 days (Tammy's explicit requirement).</div>
+          <div class="feat-desc">Manager notified on new submission. Employee notified on approval or rejection. SLA aging alert if report sits &gt;3 days (AP Coordinator's explicit requirement).</div>
           <span class="feat-tag tag-high">High</span>
         </div>
       </div>
     </div>
 
     <div class="feat-section">
-      <div class="feat-section-header">🏦 Module 3 — AP Review &amp; CORE Integration (Letza)</div>
+      <div class="feat-section-header">🏦 Module 3 — AP Review &amp; CORE Integration (Accountant)</div>
       <div class="feat-grid">
         <div class="feat-card">
           <div class="feat-icon">🤖</div>
           <div class="feat-name">GL Pre-fill (Rules Engine)</div>
-          <div class="feat-desc">System automatically suggests the correct GL code for each expense line based on category rules. Letza reviews, confirms, or overrides. She stays in control — AI does the heavy lifting.</div>
+          <div class="feat-desc">System automatically suggests the correct GL code for each expense line based on category rules. Accountant reviews, confirms, or overrides. She stays in control — AI does the heavy lifting.</div>
           <span class="feat-tag tag-critical">Critical</span>
         </div>
         <div class="feat-card">
           <div class="feat-icon">🔗</div>
           <div class="feat-name">Auto-Post to CORE</div>
-          <div class="feat-desc">Once Letza confirms the GL breakdown, data auto-posts to CORE via API (Option A) or RPA (Option B). Manual re-entry is completely eliminated — the biggest bottleneck resolved.</div>
+          <div class="feat-desc">Once Accountant confirms the GL breakdown, data auto-posts to CORE via API (Option A) or RPA (Option B). Manual re-entry is completely eliminated — the biggest bottleneck resolved.</div>
           <span class="feat-tag tag-critical">Critical</span>
         </div>
         <div class="feat-card">
@@ -835,7 +835,7 @@
     </div>
 
     <div class="feat-section">
-      <div class="feat-section-header">📈 Module 4 — Reporting Dashboard (Tammy / Mehmet)</div>
+      <div class="feat-section-header">📈 Module 4 — Reporting Dashboard (AP Coordinator / CFO)</div>
       <div class="feat-grid">
         <div class="feat-card">
           <div class="feat-icon">🗺️</div>
@@ -852,13 +852,13 @@
         <div class="feat-card">
           <div class="feat-icon">📉</div>
           <div class="feat-name">Category Trend Charts</div>
-          <div class="feat-desc">Fuel vs dining by month, travel by quarter, etc. Mehmet explicitly requested category-by-month comparisons. Bar or line charts, at minimum two periods side-by-side.</div>
+          <div class="feat-desc">Fuel vs dining by month, travel by quarter, etc. CFO explicitly requested category-by-month comparisons. Bar or line charts, at minimum two periods side-by-side.</div>
           <span class="feat-tag tag-high">High</span>
         </div>
         <div class="feat-card">
           <div class="feat-icon">⏱️</div>
           <div class="feat-name">Approval Aging / SLA Tracker</div>
-          <div class="feat-desc">Reports sitting with a manager &gt;3 days are flagged. Tammy can see bottlenecks in the approval chain without calling anyone. Small lift, high visibility value.</div>
+          <div class="feat-desc">Reports sitting with a manager &gt;3 days are flagged. AP Coordinator can see bottlenecks in the approval chain without calling anyone. Small lift, high visibility value.</div>
           <span class="feat-tag tag-high">High</span>
         </div>
         <div class="feat-card">
@@ -870,19 +870,19 @@
         <div class="feat-card">
           <div class="feat-icon">👁️</div>
           <div class="feat-name">Role Hierarchy Visibility</div>
-          <div class="feat-desc">Employee → Manager → Department Head → CFO/AP. Tammy's rollup requires this hierarchy to be explicit. Without it, the dashboard cannot satisfy PP #2.</div>
+          <div class="feat-desc">Employee → Manager → Department Head → CFO/AP. AP Coordinator's rollup requires this hierarchy to be explicit. Without it, the dashboard cannot satisfy PP #2.</div>
           <span class="feat-tag tag-high">High</span>
         </div>
       </div>
     </div>
 
     <div class="feat-section">
-      <div class="feat-section-header">⚙️ Module 5 — Self-Service Admin (Letza)</div>
+      <div class="feat-section-header">⚙️ Module 5 — Self-Service Admin (Accountant)</div>
       <div class="feat-grid">
         <div class="feat-card">
           <div class="feat-icon">👤</div>
           <div class="feat-name">Manager List Management</div>
-          <div class="feat-desc">Add, edit, or remove managers in the approval dropdown. No IT ticket required. Letza's single most important admin request (PP #6). Immediate impact on submission experience.</div>
+          <div class="feat-desc">Add, edit, or remove managers in the approval dropdown. No IT ticket required. Accountant's single most important admin request (PP #6). Immediate impact on submission experience.</div>
           <span class="feat-tag tag-critical">Critical</span>
         </div>
         <div class="feat-card">
@@ -894,7 +894,7 @@
         <div class="feat-card">
           <div class="feat-icon">🔐</div>
           <div class="feat-name">Role &amp; Hierarchy Configuration</div>
-          <div class="feat-desc">Define and edit the Employee → Manager → Dept Head → CFO chain. Powers Tammy's division rollup visibility on the dashboard. Required for role-based access to work correctly.</div>
+          <div class="feat-desc">Define and edit the Employee → Manager → Dept Head → CFO chain. Powers AP Coordinator's division rollup visibility on the dashboard. Required for role-based access to work correctly.</div>
           <span class="feat-tag tag-high">High</span>
         </div>
       </div>
@@ -959,7 +959,7 @@
           <div class="approve-row" style="border: 1px solid #fca5a5;">
             <div class="approve-thumb">⏱️</div>
             <div class="approve-info">
-              <div class="approve-name">Carlos Ruiz · $210.00</div>
+              <div class="approve-name">Sponsor Ruiz · $210.00</div>
               <div class="approve-amt" style="color:#ef4444;">⚠️ Aging 4 days — SLA exceeded</div>
             </div>
             <div class="approve-btns">
@@ -972,7 +972,7 @@
 
       <!-- S3: AP GL Review -->
       <div class="screen-card">
-        <div class="screen-header">🏦 Screen 3 — AP GL Review (Letza)</div>
+        <div class="screen-header">🏦 Screen 3 — AP GL Review (Accountant)</div>
         <div class="screen-body">
           <div style="font-size:11px;font-weight:700;margin-bottom:6px;">Employee Alpha — $142.50 · Ready for GL</div>
           <div style="font-size:10px;color:#888;margin-bottom:8px;">AI pre-filled GL codes — confirm or override:</div>
@@ -1018,7 +1018,7 @@
 
       <!-- S5: Admin Panel -->
       <div class="screen-card">
-        <div class="screen-header">⚙️ Screen 5 — Admin Panel (Letza)</div>
+        <div class="screen-header">⚙️ Screen 5 — Admin Panel (Accountant)</div>
         <div class="screen-body">
           <div style="font-size:10px;font-weight:700;color:#888;margin-bottom:7px;">MANAGER LIST</div>
           <div class="admin-row">
@@ -1070,7 +1070,7 @@
       <div class="oq-card">
         <div class="oq-num">Gap 1 — Mobile Commitment</div>
         <div class="oq-text">Native app (iOS/Android) vs PWA/Responsive Web?</div>
-        <div class="oq-why">The tech architecture shows "Mobile App (iOS · Android)" but the recommendation is "responsive web as baseline." Tammy explicitly wants a phone-camera flow for field staff. This decision affects development timeline and must be locked before prototype handoff.</div>
+        <div class="oq-why">The tech architecture shows "Mobile App (iOS · Android)" but the recommendation is "responsive web as baseline." AP Coordinator explicitly wants a phone-camera flow for field staff. This decision affects development timeline and must be locked before prototype handoff.</div>
       </div>
       <div class="oq-card">
         <div class="oq-num">Gap 2 — Multiple Receipts Per Line (PP #9)</div>
@@ -1083,19 +1083,19 @@
         <div class="oq-why">What states does the report enter? Does the manager re-review only the corrected line or the full report? Is there a resubmission limit? This loop needs a screen in the prototype — designers need clarity before building.</div>
       </div>
       <div class="oq-card">
-        <div class="oq-num">Gap 4 — Tammy's Division Rollup Logic</div>
+        <div class="oq-num">Gap 4 — AP Coordinator's Division Rollup Logic</div>
         <div class="oq-text">How is the Ops &amp; Procurement rollup hierarchy defined?</div>
-        <div class="oq-why">Tammy wants to see her managers' direct reports' expenses (full division). The platform says "Tammy sees the rollup" but doesn't specify the role hierarchy model. Without this, the dashboard cannot satisfy PP #2. The Admin module must support configuring this.</div>
+        <div class="oq-why">AP Coordinator wants to see her managers' direct reports' expenses (full division). The platform says "AP Coordinator sees the rollup" but doesn't specify the role hierarchy model. Without this, the dashboard cannot satisfy PP #2. The Admin module must support configuring this.</div>
       </div>
       <div class="oq-card">
         <div class="oq-num">Gap 5 — Approval Aging / SLA Definition</div>
         <div class="oq-text">What are the exact SLA thresholds and who gets notified?</div>
-        <div class="oq-why">Tammy mentioned a 3-day approval expectation and a previously-removed 2-week handbook cycle. The dashboard should show aging reports, but we need: (a) what threshold triggers a flag, (b) does the manager get a reminder push/email, (c) does Tammy see a summary of breaches?</div>
+        <div class="oq-why">AP Coordinator mentioned a 3-day approval expectation and a previously-removed 2-week handbook cycle. The dashboard should show aging reports, but we need: (a) what threshold triggers a flag, (b) does the manager get a reminder push/email, (c) does AP Coordinator see a summary of breaches?</div>
       </div>
       <div class="oq-card">
         <div class="oq-num">Gap 6 — Monthly Category Comparison View</div>
-        <div class="oq-text">Mehmet's specific ask: fuel in June vs. dining in March.</div>
-        <div class="oq-why">The dashboard description says "by category, time period" but doesn't show a monthly comparison chart. Adding a concrete example (side-by-side bar chart, two periods) to the prototype would significantly strengthen Mehmet's confidence in the solution during the demo.</div>
+        <div class="oq-text">CFO's specific ask: fuel in June vs. dining in March.</div>
+        <div class="oq-why">The dashboard description says "by category, time period" but doesn't show a monthly comparison chart. Adding a concrete example (side-by-side bar chart, two periods) to the prototype would significantly strengthen CFO's confidence in the solution during the demo.</div>
       </div>
       <div class="oq-card">
         <div class="oq-num">Gap 7 — CORE Integration Option (A vs B)</div>
@@ -1116,7 +1116,7 @@
         <tbody>
           <tr>
             <td>Budget alerts / spend caps</td>
-            <td>Mehmet said "not an immediate need." Do not add to prototype — scope creep risk.</td>
+            <td>CFO said "not an immediate need." Do not add to prototype — scope creep risk.</td>
           </tr>
           <tr>
             <td>Full ERP replacement</td>

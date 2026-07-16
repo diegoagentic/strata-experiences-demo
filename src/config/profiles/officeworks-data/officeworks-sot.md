@@ -23,10 +23,10 @@
 
 | Persona | Rol | Notas demo |
 |---|---|---|
-| Mark Loughlin | Founder & Owner | — |
+| Sponsor Loughlin | Founder & Owner | — |
 | Bill Palmer | Co-Founder & Owner (Officeworks South) | — |
 | CEO Hart | CEO (2025 transition) | Confirmó top 7 pain points por email |
-| Sarah Finnegan | CRO | National sales process owner |
+| Operations Manager Finnegan | CRO | National sales process owner |
 | Steve Grillo Jr | President | — |
 | EVP Design | EVP Design & PM (DC + Southern) | 25 años exp · tacit knowledge dramatizado sc1.7 |
 | George Dakin | EVP Finance | — |
@@ -61,7 +61,7 @@
 | Campo | Valor |
 |---|---|
 | Project | Metro Legal · 4th Floor · Workstations |
-| Market | DC (Washington D.C.) — Felicia's region |
+| Market | DC (Washington D.C.) — EVP Design's region |
 | Universal # | 2-10468963 |
 | PO # | PO-DC-0009642 |
 | Special Quote # | **436533** (price-protected · law firm) |
@@ -76,7 +76,7 @@
 | Line items | **71 real** + 13 CRs reales |
 | Finishes | Mica Very White 83 · Foundation Laminate · Smooth Felt Admiral Blue QR · Flintwood 5N White Oak |
 
-**Activa pain points:** SC1 (incomplete CAD) + SC2 (71-line spec check) + SC3 (13 CR lookups) + SC4 (SQ required) + SC5 (Kimberly cross-market) + SC7 (Felicia tacit) — 6 of 7 SC pain points en un solo flujo.
+**Activa pain points:** SC1 (incomplete CAD) + SC2 (71-line spec check) + SC3 (13 CR lookups) + SC4 (SQ required) + SC5 (Kimberly cross-market) + SC7 (EVP Design tacit) — 6 of 7 SC pain points en un solo flujo.
 
 ## 6. CEO Top 7 pain points (CEO Hart confirmed via email)
 

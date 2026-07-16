@@ -1,7 +1,7 @@
 ﻿// ═══════════════════════════════════════════════════════════════════════════════
 // MBI — Module Phases (Apr 23 modular pricing structure)
 //
-// Matt's Apr 23 ask: each AI module presented as a header with its own
+// Sales Lead's Apr 23 ask: each AI module presented as a header with its own
 // Phase 1-4 breakdown, so MBI can "unitize" the solution and Avanto can
 // price by module-phase. This is the per-module roadmap, NOT the global
 // Avanto Phase 1-5 roadmap (which spans all modules).
@@ -23,7 +23,7 @@ export interface ModulePhase {
     summary: string;
     deliverables: string[];   // 3-5 concrete items per phase
     estimatedDuration: string; // e.g. "4-6 weeks"
-    isPilot?: boolean;         // The phase that ships the named pilot user (Kathy/Beth)
+    isPilot?: boolean;         // The phase that ships the named pilot user (Kathy/Design Manager)
 }
 
 export const MBI_MODULE_PHASES: ModulePhase[] = [
@@ -76,7 +76,7 @@ export const MBI_MODULE_PHASES: ModulePhase[] = [
         deliverables: [
             'Live billing forecast dashboard (90%+ accuracy target)',
             'Backup-protocol playbook for Controller bus-factor',
-            'Cross-team KPI dashboards (Jordan + Mark visibility)',
+            'Cross-team KPI dashboards (Jordan + Sponsor visibility)',
             'AP/AR audit trail with full lineage',
         ],
         estimatedDuration: '3-4 weeks',
@@ -206,8 +206,8 @@ export const MBI_MODULE_PHASES: ModulePhase[] = [
     {
         module: 'design',
         phase: 2,
-        title: 'Spec Check Pilot (Beth)',
-        summary: "Q10 #1 priority shipped — Beth's 8/10 trust unlocks the team.",
+        title: 'Spec Check Pilot (Design Manager)',
+        summary: "Q10 #1 priority shipped — Design Manager's 8/10 trust unlocks the team.",
         deliverables: [
             'Spec Check Engine v1 (BOM-only, 4 check types)',
             'Design Manager Fane early-adopter pilot (1 ICU project)',

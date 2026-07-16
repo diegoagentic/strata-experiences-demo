@@ -18,10 +18,10 @@ La reunión reorganizó los flujos de trabajo del demo e integró automatizació
 
 ## Próximos pasos acordados
 
-- [David] Ubicar contrato digital de BFI (¿R-drive o digitalizar?)
-- [David] Revisar lógica comisiones / porcentajes en transcripts
-- [David] Mostrar documentos adicionales enviados por cliente (tras repaso del flujo)
-- [Diego] Descargar documentos compartidos por David para incorporar como referencia
+- [Senior Estimator] Ubicar contrato digital de BFI (¿R-drive o digitalizar?)
+- [Senior Estimator] Revisar lógica comisiones / porcentajes en transcripts
+- [Senior Estimator] Mostrar documentos adicionales enviados por cliente (tras repaso del flujo)
+- [Diego] Descargar documentos compartidos por Senior Estimator para incorporar como referencia
 - [Jenniffer] Consultar con Cristian entrega documento técnico
 - [Diego] Ajustar demostración / implementar cambios finales
 
@@ -35,30 +35,30 @@ Strata Lead: Acuerdan cambiar orden: primero Agency Fee, luego Product Receiving
 
 Product Manager Pen: "El product receiving es un punto intermedio casi inmerso dentro del agency fee."
 
-David agregó documentos de ejemplo en Notion (Product Receiving) que le mandaron de Dani Bermúes.
+Senior Estimator agregó documentos de ejemplo en Notion (Product Receiving) que le mandaron de Dani Bermúes.
 
 ---
 
 ### 00:06:31 — Roles en el flujo Agency Fee
 
-Product Manager Pen: "En el de [Agency Fee] son cuatro roles. La mayoría es Lauren de Marco, que es la account manager de ese cliente."
+Product Manager Pen: "En el de [Agency Fee] son cuatro roles. La mayoría es Claims Analyst de Marco, que es la account manager de ese cliente."
 
-Lauren ejecuta casi todas las acciones principales.
+Claims Analyst ejecuta casi todas las acciones principales.
 
 ---
 
 ### 00:08:29 — Detalles operativos del flujo Agency Fee
 
-**Lo que Lauren recibe:**
-> "Lauren recibe un correo del fabricante que es Herman Miller. Básicamente lo recibes de un diseñador de Herman Miller."
+**Lo que Claims Analyst recibe:**
+> "Claims Analyst recibe un correo del fabricante que es Herman Miller. Básicamente lo recibes de un diseñador de Herman Miller."
 > "En el correo ella tiene un PDF donde lista todas las especificaciones de todos los productos, **los diseños, pues el dibujo de la parte arquitectónica** y un archivo SIF que tiene todo el tema de los códigos de producto y precios."
 
-**Acción de Lauren:** Coge sus archivos y hace una revisión contra OVNIQ (plataforma de Herman Miller). OVNIQ devuelve un archivo SIF corregido y la comparación de la cotización. Lauren sube la info corregida a CORE en formato SIF.
+**Acción de Claims Analyst:** Coge sus archivos y hace una revisión contra OVNIQ (plataforma de Herman Miller). OVNIQ devuelve un archivo SIF corregido y la comparación de la cotización. Claims Analyst sube la info corregida a CORE en formato SIF.
 
 **Diego sobre el plano (00:11:56):**
 > Diego: "el SIF precios y el diseño es como que el plano. Listo."
 > Diego: "**Falta como referenciar eso ahí.**"
-> David: "Sí."
+> Senior Estimator: "Sí."
 
 → **GAP IDENTIFICADO:** El PDF adjunto en el email de Account Manager Bly debe mostrar:
   1. Especificaciones de producto (ya implementado como `specs.pdf`)
@@ -78,7 +78,7 @@ Diego: integrar validación OCR en el primer paso — sistema detecta llegada de
 ### 00:16:11 — Contrato y auditoría
 
 Problema: la ciudad exige firmas físicas y documentos impresos.
-David se compromete a revisar dónde está alojado el contrato (¿R-drive?).
+Senior Estimator se compromete a revisar dónde está alojado el contrato (¿R-drive?).
 
 ---
 
@@ -96,8 +96,8 @@ Dos caminos: contrato **ciudad** NY vs. **estado** NY → diferente estructura d
 
 ### 00:22:23 — Cotización de mano de obra (Labor)
 
-Lauren solicita cotización de trabajo a **Workplace (Wick)**: entrega, instalación, cargos de camiones.
-**Michael** (jefe de Lauren) revisa y compila cifras de mano de obra: carpinteros, instaladores, etc.
+Claims Analyst solicita cotización de trabajo a **Workplace (Wick)**: entrega, instalación, cargos de camiones.
+**Approver** (jefe de Claims Analyst) revisa y compila cifras de mano de obra: carpinteros, instaladores, etc.
 
 Line items en CORE (template preexistente):
 - Inside Delivery
@@ -105,19 +105,19 @@ Line items en CORE (template preexistente):
 - OT Differentials
 - Truck Charge
 
-Michael ingresa los números en CORE manualmente. Lauren genera la propuesta y la envía al cliente (contacto identificado por el diseñador).
+Approver ingresa los números en CORE manualmente. Claims Analyst genera la propuesta y la envía al cliente (contacto identificado por el diseñador).
 
 ---
 
 ### 00:24:03 — Purchase Order y transmisión EDI
 
 Cliente (agencia NYC) genera Purchase Order (puede tardar 1 semana a 1 año).
-Lauren confirma fecha de entrega → Workplace da 30 días (después aplican cargos adicionales).
-Lauren guarda PO en **disco R** (servidor local, requiere VPN).
+Claims Analyst confirma fecha de entrega → Workplace da 30 días (después aplican cargos adicionales).
+Claims Analyst guarda PO en **disco R** (servidor local, requiere VPN).
 Orden ingresa en CORE como factura de tercero → EDI automático desde CORE hacia OVNIQ (sistema Herman Miller).
 OVNIQ genera formulario de aceptación del cliente (acknowledgement).
 
-**Diana** (persona con resistencia al cambio, excluida del demo por decisión de Kate) revisa acknowledgement EDI.
+**Diana** (persona con resistencia al cambio, excluida del demo por decisión de Project Manager) revisa acknowledgement EDI.
 
 ---
 
@@ -130,9 +130,9 @@ Workplace recibe físicamente y usa **Bingo Sheet** (documento Word):
 - Carton 34 no encontrado → escrito manualmente "no se encuentra la caja 34"
 - No hay checkbox para "faltante" en el documento
 
-Lena (receiving coordinator BFI) carga en CORE sin distinguir orden completa vs. parcial.
+AP Coordinator (receiving coordinator BFI) carga en CORE sin distinguir orden completa vs. parcial.
 
-Lauren revisa, pide bingo sheet, si falta algo pide prueba de envío a Herman Miller (Andy).
+Claims Analyst revisa, pide bingo sheet, si falta algo pide prueba de envío a Herman Miller (Andy).
 
 ---
 
@@ -141,14 +141,14 @@ Lauren revisa, pide bingo sheet, si falta algo pide prueba de envío a Herman Mi
 Si falta algo → reclamo a Herman Miller.
 Diego sugiere: dropdown de motivos + campo de notas para detallar faltantes.
 
-**Walter (CoNY PM):** Solo se entera al final cuando Lauren le lleva documentos impresos.
+**Operations Manager (CoNY PM):** Solo se entera al final cuando Claims Analyst le lleva documentos impresos.
 Sistema en CORE permite generar notificaciones automáticas → ya implementado en demo.
 
 ---
 
 ### 00:34:41 — Documentos de trazabilidad de mano de obra (CPR)
 
-David muestra documentos adicionales en Notion — trazabilidad de pagos de mano de obra:
+Senior Estimator muestra documentos adicionales en Notion — trazabilidad de pagos de mano de obra:
 
 Vendor Order #17706 linkado en todos los archivos:
 1. **Correo** con factura de Workplace (costos de instalación)
@@ -168,7 +168,7 @@ Prioridades de trabajo:
 2. Workplace (para mañana)
 3. BFI (para el jueves)
 
-David confirma que el contrato está en el drive de la empresa → evaluar VPN para acceso.
+Senior Estimator confirma que el contrato está en el drive de la empresa → evaluar VPN para acceso.
 
 ---
 
@@ -177,6 +177,6 @@ David confirma que el contrato está en el drive de la empresa → evaluar VPN p
 | Gap | Descripción | Step afectado | Severidad |
 |---|---|---|---|
 | **Plano arquitectónico** | El PDF del email de Account Manager Bly debe incluir un dibujo de distribución del mobiliario, no solo specs de producto | a1.2 (QuoteIntakePricingScene — tab PDF) | 🟠 Mencionado explícitamente en transcript 00:11:56 |
-| **Documentos CPR trazabilidad** | Factura Workplace + firma manual + colilla de pago deben referenciarse en el flujo CPR | a1.3 (CPRScene) | 🟡 Contexto — David mostró estos docs como referencia |
+| **Documentos CPR trazabilidad** | Factura Workplace + firma manual + colilla de pago deben referenciarse en el flujo CPR | a1.3 (CPRScene) | 🟡 Contexto — Senior Estimator mostró estos docs como referencia |
 | **Acknowledgement (Diana)** | Excluido del demo intencionalmente — Diana tiene resistencia al cambio | Excluido | ✅ Decisión correcta |
-| **Disco R / VPN** | Contrato guardado en servidor local, requiere VPN — David lo revisará | Contexto futuro | 🟡 Info, no demo |
+| **Disco R / VPN** | Contrato guardado en servidor local, requiere VPN — Senior Estimator lo revisará | Contexto futuro | 🟡 Info, no demo |

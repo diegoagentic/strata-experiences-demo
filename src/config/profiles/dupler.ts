@@ -256,7 +256,7 @@ export const DUPLER_STEP_MESSAGES: Record<string, string[]> = {
     'd2.7': [
         'StagingAgent: preparing Mercy Health Phase 2 checklist...',
         '24/26 items staged — 2 pending (Park Table backorder)',
-        'Sarah Chen reviewing consolidated warehouse report',
+        'Operations Manager Chen reviewing consolidated warehouse report',
         'Dispatch confirmed: Interior Installations, Thursday 8AM',
     ],
 

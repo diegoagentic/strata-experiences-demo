@@ -6,9 +6,9 @@
 // PREPARED BY: Avanto
 // DATE: April 2026 · revised Apr 27 2026
 //
-// DEMO NARRATIVE: 3 AI modules · Phase 1 = Accounting AI (Mark's pick).
+// DEMO NARRATIVE: 3 AI modules · Phase 1 = Accounting AI (Sponsor's pick).
 //                 Budget Builder removed from the Thursday demo per Apr 23
-//                 stakeholder direction (Carlos). The MBIBudgetPage component +
+//                 stakeholder direction (Sponsor). The MBIBudgetPage component +
 //                 m1.x history live in git in case priorities shift.
 //
 // FLOW 1 — Accounting AI (Phase 2, Controller · Phase 1 Pilot) · 5 scenes / 5 beats
@@ -26,7 +26,7 @@
 //         directional context · available via Design AI tab outside the tour)
 //
 // DESIGN AI (Phase 4, early-adopter Designer · 3 scenes) — REMOVED FROM TOUR
-// per Apr 27 stakeholder direction (Matt: "primary and only necessary
+// per Apr 27 stakeholder direction (Sales Lead: "primary and only necessary
 // demonstration is accounting" + Phase 4 modules are directional only).
 // MBIDesignPage stays navigable via the Design AI nav tab so anyone who
 // asks about Spec Check (Q10 #1 priority) can still see it. The m4.x
@@ -52,7 +52,7 @@ import type { StepBehavior } from '../../components/demo/DemoStepBanner';
 export const MBI_STEPS: DemoStep[] = [
 
     // ═══════════════════════════════════════════
-    // FLOW 1: Accounting AI (Phase 1 · Mark's pick)
+    // FLOW 1: Accounting AI (Phase 1 · Sponsor's pick)
     // Controller · Phase 1 Pilot · 4 scenes
     // ═══════════════════════════════════════════
     {

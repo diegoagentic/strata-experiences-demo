@@ -5,7 +5,7 @@
 > Repositorio: `diegoagentic/demo-2026-strata` · rama `master`
 > Dev server: `http://localhost:8085`
 > **Fecha de presentación: 14 de mayo — ~8 días hábiles disponibles**
-> **Presentadores: CEO de la empresa o Wendy (SME Avanto/Strata)**
+> **Presentadores: CEO de la empresa o Sales Director (SME Avanto/Strata)**
 
 ---
 
@@ -18,7 +18,7 @@
 | **3 — Pricing + CPR** | ✅ Completa | PricingValidationScene, CPRReconciliationScene |
 | **4 — Fee + Dispatch** | ✅ Completa | AgencyFeeVerifyScene, WorkOrderDispatchScene |
 | **5 — Polish + presentación** | 🔲 Pendiente | DS audit, timings 400ms+, dark mode, pause controls |
-| **6 — Buffer / rehearsal** | 🔲 Pendiente | Flujo completo b1.1→b2.2, timing para CEO/Wendy |
+| **6 — Buffer / rehearsal** | 🔲 Pendiente | Flujo completo b1.1→b2.2, timing para CEO/Sales Director |
 
 ---
 
@@ -37,7 +37,7 @@
 **Principio de interacción:**
 > Cada escena simula a un operador real usando el producto. Las transiciones ocurren por acciones con sentido (aprobar, revisar, despachar) — nunca por un botón "Siguiente". El demo se siente como una sesión de trabajo, no como una presentación. Patrón aplicado: Dupler + Leland (botón semántico como side effect de nextStep).
 
-### Requisitos de presentación en vivo (CEO / Wendy)
+### Requisitos de presentación en vivo (CEO / Sales Director)
 - **Animaciones:** velocidad media-lenta. Mínimo 400ms por transición visible.
 - **Pause controls:** `isPausedRef` + `pauseAware` en todos los `setTimeout`. Patrón ya aplicado en los 6 componentes BFI.
 - **Sin auto-advance:** ninguna escena avanza sola. El avance siempre requiere acción del presentador.
@@ -52,8 +52,8 @@
 |---|---|
 | Account Manager DeMar | CoNY Account Lead |
 | Manager Boyle | Director of Strategic Accounts |
-| Lena Cisowski | Receiving Coordinator |
-| Nancy Bos (Miller Knoll) | MK Invoice Processor |
+| AP Coordinator Cisowski | Receiving Coordinator |
+| Receiving Coordinator Bos (Miller Knoll) | MK Invoice Processor |
 | Operations Manager Bly | CoNY Project Manager |
 | Finance Lead Halbert | Finance / AR |
 
@@ -171,8 +171,8 @@ FedEx gap DCAS-1182: `FX284920 · FX284921 · FX284922` — POD request enviado 
 |---|---|---|---|
 | 1 | CORE API License no activa | BFI activa license con RPC vendor | BFI + Avanto |
 | 2 | Formato CPR docs no confirmado | Director Strategic Accounts envía 3–5 samples | Manager Boyle |
-| 3 | T-codes CoNY no exportados | Confirmar acceso Noel & Miller site | Kate / Michael |
-| 4 | R Drive local (VPN) | Decisión de migrar a SharePoint | BFI (Kate) |
+| 3 | T-codes CoNY no exportados | Confirmar acceso Noel & Miller site | Project Manager / Approver |
+| 4 | R Drive local (VPN) | Decisión de migrar a SharePoint | BFI (Project Manager) |
 
 ### Tecnologías candidatas
 | Oportunidad AI | Tecnología | Confiabilidad |
@@ -184,4 +184,4 @@ FedEx gap DCAS-1182: `FX284920 · FX284921 · FX284922` — POD request enviado 
 | Agency fee calculator | Server-side T-code lookup, sin LLM | Alta |
 | FedEx gap detection | Omni EDI extendido o FedEx API | Media |
 | CoNY PM notification | Microsoft Graph o SendGrid | Alta |
-| Kate dashboard | Power BI (ya conectado a CORE) | Alta |
+| Project Manager dashboard | Power BI (ya conectado a CORE) | Alta |

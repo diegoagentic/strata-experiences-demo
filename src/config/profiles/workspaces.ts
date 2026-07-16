@@ -9,10 +9,10 @@
 // DEMO NARRATIVE: 1 unified flow — the story of a $142.50 expense (Employee Alpha)
 //   travelling through 4 roles and 2 platforms, end to end.
 //
-//   John (Employee, Mobile) submits a receipt → Sarah (Ops Manager, Desktop)
+//   John (Employee, Mobile) submits a receipt → Operations Manager (Ops Manager, Desktop)
 //   approves with receipt inline → John tracks status in real time →
-//   Letza (AP Coordinator, Desktop) confirms GL and auto-posts to CORE →
-//   Mehmet/Tammy (CFO/CAO, Desktop) see spend dashboard for the first time.
+//   Accountant (AP Coordinator, Desktop) confirms GL and auto-posts to CORE →
+//   CFO/AP Coordinator (CFO/CAO, Desktop) see spend dashboard for the first time.
 //
 // FLOW — Expense Management End to End · 8 scenes (w1.x → w2.x)
 //   w1.1: Mobile Submit + OCR — camera capture · AI auto-fill · multi-receipt · notes · Excel
@@ -98,7 +98,7 @@ export const WORKSPACES_STEPS: DemoStep[] = [
         groupId: 0,
         groupTitle: 'Workscapes · Expense Management End to End',
         title: 'Admin Self-Service',
-        description: 'The Parking line just matched at 72% confidence — Letza opens Admin to fix the GL rule directly, no IT ticket needed. She updates the mapping, adjusts the approval managers, and refines the category list. Changes apply immediately: the next parking expense will auto-classify at 97%+. Self-service configuration that used to take two weeks now takes two minutes.',
+        description: 'The Parking line just matched at 72% confidence — Accountant opens Admin to fix the GL rule directly, no IT ticket needed. She updates the mapping, adjusts the approval managers, and refines the category list. Changes apply immediately: the next parking expense will auto-classify at 97%+. Self-service configuration that used to take two weeks now takes two minutes.',
         app: 'workspaces-ap',
         role: 'Accountant',
     },
@@ -107,7 +107,7 @@ export const WORKSPACES_STEPS: DemoStep[] = [
         groupId: 0,
         groupTitle: 'Workscapes · Expense Management End to End',
         title: 'CFO / CAO Dashboard',
-        description: 'After Letza confirms GL codes and improves the Parking rule, the CFO receives a real-time notification: May cycle closed — 23 expenses posted, all receipts verified, 1 GL rule improved. The dashboard aggregates spend by category with month-over-month comparison, surfaces SLA outliers, and has the full report ready to export. Switch to Tammy\'s view to see how Ops & Procurement performed.',
+        description: 'After Accountant confirms GL codes and improves the Parking rule, the CFO receives a real-time notification: May cycle closed — 23 expenses posted, all receipts verified, 1 GL rule improved. The dashboard aggregates spend by category with month-over-month comparison, surfaces SLA outliers, and has the full report ready to export. Switch to AP Coordinator\'s view to see how Ops & Procurement performed.',
         app: 'workspaces-reporting',
         role: 'CFO',
     },
@@ -123,7 +123,7 @@ export const WORKSPACES_STEP_BEHAVIOR: Record<string, StepBehavior> = {
     'w2.1': { mode: 'interactive', userAction: 'Review the AP queue — accounting codes pre-suggested per expense · read the confidence legend · click Review on the low-confidence line' },
     'w2.2': { mode: 'interactive', userAction: 'Review accounting codes with confidence percentages · override if needed · confirm and watch the 3-step auto-post to the accounting system' },
     'w2.3': { mode: 'interactive', userAction: 'Parking matched at 72% → click the rule to fix it · update managers if needed · see changes apply live · no IT ticket' },
-    'w2.4': { mode: 'interactive', userAction: 'Tap the notification — cycle summary shows 23 expenses + 1 GL rule improved · filter by dept · drill into Fuel · preview the full report · switch to Tammy\'s division view' },
+    'w2.4': { mode: 'interactive', userAction: 'Tap the notification — cycle summary shows 23 expenses + 1 GL rule improved · filter by dept · drill into Fuel · preview the full report · switch to AP Coordinator\'s division view' },
 };
 
 // ─── STEP MESSAGES (AI Agent Progress) ───────────────────────────────────────

@@ -30,22 +30,22 @@ Phase 3 — Closure:     C-1 → C-5    (install completa → CPR → fee verify
 
 | Paso | ID | Trigger | Rol | Inputs | Sistema | Output / DoD | Excepciones | Demo scene |
 |---|---|---|---|---|---|---|---|---|
-| Quote intake | A1 | Email MK designer | Lauren | Email + PDF specs + ZIP | CORE, Email | Quote # en CORE, reply al designer | — | b1.1 (queue) |
-| SIF pricing validation | A2 | Quote # existe | Lauren | SIF del designer | OmniQuote | Corrected SIF + quote comparison | Restricted items → sub-path A2a | b1.2 |
-| Restricted item resolution | A2a | Item no está en catálogo CoNY | Lauren + Designer | Screenshot del flag | Email | Designer confirma o sustituye | 1–3 días espera MK | b1.2 (sub-step) |
-| SIF load en CORE | A3 | Corrected SIF listo | Lauren | Corrected SIF | CORE | SIF cargado en CORE | — | b1.2 (parte) |
-| Contract type config | A4 | Orden CoNY confirmada | Lauren | Contract# / PO header | CORE | City vs State type guardado, order = third party bill | — | b1.2 (parte) |
-| Discount calc | A5 | Orden third-party bill | Lauren | List + Sell prices | CORE | Descuento% + true-up line → 0 GP | Cálculo manual: (sale÷list)-1 | b1.3 |
-| Labor quote request | A6 | Orden activa | Lauren | Carton count estimado (si >600 cubes → strike truck) | WIG, Email | Labor quote de WIG (formato libre) | Formato no estandarizado | b1.4 |
-| Labor categorization | A7 | Quote WIG recibido | Michael | WIG quote (texto libre) | — | Categorías: Inside Delivery, Teamsters, Carpenters, OT Carpenters, Strike Truck | OT differential por categoría | b1.4 |
-| Labor entry en CORE | A8 | Michael categoriza | Lauren | Cifras de Michael | CORE | Labor SIF template completado en CORE | — | b1.4 (parte) |
-| Order confirmation | A9 | Pricing + labor completo | Lauren | Datos CORE | Email, CORE | Propuesta enviada al cliente | — | b1.5 |
-| PO receipt | A10 | Cliente envía PO | Lauren | PO + delivery date | CORE, R Drive | CORE order completo + Omni + Excel + R Drive | Order # matching por agencia = manual | b1.5 |
-| EDI acknowledgement | A11 | Order en CORE | Dianna (excluida del demo) | ACK EDI en Omni | Omni | Ack aceptado/corregido | Nota: Kate pidió excluir a Diana | — |
-| WIG receiving doc | A12 | Producto llega a WIG | WIG → Lena | Word doc (pág1: WIG RR# + carton count) | CORE | Receipt ingresado en CORE | Lena sin SLA, hasta 7 días | b2.3 |
-| 100% gate | A13 | Lena notifica | Lauren | CORE received% | CORE | Work order impreso | Verificación manual de Lauren | b2.4 |
-| CPR reconciliation | A14 | Post-instalación, WIG envía invoice + CPR | Lauren → Michael → Nancy | CPR (horas reales) vs quoted hours | CORE, Omni, Email | CORE ajustado, Nancy notificada | 75% tienen discrepancia | b1.6 + b1.7 |
-| Agency fee close | A15 | HM invoice disponible | Lauren → Patricia | Invoices Omni + fee Nancy | CORE | Agency fee aplicado, CORE cerrado | Blind spot: nunca se verificó vs contrato | b1.8 |
+| Quote intake | A1 | Email MK designer | Claims Analyst | Email + PDF specs + ZIP | CORE, Email | Quote # en CORE, reply al designer | — | b1.1 (queue) |
+| SIF pricing validation | A2 | Quote # existe | Claims Analyst | SIF del designer | OmniQuote | Corrected SIF + quote comparison | Restricted items → sub-path A2a | b1.2 |
+| Restricted item resolution | A2a | Item no está en catálogo CoNY | Claims Analyst + Designer | Screenshot del flag | Email | Designer confirma o sustituye | 1–3 días espera MK | b1.2 (sub-step) |
+| SIF load en CORE | A3 | Corrected SIF listo | Claims Analyst | Corrected SIF | CORE | SIF cargado en CORE | — | b1.2 (parte) |
+| Contract type config | A4 | Orden CoNY confirmada | Claims Analyst | Contract# / PO header | CORE | City vs State type guardado, order = third party bill | — | b1.2 (parte) |
+| Discount calc | A5 | Orden third-party bill | Claims Analyst | List + Sell prices | CORE | Descuento% + true-up line → 0 GP | Cálculo manual: (sale÷list)-1 | b1.3 |
+| Labor quote request | A6 | Orden activa | Claims Analyst | Carton count estimado (si >600 cubes → strike truck) | WIG, Email | Labor quote de WIG (formato libre) | Formato no estandarizado | b1.4 |
+| Labor categorization | A7 | Quote WIG recibido | Approver | WIG quote (texto libre) | — | Categorías: Inside Delivery, Teamsters, Carpenters, OT Carpenters, Strike Truck | OT differential por categoría | b1.4 |
+| Labor entry en CORE | A8 | Approver categoriza | Claims Analyst | Cifras de Approver | CORE | Labor SIF template completado en CORE | — | b1.4 (parte) |
+| Order confirmation | A9 | Pricing + labor completo | Claims Analyst | Datos CORE | Email, CORE | Propuesta enviada al cliente | — | b1.5 |
+| PO receipt | A10 | Cliente envía PO | Claims Analyst | PO + delivery date | CORE, R Drive | CORE order completo + Omni + Excel + R Drive | Order # matching por agencia = manual | b1.5 |
+| EDI acknowledgement | A11 | Order en CORE | Dianna (excluida del demo) | ACK EDI en Omni | Omni | Ack aceptado/corregido | Nota: Project Manager pidió excluir a Diana | — |
+| WIG receiving doc | A12 | Producto llega a WIG | WIG → AP Coordinator | Word doc (pág1: WIG RR# + carton count) | CORE | Receipt ingresado en CORE | AP Coordinator sin SLA, hasta 7 días | b2.3 |
+| 100% gate | A13 | AP Coordinator notifica | Claims Analyst | CORE received% | CORE | Work order impreso | Verificación manual de Claims Analyst | b2.4 |
+| CPR reconciliation | A14 | Post-instalación, WIG envía invoice + CPR | Claims Analyst → Approver → Receiving Coordinator | CPR (horas reales) vs quoted hours | CORE, Omni, Email | CORE ajustado, Receiving Coordinator notificada | 75% tienen discrepancia | b1.6 + b1.7 |
+| Agency fee close | A15 | HM invoice disponible | Claims Analyst → Estimator | Invoices Omni + fee Receiving Coordinator | CORE | Agency fee aplicado, CORE cerrado | Blind spot: nunca se verificó vs contrato | b1.8 |
 
 ---
 
@@ -57,23 +57,23 @@ Phase 3 — Closure:     C-1 → C-5    (install completa → CPR → fee verify
 |---|---|---|---|---|---|---|---|---|
 | MK shipea | R0 | PO confirmado | Miller Knoll | Shipment | HM internal | Shipment activo | — | (pre-story) |
 | Tipo de shipment | R1 | Producto en tránsito | Sistema | Carrier type | Omni | Freight → WIG / FedEx → posible bypass WIG | FedEx bypasses WIG sistemáticamente | b2.1 dashboard |
-| Freight llega WIG | R2 | Entrega física | WIG staff | Cartons físicos + packing slips | WIG internal | Receipt físico registrado | Daño → flag en 24–48h | b2.3 (Lena) |
-| WIG envía doc | R3 | 24–48h post-receipt | WIG | Word doc (pág1: RR# + carton count; pags siguientes: packing slips) | Email → inboxes | Doc aterriza en Lauren, Michael, Lena CC | Sin procesamiento automático | b2.3 |
-| Lena ingresa en CORE | R4 | Doc llega al inbox de Lena | Lena | Word doc + packing slips | CORE | Receipt ingresado contra order lines | Sin SLA, hasta 7 días; no indica si 100% o parcial | b2.3 |
-| Email resumen de Lena | R5 | Lena termina batch | Lena | Lista órdenes procesadas | Email | Email a Lauren sin indicar % de completitud | — | b2.3 (parte) |
-| Lauren verifica 100% | R6 | Email Lena o proactivo | Lauren | CORE received% (Open Order Dashboard) | CORE | ¿100%? SÍ → continúa / NO → R7 | Lauren comenzó a usar dashboard recién Apr 21 | b2.4 |
-| Diagnóstico de gap | R7 | CORE no muestra 100% | Lauren | Omni shipment notifications | Omni | ¿FedEx gap? ¿Lena pendiente? ¿Short shipment real? | Diagnóstico manual cada vez | b2.2 |
-| POD request | R8 | FedEx gap detectado | Lauren | FO number de Omni | Email → Andy (HM) | POD enviado a Lauren | 2-hop: Andy → Lauren → WIG | b2.2 |
-| WIG confirmation | R9 | POD recibido | Lauren | POD de Andy | Email → WIG | WIG confirma en su sistema + envía receiving doc | Vuelve a R4 para esos ítems | b2.2 |
-| 100% confirmado | R10 | All lines 100% en CORE | Lauren | CORE status | CORE | Gate desbloqueado → imprime work order | — | b2.4 (alert) |
-| Work order print | R11 | 100% gate OK | Lauren | CORE work order | CORE, Printer | Work order impreso + drawings | NYC requiere firma física con tinta | b2.5 |
-| Walter handoff | R12 | Work order listo | Lauren | Papel impreso | Entrega física | Walter recibe su copia | Walter: primer awareness del proyecto | b2.6 |
-| WIG package | R13 | Walter recibió | Lauren | 2 copias work order + drawings + POs | FedEx o en mano | WIG tiene paquete completo | — | b2.5 (parte) |
-| Walter schedula | R14 | WIG tiene todo | Walter | Work order + coordinations con city agency | Teléfono / email | Instalación scheduleada | Conflictos de agenda city agency = descubiertos tarde | b2.6 |
+| Freight llega WIG | R2 | Entrega física | WIG staff | Cartons físicos + packing slips | WIG internal | Receipt físico registrado | Daño → flag en 24–48h | b2.3 (AP Coordinator) |
+| WIG envía doc | R3 | 24–48h post-receipt | WIG | Word doc (pág1: RR# + carton count; pags siguientes: packing slips) | Email → inboxes | Doc aterriza en Claims Analyst, Approver, AP Coordinator CC | Sin procesamiento automático | b2.3 |
+| AP Coordinator ingresa en CORE | R4 | Doc llega al inbox de AP Coordinator | AP Coordinator | Word doc + packing slips | CORE | Receipt ingresado contra order lines | Sin SLA, hasta 7 días; no indica si 100% o parcial | b2.3 |
+| Email resumen de AP Coordinator | R5 | AP Coordinator termina batch | AP Coordinator | Lista órdenes procesadas | Email | Email a Claims Analyst sin indicar % de completitud | — | b2.3 (parte) |
+| Claims Analyst verifica 100% | R6 | Email AP Coordinator o proactivo | Claims Analyst | CORE received% (Open Order Dashboard) | CORE | ¿100%? SÍ → continúa / NO → R7 | Claims Analyst comenzó a usar dashboard recién Apr 21 | b2.4 |
+| Diagnóstico de gap | R7 | CORE no muestra 100% | Claims Analyst | Omni shipment notifications | Omni | ¿FedEx gap? ¿AP Coordinator pendiente? ¿Short shipment real? | Diagnóstico manual cada vez | b2.2 |
+| POD request | R8 | FedEx gap detectado | Claims Analyst | FO number de Omni | Email → Andy (HM) | POD enviado a Claims Analyst | 2-hop: Andy → Claims Analyst → WIG | b2.2 |
+| WIG confirmation | R9 | POD recibido | Claims Analyst | POD de Andy | Email → WIG | WIG confirma en su sistema + envía receiving doc | Vuelve a R4 para esos ítems | b2.2 |
+| 100% confirmado | R10 | All lines 100% en CORE | Claims Analyst | CORE status | CORE | Gate desbloqueado → imprime work order | — | b2.4 (alert) |
+| Work order print | R11 | 100% gate OK | Claims Analyst | CORE work order | CORE, Printer | Work order impreso + drawings | NYC requiere firma física con tinta | b2.5 |
+| Operations Manager handoff | R12 | Work order listo | Claims Analyst | Papel impreso | Entrega física | Operations Manager recibe su copia | Operations Manager: primer awareness del proyecto | b2.6 |
+| WIG package | R13 | Operations Manager recibió | Claims Analyst | 2 copias work order + drawings + POs | FedEx o en mano | WIG tiene paquete completo | — | b2.5 (parte) |
+| Operations Manager schedula | R14 | WIG tiene todo | Operations Manager | Work order + coordinations con city agency | Teléfono / email | Instalación scheduleada | Conflictos de agenda city agency = descubiertos tarde | b2.6 |
 | Post-install issues | R15 | Post-instalación | Installer | Notas de damage o issues | CORE | Warranty/service record | (no en demo) | — |
-| Storage window | R16 | Desde arrival en WIG | BFI (Lauren monitoreo) | CORE received date | CORE | ¿30 días excedidos? → storage fee | Sin monitoring automático hoy | b2.7 |
-| CPR desde WIG | R17 | Post-instalación | WIG/installer | Invoice package + CPRs | Email + papel | Lauren recibe para reconciliar | Mismo proceso que A14 | b1.6 |
-| Relay a Nancy | R18 | Lauren reconcilia CPR | Lauren → Michael → Nancy | Revised amounts | Email chain | Nancy actualiza invoice MK | 1–3 días de relay chain | b1.7 |
+| Storage window | R16 | Desde arrival en WIG | BFI (Claims Analyst monitoreo) | CORE received date | CORE | ¿30 días excedidos? → storage fee | Sin monitoring automático hoy | b2.7 |
+| CPR desde WIG | R17 | Post-instalación | WIG/installer | Invoice package + CPRs | Email + papel | Claims Analyst recibe para reconciliar | Mismo proceso que A14 | b1.6 |
+| Relay a Receiving Coordinator | R18 | Claims Analyst reconcilia CPR | Claims Analyst → Approver → Receiving Coordinator | Revised amounts | Email chain | Receiving Coordinator actualiza invoice MK | 1–3 días de relay chain | b1.7 |
 | Close | R19 | Invoice alineado | Cadena | Confirmaciones de match | CORE | Orden "invoiceable" | — | b2.8 |
 
 ---
@@ -86,20 +86,20 @@ El FedEx sub-path es un loop dentro del proceso de receiving que ocurre en **cad
 MK shipea FedEx small parcel
         │
         ▼ (bypasses WIG — NO hay WIG confirmation)
-Lauren no recibe ninguna señal de arrival
+Claims Analyst no recibe ninguna señal de arrival
         │
         ▼
-Lauren detecta gap (manualmente, chequeando Omni):
+Claims Analyst detecta gap (manualmente, chequeando Omni):
    Item aparece en Omni como shipped pero NO en WIG receiving doc
         │
         ▼
-Lauren emailea a Andy (HM) con FO number → pide POD
+Claims Analyst emailea a Andy (HM) con FO number → pide POD
         │   ← espera respuesta Andy
         ▼
-Andy manda POD a Lauren
+Andy manda POD a Claims Analyst
         │
         ▼
-Lauren reenvía POD a WIG + fecha de delivery → pide receiving confirmation
+Claims Analyst reenvía POD a WIG + fecha de delivery → pide receiving confirmation
         │
         ▼   ← vuelve al loop principal (R4)
 WIG envía nuevo doc con esos ítems confirmados
@@ -108,7 +108,7 @@ WIG envía nuevo doc con esos ítems confirmados
 **Strata elimina este loop:**
 1. Detecta discrepancia Omni vs WIG log automáticamente
 2. Pre-rellena email a Andy con FO numbers
-3. Lauren aprueba con 1 click → Andy responde → WIG confirmado
+3. Claims Analyst aprueba con 1 click → Andy responde → WIG confirmado
 
 ---
 
@@ -181,7 +181,7 @@ Orden de prioridad para match entre packing list de HM, WIG Receiving Report, y 
 | 3 | **HM Order Number / SO Number** (ej. GD2891) | HM packing list + CORE |
 | 4 | Date window + client/agency name | Fallback cuando los IDs no coinciden |
 
-**Nota crítica:** Cada city agency tiene su propio numbering system. El CORE order number raramente coincide directamente con el PO de la agencia — Lauren matchea manualmente hoy. El Strata matching debe usar la cascada de 4 campos.
+**Nota crítica:** Cada city agency tiene su propio numbering system. El CORE order number raramente coincide directamente con el PO de la agencia — Claims Analyst matchea manualmente hoy. El Strata matching debe usar la cascada de 4 campos.
 
 ---
 
@@ -193,13 +193,13 @@ Entidades que los datos hardcoded del demo deben respetar para mantener consiste
 type OrderStatus =
     | 'entered'           // Quote/order creado en CORE
     | 'shipped'           // HM confirmó envío
-    | 'received_partial'  // Lena ingresó, no 100%
+    | 'received_partial'  // AP Coordinator ingresó, no 100%
     | 'received_100'      // 100% en CORE — gate desbloqueado
-    | 'work_order_issued' // Lauren imprimió y entregó a Walter
-    | 'installed'         // Walter coordinó instalación
+    | 'work_order_issued' // Claims Analyst imprimió y entregó a Operations Manager
+    | 'installed'         // Operations Manager coordinó instalación
     | 'cpr_received'      // WIG mandó CPR post-instalación
-    | 'reconciled'        // Lauren reconcilió CPR, Michael notificó Nancy
-    | 'closed'            // Patricia cerró en CORE, agency fee aplicado
+    | 'reconciled'        // Claims Analyst reconcilió CPR, Approver notificó Receiving Coordinator
+    | 'closed'            // Estimator cerró en CORE, agency fee aplicado
 
 interface DemoOrder {
     order_id: string        // CORE: 'DOE-2847', 'NYPD-0394', 'DCAS-1182', 'DOH-0671'
@@ -272,10 +272,10 @@ Los 5 hooks de automatización que Strata implementa, mapeados a qué scene los 
 | Hook | Proceso automatizado | Trigger | Output | Demo scene |
 |---|---|---|---|---|
 | **Hook 1** | WIG doc ingestion + Bingo # parsing → JSON estructurado | Email de WIG con Word doc adjunto | Tabla Bingo mapeada a CORE order lines | b2.3 WIGDocParserScene |
-| **Hook 2** | 100% received monitor (CORE polling + FedEx expected vs actual) | received% en CORE cruza 100% | Notificación Lauren + status a Walter | b2.1 Dashboard + b2.4 Alert |
-| **Hook 3** | POD orchestration: detecta FedEx gap desde Omni → draft email a Andy → track gaps | FedEx item en Omni sin WIG confirmation | Pre-filled POD request para Lauren | b2.2 FedExGapScene |
-| **Hook 4** | CPR reconciliation: quoted vs CPR actual → delta por categoría + message packet a Michael | CPR document recibido | Diff table + mensaje pre-redactado a Michael | b1.6 CPR + b1.7 Relay |
-| **Hook 5** | Agency fee verification: fee esperado (T-code calc) vs datos de Nancy Bos | Invoice MK disponible | Expected vs actual comparison + gap alert | b1.8 AgencyFeeVerify |
+| **Hook 2** | 100% received monitor (CORE polling + FedEx expected vs actual) | received% en CORE cruza 100% | Notificación Claims Analyst + status a Operations Manager | b2.1 Dashboard + b2.4 Alert |
+| **Hook 3** | POD orchestration: detecta FedEx gap desde Omni → draft email a Andy → track gaps | FedEx item en Omni sin WIG confirmation | Pre-filled POD request para Claims Analyst | b2.2 FedExGapScene |
+| **Hook 4** | CPR reconciliation: quoted vs CPR actual → delta por categoría + message packet a Approver | CPR document recibido | Diff table + mensaje pre-redactado a Approver | b1.6 CPR + b1.7 Relay |
+| **Hook 5** | Agency fee verification: fee esperado (T-code calc) vs datos de Receiving Coordinator Bos | Invoice MK disponible | Expected vs actual comparison + gap alert | b1.8 AgencyFeeVerify |
 
 ---
 
@@ -324,10 +324,10 @@ Los 7 puntos de conexión documentados en el lifecycle CoNY:
 | C1 | 100% receiving = handoff entre procesos. Sin receiving, no hay work order, sin work order, no se cierra Agency Fee | Sí | b2.4 → b1.8 |
 | C2 | WIG es fuente de labor quotes Y receiving docs. Mismo formato libre en 2 puntos del lifecycle | No (eficiencia) | b1.4 ↔ b2.3 |
 | C3 | CPR reconciliation = closing event compartido para ambos flows | Sí (payment) | b1.6 + b1.7 ↔ b2.8 |
-| C4 | 30-day storage window crea presión. Lena lag comprime la ventana | No (financiero) | b2.7 ↔ b1.5 |
+| C4 | 30-day storage window crea presión. AP Coordinator lag comprime la ventana | No (financiero) | b2.7 ↔ b1.5 |
 | C5 | FedEx gap bloquea ambos. Sin WIG confirmation → 100% gate bloqueado → work order bloqueado → AF no cierra | Sí | b2.2 ↔ b1.8 |
 | C6 | Excel tracking duplicado. Mismas órdenes en dos spreadsheets sin sync con CORE | No (data drift) | b1.5 ↔ b2.1 |
-| C7 | Lauren = single point of failure para todo el lifecycle CoNY | Sí (operacional) | Todos |
+| C7 | Claims Analyst = single point of failure para todo el lifecycle CoNY | Sí (operacional) | Todos |
 
 ---
 
@@ -337,9 +337,9 @@ Los 7 puntos de conexión documentados en el lifecycle CoNY:
 |---|---|---|---|
 | Account Manager DeMar | CoNY Account Lead — principal | lauren@bfifurniture.com | b1.1–b1.6, b2.1, b2.4–b2.5, b2.7–b2.8 |
 | Manager Boyle | Director of Strategic Accounts | michael@bfifurniture.com | b1.4, b1.7 |
-| Lena Cisowski | Receiving Coordinator | lena@bfifurniture.com | b2.3 |
+| AP Coordinator Cisowski | Receiving Coordinator | lena@bfifurniture.com | b2.3 |
 | Operations Manager Bly | CoNY PM | walter@bfifurniture.com | b2.6 |
 | Finance Lead Halbert | Finance / AR | patricia@bfifurniture.com | b1.8 |
-| Nancy Bos | MK Invoice Processor (externo) | nancy.bos@millerknoll.com | b1.7, b1.8 |
+| Receiving Coordinator Bos | MK Invoice Processor (externo) | nancy.bos@millerknoll.com | b1.7, b1.8 |
 | Andy | MK Contact (externo) | andy@millerknoll.com | b2.2 |
 | MK Designer | Trigger de quote intake (externo) | designer@millerknoll.com | b1.1, b1.2 |

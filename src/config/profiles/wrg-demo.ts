@@ -2,14 +2,14 @@
 // WRG — Demo Profile v8 (BPMN-aligned · see docs/wrg-demo/V8_BPMN_ALIGNMENT_PLAN.md)
 //
 // FLOW 1 — AI Labor Estimation (internal · BPMN stages 1-14)
-//   w1.1: Labor estimation kickoff · David (Senior Estimator) pulls JPS from
+//   w1.1: Labor estimation kickoff · Senior Estimator (Senior Estimator) pulls JPS from
 //         CORE and runs the dual-engine calc (Delivery Pricer + Labor Worksheet)
-//   w1.2: Designer verification · Alex validates the escalated custom item
+//   w1.2: Designer verification · Estimator validates the escalated custom item
 //
 // FLOW 2 — Internal handoff (BPMN stages 15-18)
-//   w2.1: Salesperson review · Sara receives the Outlook notification from
+//   w2.1: Salesperson review · Sales Rep receives the Outlook notification from
 //         CORE, reviews the labor estimate, and forwards to SAC
-//   w2.2: SAC quote assembly & release · Riley combines labor + product +
+//   w2.2: SAC quote assembly & release · Designer combines labor + product +
 //         markup, runs the internal release checklist, and publishes the
 //         client quote through CORE
 //   w2.3: PM execution handoff · PM James picks up the approved quote
@@ -39,7 +39,7 @@ export const WRG_DEMO_STEPS: DemoStep[] = [
         groupId: 0,
         groupTitle: 'Flow 1: AI Labor Estimation',
         title: 'Labor estimation kickoff',
-        description: 'David, the senior estimator, gets a new project notification and connects to the dealer system to pull in the project brief. The assistant reads the site conditions, imports the product list, classifies every item and drafts the labor estimate. A special item needs a designer to double-check it.',
+        description: 'Senior Estimator, the senior estimator, gets a new project notification and connects to the dealer system to pull in the project brief. The assistant reads the site conditions, imports the product list, classifies every item and drafts the labor estimate. A special item needs a designer to double-check it.',
         app: 'wrg-estimator',
         role: 'Expert',
     },
@@ -48,7 +48,7 @@ export const WRG_DEMO_STEPS: DemoStep[] = [
         groupId: 0,
         groupTitle: 'Flow 1: AI Labor Estimation',
         title: 'Designer verification',
-        description: 'Alex, the designer, receives the item that needs a second opinion. She reviews the assembly details, confirms how it should be installed and sends her validation back to the estimator.',
+        description: 'Estimator, the designer, receives the item that needs a second opinion. She reviews the assembly details, confirms how it should be installed and sends her validation back to the estimator.',
         app: 'wrg-estimator',
         role: 'Designer',
     },
@@ -62,7 +62,7 @@ export const WRG_DEMO_STEPS: DemoStep[] = [
         groupId: 1,
         groupTitle: 'Flow 2: Internal Handoff',
         title: 'Salesperson review',
-        description: 'Sara, the salesperson, gets an alert that the labor estimate is ready. She reviews it, sends a quick question to the estimator about one line, gets the answer back and forwards the estimate to the next person on the team.',
+        description: 'Sales Rep, the salesperson, gets an alert that the labor estimate is ready. She reviews it, sends a quick question to the estimator about one line, gets the answer back and forwards the estimate to the next person on the team.',
         app: 'wrg-estimator',
         role: 'Dealer',
     },
@@ -71,7 +71,7 @@ export const WRG_DEMO_STEPS: DemoStep[] = [
         groupId: 1,
         groupTitle: 'Flow 2: Internal Handoff',
         title: 'Internal release assembly',
-        description: 'Riley, the sales coordinator, puts the package together: combines the labor work with the product side, reviews the full breakdown, previews the release document and walks it through the internal sign-off chain before releasing it.',
+        description: 'Designer, the sales coordinator, puts the package together: combines the labor work with the product side, reviews the full breakdown, previews the release document and walks it through the internal sign-off chain before releasing it.',
         app: 'wrg-estimator',
         role: 'Sales Coordinator',
     },

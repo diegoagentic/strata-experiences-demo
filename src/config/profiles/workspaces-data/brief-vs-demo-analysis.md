@@ -7,7 +7,7 @@
 
 Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto tiene que viajar por 4 personas antes de que le reembolsen. Esta es la historia de ese viaje.
 
-**Roles involucrados:** Empleado (John) → Manager (Sarah) → AP Coordinator (Letza) → CFO (Mehmet) / CAO (Tammy)
+**Roles involucrados:** Empleado (John) → Manager (Operations Manager) → AP Coordinator (Accountant) → CFO (CFO) / CAO (AP Coordinator)
 **Plataformas:** 📱 Móvil (pasos del empleado) · 🖥 Desktop (pasos del resto)
 **Brief:** 6 pantallas wireframe · **Demo:** 8 pasos (la diferencia se explica en cada paso)
 
@@ -28,8 +28,8 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 | **Múltiples recibos** | "📎 Receipt attached · + Add another" | Botón "+ Add another receipt" — escanea y adjunta automáticamente |
 | **Nota al manager** | No aparece | Campo opcional de texto libre antes de enviar |
 | **Acción principal** | Botón "Submit Expense →" | Botón "Submit Expense →" |
-| **Qué ve después de enviar** | `Submitted ○ → Approved ○ → Paid ○` (3 pasos) | `Submitted ✓ → In Review ○ → Approved ○ → Paid ○` (4 pasos) + SLA 3 días + nombre de Sarah |
-| **Sale hacia** | Notificación automática a Sarah | Notificación automática a Sarah |
+| **Qué ve después de enviar** | `Submitted ○ → Approved ○ → Paid ○` (3 pasos) | `Submitted ✓ → In Review ○ → Approved ○ → Paid ○` (4 pasos) + SLA 3 días + nombre de Operations Manager |
+| **Sale hacia** | Notificación automática a Operations Manager | Notificación automática a Operations Manager |
 | **Alineado** | ✅ Categoría editable corregida · Manager read-only es decisión de diseño |
 
 ---
@@ -43,13 +43,13 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 | **Qué ve al abrir** | Lista de 3 gastos con título "Pending Approvals (3)" | Cola de 5 gastos con filtros, búsqueda y categorías |
 | **Formato de cada fila** | 🧾 ícono + nombre + monto + categoría + recibos visibles | Nombre + monto + categoría + estado de recibos + edad del gasto |
 | **Recibos visibles** | "2 receipts ✅ visible" junto al nombre | Ícono de recibo + cantidad + checkmark verde |
-| **Alerta de SLA** | Carlos Ruiz: borde rojo + "⚠️ Aging 4 days — SLA exceeded" | Carlos Ruiz: badge naranja con días transcurridos |
+| **Alerta de SLA** | Sponsor Ruiz: borde rojo + "⚠️ Aging 4 days — SLA exceeded" | Sponsor Ruiz: badge naranja con días transcurridos |
 | **Notificación** | No aparece | Toast aparece desde arriba a los 2s: *"Employee Alpha · $142.50 — listo para revisar"* |
 | **Botones por fila (John)** | ✓ Approve + ✗ Reject directamente en la fila | "Review >" + ícono ✓ verde + ícono ✗ rojo |
 | **Botones otras filas** | ✓ Approve + ✗ Reject en cada fila | Badge de estado (Pending / SLA / Approved) — sin acción directa |
 | **Decisión en este paso** | Sí — aprueba o rechaza desde la lista | No — cualquier botón lleva al detalle (w1.3) |
 | **Sale hacia** | Gasto aprobado o rechazado | Pantalla de detalle del gasto (w1.3) |
-| **Alineado** | ⚠️ Brief decide en lista / Demo requiere abrir detalle — justificado: Sarah ve el recibo antes de decidir · Botones ✓/✗ añadidos |
+| **Alineado** | ⚠️ Brief decide en lista / Demo requiere abrir detalle — justificado: Operations Manager ve el recibo antes de decidir · Botones ✓/✗ añadidos |
 
 ---
 
@@ -65,10 +65,10 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 | **Selector de escenario** | — | Pills: "✓ Normal approval" / "↩ Return path" / "⚠ Policy flag" |
 | **Path: aprobación** | — | Toca "Approve & Route to AP →" → confirmación → avanza |
 | **Path: rechazo** | — | Cambia a "↩ Return path" → campo de nota obligatorio → "Return to Employee →" → "Continue demo" |
-| **Qué pasa al aprobar** | El gasto va solo a la cola de AP | El gasto va solo a la cola de Letza (AP) |
-| **Qué pasa al rechazar** | John recibe notificación | John recibe notificación con la nota exacta de Sarah |
+| **Qué pasa al aprobar** | El gasto va solo a la cola de AP | El gasto va solo a la cola de Accountant (AP) |
+| **Qué pasa al rechazar** | John recibe notificación | John recibe notificación con la nota exacta de Operations Manager |
 | **Sale hacia** | Cola de AP (aprobado) o John (rechazado) | w1.4 — John ve el resultado |
-| **Alineado** | ➕ Pantalla extra que el brief no tenía — mejora el flujo porque Sarah ve el recibo antes de decidir |
+| **Alineado** | ➕ Pantalla extra que el brief no tenía — mejora el flujo porque Operations Manager ve el recibo antes de decidir |
 
 ---
 
@@ -87,23 +87,23 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 | **Qué ve tras tocarla** | `Status: Submitted ✓ → Approved ✓ → Paid ✓` (3 pasos simples) | Timeline de 6 pasos con fechas y notas: Submitted · Manager Notified · Approved · In AP Review · Posted to CORE · Payment Issued |
 | **Handoff a AP** | No existe | Card "Send confirmation to:" — selecciona AP Coordinator o Finance Team → "Send confirmation" → w2.1 |
 | **— PATH RECHAZADO —** | | |
-| **Notificación** | No definida para este momento | Push rojo de Sarah: *"Receipt is unclear — correction needed"* |
-| **Rejection card** | S6: `❌ Rejected by Operations Manager Solano · "Receipt is unclear"` | Card roja con nota exacta de Sarah |
+| **Notificación** | No definida para este momento | Push rojo de Operations Manager: *"Receipt is unclear — correction needed"* |
+| **Rejection card** | S6: `❌ Rejected by Operations Manager Solano · "Receipt is unclear"` | Card roja con nota exacta de Operations Manager |
 | **Ítem específico a corregir** | `📎 Fuel — $95.00 · Receipt missing` destacado | `Fuel · $95.00 · Receipt unclear — reattach required` en card roja |
 | **Re-adjuntar** | Camera box: "Re-attach corrected receipt" | Camera box idéntico + opción de galería |
 | **Nota al manager** | Campo "Note to manager (optional)" | Campo de texto libre opcional |
 | **Acción final** | Botón "Resubmit for Approval →" | Botón "Resubmit for Approval →" |
-| **Tras reenviar** | — | Confirmación verde + nuevo timeline "Resubmitted ✓ · Sarah notified" + "Continue demo →" |
-| **Sale hacia** | — | w2.1 — Letza ve el gasto en su cola |
+| **Tras reenviar** | — | Confirmación verde + nuevo timeline "Resubmitted ✓ · Operations Manager notified" + "Continue demo →" |
+| **Sale hacia** | — | w2.1 — Accountant ve el gasto en su cola |
 | **Alineado** | ✅ Path rechazado: 1:1 con S6 del brief · Path aprobado: demo añade toda la capa de transparencia que el brief no tenía |
 
 ---
 
-## Paso 5 — Letza ve la cola de AP con códigos pre-sugeridos
+## Paso 5 — Accountant ve la cola de AP con códigos pre-sugeridos
 
 | | **HTML Brief (Screen 3 — primera parte)** | **Demo (w2.1)** |
 |---|---|---|
-| **Rol** | AP Coordinator (Letza) · 🖥 Desktop | AP Coordinator (Letza) · 🖥 Desktop |
+| **Rol** | AP Coordinator (Accountant) · 🖥 Desktop | AP Coordinator (Accountant) · 🖥 Desktop |
 | **Entra porque** | Tiene gastos manager-aprobados para procesar | Gastos aprobados llegaron a su cola con códigos ya sugeridos |
 | **Qué ve al abrir** | Directamente el gasto de John con los 2 códigos listos | Cola de gastos con leyenda de confianza + KPIs de AP |
 | **Leyenda de confianza** | No existe | `≥90% = safe · 75–89% = review · <75% = manual` |
@@ -118,11 +118,11 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 
 ---
 
-## Paso 6 — Letza confirma los códigos y el sistema publica en CORE
+## Paso 6 — Accountant confirma los códigos y el sistema publica en CORE
 
 | | **HTML Brief (Screen 3 — segunda parte)** | **Demo (w2.2)** |
 |---|---|---|
-| **Rol** | AP Coordinator (Letza) · 🖥 Desktop | AP Coordinator (Letza) · 🖥 Desktop |
+| **Rol** | AP Coordinator (Accountant) · 🖥 Desktop | AP Coordinator (Accountant) · 🖥 Desktop |
 | **Entra porque** | Quiere confirmar o corregir los códigos contables | Viene de revisar la cola — abre el gasto de John para confirmar |
 | **Qué ve al abrir** | Los 2 códigos con etiqueta ✨ AI y botón de confirmar | Los 2 códigos con % de confianza, editables inline — empieza directo en la acción |
 | **Línea en riesgo** | No diferenciada visualmente | Línea al 72% tiene borde rojo + badge "Manual review" — llama la atención |
@@ -136,11 +136,11 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 
 ---
 
-## Paso 7 — Letza configura el sistema sin llamar a IT
+## Paso 7 — Accountant configura el sistema sin llamar a IT
 
 | | **HTML Brief (Screen 5)** | **Demo (w2.3)** |
 |---|---|---|
-| **Rol** | AP Coordinator (Letza) · 🖥 Desktop | AP Coordinator (Letza) · 🖥 Desktop |
+| **Rol** | AP Coordinator (Accountant) · 🖥 Desktop | AP Coordinator (Accountant) · 🖥 Desktop |
 | **Entra porque** | Necesita actualizar la configuración | Necesita actualizar managers, categorías o jerarquía |
 | **Sección: Managers** | Operations Manager Solano (Ops · Tampa) + Mike Torres (Sales · Orlando) con botón "Edit" | Mismos managers + formulario expandible inline por fila + toggle activo/inactivo |
 | **Agregar manager** | Botón "+ Add Manager" | Botón "+ Add Manager" → abre formulario con nombre, depto, email |
@@ -159,20 +159,20 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 
 | | **HTML Brief (Screen 4)** | **Demo (w2.4)** |
 |---|---|---|
-| **Rol** | CFO / CAO (Mehmet / Tammy) · 🖥 Desktop | CFO (Mehmet) → transición automática → CAO (Tammy) · 🖥 Desktop |
+| **Rol** | CFO / CAO (CFO / AP Coordinator) · 🖥 Desktop | CFO (CFO) → transición automática → CAO (AP Coordinator) · 🖥 Desktop |
 | **Entra porque** | Quieren ver en qué se gasta la empresa | Primera vez que tienen visibilidad sin pedir reportes manualmente |
 | **Filtros** | Mayo 2026 · All Depts · All Locations | Mismos filtros + funcionales: cambian datos en tiempo real |
 | **KPI: Gasto del mes** | $48K | $48K ✅ |
 | **KPI: Pendientes** | 23 | 23 ✅ |
 | **KPI: A tiempo** | 94% | 94% ✅ |
 | **Barras de categoría** | Fuel $12K · Meals $8.5K · Travel $6K · Office $4K | Fuel $12K · Meals $8.5K · Travel $6K · Office $4K ✅ |
-| **Alertas de SLA** | No aparece en el brief | Sección de gastos con más de 3 días sin aprobarse — visible para Mehmet y para Tammy |
-| **Vista de división (Tammy)** | No diferenciada — una sola pantalla genérica | Switch automático después de 1s → banner de transición → vista filtrada por división Ops & Procurement · Florida |
-| **Reminders de SLA** | No existe | Tammy puede enviar reminder al manager desde el dashboard |
+| **Alertas de SLA** | No aparece en el brief | Sección de gastos con más de 3 días sin aprobarse — visible para CFO y para AP Coordinator |
+| **Vista de división (AP Coordinator)** | No diferenciada — una sola pantalla genérica | Switch automático después de 1s → banner de transición → vista filtrada por división Ops & Procurement · Florida |
+| **Reminders de SLA** | No existe | AP Coordinator puede enviar reminder al manager desde el dashboard |
 | **Comparación por período** | No aparece | Gráfico de tendencias mes a mes por categoría |
 | **Exportar** | "Export CSV / PDF →" | Botones CSV y PDF funcionales con animación de descarga |
 | **Sale hacia** | Fin del flujo | Fin del flujo — el $142.50 de John es ahora parte de la visibilidad de liderazgo |
-| **Alineado** | ✅ Todos los números exactos · Demo supera el brief con switch Mehmet/Tammy, alertas SLA, tendencias y reminders |
+| **Alineado** | ✅ Todos los números exactos · Demo supera el brief con switch CFO/AP Coordinator, alertas SLA, tendencias y reminders |
 
 ---
 
@@ -180,14 +180,14 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 
 | Paso | Demo | Rol | Plataforma | Entra porque | Sale hacia |
 |---|---|---|---|---|---|
-| 1 | w1.1 | Empleado (John) | 📱 Móvil | Tiene un recibo que reportar | Gasto llega a cola de Sarah |
-| 2 | w1.2 | Manager (Sarah) | 🖥 Desktop | Le llegó notificación de gasto nuevo | Abre detalle del gasto |
-| 3 | w1.3 | Manager (Sarah) | 🖥 Desktop | Quiere ver el recibo antes de decidir | Aprueba (→ Letza) o rechaza (→ John) |
-| 4 | w1.4 | Empleado (John) | 📱 Móvil | Le llegó notificación (aprobado o rechazado) | Aprobado: selecciona a quién notificar → Letza · Rechazado: corrige y reenvía → Sarah |
-| 5 | w2.1 | AP (Letza) | 🖥 Desktop | Gasto aprobado llegó a su cola con códigos pre-sugeridos | Abre el gasto para confirmar códigos |
-| 6 | w2.2 | AP (Letza) | 🖥 Desktop | Necesita confirmar o corregir los códigos contables | Confirma → CORE recibe la entrada automáticamente |
-| 7 | w2.3 | AP (Letza) | 🖥 Desktop | Gestiona la configuración del sistema | Cambios guardados, en vigor inmediato |
-| 8 | w2.4 | CFO (Mehmet) → CAO (Tammy) | 🖥 Desktop | Quieren ver el gasto total de la empresa | Fin del flujo |
+| 1 | w1.1 | Empleado (John) | 📱 Móvil | Tiene un recibo que reportar | Gasto llega a cola de Operations Manager |
+| 2 | w1.2 | Manager (Operations Manager) | 🖥 Desktop | Le llegó notificación de gasto nuevo | Abre detalle del gasto |
+| 3 | w1.3 | Manager (Operations Manager) | 🖥 Desktop | Quiere ver el recibo antes de decidir | Aprueba (→ Accountant) o rechaza (→ John) |
+| 4 | w1.4 | Empleado (John) | 📱 Móvil | Le llegó notificación (aprobado o rechazado) | Aprobado: selecciona a quién notificar → Accountant · Rechazado: corrige y reenvía → Operations Manager |
+| 5 | w2.1 | AP (Accountant) | 🖥 Desktop | Gasto aprobado llegó a su cola con códigos pre-sugeridos | Abre el gasto para confirmar códigos |
+| 6 | w2.2 | AP (Accountant) | 🖥 Desktop | Necesita confirmar o corregir los códigos contables | Confirma → CORE recibe la entrada automáticamente |
+| 7 | w2.3 | AP (Accountant) | 🖥 Desktop | Gestiona la configuración del sistema | Cambios guardados, en vigor inmediato |
+| 8 | w2.4 | CFO (CFO) → CAO (AP Coordinator) | 🖥 Desktop | Quieren ver el gasto total de la empresa | Fin del flujo |
 
 ---
 
@@ -202,7 +202,7 @@ Un empleado de campo gasta $142.50 en combustible y estacionamiento. Ese gasto t
 | 5 — AP queue | Cola + confirmación en 1 pantalla | Cola separada de confirmación | División intencional — mejor narrativa | ➕ |
 | 6 — GL + CORE | Botón simple de confirmar | Animación 3 pasos + línea roja diferenciada | Demo convierte el botón en el wow moment | ➕ |
 | 7 — Admin | 3 secciones estáticas | 3 secciones interactivas + drag & drop + integración contable | Demo supera el brief | ➕ |
-| 8 — Dashboard | Una vista genérica CFO/CAO | Switch Mehmet → Tammy + alertas + tendencias + reminders | Demo supera el brief | ➕ |
+| 8 — Dashboard | Una vista genérica CFO/CAO | Switch CFO → AP Coordinator + alertas + tendencias + reminders | Demo supera el brief | ➕ |
 
 ---
 
@@ -216,6 +216,6 @@ Los pasos extra del demo (w1.3 detalle de aprobación, w1.4 status del empleado,
 - Confianza de IA (%) por línea contable — no estaba en el brief
 - Animación de 3 pasos al publicar en CORE — más dramático que solo un botón
 - Toggle approved/rejected en w1.4 para mostrar ambos caminos sin salir del paso
-- Switch automático Mehmet → Tammy en el dashboard
+- Switch automático CFO → AP Coordinator en el dashboard
 - Alertas de SLA y reminders en el dashboard
 - Integración contable visible en el admin

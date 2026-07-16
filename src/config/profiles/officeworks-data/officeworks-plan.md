@@ -8,7 +8,7 @@
 
 ### Hero scenes (CEO top 4 priorities)
 1. **sc1.6 SelfAuditScene** (SC2 + SC3 · CEO #1) — BOM 71 lines + 5-step audit panels + inline Create CR panel
-2. **sc1.7 PeerReviewScene** (SC7 · CEO #3) — split view + Felicia tacit-knowledge surface
+2. **sc1.7 PeerReviewScene** (SC7 · CEO #3) — split view + EVP Design tacit-knowledge surface
 3. **sc1.9 AckReviewScene** (Gemini supercharge) — clone AckReconciliationModal pattern + real PO data + 2 EEs
 4. **OfficeworksDashboardScene** (SC5 + SC6 · CEO #2 + #4) — capacity heatmap + KPIs (persistent tab)
 

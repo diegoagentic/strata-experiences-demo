@@ -6,7 +6,7 @@ export const LELAND_STAKEHOLDERS: LelandStakeholder[] = [
     // Leadership / Review
     {
         id: 'joshua',
-        name: 'Joshua',
+        name: 'Senior Reviewer',
         role: 'Senior Reviewer',
         team: 'review',
         q4Trust: 7,
@@ -15,7 +15,7 @@ export const LELAND_STAKEHOLDERS: LelandStakeholder[] = [
     },
     {
         id: 'josh',
-        name: 'Josh',
+        name: 'Director Operations',
         role: 'Director Operations',
         team: 'leadership',
         q4Trust: 8,
@@ -23,7 +23,7 @@ export const LELAND_STAKEHOLDERS: LelandStakeholder[] = [
     },
     {
         id: 'brandon',
-        name: 'Brandon',
+        name: 'Reviewer',
         role: 'Admin · Dealer Onboarding',
         team: 'admin',
         q4Trust: 6,
@@ -33,7 +33,7 @@ export const LELAND_STAKEHOLDERS: LelandStakeholder[] = [
     // Sales
     {
         id: 'wendy',
-        name: 'Wendy',
+        name: 'Sales Director',
         role: 'Director Sales',
         team: 'sales',
         q4Trust: 7,

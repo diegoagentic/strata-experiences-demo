@@ -10,7 +10,7 @@
 //   - q10Priority      from the 17-respondent AI Readiness Questionnaire (when applicable)
 //
 // SOURCE: MBI_SOURCE_OF_TRUTH.md Section 4 + Notion AI Readiness Assessment
-// APR 23 STAKEHOLDER NOTE: Matt confirmed CET is NOT an Accounting blocker —
+// APR 23 STAKEHOLDER NOTE: Sales Lead confirmed CET is NOT an Accounting blocker —
 // CET pricing export failure only impacts Quotes/Design AI. Do not list it
 // under module:'accounting'.
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -112,7 +112,7 @@ export const MBI_PAIN_POINTS: PainPoint[] = [
         module: 'budget',
         severity: 'critical',
         resolvedInPhase: 3,
-        area: 'Sales · BD · Mark',
+        area: 'Sales · BD · Sponsor',
         before: 'Documented $18K error from a single quantity mistake · no validation checkpoint',
         after: 'AI validation prevents the class of errors at parse time (94% confidence catch)',
     },
@@ -167,7 +167,7 @@ export const MBI_PAIN_POINTS: PainPoint[] = [
         area: 'Design + Quotes downstream',
         before: 'Vendor-side export bug · pricing data unreliable',
         after: 'Vendor coordination fix in Phase 1 (prereq for Quotes/Design AI)',
-        notes: 'Pre-req for Quotes & Design AI. Does NOT impact Accounting AI (Matt confirmed Apr 23).',
+        notes: 'Pre-req for Quotes & Design AI. Does NOT impact Accounting AI (Sales Lead confirmed Apr 23).',
     },
     {
         id: 'pc-bottleneck',
@@ -297,7 +297,7 @@ export const PAIN_POINTS_BY_MODULE: Record<PainModule, PainPoint[]> = {
 };
 
 // Sanity check exposed for tests / runtime assertion: Accounting must
-// not reference CET (Matt confirmed Apr 23 — CET is a Quotes/Design prereq).
+// not reference CET (Sales Lead confirmed Apr 23 — CET is a Quotes/Design prereq).
 export function assertNoCETInAccounting(): void {
     const offenders = PAIN_POINTS_BY_MODULE.accounting.filter(
         p => /\bCET\b/.test(p.title) || /\bCET\b/.test(p.before) || /\bCET\b/.test(p.after),

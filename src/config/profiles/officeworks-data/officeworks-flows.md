@@ -6,7 +6,7 @@
 
 | Lane # | Role | Tasks owned |
 |---|---|---|
-| 1 | Design Manager (Felicia/Rebecca/Kimberly) | Task 1 |
+| 1 | Design Manager (EVP Design/Rebecca/Kimberly) | Task 1 |
 | 2 | **Designer (Kimberly — protagonist)** | 1A, 2, 3, 4, 5, 5A, 5B, 6A, 7, 7A, 7B, 8, 8A, 9, 10, 12, 12A + all designer gateways |
 | 3 | Project Manager (Abigail's team) | Task 6 (con Designer) |
 | 4 | Sales Coordinator | Task 11 |
@@ -29,7 +29,7 @@
 | `sc1.5b` | Task 7A | Resolve specification gaps | sub-loop | back to GW3 |
 | `sc1.5c` | Task 7B + GW3A | Strategize order phasing | cross-lane huddle | GW3A new preview? |
 | **`sc1.6`** | Task 8 + 8A nested + GW4 + GW4A | **Self-audit BOM × 6 attrs · floor plan + validation doc** ⭐ | **SC2 (CEO#1) + SC3** | GW4 + GW4A drawing/BOM error type |
-| **`sc1.7`** | Task 9 + GW5 + GW5A | **Peer review (Rebecca/Felicia)** ⭐ | **SC7 (CEO#3)** | GW5 + GW5A drawing/BOM error type |
+| **`sc1.7`** | Task 9 + GW5 + GW5A | **Peer review (Rebecca/EVP Design)** ⭐ | **SC7 (CEO#3)** | GW5 + GW5A drawing/BOM error type |
 | `sc1.8` | Task 10 | BOM submission email (PDF + SP4) | handoff trigger | — |
 | `sc1.8b` | Task 11 + 11A | Coordinator uploads NetSuite + Salesperson releases PO | observed · 2 lanes | — |
 | **`sc1.9`** | Task 12 + GW6 + 12A + GW6B + 2 EEs | **Acknowledgment review · Gemini supercharge** ⭐ | Gemini already in use | GW6 matches? · GW6B resolved? → Confirmed / Held |

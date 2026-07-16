@@ -128,7 +128,7 @@ export const CONTINUA_DEMO_STEPS: DemoStep[] = [
         groupId: 2,
         groupTitle: 'Flow 2: Facility Management & Service Center',
         title: 'Quick Action — Office Relocation',
-        description: 'While the chair replacement is in progress, Carlos needs a workspace. Account Manager Kai (dealer) opens Quick Transfer to relocate Carlos\'s workstation assets (laptop dock, 2 monitors, keyboard, personal items) from Office 3-214 to Office 3-216 (vacant). Drag-and-drop interface with AI ergonomic arrangement suggestion. Batch move committed — inventory locations update in real-time, Carlos notified of temporary workspace.',
+        description: 'While the chair replacement is in progress, Sponsor needs a workspace. Account Manager Kai (dealer) opens Quick Transfer to relocate Sponsor\'s workstation assets (laptop dock, 2 monitors, keyboard, personal items) from Office 3-214 to Office 3-216 (vacant). Drag-and-drop interface with AI ergonomic arrangement suggestion. Batch move committed — inventory locations update in real-time, Sponsor notified of temporary workspace.',
         app: 'inventory',
         role: 'Facility Manager',
         highlightId: 'fm-quick-relocation',
@@ -138,7 +138,7 @@ export const CONTINUA_DEMO_STEPS: DemoStep[] = [
         groupId: 2,
         groupTitle: 'Flow 2: Facility Management & Service Center',
         title: 'Resolution & Installer Report',
-        description: 'ProInstall LLC completes the chair swap: old Aeron removed (warranty return), consignment Aeron Remastered installed in Office 3-214. Installer files completion report with photos, serial number transfer, and QC checklist. System updates: inventory reflects consignment conversion, warranty claim CLM-2026-019 filed with Herman Miller, Carlos relocated back to 3-214. All stakeholders notified. Total resolution: 26 hours, $0 cost.',
+        description: 'ProInstall LLC completes the chair swap: old Aeron removed (warranty return), consignment Aeron Remastered installed in Office 3-214. Installer files completion report with photos, serial number transfer, and QC checklist. System updates: inventory reflects consignment conversion, warranty claim CLM-2026-019 filed with Herman Miller, Sponsor relocated back to 3-214. All stakeholders notified. Total resolution: 26 hours, $0 cost.',
         app: 'mac',
         role: 'System',
         highlightId: 'fm-resolution-report',
@@ -269,10 +269,10 @@ export const CONTINUA_DEMO_STEP_BEHAVIOR: Record<string, StepBehavior> = {
     '1.6': { mode: 'interactive', userAction: 'Emily Chen (UAL PM) reviews consolidated Inventory Intelligence Report — capacity, reuse, pricing, logistics, consignment. Click "Approve All Changes"' },
 
     // Flow 2: Facility Management & Service Center
-    '2.1': { mode: 'interactive', userAction: 'Carlos reports broken Aeron chair (gas cylinder — safety) + flickering lamp in Office 3-214. Watch AI extract details and classify priority. Click "Submit Request"' },
+    '2.1': { mode: 'interactive', userAction: 'Sponsor reports broken Aeron chair (gas cylinder — safety) + flickering lamp in Office 3-214. Watch AI extract details and classify priority. Click "Submit Request"' },
     '2.2': { mode: 'auto', duration: 14, aiSummary: 'TriageAgent: cross-referencing warranty, inventory, contracts, and scheduling — generating resolution plan with consignment swap option' },
     '2.3': { mode: 'interactive', userAction: 'Review AI resolution: warranty claim auto-drafted, consignment Aeron available ($0 cost, 98% match), installer dispatched tomorrow. Click "Approve & Notify"' },
-    '2.4': { mode: 'interactive', userAction: 'Sara opens Quick Transfer to relocate Carlos\'s workstation assets from Office 3-214 to 3-216 (vacant). Drag items to new office, then click "Commit Moves"' },
+    '2.4': { mode: 'interactive', userAction: 'Sales Rep opens Quick Transfer to relocate Sponsor\'s workstation assets from Office 3-214 to 3-216 (vacant). Drag items to new office, then click "Commit Moves"' },
     '2.5': { mode: 'auto', duration: 10, aiSummary: 'ResolutionAgent: processing installer report, updating inventory, filing warranty claim, notifying all stakeholders — $0 cost resolution' },
 
     // Flow 3: Project Lifecycle & Procurement
@@ -348,7 +348,7 @@ export const CONTINUA_DEMO_STEP_MESSAGES: Record<string, string[]> = {
         'Expert review: Regional Sales Manager Reyes reviewing AI resolution plan...',
         'Consignment match: Aeron Remastered from Zone A — 98% match, $0 cost',
         'Installer dispatch: ProInstall LLC, tomorrow 9AM-12PM — certified vendor',
-        'Approval sent — notifications dispatched to Carlos, Sara, ProInstall',
+        'Approval sent — notifications dispatched to Sponsor, Sales Rep, ProInstall',
     ],
     '2.4': [
         'RelocationAgent: preparing asset transfer — Office 3-214 → 3-216...',

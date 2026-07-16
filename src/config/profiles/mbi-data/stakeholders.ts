@@ -18,7 +18,7 @@ export const MBI_STAKEHOLDERS: Stakeholder[] = [
     { id: 'erin-skinner', name: 'Project Coordinator', role: 'PC & Design (hybrid)', team: 'pc', q4Trust: 5, adoption: 'early-majority' },
     { id: 'erin-pm', name: 'Erin', role: 'PM', team: 'pm', q4Trust: 5, adoption: 'early-majority' },
     { id: 'amy-behl', name: 'Estimator Nova', role: 'PC', team: 'pc', q4Trust: 5, adoption: 'early-majority' },
-    { id: 'mario', name: 'Mario', role: 'PC', team: 'pc', q4Trust: 5, adoption: 'early-majority' },
+    { id: 'mario', name: 'Estimator', role: 'PC', team: 'pc', q4Trust: 5, adoption: 'early-majority' },
     { id: 'michael-nickel', name: 'Approver Nix', role: 'PM', team: 'pm', q4Trust: 6, adoption: 'early-majority' },
     { id: 'nicki-nevad', name: 'Designer Vale', role: 'PM', team: 'pm', q4Trust: 6, adoption: 'early-majority' },
 
@@ -31,7 +31,7 @@ export const MBI_STAKEHOLDERS: Stakeholder[] = [
     // Sales
     { id: 'amanda-renshaw', name: 'Sales Rep Ash', role: 'Account Manager', team: 'sales', q4Trust: 6, adoption: 'early-majority' },
     { id: 'nicky-wesemann', name: 'Designer Wren', role: 'Sales', team: 'sales', q4Trust: 5, adoption: 'early-majority' },
-    { id: 'stacey', name: 'Stacey', role: 'Sales', team: 'sales', q4Trust: 5, adoption: 'early-majority' },
+    { id: 'stacey', name: 'Coordinator', role: 'Sales', team: 'sales', q4Trust: 5, adoption: 'early-majority' },
     { id: 'keyla-gettings', name: 'Coordinator Blake', role: 'Sales', team: 'sales', q4Trust: 5, adoption: 'early-majority' },
 
     // Warehouse

@@ -162,7 +162,7 @@ export const OFFICEWORKS_STEPS: DemoStep[] = [
     // LABOR & DELIVERY ESTIMATION FLOW · parallel to Spec Check & Design
     // ─────────────────────────────────────────────────────────────────────
     // Furniture vertical · Alan McPhee (Sr Operations · Burlington MA) is the
-    // operational equivalent of Felicia. Runs the labor RFP to 3 approved DC
+    // operational equivalent of EVP Design. Runs the labor RFP to 3 approved DC
     // installers for Metro Legal 4F while Kimberly's BOM is being designed.
     // BPMN: Furniture path (F1-F6 · V1-V3 · Q0-Q1 · EE1) — 8 steps.
     // ═══════════════════════════════════════════════════════════════════════
@@ -348,7 +348,7 @@ export const OFFICEWORKS_STEPS: DemoStep[] = [
         groupId: 14,
         groupTitle: 'Proposal & Close',
         title: 'Close + auto-handoff to Ops',
-        description: 'Mark win/loss · Strata builds the post-award handoff packet (Works post-award form + NetSuite SO + Ignite folder access) and routes to Spec Check or L&D. Today the post-award handoff is at minimum 2 separate manual steps · the coordinator NetSuite action is routinely missed.',
+        description: 'Sponsor win/loss · Strata builds the post-award handoff packet (Works post-award form + NetSuite SO + Ignite folder access) and routes to Spec Check or L&D. Today the post-award handoff is at minimum 2 separate manual steps · the coordinator NetSuite action is routinely missed.',
         app: 'officeworks-sales',
         role: 'Sales Lead',
         flowId: 'sales',
@@ -389,7 +389,7 @@ export const OFFICEWORKS_STEP_BEHAVIOR: Record<string, StepBehavior> = {
     'sc-S.4': { mode: 'interactive', userAction: 'Accept the Strata discovery summary · resolve BANT + MEDDIC missing fields · save' },
     'sc-S.5': { mode: 'interactive', userAction: 'Pick the channel (email / Teams / SMS) · review the draft · queue for send' },
     'sc-S.6': { mode: 'interactive', userAction: 'Review the assembled proposal · PDF + quote line items · approve the draft email' },
-    'sc-S.7': { mode: 'interactive', userAction: 'Mark win/loss · review the handoff packet · route to Spec Check or L&D' },
+    'sc-S.7': { mode: 'interactive', userAction: 'Sponsor win/loss · review the handoff packet · route to Spec Check or L&D' },
 };
 
 // ─── STEP MESSAGES (AI agent progress · short, status-style) ─────────────────
@@ -452,8 +452,8 @@ export const OFFICEWORKS_STEP_MESSAGES: Record<string, string[]> = {
     'sc1.7': [
         'Peer assigned: Rebecca Warren (MA/NY/NJ)',
         'Delta summary: focus on CRs + electrical layout',
-        'Strata surfaced: District inset glass should be 6mm (from Felicia\'s history)',
-        'Strata surfaced: Leverage NO field cut metal fascia (from Felicia\'s history)',
+        'Strata surfaced: District inset glass should be 6mm (from EVP Design\'s history)',
+        'Strata surfaced: Leverage NO field cut metal fascia (from EVP Design\'s history)',
         '2 new rules saved to Officeworks knowledge base',
         'Peer audit complete · BOM approved · send submission',
     ],

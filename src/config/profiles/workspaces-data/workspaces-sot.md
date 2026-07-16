@@ -25,9 +25,9 @@
 
 | Name | Role | Primary Need | Demo perspective |
 |---|---|---|---|
-| Mehmet | CFO | Company-wide spend visibility · category vs time · CSV/PDF export | Dashboard w2.4 (Company View) |
-| Tammy | CAO (~80 reports) | Ops & Procurement division rollup · cross-location · SLA aging alerts | Dashboard w2.4 (Division View) + approval queue |
-| Letza (Lisa Bombard) | AP Coordinator | GL pre-filled by AI · auto-post to CORE · self-service admin | w2.1 AP Queue · w2.2 GL Sync · w2.3 Admin |
+| CFO | CFO | Company-wide spend visibility · category vs time · CSV/PDF export | Dashboard w2.4 (Company View) |
+| AP Coordinator | CAO (~80 reports) | Ops & Procurement division rollup · cross-location · SLA aging alerts | Dashboard w2.4 (Division View) + approval queue |
+| Accountant (Lisa Bombard) | AP Coordinator | GL pre-filled by AI · auto-post to CORE · self-service admin | w2.1 AP Queue · w2.2 GL Sync · w2.3 Admin |
 | Managers | Direct report supervisors | One-click approve · see receipts inline · no GlobalSearch login | w1.2 Queue · w1.3 Approve |
 | Employees | Field staff, Sales, PMs | Submit from mobile · receipt scan · track status without calling AP | w1.1 Submit · w1.4 Status |
 
@@ -51,10 +51,10 @@
 | 1 | Employee | Fill Intranet form (desktop only) | PP6: desktop-only · PP9: receipt upload fails → email workaround |
 | 2 | GlobalSearch | Document uploaded automatically | OK — works |
 | 3 | GlobalSearch | Sends email notification to manager | System notifies but approval UI is broken |
-| 4 | Manager (Tammy) | Tries to approve in GlobalSearch | **PP5: button grayed out** · approves by email instead |
-| 5 | AP (Letza) | Reviews expense in GlobalSearch | PP1: can't see receipts · requests separately by email |
-| 6 | AP (Letza) | Manual GL breakdown line by line | PP8: ~15 min/expense · inconsistent across AP staff |
-| 7 | AP (Letza) | Manual re-entry into CORE | PP8: copy field by field · error-prone · biggest bottleneck |
+| 4 | Manager (AP Coordinator) | Tries to approve in GlobalSearch | **PP5: button grayed out** · approves by email instead |
+| 5 | AP (Accountant) | Reviews expense in GlobalSearch | PP1: can't see receipts · requests separately by email |
+| 6 | AP (Accountant) | Manual GL breakdown line by line | PP8: ~15 min/expense · inconsistent across AP staff |
+| 7 | AP (Accountant) | Manual re-entry into CORE | PP8: copy field by field · error-prone · biggest bottleneck |
 | 8 | CORE | Issues check and processes payment | Only automated output in the whole process |
 
 ---
@@ -68,8 +68,8 @@
 | 3 | Platform | Email + push notification to manager | Parity + push added |
 | 4 | Manager | One-click approve with inline receipts | Fixes broken UX · PP1 + PP5 resolved |
 | 5 | Platform | Auto-routes approved expense to AP queue | No manual handoff |
-| 6 | AP (Letza) | GL pre-filled by AI rules engine · confirm/override | PP8 resolved · major time save |
-| 7 | AP (Letza) | Auto-post to CORE via API/RPA after confirm | PP8 resolved · manual re-entry eliminated |
+| 6 | AP (Accountant) | GL pre-filled by AI rules engine · confirm/override | PP8 resolved · major time save |
+| 7 | AP (Accountant) | Auto-post to CORE via API/RPA after confirm | PP8 resolved · manual re-entry eliminated |
 | 8 | CORE | Issues check (unchanged) | Parity |
 
 ---
@@ -78,16 +78,16 @@
 
 | # | Pain Point | Where | Who | Resolution | Strength |
 |---|---|---|---|---|---|
-| PP1 | Cannot see receipts during approval | Step 4 · GlobalSearch | Tammy / Managers | Inline receipt viewer in approval card | STRONG |
-| PP2 | No departmental spending visibility | Post-payment reporting | Tammy (CAO) · Mehmet | Reporting dashboard with division rollup | STRONG |
-| PP3 | No summary reports or dashboards | Reporting | Mehmet · Tammy · Letza | Company-wide dashboard · filters · export | STRONG |
+| PP1 | Cannot see receipts during approval | Step 4 · GlobalSearch | AP Coordinator / Managers | Inline receipt viewer in approval card | STRONG |
+| PP2 | No departmental spending visibility | Post-payment reporting | AP Coordinator (CAO) · CFO | Reporting dashboard with division rollup | STRONG |
+| PP3 | No summary reports or dashboards | Reporting | CFO · AP Coordinator · Accountant | Company-wide dashboard · filters · export | STRONG |
 | PP4 | Risk of losing GlobalSearch platform | Entire backbone | All | New platform replaces GlobalSearch end-to-end | STRONG |
 | PP5 | GlobalSearch approval UI grayed out | Step 4 | Managers | New clean approval UX · shown in demo explicitly | STRONG |
-| PP6 | Cannot add managers to approval dropdown | Step 1 + Admin | Letza (#1 ask) | Self-service Admin module | STRONG |
-| PP7 | Expense categories need updating | Step 1 + Admin | Letza | Admin module — add/edit/archive categories | STRONG |
-| PP8 | Manual re-entry from GlobalSearch into CORE | Step 7 — biggest bottleneck | Letza | Auto-post via API or RPA after GL confirm | STRONG |
+| PP6 | Cannot add managers to approval dropdown | Step 1 + Admin | Accountant (#1 ask) | Self-service Admin module | STRONG |
+| PP7 | Expense categories need updating | Step 1 + Admin | Accountant | Admin module — add/edit/archive categories | STRONG |
+| PP8 | Manual re-entry from GlobalSearch into CORE | Step 7 — biggest bottleneck | Accountant | Auto-post via API or RPA after GL confirm | STRONG |
 | PP9 | Email workarounds for receipt upload | Step 1 | Employees | Multi-format upload · explicit messaging in UI | IMPLICIT → needs explicit callout |
-| PP10 | Must open each report one by one | Reporting | Mehmet | Dashboard with filters + drill-down + export | STRONG |
+| PP10 | Must open each report one by one | Reporting | CFO | Dashboard with filters + drill-down + export | STRONG |
 
 ---
 
@@ -125,14 +125,14 @@
 | Manager Approval Queue — list view with receipt count, sortable/filterable | HIGH | w1.2 |
 | Email + Push Notifications — SLA aging alert > 3 days | HIGH | w1.2 |
 
-### Module 3 — AP Review & CORE Integration (Letza)
+### Module 3 — AP Review & CORE Integration (Accountant)
 | Feature | Priority | Demo scene |
 |---|---|---|
-| GL Pre-fill Rules Engine — suggests GL code per line, Letza confirms or overrides | CRITICAL | w2.2 |
+| GL Pre-fill Rules Engine — suggests GL code per line, Accountant confirms or overrides | CRITICAL | w2.2 |
 | Auto-Post to CORE — API or RPA after AP confirms; manual re-entry eliminated | CRITICAL | w2.2 |
 | AP Queue View — batch view, aging indicators, SLA outlier flags | HIGH | w2.1 |
 
-### Module 4 — Reporting Dashboard (Tammy / Mehmet)
+### Module 4 — Reporting Dashboard (AP Coordinator / CFO)
 | Feature | Priority | Demo scene |
 |---|---|---|
 | Company-Wide Spend View — role-based: CFO sees all, CAO sees division | CRITICAL | w2.4 |
@@ -142,7 +142,7 @@
 | Export CSV / PDF — any filtered view exportable | HIGH | w2.4 |
 | Role Hierarchy Visibility — Employee→Manager→Dept Head→CFO/AP powers rollup | HIGH | w2.4 |
 
-### Module 5 — Self-Service Admin (Letza)
+### Module 5 — Self-Service Admin (Accountant)
 | Feature | Priority | Demo scene |
 |---|---|---|
 | Manager List Management — add/edit/remove from approval dropdown without IT | CRITICAL | w2.3 |
@@ -165,14 +165,14 @@ Category:  Fuel + Parking → GL 6200 Vehicle + GL 6210 Travel
 Approved by: Operations Manager Solano (Operations · Tampa)
 ```
 
-### Manager Approval Queue (Tammy sees)
+### Manager Approval Queue (AP Coordinator sees)
 | Employee | Amount | Category | Receipts | Submitted | Status |
 |---|---|---|---|---|---|
 | Employee Alpha | $142.50 | Fuel + Parking | 2 ✓ visible | May 5 | Pending |
 | Maria Lopez | $89.00 | Client Meals | 1 ✓ visible | May 4 | Pending |
-| Carlos Ruiz | $210.00 | Travel | 1 | May 1 | ⚠️ 4 days · SLA exceeded |
+| Sponsor Ruiz | $210.00 | Travel | 1 | May 1 | ⚠️ 4 days · SLA exceeded |
 
-### GL mapping (AP Letza confirms)
+### GL mapping (AP Accountant confirms)
 | Line | Description | Amount | GL Code | Source | Confidence |
 |---|---|---|---|---|---|
 | 1 | Fuel — Tampa | $95.00 | 6200 · Vehicle Expenses | ✨ AI | 94% |
@@ -205,9 +205,9 @@ Approved by: Operations Manager Solano (Operations · Tampa)
 | OQ1 | Native app vs PWA/Responsive Web? | Demo shows responsive web (mobile viewport simulated in ExpenseSubmitScene) |
 | OQ2 | Multiple receipts per expense line explicitly supported? | "+ Add another receipt" button + "JPG PNG PDF · multiple supported" label |
 | OQ3 | Reject → Resubmit full flow (states, re-review)? | Toggle in w1.3: approve or reject scenario, resubmit card visible |
-| OQ4 | Tammy's division rollup hierarchy definition? | w2.4 Tammy tab shows Ops & Procurement with "38 reports" |
-| OQ5 | SLA threshold — 3 days, who gets notified? | Badge "> 3 days ⚠️" on Carlos Ruiz card + "Push sent to manager" |
-| OQ6 | Monthly category comparison (Mehmet ask)? | Side-by-side bars April vs May with % delta in w2.4 |
+| OQ4 | AP Coordinator's division rollup hierarchy definition? | w2.4 AP Coordinator tab shows Ops & Procurement with "38 reports" |
+| OQ5 | SLA threshold — 3 days, who gets notified? | Badge "> 3 days ⚠️" on Sponsor Ruiz card + "Push sent to manager" |
+| OQ6 | Monthly category comparison (CFO ask)? | Side-by-side bars April vs May with % delta in w2.4 |
 | OQ7 | CORE integration: API vs RPA? | Text in w2.2: "Auto-post to CORE · integration method TBD" |
 | OQ8 | Receipt upload messaging explicit? | w1.1: "Camera · Gallery · File · JPG PNG PDF · multiple receipts supported" |
 
@@ -215,7 +215,7 @@ Approved by: Operations Manager Solano (Operations · Tampa)
 
 ## Explicitly Out of Scope
 
-- Budget alerts / spend caps (Mehmet: "not an immediate need")
+- Budget alerts / spend caps (CFO: "not an immediate need")
 - Full ERP replacement (CORE payment system unchanged — integration only)
 - Travel booking / pre-approval
 - Native mobile app (responsive web for prototype)
@@ -232,9 +232,9 @@ FLOW 1 — Expense Submission & Approval
   w1.4  ExpenseStatusScene     Employee → timeline + history + avg payment time
 
 FLOW 2 — AP Processing & Reporting
-  w2.1  APReviewQueueScene     AP (Letza) → queue + GL pre-suggestion + aging
-  w2.2  GLCoreSyncScene        AP (Letza) → GL confidence% + override + CORE auto-post
-  w2.3  AdminScene             AP (Letza) → manager list + categories + hierarchy
+  w2.1  APReviewQueueScene     AP (Accountant) → queue + GL pre-suggestion + aging
+  w2.2  GLCoreSyncScene        AP (Accountant) → GL confidence% + override + CORE auto-post
+  w2.3  AdminScene             AP (Accountant) → manager list + categories + hierarchy
   w2.4  CFODashboardScene      CFO/CAO   → spend bars + filters + comparison + drill-down + export
 
 ROLE HANDOFFS:

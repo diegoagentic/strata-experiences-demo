@@ -1,7 +1,7 @@
 import type { Invoice } from './types';
 
 // Kathy's morning AP queue · 12 bills distributed across 3 workflow columns.
-// Apr 23 transcript (Christian to Matt @ 13:36): the queue must show
+// Apr 23 transcript (Christian to Sales Lead @ 13:36): the queue must show
 // PENDING / IN-PROGRESS / DONE, not just pending+done.
 //
 //   PENDING REVIEW (4)  Needs Kathy's eyes — exceptions + HealthTrust rebate approvals

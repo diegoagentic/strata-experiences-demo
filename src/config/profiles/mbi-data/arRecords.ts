@@ -7,7 +7,7 @@ export const MBI_AR_RECORDS: ARRecord[] = [
     { id: 'AR-004', client: 'Lindenwood University', poNumber: 'PO-2025-0928', amount: 24600, daysPastDue: 32, status: 'escalated', lastContact: '2026-04-12', salesperson: 'Coordinator Blake' },
     { id: 'AR-005', client: 'Riverside Medical Fort Smith', poNumber: 'PO-2025-0934', amount: 156800, daysPastDue: 8, status: 'committed-to-pay', salesperson: 'Designer Quinn' },
     { id: 'AR-006', client: 'City of St. Charles', poNumber: 'PO-2025-0942', amount: 32100, daysPastDue: 14, status: 'pending-approval', salesperson: 'Sales Rep Ash' },
-    { id: 'AR-007', client: 'Ranken Technical College', poNumber: 'PO-2025-0951', amount: 14800, daysPastDue: 22, status: 'no-response', lastContact: '2026-04-08', salesperson: 'Stacey Hoover' },
+    { id: 'AR-007', client: 'Ranken Technical College', poNumber: 'PO-2025-0951', amount: 14800, daysPastDue: 22, status: 'no-response', lastContact: '2026-04-08', salesperson: 'Coordinator Hoover' },
     { id: 'AR-008', client: 'Boeing St. Louis', poNumber: 'PO-2025-0966', amount: 78400, daysPastDue: 3, status: 'pending-approval', salesperson: 'Sales Lead', collectionsHold: true, holdReason: 'punch-list-open', punchListOpen: 4 },
     { id: 'AR-009', client: 'Washington University', poNumber: 'PO-2025-0972', amount: 41200, daysPastDue: 45, status: 'escalated', lastContact: '2026-04-05', salesperson: 'Coordinator Blake' },
     { id: 'AR-010', client: 'Edward Jones', poNumber: 'PO-2025-0980', amount: 92500, daysPastDue: 9, status: 'committed-to-pay', salesperson: 'Sales Rep Ash' },
