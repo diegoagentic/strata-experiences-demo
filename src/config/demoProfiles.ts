@@ -144,6 +144,13 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: WRG_DEMO_STEP_BEHAVIOR,
         stepMessages: WRG_DEMO_STEP_MESSAGES,
         selfIndicatedSteps: WRG_DEMO_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'quote-to-sif',
+        roles: [
+            { id: 'quote-to-sif', label: 'Quote-to-SIF', icon: 'calculator' },
+            { id: 'dealer',       label: 'Dealer',       icon: 'store' },
+            { id: 'designer',     label: 'Designer',     icon: 'palette' },
+        ],
     },
     {
         id: 'dupler',
@@ -159,6 +166,13 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: DUPLER_STEP_BEHAVIOR,
         stepMessages: DUPLER_STEP_MESSAGES,
         selfIndicatedSteps: DUPLER_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'quote-to-sif',
+        roles: [
+            { id: 'quote-to-sif',  label: 'Quote-to-SIF',  icon: 'calculator' },
+            { id: 'manufacturer',  label: 'Manufacturer',  icon: 'factory' },
+            { id: 'designer',      label: 'Designer',      icon: 'palette' },
+        ],
     },
     {
         id: 'clc',
@@ -175,6 +189,12 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: CLC_STEP_BEHAVIOR,
         stepMessages: CLC_STEP_MESSAGES,
         selfIndicatedSteps: CLC_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'installer',
+        roles: [
+            { id: 'installer',        label: 'Installer',        icon: 'wrench' },
+            { id: 'facility-manager', label: 'Facility Manager', icon: 'building' },
+        ],
     },
     {
         id: 'officeworks',
@@ -190,6 +210,14 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: OFFICEWORKS_STEP_BEHAVIOR,
         stepMessages: OFFICEWORKS_STEP_MESSAGES,
         selfIndicatedSteps: OFFICEWORKS_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'designer',
+        roles: [
+            { id: 'designer',  label: 'Designer',  icon: 'palette' },
+            { id: 'installer', label: 'Installer', icon: 'wrench' },
+            { id: 'dealer',    label: 'Dealer',    icon: 'store' },
+            { id: 'crm',       label: 'CRM',       icon: 'users' },
+        ],
     },
     {
         id: 'bfi',
@@ -205,6 +233,13 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: BFI_STEP_BEHAVIOR,
         stepMessages: BFI_STEP_MESSAGES,
         selfIndicatedSteps: BFI_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'manufacturer',
+        roles: [
+            { id: 'manufacturer', label: 'Manufacturer', icon: 'factory' },
+            { id: 'installer',    label: 'Installer',    icon: 'wrench' },
+            { id: 'designer',     label: 'Designer',     icon: 'palette' },
+        ],
     },
     {
         id: 'leland',
@@ -220,6 +255,13 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: LELAND_STEP_BEHAVIOR,
         stepMessages: LELAND_STEP_MESSAGES,
         selfIndicatedSteps: LELAND_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'dealer',
+        roles: [
+            { id: 'dealer',       label: 'Dealer',       icon: 'store' },
+            { id: 'expert-hub',   label: 'Expert Hub',   icon: 'shield' },
+            { id: 'quote-to-sif', label: 'Quote-to-SIF', icon: 'calculator' },
+        ],
     },
     {
         id: 'mbi',
@@ -235,6 +277,12 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: MBI_STEP_BEHAVIOR,
         stepMessages: MBI_STEP_MESSAGES,
         selfIndicatedSteps: MBI_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'quote-to-sif',
+        roles: [
+            { id: 'quote-to-sif', label: 'Quote-to-SIF', icon: 'calculator' },
+            { id: 'designer',     label: 'Designer',     icon: 'palette' },
+        ],
     },
     {
         id: 'crm',
@@ -250,6 +298,12 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: CRM_STEP_BEHAVIOR,
         stepMessages: CRM_STEP_MESSAGES,
         selfIndicatedSteps: CRM_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'crm',
+        roles: [
+            { id: 'crm',    label: 'CRM',    icon: 'users' },
+            { id: 'dealer', label: 'Dealer', icon: 'store' },
+        ],
     },
 
     // ─── TOUR PROFILES (6) · CSV `Profile(s)` consumers of shared modules ──
@@ -288,6 +342,14 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: WORKSPACES_STEP_BEHAVIOR,
         stepMessages: WORKSPACES_STEP_MESSAGES,
         selfIndicatedSteps: WORKSPACES_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'employee',
+        roles: [
+            { id: 'employee',  label: 'Employee',           icon: 'user' },
+            { id: 'ops-mgr',   label: 'Operations Manager', icon: 'clipboard-check' },
+            { id: 'ap-coord',  label: 'AP Coordinator',     icon: 'receipt' },
+            { id: 'cfo',       label: 'CFO',                icon: 'calculator' },
+        ],
     },
     {
         id: 'continua',
@@ -303,6 +365,14 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: CONTINUA_DEMO_STEP_BEHAVIOR,
         stepMessages: CONTINUA_DEMO_STEP_MESSAGES,
         selfIndicatedSteps: CONTINUA_DEMO_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'facility-manager',
+        roles: [
+            { id: 'facility-manager', label: 'Facility Manager', icon: 'building' },
+            { id: 'facility-user',    label: 'Facility User',    icon: 'user' },
+            { id: 'expert-hub',       label: 'Expert Hub',       icon: 'shield' },
+            { id: 'manufacturer',     label: 'Manufacturer',     icon: 'factory' },
+        ],
     },
     {
         id: 'ops',
@@ -318,6 +388,13 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: OPS_DEMO_STEP_BEHAVIOR,
         stepMessages: OPS_DEMO_STEP_MESSAGES,
         selfIndicatedSteps: OPS_DEMO_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'expert-hub',
+        roles: [
+            { id: 'expert-hub', label: 'Expert Hub', icon: 'shield' },
+            { id: 'dealer',     label: 'Dealer',     icon: 'store' },
+            { id: 'crm',        label: 'CRM',        icon: 'users' },
+        ],
     },
     {
         id: 'coi',
@@ -333,6 +410,13 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: COI_DEMO_STEP_BEHAVIOR,
         stepMessages: COI_DEMO_STEP_MESSAGES,
         selfIndicatedSteps: COI_DEMO_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'dealer',
+        roles: [
+            { id: 'dealer',     label: 'Dealer',     icon: 'store' },
+            { id: 'expert-hub', label: 'Expert Hub', icon: 'shield' },
+            { id: 'crm',        label: 'CRM',        icon: 'users' },
+        ],
     },
     {
         id: 'acme',
@@ -348,5 +432,11 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepBehavior: COI_STEP_BEHAVIOR,
         stepMessages: COI_STEP_MESSAGES,
         selfIndicatedSteps: COI_SELF_INDICATED,
+        hasRoleSwitcher: true,
+        defaultRoleId: 'dealer',
+        roles: [
+            { id: 'dealer',     label: 'Dealer',     icon: 'store' },
+            { id: 'expert-hub', label: 'Expert Hub', icon: 'shield' },
+        ],
     },
 ];
