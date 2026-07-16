@@ -264,6 +264,7 @@ export const DEMO_PROFILES: DemoProfile[] = [
         companyName: 'Apex Furniture',
         description: 'Receiving, invoicing & financial control',
         icon: '📊',
+        defaultApp: 'dashboard',
         steps: OPS_DEMO_STEPS,
         stepBehavior: OPS_DEMO_STEP_BEHAVIOR,
         stepMessages: OPS_DEMO_STEP_MESSAGES,
