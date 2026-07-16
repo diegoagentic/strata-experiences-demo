@@ -207,7 +207,7 @@ const HEADER_WALLS = {
 
 // ─── Metro Legal card · owner per step + flow ─────────────────────────────────────
 
-function getMetro LegalOwner(stepId: string | undefined, flowId: 'spec-check' | 'labor-delivery' | 'sales', vertical: 'furniture' | 'walls' = 'furniture'): string {
+function getMetroLegalOwner(stepId: string | undefined, flowId: 'spec-check' | 'labor-delivery' | 'sales', vertical: 'furniture' | 'walls' = 'furniture'): string {
     if (flowId === 'sales') {
         if (!stepId || stepId === 'sc-S.0') return `${SALES_ACTOR.role} · routing`
         if (stepId === 'sc-S.1' || stepId === 'sc-S.2') return `${SALES_ACTOR.role} · ${SALES_ACTOR.territoryLabel}`
@@ -232,7 +232,7 @@ interface Props {
     onOpenReview: () => void
     /** Optional: hide the "Review" CTA on the Metro Legal card (used when modal already open) */
     hideReviewCta?: boolean
-    /** Currently assigned designer for Metro Legal · overrides the default getMetro LegalOwner() inference */
+    /** Currently assigned designer for the client · overrides the default getMetroLegalOwner() inference */
     assignedDesigner?: string | null
     /**
      * Active flow · Officeworks runs Spec Check & Design and Labor & Delivery
@@ -264,8 +264,8 @@ export default function OfficeworksFunnel({ onOpenReview, hideReviewCta = false,
     const stepKey = currentStep?.id ?? ''
     const badge = BADGE_BY_STEP[stepKey] ?? BADGE[activeCol]
     const subtitle = SUBTITLE_BY_STEP[stepKey] ?? SUBTITLE[activeCol]
-    const owner = assignedDesigner ?? getMetro LegalOwner(currentStep?.id, flowId, vertical)
-    // Quote amount for Metro Legal card · uses Walls FQ when Walls vertical is active.
+    const owner = assignedDesigner ?? getMetroLegalOwner(currentStep?.id, flowId, vertical)
+    // Quote amount for the client card · uses Walls FQ when Walls vertical is active.
     const ldQuotedTotal = isWalls ? WALLS_FINAL_QUOTE.quotedTotal : FINAL_QUOTE.quotedTotal
 
     const firstStepId = isSales ? 'sc-S.0' : isLD ? 'sc-LD.0' : 'sc1.0'
