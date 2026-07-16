@@ -28,8 +28,8 @@ Fuente de verdad de qué se muestra por experiencia · `docs/experience-map.csv`
 | 9 | `continua` | Project & Inventory Intelligence | 🟢 | 🟡 F9 | Landing modo normal via `defaultApp: 'inventory'` (Continua no tiene apps custom · toda personalización es `isContinua && stepId === 'X.X'` en 10 archivos shared: Dashboard, Inventory, Transactions, MACPunchList, ExpertHub, DealerKanban, CRMSim, ConversationalSurvey, AckDetail, OrderDetail). Refactor a primitivas cruza cross-profile · alto riesgo de romper coi/acme/inbound-outbound · pospuesto a F18. 21 steps · 8 apps · rota nav a crmNav para step 3.1. |
 | 10 | `dupler` | Vendor Data → SIF → Warehouse | 🟢 | 🟢 F12 | Landing modo normal via `defaultApp: 'dupler-pdf'` (primer flow · PDF Processor). Los 3 simulations (DuplerPdfProcessor · DuplerWarehouse · DuplerReporting) viven en `src/components/simulations/`. Refactor primitivas pospuesto a F18. |
 | 11 | `ops` | Receiving → Invoice → QB Sync | 🟢 | 🟡 F13 | Landing modo normal via `defaultApp: 'dashboard'` (Apex Furniture usa Dashboard shared con branch `dashboardVariant: 'ops'` cuando aplique). Sin apps custom (`ops-*`) · como Continua, personalización vive en ramas `isOps && stepId === 'X.X'` en shared files. Refactor primitivas cross-profile skipped scope. |
-| 12 | `coi` | Email RFQ → PO → Warranty | 🟢 | ⏳ F15 | 27 steps · consumidor más pesado del stack shared. |
-| 13 | `acme` | Dealer RFQ → PO | 🟢 | ⏳ F15 | Reutiliza `COI_STEPS` (23 steps · sin CRM). |
+| 12 | `coi` | Email RFQ → PO → Warranty | 🟢 | 🟡 F15 | Landing modo normal via `defaultApp: 'email-marketplace'` (RFQ intake · primer step del flow). 27 steps · consumidor más pesado del stack shared (Email + Kanban + Expert Hub + MAC + CRM + Dashboard). Refactor cross-profile pospuesto a F18. |
+| 13 | `acme` | Dealer RFQ → PO | 🟢 | 🟡 F15 | Landing igual a COI (`defaultApp: 'email-marketplace'`) · reutiliza `COI_STEPS` (23 steps · sin CRM). |
 
 ## 14 shared building blocks
 
