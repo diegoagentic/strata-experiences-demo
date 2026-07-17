@@ -75,7 +75,10 @@ const wrapPage = (Comp: ComponentType<any>) => {
 };
 
 const wrapSimulation = (Comp: ComponentType<any>) => {
-  const Wrapped = () => <Comp onNavigate={noop} />;
+  // `previewMode` tells the simulation it's rendered as a standalone shared
+  // block (no demo tour to gate on / advance) so it can autoplay + surface
+  // its own completion state. Simulations that ignore the prop are unaffected.
+  const Wrapped = () => <Comp onNavigate={noop} previewMode={true} />;
   Wrapped.displayName = `BlockWrap(${Comp.displayName || Comp.name || 'Anon'})`;
   return Wrapped;
 };

@@ -54,12 +54,19 @@ const WRG_EMAILS: Array<{ id: number; sender: string; senderEmail: string; subje
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
-export default function EmailSimulation() {
+interface EmailSimulationProps {
+    /** When true (shared-block preview), autoplay the RFQ opening + processing
+     *  modal without a demo tour, and short-circuit `nextStep` on completion. */
+    previewMode?: boolean;
+}
+
+export default function EmailSimulation({ previewMode = false }: EmailSimulationProps = {}) {
     const { isDemoActive, nextStep, currentStep, isPaused, demoProfile } = useDemo();
     const [selectedEmail, setSelectedEmail] = useState<number | null>(null);
     const [starred, setStarred] = useState<Record<number, boolean>>({ 1: true });
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [showProcessingModal, setShowProcessingModal] = useState(false);
+    const [previewCompleted, setPreviewCompleted] = useState(false);
 
     // Pause-aware timer helper
     const isPausedRef = useRef(isPaused);
@@ -75,9 +82,12 @@ export default function EmailSimulation() {
 
     const isWRG = demoProfile?.id === 'wrg';
 
-    // Auto-open RFQ email and auto-start processing during demo step 1.1 / w1.1
+    // Auto-open RFQ email and auto-start processing.
+    // In demo tour: gated on step 1.1 / w1.1.
+    // In shared-block preview: always autoplay on mount (no tour to gate on).
     useEffect(() => {
-        if (!isDemoActive || (currentStep.id !== '1.1' && currentStep.id !== 'w1.1')) return;
+        const stepAutoplay = isDemoActive && (currentStep.id === '1.1' || currentStep.id === 'w1.1');
+        if (!stepAutoplay && !previewMode) return;
 
         const timers: ReturnType<typeof setTimeout>[] = [];
         // Auto-click on email #1 after a short delay
@@ -86,12 +96,18 @@ export default function EmailSimulation() {
         timers.push(setTimeout(pauseAware(() => setShowProcessingModal(true)), 4050));
 
         return () => timers.forEach(clearTimeout);
-    }, [isDemoActive, currentStep.id, pauseAware]);
+    }, [isDemoActive, currentStep.id, previewMode, pauseAware]);
 
     const handleProcessingComplete = useCallback(() => {
         setShowProcessingModal(false);
-        nextStep();
-    }, [nextStep]);
+        if (previewMode) {
+            // No tour to advance in preview · surface an inline completion state
+            // so the shared-block viewer sees the flow finished.
+            setPreviewCompleted(true);
+        } else {
+            nextStep();
+        }
+    }, [nextStep, previewMode]);
 
     const defaultEmails: Array<{ id: number; sender: string; senderEmail: string; subject: string; snippet: string; time: string; unread: boolean; labels: string[] }> = [
         { id: 1, sender: 'Apex Furniture Procurement', senderEmail: 'orders@apexfurniture.com', subject: 'RFQ: 200 Executive Task Chairs & Specs', snippet: 'Please review the attached RFQ data and PDF specifications for 200 Task Chairs...', time: '10:42 AM', unread: true, labels: ['Inbox', 'Urgent'] },
@@ -355,15 +371,27 @@ export default function EmailSimulation() {
                                             <div className="relative z-10 flex-1">
                                                 <div className="flex items-center gap-2">
                                                     <h4 className="text-sm font-bold text-indigo-900 dark:text-indigo-100">AI Agent Monitoring</h4>
-                                                    <span className="px-2 py-0.5 text-[9px] font-black uppercase tracking-widest bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 rounded-full border border-indigo-500/20">Active</span>
+                                                    <span className="px-2 py-0.5 text-[9px] font-black uppercase tracking-widest bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 rounded-full border border-indigo-500/20">{previewCompleted ? 'Complete' : 'Active'}</span>
                                                 </div>
                                                 <p className="text-[11px] text-indigo-700/60 dark:text-indigo-300/60 mt-0.5">
-                                                    EmailIntakeAgent detected RFQ with attachments — <span className="text-indigo-600 dark:text-indigo-300 font-semibold">auto-processing initiated</span>
+                                                    {previewCompleted
+                                                        ? <>EmailIntakeAgent processed RFQ · <span className="text-indigo-600 dark:text-indigo-300 font-semibold">quote draft queued in Dealer Kanban</span></>
+                                                        : <>EmailIntakeAgent detected RFQ with attachments — <span className="text-indigo-600 dark:text-indigo-300 font-semibold">auto-processing initiated</span></>
+                                                    }
                                                 </p>
                                             </div>
                                             <div className="relative z-10 flex items-center gap-2 shrink-0 px-4 py-2 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-xl border border-indigo-500/20">
-                                                <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-                                                <span className="text-xs font-bold text-indigo-600 dark:text-indigo-300">Processing</span>
+                                                {previewCompleted ? (
+                                                    <>
+                                                        <CheckCircleIcon className="w-4 h-4 text-indigo-500" />
+                                                        <span className="text-xs font-bold text-indigo-600 dark:text-indigo-300">Complete</span>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+                                                        <span className="text-xs font-bold text-indigo-600 dark:text-indigo-300">Processing</span>
+                                                    </>
+                                                )}
                                             </div>
                                         </div>
 
@@ -434,15 +462,27 @@ export default function EmailSimulation() {
                                             <div className="relative z-10 flex-1">
                                                 <div className="flex items-center gap-2">
                                                     <h4 className="text-sm font-bold text-indigo-900 dark:text-indigo-100">AI Agent Monitoring</h4>
-                                                    <span className="px-2 py-0.5 text-[9px] font-black uppercase tracking-widest bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 rounded-full border border-indigo-500/20">Active</span>
+                                                    <span className="px-2 py-0.5 text-[9px] font-black uppercase tracking-widest bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 rounded-full border border-indigo-500/20">{previewCompleted ? 'Complete' : 'Active'}</span>
                                                 </div>
                                                 <p className="text-[11px] text-indigo-700/60 dark:text-indigo-300/60 mt-0.5">
-                                                    EmailIntakeAgent detected procurement request with 3 PDFs — <span className="text-indigo-600 dark:text-indigo-300 font-semibold">auto-processing initiated</span>
+                                                    {previewCompleted
+                                                        ? <>EmailIntakeAgent processed procurement request · <span className="text-indigo-600 dark:text-indigo-300 font-semibold">labor + delivery estimate queued</span></>
+                                                        : <>EmailIntakeAgent detected procurement request with 3 PDFs — <span className="text-indigo-600 dark:text-indigo-300 font-semibold">auto-processing initiated</span></>
+                                                    }
                                                 </p>
                                             </div>
                                             <div className="relative z-10 flex items-center gap-2 shrink-0 px-4 py-2 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-xl border border-indigo-500/20">
-                                                <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-                                                <span className="text-xs font-bold text-indigo-600 dark:text-indigo-300">Processing</span>
+                                                {previewCompleted ? (
+                                                    <>
+                                                        <CheckCircleIcon className="w-4 h-4 text-indigo-500" />
+                                                        <span className="text-xs font-bold text-indigo-600 dark:text-indigo-300">Complete</span>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+                                                        <span className="text-xs font-bold text-indigo-600 dark:text-indigo-300">Processing</span>
+                                                    </>
+                                                )}
                                             </div>
                                         </div>
 
