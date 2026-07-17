@@ -154,23 +154,26 @@ export default function SharedBlockShell({ block, onExit, onLogout }: SharedBloc
     return (
       <div className="min-h-screen bg-background">
         <div className="sticky top-0 z-40 border-b border-warning/30 bg-warning/10 backdrop-blur-xl">
-          <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
+          <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between gap-4">
+            {/* Left · warning marker + ExperienceSwitcher (jump control) */}
             <div className="flex items-center gap-3 min-w-0">
-              <div className="h-8 w-8 rounded-lg bg-warning/20 text-warning flex items-center justify-center shrink-0">
-                <ExclamationTriangleIcon className="w-4 h-4" />
+              <div className="flex items-center gap-2 shrink-0">
+                <div className="h-8 w-8 rounded-lg bg-warning/20 text-warning flex items-center justify-center">
+                  <ExclamationTriangleIcon className="w-4 h-4" />
+                </div>
+                <span className="hidden md:inline text-[10px] font-bold text-warning uppercase tracking-wider leading-none">
+                  External · Legacy tool
+                </span>
               </div>
-              <div className="min-w-0">
-                <p className="text-[10px] font-bold text-warning uppercase tracking-wider leading-none">
-                  External System Preview · Legacy tool Strata replaces
-                </p>
-                <h1 className="text-sm font-semibold text-foreground leading-tight truncate flex items-center gap-2 mt-0.5">
-                  <span className="text-base shrink-0">{block.icon}</span>
-                  {block.title}
-                  {tenantCrumb && <span className="text-xs font-normal text-muted-foreground">· in use at {tenantCrumb}</span>}
-                </h1>
-              </div>
+              <div className="h-6 w-px bg-warning/30 hidden md:block" />
+              <ExperienceSwitcher activeBlockId={block.id} />
             </div>
-            <ExitButton onExit={onExit} />
+            {/* Right · standard chrome controls */}
+            <div className="flex items-center gap-1 shrink-0">
+              <RoleSwitcher />
+              <ThemeToggleButton />
+              <ExitButton onExit={onExit} />
+            </div>
           </div>
           {block.description && (
             <div className="max-w-7xl mx-auto px-6 pb-3">
@@ -192,23 +195,24 @@ export default function SharedBlockShell({ block, onExit, onLogout }: SharedBloc
   return (
     <div className="min-h-screen bg-background">
       <div className="sticky top-0 z-40 border-b border-border bg-card/85 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="h-8 w-8 rounded-lg bg-info/10 text-info flex items-center justify-center shrink-0">
-              <DevicePhoneMobileIcon className="w-4 h-4" />
+            <div className="flex items-center gap-2 shrink-0">
+              <div className="h-8 w-8 rounded-lg bg-info/10 text-info flex items-center justify-center">
+                <DevicePhoneMobileIcon className="w-4 h-4" />
+              </div>
+              <span className="hidden md:inline text-[10px] font-bold text-info uppercase tracking-wider leading-none">
+                Mobile Scene
+              </span>
             </div>
-            <div className="min-w-0">
-              <p className="text-[10px] font-bold text-info uppercase tracking-wider leading-none">
-                Mobile Scene Preview
-                {tenantCrumb && <> · previewed inside <span className="text-foreground">{tenantCrumb}</span></>}
-              </p>
-              <h1 className="text-sm font-semibold text-foreground leading-tight truncate flex items-center gap-2 mt-0.5">
-                <span className="text-base shrink-0">{block.icon}</span>
-                {block.title}
-              </h1>
-            </div>
+            <div className="h-6 w-px bg-border hidden md:block" />
+            <ExperienceSwitcher activeBlockId={block.id} />
           </div>
-          <ExitButton onExit={onExit} />
+          <div className="flex items-center gap-1 shrink-0">
+            <RoleSwitcher />
+            <ThemeToggleButton />
+            <ExitButton onExit={onExit} />
+          </div>
         </div>
         {block.description && (
           <div className="max-w-7xl mx-auto px-6 pb-3">

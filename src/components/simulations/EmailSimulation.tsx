@@ -395,6 +395,10 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
                                             </div>
                                         </div>
 
+                                        {previewMode && previewCompleted && (
+                                            <NextStepsCta blocks={EMAIL_NEXT_BLOCKS} />
+                                        )}
+
                                         {/* Refined Attachments */}
                                         <div className="pt-6">
                                             <div className="flex items-center gap-2 mb-4">
@@ -485,6 +489,10 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
                                                 )}
                                             </div>
                                         </div>
+
+                                        {previewMode && previewCompleted && (
+                                            <NextStepsCta blocks={EMAIL_NEXT_BLOCKS} />
+                                        )}
 
                                         {/* Attachments — 3 PDFs */}
                                         <div className="pt-6">
@@ -615,6 +623,55 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
                 <p className="text-[10px] text-muted-foreground/50 italic whitespace-nowrap">
                     In production → Copilot plugin for Outlook: auto-detects RFQs in your inbox
                 </p>
+            </div>
+        </div>
+    );
+}
+
+// ─── Next-steps CTA (shared-block preview only) ──────────────────────────────
+// After the AI Monitoring strip goes "Complete" we surface the natural
+// downstream shared blocks so the viewer doesn't dead-end. Each entry
+// pushes ?block=<id> + fires the same 'block:change' event the
+// ExperienceSwitcher uses, so the app re-renders inside the current shell
+// without a full reload.
+
+const EMAIL_NEXT_BLOCKS: Array<{ id: string; icon: string; title: string; body: string }> = [
+    { id: 'dealer-kanban', icon: '📋', title: 'Dealer Kanban Pipeline', body: 'See the AI extraction + normalization stage that just picked up this RFQ.' },
+    { id: 'expert-hub-tx', icon: '🔀', title: 'Expert Hub Transactions', body: 'HITL review & reconciliation of the quote draft before it goes back to the client.' },
+];
+
+function NextStepsCta({ blocks }: { blocks: typeof EMAIL_NEXT_BLOCKS }) {
+    const goToBlock = (id: string) => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('block', id);
+        window.history.pushState({}, '', url.toString());
+        window.dispatchEvent(new CustomEvent('block:change'));
+    };
+    return (
+        <div className="mt-4 rounded-2xl border border-border bg-card/70 backdrop-blur-sm p-4 shadow-sm">
+            <div className="flex items-center gap-2 mb-3">
+                <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">
+                    Continue the flow
+                </span>
+                <div className="flex-1 h-px bg-border" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {blocks.map(next => (
+                    <button
+                        key={next.id}
+                        onClick={() => goToBlock(next.id)}
+                        className="group flex items-start gap-3 p-3 rounded-xl border border-border bg-background hover:bg-muted hover:border-primary/40 transition-all text-left"
+                    >
+                        <span className="text-xl shrink-0 leading-none">{next.icon}</span>
+                        <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-1.5">
+                                <p className="text-sm font-semibold text-foreground truncate">{next.title}</p>
+                                <ArrowRightIcon className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
+                            </div>
+                            <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{next.body}</p>
+                        </div>
+                    </button>
+                ))}
             </div>
         </div>
     );
