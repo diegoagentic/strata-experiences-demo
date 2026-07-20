@@ -12,6 +12,7 @@ import { useDemoProfile } from './context/useDemoProfile';
 import { CONTINUA_STEP_TIMING } from './config/profiles/continua-demo';
 import { AIAgentAvatar } from './components/simulations/DemoAvatars';
 import Breadcrumbs from './components/Breadcrumbs';
+import Select from './components/Select';
 import {
     MagnifyingGlassIcon,
     AdjustmentsHorizontalIcon,
@@ -1752,50 +1753,49 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                         />
                                     </div>
                                     <div className="flex items-center gap-2 w-full sm:w-auto">
-                                        <div className="relative">
-                                            <BuildingOfficeIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
-                                            <select
-                                                value={filterType}
-                                                onChange={(e) => setFilterType(e.target.value)}
-                                                className="pl-9 pr-8 py-2 bg-muted/50 border border-border rounded-lg text-sm font-medium hover:bg-brand-300 dark:hover:bg-brand-600/50 hover:border-brand-400 dark:hover:border-brand-800 transition-colors appearance-none cursor-pointer focus:ring-2 focus:ring-primary focus:outline-none"
-                                            >
-                                                <option value="All Types">All Types</option>
-                                                {uniqueTypes.map(type => (
-                                                    <option key={type} value={type}>{type}</option>
-                                                ))}
-                                            </select>
-                                            <ChevronDownIcon className="absolute right-3 top-1/2 -translate-y-1/2 w-3 h-3 text-muted-foreground pointer-events-none" />
-                                        </div>
-
-                                        <div className="relative">
-                                            <MapPinIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
-                                            <select
-                                                value={filterLocation}
-                                                onChange={(e) => setFilterLocation(e.target.value)}
-                                                className="pl-9 pr-8 py-2 bg-muted/50 border border-border rounded-lg text-sm font-medium hover:bg-brand-300 dark:hover:bg-brand-600/50 hover:border-brand-400 dark:hover:border-brand-800 transition-colors appearance-none cursor-pointer focus:ring-2 focus:ring-primary focus:outline-none max-w-[200px] truncate"
-                                            >
-                                                <option value="All Locations">All Locations</option>
-                                                {uniqueLocations.map(loc => (
-                                                    <option key={loc} value={loc}>{loc}</option>
-                                                ))}
-                                            </select>
-                                            <ChevronDownIcon className="absolute right-3 top-1/2 -translate-y-1/2 w-3 h-3 text-muted-foreground pointer-events-none" />
-                                        </div>
+                                        <Select
+                                            value={filterType}
+                                            onChange={setFilterType}
+                                            options={['All Types', ...uniqueTypes]}
+                                            className="w-40"
+                                        />
+                                        <Select
+                                            value={filterLocation}
+                                            onChange={setFilterLocation}
+                                            options={['All Locations', ...uniqueLocations]}
+                                            className="w-52"
+                                        />
                                     </div>
                                 </div>
 
-                                {/* Right: View Toggle */}
-                                <div className="flex bg-zinc-100 dark:bg-card p-1 rounded-lg">
+                                {/* Right: View Toggle · DS neutral pattern (no brand as hover-bg per LAW 2) */}
+                                <div className="flex items-center gap-1 p-1 rounded-lg border border-border bg-background">
                                     <button
+                                        type="button"
                                         onClick={() => setViewMode('list')}
-                                        className={cn("p-1.5 rounded-md transition-all", viewMode === 'list' ? "bg-white dark:bg-zinc-700 shadow-sm text-foreground" : "text-muted-foreground hover:text-zinc-900 hover:bg-brand-300 dark:hover:bg-brand-600/50")}
+                                        aria-label="List view"
+                                        aria-pressed={viewMode === 'list'}
+                                        className={cn(
+                                            "p-1.5 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+                                            viewMode === 'list'
+                                                ? "bg-muted text-foreground"
+                                                : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                                        )}
                                     >
-                                        <ListBulletIcon className="w-5 h-5" />
+                                        <ListBulletIcon className="w-5 h-5" aria-hidden="true" />
                                     </button>
                                     <button
-                                        className={cn("p-1.5 rounded-md transition-all", viewMode === 'grid' ? "bg-white dark:bg-zinc-700 shadow-sm text-foreground" : "text-muted-foreground hover:text-zinc-900 hover:bg-brand-300 dark:hover:bg-brand-600/50")}
+                                        type="button"
+                                        aria-label="Grid view"
+                                        aria-pressed={viewMode === 'grid'}
+                                        className={cn(
+                                            "p-1.5 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+                                            viewMode === 'grid'
+                                                ? "bg-muted text-foreground"
+                                                : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                                        )}
                                     >
-                                        <Squares2X2Icon className="w-5 h-5" />
+                                        <Squares2X2Icon className="w-5 h-5" aria-hidden="true" />
                                     </button>
                                 </div>
                             </div>
