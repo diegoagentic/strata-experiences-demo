@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, Fragment } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
 import { useDemo } from '../../context/DemoContext';
 import {
     Bars3Icon,
@@ -67,6 +68,7 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [showProcessingModal, setShowProcessingModal] = useState(false);
     const [previewCompleted, setPreviewCompleted] = useState(false);
+    const [showNextStepsModal, setShowNextStepsModal] = useState(false);
 
     // Pause-aware timer helper
     const isPausedRef = useRef(isPaused);
@@ -101,9 +103,11 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
     const handleProcessingComplete = useCallback(() => {
         setShowProcessingModal(false);
         if (previewMode) {
-            // No tour to advance in preview · surface an inline completion state
-            // so the shared-block viewer sees the flow finished.
+            // No tour to advance in preview · flip the AI Monitoring strip
+            // to "Complete" and pop the next-steps modal after a short beat
+            // so the state change reads before the modal covers it.
             setPreviewCompleted(true);
+            setTimeout(() => setShowNextStepsModal(true), 650);
         } else {
             nextStep();
         }
@@ -380,24 +384,24 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
                                                     }
                                                 </p>
                                             </div>
-                                            <div className="relative z-10 flex items-center gap-2 shrink-0 px-4 py-2 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-xl border border-indigo-500/20">
-                                                {previewCompleted ? (
-                                                    <>
-                                                        <CheckCircleIcon className="w-4 h-4 text-indigo-500" />
-                                                        <span className="text-xs font-bold text-indigo-600 dark:text-indigo-300">Complete</span>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-                                                        <span className="text-xs font-bold text-indigo-600 dark:text-indigo-300">Processing</span>
-                                                    </>
-                                                )}
-                                            </div>
+                                            {previewCompleted ? (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setShowNextStepsModal(true)}
+                                                    className="relative z-10 flex items-center gap-2 shrink-0 px-4 py-2 bg-indigo-500/10 hover:bg-indigo-500/20 dark:bg-indigo-500/20 dark:hover:bg-indigo-500/30 rounded-xl border border-indigo-500/20 transition-colors cursor-pointer group"
+                                                    aria-label="See next steps in the flow"
+                                                >
+                                                    <CheckCircleIcon className="w-4 h-4 text-indigo-500" />
+                                                    <span className="text-xs font-bold text-indigo-600 dark:text-indigo-300">Complete · See next steps</span>
+                                                    <ArrowRightIcon className="w-3.5 h-3.5 text-indigo-500 group-hover:translate-x-0.5 transition-transform" />
+                                                </button>
+                                            ) : (
+                                                <div className="relative z-10 flex items-center gap-2 shrink-0 px-4 py-2 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-xl border border-indigo-500/20">
+                                                    <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+                                                    <span className="text-xs font-bold text-indigo-600 dark:text-indigo-300">Processing</span>
+                                                </div>
+                                            )}
                                         </div>
-
-                                        {previewMode && previewCompleted && (
-                                            <NextStepsCta blocks={EMAIL_NEXT_BLOCKS} />
-                                        )}
 
                                         {/* Refined Attachments */}
                                         <div className="pt-6">
@@ -475,24 +479,24 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
                                                     }
                                                 </p>
                                             </div>
-                                            <div className="relative z-10 flex items-center gap-2 shrink-0 px-4 py-2 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-xl border border-indigo-500/20">
-                                                {previewCompleted ? (
-                                                    <>
-                                                        <CheckCircleIcon className="w-4 h-4 text-indigo-500" />
-                                                        <span className="text-xs font-bold text-indigo-600 dark:text-indigo-300">Complete</span>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-                                                        <span className="text-xs font-bold text-indigo-600 dark:text-indigo-300">Processing</span>
-                                                    </>
-                                                )}
-                                            </div>
+                                            {previewCompleted ? (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setShowNextStepsModal(true)}
+                                                    className="relative z-10 flex items-center gap-2 shrink-0 px-4 py-2 bg-indigo-500/10 hover:bg-indigo-500/20 dark:bg-indigo-500/20 dark:hover:bg-indigo-500/30 rounded-xl border border-indigo-500/20 transition-colors cursor-pointer group"
+                                                    aria-label="See next steps in the flow"
+                                                >
+                                                    <CheckCircleIcon className="w-4 h-4 text-indigo-500" />
+                                                    <span className="text-xs font-bold text-indigo-600 dark:text-indigo-300">Complete · See next steps</span>
+                                                    <ArrowRightIcon className="w-3.5 h-3.5 text-indigo-500 group-hover:translate-x-0.5 transition-transform" />
+                                                </button>
+                                            ) : (
+                                                <div className="relative z-10 flex items-center gap-2 shrink-0 px-4 py-2 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-xl border border-indigo-500/20">
+                                                    <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+                                                    <span className="text-xs font-bold text-indigo-600 dark:text-indigo-300">Processing</span>
+                                                </div>
+                                            )}
                                         </div>
-
-                                        {previewMode && previewCompleted && (
-                                            <NextStepsCta blocks={EMAIL_NEXT_BLOCKS} />
-                                        )}
 
                                         {/* Attachments — 3 PDFs */}
                                         <div className="pt-6">
@@ -618,6 +622,13 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
             {/* AI Processing Modal — auto-triggered during demo step 1.1 */}
             <AIProcessingModal open={showProcessingModal} onComplete={handleProcessingComplete} />
 
+            {/* Next-steps modal · previewMode only · auto-opens post-completion */}
+            <NextStepsModal
+                open={previewMode && showNextStepsModal}
+                onClose={() => setShowNextStepsModal(false)}
+                blocks={EMAIL_NEXT_BLOCKS}
+            />
+
             {/* Copilot production footer */}
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20">
                 <p className="text-[10px] text-muted-foreground/50 italic whitespace-nowrap">
@@ -640,39 +651,92 @@ const EMAIL_NEXT_BLOCKS: Array<{ id: string; icon: string; title: string; body: 
     { id: 'expert-hub-tx', icon: '🔀', title: 'Expert Hub Transactions', body: 'HITL review & reconciliation of the quote draft before it goes back to the client.' },
 ];
 
-function NextStepsCta({ blocks }: { blocks: typeof EMAIL_NEXT_BLOCKS }) {
+interface NextStepsModalProps {
+    open: boolean;
+    onClose: () => void;
+    blocks: typeof EMAIL_NEXT_BLOCKS;
+}
+
+function NextStepsModal({ open, onClose, blocks }: NextStepsModalProps) {
     const goToBlock = (id: string) => {
         const url = new URL(window.location.href);
         url.searchParams.set('block', id);
         window.history.pushState({}, '', url.toString());
         window.dispatchEvent(new CustomEvent('block:change'));
+        onClose();
     };
     return (
-        <div className="mt-4 rounded-2xl border border-border bg-card/70 backdrop-blur-sm p-4 shadow-sm">
-            <div className="flex items-center gap-2 mb-3">
-                <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">
-                    Continue the flow
-                </span>
-                <div className="flex-1 h-px bg-border" />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {blocks.map(next => (
-                    <button
-                        key={next.id}
-                        onClick={() => goToBlock(next.id)}
-                        className="group flex items-start gap-3 p-3 rounded-xl border border-border bg-background hover:bg-muted hover:border-primary/40 transition-all text-left"
+        <Transition show={open} as={Fragment}>
+            <Dialog onClose={onClose} className="relative z-[300]">
+                <Transition.Child
+                    as={Fragment}
+                    enter="ease-out duration-200"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="ease-in duration-150"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                >
+                    <div className="fixed inset-0 bg-foreground/40 backdrop-blur-sm" aria-hidden="true" />
+                </Transition.Child>
+                <div className="fixed inset-0 flex items-center justify-center p-4">
+                    <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-200"
+                        enterFrom="opacity-0 scale-95"
+                        enterTo="opacity-100 scale-100"
+                        leave="ease-in duration-150"
+                        leaveFrom="opacity-100 scale-100"
+                        leaveTo="opacity-0 scale-95"
                     >
-                        <span className="text-xl shrink-0 leading-none">{next.icon}</span>
-                        <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-1.5">
-                                <p className="text-sm font-semibold text-foreground truncate">{next.title}</p>
-                                <ArrowRightIcon className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
+                        <Dialog.Panel className="w-full max-w-xl bg-card rounded-3xl shadow-2xl border border-border overflow-hidden">
+                            <div className="p-6 border-b border-border">
+                                <div className="flex items-start gap-3">
+                                    <div className="h-10 w-10 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center shrink-0">
+                                        <CheckCircleIcon className="w-5 h-5" />
+                                    </div>
+                                    <div className="min-w-0">
+                                        <Dialog.Title className="text-lg font-bold text-foreground leading-tight">
+                                            RFQ processed · continue the flow
+                                        </Dialog.Title>
+                                        <p className="text-sm text-muted-foreground mt-1 leading-snug">
+                                            The email intake stage handed off a quote draft. Jump into the next stages to see what happens downstream.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{next.body}</p>
-                        </div>
-                    </button>
-                ))}
-            </div>
-        </div>
+                            <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+                                {blocks.map(next => (
+                                    <button
+                                        key={next.id}
+                                        onClick={() => goToBlock(next.id)}
+                                        className="group flex flex-col items-start gap-2 p-4 rounded-2xl border border-border bg-background hover:bg-muted hover:border-primary/40 transition-all text-left"
+                                    >
+                                        <div className="flex items-center gap-2 w-full">
+                                            <span className="text-2xl shrink-0 leading-none">{next.icon}</span>
+                                            <p className="text-sm font-semibold text-foreground flex-1 truncate">{next.title}</p>
+                                            <ArrowRightIcon className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
+                                        </div>
+                                        <p className="text-xs text-muted-foreground leading-snug">{next.body}</p>
+                                    </button>
+                                ))}
+                            </div>
+                            <div className="px-6 py-4 border-t border-border flex items-center justify-between gap-3 bg-muted/30">
+                                <p className="text-[11px] text-muted-foreground">
+                                    You can reopen this from the "Complete · See next steps" chip on the email.
+                                </p>
+                                <button
+                                    type="button"
+                                    onClick={onClose}
+                                    className="shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                                >
+                                    Stay on this view
+                                </button>
+                            </div>
+                        </Dialog.Panel>
+                    </Transition.Child>
+                </div>
+            </Dialog>
+        </Transition>
     );
 }
