@@ -164,6 +164,58 @@ const FM_RESOLUTION_NOTIFICATIONS = [
     { initials: 'DP', name: 'Regional Sales Manager Reyes', role: 'Expert', message: 'Service request REQ-FM-2026-018 resolved — $0 cost, 26h total', color: 'from-violet-500 to-violet-700' },
 ]
 
+// ─── Per-punchlist-item detail records ───────────────────────────────────────
+// Drives the right-column panel so clicking a different left-column item
+// swaps request context + email + attachments + completeness. Item-1 keeps
+// the original tour copy so the demo tour behavior is unchanged.
+interface PunchlistDetail {
+    requestId: string;
+    product: string;
+    requester: string;
+    orderRef: string;
+    emailFrom: string;
+    emailSubject: string;
+    emailBody: string;
+    attachments: string[];
+    completeness: number;
+}
+
+const PUNCHLIST_DETAILS: Record<string, PunchlistDetail> = {
+    'item-1': {
+        requestId: 'REQ-PL-2026-047',
+        product: '2x Conf. Room Chairs Azure',
+        requester: 'Site Supervisor — Floor 2',
+        orderRef: 'ORD-2055, Line 3',
+        emailFrom: 'carlos.rivera@acmecorp.com',
+        emailSubject: 'Service Request — Damaged Conference Chairs (ORD-2055)',
+        emailBody: 'We received 2 Azure conference chairs from order ORD-2055 with visible upholstery damage on both units. The damage appears to have occurred during shipping — the packaging was partially crushed. Attached are photos of the damage, the product label, and relevant documentation. Please process a warranty claim.',
+        attachments: ['damage-photo-1.jpg', 'damage-photo-2.jpg', 'product-label.jpg'],
+        completeness: 72,
+    },
+    'item-2': {
+        requestId: 'REQ-PL-2026-052',
+        product: '1x Acoustic Panel (Frosted)',
+        requester: 'Facilities Coord — Floor 3',
+        orderRef: 'ORD-2061, Line 1',
+        emailFrom: 'ana.tobar@acmecorp.com',
+        emailSubject: 'Service Request — Scratched Glass Partition (ORD-2061)',
+        emailBody: 'The acoustic panel installed on Floor 3 has a visible scratch on the frosted glass, easily seen under normal office lighting. Attached is a photo of the damaged partition. Please advise on repair or replacement timeline.',
+        attachments: ['scratch-detail.jpg'],
+        completeness: 88,
+    },
+    'item-3': {
+        requestId: 'REQ-PL-2026-055',
+        product: '1x Workstation Desk',
+        requester: 'IT Coordinator — Floor 1',
+        orderRef: 'ORD-2071, Line 5',
+        emailFrom: 'j.paredes@acmecorp.com',
+        emailSubject: 'Missing Hardware — Workstation Desk (ORD-2071)',
+        emailBody: 'The workstation desk arrived without the mounting hardware packet. The installer left a note requesting the missing parts (M6 bolts, cable trays, cross-bars). Attached is the installer note.',
+        attachments: ['installer-note.pdf'],
+        completeness: 65,
+    },
+};
+
 // ─── Component ────────────────────────────────────────────────────────────────
 interface MACPunchListProps {
     /** When true (shared-block preview) treats the panel as if step 3.1 were
@@ -179,6 +231,10 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
     // Preview pre-selects the first item so users see the right-column
     // detail immediately without needing a click.
     const [selectedItem, setSelectedItem] = useState<string | null>(previewMode ? 'item-1' : null);
+    // Data record that drives the right-column panel · updates when the user
+    // clicks a different left-column item. Falls back to item-1 outside of
+    // preview so tour content stays byte-identical to before.
+    const activeDetail = PUNCHLIST_DETAILS[selectedItem ?? 'item-1'] ?? PUNCHLIST_DETAILS['item-1'];
 
     // ── Pause-aware timer support ──
     const isPausedRef = useRef(isPaused);
@@ -591,7 +647,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                             <div>
                                 <span className="font-bold text-sm text-indigo-900 dark:text-indigo-300">IntakeValidationAgent</span>
                                 <span className="text-xs text-indigo-600 dark:text-indigo-400 ml-2">
-                                    {extractionPhase === 'email' ? 'Incoming service request detected' : extractionPhase === 'extracting' ? 'Extracting and evaluating fields...' : 'Reviewing request REQ-PL-2026-047'}
+                                    {extractionPhase === 'email' ? 'Incoming service request detected' : extractionPhase === 'extracting' ? 'Extracting and evaluating fields...' : `Reviewing request ${activeDetail.requestId}`}
                                 </span>
                             </div>
                         </div>
@@ -608,13 +664,13 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                             <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Incoming Email</span>
                                         </div>
                                         <div className="space-y-2 text-xs">
-                                            <div className="flex gap-2"><span className="font-bold text-muted-foreground w-14 shrink-0">From:</span><span className="text-foreground">carlos.rivera@acmecorp.com</span></div>
-                                            <div className="flex gap-2"><span className="font-bold text-muted-foreground w-14 shrink-0">Subject:</span><span className="font-bold text-foreground">Service Request — Damaged Conference Chairs (ORD-2055)</span></div>
-                                            <div className="flex gap-2 mt-2"><span className="font-bold text-muted-foreground w-14 shrink-0">Body:</span><span className="text-muted-foreground leading-relaxed">We received 2 Azure conference chairs from order ORD-2055 with visible upholstery damage on both units. The damage appears to have occurred during shipping — the packaging was partially crushed. Attached are photos of the damage, the product label, and relevant documentation. Please process a warranty claim.</span></div>
+                                            <div className="flex gap-2"><span className="font-bold text-muted-foreground w-14 shrink-0">From:</span><span className="text-foreground">{activeDetail.emailFrom}</span></div>
+                                            <div className="flex gap-2"><span className="font-bold text-muted-foreground w-14 shrink-0">Subject:</span><span className="font-bold text-foreground">{activeDetail.emailSubject}</span></div>
+                                            <div className="flex gap-2 mt-2"><span className="font-bold text-muted-foreground w-14 shrink-0">Body:</span><span className="text-muted-foreground leading-relaxed">{activeDetail.emailBody}</span></div>
                                             <div className="flex items-center gap-3 mt-3 pt-3 border-t border-border">
                                                 <PaperClipIcon className="w-4 h-4 text-muted-foreground shrink-0" />
-                                                <span className="text-muted-foreground font-medium">3 attachments:</span>
-                                                {['damage-photo-1.jpg', 'damage-photo-2.jpg', 'product-label.jpg'].map((f, i) => (
+                                                <span className="text-muted-foreground font-medium">{activeDetail.attachments.length} attachment{activeDetail.attachments.length === 1 ? '' : 's'}:</span>
+                                                {activeDetail.attachments.map((f, i) => (
                                                     <span key={i} className="px-2 py-0.5 bg-muted rounded text-[10px] font-medium text-foreground">{f}</span>
                                                 ))}
                                             </div>
@@ -669,14 +725,14 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                     <div className="p-4 bg-card border border-border rounded-xl">
                                         <div className="flex items-center justify-between mb-3">
                                             <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Request Context</p>
-                                            <ConfidenceScoreBadge score={72} label="Completeness" size="sm" />
+                                            <ConfidenceScoreBadge score={activeDetail.completeness} label="Completeness" size="sm" />
                                         </div>
                                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                                             {[
-                                                { label: 'Request ID', value: 'REQ-PL-2026-047' },
-                                                { label: 'Product', value: '2x Conf. Room Chairs Azure' },
-                                                { label: 'Requester', value: 'Site Supervisor — Floor 2' },
-                                                { label: 'Order Ref', value: 'ORD-2055, Line 3' },
+                                                { label: 'Request ID', value: activeDetail.requestId },
+                                                { label: 'Product', value: activeDetail.product },
+                                                { label: 'Requester', value: activeDetail.requester },
+                                                { label: 'Order Ref', value: activeDetail.orderRef },
                                             ].map((item, i) => (
                                                 <div key={i} className="bg-muted dark:bg-zinc-800 rounded-lg p-2.5">
                                                     <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-0.5">{item.label}</p>
