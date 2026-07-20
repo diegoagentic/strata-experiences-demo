@@ -24,9 +24,12 @@ import Catalogs from '../Catalogs';
 
 import EmailSimulation from '../components/simulations/EmailSimulation';
 import DealerMonitorKanban from '../components/simulations/DealerMonitorKanban';
-import ExpertHubTransactions from '../components/simulations/ExpertHubTransactions';
 import ConversationalSurvey from '../components/simulations/ConversationalSurvey';
 import CRMSimulation from '../components/simulations/CRMSimulation';
+
+// Prod-sync imports (F19 pattern) · component copied from expert-hub prod
+// with a source-header. See docs/PROD-SYNC.md for the pattern rationale.
+import ExpertHubTransactionsWrapper from '../blocks/prod-imports/wrappers/ExpertHubTransactionsWrapper';
 
 // Standalone blocks / widgets that need a light wrapper (state, mock props).
 import ApprovalChainBlock from '../blocks/ApprovalChainBlock';
@@ -111,7 +114,7 @@ export const SHARED_BLOCKS: SharedBlockEntry[] = [
     icon: '🔀',
     description: 'HITL review & reconciliation of quotes & acknowledgements.',
     usedByExperiences: ['coi', 'acme', 'continua', 'ops'],
-    component: wrapPage(ExpertHubTransactions),
+    component: ExpertHubTransactionsWrapper,
   },
   {
     id: 'mac',
