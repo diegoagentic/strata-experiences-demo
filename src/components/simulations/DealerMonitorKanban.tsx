@@ -170,14 +170,28 @@ const CARDS = [
 const CARD1_PANEL_STEPS = ['1.2', '1.3', '1.4'];
 const CARD5_PANEL_STEPS = ['2.2', '2.3', '3.2', '3.3'];
 
-// Shared-block preview · per-card canonical preview state so the kanban
-// renders the richest production look (all 7 cards, panels expanded, bottom
-// Three-Way Match) without needing an active demo tour to gate on.
-const CARD_PREVIEW_SOURCE: Record<number, { map: typeof STEP_CARD_PREVIEW; stepId: string }> = {
-    1: { map: STEP_CARD_PREVIEW, stepId: '1.3' },        // Normalization Pipeline
-    5: { map: STEP_CARD_PREVIEW, stepId: '2.3' },        // Delta Engine
-    6: { map: OPS_STEP_CARD_PREVIEW, stepId: '1.3' },    // Three-Way Match Engine
-    7: { map: OPS_STEP_CARD_PREVIEW, stepId: '2.2' },    // CO Delta Engine
+// Shared-block preview · 5-stage column layout matching Expert Hub /
+// Smart Comparator production kanbans (compact cards, more stages,
+// no expanded AI Insight or bottom overlay so everything fits on one
+// viewport). Cards are re-bucketed via CARD_PREVIEW_COLUMN below.
+const COLUMNS_PREVIEW = [
+    { id: 'intake',     title: 'Intake',              count: 4  },
+    { id: 'extracting', title: 'Extracting',          count: 8  },
+    { id: 'awaiting',   title: 'Awaiting Validation', count: 12 },
+    { id: 'active',     title: 'Active Processing',   count: 5  },
+    { id: 'completed',  title: 'Recently Completed',  count: 28 },
+] as const;
+
+// Map each canonical card to a preview stage so all 5 columns render
+// meaningful content (mirrors the density of the prod kanbans).
+const CARD_PREVIEW_COLUMN: Record<number, string> = {
+    1: 'awaiting',    // Apex Furniture RFQ — needs human validation
+    2: 'active',      // Herman Miller Q1 — auto-processing
+    3: 'intake',      // Retailer Group Sync — just landed
+    4: 'active',      // Workspace Group Reconcile — auto-processing
+    5: 'extracting',  // Delta Match — AI parsing PO vs Ack
+    6: 'intake',      // Invoice INV-9001 — just classified
+    7: 'extracting',  // Change Order CO-007 — CO Delta engine
 };
 
 interface DealerMonitorKanbanProps {
@@ -359,9 +373,13 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                 </div>
                 )}
 
-                {/* Kanban Grid */}
-                <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-8 overflow-hidden">
-                    {COLUMNS.map(column => (
+                {/* Kanban Grid · 5 columns in shared-block preview (matches prod
+                    Expert Hub / Smart Comparator density), 3 in demo tour. */}
+                <div className={previewMode
+                    ? "flex-1 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 overflow-hidden"
+                    : "flex-1 grid grid-cols-1 md:grid-cols-3 gap-8 overflow-hidden"
+                }>
+                    {(previewMode ? COLUMNS_PREVIEW : COLUMNS).map(column => (
                         <div key={column.id} className="flex flex-col gap-4 overflow-hidden">
                             <div className="flex items-center justify-between mb-1 px-2">
                                 <h4 className="font-medium text-foreground flex items-center gap-2">
@@ -372,22 +390,24 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                             </div>
 
                             <div className="flex-1 overflow-y-auto space-y-3 pr-1 scrollbar-micro bg-gray-100/50 dark:bg-zinc-800/50 rounded-2xl p-3 border border-gray-200/50 dark:border-zinc-800/50">
-                                {displayCards.filter(card => card.column === column.id).map(card => {
-                                    // In shared-block preview we treat any card that has a canonical
-                                    // preview state as "panel-active" so all 4 rich panels render.
-                                    const previewSrc = previewMode ? CARD_PREVIEW_SOURCE[card.id] : null;
-
-                                    // Determine data-demo-target for spotlight
-                                    const demoTarget =
-                                        card.id === 1 && (previewSrc || CARD1_PANEL_STEPS.includes(currentStep.id)) ? 'kanban-ai-extraction' :
-                                        card.id === 5 && (previewSrc || CARD5_PANEL_STEPS.includes(currentStep.id) || (isOps && currentStep.id === '1.3')) ? 'kanban-ack-normalize' :
-                                        card.id === 6 && (previewSrc || (isOps && currentStep.id === '1.3')) ? 'three-way-match-engine' :
-                                        card.id === 7 && (previewSrc || (isOps && currentStep.id === '2.2')) ? 'co-delta-analysis' :
+                                {displayCards.filter(card => {
+                                    // In preview, re-bucket cards into the 5-stage layout so
+                                    // every column gets meaningful content (matches prod density).
+                                    const targetCol = previewMode ? (CARD_PREVIEW_COLUMN[card.id] ?? card.column) : card.column;
+                                    return targetCol === column.id;
+                                }).map(card => {
+                                    // Determine data-demo-target for spotlight (tour only ·
+                                    // never in preview so cards stay compact).
+                                    const demoTarget = previewMode ? undefined :
+                                        card.id === 1 && CARD1_PANEL_STEPS.includes(currentStep.id) ? 'kanban-ai-extraction' :
+                                        card.id === 5 && (CARD5_PANEL_STEPS.includes(currentStep.id) || (isOps && currentStep.id === '1.3')) ? 'kanban-ack-normalize' :
+                                        card.id === 6 && isOps && currentStep.id === '1.3' ? 'three-way-match-engine' :
+                                        card.id === 7 && isOps && currentStep.id === '2.2' ? 'co-delta-analysis' :
                                         undefined;
 
-                                    // Is this card currently showing a panel?
-                                    const hasPanel = Boolean(
-                                        previewSrc ||
+                                    // Panels never expand in preview · they'd blow up the height
+                                    // and Diego wants compact prod-style cards.
+                                    const hasPanel = !previewMode && Boolean(
                                         (card.id === 1 && CARD1_PANEL_STEPS.includes(currentStep.id)) ||
                                         (card.id === 5 && (CARD5_PANEL_STEPS.includes(currentStep.id) || (isOps && currentStep.id === '1.3'))) ||
                                         (card.id === 6 && isOps && currentStep.id === '1.3') ||
@@ -398,9 +418,9 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                         <div
                                             key={card.id}
                                             data-demo-target={demoTarget}
-                                            className={`bg-card border p-4 rounded-2xl transition-all cursor-pointer group shadow-sm ${hasPanel ? 'ring-2 ring-indigo-500/50 border-indigo-500/30 shadow-lg shadow-indigo-500/10 scale-[1.02]' : `border-gray-200 dark:border-zinc-700 hover:border-gray-300 dark:hover:border-zinc-600 ${card.priority === 'critical' ? 'ring-1 ring-red-500/20' : ''}`}`}
+                                            className={`bg-card border ${previewMode ? 'p-3' : 'p-4'} rounded-2xl transition-all cursor-pointer group shadow-sm ${hasPanel ? 'ring-2 ring-indigo-500/50 border-indigo-500/30 shadow-lg shadow-indigo-500/10 scale-[1.02]' : `border-gray-200 dark:border-zinc-700 hover:border-gray-300 dark:hover:border-zinc-600 ${card.priority === 'critical' ? 'ring-1 ring-red-500/20' : ''}`}`}
                                         >
-                                            <div className="flex flex-col gap-3">
+                                            <div className={`flex flex-col ${previewMode ? 'gap-2' : 'gap-3'}`}>
                                                 <div className="flex items-start justify-between">
                                                     <span className={`text-[10px] font-medium uppercase px-2 py-0.5 rounded-full ring-1 ring-inset ${card.priority === 'critical' ? 'bg-red-500/10 text-red-600 dark:text-red-400 ring-red-500/30' :
                                                         card.priority === 'high' ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 ring-amber-500/30' :
@@ -435,8 +455,8 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                                 </div>
 
                                                 {/* Step-specific preview (matches lupa content) during panel steps */}
-                                                {hasPanel && (previewSrc ? previewSrc.map[previewSrc.stepId] : (isOps ? OPS_STEP_CARD_PREVIEW : STEP_CARD_PREVIEW)[currentStep.id]) && (() => {
-                                                    const preview = previewSrc ? previewSrc.map[previewSrc.stepId] : (isOps ? OPS_STEP_CARD_PREVIEW : STEP_CARD_PREVIEW)[currentStep.id];
+                                                {hasPanel && (isOps ? OPS_STEP_CARD_PREVIEW : STEP_CARD_PREVIEW)[currentStep.id] && (() => {
+                                                    const preview = (isOps ? OPS_STEP_CARD_PREVIEW : STEP_CARD_PREVIEW)[currentStep.id];
                                                     return (
                                                         <div className={`mt-2 pt-3 border-t border-gray-200/50 dark:border-zinc-700/50 space-y-2 animate-in fade-in slide-in-from-bottom-2 duration-500`}>
                                                             <div className={`flex items-center gap-2 px-2.5 py-2 rounded-lg border ${preview.accentClass}`}>
@@ -510,8 +530,8 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                                     </div>
                                                 )}
 
-                                                {/* AI Insight — normal cards (not in panel mode) */}
-                                                {!hasPanel && card.aiInsight && (
+                                                {/* AI Insight — normal cards only · skipped in preview to keep cards compact */}
+                                                {!previewMode && !hasPanel && card.aiInsight && (
                                                     <div className="mt-2 pt-3 border-t border-gray-200/50 dark:border-zinc-700/50 space-y-2 animate-in fade-in slide-in-from-bottom-2 duration-500">
                                                         <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
                                                             <Sparkles size={12} />
@@ -844,10 +864,11 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                     </div>
                 )}
 
-                {/* OPS: Three-Way Match View — shows during OPS step 1.3 · also
-                    unlocked in shared-block preview so the maximal production
-                    look renders without a demo tour. */}
-                {(previewMode || (isOps && currentStep.id === '1.3')) && (
+                {/* OPS: Three-Way Match View — shows during OPS step 1.3 only.
+                    Intentionally NOT shown in shared-block preview · Diego wants
+                    everything to fit in one viewport, and this bottom overlay
+                    pushes the kanban above the fold. */}
+                {isOps && currentStep.id === '1.3' && (
                     <div
                         data-demo-target="three-way-match-engine"
                         className="animate-in fade-in slide-in-from-bottom-4 duration-700"
