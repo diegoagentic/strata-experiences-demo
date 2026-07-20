@@ -974,35 +974,39 @@ function PreviewToolbar({
         ...stages.map(s => ({ id: s.id, title: s.title, count: s.count })),
     ];
     return (
-        <div className="space-y-4">
-            {/* Filter tabs · scrolls horizontally if needed */}
-            <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide pb-1">
-                {tabs.map(tab => {
-                    const active = tab.id === activeStage;
-                    return (
-                        <button
-                            key={tab.id}
-                            type="button"
-                            onClick={() => onStageChange(tab.id)}
-                            className={`shrink-0 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-                                active
-                                    ? 'bg-primary text-primary-foreground'
-                                    : 'text-muted-foreground hover:bg-muted hover:text-foreground'
-                            }`}
-                        >
-                            {tab.title}
-                            <span className={`inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-[10px] font-semibold ${
-                                active ? 'bg-primary-foreground/20 text-primary-foreground' : 'bg-muted text-muted-foreground'
-                            }`}>
-                                {tab.count}
-                            </span>
-                        </button>
-                    );
-                })}
+        <div className="rounded-2xl border border-border bg-card/40 backdrop-blur-sm">
+            {/* Row 1 · section label + filter tabs · matches Smart Comparator prod */}
+            <div className="flex items-center gap-4 px-4 py-3 border-b border-border overflow-x-auto scrollbar-hide">
+                <h2 className="shrink-0 text-sm font-bold text-foreground">Documents</h2>
+                <div className="flex items-center gap-1">
+                    {tabs.map(tab => {
+                        const active = tab.id === activeStage;
+                        return (
+                            <button
+                                key={tab.id}
+                                type="button"
+                                onClick={() => onStageChange(tab.id)}
+                                className={`shrink-0 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                                    active
+                                        ? 'bg-primary/15 text-foreground'
+                                        : 'text-muted-foreground hover:text-foreground'
+                                }`}
+                                aria-pressed={active}
+                            >
+                                {tab.title}
+                                <span className={`inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-[10px] font-semibold ${
+                                    active ? 'bg-primary/25 text-foreground' : 'bg-muted text-muted-foreground'
+                                }`}>
+                                    {tab.count}
+                                </span>
+                            </button>
+                        );
+                    })}
+                </div>
             </div>
 
-            {/* Search + avatar chips + view toggle */}
-            <div className="flex items-center gap-3">
+            {/* Row 2 · search + filter · avatars · view toggle · Upload Document CTA */}
+            <div className="flex items-center gap-3 px-4 py-3">
                 <div className="relative flex-1 max-w-md">
                     <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
                     <input
@@ -1010,13 +1014,13 @@ function PreviewToolbar({
                         value={searchQuery}
                         onChange={e => onSearchChange(e.target.value)}
                         placeholder="Search documents..."
-                        className="w-full pl-9 pr-3 py-2 rounded-lg border border-border bg-card text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                        className="w-full pl-9 pr-3 py-2 rounded-lg border border-border bg-background text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
                     />
                 </div>
 
                 <button
                     type="button"
-                    className="hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-border bg-card text-xs font-medium text-foreground hover:bg-muted transition-colors"
+                    className="hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-border bg-background text-xs font-medium text-foreground hover:bg-muted transition-colors"
                 >
                     <Filter size={14} />
                     All
@@ -1026,13 +1030,13 @@ function PreviewToolbar({
                     {avatars.map(a => (
                         <div
                             key={a.initials}
-                            className={`w-7 h-7 rounded-full border-2 border-background flex items-center justify-center text-[10px] font-bold text-white ${a.bg}`}
+                            className={`w-7 h-7 rounded-full border-2 border-card flex items-center justify-center text-[10px] font-bold text-white ${a.bg}`}
                             title={a.initials}
                         >
                             {a.initials}
                         </div>
                     ))}
-                    <div className="w-7 h-7 rounded-full border-2 border-background bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground">
+                    <div className="w-7 h-7 rounded-full border-2 border-card bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground">
                         +2
                     </div>
                 </div>
@@ -1040,7 +1044,7 @@ function PreviewToolbar({
                 <div className="flex-1 lg:flex-none" />
 
                 {/* Kanban / List toggle */}
-                <div className="inline-flex items-center rounded-lg border border-border bg-card p-0.5">
+                <div className="inline-flex items-center rounded-lg border border-border bg-background p-0.5">
                     <button
                         type="button"
                         onClick={() => onViewModeChange('list')}
@@ -1064,6 +1068,14 @@ function PreviewToolbar({
                         <LayoutGrid size={14} />
                     </button>
                 </div>
+
+                <button
+                    type="button"
+                    className="shrink-0 inline-flex items-center gap-2 h-9 px-4 rounded-lg bg-primary text-primary-foreground text-xs font-bold hover:bg-primary/90 transition-colors shadow-sm"
+                >
+                    <Plus size={14} />
+                    <span className="hidden sm:inline">Upload Document</span>
+                </button>
             </div>
         </div>
     );
