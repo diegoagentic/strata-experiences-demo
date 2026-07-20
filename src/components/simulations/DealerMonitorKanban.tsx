@@ -1041,41 +1041,37 @@ function PreviewToolbar({
                     </div>
                 </div>
 
-                <div className="flex-1 lg:flex-none" />
+                <div className="flex-1" />
 
-                {/* Kanban / List toggle */}
-                <div className="inline-flex items-center rounded-lg border border-border bg-background p-0.5">
+                {/* Kanban / List toggle · standalone icon buttons pinned right */}
+                <div className="flex items-center gap-2">
                     <button
                         type="button"
                         onClick={() => onViewModeChange('list')}
-                        className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors ${
-                            viewMode === 'list' ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground'
+                        className={`inline-flex items-center justify-center w-9 h-9 rounded-lg border border-border transition-colors ${
+                            viewMode === 'list'
+                                ? 'bg-muted text-foreground'
+                                : 'bg-background text-muted-foreground hover:bg-muted hover:text-foreground'
                         }`}
                         aria-label="List view"
                         aria-pressed={viewMode === 'list'}
                     >
-                        <ListIcon size={14} />
+                        <ListIcon size={16} />
                     </button>
                     <button
                         type="button"
                         onClick={() => onViewModeChange('kanban')}
-                        className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors ${
-                            viewMode === 'kanban' ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground'
+                        className={`inline-flex items-center justify-center w-9 h-9 rounded-lg border border-border transition-colors ${
+                            viewMode === 'kanban'
+                                ? 'bg-muted text-foreground'
+                                : 'bg-background text-muted-foreground hover:bg-muted hover:text-foreground'
                         }`}
                         aria-label="Kanban view"
                         aria-pressed={viewMode === 'kanban'}
                     >
-                        <LayoutGrid size={14} />
+                        <LayoutGrid size={16} />
                     </button>
                 </div>
-
-                <button
-                    type="button"
-                    className="shrink-0 inline-flex items-center gap-2 h-9 px-4 rounded-lg bg-primary text-primary-foreground text-xs font-bold hover:bg-primary/90 transition-colors shadow-sm"
-                >
-                    <Plus size={14} />
-                    <span className="hidden sm:inline">Upload Document</span>
-                </button>
             </div>
         </div>
     );
