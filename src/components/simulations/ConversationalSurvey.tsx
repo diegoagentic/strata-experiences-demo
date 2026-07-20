@@ -348,21 +348,21 @@ export default function ConversationalSurvey() {
                     <div className="flex items-center gap-4">
                         <div className="relative">
                             <div
-                                className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20"
+                                className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center text-primary-foreground"
                                 role="img"
                                 aria-label="Process Audit Assistant avatar"
                             >
                                 <Bot size={24} aria-hidden="true" />
                             </div>
                             <span
-                                className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-green-500 border-2 border-white dark:border-[#161b22]"
+                                className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-success border-2 border-background"
                                 aria-hidden="true"
                             />
                         </div>
                         <div>
                             <h2 className="font-black tracking-tight text-lg">Process Audit Assistant</h2>
                             <p className="flex items-center gap-2 text-[11px]">
-                                <span className="font-bold text-green-600 dark:text-green-500 uppercase tracking-widest">
+                                <span className="font-bold text-success uppercase tracking-widest">
                                     Online
                                 </span>
                                 <span className="text-muted-foreground font-medium">• Sentiment Analysis Active</span>
@@ -402,7 +402,7 @@ export default function ConversationalSurvey() {
                             <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-bottom-2 duration-300`}>
                                 <div className={`flex gap-3 max-w-[80%] ${msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                                     <div
-                                        className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center border ${msg.sender === 'ai' ? 'bg-primary/10 border-primary/20 text-primary' : 'bg-muted border-border text-muted-foreground'}`}
+                                        className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center ${msg.sender === 'ai' ? 'bg-primary text-primary-foreground' : 'bg-muted border border-border text-foreground'}`}
                                         role="img"
                                         aria-label={`${senderLabel} avatar`}
                                     >
@@ -419,9 +419,9 @@ export default function ConversationalSurvey() {
                                                 <div className="mt-2 pt-3 border-t border-border/40 flex items-center gap-2">
                                                     <span className="text-[10px] font-bold uppercase tracking-wider opacity-70">Detected sentiment:</span>
                                                     <span className="flex items-center gap-1 text-[11px] font-semibold" aria-label={`Sentiment: ${msg.sentiment}`}>
-                                                        {msg.sentiment === 'positive' && <Smile size={14} className="text-green-600 dark:text-green-500" aria-hidden="true" />}
-                                                        {msg.sentiment === 'negative' && <Frown size={14} className="text-red-600 dark:text-red-500" aria-hidden="true" />}
-                                                        {msg.sentiment === 'neutral' && <Meh size={14} className="text-blue-600 dark:text-blue-500" aria-hidden="true" />}
+                                                        {msg.sentiment === 'positive' && <Smile size={14} className="text-success" aria-hidden="true" />}
+                                                        {msg.sentiment === 'negative' && <Frown size={14} className="text-destructive" aria-hidden="true" />}
+                                                        {msg.sentiment === 'neutral' && <Meh size={14} className="text-info" aria-hidden="true" />}
                                                         <span className="capitalize">{msg.sentiment}</span>
                                                     </span>
                                                 </div>
@@ -441,7 +441,7 @@ export default function ConversationalSurvey() {
                     {isTyping && (
                         <div className="flex justify-start animate-in fade-in duration-300" role="status" aria-label="Assistant is typing">
                             <div className="flex gap-3">
-                                <div className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary" aria-hidden="true">
+                                <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground" aria-hidden="true">
                                     <Bot size={16} />
                                 </div>
                                 <div className="bg-muted/60 dark:bg-muted/30 p-4 rounded-2xl rounded-tl-none flex gap-1 items-center" aria-hidden="true">
@@ -466,7 +466,7 @@ export default function ConversationalSurvey() {
                             key={i}
                             type="button"
                             onClick={() => { setInputValue(suggestion); }}
-                            className="whitespace-nowrap px-3 py-1.5 rounded-full border border-border text-xs font-bold text-muted-foreground hover:border-primary/50 hover:text-primary hover:bg-primary/5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                            className="whitespace-nowrap px-3 py-1.5 rounded-full border border-border text-xs font-bold text-muted-foreground hover:border-primary hover:text-foreground hover:bg-primary/10 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                         >
                             {suggestion}
                         </button>
@@ -487,7 +487,7 @@ export default function ConversationalSurvey() {
                             aria-label="Type your feedback"
                             className="w-full bg-muted/30 border border-border/50 rounded-2xl py-4 pl-12 pr-14 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus:bg-background transition-all"
                         />
-                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors" aria-hidden="true">
+                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-foreground transition-colors" aria-hidden="true">
                             <MessageSquare size={18} />
                         </div>
                         <button
@@ -505,21 +505,21 @@ export default function ConversationalSurvey() {
                             <button
                                 type="button"
                                 aria-label="Mark as helpful"
-                                className="p-1.5 rounded-md hover:text-primary hover:bg-primary/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                                className="p-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                             >
                                 <ThumbsUp size={16} aria-hidden="true" />
                             </button>
                             <button
                                 type="button"
                                 aria-label="Request AI insight"
-                                className="p-1.5 rounded-md hover:text-primary hover:bg-primary/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                                className="p-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                             >
                                 <Sparkles size={16} aria-hidden="true" />
                             </button>
                             <button
                                 type="button"
                                 aria-label="Escalate feedback"
-                                className="p-1.5 rounded-md hover:text-primary hover:bg-primary/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                                className="p-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                             >
                                 <Zap size={16} aria-hidden="true" />
                             </button>
