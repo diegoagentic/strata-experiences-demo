@@ -63,6 +63,10 @@ export interface SharedBlockEntry {
 
 // Page-level components need the 4 navigation callbacks. In block mode they
 // resolve to no-ops so the block does not try to escape into other pages.
+// `previewMode` tells the page it's rendered as a standalone shared block
+// (no demo tour to gate on / advance) so it can unlock idle-state content
+// that would normally be hidden until a tour step lands on it. Pages that
+// ignore the prop are unaffected.
 const noop = () => {};
 const wrapPage = (Comp: ComponentType<any>) => {
   const Wrapped = () => (
@@ -71,6 +75,7 @@ const wrapPage = (Comp: ComponentType<any>) => {
       onNavigateToDetail={noop}
       onNavigateToWorkspace={noop}
       onNavigate={noop}
+      previewMode={true}
     />
   );
   Wrapped.displayName = `BlockWrap(${Comp.displayName || Comp.name || 'Anon'})`;

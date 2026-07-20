@@ -165,12 +165,20 @@ const FM_RESOLUTION_NOTIFICATIONS = [
 ]
 
 // ─── Component ────────────────────────────────────────────────────────────────
-export default function MACPunchList() {
+interface MACPunchListProps {
+    /** When true (shared-block preview) treats the panel as if step 3.1 were
+     *  active so clicks on left-column items show the right-column detail. */
+    previewMode?: boolean;
+}
+
+export default function MACPunchList({ previewMode = false }: MACPunchListProps = {}) {
     const { currentStep, nextStep, isPaused } = useDemo();
     const { activeProfile } = useDemoProfile();
     const isContinua = activeProfile.id === 'continua';
     const stepId = currentStep?.id || '';
-    const [selectedItem, setSelectedItem] = useState<string | null>(null);
+    // Preview pre-selects the first item so users see the right-column
+    // detail immediately without needing a click.
+    const [selectedItem, setSelectedItem] = useState<string | null>(previewMode ? 'item-1' : null);
 
     // ── Pause-aware timer support ──
     const isPausedRef = useRef(isPaused);
@@ -191,8 +199,9 @@ export default function MACPunchList() {
     const [instAgents, setInstAgents] = useState(INSTALL_AGENTS.map(a => ({ ...a, visible: false, done: false })))
     const [instProgress, setInstProgress] = useState(0)
 
-    // Step 3.1 state
-    const [extractionPhase, setExtractionPhase] = useState<'email' | 'extracting' | 'review'>('email');
+    // Step 3.1 state · in preview jump straight to 'review' so the fully
+    // resolved intake panel renders without waiting for the animated flow.
+    const [extractionPhase, setExtractionPhase] = useState<'email' | 'extracting' | 'review'>(previewMode ? 'review' : 'email');
     const [extractedCount, setExtractedCount] = useState(0);
     const [expandedValidation, setExpandedValidation] = useState<string | null>(null);
     const [resolvedItems, setResolvedItems] = useState<Set<string>>(new Set());
@@ -571,8 +580,10 @@ export default function MACPunchList() {
 
             {/* Right Column: Step-conditional content */}
             <div className="w-full lg:w-2/3">
-                {/* ═══ STEP 3.1: Request Intake & AI Validation (OPS only) ═══ */}
-                {currentStep?.id === '3.1' && !isContinua && (
+                {/* ═══ STEP 3.1: Request Intake & AI Validation (OPS only) ═══
+                    Also unlocked in shared-block preview so the right-column
+                    detail responds to left-column item clicks. */}
+                {(previewMode || currentStep?.id === '3.1') && !isContinua && (
                     <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden flex flex-col">
                         {/* AI Context Header */}
                         <div className="px-4 py-3 bg-indigo-50 dark:bg-indigo-500/10 border-b border-indigo-200 dark:border-indigo-500/20 flex items-center gap-2">

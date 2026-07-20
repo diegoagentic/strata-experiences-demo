@@ -33,6 +33,9 @@ interface PageProps {
     onNavigateToDetail: () => void;
     onNavigateToWorkspace: () => void;
     onNavigate: (page: string) => void;
+    /** When true (shared-block preview) unlocks idle-state richness that
+     *  is normally gated on a demo tour step landing on this page. */
+    previewMode?: boolean;
 }
 
 type MacTimePeriod = 'Day' | 'Week' | 'Month' | 'Quarter';
@@ -124,10 +127,14 @@ const cardColorMap: Record<string, { bg: string; icon: string; text: string }> =
     amber: { bg: 'bg-amber-50 dark:bg-amber-900/10', icon: 'text-amber-600 dark:text-amber-400', text: 'text-amber-700 dark:text-amber-300' },
 };
 
-export default function MAC({ onLogout, onNavigateToDetail, onNavigateToWorkspace, onNavigate }: PageProps) {
+export default function MAC({ onLogout, onNavigateToDetail, onNavigateToWorkspace, onNavigate, previewMode = false }: PageProps) {
     const { currentTenant } = useTenant();
     const { currentStep, nextStep } = useDemo();
-    const [activeTab, setActiveTab] = useState<'movements' | 'maintenance' | 'requests' | 'punchlist' | 'metrics'>('requests');
+    // Preview default lands on Punch List so the richest step-3.x flow is
+    // immediately visible; tour default stays on Requests as before.
+    const [activeTab, setActiveTab] = useState<'movements' | 'maintenance' | 'requests' | 'punchlist' | 'metrics'>(
+        previewMode ? 'punchlist' : 'requests'
+    );
     const [highlightedTab, setHighlightedTab] = useState<string | null>(null);
     const [macTimePeriod, setMacTimePeriod] = useState<MacTimePeriod>('Month');
 
@@ -191,7 +198,7 @@ export default function MAC({ onLogout, onNavigateToDetail, onNavigateToWorkspac
 
                 {/* Content */}
                 <div className="min-h-[400px]">
-                    {activeTab === 'punchlist' && <MACPunchList />}
+                    {activeTab === 'punchlist' && <MACPunchList previewMode={previewMode} />}
                     {activeTab === 'movements' && <InventoryMovements />}
                     {activeTab === 'maintenance' && <InventoryMaintenance />}
                     {activeTab === 'requests' && <MACRequests />}
