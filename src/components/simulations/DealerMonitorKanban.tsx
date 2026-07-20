@@ -13,6 +13,8 @@ import {
     BrainCircuit,
     FileText,
     Cpu,
+    LayoutGrid,
+    List as ListIcon,
 } from 'lucide-react';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { CheckCircleIcon, ArrowPathIcon, ArrowRightIcon, ExclamationTriangleIcon, CurrencyDollarIcon } from '@heroicons/react/24/outline';
@@ -319,6 +321,11 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
         return () => clearTimeout(t);
     }, [reconPhase]);
 
+    // ─── Shared-block preview toolbar state ─────────────────────────────────
+    const [previewViewMode, setPreviewViewMode] = useState<'kanban' | 'list'>('kanban');
+    const [previewSearchQuery, setPreviewSearchQuery] = useState('');
+    const [previewActiveStage, setPreviewActiveStage] = useState<string>('all');
+
     const displayCards = CARDS.filter(c => {
         if (previewMode) return true; // shared-block preview · show every card
         if (c.id === 5 && !['2.2', '2.3', '3.2', '3.3'].includes(currentStep.id) && !(isOps && currentStep.id === '1.3')) return false;
@@ -373,8 +380,32 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                 </div>
                 )}
 
-                {/* Kanban Grid · 5 columns in shared-block preview (matches prod
-                    Expert Hub / Smart Comparator density), 3 in demo tour. */}
+                {/* Preview toolbar · filter tabs + search + view toggle. Matches
+                    the Smart Comparator prod chrome (all counts · stage tabs · search
+                    · avatar chips · list/grid toggle). Only renders in shared-block
+                    preview so the demo tour stays unchanged. */}
+                {previewMode && (
+                    <PreviewToolbar
+                        stages={COLUMNS_PREVIEW}
+                        activeStage={previewActiveStage}
+                        onStageChange={setPreviewActiveStage}
+                        searchQuery={previewSearchQuery}
+                        onSearchChange={setPreviewSearchQuery}
+                        viewMode={previewViewMode}
+                        onViewModeChange={setPreviewViewMode}
+                        totalCount={displayCards.length}
+                    />
+                )}
+
+                {/* Content · list mode replaces the kanban grid entirely in preview */}
+                {previewMode && previewViewMode === 'list' ? (
+                    <PreviewListView
+                        cards={filterPreviewCards(displayCards, previewSearchQuery, previewActiveStage)}
+                        stages={COLUMNS_PREVIEW}
+                    />
+                ) : (
+                /* Kanban Grid · 5 columns in shared-block preview (matches prod
+                    Expert Hub / Smart Comparator density), 3 in demo tour. */
                 <div className={previewMode
                     ? "flex-1 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 overflow-hidden"
                     : "flex-1 grid grid-cols-1 md:grid-cols-3 gap-8 overflow-hidden"
@@ -390,7 +421,10 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                             </div>
 
                             <div className="flex-1 overflow-y-auto space-y-3 pr-1 scrollbar-micro bg-gray-100/50 dark:bg-zinc-800/50 rounded-2xl p-3 border border-gray-200/50 dark:border-zinc-800/50">
-                                {displayCards.filter(card => {
+                                {(previewMode
+                                    ? filterPreviewCards(displayCards, previewSearchQuery, previewActiveStage)
+                                    : displayCards
+                                ).filter(card => {
                                     // In preview, re-bucket cards into the 5-stage layout so
                                     // every column gets meaningful content (matches prod density).
                                     const targetCol = previewMode ? (CARD_PREVIEW_COLUMN[card.id] ?? card.column) : card.column;
@@ -558,6 +592,7 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                         </div>
                     ))}
                 </div>
+                )}
 
                 {/* ═══ Continua Step 2.3 — Price Verification Engine (auto 10s) ═══ */}
                 {isContinua && stepId === '1.3' && pricePhase !== 'idle' && (
@@ -883,3 +918,237 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
         </div>
     );
 }
+
+// ─── Shared-block preview · toolbar + filters + list view ────────────────────
+// Match the Smart Comparator / Expert Hub prod chrome: filter tabs across the
+// top with counts + search input + avatar chips + kanban/list view toggle.
+// Only rendered when previewMode=true so demo tour behavior is unchanged.
+
+type StageDef = { id: string; title: string; count: number };
+type CardDef = typeof CARDS[number];
+
+function filterPreviewCards(cards: CardDef[], query: string, activeStage: string): CardDef[] {
+    const q = query.trim().toLowerCase();
+    return cards.filter(c => {
+        if (activeStage !== 'all') {
+            const bucket = CARD_PREVIEW_COLUMN[c.id] ?? c.column;
+            if (bucket !== activeStage) return false;
+        }
+        if (!q) return true;
+        return (
+            c.title.toLowerCase().includes(q) ||
+            c.dealer.toLowerCase().includes(q) ||
+            (c.aiInsight?.toLowerCase().includes(q) ?? false)
+        );
+    });
+}
+
+interface PreviewToolbarProps {
+    stages: readonly StageDef[];
+    activeStage: string;
+    onStageChange: (id: string) => void;
+    searchQuery: string;
+    onSearchChange: (q: string) => void;
+    viewMode: 'kanban' | 'list';
+    onViewModeChange: (m: 'kanban' | 'list') => void;
+    totalCount: number;
+}
+
+function PreviewToolbar({
+    stages, activeStage, onStageChange,
+    searchQuery, onSearchChange,
+    viewMode, onViewModeChange,
+    totalCount,
+}: PreviewToolbarProps) {
+    // Mock avatar pool · decorative only, matches the "+2" chip pattern from prod.
+    const avatars = [
+        { initials: 'DU', bg: 'bg-blue-500' },
+        { initials: 'SJ', bg: 'bg-amber-500' },
+        { initials: 'MW', bg: 'bg-teal-500' },
+        { initials: 'PS', bg: 'bg-indigo-500' },
+        { initials: 'DO', bg: 'bg-red-500' },
+        { initials: 'EM', bg: 'bg-emerald-500' },
+    ];
+    const tabs: Array<{ id: string; title: string; count: number }> = [
+        { id: 'all', title: 'All', count: totalCount },
+        ...stages.map(s => ({ id: s.id, title: s.title, count: s.count })),
+    ];
+    return (
+        <div className="space-y-4">
+            {/* Filter tabs · scrolls horizontally if needed */}
+            <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide pb-1">
+                {tabs.map(tab => {
+                    const active = tab.id === activeStage;
+                    return (
+                        <button
+                            key={tab.id}
+                            type="button"
+                            onClick={() => onStageChange(tab.id)}
+                            className={`shrink-0 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                                active
+                                    ? 'bg-primary text-primary-foreground'
+                                    : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                            }`}
+                        >
+                            {tab.title}
+                            <span className={`inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-[10px] font-semibold ${
+                                active ? 'bg-primary-foreground/20 text-primary-foreground' : 'bg-muted text-muted-foreground'
+                            }`}>
+                                {tab.count}
+                            </span>
+                        </button>
+                    );
+                })}
+            </div>
+
+            {/* Search + avatar chips + view toggle */}
+            <div className="flex items-center gap-3">
+                <div className="relative flex-1 max-w-md">
+                    <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
+                    <input
+                        type="text"
+                        value={searchQuery}
+                        onChange={e => onSearchChange(e.target.value)}
+                        placeholder="Search documents..."
+                        className="w-full pl-9 pr-3 py-2 rounded-lg border border-border bg-card text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                    />
+                </div>
+
+                <button
+                    type="button"
+                    className="hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-border bg-card text-xs font-medium text-foreground hover:bg-muted transition-colors"
+                >
+                    <Filter size={14} />
+                    All
+                </button>
+
+                <div className="hidden lg:flex items-center -space-x-2">
+                    {avatars.map(a => (
+                        <div
+                            key={a.initials}
+                            className={`w-7 h-7 rounded-full border-2 border-background flex items-center justify-center text-[10px] font-bold text-white ${a.bg}`}
+                            title={a.initials}
+                        >
+                            {a.initials}
+                        </div>
+                    ))}
+                    <div className="w-7 h-7 rounded-full border-2 border-background bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground">
+                        +2
+                    </div>
+                </div>
+
+                <div className="flex-1 lg:flex-none" />
+
+                {/* Kanban / List toggle */}
+                <div className="inline-flex items-center rounded-lg border border-border bg-card p-0.5">
+                    <button
+                        type="button"
+                        onClick={() => onViewModeChange('list')}
+                        className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                            viewMode === 'list' ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground'
+                        }`}
+                        aria-label="List view"
+                        aria-pressed={viewMode === 'list'}
+                    >
+                        <ListIcon size={14} />
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => onViewModeChange('kanban')}
+                        className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                            viewMode === 'kanban' ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground'
+                        }`}
+                        aria-label="Kanban view"
+                        aria-pressed={viewMode === 'kanban'}
+                    >
+                        <LayoutGrid size={14} />
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+interface PreviewListViewProps {
+    cards: CardDef[];
+    stages: readonly StageDef[];
+}
+
+function PreviewListView({ cards, stages }: PreviewListViewProps) {
+    const stageTitle = (id: string) => stages.find(s => s.id === id)?.title ?? id;
+    if (cards.length === 0) {
+        return (
+            <div className="rounded-2xl border border-dashed border-border bg-card/30 p-10 text-center">
+                <p className="text-sm text-muted-foreground">No documents match the current filters.</p>
+            </div>
+        );
+    }
+    return (
+        <div className="rounded-2xl border border-border bg-card overflow-hidden">
+            {/* Header row */}
+            <div className="hidden md:grid grid-cols-12 gap-3 px-4 py-2.5 bg-muted/40 border-b border-border text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                <div className="col-span-4">Document</div>
+                <div className="col-span-2">Dealer</div>
+                <div className="col-span-2">Stage</div>
+                <div className="col-span-1">Priority</div>
+                <div className="col-span-2">Assigned</div>
+                <div className="col-span-1 text-right">Age</div>
+            </div>
+            {/* Rows */}
+            <ul className="divide-y divide-border">
+                {cards.map(card => {
+                    const bucket = CARD_PREVIEW_COLUMN[card.id] ?? card.column;
+                    const priorityClass =
+                        card.priority === 'critical' ? 'bg-red-500/10 text-red-600 dark:text-red-400 ring-red-500/30' :
+                        card.priority === 'high'     ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 ring-amber-500/30' :
+                        card.priority === 'medium'   ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400 ring-blue-500/30' :
+                                                       'bg-muted text-muted-foreground ring-border';
+                    return (
+                        <li
+                            key={card.id}
+                            className="grid grid-cols-1 md:grid-cols-12 gap-3 px-4 py-3 hover:bg-muted/40 transition-colors items-center"
+                        >
+                            <div className="md:col-span-4 flex items-center gap-3 min-w-0">
+                                <div className="h-8 w-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                    <FileText size={14} />
+                                </div>
+                                <div className="min-w-0">
+                                    <p className="text-sm font-semibold text-foreground truncate">{card.title}</p>
+                                    <p className="text-[11px] text-muted-foreground truncate md:hidden">
+                                        {card.dealer} · {stageTitle(bucket)}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="hidden md:block md:col-span-2 text-xs text-foreground truncate">{card.dealer}</div>
+                            <div className="hidden md:block md:col-span-2">
+                                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-muted text-muted-foreground">
+                                    {stageTitle(bucket)}
+                                </span>
+                            </div>
+                            <div className="hidden md:block md:col-span-1">
+                                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium uppercase ring-1 ring-inset ${priorityClass}`}>
+                                    {card.priority}
+                                </span>
+                            </div>
+                            <div className="hidden md:flex md:col-span-2 items-center -space-x-1.5">
+                                {['AI', 'JD'].map((ini, i) => (
+                                    <div
+                                        key={i}
+                                        className="w-6 h-6 rounded-full border-2 border-card bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground"
+                                    >
+                                        {ini}
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="hidden md:flex md:col-span-1 items-center justify-end gap-1 text-[11px] text-muted-foreground">
+                                <Clock size={11} />
+                                4h
+                            </div>
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
+    );
+}
+
