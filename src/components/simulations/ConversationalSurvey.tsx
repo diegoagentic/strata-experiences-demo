@@ -347,83 +347,126 @@ export default function ConversationalSurvey() {
                 <header className="p-6 border-b border-border/50 flex items-center justify-between bg-white/50 dark:bg-muted/10 backdrop-blur-md">
                     <div className="flex items-center gap-4">
                         <div className="relative">
-                            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
-                                <Bot size={24} />
+                            <div
+                                className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20"
+                                role="img"
+                                aria-label="Process Audit Assistant avatar"
+                            >
+                                <Bot size={24} aria-hidden="true" />
                             </div>
-                            <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-green-500 border-2 border-white dark:border-[#161b22]" />
+                            <span
+                                className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-green-500 border-2 border-white dark:border-[#161b22]"
+                                aria-hidden="true"
+                            />
                         </div>
                         <div>
                             <h2 className="font-black tracking-tight text-lg">Process Audit Assistant</h2>
-                            <div className="flex items-center gap-2">
-                                <span className="text-[10px] font-bold text-green-500 uppercase tracking-widest">Online</span>
-                                <span className="text-[10px] text-muted-foreground font-medium">• Sentiment Analysis Active</span>
-                            </div>
+                            <p className="flex items-center gap-2 text-[11px]">
+                                <span className="font-bold text-green-600 dark:text-green-500 uppercase tracking-widest">
+                                    Online
+                                </span>
+                                <span className="text-muted-foreground font-medium">• Sentiment Analysis Active</span>
+                            </p>
                         </div>
                     </div>
                     <div className="flex items-center gap-2">
-                        <button className="p-2 hover:bg-muted rounded-xl transition-colors text-muted-foreground">
-                            <RefreshCcw size={18} />
+                        <button
+                            type="button"
+                            aria-label="Restart conversation"
+                            className="p-2 hover:bg-muted rounded-xl transition-colors text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                        >
+                            <RefreshCcw size={18} aria-hidden="true" />
                         </button>
-                        <button className="p-2 hover:bg-muted rounded-xl transition-colors text-muted-foreground">
-                            <Settings size={18} />
+                        <button
+                            type="button"
+                            aria-label="Assistant settings"
+                            className="p-2 hover:bg-muted rounded-xl transition-colors text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                        >
+                            <Settings size={18} aria-hidden="true" />
                         </button>
                     </div>
                 </header>
 
-                {/* Messages Area */}
-                <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar scroll-smooth">
-                    {messages.map((msg) => (
-                        <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-bottom-2 duration-300`}>
-                            <div className={`flex gap-3 max-w-[80%] ${msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
-                                <div className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center border ${msg.sender === 'ai' ? 'bg-primary/10 border-primary/20 text-primary' : 'bg-muted border-border text-muted-foreground'
-                                    }`}>
-                                    {msg.sender === 'ai' ? <Bot size={16} /> : <User size={16} />}
-                                </div>
-                                <div className="space-y-1">
-                                    <div className={`p-4 rounded-2xl text-sm leading-relaxed ${msg.sender === 'ai'
-                                        ? 'bg-muted/40 dark:bg-muted/20 rounded-tl-none border border-border/30'
-                                        : 'bg-primary text-primary-foreground rounded-tr-none shadow-lg shadow-primary/10 font-medium'
-                                        }`}>
-                                        {msg.text}
-                                        {msg.sentiment && (
-                                            <div className="mt-2 pt-3 border-t border-border/20 flex items-center gap-2">
-                                                <span className="text-[9px] font-black uppercase tracking-tighter opacity-60">Detected Sentiment:</span>
-                                                {msg.sentiment === 'positive' && <Smile size={14} className="text-green-500" />}
-                                                {msg.sentiment === 'negative' && <Frown size={14} className="text-red-500" />}
-                                                {msg.sentiment === 'neutral' && <Meh size={14} className="text-blue-500" />}
-                                            </div>
-                                        )}
+                {/* Messages Area · aria-live so screen readers announce new AI replies */}
+                <div
+                    ref={scrollRef}
+                    role="log"
+                    aria-live="polite"
+                    aria-relevant="additions"
+                    aria-label="Conversation with Process Audit Assistant"
+                    className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar scroll-smooth"
+                >
+                    {messages.map((msg) => {
+                        const senderLabel = msg.sender === 'ai' ? 'Assistant' : 'You';
+                        return (
+                            <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-bottom-2 duration-300`}>
+                                <div className={`flex gap-3 max-w-[80%] ${msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
+                                    <div
+                                        className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center border ${msg.sender === 'ai' ? 'bg-primary/10 border-primary/20 text-primary' : 'bg-muted border-border text-muted-foreground'}`}
+                                        role="img"
+                                        aria-label={`${senderLabel} avatar`}
+                                    >
+                                        {msg.sender === 'ai' ? <Bot size={16} aria-hidden="true" /> : <User size={16} aria-hidden="true" />}
                                     </div>
-                                    <span className={`text-[9px] font-bold text-muted-foreground block ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
-                                        {msg.timestamp}
-                                    </span>
+                                    <div className="space-y-1">
+                                        <div className={`p-4 rounded-2xl text-sm leading-relaxed ${msg.sender === 'ai'
+                                            ? 'bg-muted/60 dark:bg-muted/30 rounded-tl-none border border-border/50'
+                                            : 'bg-primary text-primary-foreground rounded-tr-none shadow-lg shadow-primary/10 font-medium'
+                                            }`}>
+                                            <span className="sr-only">{senderLabel} said: </span>
+                                            {msg.text}
+                                            {msg.sentiment && (
+                                                <div className="mt-2 pt-3 border-t border-border/40 flex items-center gap-2">
+                                                    <span className="text-[10px] font-bold uppercase tracking-wider opacity-70">Detected sentiment:</span>
+                                                    <span className="flex items-center gap-1 text-[11px] font-semibold" aria-label={`Sentiment: ${msg.sentiment}`}>
+                                                        {msg.sentiment === 'positive' && <Smile size={14} className="text-green-600 dark:text-green-500" aria-hidden="true" />}
+                                                        {msg.sentiment === 'negative' && <Frown size={14} className="text-red-600 dark:text-red-500" aria-hidden="true" />}
+                                                        {msg.sentiment === 'neutral' && <Meh size={14} className="text-blue-600 dark:text-blue-500" aria-hidden="true" />}
+                                                        <span className="capitalize">{msg.sentiment}</span>
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <time
+                                            className={`text-[11px] font-medium text-muted-foreground block ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}
+                                            dateTime={msg.timestamp}
+                                        >
+                                            {msg.timestamp}
+                                        </time>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                     {isTyping && (
-                        <div className="flex justify-start animate-in fade-in duration-300">
+                        <div className="flex justify-start animate-in fade-in duration-300" role="status" aria-label="Assistant is typing">
                             <div className="flex gap-3">
-                                <div className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                                <div className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary" aria-hidden="true">
                                     <Bot size={16} />
                                 </div>
-                                <div className="bg-muted/40 p-4 rounded-2xl rounded-tl-none flex gap-1 items-center">
+                                <div className="bg-muted/60 dark:bg-muted/30 p-4 rounded-2xl rounded-tl-none flex gap-1 items-center" aria-hidden="true">
                                     <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground animate-bounce" />
                                     <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground animate-bounce [animation-delay:0.2s]" />
                                     <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground animate-bounce [animation-delay:0.4s]" />
                                 </div>
+                                <span className="sr-only">Assistant is typing…</span>
                             </div>
                         </div>
                     )}
                 </div>
 
-                {/* Suggested Actions */}
-                <div className="px-6 pb-2 flex gap-2 overflow-x-auto no-scrollbar">
+                {/* Suggested Actions · group role for screen readers */}
+                <div
+                    className="px-6 pb-2 flex gap-2 overflow-x-auto no-scrollbar"
+                    role="group"
+                    aria-label="Quick replies"
+                >
                     {['Everything is clear', 'Needs more detail', 'Resolution is slow'].map((suggestion, i) => (
                         <button
                             key={i}
+                            type="button"
                             onClick={() => { setInputValue(suggestion); }}
-                            className="whitespace-nowrap px-3 py-1.5 rounded-full border border-border/50 text-xs font-bold text-muted-foreground hover:border-primary/50 hover:text-primary hover:bg-primary/5 transition-all"
+                            className="whitespace-nowrap px-3 py-1.5 rounded-full border border-border text-xs font-bold text-muted-foreground hover:border-primary/50 hover:text-primary hover:bg-primary/5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                         >
                             {suggestion}
                         </button>
@@ -433,6 +476,7 @@ export default function ConversationalSurvey() {
                 {/* Input Area */}
                 <footer className="p-6 pt-2">
                     <div className="relative group">
+                        <label htmlFor="survey-chat-input" className="sr-only">Type your feedback</label>
                         <input
                             id="survey-chat-input"
                             type="text"
@@ -440,25 +484,47 @@ export default function ConversationalSurvey() {
                             onChange={(e) => setInputValue(e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                             placeholder="Type your feedback here..."
-                            className="w-full bg-muted/30 border border-border/50 rounded-2xl py-4 pl-12 pr-14 text-sm font-medium focus:outline-none focus:ring-2 ring-primary/20 focus:bg-background transition-all"
+                            aria-label="Type your feedback"
+                            className="w-full bg-muted/30 border border-border/50 rounded-2xl py-4 pl-12 pr-14 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus:bg-background transition-all"
                         />
-                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors">
+                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors" aria-hidden="true">
                             <MessageSquare size={18} />
                         </div>
                         <button
+                            type="button"
                             onClick={handleSend}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-lg shadow-primary/20 hover:scale-[1.1] active:scale-[0.9] transition-all"
+                            aria-label="Send feedback"
+                            disabled={!inputValue.trim()}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-lg shadow-primary/20 hover:scale-[1.1] active:scale-[0.9] transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                         >
-                            <Send size={18} />
+                            <Send size={18} aria-hidden="true" />
                         </button>
                     </div>
                     <div className="mt-4 flex items-center justify-between px-2">
-                        <div className="flex items-center gap-4 text-muted-foreground">
-                            <ThumbsUp size={16} className="cursor-pointer hover:text-primary transition-colors" />
-                            <Sparkles size={16} className="cursor-pointer hover:text-primary transition-colors" />
-                            <Zap size={16} className="cursor-pointer hover:text-primary transition-colors" />
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                            <button
+                                type="button"
+                                aria-label="Mark as helpful"
+                                className="p-1.5 rounded-md hover:text-primary hover:bg-primary/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                            >
+                                <ThumbsUp size={16} aria-hidden="true" />
+                            </button>
+                            <button
+                                type="button"
+                                aria-label="Request AI insight"
+                                className="p-1.5 rounded-md hover:text-primary hover:bg-primary/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                            >
+                                <Sparkles size={16} aria-hidden="true" />
+                            </button>
+                            <button
+                                type="button"
+                                aria-label="Escalate feedback"
+                                className="p-1.5 rounded-md hover:text-primary hover:bg-primary/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                            >
+                                <Zap size={16} aria-hidden="true" />
+                            </button>
                         </div>
-                        <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
                             Powered by Strata Intelligence
                         </p>
                     </div>
