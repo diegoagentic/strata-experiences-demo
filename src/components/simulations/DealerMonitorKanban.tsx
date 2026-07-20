@@ -170,7 +170,25 @@ const CARDS = [
 const CARD1_PANEL_STEPS = ['1.2', '1.3', '1.4'];
 const CARD5_PANEL_STEPS = ['2.2', '2.3', '3.2', '3.3'];
 
-export default function DealerMonitorKanban(_props: { onNavigate?: (page: string) => void }) {
+// Shared-block preview · per-card canonical preview state so the kanban
+// renders the richest production look (all 7 cards, panels expanded, bottom
+// Three-Way Match) without needing an active demo tour to gate on.
+const CARD_PREVIEW_SOURCE: Record<number, { map: typeof STEP_CARD_PREVIEW; stepId: string }> = {
+    1: { map: STEP_CARD_PREVIEW, stepId: '1.3' },        // Normalization Pipeline
+    5: { map: STEP_CARD_PREVIEW, stepId: '2.3' },        // Delta Engine
+    6: { map: OPS_STEP_CARD_PREVIEW, stepId: '1.3' },    // Three-Way Match Engine
+    7: { map: OPS_STEP_CARD_PREVIEW, stepId: '2.2' },    // CO Delta Engine
+};
+
+interface DealerMonitorKanbanProps {
+    onNavigate?: (page: string) => void;
+    /** When true (shared-block preview) unlocks all condition-gated rich
+     *  panels + the bottom Three-Way Match overlay so the viewer sees the
+     *  maximal production look without an active demo tour. */
+    previewMode?: boolean;
+}
+
+export default function DealerMonitorKanban({ previewMode = false }: DealerMonitorKanbanProps = {}) {
     const { theme } = useTheme();
     const { currentStep, nextStep, isPaused } = useDemo();
     const { activeProfile } = useDemoProfile();
@@ -288,6 +306,7 @@ export default function DealerMonitorKanban(_props: { onNavigate?: (page: string
     }, [reconPhase]);
 
     const displayCards = CARDS.filter(c => {
+        if (previewMode) return true; // shared-block preview · show every card
         if (c.id === 5 && !['2.2', '2.3', '3.2', '3.3'].includes(currentStep.id) && !(isOps && currentStep.id === '1.3')) return false;
         if (c.id === 6 && !(isOps && currentStep.id === '1.3')) return false;
         if (c.id === 7 && !(isOps && currentStep.id === '2.2')) return false;
@@ -354,20 +373,26 @@ export default function DealerMonitorKanban(_props: { onNavigate?: (page: string
 
                             <div className="flex-1 overflow-y-auto space-y-3 pr-1 scrollbar-micro bg-gray-100/50 dark:bg-zinc-800/50 rounded-2xl p-3 border border-gray-200/50 dark:border-zinc-800/50">
                                 {displayCards.filter(card => card.column === column.id).map(card => {
+                                    // In shared-block preview we treat any card that has a canonical
+                                    // preview state as "panel-active" so all 4 rich panels render.
+                                    const previewSrc = previewMode ? CARD_PREVIEW_SOURCE[card.id] : null;
+
                                     // Determine data-demo-target for spotlight
                                     const demoTarget =
-                                        card.id === 1 && CARD1_PANEL_STEPS.includes(currentStep.id) ? 'kanban-ai-extraction' :
-                                        card.id === 5 && (CARD5_PANEL_STEPS.includes(currentStep.id) || (isOps && currentStep.id === '1.3')) ? 'kanban-ack-normalize' :
-                                        card.id === 6 && isOps && currentStep.id === '1.3' ? 'three-way-match-engine' :
-                                        card.id === 7 && isOps && currentStep.id === '2.2' ? 'co-delta-analysis' :
+                                        card.id === 1 && (previewSrc || CARD1_PANEL_STEPS.includes(currentStep.id)) ? 'kanban-ai-extraction' :
+                                        card.id === 5 && (previewSrc || CARD5_PANEL_STEPS.includes(currentStep.id) || (isOps && currentStep.id === '1.3')) ? 'kanban-ack-normalize' :
+                                        card.id === 6 && (previewSrc || (isOps && currentStep.id === '1.3')) ? 'three-way-match-engine' :
+                                        card.id === 7 && (previewSrc || (isOps && currentStep.id === '2.2')) ? 'co-delta-analysis' :
                                         undefined;
 
                                     // Is this card currently showing a panel?
-                                    const hasPanel =
+                                    const hasPanel = Boolean(
+                                        previewSrc ||
                                         (card.id === 1 && CARD1_PANEL_STEPS.includes(currentStep.id)) ||
                                         (card.id === 5 && (CARD5_PANEL_STEPS.includes(currentStep.id) || (isOps && currentStep.id === '1.3'))) ||
                                         (card.id === 6 && isOps && currentStep.id === '1.3') ||
-                                        (card.id === 7 && isOps && currentStep.id === '2.2');
+                                        (card.id === 7 && isOps && currentStep.id === '2.2')
+                                    );
 
                                     return (
                                         <div
@@ -410,8 +435,8 @@ export default function DealerMonitorKanban(_props: { onNavigate?: (page: string
                                                 </div>
 
                                                 {/* Step-specific preview (matches lupa content) during panel steps */}
-                                                {hasPanel && (isOps ? OPS_STEP_CARD_PREVIEW : STEP_CARD_PREVIEW)[currentStep.id] && (() => {
-                                                    const preview = (isOps ? OPS_STEP_CARD_PREVIEW : STEP_CARD_PREVIEW)[currentStep.id];
+                                                {hasPanel && (previewSrc ? previewSrc.map[previewSrc.stepId] : (isOps ? OPS_STEP_CARD_PREVIEW : STEP_CARD_PREVIEW)[currentStep.id]) && (() => {
+                                                    const preview = previewSrc ? previewSrc.map[previewSrc.stepId] : (isOps ? OPS_STEP_CARD_PREVIEW : STEP_CARD_PREVIEW)[currentStep.id];
                                                     return (
                                                         <div className={`mt-2 pt-3 border-t border-gray-200/50 dark:border-zinc-700/50 space-y-2 animate-in fade-in slide-in-from-bottom-2 duration-500`}>
                                                             <div className={`flex items-center gap-2 px-2.5 py-2 rounded-lg border ${preview.accentClass}`}>
@@ -819,8 +844,10 @@ export default function DealerMonitorKanban(_props: { onNavigate?: (page: string
                     </div>
                 )}
 
-                {/* OPS: Three-Way Match View — shows during OPS step 1.3 */}
-                {isOps && currentStep.id === '1.3' && (
+                {/* OPS: Three-Way Match View — shows during OPS step 1.3 · also
+                    unlocked in shared-block preview so the maximal production
+                    look renders without a demo tour. */}
+                {(previewMode || (isOps && currentStep.id === '1.3')) && (
                     <div
                         data-demo-target="three-way-match-engine"
                         className="animate-in fade-in slide-in-from-bottom-4 duration-700"
