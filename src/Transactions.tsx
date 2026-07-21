@@ -2924,12 +2924,14 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                         </div>
                                     </div>
                                 ) : (
-                                    /* Pipeline View */
-                                    <div className="flex gap-6 overflow-x-auto pb-4 scale-y-[-1] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-muted/50 hover:[&::-webkit-scrollbar-thumb]:bg-muted dark:[&::-webkit-scrollbar-thumb]:bg-muted/50 dark:hover:[&::-webkit-scrollbar-thumb]:bg-muted">
+                                    /* Pipeline View · items-start keeps columns top-aligned when
+                                        card counts differ (previous scale-y-[-1] trick pushed short
+                                        columns down · reported by Diego 2026-07-21). */
+                                    <div className="flex items-start gap-6 overflow-x-auto pb-4 pt-4 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-muted/50 hover:[&::-webkit-scrollbar-thumb]:bg-muted dark:[&::-webkit-scrollbar-thumb]:bg-muted/50 dark:hover:[&::-webkit-scrollbar-thumb]:bg-muted">
                                         {(lifecycleTab === 'quotes' ? quoteStages : lifecycleTab === 'acknowledgments' ? ackStages : lifecycleTab === 'rfqs' ? rfqStages : pipelineStages).map((stage) => {
                                             const stageOrders = filteredData.filter((o: any) => o.status === stage);
                                             return (
-                                                <div key={stage} className="min-w-[320px] max-w-[320px] flex-shrink-0 flex flex-col h-full scale-y-[-1] pt-4">
+                                                <div key={stage} className="min-w-[320px] max-w-[320px] flex-shrink-0 flex flex-col">
                                                     <div className="flex items-center justify-between mb-4 px-2">
                                                         <h4 className="font-medium text-foreground flex items-center gap-2">
                                                             {stage}
