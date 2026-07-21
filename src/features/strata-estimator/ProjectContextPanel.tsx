@@ -340,8 +340,19 @@ export default function ProjectContextPanel({
                         return (
                             <div
                                 key={fact.id}
+                                role={isEditing ? undefined : 'button'}
+                                tabIndex={isEditing ? undefined : 0}
+                                onClick={isEditing ? undefined : () => startEdit(fact)}
+                                onKeyDown={isEditing ? undefined : (e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault()
+                                        startEdit(fact)
+                                    }
+                                }}
+                                aria-label={isEditing ? undefined : `Edit ${fact.label}`}
                                 className={clsx(
                                     'group relative flex flex-col h-full rounded-xl border p-3 transition-all',
+                                    !isEditing && 'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
                                     fact.aiFlagged
                                         ? 'bg-primary/5 dark:bg-primary/10 border-primary/30 ring-1 ring-primary/20 hover:ring-primary/40'
                                         : 'bg-card dark:bg-zinc-800 border-border hover:border-border/60'
@@ -371,9 +382,11 @@ export default function ProjectContextPanel({
                                     {!isEditing && (
                                         <button
                                             type="button"
-                                            onClick={() => startEdit(fact)}
+                                            onClick={(e) => { e.stopPropagation(); startEdit(fact) }}
                                             className="shrink-0 p-1 rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted opacity-60 group-hover:opacity-100 transition-all"
                                             aria-label={`Edit ${fact.label}`}
+                                            aria-hidden="true"
+                                            tabIndex={-1}
                                         >
                                             <Pencil className="w-2.5 h-2.5" />
                                         </button>
@@ -456,7 +469,7 @@ export default function ProjectContextPanel({
                                 {fact.aiSuggestion && !isEditing && (
                                     <button
                                         type="button"
-                                        onClick={() => acceptSuggestion(fact.id)}
+                                        onClick={(e) => { e.stopPropagation(); acceptSuggestion(fact.id) }}
                                         className="mt-2 flex items-center justify-between gap-1.5 text-[9px] font-bold uppercase tracking-wider text-foreground dark:text-primary px-2 py-1.5 rounded-md bg-primary/15 border border-primary/40 hover:bg-primary/25 transition-colors"
                                         title={`AI suggests: ${fact.aiSuggestion}`}
                                     >

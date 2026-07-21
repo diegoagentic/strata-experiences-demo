@@ -23,6 +23,7 @@ import {
 // @ts-ignore — strata-design-system doesn't ship .d.ts; matches src/components/Navbar.tsx
 import { useTheme } from 'strata-design-system'
 import { useDemo } from '../../context/DemoContext'
+import ExperienceSwitcher from '../../components/navbar/ExperienceSwitcher'
 import logoLightBrand from '../../assets/logo-light-brand.png'
 import logoDarkBrand from '../../assets/logo-dark-brand.png'
 import type { EstimatorTab, SyncStatus } from './types'
@@ -129,14 +130,11 @@ export default function StrataEstimatorNavbar({
 
                     <div className="h-6 w-px bg-border mx-1 hidden lg:block" />
 
-                    <div className="hidden lg:flex flex-col items-start px-2 py-1.5">
-                        <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider leading-none">
-                            Estimator
-                        </span>
-                        <span className="text-sm font-bold text-foreground leading-tight">
-                            WRG
-                        </span>
-                    </div>
+                    {/* F20 · adopt the generic ExperienceSwitcher so users can
+                        jump to another experience from the Estimator navbar and
+                        the company label pulls from the profile alias (not the
+                        legacy hardcoded "WRG" string). */}
+                    <ExperienceSwitcher appName="Strata Estimator" />
 
                     {/* Sync status — icon only, label expands on hover */}
                     <button
