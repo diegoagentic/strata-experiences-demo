@@ -669,32 +669,76 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
             {/* ── d1.1: Vendor Data Import & AI Extraction ── */}
             {stepId === 'd1.1' && (
                 <>
-                    {/* Gap notification — non-CET manufacturer detected */}
+                    {/* Gap notification — non-CET manufacturer detected.
+                        Card matches the Strata Action Center pattern (see
+                        components/notifications/ActionCenter.tsx): left color
+                        strip · badge chip · title · description · pill row ·
+                        CTA button + secondary action. Uses semantic tokens
+                        only (LAW 1 · LAW 2 · Diego 2026-07-21). */}
                     {scrapePhase === 'notification' && (
-                        <div className="animate-in fade-in slide-in-from-top-4 duration-500 space-y-4">
-                            <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-500/5 border border-amber-300 dark:border-amber-500/30 space-y-3">
-                                <div className="flex items-start gap-3">
-                                    <div className="p-2 rounded-lg bg-amber-100 dark:bg-amber-500/10 shrink-0">
-                                        <ExclamationTriangleIcon className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+                        <div className="animate-in fade-in slide-in-from-top-4 duration-500">
+                            <div className="relative overflow-hidden rounded-2xl border border-warning/30 bg-card shadow-sm">
+                                {/* Left severity strip */}
+                                <div className="absolute inset-y-0 left-0 w-1 bg-warning" aria-hidden="true" />
+
+                                <div className="p-4 pl-5 space-y-3">
+                                    {/* Header · badge + title */}
+                                    <div className="flex items-start gap-3">
+                                        <div className="h-8 w-8 rounded-lg bg-warning/10 text-warning flex items-center justify-center shrink-0">
+                                            <ExclamationTriangleIcon className="h-4 w-4" aria-hidden="true" />
+                                        </div>
+                                        <div className="flex-1 min-w-0">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-warning/15 text-warning ring-1 ring-inset ring-warning/30">
+                                                    Vendor data gap
+                                                </span>
+                                                <span className="text-[10px] text-muted-foreground">1 action required</span>
+                                            </div>
+                                            <p className="text-sm font-bold text-foreground leading-tight">
+                                                Non-CET Manufacturer Detected
+                                            </p>
+                                            <p className="text-xs text-muted-foreground leading-snug mt-1">
+                                                <span className="font-semibold text-foreground">{MANUFACTURER}</span> is not available in the CET catalog.
+                                                Product data for this manufacturer — part numbers, options, and pricing — needs to be imported from an external source.
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div className="flex-1">
-                                        <p className="text-xs font-bold text-foreground">Non-CET Manufacturer Detected</p>
-                                        <p className="text-[11px] text-muted-foreground mt-1">
-                                            <span className="font-semibold text-foreground">{MANUFACTURER}</span> is not available in the CET catalog.
-                                            Product data for this manufacturer — part numbers, options, and pricing — needs to be imported from an external source.
+
+                                    {/* Status pills */}
+                                    <div className="flex items-center gap-2 flex-wrap pl-11">
+                                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-warning/10 text-warning ring-1 ring-inset ring-warning/30">
+                                            Missing in CET
+                                        </span>
+                                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-destructive/10 text-destructive ring-1 ring-inset ring-destructive/30">
+                                            No SIF available
+                                        </span>
+                                    </div>
+
+                                    {/* Footer row · sender + CTAs */}
+                                    <div className="flex items-center justify-between gap-3 pt-2 border-t border-border">
+                                        <p className="text-[10px] text-muted-foreground truncate">
+                                            CatalogGuardAgent · detected during PDF ingest
                                         </p>
+                                        <div className="flex items-center gap-2 shrink-0">
+                                            <button
+                                                type="button"
+                                                onClick={() => setScrapePhase('idle')}
+                                                className="inline-flex items-center h-8 px-3 rounded-lg text-xs font-semibold text-muted-foreground hover:text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                                            >
+                                                Dismiss
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => setScrapePhase('upload-zone')}
+                                                className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-bold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                                                aria-label="Import vendor data from external source"
+                                            >
+                                                <ArrowUpTrayIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                                                Import vendor data
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-2 ml-11">
-                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-amber-200 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 font-bold">MISSING IN CET</span>
-                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-500/10 text-red-700 dark:text-red-400 font-bold">NO SIF AVAILABLE</span>
-                                </div>
-                                <button
-                                    onClick={() => setScrapePhase('upload-zone')}
-                                    className="w-full py-2.5 rounded-xl text-xs font-bold bg-brand-400 hover:bg-brand-500 text-zinc-900 shadow-lg shadow-brand-500/20 transition-all flex items-center justify-center gap-2 animate-pulse"
-                                >
-                                    <ArrowUpTrayIcon className="h-4 w-4" /> Import Vendor Data
-                                </button>
                             </div>
                         </div>
                     )}
