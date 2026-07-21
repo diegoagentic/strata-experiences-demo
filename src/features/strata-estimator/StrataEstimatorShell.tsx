@@ -80,7 +80,7 @@ interface StrataEstimatorShellProps {
 }
 
 export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimatorShellProps = {}) {
-    const { currentStep, nextStep, goToStep, isPaused } = useDemo()
+    const { currentStep, nextStep, goToStep, isPaused, isDemoActive } = useDemo()
     const stepId = currentStep?.id
     const stepState = getStepState(stepId)
     const connectedUser = getStepRole(stepId) ?? undefined
@@ -250,6 +250,10 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
     //   importing-files → loading-dossier → importing-bom (stagger) →
     //   scope-breach → flagged
     useEffect(() => {
+        // F20.b · only auto-play scripted flow when the tour is active.
+        // In the free "experiences" route (isDemoActive === false) the user
+        // needs manual control · Diego 2026-07-21.
+        if (!isDemoActive) return
         if (stepId !== 'w1.1') return
 
         // v8 · w1.1 is the first step — always clear any leftover inline
@@ -454,12 +458,14 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                 calcRafRef.current = null
             }
         }
-    }, [stepId])
+    }, [stepId, isDemoActive])
 
     // ── w2.1 Sara (Salesperson) fully scripted paced flow ──────────────────
     // Each action is visibly triggered via SalespersonActionBar with a
     // simulated cursor click before the next modal or card appears.
     useEffect(() => {
+        // F20.b · gate scripted auto-play behind isDemoActive (Diego 2026-07-21).
+        if (!isDemoActive) return
         if (stepId !== 'w2.1') {
             setGenerateCtaPressed(false)
             setOutlookOutgoingVisible(false)
@@ -524,7 +530,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
             timers.forEach(clearTimeout)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [stepId])
+    }, [stepId, isDemoActive])
 
     // v8 · w2.2 (Riley/SAC) fully scripted paced flow. Each action is
     // visibly triggered from the ProposalActionBar with a simulated
@@ -546,6 +552,8 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
     // 13500  handleApproveRelease fires (release checklist + David detour)
     // 14000  clear all cursor/pulse state
     useEffect(() => {
+        // F20.b · gate scripted auto-play behind isDemoActive (Diego 2026-07-21).
+        if (!isDemoActive) return
         if (stepId !== 'w2.2') {
             setApproveReleasePulsed(false)
             setRileyCursorTarget(null)
@@ -606,7 +614,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
             timers.forEach(clearTimeout)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [stepId])
+    }, [stepId, isDemoActive])
 
     // ── w1.2 designer task notification ──────────────────────────────────────
     // When the demo enters w1.2, show a centred task notification on a
