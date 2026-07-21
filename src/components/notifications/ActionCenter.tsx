@@ -176,6 +176,24 @@ const FLOW1_NOTIFICATIONS: Notification[] = [
     },
 ];
 
+// Dupler Step d1.1 — Non-CET manufacturer detected · surfaces in the Action
+// Center bell popover so the Vendor Data flow uses the DS-canonical alert
+// pattern instead of a big inline banner (Diego 2026-07-21).
+const DUPLER_D11_NOTIFICATION: Notification = {
+    id: 'dupler-d11-non-cet',
+    type: 'discrepancy',
+    priority: 'high',
+    title: 'Non-CET Manufacturer Detected · Meridian Workspace',
+    message: 'Meridian Workspace is not available in the CET catalog. Product data (part numbers, options, pricing) needs to be imported from an external source. Missing in CET · No SIF available.',
+    meta: 'CatalogGuardAgent · detected during PDF ingest',
+    timestamp: 'Just now',
+    unread: true,
+    actions: [
+        { label: 'Import vendor data', primary: true },
+        { label: 'Dismiss', primary: false },
+    ],
+};
+
 interface ActionCenterProps {
     /** When true (shared-block preview) programmatically opens the popover
      *  on mount so viewers see the full panel content immediately instead
@@ -293,19 +311,31 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
         },
     ];
 
+    // Dupler d1.1 · surface the Non-CET notification at the top of the list
+    // so the Vendor Data flow uses the DS Action Center instead of an inline
+    // banner. Only visible while the user is on step d1.1 (before importing).
+    const isStepD11 = currentStep?.id === 'd1.1';
+    const [duplerD11Dismissed, setDuplerD11Dismissed] = useState(false);
+    // Reset dismissed state whenever we re-enter d1.1 (e.g. tour restart).
+    useEffect(() => { if (isStepD11) setDuplerD11Dismissed(false); }, [isStepD11]);
+    const shouldShowDuplerD11 = isStepD11 && !duplerD11Dismissed;
+
     const filteredNotifications = useMemo(() => {
         const currentTab = tabs.find(t => t.id === activeTab);
-        return mockNotifications
+        const base = shouldShowDuplerD11
+            ? [DUPLER_D11_NOTIFICATION, ...mockNotifications]
+            : mockNotifications;
+        return base
             .filter(n => currentTab?.filter(n))
             .filter(n =>
                 n.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 n.message.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 n.meta.toLowerCase().includes(searchQuery.toLowerCase())
             );
-    }, [activeTab, searchQuery]);
+    }, [activeTab, searchQuery, shouldShowDuplerD11]);
 
-    const urgentCount = mockNotifications.filter(n => n.priority === 'high').length;
-    const totalCount = mockNotifications.filter(n => n.unread).length;
+    const urgentCount = (shouldShowDuplerD11 ? 1 : 0) + mockNotifications.filter(n => n.priority === 'high').length;
+    const totalCount = (shouldShowDuplerD11 ? 1 : 0) + mockNotifications.filter(n => n.unread).length;
 
     // Flow 1 tabs for step 1.10 — single tab since only 1 notification
     const flow1Tabs: NotificationTab[] = [
@@ -351,6 +381,19 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
         const t = setTimeout(() => bellRef.current?.click(), 60);
         return () => clearTimeout(t);
     }, [defaultOpen]);
+
+    // Auto-open the bell once when the user enters the Dupler d1.1 flow so
+    // the Non-CET notification is discoverable without extra clicks. Guard
+    // via ref so we don't accidentally toggle (close) an already-open
+    // popover.
+    const duplerD11AutoOpened = useRef(false);
+    useEffect(() => {
+        if (!shouldShowDuplerD11) { duplerD11AutoOpened.current = false; return; }
+        if (duplerD11AutoOpened.current) return;
+        duplerD11AutoOpened.current = true;
+        const t = setTimeout(() => bellRef.current?.click(), 400);
+        return () => clearTimeout(t);
+    }, [shouldShowDuplerD11]);
 
     return (
         <>
@@ -414,6 +457,14 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                                                         if (notification.id === 'shipment-delayed-ord-2056' && action === 'View Order') {
                                                             try { sessionStorage.setItem('demo:selectedOrderId', '#ORD-2056') } catch { /* ignore */ }
                                                             window.dispatchEvent(new CustomEvent('demo:navigate', { detail: { page: 'order-detail' } }))
+                                                        }
+                                                        // Dupler d1.1 · Import vendor data advances the local
+                                                        // DuplerPdfProcessor to the upload-zone phase.
+                                                        if (notification.id === 'dupler-d11-non-cet') {
+                                                            if (action === 'Import vendor data') {
+                                                                window.dispatchEvent(new CustomEvent('dupler:import-vendor-data'));
+                                                            }
+                                                            setDuplerD11Dismissed(true);
                                                         }
                                                     }}
                                                 />
