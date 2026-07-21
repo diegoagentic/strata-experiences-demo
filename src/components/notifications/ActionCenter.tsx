@@ -1,6 +1,6 @@
 import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react';
 import { BellIcon, MagnifyingGlassIcon, XMarkIcon, Squares2X2Icon, ExclamationTriangleIcon, CreditCardIcon, ClipboardDocumentCheckIcon, TruckIcon, DocumentTextIcon, CheckCircleIcon, SparklesIcon } from '@heroicons/react/24/outline';
-import { Fragment, useState, useMemo, useEffect } from 'react';
+import { Fragment, useState, useMemo, useEffect, useRef } from 'react';
 import { clsx } from 'clsx';
 import { mockNotifications } from './data';
 import FilterTabs from './FilterTabs';
@@ -176,7 +176,14 @@ const FLOW1_NOTIFICATIONS: Notification[] = [
     },
 ];
 
-export default function ActionCenter() {
+interface ActionCenterProps {
+    /** When true (shared-block preview) programmatically opens the popover
+     *  on mount so viewers see the full panel content immediately instead
+     *  of just the bell icon. */
+    defaultOpen?: boolean;
+}
+
+export default function ActionCenter({ defaultOpen = false }: ActionCenterProps = {}) {
     const { isDemoActive, isSidebarCollapsed, currentStep, nextStep } = useDemo();
     const { pauseAwareTimeout } = usePauseAware();
     const sidebarExpanded = isDemoActive && !isSidebarCollapsed;
@@ -336,12 +343,23 @@ export default function ActionCenter() {
 
     const isStepAutoOpen = isStep19 || isStep27 || (isStepA11 && !a11PanelClosed && notifDelayReady) || isBfiStepActive;
 
+    // Programmatic auto-open · captures the PopoverButton ref and triggers
+    // a click on mount when defaultOpen is true (shared-block preview).
+    const bellRef = useRef<HTMLButtonElement | null>(null);
+    useEffect(() => {
+        if (!defaultOpen) return;
+        const t = setTimeout(() => bellRef.current?.click(), 60);
+        return () => clearTimeout(t);
+    }, [defaultOpen]);
+
     return (
         <>
         <Popover className="relative">
             {({ open }) => (
                 <>
-                    <PopoverButton className={clsx(
+                    <PopoverButton
+                        ref={bellRef}
+                        className={clsx(
                         "relative p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors outline-none",
                         (open || isStepAutoOpen || sampleTextileActive) ? "bg-black/5 dark:bg-white/10 text-foreground" : "text-muted-foreground hover:text-foreground dark:hover:text-white"
                     )}>
