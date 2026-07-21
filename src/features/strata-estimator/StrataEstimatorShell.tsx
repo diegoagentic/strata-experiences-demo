@@ -1152,6 +1152,57 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                         {activeTab === 'ESTIMATOR' && stepState !== 'pm-handoff' && (
                             <div key="ESTIMATOR" className="pt-24 px-6 lg:px-10 max-w-7xl mx-auto space-y-6 animate-fade-in">
 
+                                {/* F20.c · Inline stepper for free "experiences" navigation
+                                    (Prev · step indicator · Reset · Next). Only visible when
+                                    the guided tour is NOT active — in tour mode the DemoSidebar
+                                    owns navigation. Placed at top of the tab so it's visible
+                                    on entry without scrolling (Diego 2026-07-21). */}
+                                {!isDemoActive && (
+                                    <div className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl border border-border bg-card/60">
+                                        <button
+                                            type="button"
+                                            onClick={prevStep}
+                                            disabled={currentStepIndex === 0}
+                                            className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-foreground bg-muted hover:bg-muted/70 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                                            aria-label="Previous step"
+                                        >
+                                            <ChevronLeft className="w-3.5 h-3.5" aria-hidden="true" />
+                                            Prev
+                                        </button>
+
+                                        <div className="flex-1 min-w-0 text-center">
+                                            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
+                                                Step {currentStepIndex + 1} of {steps.length}
+                                            </p>
+                                            <p className="text-xs font-semibold text-foreground truncate">
+                                                {currentStep?.title ?? '—'}
+                                            </p>
+                                        </div>
+
+                                        <div className="flex items-center gap-2 shrink-0">
+                                            <button
+                                                type="button"
+                                                onClick={handleRestartDemo}
+                                                className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-destructive hover:bg-destructive/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive"
+                                                aria-label="Reset flow to first step"
+                                            >
+                                                <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
+                                                Reset
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={nextStep}
+                                                disabled={currentStepIndex >= steps.length - 1}
+                                                className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-foreground bg-muted hover:bg-muted/70 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                                                aria-label="Next step"
+                                            >
+                                                Next
+                                                <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
+
                                 {/* v8 Paso E · Gap F · CORE → Outlook incoming
                                     (start of w1.1, before the CORE modal) */}
                                 {outlookIncomingVisible && stepId === 'w1.1' && (
@@ -1536,55 +1587,8 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                                     }
                                 />
 
-                                {/* F20.c · Inline stepper for free "experiences" navigation
-                                    (Prev · step indicator · Next · Reset). Only visible when
-                                    the guided tour is NOT active — in tour mode the DemoSidebar
-                                    owns navigation and we keep the debug footer instead. */}
-                                {!isDemoActive ? (
-                                    <div className="flex items-center justify-between gap-3 px-4 py-3 mt-4 rounded-xl border border-border bg-card/60">
-                                        <button
-                                            type="button"
-                                            onClick={prevStep}
-                                            disabled={currentStepIndex === 0}
-                                            className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-foreground bg-muted hover:bg-muted/70 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                                            aria-label="Previous step"
-                                        >
-                                            <ChevronLeft className="w-3.5 h-3.5" aria-hidden="true" />
-                                            Prev
-                                        </button>
-
-                                        <div className="flex-1 min-w-0 text-center">
-                                            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
-                                                Step {currentStepIndex + 1} of {steps.length}
-                                            </p>
-                                            <p className="text-xs font-semibold text-foreground truncate">
-                                                {currentStep?.title ?? '—'}
-                                            </p>
-                                        </div>
-
-                                        <div className="flex items-center gap-2 shrink-0">
-                                            <button
-                                                type="button"
-                                                onClick={handleRestartDemo}
-                                                className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-destructive hover:bg-destructive/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive"
-                                                aria-label="Reset flow to first step"
-                                            >
-                                                <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
-                                                Reset
-                                            </button>
-                                            <button
-                                                type="button"
-                                                onClick={nextStep}
-                                                disabled={currentStepIndex >= steps.length - 1}
-                                                className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-foreground bg-muted hover:bg-muted/70 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                                                aria-label="Next step"
-                                            >
-                                                Next
-                                                <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
-                                            </button>
-                                        </div>
-                                    </div>
-                                ) : (
+                                {/* Debug footer · tour mode only (stepper moved to top of tab) */}
+                                {isDemoActive && (
                                     <p className="text-[10px] text-center text-muted-foreground/60 font-mono">
                                         step {stepId ?? '—'} · state {stepState} · {variables.duration} day(s)
                                     </p>
