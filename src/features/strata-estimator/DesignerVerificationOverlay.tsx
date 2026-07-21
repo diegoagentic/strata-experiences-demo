@@ -329,7 +329,10 @@ export default function DesignerVerificationOverlay({
         <>
         <div
             className={clsx(
-                'fixed inset-y-0 right-0 w-[28rem] bg-card dark:bg-zinc-900 border-l border-border shadow-2xl flex flex-col z-40 transition-all duration-300 ease-out',
+                // z-[60] so the panel overlays the Estimator navbar (z-50) +
+                // Demo trigger button (z-50). Stays below DemoGuide (z-[100])
+                // and DemoSidebar (z-[300]) so those still cover it when open.
+                'fixed inset-y-0 right-0 w-[28rem] bg-card dark:bg-zinc-900 border-l border-border shadow-2xl flex flex-col z-[60] transition-all duration-300 ease-out',
                 leaving ? 'translate-x-full opacity-0' : 'translate-x-0 opacity-100'
             )}
         >
