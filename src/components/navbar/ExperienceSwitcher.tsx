@@ -129,7 +129,23 @@ export default function ExperienceSwitcher({
               </PopoverButton>
             ))}
 
-            {/* WIDGETS — kept next to Shared Blocks (same "components" family) */}
+            {/* FEATURE MODULES */}
+            <div className="px-3 py-2 border-y border-border shrink-0 sticky top-0 bg-card/95 backdrop-blur-xl z-10 mt-2">
+              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
+                Feature Modules
+              </p>
+            </div>
+            {featureModules.map(renderProfile)}
+
+            {/* TOUR PROFILES */}
+            <div className="px-3 py-2 border-y border-border shrink-0 sticky top-0 bg-card/95 backdrop-blur-xl z-10 mt-2">
+              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
+                Tour Profiles
+              </p>
+            </div>
+            {tourProfiles.map(renderProfile)}
+
+            {/* WIDGETS — last (Diego request 2026-07-21) */}
             <div className="px-3 py-2 border-y border-border shrink-0 sticky top-0 bg-card/95 backdrop-blur-xl z-10 mt-2">
               <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
                 Widgets
@@ -154,22 +170,6 @@ export default function ExperienceSwitcher({
                 )}
               </PopoverButton>
             ))}
-
-            {/* FEATURE MODULES */}
-            <div className="px-3 py-2 border-y border-border shrink-0 sticky top-0 bg-card/95 backdrop-blur-xl z-10 mt-2">
-              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
-                Feature Modules
-              </p>
-            </div>
-            {featureModules.map(renderProfile)}
-
-            {/* TOUR PROFILES */}
-            <div className="px-3 py-2 border-y border-border shrink-0 sticky top-0 bg-card/95 backdrop-blur-xl z-10 mt-2">
-              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
-                Tour Profiles
-              </p>
-            </div>
-            {tourProfiles.map(renderProfile)}
           </div>
           );
           })()}
