@@ -306,9 +306,13 @@ interface PageProps {
     onNavigateToDetail: () => void;
     onNavigateToWorkspace: () => void;
     onNavigate: (page: string) => void;
+    /** When true (shared-block preview) the parent shell already reserves
+     *  top space for its navbar + header · drop the local pt-24 and the
+     *  duplicate breadcrumbs to avoid a ~300px empty band above the tabs. */
+    previewMode?: boolean;
 }
 
-export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWorkspace, onNavigate }: PageProps) {
+export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWorkspace, onNavigate, previewMode = false }: PageProps) {
     const { currentTenant } = useTenant();
     const { currentStep, nextStep, isPaused } = useDemo();
     const { activeProfile } = useDemoProfile();
@@ -810,18 +814,21 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
     };
 
     return (
-        <div className="min-h-screen bg-background font-sans text-foreground pb-24 relative">
-            <div className="pt-24 px-4 max-w-7xl mx-auto space-y-6">
+        <div className={`${previewMode ? '' : 'min-h-screen'} bg-background font-sans text-foreground pb-24 relative`}>
+            <div className={`${previewMode ? 'pt-0' : 'pt-24'} px-4 max-w-7xl mx-auto space-y-6`}>
 
-                {/* Breadcrumbs */}
-                <div className="mb-4">
-                    <Breadcrumbs
-                        items={[
-                            { label: 'Dashboard', onClick: () => onNavigate('dashboard') },
-                            { label: 'Inventory' }
-                        ]}
-                    />
-                </div>
+                {/* Breadcrumbs · hidden in shared-block preview because the shell already
+                    renders its own "Shared Blocks › Inventory Management" trail above. */}
+                {!previewMode && (
+                    <div className="mb-4">
+                        <Breadcrumbs
+                            items={[
+                                { label: 'Dashboard', onClick: () => onNavigate('dashboard') },
+                                { label: 'Inventory' }
+                            ]}
+                        />
+                    </div>
+                )}
 
                 {/* Header Container */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
