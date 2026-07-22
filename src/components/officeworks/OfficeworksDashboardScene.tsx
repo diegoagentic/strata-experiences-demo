@@ -74,18 +74,15 @@ function SpecCheckDashboardContent() {
 
     return (
         <div className="space-y-6">
-            {/* Header */}
-            <div className="flex items-start gap-4">
-                <div className="h-12 w-12 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shrink-0">
-                    <LayoutDashboard className="h-6 w-6" />
-                </div>
-                <div>
-                    <h2 className="text-xl font-semibold text-foreground">Design Dashboard · Officeworks Inc.</h2>
-                    <p className="text-sm text-muted-foreground">
-                        Capacity (CEO #2 · SC5) + KPIs (CEO #4 · SC6) · ~30 designers across 3 manager regions
-                    </p>
-                </div>
-            </div>
+            {/* Context caption · the outer MBIPageShell already renders the
+                "Design Dashboard" H1 (see OfficeworksPage.tsx L227), so this
+                scene skips its own duplicate header and just surfaces the
+                dashboard scope description as a lead-in paragraph · Diego
+                2026-07-22. */}
+            <p className="text-sm text-muted-foreground -mt-2">
+                <span className="font-semibold text-foreground">Officeworks Inc.</span>
+                {' · '}Capacity (CEO #2 · SC5) + KPIs (CEO #4 · SC6) · ~30 designers across 3 manager regions
+            </p>
 
             {/* KPI cards row (4) */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
