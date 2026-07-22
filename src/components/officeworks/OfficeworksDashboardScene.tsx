@@ -76,7 +76,7 @@ function SpecCheckDashboardContent() {
         <div className="space-y-6">
             {/* Header */}
             <div className="flex items-start gap-4">
-                <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                <div className="h-12 w-12 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shrink-0">
                     <LayoutDashboard className="h-6 w-6" />
                 </div>
                 <div>
@@ -376,7 +376,7 @@ function LDDashboardContent({ vertical }: { vertical: 'furniture' | 'walls' }) {
         <div className="space-y-6">
             {/* Header */}
             <div className="flex items-start gap-4">
-                <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                <div className="h-12 w-12 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shrink-0">
                     <Truck className="h-6 w-6" />
                 </div>
                 <div>
