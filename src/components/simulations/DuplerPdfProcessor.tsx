@@ -338,7 +338,7 @@ function SourceBadge({ label, color = 'teal' }: { label: string; color?: 'teal' 
 }
 
 export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorProps) {
-    const { currentStep, nextStep, prevStep, isPaused } = useDemo();
+    const { currentStep, nextStep, prevStep, goToStep, isPaused } = useDemo();
     const { activeProfile } = useDemoProfile();
     const stepId = currentStep.id;
 
@@ -452,6 +452,14 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
         setUrlPasted(false);
         window.dispatchEvent(new CustomEvent('dupler:non-cet-hide'));
     }, []);
+
+    // F21.b · Manual "Reset flow" handler for the header button. Also jumps
+    // the tour back to step 0 (d1.1) so a Reset click from d1.2 or d1.3
+    // actually brings the user back to the beginning of the flow.
+    const handleResetClick = useCallback(() => {
+        resetFlow();
+        goToStep(0);
+    }, [resetFlow, goToStep]);
 
     useEffect(() => {
         if (stepId !== 'd1.1') { setScrapePhase('idle'); return; }
@@ -712,26 +720,30 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
     return (
         <div className="p-6 space-y-4 max-w-5xl mx-auto">
 
-            {/* F21 · Header row with manual "Reset flow" control (visible on
-                d1.1 so the user can restart at any phase without reloading
-                or switching profile · Diego 2026-07-22). */}
-            {stepId === 'd1.1' && (
-                <div className="flex items-center justify-between">
-                    <div>
-                        <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Vendor Data Import</p>
-                        <p className="text-xs text-muted-foreground">Non-CET manufacturer · PDF · URL · SIF</p>
-                    </div>
-                    <button
-                        type="button"
-                        onClick={resetFlow}
-                        className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-destructive hover:bg-destructive/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive"
-                        aria-label="Reset the Vendor Data flow to its initial state"
-                    >
-                        <ArrowPathIcon className="w-3.5 h-3.5" aria-hidden="true" />
-                        Reset flow
-                    </button>
+            {/* F21.b · Header row with step indicator + manual "Reset flow"
+                control. Visible across all Dupler d1.x steps (d1.1, d1.2,
+                d1.3) so users can restart at any point in the flow · Diego
+                2026-07-22. The title tracks currentStep.title so it stays
+                accurate as the user advances. */}
+            <div className="flex items-center justify-between">
+                <div className="min-w-0">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                        Vendor Data Flow · Step {stepId === 'd1.1' ? '1' : stepId === 'd1.2' ? '2' : stepId === 'd1.3' ? '3' : '—'} of 3
+                    </p>
+                    <p className="text-xs font-semibold text-foreground truncate">
+                        {currentStep?.title ?? 'Vendor Data Import'}
+                    </p>
                 </div>
-            )}
+                <button
+                    type="button"
+                    onClick={handleResetClick}
+                    className="shrink-0 inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-destructive hover:bg-destructive/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive"
+                    aria-label="Reset the Vendor Data flow to its initial state"
+                >
+                    <ArrowPathIcon className="w-3.5 h-3.5" aria-hidden="true" />
+                    Reset flow
+                </button>
+            </div>
 
             {/* ── d1.1: Vendor Data Import & AI Extraction ── */}
             {stepId === 'd1.1' && (
