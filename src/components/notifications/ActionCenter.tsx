@@ -386,9 +386,15 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
     // Programmatic auto-open · captures the PopoverButton ref and triggers
     // a click on mount when defaultOpen is true (shared-block preview).
     const bellRef = useRef<HTMLButtonElement | null>(null);
+    // F21 · sync the HeadlessUI Popover `open` state to a ref so the auto-open
+    // useEffects can check the current visibility before firing a click (which
+    // would otherwise TOGGLE-close an already-open popover · Diego 2026-07-22).
+    const popoverOpenRef = useRef(false);
     useEffect(() => {
         if (!defaultOpen) return;
-        const t = setTimeout(() => bellRef.current?.click(), 60);
+        const t = setTimeout(() => {
+            if (!popoverOpenRef.current) bellRef.current?.click();
+        }, 60);
         return () => clearTimeout(t);
     }, [defaultOpen]);
 
@@ -401,15 +407,22 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
         if (!shouldShowDuplerD11) { duplerD11AutoOpened.current = false; return; }
         if (duplerD11AutoOpened.current) return;
         duplerD11AutoOpened.current = true;
-        const t = setTimeout(() => bellRef.current?.click(), 400);
+        const t = setTimeout(() => {
+            // Only auto-open if user hasn't already opened the popover manually.
+            if (!popoverOpenRef.current) bellRef.current?.click();
+        }, 400);
         return () => clearTimeout(t);
     }, [shouldShowDuplerD11]);
 
     return (
         <>
         <Popover className="relative">
-            {({ open }) => (
-                <>
+            {({ open }) => {
+                // F21 · mirror the open state to the ref used by auto-open
+                // useEffects so they can skip firing if the popover is
+                // already open (prevents race-toggle-close bug).
+                popoverOpenRef.current = open;
+                return (<>
                     <PopoverButton
                         ref={bellRef}
                         className={clsx(
@@ -473,12 +486,17 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                                                         // actions hide the notification here immediately +
                                                         // DuplerPdfProcessor will confirm the hide by
                                                         // dispatching `dupler:non-cet-hide` when scrapePhase
-                                                        // transitions away from 'notification'.
+                                                        // transitions away from 'notification'. F21 · also
+                                                        // close the popover so the user isn't left staring
+                                                        // at "No updates found" or stale notifications.
                                                         if (notification.id === 'dupler-d11-non-cet') {
                                                             if (action === 'Import vendor data') {
                                                                 window.dispatchEvent(new CustomEvent('dupler:import-vendor-data'));
                                                             }
                                                             setShouldShowDuplerD11(false);
+                                                            setTimeout(() => {
+                                                                if (popoverOpenRef.current) bellRef.current?.click();
+                                                            }, 50);
                                                         }
                                                     }}
                                                 />
@@ -507,8 +525,8 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                             </div>
                         </PopoverPanel>
                     </Transition>}
-                </>
-            )}
+                </>);
+            }}
         </Popover>
 
         {/* Flow 3 · Sample & Textile — email-style notifications (Wendy items 9 & 10) */}

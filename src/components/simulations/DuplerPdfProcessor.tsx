@@ -8,6 +8,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useDemo } from '../../context/DemoContext';
+import { useDemoProfile } from '../../context/useDemoProfile';
 import { AIAgentAvatar } from './DemoAvatars';
 import ConfidenceScoreBadge from '../widgets/ConfidenceScoreBadge';
 import {
@@ -338,6 +339,7 @@ function SourceBadge({ label, color = 'teal' }: { label: string; color?: 'teal' 
 
 export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorProps) {
     const { currentStep, nextStep, prevStep, isPaused } = useDemo();
+    const { activeProfile } = useDemoProfile();
     const stepId = currentStep.id;
 
     // ── pauseAware ──
@@ -365,6 +367,10 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
         } else {
             window.dispatchEvent(new CustomEvent('dupler:non-cet-hide'));
         }
+        // Cleanup on unmount · guarantees the AC (persistent in Navbar) hides
+        // the notification when the user navigates to a different experience
+        // while scrapePhase was still 'notification' (Diego 2026-07-22 · F21).
+        return () => window.dispatchEvent(new CustomEvent('dupler:non-cet-hide'));
     }, [scrapePhase]);
     const [uploadTab, setUploadTab] = useState<'pdf' | 'url' | 'sif'>('pdf');
     const [pdfFile, setPdfFile] = useState(false);
@@ -427,8 +433,11 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
     // d1.1: Vendor Data Import & AI Extraction
     // ═══════════════════════════════════════════════════════════════════════════
 
-    useEffect(() => {
-        if (stepId !== 'd1.1') { setScrapePhase('idle'); return; }
+    // F21 · Shared reset routine · used on stepId change, profile change, and
+    // the manual "Reset flow" button in the header. Guarantees the same
+    // "back-to-initial" state everywhere so users can restart the flow from
+    // any phase without reloading (Diego 2026-07-22).
+    const resetFlow = useCallback(() => {
         setScrapePhase('idle');
         setExtractAgents(EXTRACTION_AGENTS.map(a => ({ ...a })));
         setExtractProgress(0);
@@ -441,6 +450,12 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
         setUploadTab('pdf');
         setPdfFile(false);
         setUrlPasted(false);
+        window.dispatchEvent(new CustomEvent('dupler:non-cet-hide'));
+    }, []);
+
+    useEffect(() => {
+        if (stepId !== 'd1.1') { setScrapePhase('idle'); return; }
+        resetFlow();
         const handler = () => setScrapePhase('notification');
         // Import CTA fired from the Action Center notification (Non-CET
         // manufacturer detected) advances the flow to the upload zone.
@@ -451,7 +466,14 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
             window.removeEventListener('dupler-vendor-upload', handler);
             window.removeEventListener('dupler:import-vendor-data', importHandler);
         };
-    }, [stepId]);
+    }, [stepId, resetFlow]);
+
+    // F21 Task B · Reset also when the active profile changes (defense in
+    // depth · normally the component unmounts on profile switch, but if a
+    // future refactor keeps it mounted this guarantees a clean slate).
+    useEffect(() => {
+        resetFlow();
+    }, [activeProfile.id, resetFlow]);
 
     // Upload zone: simulate file/URL appearing
     useEffect(() => {
@@ -684,6 +706,27 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
 
     return (
         <div className="p-6 space-y-4 max-w-5xl mx-auto">
+
+            {/* F21 · Header row with manual "Reset flow" control (visible on
+                d1.1 so the user can restart at any phase without reloading
+                or switching profile · Diego 2026-07-22). */}
+            {stepId === 'd1.1' && (
+                <div className="flex items-center justify-between">
+                    <div>
+                        <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Vendor Data Import</p>
+                        <p className="text-xs text-muted-foreground">Non-CET manufacturer · PDF · URL · SIF</p>
+                    </div>
+                    <button
+                        type="button"
+                        onClick={resetFlow}
+                        className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-destructive hover:bg-destructive/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive"
+                        aria-label="Reset the Vendor Data flow to its initial state"
+                    >
+                        <ArrowPathIcon className="w-3.5 h-3.5" aria-hidden="true" />
+                        Reset flow
+                    </button>
+                </div>
+            )}
 
             {/* ── d1.1: Vendor Data Import & AI Extraction ── */}
             {stepId === 'd1.1' && (
