@@ -462,11 +462,16 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
         const importHandler = () => setScrapePhase('upload-zone');
         window.addEventListener('dupler-vendor-upload', handler);
         window.addEventListener('dupler:import-vendor-data', importHandler);
+        // F21.b · auto-transition to the notification phase 1.2s after landing
+        // on d1.1 so the AC bell popover surfaces the Non-CET alert without
+        // requiring the (now hidden) Transactions "Upload SIF" click.
+        const auto = setTimeout(pauseAware(() => setScrapePhase('notification')), 1200);
         return () => {
             window.removeEventListener('dupler-vendor-upload', handler);
             window.removeEventListener('dupler:import-vendor-data', importHandler);
+            clearTimeout(auto);
         };
-    }, [stepId, resetFlow]);
+    }, [stepId, resetFlow, pauseAware]);
 
     // F21 Task B · Reset also when the active profile changes (defense in
     // depth · normally the component unmounts on profile switch, but if a
@@ -744,41 +749,41 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                     {/* Upload zone — 3-tab bar: PDF (primary), URL, SIF */}
                     {scrapePhase === 'upload-zone' && (
                         <div className="animate-in fade-in slide-in-from-top-4 duration-500 space-y-4">
-                            {/* Tab bar */}
+                            {/* Tab bar · DS semantic tokens (warning · ai · info) */}
                             <div className="flex rounded-lg bg-muted/50 p-1 gap-1">
                                 <button onClick={() => { setUploadTab('pdf'); setPdfFile(false); setUrlPasted(false); }}
                                     className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-md text-[11px] font-bold transition-all ${
-                                        uploadTab === 'pdf' ? 'bg-amber-100 dark:bg-amber-500/15 text-amber-700 dark:text-amber-400 shadow-sm' : 'text-muted-foreground hover:text-foreground'
+                                        uploadTab === 'pdf' ? 'bg-warning/15 text-warning shadow-sm' : 'text-muted-foreground hover:text-foreground'
                                     }`}>
                                     <DocumentTextIcon className="h-3.5 w-3.5" /> Upload PDF
-                                    <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${uploadTab === 'pdf' ? 'bg-amber-200 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300' : 'bg-muted text-muted-foreground'}`}>VENDOR PDF</span>
+                                    <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${uploadTab === 'pdf' ? 'bg-warning/25 text-warning' : 'bg-muted text-muted-foreground'}`}>VENDOR PDF</span>
                                 </button>
                                 <button onClick={() => { setUploadTab('url'); setPdfFile(false); setUrlPasted(false); }}
                                     className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-md text-[11px] font-bold transition-all ${
-                                        uploadTab === 'url' ? 'bg-purple-100 dark:bg-ai/15 text-purple-700 dark:text-purple-400 shadow-sm' : 'text-muted-foreground hover:text-foreground'
+                                        uploadTab === 'url' ? 'bg-ai/15 text-ai shadow-sm' : 'text-muted-foreground hover:text-foreground'
                                     }`}>
                                     <LinkIcon className="h-3.5 w-3.5" /> Paste URL
-                                    <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${uploadTab === 'url' ? 'bg-purple-200 dark:bg-ai/20 text-purple-800 dark:text-purple-300' : 'bg-muted text-muted-foreground'}`}>MFR WEBSITE</span>
+                                    <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${uploadTab === 'url' ? 'bg-ai/25 text-ai' : 'bg-muted text-muted-foreground'}`}>MFR WEBSITE</span>
                                 </button>
                                 <button onClick={() => { setUploadTab('sif'); setPdfFile(false); setUrlPasted(false); }}
                                     className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-md text-[11px] font-bold transition-all ${
-                                        uploadTab === 'sif' ? 'bg-blue-100 dark:bg-blue-500/15 text-blue-700 dark:text-blue-400 shadow-sm' : 'text-muted-foreground hover:text-foreground'
+                                        uploadTab === 'sif' ? 'bg-info/15 text-info shadow-sm' : 'text-muted-foreground hover:text-foreground'
                                     }`}>
                                     <ArrowUpTrayIcon className="h-3.5 w-3.5" /> Import SIF
-                                    <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${uploadTab === 'sif' ? 'bg-blue-200 dark:bg-blue-500/20 text-blue-800 dark:text-blue-300' : 'bg-muted text-muted-foreground'}`}>SIF FILE</span>
+                                    <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${uploadTab === 'sif' ? 'bg-info/25 text-info' : 'bg-muted text-muted-foreground'}`}>SIF FILE</span>
                                 </button>
                             </div>
 
-                            {/* PDF tab — drag-drop zone with simulated file */}
+                            {/* PDF tab — drag-drop zone with simulated file · DS semantic tokens */}
                             {uploadTab === 'pdf' && (
                                 <div className={`rounded-xl bg-card border-2 border-dashed transition-all duration-300 overflow-hidden ${
-                                    pdfFile ? 'border-amber-400 dark:border-amber-500/40' : 'border-amber-300 dark:border-amber-500/30'
+                                    pdfFile ? 'border-warning/60' : 'border-warning/30'
                                 }`}>
                                     <div className="p-6">
                                         {!pdfFile ? (
                                             <div className="flex flex-col items-center justify-center py-4 gap-3">
-                                                <div className="p-3 rounded-full bg-amber-100 dark:bg-amber-500/10">
-                                                    <DocumentTextIcon className="h-10 w-10 text-amber-600 dark:text-amber-400" />
+                                                <div className="p-3 rounded-full bg-warning/10">
+                                                    <DocumentTextIcon className="h-10 w-10 text-warning" />
                                                 </div>
                                                 <div className="text-center">
                                                     <p className="text-sm font-bold text-foreground">Upload Vendor Quote</p>
@@ -792,20 +797,20 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                             </div>
                                         ) : (
                                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                                <div className="flex items-center gap-3 p-3 rounded-lg bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/20">
-                                                    <div className="p-2 rounded-lg bg-amber-100 dark:bg-amber-500/10 shrink-0">
-                                                        <DocumentTextIcon className="h-6 w-6 text-amber-600 dark:text-amber-400" />
+                                                <div className="flex items-center gap-3 p-3 rounded-lg bg-warning/5 border border-warning/30">
+                                                    <div className="p-2 rounded-lg bg-warning/10 shrink-0">
+                                                        <DocumentTextIcon className="h-6 w-6 text-warning" />
                                                     </div>
                                                     <div className="flex-1 min-w-0">
                                                         <p className="text-xs font-bold text-foreground truncate">Meridian_Healthcare_Q1_2026.pdf</p>
                                                         <p className="text-[10px] text-muted-foreground">2.4 MB — Vendor quote</p>
                                                     </div>
                                                     <SourceBadge label="VENDOR PDF" color="amber" />
-                                                    <CheckCircleIcon className="h-5 w-5 text-green-500 shrink-0" />
+                                                    <CheckCircleIcon className="h-5 w-5 text-success shrink-0" />
                                                 </div>
                                                 <button
                                                     onClick={() => setScrapePhase('scraping')}
-                                                    className="w-full mt-3 py-2.5 rounded-xl bg-brand-400 hover:bg-brand-500 text-zinc-900 font-bold text-sm shadow-lg shadow-brand-400/20 animate-pulse flex items-center justify-center gap-2 transition-colors animate-in fade-in slide-in-from-bottom-2 duration-300"
+                                                    className="w-full mt-3 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-sm shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-colors animate-in fade-in slide-in-from-bottom-2 duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                                                 >
                                                     <MagnifyingGlassIcon className="h-4 w-4" />
                                                     Extract Data

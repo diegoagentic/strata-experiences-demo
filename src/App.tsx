@@ -550,10 +550,17 @@ function App() {
       case 'crm':
         return <CRMSimulation onNavigate={handleNavigate} activePage={currentPage} />;
       case 'dupler-pdf':
+        // Vendor Data flow lives in its own dedicated section · Diego
+        // 2026-07-22 · previously it was stacked on top of Transactions
+        // which confused the audience (two unrelated pages on screen).
+        // For d1.4 / d1.5 the DuplerPdfProcessor returns null internally
+        // and shows Transactions as a fallback below.
         return (
           <>
             <DuplerPdfProcessor onNavigate={handleNavigate} />
-            <Transactions onLogout={handleLogout} onNavigateToDetail={(type) => setCurrentPage(type as any)} onNavigateToWorkspace={() => setCurrentPage('workspace')} onNavigate={handleNavigate} />
+            {currentStep?.id !== 'd1.1' && currentStep?.id !== 'd1.2' && currentStep?.id !== 'd1.3' && (
+              <Transactions onLogout={handleLogout} onNavigateToDetail={(type) => setCurrentPage(type as any)} onNavigateToWorkspace={() => setCurrentPage('workspace')} onNavigate={handleNavigate} />
+            )}
           </>
         );
       case 'dupler-warehouse':
