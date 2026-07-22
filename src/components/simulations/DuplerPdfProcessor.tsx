@@ -354,6 +354,18 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
 
     // ── d1.1 State: Vendor Data Import ──
     const [scrapePhase, setScrapePhase] = useState<ScrapePhase>('idle');
+    // Sync Action Center visibility to the scrapePhase · fire show only when
+    // the flow enters the 'notification' phase, hide whenever it leaves.
+    // Diego 2026-07-22 · this is the source of truth for the Non-CET alert
+    // lifecycle in the AC (before, AC guessed by stepId which desynced from
+    // the actual flow phase on import / dismiss / reload / restart).
+    useEffect(() => {
+        if (scrapePhase === 'notification') {
+            window.dispatchEvent(new CustomEvent('dupler:non-cet-show'));
+        } else {
+            window.dispatchEvent(new CustomEvent('dupler:non-cet-hide'));
+        }
+    }, [scrapePhase]);
     const [uploadTab, setUploadTab] = useState<'pdf' | 'url' | 'sif'>('pdf');
     const [pdfFile, setPdfFile] = useState(false);
     const [urlPasted, setUrlPasted] = useState(false);

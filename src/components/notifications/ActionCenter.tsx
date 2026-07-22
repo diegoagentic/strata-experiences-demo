@@ -313,12 +313,22 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
 
     // Dupler d1.1 · surface the Non-CET notification at the top of the list
     // so the Vendor Data flow uses the DS Action Center instead of an inline
-    // banner. Only visible while the user is on step d1.1 (before importing).
-    const isStepD11 = currentStep?.id === 'd1.1';
-    const [duplerD11Dismissed, setDuplerD11Dismissed] = useState(false);
-    // Reset dismissed state whenever we re-enter d1.1 (e.g. tour restart).
-    useEffect(() => { if (isStepD11) setDuplerD11Dismissed(false); }, [isStepD11]);
-    const shouldShowDuplerD11 = isStepD11 && !duplerD11Dismissed;
+    // banner. Visibility is driven by DuplerPdfProcessor's scrapePhase (the
+    // source of truth for the flow) via `dupler:non-cet-show` /
+    // `dupler:non-cet-hide` custom events · this way once the user Imports,
+    // Dismisses, or advances the flow, the notification stays hidden even
+    // if they come back to step d1.1 later.
+    const [shouldShowDuplerD11, setShouldShowDuplerD11] = useState(false);
+    useEffect(() => {
+        const show = () => setShouldShowDuplerD11(true);
+        const hide = () => setShouldShowDuplerD11(false);
+        window.addEventListener('dupler:non-cet-show', show);
+        window.addEventListener('dupler:non-cet-hide', hide);
+        return () => {
+            window.removeEventListener('dupler:non-cet-show', show);
+            window.removeEventListener('dupler:non-cet-hide', hide);
+        };
+    }, []);
 
     const filteredNotifications = useMemo(() => {
         const currentTab = tabs.find(t => t.id === activeTab);
@@ -459,12 +469,16 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                                                             window.dispatchEvent(new CustomEvent('demo:navigate', { detail: { page: 'order-detail' } }))
                                                         }
                                                         // Dupler d1.1 · Import vendor data advances the local
-                                                        // DuplerPdfProcessor to the upload-zone phase.
+                                                        // DuplerPdfProcessor to the upload-zone phase. Both
+                                                        // actions hide the notification here immediately +
+                                                        // DuplerPdfProcessor will confirm the hide by
+                                                        // dispatching `dupler:non-cet-hide` when scrapePhase
+                                                        // transitions away from 'notification'.
                                                         if (notification.id === 'dupler-d11-non-cet') {
                                                             if (action === 'Import vendor data') {
                                                                 window.dispatchEvent(new CustomEvent('dupler:import-vendor-data'));
                                                             }
-                                                            setDuplerD11Dismissed(true);
+                                                            setShouldShowDuplerD11(false);
                                                         }
                                                     }}
                                                 />
