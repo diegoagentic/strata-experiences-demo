@@ -142,9 +142,13 @@ export default function OfficeworksPage() {
 
     const stepId = currentStep?.id
     const stage = stepIdToStage(stepId)
-    const app = currentStep?.app ?? 'officeworks-spec-check'
-    const icon = STEP_ICONS_BY_APP[app] ?? <ClipboardCheck className="h-5 w-5" />
-    const pageTitle = STEP_TITLES_BY_APP[app] ?? 'Spec Check'
+    // F22 · fallback ahora es 'officeworks-intake' (primer tab natural del flow)
+    // en vez de 'officeworks-spec-check' (que Diego quitó del navbar porque será
+    // feature module aparte). Antes, clicks sin step activo renderizaban título
+    // "Spec Check" independientemente del tab clickeado · Diego 2026-07-23.
+    const app = currentStep?.app ?? 'officeworks-intake'
+    const icon = STEP_ICONS_BY_APP[app] ?? <Inbox className="h-5 w-5" />
+    const pageTitle = STEP_TITLES_BY_APP[app] ?? 'Intake'
     // Flow derived from current step · drives the funnel + page chrome.
     const flowId = (currentStep?.flowId ?? 'spec-check') as 'spec-check' | 'labor-delivery' | 'sales'
 

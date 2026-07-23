@@ -293,11 +293,13 @@ function App() {
     { name: 'AP & Reporting', page: 'workspaces-ap', icon: Building2Icon },
     { name: 'Spend Dashboard', page: 'workspaces-reporting', icon: LayoutDashboardIcon },
   ];
+  // F22 · Spec Check AI removed (2026-07-23) · será feature module aparte.
+  // El app `officeworks-spec-check` sigue registrado en el router porque
+  // el step sc1.4 lo consume internamente, pero ya no aparece como tab.
   const officeworksNav = [
     { name: 'Dashboard', page: 'officeworks-dashboard', icon: LayoutDashboardIcon },
     { name: 'Intake AI', page: 'officeworks-intake', icon: InboxIcon },
     { name: 'Design AI', page: 'officeworks-design', icon: PencilIcon },
-    { name: 'Spec Check AI', page: 'officeworks-spec-check', icon: ClipboardCheckIcon },
     { name: 'Submission AI', page: 'officeworks-submission', icon: SendIcon },
     { name: 'Labor & Delivery', page: 'officeworks-labor', icon: WrenchScrewdriverIcon },
     { name: 'Sales AI', page: 'officeworks-sales', icon: BanknotesIcon },

@@ -211,12 +211,19 @@ export const DEMO_PROFILES: DemoProfile[] = [
         stepMessages: OFFICEWORKS_STEP_MESSAGES,
         selfIndicatedSteps: OFFICEWORKS_SELF_INDICATED,
         hasRoleSwitcher: true,
-        defaultRoleId: 'designer',
+        // F22 · roles alineados con los 6 personas reales de los 27 steps del
+        // profile officeworks (Design Manager · Designer · Peer Reviewer ·
+        // Sales Coordinator · Sr Operations · Sales Lead). Antes eran
+        // placeholder genéricos del CSV F18.polish.v2 que no matcheaban con
+        // ningún step. Diego 2026-07-23.
+        defaultRoleId: 'design-manager',
         roles: [
-            { id: 'designer',  label: 'Designer',  icon: 'palette' },
-            { id: 'installer', label: 'Installer', icon: 'wrench' },
-            { id: 'dealer',    label: 'Dealer',    icon: 'store' },
-            { id: 'crm',       label: 'CRM',       icon: 'users' },
+            { id: 'design-manager',    label: 'Design Manager',    icon: 'user' },
+            { id: 'designer',          label: 'Designer',          icon: 'palette' },
+            { id: 'peer-reviewer',     label: 'Peer Reviewer',     icon: 'clipboard-check' },
+            { id: 'sales-coordinator', label: 'Sales Coordinator', icon: 'users' },
+            { id: 'sr-operations',     label: 'Sr Operations',     icon: 'wrench' },
+            { id: 'sales-lead',        label: 'Sales Lead',        icon: 'sparkles' },
         ],
     },
     {

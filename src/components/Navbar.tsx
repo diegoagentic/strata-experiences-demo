@@ -124,6 +124,23 @@ const DEMO_PROFILES: Record<string, { name: string; role: string; photo: string 
         role: 'Sales Coordinator',
         photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face',
     },
+    // F22 · nuevas personas del guión Officeworks (Peer Reviewer step sc1.7 ·
+    // Sr Operations sc-LD.* · Sales Lead sc-S.*) · Diego 2026-07-23.
+    'Officeworks Peer Reviewer': {
+        name: 'Peer Reviewer Vaughn',
+        role: 'Peer Reviewer',
+        photo: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=80&h=80&fit=crop&crop=face',
+    },
+    'Officeworks Sr Operations': {
+        name: 'Sr Ops Rowan',
+        role: 'Sr Operations',
+        photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=face',
+    },
+    'Officeworks Sales Lead': {
+        name: 'Sales Lead Pryce',
+        role: 'Sales Lead',
+        photo: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=80&h=80&fit=crop&crop=face',
+    },
 };
 
 // Apps that belong to Expert Hub — everything else is Dealer Experience
@@ -142,6 +159,11 @@ function resolveProfileKey(role: string | undefined, app: string | undefined): s
         if (role === 'Design Manager')    return 'Officeworks Design Manager';
         if (role === 'Designer')          return 'Officeworks Designer';
         if (role === 'Sales Coordinator') return 'Officeworks Sales Coordinator';
+        // F22 · nuevos personas del guión Officeworks (Peer Reviewer del step
+        // sc1.7 · Sr Operations de sc-LD.* · Sales Lead de sc-S.*)
+        if (role === 'Peer Reviewer')     return 'Officeworks Peer Reviewer';
+        if (role === 'Sr Operations')     return 'Officeworks Sr Operations';
+        if (role === 'Sales Lead')        return 'Officeworks Sales Lead';
         return 'Officeworks Design Manager';
     }
     if (role === 'Expert') return 'Expert';
