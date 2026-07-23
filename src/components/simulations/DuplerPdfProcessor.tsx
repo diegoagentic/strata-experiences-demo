@@ -1926,13 +1926,19 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                 </div>
                             )}
 
-                            {/* Catalog Sync Animation — post-send */}
+                            {/* Catalog Sync Animation — post-send · F23.d
+                                DS-compliant tokens · tone `ai` para el sync
+                                envelope (AI-driven catalog binding) · `success`
+                                para los sub-cards al completarse. Antes usaba
+                                raw purple-*/green-*/blue-* + gradient
+                                Frankenstein purple/brand/purple. Diego
+                                2026-07-23. */}
                             {specSent && catalogSyncPhase === 'syncing' && (
-                                <div className="p-5 rounded-xl bg-gradient-to-br from-purple-50 via-brand-50 to-blue-50 dark:from-purple-500/10 dark:via-brand-500/5 dark:to-blue-500/10 border-2 border-purple-300 dark:border-purple-500/40 shadow-lg shadow-purple-200/30 dark:shadow-purple-500/10 animate-in fade-in slide-in-from-bottom-3 duration-500 space-y-4">
+                                <div className="p-5 rounded-xl bg-ai/5 border border-ai/30 shadow-sm animate-in fade-in slide-in-from-bottom-3 duration-500 space-y-4">
                                     <div className="flex items-center gap-3">
                                         <div className="relative">
-                                            <div className="p-2.5 rounded-xl bg-purple-100 dark:bg-ai/20">
-                                                <ArrowPathIcon className="h-5 w-5 text-ai dark:text-purple-400 animate-spin" />
+                                            <div className="p-2.5 rounded-xl bg-ai/10">
+                                                <ArrowPathIcon className="h-5 w-5 text-ai animate-spin" />
                                             </div>
                                             <div className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-ai rounded-full animate-pulse" />
                                         </div>
@@ -1944,36 +1950,36 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
 
                                     {/* Progress bar */}
                                     <div className="space-y-2">
-                                        <div className="h-2.5 rounded-full bg-purple-100 dark:bg-ai/20 overflow-hidden">
-                                            <div className="h-full rounded-full bg-gradient-to-r from-purple-500 via-brand-400 to-purple-500 transition-all duration-300 ease-out"
+                                        <div className="h-2.5 rounded-full bg-ai/15 overflow-hidden">
+                                            <div className="h-full rounded-full bg-ai transition-all duration-300 ease-out"
                                                 style={{ width: `${catalogSyncProgress}%` }} />
                                         </div>
                                         <div className="flex justify-between items-center">
-                                            <p className="text-[10px] font-medium text-ai dark:text-purple-400">
+                                            <p className="text-[10px] font-medium text-ai">
                                                 {catalogSyncProgress < 30 && `Importing ${MANUFACTURER} product catalog...`}
                                                 {catalogSyncProgress >= 30 && catalogSyncProgress < 60 && `Mapping ${CATALOG_ITEMS_TOTAL} items to CET format...`}
                                                 {catalogSyncProgress >= 60 && catalogSyncProgress < 85 && 'Binding pricing, options & source traceability...'}
                                                 {catalogSyncProgress >= 85 && 'Finalizing catalog synchronization...'}
                                             </p>
-                                            <span className="text-[10px] font-bold text-ai dark:text-purple-400">{catalogSyncProgress}%</span>
+                                            <span className="text-[10px] font-bold text-ai">{catalogSyncProgress}%</span>
                                         </div>
                                     </div>
 
                                     {/* Sync details */}
                                     <div className="grid grid-cols-2 gap-2">
-                                        <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${catalogSyncProgress >= 20 ? 'bg-green-50 dark:bg-green-500/5 border-green-300 dark:border-green-500/30' : 'bg-muted/30 border-border'}`}>
+                                        <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${catalogSyncProgress >= 20 ? 'bg-success/10 border-success/30' : 'bg-muted/30 border-border'}`}>
                                             <p className="text-[9px] text-muted-foreground">Products</p>
                                             <p className="text-xs font-bold text-foreground">{catalogSyncProgress >= 20 ? `${CATALOG_ITEMS_TOTAL} synced` : 'Pending...'}</p>
                                         </div>
-                                        <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${catalogSyncProgress >= 50 ? 'bg-green-50 dark:bg-green-500/5 border-green-300 dark:border-green-500/30' : 'bg-muted/30 border-border'}`}>
+                                        <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${catalogSyncProgress >= 50 ? 'bg-success/10 border-success/30' : 'bg-muted/30 border-border'}`}>
                                             <p className="text-[9px] text-muted-foreground">PMX Records</p>
                                             <p className="text-xs font-bold text-foreground">{catalogSyncProgress >= 50 ? `${CATALOG_ITEMS_TOTAL} assembled` : 'Pending...'}</p>
                                         </div>
-                                        <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${catalogSyncProgress >= 70 ? 'bg-green-50 dark:bg-green-500/5 border-green-300 dark:border-green-500/30' : 'bg-muted/30 border-border'}`}>
+                                        <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${catalogSyncProgress >= 70 ? 'bg-success/10 border-success/30' : 'bg-muted/30 border-border'}`}>
                                             <p className="text-[9px] text-muted-foreground">Pricing</p>
                                             <p className="text-xs font-bold text-foreground">{catalogSyncProgress >= 70 ? 'Verified' : 'Pending...'}</p>
                                         </div>
-                                        <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${catalogSyncProgress >= 90 ? 'bg-green-50 dark:bg-green-500/5 border-green-300 dark:border-green-500/30' : 'bg-muted/30 border-border'}`}>
+                                        <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${catalogSyncProgress >= 90 ? 'bg-success/10 border-success/30' : 'bg-muted/30 border-border'}`}>
                                             <p className="text-[9px] text-muted-foreground">Traceability</p>
                                             <p className="text-xs font-bold text-foreground">{catalogSyncProgress >= 90 ? 'Complete' : 'Pending...'}</p>
                                         </div>
@@ -1981,17 +1987,22 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                 </div>
                             )}
 
-                            {/* Sync Complete — success + SC pending */}
+                            {/* Sync Complete — success + SC pending · F23.d
+                                Tokens semánticos · `success` para el banner
+                                de completion · `warning` para el SC Review
+                                pending. Antes usaba raw green-*/amber-* +
+                                gradients from-green-50/emerald con border-2
+                                inflado. Diego 2026-07-23. */}
                             {specSent && catalogSyncPhase === 'done' && (
                                 <div className="space-y-3 animate-in fade-in slide-in-from-bottom-3 duration-500">
                                     {/* Success banner */}
-                                    <div className="p-4 rounded-xl bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-500/10 dark:to-emerald-500/10 border-2 border-green-400 dark:border-green-500/40 shadow-lg shadow-green-200/30 dark:shadow-green-500/10 space-y-3">
+                                    <div className="p-4 rounded-xl bg-success/5 border border-success/30 shadow-sm space-y-3">
                                         <div className="flex items-start gap-3">
-                                            <div className="p-2.5 rounded-xl bg-green-100 dark:bg-green-500/20 shrink-0">
-                                                <CheckCircleIcon className="h-6 w-6 text-green-600 dark:text-green-400" />
+                                            <div className="p-2.5 rounded-xl bg-success/10 shrink-0">
+                                                <CheckCircleIcon className="h-6 w-6 text-success" />
                                             </div>
                                             <div className="flex-1">
-                                                <p className="text-sm font-bold text-green-800 dark:text-green-300">Catalog Synchronized Successfully</p>
+                                                <p className="text-sm font-bold text-success">Catalog Synchronized Successfully</p>
                                                 <p className="text-[11px] text-muted-foreground mt-1">
                                                     <span className="font-semibold text-foreground">{MANUFACTURER}</span> product data has been added to the project catalog.
                                                     All {CATALOG_ITEMS_TOTAL} items are now available in CET with verified options and full source traceability.
@@ -1999,24 +2010,24 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                             </div>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-2 ml-12">
-                                            <span className="text-[9px] px-2 py-0.5 rounded-full bg-green-200 dark:bg-green-500/20 text-green-800 dark:text-green-300 font-bold">CATALOG SYNCED</span>
-                                            <span className="text-[9px] px-2 py-0.5 rounded-full bg-purple-100 dark:bg-ai/10 text-purple-700 dark:text-purple-400 font-bold">PMX SENT</span>
-                                            <span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 font-bold">GAP RESOLVED</span>
+                                            <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/15 text-success font-bold">CATALOG SYNCED</span>
+                                            <span className="text-[9px] px-2 py-0.5 rounded-full bg-ai/15 text-ai font-bold">PMX SENT</span>
+                                            <span className="text-[9px] px-2 py-0.5 rounded-full bg-info/15 text-info font-bold">GAP RESOLVED</span>
                                         </div>
                                     </div>
 
                                     {/* SC Review pending */}
-                                    <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-500/5 border border-amber-300 dark:border-amber-500/30 flex items-center gap-3 animate-in fade-in duration-300" style={{ animationDelay: '400ms' }}>
-                                        <div className="p-1.5 rounded-lg bg-amber-100 dark:bg-amber-500/10 shrink-0">
-                                            <ExclamationTriangleIcon className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                                    <div className="p-3 rounded-xl bg-warning/5 border border-warning/30 flex items-center gap-3 animate-in fade-in duration-300" style={{ animationDelay: '400ms' }}>
+                                        <div className="p-1.5 rounded-lg bg-warning/10 shrink-0">
+                                            <ExclamationTriangleIcon className="h-4 w-4 text-warning" />
                                         </div>
                                         <div className="flex-1">
-                                            <p className="text-[11px] font-bold text-amber-800 dark:text-amber-300">Pending SC Review</p>
-                                            <p className="text-[10px] text-amber-700/80 dark:text-amber-400/70">
+                                            <p className="text-[11px] font-bold text-warning">Pending SC Review</p>
+                                            <p className="text-[10px] text-muted-foreground">
                                                 Sales Coordinator Marks (SC) will validate upcharges, apply discounts, and generate priced SIF.
                                             </p>
                                         </div>
-                                        <ArrowRightIcon className="h-4 w-4 text-amber-500 dark:text-amber-400 shrink-0 animate-pulse" />
+                                        <ArrowRightIcon className="h-4 w-4 text-warning shrink-0 animate-pulse" />
                                     </div>
                                 </div>
                             )}
