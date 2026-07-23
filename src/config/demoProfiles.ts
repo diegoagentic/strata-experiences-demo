@@ -244,7 +244,12 @@ export const DEMO_PROFILES: DemoProfile[] = [
         companyName: 'Dealer Copper',
         description: 'Agency Fee AI · Metro Public Schools receiving workflow',
         icon: '🏛️',
-        defaultApp: 'bfi-dashboard',
+        // F30 · era 'bfi-dashboard' · Diego pidió que la landing default
+        // sea el flujo hero (Agency Fee AI · CoNYMorningQueue) en vez del
+        // Operations Dashboard · consistente con Dupler/CLC/Officeworks/
+        // Leland que apuntan a su tab hero. Análogo a F26 (CLC) y F28
+        // (Officeworks). Diego 2026-07-23.
+        defaultApp: 'bfi-agency-fee',
         experienceKind: 'feature-module',
         steps: BFI_STEPS,
         stepBehavior: BFI_STEP_BEHAVIOR,

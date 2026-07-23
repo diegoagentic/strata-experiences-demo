@@ -5,7 +5,8 @@
  * BFIDashboardPage: standalone export for the persistent Dashboard navbar tab.
  */
 
-import { Building2, LayoutDashboard } from 'lucide-react'
+import { useCallback, useState } from 'react'
+import { Building2, LayoutDashboard, RotateCcw } from 'lucide-react'
 import MBIPageShell from '../mbi/MBIPageShell'
 import MobileDeviceFrame from '../simulations/MobileDeviceFrame'
 import { useDemo } from '../../context/DemoContext'
@@ -41,8 +42,37 @@ const STEP_TITLES: Record<string, string> = {
 }
 
 export default function BFIPage() {
-    const { currentStep, nextStep } = useDemo()
-    const stepId = currentStep?.id ?? 'r1.2'
+    const { currentStep, nextStep, goToStep, isDemoActive } = useDemo()
+    // F30 · idle fallback ahora es 'a1.1' (CoNYMorningQueue · queue-style
+    // landing-friendly · match con el nav tab Agency Fee AI hero). Antes
+    // era 'r1.2' que no matcheaba ningún case del switch → empty div fuera
+    // de tour. Diego 2026-07-23.
+    const stepId = currentStep?.id ?? 'a1.1'
+
+    // F30 · Reset counter · cada increment forza remount del scene child
+    // via el key wrapper. Limpia state interno de los scenes children sin
+    // tener que editarlos individualmente. Pattern F26 CLC + F29.f Officeworks.
+    const [resetTick, setResetTick] = useState(0)
+    const handleResetClick = useCallback(() => {
+        setResetTick(t => t + 1)
+        if (isDemoActive) goToStep(0)
+    }, [isDemoActive, goToStep])
+
+    // Botón Reset visible en el header del MBIPageShell (pass via actions).
+    // No aparece en los phone frames (a1.0 / a1.2) porque esos casos
+    // usan MobileDeviceFrame en vez del shell.
+    const resetButton = (
+        <button
+            type="button"
+            onClick={handleResetClick}
+            className="shrink-0 inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-destructive hover:bg-destructive/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive"
+            aria-label="Reset the Agency Fee flow to the initial state"
+            title="Reset the flow to the initial state · clears scene interaction state"
+        >
+            <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
+            Reset flow
+        </button>
+    )
 
     // Mobile email views — break out of MBIPageShell (full-screen phone frame)
     if (stepId === 'a1.0') {
@@ -75,8 +105,9 @@ export default function BFIPage() {
             tenantLabel="Dealer Copper"
             productLabel="Strata for Dealer Copper"
             icon={icon}
+            actions={resetButton}
         >
-            <div key={stepId} className="space-y-4 animate-in fade-in duration-500">
+            <div key={`${stepId}-${resetTick}`} className="space-y-4 animate-in fade-in duration-500">
                 {stepId === 'a1.1' && <CoNYMorningQueue onSelectOrder={nextStep} />}
                 {stepId === 'a1.2b'  && <QuoteIntakePricingScene />}
                 {stepId === 'a1.2b3' && <SendProposalScene />}
