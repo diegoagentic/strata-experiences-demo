@@ -757,7 +757,7 @@ function BOMPreview({ bomUploaded }: { stage: OfficeworksReviewStage; bomUploade
     }
 
     return (
-        <div className="h-full flex flex-col bg-muted/20">
+        <div className="h-full flex flex-col bg-muted/20 overflow-hidden">
             <div className="px-4 py-2.5 border-b border-border bg-muted/40 flex items-center gap-2 shrink-0">
                 <ClipboardCheck className="h-3.5 w-3.5 text-muted-foreground" />
                 <div className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
@@ -765,12 +765,121 @@ function BOMPreview({ bomUploaded }: { stage: OfficeworksReviewStage; bomUploade
                 </div>
                 <span className="ml-auto text-[10px] text-success font-medium">Uploaded</span>
             </div>
-            <iframe
-                // #navpanes=0 hides the native thumbnail sidebar · view=FitH fits page width
-                src={`${OFFICEWORKS_PDFS.manattBOM}#navpanes=0&view=FitH`}
-                title="Metro Legal 4F BOM"
-                className="flex-1 w-full border-0 bg-card"
-            />
+            {/* F29.c · BOM structured preview (2026-07-23) · reemplaza el
+                iframe anterior que apuntaba a `/officeworks-pdfs/Metro Legal-4F_BOM_v1.pdf`
+                (archivo inexistente en public/) causando SPA fallback que
+                embebía la app entera. El preview usa data mock que ya vive
+                en el modal · consistente con el resto del demo. */}
+            <div className="flex-1 overflow-y-auto p-5 bg-card">
+                <div className="max-w-3xl mx-auto space-y-4">
+                    {/* Document header */}
+                    <div className="rounded-xl border border-border bg-card p-4 space-y-2">
+                        <div className="flex items-start justify-between gap-3">
+                            <div className="min-w-0">
+                                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Bill of Materials · Teknion T25</p>
+                                <h3 className="text-base font-bold text-foreground mt-1">Metro Legal 4th Floor · Washington D.C.</h3>
+                                <p className="text-xs text-muted-foreground mt-1">
+                                    Built in CET / CAP · 15 pages · uploaded 11:14 AM · Designer Kimberly Lawson
+                                </p>
+                            </div>
+                            <span className="shrink-0 inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-success/10 text-success border border-success/30">
+                                <span className="h-1.5 w-1.5 rounded-full bg-current" />
+                                Parsed
+                            </span>
+                        </div>
+                        <div className="grid grid-cols-3 gap-3 pt-2 border-t border-border">
+                            <div>
+                                <p className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground">Line items</p>
+                                <p className="text-sm font-bold text-foreground tabular-nums mt-0.5">149</p>
+                            </div>
+                            <div>
+                                <p className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground">List price</p>
+                                <p className="text-sm font-bold text-foreground tabular-nums mt-0.5">$1,541,392</p>
+                            </div>
+                            <div>
+                                <p className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground">Custom requests</p>
+                                <p className="text-sm font-bold text-warning tabular-nums mt-0.5">22 CRs</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Areas breakdown */}
+                    <div className="rounded-xl border border-border bg-card overflow-hidden">
+                        <div className="px-4 py-2.5 border-b border-border bg-muted/30">
+                            <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Areas · 11 tagged</p>
+                        </div>
+                        <div className="divide-y divide-border">
+                            {[
+                                { code: 'Office_WO.1',  label: 'Workstation cluster · West wing',    lines: 20, value: 419660, flag: null },
+                                { code: 'Office_WO.2',  label: 'Workstation cluster · Central',      lines: 18, value: 337200, flag: 'finish-mismatch' },
+                                { code: 'Office_WO.3',  label: 'Workstation cluster · East wing',    lines: 16, value: 298400, flag: null },
+                                { code: 'Office_IO.1',  label: 'Individual offices · Partner row',   lines: 12, value: 182300, flag: null },
+                                { code: 'Office_IO.4',  label: 'Individual offices · Associate row', lines: 10, value: 148900, flag: null },
+                                { code: 'WS-01',        label: 'Focus rooms · phone booths',         lines: 14, value: 87400,  flag: 'cr-advisory' },
+                                { code: 'WS-02',        label: 'Meeting rooms · huddle',             lines: 16, value: 62200,  flag: null },
+                                { code: 'WS-02.A',      label: 'Reception + wellness',               lines: 12, value: 5340,   flag: 'lead-time' },
+                            ].map(area => (
+                                <div key={area.code} className="px-4 py-2.5 flex items-center gap-3 hover:bg-muted/30 transition-colors">
+                                    <div className="min-w-0 flex-1">
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-[10px] font-mono font-bold text-foreground bg-muted px-1.5 py-0.5 rounded shrink-0">{area.code}</span>
+                                            <p className="text-xs font-medium text-foreground truncate">{area.label}</p>
+                                        </div>
+                                    </div>
+                                    <div className="shrink-0 flex items-center gap-3 text-[11px]">
+                                        <span className="text-muted-foreground tabular-nums">{area.lines} lines</span>
+                                        <span className="font-semibold text-foreground tabular-nums w-24 text-right">${area.value.toLocaleString()}</span>
+                                        {area.flag === 'finish-mismatch' && (
+                                            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-warning/10 text-warning border border-warning/30">Finish flag</span>
+                                        )}
+                                        {area.flag === 'cr-advisory' && (
+                                            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-ai/10 text-ai border border-ai/30">CR advisory</span>
+                                        )}
+                                        {area.flag === 'lead-time' && (
+                                            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-destructive/10 text-destructive border border-destructive/30">Lead time</span>
+                                        )}
+                                        {area.flag === null && (
+                                            <span className="w-[70px]" aria-hidden />
+                                        )}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Sample line items · shows the granularity */}
+                    <div className="rounded-xl border border-border bg-card overflow-hidden">
+                        <div className="px-4 py-2.5 border-b border-border bg-muted/30 flex items-center gap-2">
+                            <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground flex-1">Sample lines · Office_WO.1</p>
+                            <span className="text-[10px] text-muted-foreground">3 of 20</span>
+                        </div>
+                        <div className="divide-y divide-border font-mono text-[11px]">
+                            {[
+                                { line: 1,  part: 'TB-A-3078-P-XG',   desc: 'Ability worksurface 30x78 laminate',      qty: 20, unit: 3820, ext: 76400 },
+                                { line: 2,  part: 'CH-BX-HB-SW',      desc: 'Bixby high-back task chair · Storm White', qty: 20, unit: 1180, ext: 23600 },
+                                { line: 73, part: 'PN-DVT-42-XG-SW',  desc: 'Divide privacy panel 42" · finish flag',   qty: 20, unit: 486,  ext: 9720,  flag: true },
+                            ].map(item => (
+                                <div key={item.line} className="px-4 py-2 grid grid-cols-12 gap-2 items-center">
+                                    <span className={`col-span-1 text-muted-foreground ${item.flag ? 'text-warning font-bold' : ''}`}>{item.line}</span>
+                                    <span className={`col-span-3 font-bold ${item.flag ? 'text-warning' : 'text-foreground'} truncate`}>{item.part}</span>
+                                    <span className="col-span-5 text-muted-foreground truncate">{item.desc}</span>
+                                    <span className="col-span-1 text-right tabular-nums text-foreground">{item.qty}</span>
+                                    <span className="col-span-1 text-right tabular-nums text-muted-foreground">${item.unit}</span>
+                                    <span className="col-span-1 text-right tabular-nums font-bold text-foreground">${item.ext.toLocaleString()}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Footer note */}
+                    <div className="rounded-xl border border-dashed border-border bg-muted/20 p-3 flex items-start gap-2">
+                        <ClipboardCheck className="h-3.5 w-3.5 text-muted-foreground mt-0.5 shrink-0" />
+                        <p className="text-[11px] text-muted-foreground leading-relaxed">
+                            Preview generado por Strata desde el .pdf · el archivo completo (149 lines · 15 pp) está disponible para descarga desde el right panel. Los flags corresponden a los 3 hallazgos del AI Validator: item 73 finish mismatch, CR advisory BIFMA, lead-time 40d en WS-02.A.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
