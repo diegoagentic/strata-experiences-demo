@@ -208,7 +208,13 @@ export const DEMO_PROFILES: DemoProfile[] = [
         companyName: 'Dealer Falcon Inc.',
         description: 'Spec Check & Design AI · Teknion BOM validation · Metro Legal 4th Floor',
         icon: '📐',
-        defaultApp: 'officeworks-dashboard',
+        // F28 · era 'officeworks-dashboard' · Diego pidió que la landing
+        // default sea el flujo hero (OfficeworksPage con OfficeworksFunnel
+        // visible · Metro Legal en Intake) en vez del Design Dashboard ·
+        // consistente con Dupler/CLC/Leland que apuntan a su tab hero.
+        // Análogo al fix F26 aplicado a CLC (defaultApp clc-dashboard →
+        // clc-calendar) · Diego 2026-07-23.
+        defaultApp: 'officeworks-intake',
         experienceKind: 'feature-module',
         steps: OFFICEWORKS_STEPS,
         stepBehavior: OFFICEWORKS_STEP_BEHAVIOR,
