@@ -1,6 +1,6 @@
-﻿import { useEffect, useMemo, useRef, useState } from 'react'
+﻿import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useDemo } from '../../context/DemoContext'
-import { Database, RefreshCw, Clock, Sparkles, ArrowRight, Send, Users, X, Loader2, ChevronLeft, ChevronRight, Calendar as CalendarIcon, AlertTriangle } from 'lucide-react'
+import { Database, RefreshCw, Clock, Sparkles, ArrowRight, Send, Users, X, Loader2, ChevronLeft, ChevronRight, Calendar as CalendarIcon, AlertTriangle, RotateCcw } from 'lucide-react'
 import WeekCalendarGrid from './shared/WeekCalendarGrid'
 import CLCCapacityWarningPanel from './shared/CLCCapacityWarningPanel'
 import CLCViewToggle, { type ViewMode } from './shared/CLCViewToggle'
@@ -40,7 +40,7 @@ const PERIOD_LABEL: Record<CalendarPeriod, string> = { '1w': '1 week', '4w': '4 
  *   clc1.4 → calendar · alert chip pulses red + auto-opens capacity popover
  */
 export default function CLCCalendarScene() {
-    const { currentStep, nextStep, stepClickCount } = useDemo()
+    const { currentStep, nextStep, stepClickCount, goToStep, isDemoActive } = useDemo()
     const stepId = currentStep?.id
 
     // Job state (drag-drop reschedules these via WeekCalendarGrid)
@@ -606,14 +606,66 @@ export default function CLCCalendarScene() {
     const publishAllDisabled = publishableCount === 0 || stepId === 'clc1.2'
     const viewedJob = viewPanelJobId ? displayedJobs.find(j => j.id === viewPanelJobId) ?? null : null
 
+    // F26 · Reset flow · Diego (2026-07-23) pidió que el usuario pueda
+    // volver al estado inicial del Schedule AI sin depender de la sidebar
+    // del tour. El bloque de reset del useEffect anterior (L152-166) solo
+    // dispara cuando cambia el stepClickCount (click en sidebar), no
+    // cuando el user navega entre tabs del navbar · state acumulado
+    // persiste y confunde al volver. Este helper resetea TODO el state
+    // narrativo + filtros + view mode + calendar view. Si el tour está
+    // activo, además rebobina al primer step del flow · pattern Dupler
+    // F21 (handleResetClick).
+    const resetFlow = useCallback(() => {
+        setJobs(INITIAL_JOBS)
+        setQueuedJobIds(new Set())
+        setPublishedJobIds(new Set())
+        setSkippedJobIds(new Set())
+        setPublishingJobIds(new Set())
+        setInboundDelivered(false)
+        setInboundReviewJobId(null)
+        setViewPanelJobId(null)
+        setViewPanelStartInReschedule(false)
+        setPublishModalOpen(false)
+        setBulkPublishIds(null)
+        setPendingReschedule(null)
+        setIngestionInProgress(false)
+        setIsResyncing(false)
+        setSyncLabel('Synced from IQ · 2 min ago')
+        setViewMode('list')
+        setPulseMode(null)
+        setStatuses([])
+        setCustomerQuery('')
+        setRegionFilter('all')
+        setDateRange(null)
+        setCalendarPeriod('6w')
+        setCalendarAnchor(INITIAL_ANCHOR_MONDAY)
+        userClickedPublishAllRef.current = false
+        userToggledRef.current = false
+    }, [])
+
+    const handleResetClick = useCallback(() => {
+        resetFlow()
+        if (isDemoActive) goToStep(0)
+    }, [resetFlow, isDemoActive, goToStep])
+
     return (
         <div className="flex flex-col h-full bg-muted/5">
-            {/* Header — title + subtitle only · sync/publish moved next to the view toggle */}
-            <header className="flex items-start gap-4 px-5 pt-5 pb-3 flex-wrap">
+            {/* Header — title + subtitle + Reset flow (F26 · pattern Dupler F21) */}
+            <header className="flex items-start justify-between gap-4 px-5 pt-5 pb-3 flex-wrap">
                 <div>
                     <h1 className="text-xl font-bold text-foreground">Install Schedule</h1>
                     <p className="text-sm text-muted-foreground">6-week view · Mon Jun 1 → Fri Jul 10 · {displayedJobs.length} jobs across NY/NJ/PA</p>
                 </div>
+                <button
+                    type="button"
+                    onClick={handleResetClick}
+                    className="shrink-0 inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-destructive hover:bg-destructive/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive"
+                    aria-label="Reset the Install Schedule flow to its initial state"
+                    title="Reset all interaction state (drops, queued, published, filters, view) back to the initial demo state"
+                >
+                    <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
+                    Reset flow
+                </button>
             </header>
 
             {/* Summary chips */}

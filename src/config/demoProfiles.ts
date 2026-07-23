@@ -183,7 +183,11 @@ export const DEMO_PROFILES: DemoProfile[] = [
         description: 'IQ × Outlook × SharePoint × M365 · install scheduling · asset seeding · intake validation · data lake',
         icon: '📅',
         experienceLabel: 'Operations Experience',
-        defaultApp: 'clc-dashboard',
+        // F26 · era 'clc-dashboard' · Diego pidió que la landing default
+        // sea el flujo hero (Schedule AI · CLCCalendarScene) en vez del
+        // Data Lake Dashboard · consistente con Dupler/Officeworks/Leland
+        // que apuntan a su tab hero también · 2026-07-23.
+        defaultApp: 'clc-calendar',
         experienceKind: 'feature-module',
         steps: CLC_STEPS,
         stepBehavior: CLC_STEP_BEHAVIOR,
