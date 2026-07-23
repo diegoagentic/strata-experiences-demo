@@ -37,6 +37,7 @@ import {
     RectangleStackIcon,
     ClockIcon,
     UserCircleIcon,
+    CalendarIcon,
 } from '@heroicons/react/24/outline';
 import { HeroMetric, Callout } from 'strata-design-system';
 import { DUPLER_STEP_TIMING, type DuplerStepTiming } from '../../config/profiles/dupler';
@@ -146,23 +147,28 @@ const NEEDS_REVIEW_ITEMS = [...AI_SUGGESTED_ITEMS, ...EXPERT_HUB_ITEMS];
 // a populated Vendor Data page instead of a blank canvas · Diego 2026-07-23.
 // Names are real manufacturer brands (per F16.6 · public brands stay).
 // Owners use single first-name aliases · alias-friendly (F16.6 style).
+// Card visual style matches CatalogLibrary.tsx (same repo, same conceptual
+// entity · manufacturer catalog): rounded-2xl · h-32 image cover · dark
+// gradient overlay · glass pill items · body with status + owner + sync.
 
 interface VendorLibraryEntry {
     id: string;
     name: string;
     sourceType: 'SIF' | 'URL' | 'PDF' | 'CET';
+    version: string;
     itemsCount: number;
     lastImportedAt: string;
     status: 'active' | 'update-avail' | 'gap-flagged';
     owner: string;
-    coverGradient: string;
+    cover: string;
+    image: string;
 }
 
 const VENDOR_LIBRARY: VendorLibraryEntry[] = [
-    { id: 'steelcase',     name: 'Steelcase',     sourceType: 'SIF', itemsCount: 156, lastImportedAt: '2 days ago',  status: 'active',       owner: 'Alden', coverGradient: 'from-primary/20 to-primary/5' },
-    { id: 'herman-miller', name: 'Herman Miller', sourceType: 'CET', itemsCount: 143, lastImportedAt: '1 week ago',  status: 'active',       owner: 'Kai',   coverGradient: 'from-info/20 to-info/5' },
-    { id: 'millerknoll',   name: 'MillerKnoll',   sourceType: 'URL', itemsCount: 128, lastImportedAt: '3 days ago',  status: 'update-avail', owner: 'Ellis', coverGradient: 'from-warning/20 to-warning/5' },
-    { id: 'haworth',       name: 'Haworth',       sourceType: 'SIF', itemsCount: 90,  lastImportedAt: '3 weeks ago', status: 'active',       owner: 'Marks', coverGradient: 'from-success/20 to-success/5' },
+    { id: 'steelcase',     name: 'Steelcase',     sourceType: 'SIF', version: 'July 2025', itemsCount: 156, lastImportedAt: '2 days ago',  status: 'active',       owner: 'Alden', cover: 'bg-red-600',   image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800' },
+    { id: 'herman-miller', name: 'Herman Miller', sourceType: 'CET', version: '2025 Master', itemsCount: 143, lastImportedAt: '1 week ago', status: 'active',       owner: 'Kai',   cover: 'bg-blue-600',  image: 'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&q=80&w=800' },
+    { id: 'millerknoll',   name: 'MillerKnoll',   sourceType: 'URL', version: 'Q3 2025', itemsCount: 128, lastImportedAt: '3 days ago',  status: 'update-avail', owner: 'Ellis', cover: 'bg-zinc-800',  image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800' },
+    { id: 'haworth',       name: 'Haworth',       sourceType: 'SIF', version: 'Seating 2025', itemsCount: 90,  lastImportedAt: '3 weeks ago', status: 'active',       owner: 'Marks', cover: 'bg-amber-500', image: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&q=80&w=800' },
 ];
 
 const VENDOR_LIBRARY_TOTAL_ITEMS = VENDOR_LIBRARY.reduce((sum, v) => sum + v.itemsCount, 0);
@@ -861,17 +867,20 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                 </button>
                             </div>
 
-                            {/* Vendor cards grid */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            {/* Vendor cards grid · CatalogLibrary pattern
+                                (same repo · same conceptual entity). Fixed
+                                height for grid alignment. Image cover with
+                                dark overlay so vendor name reads white. */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                                 {VENDOR_LIBRARY.map(vendor => {
                                     const statusStyles =
-                                        vendor.status === 'active'       ? 'bg-success/10 text-success border-success/30' :
-                                        vendor.status === 'update-avail' ? 'bg-warning/10 text-warning border-warning/30' :
-                                                                           'bg-destructive/10 text-destructive border-destructive/30';
+                                        vendor.status === 'active'       ? 'bg-success/10 text-success' :
+                                        vendor.status === 'update-avail' ? 'bg-warning/10 text-warning' :
+                                                                           'bg-destructive/10 text-destructive';
                                     const statusLabel =
                                         vendor.status === 'active'       ? 'Active' :
-                                        vendor.status === 'update-avail' ? 'Update avail.' :
-                                                                           'Gap flagged';
+                                        vendor.status === 'update-avail' ? 'Update Avail.' :
+                                                                           'Gap Flagged';
                                     const sourceStyles =
                                         vendor.sourceType === 'SIF' ? 'bg-primary/10 text-primary'  :
                                         vendor.sourceType === 'CET' ? 'bg-info/10 text-info'        :
@@ -880,31 +889,46 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                     return (
                                         <div
                                             key={vendor.id}
-                                            className="rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-sm transition-all"
+                                            className="group bg-card border border-border rounded-2xl shadow-sm hover:shadow-md dark:hover:shadow-glow-sm transition-all hover:border-primary/50 flex flex-col relative z-0 h-[280px]"
                                         >
-                                            {/* Cover swatch · tone gradient · no hex */}
-                                            <div className={`h-16 bg-gradient-to-br ${vendor.coverGradient} flex items-end p-3`}>
-                                                <span className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${sourceStyles}`}>
-                                                    {vendor.sourceType}
-                                                </span>
-                                            </div>
-                                            {/* Body */}
-                                            <div className="p-3 space-y-2">
-                                                <div className="min-w-0">
-                                                    <p className="text-sm font-semibold text-foreground truncate">{vendor.name}</p>
-                                                    <p className="text-[11px] text-muted-foreground mt-0.5">
-                                                        {vendor.itemsCount} items · {vendor.lastImportedAt}
-                                                    </p>
+                                            {/* Cover · image + dark gradient overlay + glass pill */}
+                                            <div
+                                                className={`h-32 ${vendor.cover} p-6 flex items-end relative rounded-t-2xl shrink-0`}
+                                                style={{ backgroundImage: `url(${vendor.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                                            >
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent rounded-t-2xl" />
+                                                <h3 className="text-white font-bold text-xl relative z-10">{vendor.name}</h3>
+                                                <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white text-xs px-2 py-1 rounded-full font-medium border border-white/10 z-10">
+                                                    {vendor.itemsCount} Items
                                                 </div>
-                                                <div className="flex items-center justify-between gap-2 pt-1">
-                                                    <span className={`inline-flex items-center gap-1 text-[10px] font-semibold px-1.5 py-0.5 rounded border ${statusStyles}`}>
-                                                        <span className="h-1.5 w-1.5 rounded-full bg-current" aria-hidden="true" />
-                                                        {statusLabel}
-                                                    </span>
-                                                    <span className="inline-flex items-center gap-1 text-[10px] text-muted-foreground">
-                                                        <UserCircleIcon className="h-3 w-3" aria-hidden="true" />
-                                                        {vendor.owner}
-                                                    </span>
+                                            </div>
+
+                                            {/* Body · version + status row · source badge · owner + sync */}
+                                            <div className="p-4 flex-1 flex flex-col justify-between space-y-3 rounded-b-2xl overflow-hidden bg-card">
+                                                <div className="space-y-3">
+                                                    <div className="flex items-center justify-between text-sm">
+                                                        <span className="text-muted-foreground flex items-center gap-1.5">
+                                                            <CalendarIcon className="w-4 h-4" />
+                                                            {vendor.version}
+                                                        </span>
+                                                        <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${statusStyles}`}>
+                                                            {statusLabel}
+                                                        </span>
+                                                    </div>
+
+                                                    <div className="flex items-center justify-between text-xs">
+                                                        <span className={`text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${sourceStyles}`}>
+                                                            {vendor.sourceType}
+                                                        </span>
+                                                        <span className="flex items-center gap-1.5 text-muted-foreground">
+                                                            <UserCircleIcon className="w-4 h-4" />
+                                                            {vendor.owner}
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div className="text-[10px] text-muted-foreground">
+                                                    Last synced {vendor.lastImportedAt}
                                                 </div>
                                             </div>
                                         </div>
