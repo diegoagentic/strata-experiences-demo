@@ -885,10 +885,16 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                         vendor.status === 'active'       ? 'Active' :
                                         vendor.status === 'update-avail' ? 'Update Avail.' :
                                                                            'Gap Flagged';
+                                    // F23.g · SIF chip usa pattern LAW 3 (bg-primary sólido +
+                                    // text-primary-foreground dark inverse) porque text-primary
+                                    // lime sobre bg-primary/10 lime tenue era ilegible en
+                                    // light mode. CET/URL/PDF quedan tinted porque sus tonos
+                                    // (info/ai/warning) son naturalmente oscuros y contrastan
+                                    // bien sobre fondo tinted claro.
                                     const sourceStyles =
-                                        vendor.sourceType === 'SIF' ? 'bg-primary/10 text-primary'  :
-                                        vendor.sourceType === 'CET' ? 'bg-info/10 text-info'        :
-                                        vendor.sourceType === 'URL' ? 'bg-ai/10 text-ai'            :
+                                        vendor.sourceType === 'SIF' ? 'bg-primary text-primary-foreground' :
+                                        vendor.sourceType === 'CET' ? 'bg-info/10 text-info'               :
+                                        vendor.sourceType === 'URL' ? 'bg-ai/10 text-ai'                   :
                                                                       'bg-warning/10 text-warning';
                                     return (
                                         <div
