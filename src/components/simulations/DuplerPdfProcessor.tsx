@@ -31,7 +31,14 @@ import {
     LinkIcon,
     MagnifyingGlassIcon,
     MapIcon,
+    BuildingLibraryIcon,
+    SparklesIcon,
+    PlusIcon,
+    RectangleStackIcon,
+    ClockIcon,
+    UserCircleIcon,
 } from '@heroicons/react/24/outline';
+import { HeroMetric, Callout } from 'strata-design-system';
 import { DUPLER_STEP_TIMING, type DuplerStepTiming } from '../../config/profiles/dupler';
 
 // ─── Designer / SC Avatars ───────────────────────────────────────────────────
@@ -133,6 +140,33 @@ const AUTO_ITEMS = WEB_EXTRACTED_ITEMS.filter(i => i.status === 'auto');
 const AI_SUGGESTED_ITEMS = WEB_EXTRACTED_ITEMS.filter(i => i.status === 'ai-suggested');
 const EXPERT_HUB_ITEMS = WEB_EXTRACTED_ITEMS.filter(i => i.status === 'expert-hub');
 const NEEDS_REVIEW_ITEMS = [...AI_SUGGESTED_ITEMS, ...EXPERT_HUB_ITEMS];
+
+// ─── Vendor library (idle-state overview · F23) ────────────────────────────
+// Synthetic library shown when scrapePhase === 'idle' so the user lands in
+// a populated Vendor Data page instead of a blank canvas · Diego 2026-07-23.
+// Names are real manufacturer brands (per F16.6 · public brands stay).
+// Owners use single first-name aliases · alias-friendly (F16.6 style).
+
+interface VendorLibraryEntry {
+    id: string;
+    name: string;
+    sourceType: 'SIF' | 'URL' | 'PDF' | 'CET';
+    itemsCount: number;
+    lastImportedAt: string;
+    status: 'active' | 'update-avail' | 'gap-flagged';
+    owner: string;
+    coverGradient: string;
+}
+
+const VENDOR_LIBRARY: VendorLibraryEntry[] = [
+    { id: 'steelcase',     name: 'Steelcase',     sourceType: 'SIF', itemsCount: 156, lastImportedAt: '2 days ago',  status: 'active',       owner: 'Alden', coverGradient: 'from-primary/20 to-primary/5' },
+    { id: 'herman-miller', name: 'Herman Miller', sourceType: 'CET', itemsCount: 143, lastImportedAt: '1 week ago',  status: 'active',       owner: 'Kai',   coverGradient: 'from-info/20 to-info/5' },
+    { id: 'millerknoll',   name: 'MillerKnoll',   sourceType: 'URL', itemsCount: 128, lastImportedAt: '3 days ago',  status: 'update-avail', owner: 'Ellis', coverGradient: 'from-warning/20 to-warning/5' },
+    { id: 'haworth',       name: 'Haworth',       sourceType: 'SIF', itemsCount: 90,  lastImportedAt: '3 weeks ago', status: 'active',       owner: 'Marks', coverGradient: 'from-success/20 to-success/5' },
+];
+
+const VENDOR_LIBRARY_TOTAL_ITEMS = VENDOR_LIBRARY.reduce((sum, v) => sum + v.itemsCount, 0);
+const VENDOR_LIBRARY_UPDATES_AVAIL = VENDOR_LIBRARY.filter(v => v.status === 'update-avail').length;
 
 // ─── Catalog volume: 54 items (7 real + 47 filler) ──────────────────────────
 
@@ -757,6 +791,138 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                         when the user enters d1.1 · the "Import vendor data"
                         CTA dispatches `dupler:import-vendor-data` which the
                         listener below routes to setScrapePhase('upload-zone'). */}
+
+                    {/* ── F23 · Idle overview · vendor library ──────────
+                        Populated landing so d1.1 no longer opens on a blank
+                        canvas behind the Action Center popover. The
+                        setTimeout at ~L476 still auto-advances scrapePhase
+                        to 'notification' after 1200ms so the AC bell surfaces
+                        the Non-CET Manufacturer alert ON TOP of this
+                        overview instead of over a void. Users can also
+                        click "Import new vendor" here to enter the flow
+                        manually if they dismiss the popover. Diego
+                        2026-07-23. */}
+                    {scrapePhase === 'idle' && (
+                        <div className="animate-in fade-in slide-in-from-top-2 duration-500 space-y-4">
+                            {/* Hero stats row · totals derived from VENDOR_LIBRARY */}
+                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                                <HeroMetric
+                                    tone="brand"
+                                    size="sm"
+                                    label="Manufacturers"
+                                    value={VENDOR_LIBRARY.length}
+                                    sub="in vendor library"
+                                    icon={<BuildingLibraryIcon className="h-4 w-4" />}
+                                />
+                                <HeroMetric
+                                    tone="info"
+                                    size="sm"
+                                    label="Items indexed"
+                                    value={VENDOR_LIBRARY_TOTAL_ITEMS.toLocaleString()}
+                                    sub="across catalogs"
+                                    icon={<RectangleStackIcon className="h-4 w-4" />}
+                                />
+                                <HeroMetric
+                                    tone="neutral"
+                                    size="sm"
+                                    label="Last sync"
+                                    value="2 days ago"
+                                    sub="Steelcase catalog"
+                                    icon={<ClockIcon className="h-4 w-4" />}
+                                />
+                                <HeroMetric
+                                    tone="warning"
+                                    size="sm"
+                                    label="Updates available"
+                                    value={VENDOR_LIBRARY_UPDATES_AVAIL}
+                                    sub={VENDOR_LIBRARY_UPDATES_AVAIL === 1 ? 'catalog needs refresh' : 'catalogs need refresh'}
+                                    icon={<ExclamationTriangleIcon className="h-4 w-4" />}
+                                />
+                            </div>
+
+                            {/* Section header · title + import CTA */}
+                            <div className="flex items-end justify-between pt-1">
+                                <div>
+                                    <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                                        Vendor Library
+                                    </p>
+                                    <p className="text-sm font-semibold text-foreground">
+                                        Imported manufacturer catalogs
+                                    </p>
+                                </div>
+                                <button
+                                    type="button"
+                                    onClick={() => window.dispatchEvent(new CustomEvent('dupler:import-vendor-data'))}
+                                    className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary shadow-sm"
+                                    aria-label="Import a new vendor catalog into the library"
+                                >
+                                    <PlusIcon className="w-3.5 h-3.5" aria-hidden="true" />
+                                    Import new vendor
+                                </button>
+                            </div>
+
+                            {/* Vendor cards grid */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                                {VENDOR_LIBRARY.map(vendor => {
+                                    const statusStyles =
+                                        vendor.status === 'active'       ? 'bg-success/10 text-success border-success/30' :
+                                        vendor.status === 'update-avail' ? 'bg-warning/10 text-warning border-warning/30' :
+                                                                           'bg-destructive/10 text-destructive border-destructive/30';
+                                    const statusLabel =
+                                        vendor.status === 'active'       ? 'Active' :
+                                        vendor.status === 'update-avail' ? 'Update avail.' :
+                                                                           'Gap flagged';
+                                    const sourceStyles =
+                                        vendor.sourceType === 'SIF' ? 'bg-primary/10 text-primary'  :
+                                        vendor.sourceType === 'CET' ? 'bg-info/10 text-info'        :
+                                        vendor.sourceType === 'URL' ? 'bg-ai/10 text-ai'            :
+                                                                      'bg-warning/10 text-warning';
+                                    return (
+                                        <div
+                                            key={vendor.id}
+                                            className="rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-sm transition-all"
+                                        >
+                                            {/* Cover swatch · tone gradient · no hex */}
+                                            <div className={`h-16 bg-gradient-to-br ${vendor.coverGradient} flex items-end p-3`}>
+                                                <span className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${sourceStyles}`}>
+                                                    {vendor.sourceType}
+                                                </span>
+                                            </div>
+                                            {/* Body */}
+                                            <div className="p-3 space-y-2">
+                                                <div className="min-w-0">
+                                                    <p className="text-sm font-semibold text-foreground truncate">{vendor.name}</p>
+                                                    <p className="text-[11px] text-muted-foreground mt-0.5">
+                                                        {vendor.itemsCount} items · {vendor.lastImportedAt}
+                                                    </p>
+                                                </div>
+                                                <div className="flex items-center justify-between gap-2 pt-1">
+                                                    <span className={`inline-flex items-center gap-1 text-[10px] font-semibold px-1.5 py-0.5 rounded border ${statusStyles}`}>
+                                                        <span className="h-1.5 w-1.5 rounded-full bg-current" aria-hidden="true" />
+                                                        {statusLabel}
+                                                    </span>
+                                                    <span className="inline-flex items-center gap-1 text-[10px] text-muted-foreground">
+                                                        <UserCircleIcon className="h-3 w-3" aria-hidden="true" />
+                                                        {vendor.owner}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+
+                            {/* AI monitoring callout · sets user expectation that
+                                new vendor detections surface in the AC bell */}
+                            <Callout
+                                tone="ai"
+                                variant="soft"
+                                icon={<SparklesIcon className="h-4 w-4" />}
+                                eyebrow="AI monitoring"
+                                body="Non-CET manufacturers detected in incoming specs surface as notifications in the Action Center. Import them to keep the library current."
+                            />
+                        </div>
+                    )}
 
                     {/* Upload zone — 3-tab bar: PDF (primary), URL, SIF */}
                     {scrapePhase === 'upload-zone' && (
