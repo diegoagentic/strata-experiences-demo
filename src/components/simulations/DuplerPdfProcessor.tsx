@@ -1930,9 +1930,8 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                 DS-compliant tokens · tone `ai` para el sync
                                 envelope (AI-driven catalog binding) · `success`
                                 para los sub-cards al completarse. Antes usaba
-                                raw purple-*/green-*/blue-* + gradient
-                                Frankenstein purple/brand/purple. Diego
-                                2026-07-23. */}
+                                raw purple, green, blue Tailwind classes +
+                                gradient Frankenstein. Diego 2026-07-23. */}
                             {specSent && catalogSyncPhase === 'syncing' && (
                                 <div className="p-5 rounded-xl bg-ai/5 border border-ai/30 shadow-sm animate-in fade-in slide-in-from-bottom-3 duration-500 space-y-4">
                                     <div className="flex items-center gap-3">
@@ -1990,8 +1989,8 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                             {/* Sync Complete — success + SC pending · F23.d
                                 Tokens semánticos · `success` para el banner
                                 de completion · `warning` para el SC Review
-                                pending. Antes usaba raw green-*/amber-* +
-                                gradients from-green-50/emerald con border-2
+                                pending. Antes usaba raw green y amber
+                                Tailwind classes + gradients + border-2
                                 inflado. Diego 2026-07-23. */}
                             {specSent && catalogSyncPhase === 'done' && (
                                 <div className="space-y-3 animate-in fade-in slide-in-from-bottom-3 duration-500">
