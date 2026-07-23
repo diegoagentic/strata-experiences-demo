@@ -243,7 +243,7 @@ interface Props {
 }
 
 export default function OfficeworksFunnel({ onOpenReview, hideReviewCta = false, assignedDesigner, flowId = 'spec-check' }: Props) {
-    const { currentStep } = useDemo()
+    const { currentStep, isDemoActive } = useDemo()
     const [capacityOpen, setCapacityOpen] = useState(false)
     const isLD = flowId === 'labor-delivery'
     const isSales = flowId === 'sales'
@@ -287,7 +287,14 @@ export default function OfficeworksFunnel({ onOpenReview, hideReviewCta = false,
         }
     }, [currentStep?.id, firstStepId, ingestEvent])
 
-    const manattVisible = currentStep?.id !== firstStepId || manattIngested
+    // F29.b · Diego 2026-07-23 · fuera de tour el Metro Legal card DEBE
+    // estar siempre visible · es el único CTA que dispara el flow del modal
+    // + stepper inline. La lógica anterior (currentStep?.id !== firstStepId
+    // || manattIngested) resultaba en `true` sin tour (undefined !== 'sc1.0')
+    // pero Diego reportó que no aparecía · defensive gate añadido para
+    // eliminar cualquier edge case (StrictMode double-render, HMR stale
+    // state, etc). Fuera de tour el card siempre está listo para click.
+    const manattVisible = !isDemoActive || currentStep?.id !== firstStepId || manattIngested
 
     return (
         <div className="bg-card border border-border rounded-2xl">
