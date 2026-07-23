@@ -165,7 +165,7 @@ export default function AckReviewScene({ onContinue }: Props) {
                                 onClick={() => setSelectedReason(reason)}
                                 className={`text-left rounded-md border p-3 text-xs transition-all ${
                                     selectedReason === reason
-                                        ? 'bg-primary/10 text-primary border-primary/40'
+                                        ? 'bg-primary/10 text-foreground border-primary/60 shadow-sm'
                                         : 'bg-card text-foreground border-border hover:bg-muted'
                                 }`}
                             >
@@ -212,17 +212,19 @@ export default function AckReviewScene({ onContinue }: Props) {
     // === COMPARE step (default) ===
     return (
         <div className="space-y-4 animate-in fade-in duration-500">
-            {/* Header */}
+            {/* Header · F29.e · fix LAW 3 · icon pill sólido brand + inline
+                Sparkles usando tone `ai` (semantics AI · más consistente con
+                el contexto "Gemini supercharges the diff"). Diego 2026-07-23. */}
             <div className="bg-card border border-border rounded-xl p-5">
                 <div className="flex items-start justify-between gap-4">
                     <div className="flex items-start gap-3">
-                        <div className="h-10 w-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                        <div className="h-10 w-10 rounded-lg bg-primary text-primary-foreground flex items-center justify-center shrink-0 shadow-sm">
                             <FileCheck className="h-5 w-5" />
                         </div>
                         <div>
                             <h2 className="text-lg font-semibold text-foreground">Acknowledgment review · {METRO_LEGAL_ORDER_META.poNumber}</h2>
                             <p className="text-xs text-muted-foreground mt-0.5 flex items-center gap-1.5">
-                                <Sparkles className="h-3 w-3 text-primary" />
+                                <Sparkles className="h-3 w-3 text-ai" />
                                 Gemini already in use today at Officeworks — Strata supercharges the diff
                             </p>
                         </div>
