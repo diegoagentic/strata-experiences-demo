@@ -798,17 +798,21 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                         CTA dispatches `dupler:import-vendor-data` which the
                         listener below routes to setScrapePhase('upload-zone'). */}
 
-                    {/* ── F23 · Idle overview · vendor library ──────────
+                    {/* ── F23 · Idle + notification overview · vendor library
                         Populated landing so d1.1 no longer opens on a blank
                         canvas behind the Action Center popover. The
-                        setTimeout at ~L476 still auto-advances scrapePhase
-                        to 'notification' after 1200ms so the AC bell surfaces
+                        setTimeout at L516 auto-advances scrapePhase to
+                        'notification' after 1200ms so the AC bell surfaces
                         the Non-CET Manufacturer alert ON TOP of this
-                        overview instead of over a void. Users can also
-                        click "Import new vendor" here to enter the flow
-                        manually if they dismiss the popover. Diego
-                        2026-07-23. */}
-                    {scrapePhase === 'idle' && (
+                        overview instead of over a void. F23.c · condicional
+                        ampliado a `idle || notification` para que el
+                        overview persista mientras el popover del AC está
+                        abierto (antes desaparecía al pasar a notification y
+                        el popover quedaba sobre un fondo blanco). Cuando el
+                        usuario clickea "Import vendor data" (o el CTA del
+                        header) scrapePhase avanza a 'upload-zone' y el flow
+                        de import toma la pantalla. Diego 2026-07-23. */}
+                    {(scrapePhase === 'idle' || scrapePhase === 'notification') && (
                         <div className="animate-in fade-in slide-in-from-top-2 duration-500 space-y-4">
                             {/* Hero stats row · totals derived from VENDOR_LIBRARY */}
                             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
