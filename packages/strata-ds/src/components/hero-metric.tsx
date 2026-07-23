@@ -37,8 +37,13 @@ export interface HeroMetricProps extends Omit<React.HTMLAttributes<HTMLDivElemen
     size?: HeroMetricSize;
 }
 
+// LAW 2 · brand (lime) NEVER as text on light bg · the value uses
+// text-foreground so it stays legible; brand identity comes from the
+// border + fill + icon pill only. Other tones keep their tinted text
+// because they're already high-contrast (dark green/amber/blue/red/
+// purple over a very light tinted background).
 const TONE: Record<HeroMetricTone, { border: string; fill: string; text: string; iconBg: string; iconFg: string }> = {
-    brand:   { border: 'border-primary/30',    fill: 'bg-primary/5',    text: 'text-primary',    iconBg: 'bg-primary/10',    iconFg: 'text-primary' },
+    brand:   { border: 'border-primary/30',    fill: 'bg-primary/5',    text: 'text-foreground', iconBg: 'bg-primary/10',    iconFg: 'text-primary' },
     success: { border: 'border-success/30',    fill: 'bg-success/5',    text: 'text-success',    iconBg: 'bg-success/10',    iconFg: 'text-success' },
     warning: { border: 'border-warning/30',    fill: 'bg-warning/5',    text: 'text-warning',    iconBg: 'bg-warning/10',    iconFg: 'text-warning' },
     ai:      { border: 'border-ai/30',         fill: 'bg-ai/5',         text: 'text-ai',         iconBg: 'bg-ai/10',         iconFg: 'text-ai' },
