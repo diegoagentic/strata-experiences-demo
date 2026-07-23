@@ -10,6 +10,7 @@
 import { useState, Fragment } from 'react'
 import { Dialog, Transition, TransitionChild, DialogPanel } from '@headlessui/react'
 import { Plus, FileText, Upload, CheckCircle2, X, Loader2, Search, LayoutGrid, List, MoreHorizontal } from 'lucide-react'
+import { useDemo } from '../../context/DemoContext'
 
 // ─── Shared funnel steps (5-stage process) ───────────────────────────────────
 
@@ -105,6 +106,16 @@ function NewOrderModal({
     onClose: () => void
     onCreate: (card: ContextCard) => void
 }) {
+    // F30.b · leftOffset dinámico · respeta el sidebar del demo cuando
+    // está expandido. Fuera de tour (isDemoActive=false) o con sidebar
+    // colapsado el modal cubre todo el viewport (left-0). Antes usaba
+    // 'left-80' hardcoded que dejaba 320px de gap innecesario en la
+    // izquierda + top-16 hardcoded que dejaba el navbar visible arriba.
+    // Pattern replicado del OfficeworksDocumentReviewModal L338-339.
+    // Diego 2026-07-23.
+    const { isSidebarCollapsed, isDemoActive } = useDemo()
+    const leftOffset = isDemoActive && !isSidebarCollapsed ? 'left-80' : 'left-0'
+
     const [agencyName, setAgencyName] = useState('NYC Dept. of Education')
     const [orderId,    setOrderId]    = useState('DOE-2847')
     const [uploads,    setUploads]    = useState<UploadState[]>(['idle', 'idle', 'idle'])
@@ -159,10 +170,10 @@ function NewOrderModal({
                     enter="ease-out duration-200" enterFrom="opacity-0" enterTo="opacity-100"
                     leave="ease-in duration-150"  leaveFrom="opacity-100" leaveTo="opacity-0"
                 >
-                    <div className="fixed top-16 left-80 right-0 bottom-0 bg-black/40 backdrop-blur-sm" />
+                    <div className={`fixed top-0 ${leftOffset} right-0 bottom-0 bg-black/40 backdrop-blur-sm`} />
                 </TransitionChild>
 
-                <div className="fixed top-16 left-80 right-0 bottom-0 flex items-center justify-center p-6">
+                <div className={`fixed top-0 ${leftOffset} right-0 bottom-0 flex items-center justify-center p-6`}>
                     <TransitionChild
                         as={Fragment}
                         enter="ease-out duration-200" enterFrom="opacity-0 scale-95" enterTo="opacity-100 scale-100"
