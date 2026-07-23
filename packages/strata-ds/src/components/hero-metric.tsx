@@ -38,12 +38,20 @@ export interface HeroMetricProps extends Omit<React.HTMLAttributes<HTMLDivElemen
 }
 
 // LAW 2 · brand (lime) NEVER as text on light bg · the value uses
-// text-foreground so it stays legible; brand identity comes from the
-// border + fill + icon pill only. Other tones keep their tinted text
-// because they're already high-contrast (dark green/amber/blue/red/
-// purple over a very light tinted background).
+// text-foreground so it stays legible. LAW 3 · the icon pill uses the
+// solid `bg-primary text-primary-foreground` pattern (lime background
+// + dark-inverse foreground · high contrast) instead of the tinted
+// bg-primary/10 text-primary combo which reads as lime-on-lime and
+// disappears in light mode.
+// Envelope: bumped to /60 border and /10 fill so the card has visual
+// presence comparable to success/warning/info (which are naturally
+// darker colors).
+// Other tones (success/warning/ai/info/danger/neutral) keep their
+// /30 border + /5 fill + tinted text · they're already high-contrast
+// because those hues are dark green/amber/blue/red/purple over a very
+// light tinted background.
 const TONE: Record<HeroMetricTone, { border: string; fill: string; text: string; iconBg: string; iconFg: string }> = {
-    brand:   { border: 'border-primary/30',    fill: 'bg-primary/5',    text: 'text-foreground', iconBg: 'bg-primary/10',    iconFg: 'text-primary' },
+    brand:   { border: 'border-primary/60',    fill: 'bg-primary/10',   text: 'text-foreground', iconBg: 'bg-primary',       iconFg: 'text-primary-foreground' },
     success: { border: 'border-success/30',    fill: 'bg-success/5',    text: 'text-success',    iconBg: 'bg-success/10',    iconFg: 'text-success' },
     warning: { border: 'border-warning/30',    fill: 'bg-warning/5',    text: 'text-warning',    iconBg: 'bg-warning/10',    iconFg: 'text-warning' },
     ai:      { border: 'border-ai/30',         fill: 'bg-ai/5',         text: 'text-ai',         iconBg: 'bg-ai/10',         iconFg: 'text-ai' },
