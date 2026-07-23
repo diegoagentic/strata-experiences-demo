@@ -293,16 +293,19 @@ function App() {
     { name: 'AP & Reporting', page: 'workspaces-ap', icon: Building2Icon },
     { name: 'Spend Dashboard', page: 'workspaces-reporting', icon: LayoutDashboardIcon },
   ];
-  // F22 · Spec Check AI removed (2026-07-23) · será feature module aparte.
-  // El app `officeworks-spec-check` sigue registrado en el router porque
-  // el step sc1.4 lo consume internamente, pero ya no aparece como tab.
+  // F22 · Spec Check AI removed · será feature module aparte.
+  // F25 · Labor & Delivery + Sales AI removed (2026-07-23) · el nav
+  // Officeworks era outlier (6 tabs vs 3-4 en el resto) y saturaba
+  // el pill del navbar solapándose con el RoleSwitcher. Los apps
+  // 'officeworks-labor' y 'officeworks-sales' siguen registrados en
+  // renderCurrentPage / renderSimulation porque los steps sc-LD.* y
+  // sc-S.* del tour los rutean directamente por app id, sin depender
+  // del nav.
   const officeworksNav = [
     { name: 'Dashboard', page: 'officeworks-dashboard', icon: LayoutDashboardIcon },
     { name: 'Intake AI', page: 'officeworks-intake', icon: InboxIcon },
     { name: 'Design AI', page: 'officeworks-design', icon: PencilIcon },
     { name: 'Submission AI', page: 'officeworks-submission', icon: SendIcon },
-    { name: 'Labor & Delivery', page: 'officeworks-labor', icon: WrenchScrewdriverIcon },
-    { name: 'Sales AI', page: 'officeworks-sales', icon: BanknotesIcon },
   ];
   const clcNav = [
     { name: 'Schedule AI', page: 'clc-calendar', icon: CalendarIcon },
