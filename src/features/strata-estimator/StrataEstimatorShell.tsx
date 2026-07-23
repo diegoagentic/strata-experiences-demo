@@ -1189,11 +1189,16 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                                                 <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
                                                 Reset
                                             </button>
+                                            {/* F27 · Next promovido a CTA primary (sólido brand
+                                                + primary-foreground · pattern LAW 3) para dar
+                                                jerarquía visual clara del gesto principal para
+                                                desatar el flow. Prev queda muted (secundario).
+                                                Diego 2026-07-23. */}
                                             <button
                                                 type="button"
                                                 onClick={nextStep}
                                                 disabled={currentStepIndex >= steps.length - 1}
-                                                className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-foreground bg-muted hover:bg-muted/70 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                                                className="inline-flex items-center gap-1.5 h-8 px-3.5 rounded-lg text-xs font-bold bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                                                 aria-label="Next step"
                                             >
                                                 Next
