@@ -143,7 +143,10 @@ const SPEC_CONTEXT_CARDS: ContextCard[] = [
     {
         code: 'GSA-DC2-0892', initials: 'GSA', client: 'GSA · DC2 (price-protected)',
         value: '$76,500', colIdx: 3,
-        avatarBg: 'bg-primary/20', avatarColor: 'text-primary',
+        // F29.g · era bg-primary/20 text-primary (lime sobre lime · LAW 3
+        // violation · Diego 2026-07-23) · ahora success tone (contexto:
+        // SP4 en NetSuite awaiting PO release = near-completion).
+        avatarBg: 'bg-success/20', avatarColor: 'text-success',
         desc: 'SP4 in NetSuite · awaiting Caitlin to release PO',
         designer: 'Sandra Park (DC)',
     },
@@ -168,7 +171,9 @@ const SALES_CONTEXT_CARDS: ContextCard[] = [
     {
         code: 'ELI-PA-1180', initials: 'ELI', client: 'Eli Lilly · PA facility',
         value: '$425K', colIdx: 3,
-        avatarBg: 'bg-primary/20', avatarColor: 'text-primary',
+        // F29.g · era bg-primary/20 text-primary (LAW 3) · ahora success
+        // tone (proposal in assembly · BANT + MEDDIC complete = casi cerrado).
+        avatarBg: 'bg-success/20', avatarColor: 'text-success',
         desc: 'Proposal in assembly · spec attached · BANT + MEDDIC complete',
         designer: 'Sales Rep · PA + WV',
     },
