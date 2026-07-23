@@ -25,7 +25,11 @@ const NOTIFY_MESSAGE = `Hi Robert — SIF for DOE-2847 has been ingested and val
 — Account Manager DeMar, BFI Furniture`
 
 export default function CoNYMorningQueue({ onSelectOrder }: CoNYMorningQueueProps) {
-    const { nextStep, isPaused } = useDemo()
+    const { nextStep, isPaused, isSidebarCollapsed, isDemoActive } = useDemo()
+    // F30.d · leftOffset dinámico · antes 'top-16 left-80' hardcoded dejaba
+    // 320px de gap sin cubrir cuando no había sidebar del demo. Pattern
+    // idéntico al F30.b BFIProcessKanban + F30.d BFIDocumentReviewModal.
+    const leftOffset = isDemoActive && !isSidebarCollapsed ? 'left-80' : 'left-0'
     const isPausedRef = useRef(isPaused)
     useEffect(() => { isPausedRef.current = isPaused }, [isPaused])
     const pauseAware = useCallback((fn: () => void) => () => {
@@ -103,10 +107,10 @@ export default function CoNYMorningQueue({ onSelectOrder }: CoNYMorningQueueProp
                         enter="ease-out duration-200" enterFrom="opacity-0" enterTo="opacity-100"
                         leave="ease-in duration-150"  leaveFrom="opacity-100" leaveTo="opacity-0"
                     >
-                        <div className="fixed top-16 left-80 right-0 bottom-0 bg-black/40 backdrop-blur-sm" />
+                        <div className={`fixed top-0 ${leftOffset} right-0 bottom-0 bg-black/40 backdrop-blur-sm`} />
                     </TransitionChild>
 
-                    <div className="fixed top-16 left-80 right-0 bottom-0 flex items-center justify-center p-6">
+                    <div className={`fixed top-0 ${leftOffset} right-0 bottom-0 flex items-center justify-center p-6`}>
                         <TransitionChild
                             as={Fragment}
                             enter="ease-out duration-200" enterFrom="opacity-0 scale-95" enterTo="opacity-100 scale-100"
