@@ -334,11 +334,15 @@ function LaurenNotificationDialog({ isOpen, notes, onSent, onClose }: { isOpen: 
 // ─── Main Scene ───────────────────────────────────────────────────────────────
 
 export default function WIGBingoCheckScene({ onAnalyze, notificationConfig, uploadMode }: WIGBingoCheckSceneProps) {
-    const { isPaused } = useDemo()
+    const { isPaused, isDemoActive } = useDemo()
     const isPausedRef = useRef(isPaused)
     useEffect(() => { isPausedRef.current = isPaused }, [isPaused])
 
-    const [phase, setPhase] = useState<'dashboard' | 'checking'>('dashboard')
+    // F30.e · fuera de tour arranca en 'checking' directamente · el phase
+    // 'dashboard' inicial solo funciona con tour porque su transición
+    // depende del event `bfi:wig-open` que solo el AC del tour dispatchea.
+    // Diego 2026-07-23.
+    const [phase, setPhase] = useState<'dashboard' | 'checking'>(isDemoActive ? 'dashboard' : 'checking')
 
     useEffect(() => {
         const handler = () => setPhase('checking')

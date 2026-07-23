@@ -252,7 +252,7 @@ function ClaimDialog({ isOpen, onSent, onClose }: { isOpen: boolean; onSent: () 
 // ─── Main Scene ───────────────────────────────────────────────────────────────
 
 export default function LaurenClaimScene() {
-    const { nextStep, isPaused } = useDemo()
+    const { nextStep, isPaused, isDemoActive } = useDemo()
     const isPausedRef = useRef(isPaused)
     useEffect(() => { isPausedRef.current = isPaused }, [isPaused])
     const pauseAware = useCallback((fn: () => void) => () => {
@@ -262,7 +262,13 @@ export default function LaurenClaimScene() {
         }, 200)
     }, [])
 
-    const [phase,         setPhase]         = useState<'dashboard' | 'detail'>('dashboard')
+    // F30.e · Diego 2026-07-23 · fuera de tour arranca en 'detail'
+    // directamente · el phase 'dashboard' inicial solo funciona con tour
+    // porque su transición depende del event `bfi:claim-open` que solo
+    // el Action Center del tour dispatchea. Sin este fix el user fuera
+    // de tour veía el Product Receiving Dashboard estático sin nunca ver
+    // el content real del claim (Lauren opens ticket).
+    const [phase,         setPhase]         = useState<'dashboard' | 'detail'>(isDemoActive ? 'dashboard' : 'detail')
 
     useEffect(() => {
         const handler = () => setPhase('detail')

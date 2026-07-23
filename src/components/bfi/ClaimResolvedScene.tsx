@@ -317,7 +317,7 @@ function WalterNotifyDialog({ isOpen, onSent, onClose }: { isOpen: boolean; onSe
 // ─── Main Scene ───────────────────────────────────────────────────────────────
 
 export default function ClaimResolvedScene() {
-    const { nextStep, isPaused } = useDemo()
+    const { nextStep, isPaused, isDemoActive } = useDemo()
     const isPausedRef = useRef(isPaused)
     useEffect(() => { isPausedRef.current = isPaused }, [isPaused])
     const pauseAware = useCallback((fn: () => void) => () => {
@@ -327,7 +327,11 @@ export default function ClaimResolvedScene() {
         }, 200)
     }, [])
 
-    const [phase,       setPhase]       = useState<'dashboard' | 'detail'>('dashboard')
+    // F30.e · Diego 2026-07-23 · fuera de tour arranca en 'detail'
+    // directamente · el phase 'dashboard' inicial solo funciona con tour
+    // porque su transición depende del event `bfi:resolved-open` que solo
+    // el Action Center del tour dispatchea. Idem LaurenClaimScene.
+    const [phase,       setPhase]       = useState<'dashboard' | 'detail'>(isDemoActive ? 'dashboard' : 'detail')
 
     useEffect(() => {
         const handler = () => setPhase('detail')
