@@ -19,7 +19,7 @@ import {
  */
 export default function CLCDashboardScene() {
     return (
-        <div className="p-5 max-w-7xl mx-auto space-y-4">
+        <div className="px-5 pt-8 pb-6 max-w-7xl mx-auto space-y-4">
             {/* Header */}
             <div className="flex items-start justify-between gap-3 flex-wrap">
                 <div className="flex items-center gap-2.5">

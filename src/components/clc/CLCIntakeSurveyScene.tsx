@@ -44,7 +44,7 @@ export default function CLCIntakeSurveyScene({ channel, onOpenChannelDialog }: P
     const isAwaitingChannel = !channel && stepId === 'clc3.1'
 
     return (
-        <div className="p-5 max-w-5xl mx-auto space-y-4">
+        <div className="px-5 pt-8 pb-6 max-w-5xl mx-auto space-y-4">
             {/* Top context bar */}
             <div className="rounded-2xl border border-border bg-card p-4 flex items-start gap-3">
                 <div className="h-9 w-9 rounded-xl bg-brand-300/40 dark:bg-brand-500/20 flex items-center justify-center shrink-0">
