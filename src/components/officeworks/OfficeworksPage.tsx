@@ -184,6 +184,12 @@ export default function OfficeworksPage() {
     // en el modal. Cuando isDemoActive es true, cede control a currentStep.
     const [manualStage, setManualStage] = useState<OfficeworksReviewStage>('intake')
 
+    // F29.f · Reset counter · cada increment forza re-mount del
+    // OfficeworksDocumentReviewModal (React reconciler ve nuevo key) ·
+    // limpia flowProgress interno (bomUploaded/validationCompiled/etc)
+    // + cualquier state local de los panels. Diego 2026-07-23.
+    const [resetCounter, setResetCounter] = useState(0)
+
     const stepId = currentStep?.id
     // F29 · stage dual · derivado de currentStep en tour · del manualStage
     // fuera de tour. Fallback siempre 'intake'.
@@ -251,8 +257,17 @@ export default function OfficeworksPage() {
     }, [isDemoActive, stageIdx])
 
     // F29 · Reset · vuelve a 'intake' fuera de tour.
+    // F29.f · extended · también limpia peer/vendors/winner/designer + fuerza
+    // re-mount del modal via resetCounter para limpiar flowProgress interno
+    // (bomUploaded, validationCompiled, clientApproved) y state de los panels.
+    // Diego 2026-07-23.
     const handleResetStage = useCallback(() => {
         setManualStage('intake')
+        setAssignedDesigner(null)
+        setPeerReviewerName(null)
+        setSelectedVendorIds(null)
+        setWinnerVendorId(null)
+        setResetCounter(c => c + 1)
     }, [])
 
     // Pick hero scene as fullContent when at hero stages.
@@ -330,6 +345,7 @@ export default function OfficeworksPage() {
             </div>
 
             <OfficeworksDocumentReviewModal
+                key={resetCounter}
                 isOpen={isModalOpen}
                 onClose={handleClose}
                 stage={stage}
@@ -343,6 +359,7 @@ export default function OfficeworksPage() {
                 onSelectVendors={setSelectedVendorIds}
                 winnerVendorId={winnerVendorId}
                 onSelectWinner={setWinnerVendorId}
+                onReset={handleResetStage}
             />
 
             {/* F29 · stepper flotante que aparece encima del modal cuando el

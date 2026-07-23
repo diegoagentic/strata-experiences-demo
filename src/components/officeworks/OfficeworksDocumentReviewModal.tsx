@@ -18,7 +18,7 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import { Dialog, Transition, TransitionChild, DialogPanel } from '@headlessui/react'
-import { X, Sparkles, FileText, MapPin, ClipboardCheck, ArrowRight, AlertCircle, CheckCircle2, FileWarning, Image as ImageIcon, Eye, UserCheck, Users, Paperclip, Mail, Loader2, HelpCircle, ShieldCheck, Search, AlertTriangle, DollarSign, Send, Calendar, Layers, Pencil, Inbox, Building2, Truck, ChevronDown, ChevronRight as ChevronRightIcon, Save, Edit3, Target, TrendingUp, MessageSquare, Smartphone, ExternalLink, Activity, Clock, Briefcase, Award } from 'lucide-react'
+import { X, Sparkles, FileText, MapPin, ClipboardCheck, ArrowRight, AlertCircle, CheckCircle2, FileWarning, Image as ImageIcon, Eye, UserCheck, Users, Paperclip, Mail, Loader2, HelpCircle, ShieldCheck, Search, AlertTriangle, DollarSign, Send, Calendar, Layers, Pencil, Inbox, Building2, Truck, ChevronDown, ChevronRight as ChevronRightIcon, Save, Edit3, Target, TrendingUp, MessageSquare, Smartphone, ExternalLink, Activity, Clock, Briefcase, Award, RotateCcw } from 'lucide-react'
 import { useDemo } from '../../context/DemoContext'
 import { METRO_LEGAL_ORDER_META } from './shared/manattOrderData'
 import {
@@ -320,6 +320,11 @@ interface Props {
     winnerVendorId?: string | null
     /** Called when WinnerSelectPanel confirms a winner */
     onSelectWinner?: (id: string) => void
+    /** F29.f · Diego 2026-07-23 · reset flow del modal · vuelve al stage
+        inicial + limpia todo el state acumulado (bomUploaded, peer, vendors,
+        winner). Se muestra un botón visible en el header cuando el prop
+        está definido · pattern Dupler F21 · CLC F26 · WRG F20.c. */
+    onReset?: () => void
 }
 
 export default function OfficeworksDocumentReviewModal({
@@ -328,6 +333,7 @@ export default function OfficeworksDocumentReviewModal({
     peerReviewerName, onAssignPeerReviewer,
     selectedVendorIds, onSelectVendors,
     winnerVendorId, onSelectWinner,
+    onReset,
 }: Props) {
     const { isSidebarCollapsed, isDemoActive } = useDemo()
     const leftOffset = isDemoActive && !isSidebarCollapsed ? 'left-80' : 'left-0'
@@ -399,6 +405,23 @@ export default function OfficeworksDocumentReviewModal({
                                     <div className="flex-1 flex justify-center min-w-0 overflow-hidden">
                                         <StageProgress activeCol={activeCol} stage={stage} />
                                     </div>
+
+                                    {/* F29.f · Reset button en el header · vuelve al stage
+                                        inicial + limpia todo el state acumulado del modal.
+                                        Visible siempre que el parent pase el prop onReset.
+                                        Pattern Dupler F21 / CLC F26 / WRG F20.c. */}
+                                    {onReset && (
+                                        <button
+                                            type="button"
+                                            onClick={onReset}
+                                            aria-label="Reset the review flow to the initial stage"
+                                            title="Reset the Metro Legal review to the first stage · clears all interaction state"
+                                            className="shrink-0 inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-destructive hover:bg-destructive/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive"
+                                        >
+                                            <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
+                                            Reset
+                                        </button>
+                                    )}
 
                                     <button
                                         type="button"
