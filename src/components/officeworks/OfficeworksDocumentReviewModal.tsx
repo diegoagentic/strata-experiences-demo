@@ -953,7 +953,10 @@ function ValidationDocPreview({ validationCompiled, clientApproved = false }: Va
                 className="bg-card border border-border rounded-xl overflow-hidden max-w-2xl mx-auto"
             >
                 <div className="px-4 py-3 flex items-start gap-3">
-                    <div className="h-11 w-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0" aria-hidden="true">
+                    {/* F29.d · pattern LAW 3 · bg-primary sólido + icon dark
+                        inverse (era bg-primary/10 text-primary = lime-sobre-
+                        lime · ilegible en light mode). Diego 2026-07-23. */}
+                    <div className="h-11 w-11 rounded-lg bg-primary text-primary-foreground flex items-center justify-center shrink-0 shadow-sm" aria-hidden="true">
                         <FileText className="h-6 w-6" />
                     </div>
                     <div className="flex-1 min-w-0">
