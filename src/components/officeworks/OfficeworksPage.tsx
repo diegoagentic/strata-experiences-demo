@@ -12,8 +12,8 @@
  * OfficeworksDashboardPage: standalone export for the persistent Dashboard navbar tab.
  */
 
-import { useEffect, useState } from 'react'
-import { Pencil, LayoutDashboard, ClipboardCheck, Send, Inbox, Truck } from 'lucide-react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Pencil, LayoutDashboard, ClipboardCheck, Send, Inbox, Truck, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react'
 import MBIPageShell from '../mbi/MBIPageShell'
 import { useDemo } from '../../context/DemoContext'
 
@@ -24,6 +24,44 @@ import OfficeworksDashboardScene from './OfficeworksDashboardScene'
 // Hero scenes used as fullContent inside the modal at their stages
 import PeerReviewScene from './PeerReviewScene'
 import AckReviewScene from './AckReviewScene'
+
+// F29 · Spec Check flow stages en orden lineal · usado por el stepper
+// inline fuera de tour para navegar los 11 stages sin depender de
+// currentStep del DemoContext. Diego 2026-07-23.
+const SPEC_CHECK_STAGES_ORDER: OfficeworksReviewStage[] = [
+    'intake',           // sc1.0
+    'intake-complete',  // sc1.0b
+    'design',           // sc1.2
+    'sq-check',         // sc1.4
+    'teknion-preview',  // sc1.5
+    'spec-gap',         // sc1.5b
+    'self-audit',       // sc1.6
+    'peer-review',      // sc1.7
+    'submission',       // sc1.8
+    'handoff',          // sc1.8b
+    'ack-review',       // sc1.9
+]
+
+const STAGE_TITLES: Record<OfficeworksReviewStage, string> = {
+    'intake':           'Form arrives · review & send clarification',
+    'intake-complete':  'Reply received · assign designer',
+    'design':           'Design BOM + Validation Doc',
+    'sq-check':         'SQ / price-protected check',
+    'teknion-preview':  'Submit Order Preview',
+    'spec-gap':         'Resolve spec gaps',
+    'self-audit':       'Self-audit BOM · Strata × 6 attrs',
+    'peer-review':      'Peer review · save tacit rules',
+    'submission':       'BOM submission · email coordinator',
+    'handoff':          'Coordinator upload · release PO',
+    'ack-review':       'Ack review · Gemini supercharge',
+    // Fallbacks para stages L&D/Sales (mantenidos para type completeness)
+    'ld-rfp-intake':    'RFP intake', 'ld-takeoff': 'AI takeoff', 'ld-conditions': 'Conditions',
+    'ld-vendor-pool':   'Vendor pool', 'ld-bid-send': 'Send bid', 'ld-bid-compare': 'Compare bids',
+    'ld-winner-select': 'Winner select', 'ld-final-upload': 'Final quote',
+    'sales-inbox':      'Inbox triage', 'sales-intake': 'Opp intake', 'sales-capacity': 'Capacity ledger',
+    'sales-assign':     'Assign rep', 'sales-discovery': 'Discovery', 'sales-outreach': 'Outreach',
+    'sales-proposal':   'Proposal', 'sales-handoff': 'Close + handoff',
+}
 
 // ─── Map currentStep.id → modal stage ─────────────────────────────────────────
 
@@ -127,7 +165,7 @@ const STEP_TITLES_BY_APP: Record<string, string> = {
 // ─── Main page component ──────────────────────────────────────────────────────
 
 export default function OfficeworksPage() {
-    const { currentStep, nextStep } = useDemo()
+    const { currentStep, nextStep, isDemoActive } = useDemo()
     // Funnel-first: modal opens via the Metro Legal card's "Review →" button OR
     // when any officeworks:* notification CTA is dispatched from ActionCenter.
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -135,22 +173,32 @@ export default function OfficeworksPage() {
     const [assignedDesigner, setAssignedDesigner] = useState<string | null>(null)
     // Peer reviewer picked at sc1.6 (SelfAuditScene → PeerAssignPopover) · propagated to sc1.7
     const [peerReviewerName, setPeerReviewerName] = useState<string | null>(null)
-    // L&D · installer pool picked at sc-LD.3 · propagated to sc-LD.4/5
+    // L&D · installer pool picked at sc-LD.3 · propagated to sc-LD.4/5 (state
+    // kept for future F30 migration · vendor panels aún viven en el modal)
     const [selectedVendorIds, setSelectedVendorIds] = useState<string[] | null>(null)
     // L&D · winner picked at sc-LD.6 · propagated to sc-LD.7
     const [winnerVendorId, setWinnerVendorId] = useState<string | null>(null)
 
+    // F29 · Manual stage state para navegación fuera de tour. Cuando
+    // isDemoActive es false, este state controla qué panel se renderea
+    // en el modal. Cuando isDemoActive es true, cede control a currentStep.
+    const [manualStage, setManualStage] = useState<OfficeworksReviewStage>('intake')
+
     const stepId = currentStep?.id
-    const stage = stepIdToStage(stepId)
-    // F22 · fallback ahora es 'officeworks-intake' (primer tab natural del flow)
-    // en vez de 'officeworks-spec-check' (que Diego quitó del navbar porque será
-    // feature module aparte). Antes, clicks sin step activo renderizaban título
-    // "Spec Check" independientemente del tab clickeado · Diego 2026-07-23.
+    // F29 · stage dual · derivado de currentStep en tour · del manualStage
+    // fuera de tour. Fallback siempre 'intake'.
+    const stage: OfficeworksReviewStage = isDemoActive ? stepIdToStage(stepId) : manualStage
+    // F22 · fallback 'officeworks-intake' cuando no hay currentStep.
     const app = currentStep?.app ?? 'officeworks-intake'
     const icon = STEP_ICONS_BY_APP[app] ?? <Inbox className="h-5 w-5" />
     const pageTitle = STEP_TITLES_BY_APP[app] ?? 'Intake'
     // Flow derived from current step · drives the funnel + page chrome.
     const flowId = (currentStep?.flowId ?? 'spec-check') as 'spec-check' | 'labor-delivery' | 'sales'
+
+    // F29 · index del stage en el flow Spec Check · usado por el stepper
+    // inline. Solo aplica a stages Spec Check (0-10) · L&D/Sales devuelven -1.
+    const stageIdx = useMemo(() => SPEC_CHECK_STAGES_ORDER.indexOf(stage), [stage])
+    const totalStages = SPEC_CHECK_STAGES_ORDER.length
 
     // Listen for all officeworks notification CTA events to open the modal
     useEffect(() => {
@@ -161,18 +209,51 @@ export default function OfficeworksPage() {
 
     const handleClose = () => setIsModalOpen(false)
 
-    const handleValidate = () => {
-        const id = currentStep?.id ?? ''
-        if (STAYS_OPEN_WITHIN_FLOW2.has(id)) {
-            // Flow 2 continuity · advance step without closing the modal · the
-            // right panel and AI banner re-render with the next stage.
-            nextStep()
+    // F29 · Sincronizar manualStage cuando el tour arranca/termina · así el
+    // user retoma navegación desde el último stage visto en el tour.
+    useEffect(() => {
+        if (!isDemoActive) return
+        const derived = stepIdToStage(stepId)
+        if (SPEC_CHECK_STAGES_ORDER.includes(derived)) {
+            setManualStage(derived)
+        }
+    }, [isDemoActive, stepId])
+
+    // F29 · Handler dual · si tour activo llama nextStep del DemoContext
+    // (comportamiento actual · STAYS_OPEN_WITHIN_FLOW2 para sc1.2). Fuera
+    // de tour avanza manualStage al siguiente en SPEC_CHECK_STAGES_ORDER.
+    const handleValidate = useCallback(() => {
+        if (isDemoActive) {
+            const id = currentStep?.id ?? ''
+            if (STAYS_OPEN_WITHIN_FLOW2.has(id)) {
+                nextStep()
+                return
+            }
+            setIsModalOpen(false)
+            setTimeout(() => nextStep(), 200)
             return
         }
-        setIsModalOpen(false)
-        // brief pause so user sees modal close before next step renders
-        setTimeout(() => nextStep(), 200)
-    }
+        // Fuera de tour · avanza manualStage
+        const nextIdx = stageIdx + 1
+        if (nextIdx >= totalStages) {
+            // Último stage · cerrar modal · reset al intake para próxima apertura
+            setIsModalOpen(false)
+            setTimeout(() => setManualStage('intake'), 300)
+            return
+        }
+        setManualStage(SPEC_CHECK_STAGES_ORDER[nextIdx])
+    }, [isDemoActive, currentStep, nextStep, stageIdx, totalStages])
+
+    // F29 · Prev button · solo aplica fuera de tour.
+    const handlePrevStage = useCallback(() => {
+        if (isDemoActive || stageIdx <= 0) return
+        setManualStage(SPEC_CHECK_STAGES_ORDER[stageIdx - 1])
+    }, [isDemoActive, stageIdx])
+
+    // F29 · Reset · vuelve a 'intake' fuera de tour.
+    const handleResetStage = useCallback(() => {
+        setManualStage('intake')
+    }, [])
 
     // Pick hero scene as fullContent when at hero stages.
     // sc1.6 'self-audit' uses the standard split-pane pattern · the modal
@@ -184,6 +265,50 @@ export default function OfficeworksPage() {
     } else if (stage === 'ack-review') {
         fullContent = <AckReviewScene onContinue={handleValidate} />
     }
+
+    // F29 · Stepper inline JSX · visible solo cuando modal abierto + no tour.
+    const stepperInline = !isDemoActive && isModalOpen && stageIdx >= 0 ? (
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/95 backdrop-blur-xl shadow-lg">
+            <button
+                type="button"
+                onClick={handlePrevStage}
+                disabled={stageIdx === 0}
+                className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-foreground bg-muted hover:bg-muted/70 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                aria-label="Previous stage"
+            >
+                <ChevronLeft className="w-3.5 h-3.5" aria-hidden="true" />
+                Prev
+            </button>
+            <div className="flex flex-col items-center px-3 min-w-0 max-w-xs">
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider whitespace-nowrap">
+                    Spec Check · Stage {stageIdx + 1} of {totalStages}
+                </p>
+                <p className="text-xs font-semibold text-foreground truncate max-w-full">
+                    {STAGE_TITLES[stage]}
+                </p>
+            </div>
+            <button
+                type="button"
+                onClick={handleResetStage}
+                className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-destructive hover:bg-destructive/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive"
+                aria-label="Reset to first stage"
+                title="Reset the Spec Check flow to the first stage"
+            >
+                <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
+                Reset
+            </button>
+            <button
+                type="button"
+                onClick={handleValidate}
+                disabled={stageIdx >= totalStages - 1}
+                className="inline-flex items-center gap-1.5 h-8 px-3.5 rounded-lg text-xs font-bold bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                aria-label="Next stage"
+            >
+                Next
+                <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
+            </button>
+        </div>
+    ) : null
 
     return (
         <MBIPageShell
@@ -219,6 +344,12 @@ export default function OfficeworksPage() {
                 winnerVendorId={winnerVendorId}
                 onSelectWinner={setWinnerVendorId}
             />
+
+            {/* F29 · stepper flotante que aparece encima del modal cuando el
+                user está fuera del tour · permite navegar los 11 stages del
+                Spec Check flow sin dependencia del DemoContext. Diego
+                2026-07-23. */}
+            {stepperInline}
         </MBIPageShell>
     )
 }
