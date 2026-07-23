@@ -17,11 +17,12 @@ import BFIProcessKanban from './BFIProcessKanban'
 
 interface QuoteIntakePricingSceneProps {
     onApply?: () => void
+    onReset?: () => void
 }
 
 const ACTIVE_COL = 1  // Quote
 
-export default function QuoteIntakePricingScene({ onApply }: QuoteIntakePricingSceneProps) {
+export default function QuoteIntakePricingScene({ onApply, onReset }: QuoteIntakePricingSceneProps) {
     const { nextStep } = useDemo()
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -51,6 +52,7 @@ export default function QuoteIntakePricingScene({ onApply }: QuoteIntakePricingS
                 onClose={() => setIsModalOpen(false)}
                 step="quote"
                 onValidate={handleValidate}
+                onReset={onReset}
             />
 
             <DataSourcesBar groups={[{ sources: [SOURCES.STRATA_AI, SOURCES.OVNIQ, SOURCES.CORE_PO] }]} />

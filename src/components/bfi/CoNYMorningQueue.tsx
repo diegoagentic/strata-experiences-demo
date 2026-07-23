@@ -18,13 +18,14 @@ import BFIProcessKanban from './BFIProcessKanban'
 
 interface CoNYMorningQueueProps {
     onSelectOrder?: () => void
+    onReset?: () => void
 }
 
 const NOTIFY_MESSAGE = `Hi Robert — SIF for DOE-2847 has been ingested and validated. Quote Q-2026-0089 is being processed. We'll follow up shortly with confirmation.
 
 — Account Manager DeMar, BFI Furniture`
 
-export default function CoNYMorningQueue({ onSelectOrder }: CoNYMorningQueueProps) {
+export default function CoNYMorningQueue({ onSelectOrder, onReset }: CoNYMorningQueueProps) {
     const { nextStep, isPaused, isSidebarCollapsed, isDemoActive } = useDemo()
     // F30.d · leftOffset dinámico · antes 'top-16 left-80' hardcoded dejaba
     // 320px de gap sin cubrir cuando no había sidebar del demo. Pattern
@@ -97,6 +98,7 @@ export default function CoNYMorningQueue({ onSelectOrder }: CoNYMorningQueueProp
                 onClose={() => setIsModalOpen(false)}
                 step="extract"
                 onValidate={handleModalValidate}
+                onReset={onReset}
             />
 
             {/* ── Send designer notification dialog ── */}

@@ -229,10 +229,10 @@ export default function BFIPage() {
             actions={resetButton}
         >
             <div key={`${stepId}-${resetTick}`} className="space-y-4 animate-in fade-in duration-500">
-                {stepId === 'a1.1' && <CoNYMorningQueue onSelectOrder={advance} />}
-                {stepId === 'a1.2b'  && <QuoteIntakePricingScene />}
+                {stepId === 'a1.1' && <CoNYMorningQueue onSelectOrder={advance} onReset={handleResetClick} />}
+                {stepId === 'a1.2b'  && <QuoteIntakePricingScene onReset={handleResetClick} />}
                 {stepId === 'a1.2b3' && <SendProposalScene />}
-                {stepId === 'a1.2c'  && <POLaborScene />}
+                {stepId === 'a1.2c'  && <POLaborScene onReset={handleResetClick} />}
                 {stepId === 'a1.2d' && (
                     <WIGBingoCheckScene
                         onAnalyze={advance}
@@ -246,10 +246,10 @@ export default function BFIPage() {
                 )}
                 {stepId === 'a1.2e' && <LaurenClaimScene />}
                 {stepId === 'a1.2f' && <ClaimResolvedScene />}
-                {stepId === 'a1.3' && <CPRScene onSend={advance} />}
-                {stepId === 'a1.3b' && <MichaelApprovalScene />}
-                {stepId === 'a1.3c' && <LaurenInvoiceScene />}
-                {stepId === 'a1.4' && <AgencyFeeVerifyScene />}
+                {stepId === 'a1.3' && <CPRScene onSend={advance} onReset={handleResetClick} />}
+                {stepId === 'a1.3b' && <MichaelApprovalScene onReset={handleResetClick} />}
+                {stepId === 'a1.3c' && <LaurenInvoiceScene onReset={handleResetClick} />}
+                {stepId === 'a1.4' && <AgencyFeeVerifyScene onReset={handleResetClick} />}
             </div>
             {stepperInline}
         </MBIPageShell>

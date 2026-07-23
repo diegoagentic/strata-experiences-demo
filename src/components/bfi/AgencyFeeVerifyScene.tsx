@@ -18,9 +18,10 @@ import BFIProcessKanban from './BFIProcessKanban'
 
 interface AgencyFeeVerifySceneProps {
     onComplete?: () => void
+    onReset?: () => void
 }
 
-export default function AgencyFeeVerifyScene({ onComplete }: AgencyFeeVerifySceneProps) {
+export default function AgencyFeeVerifyScene({ onComplete, onReset }: AgencyFeeVerifySceneProps) {
     const { nextStep, isPaused } = useDemo()
     const isPausedRef = useRef(isPaused)
     useEffect(() => { isPausedRef.current = isPaused }, [isPaused])
@@ -102,6 +103,7 @@ export default function AgencyFeeVerifyScene({ onComplete }: AgencyFeeVerifyScen
                 step="fee"
                 scenario={scenario}
                 onValidate={handleValidate}
+                onReset={onReset}
             />
         </div>
     )

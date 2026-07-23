@@ -158,7 +158,11 @@ function NancyDialog({ isOpen, onSent, onClose }: { isOpen: boolean; onSent: () 
 
 const ACTIVE_COL = 3
 
-export default function MichaelApprovalScene() {
+interface MichaelApprovalSceneProps {
+    onReset?: () => void
+}
+
+export default function MichaelApprovalScene({ onReset }: MichaelApprovalSceneProps = {}) {
     const { nextStep, isPaused } = useDemo()
     const isPausedRef = useRef(isPaused)
     useEffect(() => { isPausedRef.current = isPaused }, [isPaused])
@@ -212,6 +216,7 @@ export default function MichaelApprovalScene() {
                 step="cpr"
                 onValidate={handleModalValidate}
                 michaelMode
+                onReset={onReset}
             />
 
             {/* Nancy invoice request dialog */}

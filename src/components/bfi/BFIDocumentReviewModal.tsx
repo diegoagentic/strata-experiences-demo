@@ -16,7 +16,7 @@ import {
     ChevronDown, ChevronUp, CheckCircle2, Sparkles,
     Edit, Edit2, Edit3, Zap, Info, MapPin, Send, AlertCircle,
     Download, Mail, Upload, Loader2, Paperclip,
-    CreditCard, ArrowRight, AlertTriangle, Building2
+    CreditCard, ArrowRight, AlertTriangle, Building2, RotateCcw
 } from 'lucide-react'
 import { SplitPaneReviewModal } from 'strata-design-system'
 import DataSourcesBar, { SOURCES } from '../mbi/DataSourcesBar'
@@ -37,6 +37,11 @@ interface BFIDocumentReviewModalProps {
     michaelMode?: boolean
     /** Invoice upload mode: opens on Attachments tab, adds upload zone + Strata detection + forward to Patricia */
     invoiceUpload?: boolean
+    /** F30.f · Diego 2026-07-23 · Reset flow del modal · si definido, un
+        botón Reset aparece en el header al lado del close. Handler viene
+        del BFIPage (handleResetClick) que forza remount del scene child
+        + rebobina el tour si activo. */
+    onReset?: () => void
 }
 
 interface ReviewField {
@@ -3214,7 +3219,7 @@ function BFIFieldReview({ step, scenario, onValidate, onResolveChange, onCustomV
 // ─── Main Modal ───────────────────────────────────────────────────────────────
 
 export default function BFIDocumentReviewModal({
-    isOpen, onClose, step, onValidate, scenario, michaelMode, invoiceUpload
+    isOpen, onClose, step, onValidate, scenario, michaelMode, invoiceUpload, onReset,
 }: BFIDocumentReviewModalProps) {
     // F30.d · leftOffset dinámico · respeta sidebar del demo cuando expandido.
     // Fuera de tour o sidebar colapsado el modal cubre todo el viewport.
@@ -3397,6 +3402,18 @@ export default function BFIDocumentReviewModal({
             title="Document Review — DOE-2847"
             subtitle={subtitle}
             headerCenter={<FunnelStepper step={step} />}
+            headerActions={onReset ? (
+                <button
+                    type="button"
+                    onClick={onReset}
+                    aria-label="Reset the Document Review flow to the initial state"
+                    title="Reset the flow · clears extraction state and returns to the first stage"
+                    className="shrink-0 inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-semibold text-destructive hover:bg-destructive/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive"
+                >
+                    <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
+                    Reset
+                </button>
+            ) : undefined}
             aiBanner={aiBanner}
             leftPane={leftPane}
             rightPane={

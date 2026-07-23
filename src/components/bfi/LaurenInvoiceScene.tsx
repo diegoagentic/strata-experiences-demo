@@ -19,7 +19,11 @@ import BFIProcessKanban from './BFIProcessKanban'
 
 const ACTIVE_COL = 3
 
-export default function LaurenInvoiceScene() {
+interface LaurenInvoiceSceneProps {
+    onReset?: () => void
+}
+
+export default function LaurenInvoiceScene({ onReset }: LaurenInvoiceSceneProps = {}) {
     const { nextStep } = useDemo()
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -60,6 +64,7 @@ export default function LaurenInvoiceScene() {
                 step="cpr"
                 onValidate={handleValidate}
                 invoiceUpload
+                onReset={onReset}
             />
         </div>
     )

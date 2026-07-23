@@ -17,7 +17,11 @@ import BFIProcessKanban from './BFIProcessKanban'
 
 const ACTIVE_COL = 2  // PO & Labor
 
-export default function POLaborScene() {
+interface POLaborSceneProps {
+    onReset?: () => void
+}
+
+export default function POLaborScene({ onReset }: POLaborSceneProps = {}) {
     const { nextStep } = useDemo()
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -53,6 +57,7 @@ export default function POLaborScene() {
                 onClose={() => setIsModalOpen(false)}
                 step="labor"
                 onValidate={handleValidate}
+                onReset={onReset}
             />
 
             <DataSourcesBar groups={[{ sources: [SOURCES.STRATA_AI, SOURCES.CORE_PO] }]} />

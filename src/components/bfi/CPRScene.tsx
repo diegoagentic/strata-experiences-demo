@@ -11,11 +11,12 @@ import BFIProcessKanban from './BFIProcessKanban'
 
 interface CPRSceneProps {
     onSend?: () => void
+    onReset?: () => void
 }
 
 const ACTIVE_COL = 3  // CPR Review
 
-export default function CPRScene({ onSend }: CPRSceneProps) {
+export default function CPRScene({ onSend, onReset }: CPRSceneProps) {
     const { nextStep } = useDemo()
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -44,6 +45,7 @@ export default function CPRScene({ onSend }: CPRSceneProps) {
                 onClose={() => setIsModalOpen(false)}
                 step="cpr"
                 onValidate={handleValidate}
+                onReset={onReset}
             />
 
             <DataSourcesBar groups={[{ sources: [SOURCES.STRATA_AI, SOURCES.CORE_PO] }]} />
