@@ -23,17 +23,21 @@ import AccountingMorningQueue from './AccountingMorningQueue'
 import NonEDIReconcilerScene from './NonEDIReconcilerScene'
 import ARAgingReviewScene from './ARAgingReviewScene'
 import ARAgingWrapScene from './ARAgingWrapScene'
+import AccountingWrapScene from './AccountingWrapScene'
 import { useDemo } from '../../context/DemoContext'
 
 // ── Accounting wizard (Flow 1) ────────────────────────────────────────────────
+// F39 · step 3 wrap agregado · el tour cubre solo m2.1 (idx 0) y m2.3 (idx 1).
+// El wrap (idx 2) es fuera-de-tour · aparece al avanzar manual con "Post & finish".
 const ACCOUNTING_STEPS: WizardStepSpec[] = [
-    { id: 'morning',  label: 'AP · Pending Review',      shortLabel: '1. AP Queue' },
+    { id: 'morning',  label: 'AP · Pending Review',        shortLabel: '1. AP Queue' },
     { id: 'non-edi',  label: 'Bill Review — line-by-line', shortLabel: '2. Bill Review' },
+    { id: 'wrap',     label: 'Wrap up · post & handoff',   shortLabel: '3. Wrap' },
 ]
 
 const ACCT_STEP_TO_IDX: Record<string, number> = { 'm2.1': 0, 'm2.3': 1 }
 const ACCT_IDX_TO_STEP: Record<number, string>  = { 0: 'm2.1', 1: 'm2.3' }
-const ACCT_NEXT_LABELS: Record<number, string>   = { 0: 'Review', 1: 'Resolve and Post' }
+const ACCT_NEXT_LABELS: Record<number, string>   = { 0: 'Review', 1: 'Post & finish' }
 
 // ── Collections wizard (Flow 2) ───────────────────────────────────────────────
 const COLLECTIONS_STEPS: WizardStepSpec[] = [
@@ -142,16 +146,23 @@ export default function MBIAccountingPage() {
                     activeStep={acctStep}
                     onStepClick={navigateAccounting}
                     onPrev={() => navigateAccounting(Math.max(0, acctStep - 1))}
-                    onNext={() => acctStep === ACCOUNTING_STEPS.length - 1
-                        ? navigateAccounting(0)
-                        : navigateAccounting(acctStep + 1)}
-                    canAdvance
+                    onNext={() => navigateAccounting(Math.min(ACCOUNTING_STEPS.length - 1, acctStep + 1))}
+                    canAdvance={acctStep < ACCOUNTING_STEPS.length - 1}
                     nextLabel={ACCT_NEXT_LABELS[acctStep]}
                     secondaryAction={acctStep === 1 ? <EscalateAllButton /> : undefined}
                     persona={persona}
                 >
                     {acctStep === 0 && <AccountingMorningQueue />}
                     {acctStep === 1 && <NonEDIReconcilerScene />}
+                    {acctStep === 2 && (
+                        <AccountingWrapScene
+                            onContinueToCollections={() => {
+                                setActiveTab('collections')
+                                setCollStep(0)
+                            }}
+                            onRestart={() => navigateAccounting(0)}
+                        />
+                    )}
                 </MBIWizardShell>
             )}
 

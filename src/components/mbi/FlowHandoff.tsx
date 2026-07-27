@@ -40,7 +40,12 @@ export interface FlowHandoffTimelineNode {
 export interface FlowHandoffCTA {
     label: string
     icon?: ReactNode
-    targetStepId: string
+    targetStepId?: string
+    /** F39 · Optional handler overriding the default goToStep behavior.
+     *  When provided the CTA fires this instead of navigating to
+     *  targetStepId — used when the flow's next step lives outside
+     *  the demo tour (e.g. Accounting AI → Collections AI tab switch). */
+    onOverride?: () => void
 }
 
 interface FlowHandoffProps {
@@ -153,9 +158,13 @@ export default function FlowHandoff({
                 </div>
 
                 <button
-                    onClick={() => goToFlow(primaryCTA.targetStepId)}
-                    disabled={!isDemoActive}
-                    title={isDemoActive ? undefined : 'Start the demo tour to enable flow navigation'}
+                    onClick={() =>
+                        primaryCTA.onOverride
+                            ? primaryCTA.onOverride()
+                            : primaryCTA.targetStepId && goToFlow(primaryCTA.targetStepId)
+                    }
+                    disabled={!primaryCTA.onOverride && !isDemoActive}
+                    title={isDemoActive || primaryCTA.onOverride ? undefined : 'Start the demo tour to enable flow navigation'}
                     className="w-full flex items-center justify-center gap-2 px-5 py-3.5 text-sm font-bold text-primary-foreground bg-primary rounded-xl hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed shadow-sm"
                 >
                     {primaryCTA.icon}
@@ -169,8 +178,12 @@ export default function FlowHandoff({
                         {secondaryCTAs.map((cta, i) => (
                             <button
                                 key={i}
-                                onClick={() => goToFlow(cta.targetStepId)}
-                                disabled={!isDemoActive}
+                                onClick={() =>
+                                    cta.onOverride
+                                        ? cta.onOverride()
+                                        : cta.targetStepId && goToFlow(cta.targetStepId)
+                                }
+                                disabled={!cta.onOverride && !isDemoActive}
                                 className="flex items-center gap-1.5 px-2.5 py-1.5 text-[11px] font-bold text-foreground bg-background dark:bg-zinc-800 border border-border rounded-lg hover:border-primary/40 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                             >
                                 {cta.icon}
