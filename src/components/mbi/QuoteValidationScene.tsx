@@ -52,7 +52,7 @@ export default function QuoteValidationScene() {
 
             {/* Forward cue */}
             <div className="flex items-center gap-3 text-xs bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-3">
-                <ArrowRight className="h-4 w-4 text-zinc-900 dark:text-primary shrink-0" />
+                <ArrowRight className="h-4 w-4 text-primary shrink-0" />
                 <span className="flex-1 text-foreground">
                     AI pass complete - no blocking flags. Next: upload vendor quotes to create lines in sif file
                 </span>

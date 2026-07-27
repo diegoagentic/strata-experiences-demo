@@ -201,8 +201,8 @@ function ProjectCreationView() {
 // ─── Shared bits ────────────────────────────────────────────────────────────
 function NoAIBanner() {
     return (
-        <div className="bg-amber-500/5 dark:bg-amber-500/10 border border-amber-500/30 rounded-xl px-3 py-2 flex items-center gap-2.5">
-            <AlertTriangle className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
+        <div className="bg-warning/10 border border-warning/30 rounded-xl px-3 py-2 flex items-center gap-2.5">
+            <AlertTriangle className="h-3.5 w-3.5 text-warning shrink-0" />
             <span className="text-[10px] text-foreground leading-snug">
                 <strong>Pre-AI · existing CORE workflow.</strong>
                 <span className="text-muted-foreground"> Strata does not change this step — it picks up after the project is created.</span>
@@ -232,7 +232,7 @@ function FieldRow({ icon, label, value }: { icon: React.ReactNode; label: string
 
 function ScopeChip({ label, value }: { label: string; value: string }) {
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-lg p-2">
+        <div className="bg-card border border-border rounded-lg p-2">
             <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider">{label}</div>
             <div className="text-base font-bold text-foreground tabular-nums leading-tight mt-0.5">{value}</div>
         </div>

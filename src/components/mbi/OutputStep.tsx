@@ -193,7 +193,7 @@ function ArtifactCard({
         <div className="bg-muted/20 dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
             {/* Header */}
             <div className="px-4 py-3 border-b border-border flex items-center gap-2">
-                <div className={`h-7 w-7 rounded-lg flex items-center justify-center ${mockStyle === 'excel' ? 'bg-success/10 text-success' : 'bg-primary/10 text-zinc-900 dark:text-primary'}`}>
+                <div className={`h-7 w-7 rounded-lg flex items-center justify-center ${mockStyle === 'excel' ? 'bg-success/10 text-success' : 'bg-primary/10 text-primary'}`}>
                     {icon}
                 </div>
                 <div className="flex-1 min-w-0">

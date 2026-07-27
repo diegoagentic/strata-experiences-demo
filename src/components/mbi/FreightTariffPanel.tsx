@@ -46,9 +46,9 @@ export default function FreightTariffPanel() {
     return (
         <div className="space-y-3">
             {/* Summary header */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl p-4 flex items-center justify-between">
+            <div className="bg-card border border-border rounded-2xl p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center">
+                    <div className="h-9 w-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                         <Truck className="h-4 w-4" />
                     </div>
                     <div>
@@ -62,14 +62,14 @@ export default function FreightTariffPanel() {
                     <div className="text-xs font-bold tabular-nums">
                         <span className="text-success">{cleanCount}</span>
                         <span className="text-muted-foreground"> clean · </span>
-                        <span className={remainingFlagged > 0 ? 'text-amber-600 dark:text-amber-400' : 'text-success'}>{remainingFlagged}</span>
+                        <span className={remainingFlagged > 0 ? 'text-warning' : 'text-success'}>{remainingFlagged}</span>
                         <span className="text-muted-foreground"> flagged</span>
                     </div>
                 </div>
             </div>
 
             {/* Orders list */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <div className="px-4 py-2 border-b border-border grid grid-cols-[1fr_0.6fr_0.7fr_0.7fr_0.6fr] gap-3 text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
                     <div>Order · Vendor</div>
                     <div className="text-right">Amount</div>
@@ -143,7 +143,7 @@ function FlagPill({ present, suggestedValue }: { present: boolean; suggestedValu
     }
     return (
         <span title={suggestedValue ? `Suggested: $${suggestedValue.toLocaleString()}` : 'Missing'}
-            className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400"
+            className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-warning/10 text-warning"
         >
             <AlertTriangle className="h-3.5 w-3.5" />
         </span>

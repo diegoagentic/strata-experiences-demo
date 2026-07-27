@@ -44,7 +44,7 @@ interface MBIModuleHeaderProps {
 
 const SEVERITY_STYLE: Record<PainPoint['severity'], { dot: string; label: string }> = {
     critical: { dot: 'bg-destructive', label: 'Critical' },
-    high: { dot: 'bg-amber-500 dark:bg-amber-400', label: 'High' },
+    high: { dot: 'bg-warning', label: 'High' },
     medium: { dot: 'bg-zinc-400 dark:bg-muted0', label: 'Medium' },
 }
 
@@ -114,10 +114,10 @@ export default function MBIModuleHeader({ module, outcome, tint = 'ai' }: MBIMod
             )}
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-3">
                 {/* Pain points (2/5) */}
-                <section className="lg:col-span-2 bg-card dark:bg-zinc-800 border border-border rounded-2xl p-4">
+                <section className="lg:col-span-2 bg-card border border-border rounded-2xl p-4">
                     <header className="flex items-center justify-between gap-2 mb-2">
                         <div className="flex items-center gap-2">
-                            <AlertTriangle className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
+                            <AlertTriangle className="h-3.5 w-3.5 text-warning" />
                             <span className="text-[10px] font-bold text-foreground uppercase tracking-wider">
                                 Pain points · ranked
                             </span>
@@ -152,7 +152,7 @@ export default function MBIModuleHeader({ module, outcome, tint = 'ai' }: MBIMod
                 </section>
 
                 {/* Phase 1-4 (3/5) */}
-                <section className="lg:col-span-3 bg-card dark:bg-zinc-800 border border-border rounded-2xl p-4">
+                <section className="lg:col-span-3 bg-card border border-border rounded-2xl p-4">
                     <header className="flex items-center justify-between gap-2 mb-3">
                         <div className="flex items-center gap-2">
                             <Layers className="h-3.5 w-3.5 text-foreground" />

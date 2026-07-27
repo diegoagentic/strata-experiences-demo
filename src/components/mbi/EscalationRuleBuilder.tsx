@@ -58,10 +58,10 @@ const TIERS: TierSpec[] = [
         trigger: '> 14 days · no response',
         action: 'Escalated email + CC salesperson',
         icon: <Mail className="h-4 w-4" />,
-        accent: 'text-amber-700 dark:text-amber-400',
-        border: 'border-amber-300 dark:border-amber-500/30',
-        bg: 'bg-amber-50 dark:bg-amber-500/5',
-        pillBg: 'bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400',
+        accent: 'text-warning',
+        border: 'border-warning/30',
+        bg: 'bg-warning/10',
+        pillBg: 'bg-warning/15 text-warning',
         assignee: 'Salesperson notified',
         sla: '48h response target',
         distribution: '20-25% of invoices',
@@ -72,10 +72,10 @@ const TIERS: TierSpec[] = [
         trigger: '> 30 days · no commitment',
         action: 'Teams alert to sales + owner + controller',
         icon: <AlertTriangle className="h-4 w-4" />,
-        accent: 'text-red-700 dark:text-red-400',
-        border: 'border-red-300 dark:border-red-500/30',
-        bg: 'bg-red-50 dark:bg-red-500/10',
-        pillBg: 'bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-400',
+        accent: 'text-destructive',
+        border: 'border-destructive/30',
+        bg: 'bg-destructive/10',
+        pillBg: 'bg-destructive/15 text-destructive',
         assignee: 'Salesperson owns',
         sla: '72h commitment required',
         distribution: '10-15% of invoices',
@@ -84,10 +84,10 @@ const TIERS: TierSpec[] = [
 
 export default function EscalationRuleBuilder() {
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             {/* Header */}
             <div className="px-4 py-3 border-b border-border flex items-center gap-2">
-                <div className="h-7 w-7 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center">
+                <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                     <Shield className="h-3.5 w-3.5" />
                 </div>
                 <div>

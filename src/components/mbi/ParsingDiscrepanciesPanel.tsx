@@ -150,7 +150,7 @@ export default function ParsingDiscrepanciesPanel({
             {/* Compact summary strip */}
             <div
                 className={`
-                    bg-card dark:bg-zinc-800 border rounded-2xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-3
+                    bg-card border rounded-2xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-3
                     ${pending > 0 ? 'border-warning/30' : 'border-success/30'}
                 `}
             >

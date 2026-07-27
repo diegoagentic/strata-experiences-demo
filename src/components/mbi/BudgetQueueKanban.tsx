@@ -60,7 +60,7 @@ const COLUMNS: ColumnSpec[] = [
         id: 'review',
         label: 'Human Review',
         icon: <Eye className="h-3.5 w-3.5" />,
-        accentClass: 'text-zinc-900 dark:text-primary',
+        accentClass: 'text-primary',
         borderClass: 'border-primary/30',
     },
     {
@@ -158,7 +158,7 @@ function BudgetCard({ budget, onClick }: { budget: BudgetRequest; onClick?: () =
 
             {/* Hero flag */}
             {isHero && (
-                <div className="mt-2 pt-2 border-t border-primary/20 flex items-center gap-1 text-[10px] font-bold text-zinc-900 dark:text-primary uppercase tracking-wider">
+                <div className="mt-2 pt-2 border-t border-primary/20 flex items-center gap-1 text-[10px] font-bold text-primary uppercase tracking-wider">
                     <span>⭐</span>
                     <span>Hero · $18K catch</span>
                 </div>

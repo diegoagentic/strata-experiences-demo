@@ -208,7 +208,7 @@ function EscalateAllButton() {
     const [done, setDone] = useState(false)
 
     if (done) return (
-        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-red-600 dark:text-red-400 px-3 py-2 rounded-lg border border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10">
+        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-destructive px-3 py-2 rounded-lg border border-destructive/30 bg-destructive/10">
             <Flag className="h-3.5 w-3.5" />
             Escalated
         </span>
@@ -218,7 +218,7 @@ function EscalateAllButton() {
         <>
             <button
                 onClick={() => setOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-red-600 dark:text-red-400 bg-background dark:bg-zinc-800 border border-red-200 dark:border-red-500/30 rounded-lg hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-destructive bg-background dark:bg-zinc-800 border border-destructive/30 rounded-lg hover:bg-destructive/10 transition-colors"
             >
                 <Flag className="h-3.5 w-3.5" />
                 Escalate
@@ -252,7 +252,7 @@ function OverviewStub() {
     return (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             <StatCard icon={<Receipt className="h-4 w-4" />} value="12" label="Bills processed · live queue" accent="text-foreground" />
-            <StatCard icon={<GitCompare className="h-4 w-4" />} value="2" label="Non-EDI exceptions" accent="text-amber-600 dark:text-amber-400" />
+            <StatCard icon={<GitCompare className="h-4 w-4" />} value="2" label="Non-EDI exceptions" accent="text-warning" />
             <StatCard icon={<DollarSign className="h-4 w-4" />} value="$240K" label="AR live · forecast refreshed" accent="text-success" />
         </div>
     )
@@ -260,7 +260,7 @@ function OverviewStub() {
 
 function StatCard({ icon, value, label, accent }: { icon: React.ReactNode; value: string; label: string; accent: string }) {
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl p-4">
+        <div className="bg-card border border-border rounded-2xl p-4">
             <div className={`flex items-center gap-2 ${accent}`}>
                 {icon}
                 <span className="text-2xl font-bold leading-none">{value}</span>

@@ -48,7 +48,7 @@ function POAutoRecheckDemo({ onAutoResolved }: { onAutoResolved: (id: string) =>
     }
 
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-2.5 border-b border-border bg-muted/20 flex items-center gap-2">
                 <RefreshCw className="h-4 w-4 text-ai" />
                 <div className="flex-1 min-w-0">
@@ -59,7 +59,7 @@ function POAutoRecheckDemo({ onAutoResolved }: { onAutoResolved: (id: string) =>
             <div className="px-4 py-3 flex items-center gap-3 flex-wrap">
                 <div className="flex-1 min-w-0">
                     <div className="text-[11px] font-bold text-foreground">Apex Workspace · INV-0484 · $12.9K</div>
-                    <div className="text-[10px] text-red-600 dark:text-red-400 mt-0.5">
+                    <div className="text-[10px] text-destructive mt-0.5">
                         {stage === 'done'
                             ? 'Quantity resolved: PO updated 5 → 6 in CORE · match confirmed'
                             : 'Quantity mismatch: PO 6, bill 5 · short-shipped Jarvis desks'}
@@ -135,7 +135,7 @@ export default function AccountingMorningQueue() {
                         Exceptions are <strong className="text-foreground">flagged for review</strong> and assigned to the appropriate PO agent.
                     </div>
                     <div className="flex items-center gap-4 mt-2 flex-wrap">
-                        <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-amber-700 dark:text-amber-400">
+                        <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-warning">
                             <AlertTriangle className="h-3 w-3" />
                             {pending} pending · your eyes
                         </span>

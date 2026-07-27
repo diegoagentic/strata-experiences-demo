@@ -142,7 +142,7 @@ function OverviewStub() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <StatCard value="3.5 / 29" label="PCs / staff (bottleneck)" accent="text-foreground" />
             <StatCard value="4 → 1+1" label="Audit loops (collapsed)" accent="text-success" />
-            <StatCard value="< 5 min" label="Quote validation turnaround" accent="text-zinc-900 dark:text-primary" />
+            <StatCard value="< 5 min" label="Quote validation turnaround" accent="text-primary" />
             <StatCard value="2h → 12m" label="Per proposal PC effort" accent="text-success" />
         </div>
     )
@@ -150,7 +150,7 @@ function OverviewStub() {
 
 function StatCard({ value, label, accent }: { value: string; label: string; accent: string }) {
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl p-4">
+        <div className="bg-card border border-border rounded-2xl p-4">
             <div className={`text-2xl font-bold tabular-nums ${accent}`}>{value}</div>
             <div className="text-[11px] text-muted-foreground mt-1">{label}</div>
         </div>

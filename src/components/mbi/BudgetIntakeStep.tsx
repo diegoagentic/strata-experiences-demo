@@ -176,7 +176,7 @@ function PathCard({
             `}
         >
             <div className="flex items-start gap-3 mb-3">
-                <div className={`h-12 w-12 rounded-xl flex items-center justify-center shrink-0 ${emphasis ? 'bg-primary/10 text-zinc-900 dark:text-primary' : optional ? 'bg-warning/10 text-warning' : 'bg-muted text-foreground'}`}>
+                <div className={`h-12 w-12 rounded-xl flex items-center justify-center shrink-0 ${emphasis ? 'bg-primary/10 text-primary' : optional ? 'bg-warning/10 text-warning' : 'bg-muted text-foreground'}`}>
                     {icon}
                 </div>
                 <div className="flex-1">
@@ -385,7 +385,7 @@ function DesignAssistedIntake({
             {/* Header with path badge */}
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <div className="h-8 w-8 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center">
+                    <div className="h-8 w-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                         <FileCode2 className="h-4 w-4" />
                     </div>
                     <div>
@@ -601,11 +601,11 @@ function RejectedCard({
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <div className="bg-card dark:bg-zinc-900/40 border border-border rounded-lg p-3">
+                <div className="bg-card/40 border border-border rounded-lg p-3">
                     <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1">Category</div>
                     <div className="text-xs font-semibold text-foreground">{categoryLabel}</div>
                 </div>
-                <div className="bg-card dark:bg-zinc-900/40 border border-border rounded-lg p-3">
+                <div className="bg-card/40 border border-border rounded-lg p-3">
                     <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1">Notified</div>
                     {rejection.notifiedAuthors.length > 0 ? (
                         <div className="text-xs text-foreground">
@@ -619,7 +619,7 @@ function RejectedCard({
             </div>
 
             {rejection.reason && (
-                <div className="bg-card dark:bg-zinc-900/40 border border-border rounded-lg p-3">
+                <div className="bg-card/40 border border-border rounded-lg p-3">
                     <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1">Reason</div>
                     <div className="text-xs text-foreground whitespace-pre-wrap">{rejection.reason}</div>
                 </div>
@@ -711,7 +711,7 @@ function RejectDocumentsModal({
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <DialogPanel className="w-full max-w-xl bg-card dark:bg-zinc-900 border border-border rounded-2xl shadow-2xl">
+                            <DialogPanel className="w-full max-w-xl bg-card border border-border rounded-2xl shadow-2xl">
                                 <div className="px-5 py-4 border-b border-border flex items-start justify-between gap-3">
                                     <div className="flex items-start gap-3">
                                         <div className="h-10 w-10 rounded-xl bg-destructive/15 text-destructive flex items-center justify-center shrink-0">
@@ -873,7 +873,7 @@ function FileRow({
                 <div
                     className={`
                         h-10 w-10 rounded-lg flex items-center justify-center shrink-0
-                        ${isReady ? 'bg-primary/10 text-zinc-900 dark:text-primary' : 'bg-ai/15 text-ai'}
+                        ${isReady ? 'bg-primary/10 text-primary' : 'bg-ai/15 text-ai'}
                     `}
                 >
                     {file.icon}
@@ -1062,7 +1062,7 @@ function QuickBudgetIntake({
                                 onClick={() => update('vertical', v.id)}
                                 className={`
                                     flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg border text-xs font-semibold transition-colors
-                                    ${active ? 'bg-primary/10 text-zinc-900 dark:text-primary border-primary' : 'bg-background text-muted-foreground border-border hover:text-foreground'}
+                                    ${active ? 'bg-primary/10 text-primary border-primary' : 'bg-background text-muted-foreground border-border hover:text-foreground'}
                                 `}
                             >
                                 {v.icon}

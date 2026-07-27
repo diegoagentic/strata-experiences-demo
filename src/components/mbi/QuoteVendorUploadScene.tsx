@@ -68,7 +68,7 @@ export default function QuoteVendorUploadScene() {
                             ? 'border-primary/60 bg-primary/5 dark:bg-primary/10 scale-[1.01]'
                             : phase === 'uploading'
                                 ? 'border-ai/40 bg-ai/5 dark:bg-ai/10'
-                                : 'border-border bg-card dark:bg-zinc-800 hover:border-primary/40 hover:bg-primary/5'
+                                : 'border-border bg-card hover:border-primary/40 hover:bg-primary/5'
                 }`}
             >
                 {phase === 'idle' && (
@@ -140,14 +140,14 @@ export default function QuoteVendorUploadScene() {
                 <>
                     <div className={`rounded-2xl border overflow-hidden transition-colors ${
                         flaggedCount > 0
-                            ? 'border-amber-300 dark:border-amber-500/40 bg-amber-50/40 dark:bg-amber-500/5'
+                            ? 'border-warning/40 bg-warning/10'
                             : 'border-success/30 bg-success/5 dark:bg-success/10'
                     }`}>
                         {/* Header */}
                         <div className="px-4 py-3 border-b border-inherit flex items-center gap-3">
                             <div className={`h-8 w-8 rounded-lg flex items-center justify-center shrink-0 ${
                                 flaggedCount > 0
-                                    ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400'
+                                    ? 'bg-warning/15 text-warning'
                                     : 'bg-success/15 text-success'
                             }`}>
                                 <Search className="h-4 w-4" />
@@ -156,7 +156,7 @@ export default function QuoteVendorUploadScene() {
                                 <div className="flex items-center gap-2 flex-wrap">
                                     <span className="text-xs font-bold text-foreground">Non-catalog validator</span>
                                     {flaggedCount > 0 ? (
-                                        <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-400 uppercase tracking-wider">
+                                        <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-warning/15 text-warning uppercase tracking-wider">
                                             <AlertTriangle className="h-2.5 w-2.5" />
                                             1 item needs resolution
                                         </span>
@@ -193,7 +193,7 @@ export default function QuoteVendorUploadScene() {
                                         <span className="text-muted-foreground/40">→</span>
                                         <span className="text-[11px] text-muted-foreground">Price book <strong className="text-foreground">$445/u</strong></span>
                                         {flaggedCount > 0 && (
-                                            <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-400">
+                                            <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded bg-warning/15 text-warning">
                                                 <AlertTriangle className="h-2.5 w-2.5" />
                                                 −$65/u · vendor quote needed
                                             </span>

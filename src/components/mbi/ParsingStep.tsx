@@ -88,7 +88,7 @@ export default function ParsingStep(_props: ParsingStepProps) {
             </div>
 
             {/* Hero — pre-flight checks running inline */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <div className="px-4 py-3 border-b border-border bg-muted/20 flex items-center gap-2">
                     {preflightDone
                         ? <CheckCircle2 className="h-4 w-4 text-success shrink-0" />
@@ -159,7 +159,7 @@ export default function ParsingStep(_props: ParsingStepProps) {
             {/* Next-step cue — once pre-flight is done, invite to scenarios */}
             {preflightDone && (
                 <div className="flex items-center gap-3 text-xs bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-3 animate-in fade-in duration-300">
-                    <Sparkles className="h-4 w-4 text-zinc-900 dark:text-primary shrink-0" />
+                    <Sparkles className="h-4 w-4 text-primary shrink-0" />
                     <span className="flex-1 text-foreground">
                         Structured data ready · <strong>3 scenarios</strong> generated. Triage discrepancies above, then continue to <strong>Scenarios</strong>.
                     </span>

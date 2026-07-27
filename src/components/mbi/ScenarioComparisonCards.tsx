@@ -35,11 +35,11 @@ const TIER_META: Record<ScenarioTier, { tone: StatusTone; accent: string }> = {
     },
     better: {
         tone: 'primary',
-        accent: 'text-zinc-900 dark:text-primary',
+        accent: 'text-primary',
     },
     best: {
         tone: 'warning',
-        accent: 'text-amber-600 dark:text-amber-400',
+        accent: 'text-warning',
     },
 }
 
@@ -74,7 +74,7 @@ export default function ScenarioComparisonCards({
                         onClick={() => onSelect(s.tier)}
                         style={{ animationDelay: `${i * 120}ms`, animationFillMode: 'backwards' }}
                         className={`
-                            relative text-left bg-card dark:bg-zinc-800 border rounded-2xl p-5 space-y-3 transition-all
+                            relative text-left bg-card border rounded-2xl p-5 space-y-3 transition-all
                             animate-in fade-in slide-in-from-bottom-4 duration-500
                             ${isSelected
                                 ? 'border-primary ring-4 ring-primary/15 shadow-lg dark:bg-zinc-900/40'
@@ -86,7 +86,7 @@ export default function ScenarioComparisonCards({
                         <div className="flex items-center justify-between">
                             <StatusBadge label={s.label} tone={TIER_META[s.tier].tone} size="sm" />
                             {s.tier === 'better' && (
-                                <span className="text-[10px] font-bold text-zinc-900 dark:text-primary uppercase flex items-center gap-1">
+                                <span className="text-[10px] font-bold text-primary uppercase flex items-center gap-1">
                                     ⭐ Recommended
                                 </span>
                             )}
@@ -103,7 +103,7 @@ export default function ScenarioComparisonCards({
                                 </span>
                             </div>
                             {s.tier !== 'better' && (
-                                <div className={`flex items-center gap-1 text-xs font-semibold mt-0.5 ${delta < 0 ? 'text-success' : 'text-amber-600 dark:text-amber-400'}`}>
+                                <div className={`flex items-center gap-1 text-xs font-semibold mt-0.5 ${delta < 0 ? 'text-success' : 'text-warning'}`}>
                                     {delta < 0 ? <TrendingDown className="h-3 w-3" /> : <TrendingUp className="h-3 w-3" />}
                                     <span>{delta > 0 ? '+' : ''}${delta.toLocaleString()} vs Mid-Range</span>
                                 </div>
@@ -132,7 +132,7 @@ export default function ScenarioComparisonCards({
                                             <ArrowRight className="h-3 w-3 shrink-0" />
                                             <span className="text-foreground truncate">{swap.to}</span>
                                         </div>
-                                        <div className={`text-[10px] font-bold tabular-nums ${swap.delta < 0 ? 'text-success' : 'text-amber-600 dark:text-amber-400'}`}>
+                                        <div className={`text-[10px] font-bold tabular-nums ${swap.delta < 0 ? 'text-success' : 'text-warning'}`}>
                                             {swap.delta > 0 ? '+' : ''}${swap.delta.toLocaleString()}
                                         </div>
                                     </div>

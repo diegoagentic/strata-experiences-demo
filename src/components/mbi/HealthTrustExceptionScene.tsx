@@ -290,7 +290,7 @@ export default function HealthTrustExceptionScene() {
                     </div>
                 </div>
                 <div className="bg-card border border-border rounded-xl p-3 flex items-start gap-2.5">
-                    <div className="h-8 w-8 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center shrink-0">
+                    <div className="h-8 w-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
                         <FileText className="h-4 w-4" />
                     </div>
                     <div className="text-xs min-w-0">

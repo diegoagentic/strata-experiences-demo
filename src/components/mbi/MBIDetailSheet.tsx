@@ -81,12 +81,12 @@ export default function MBIDetailSheet({
                             leaveTo="translate-x-full"
                         >
                             <DialogPanel
-                                className={`w-full ${WIDTH_MAP[width]} bg-card dark:bg-zinc-900 border-l border-border shadow-2xl flex flex-col h-screen`}
+                                className={`w-full ${WIDTH_MAP[width]} bg-card border-l border-border shadow-2xl flex flex-col h-screen`}
                             >
                                 <div className="flex items-start justify-between gap-3 px-5 py-4 border-b border-border bg-muted/30 dark:bg-zinc-800 shrink-0">
                                     <div className="flex items-start gap-3 min-w-0">
                                         {icon && (
-                                            <div className="h-9 w-9 rounded-xl bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center shrink-0">
+                                            <div className="h-9 w-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                                                 {icon}
                                             </div>
                                         )}

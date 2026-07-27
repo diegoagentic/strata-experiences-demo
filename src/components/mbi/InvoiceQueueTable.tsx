@@ -37,8 +37,8 @@ const COLUMN_META: Record<InvoiceStatus, { label: string; sub: string; tone: str
     'pending': {
         label: 'Pending Review',
         sub: 'Needs your eyes',
-        tone: 'border-amber-500/40 bg-amber-50/40 dark:bg-amber-500/5',
-        chip: 'bg-amber-500/15 text-amber-700 dark:text-amber-400',
+        tone: 'border-warning/40 bg-warning/10',
+        chip: 'bg-warning/15 text-warning',
     },
     'in-progress': {
         label: 'In Progress',
@@ -116,11 +116,11 @@ function InvoiceCard({ invoice, selected, onClick }: { invoice: Invoice; selecte
         <button
             onClick={onClick}
             className={`
-                w-full text-left bg-card dark:bg-zinc-800 border rounded-lg p-2 transition-all hover:shadow-sm
+                w-full text-left bg-card border rounded-lg p-2 transition-all hover:shadow-sm
                 ${selected
                     ? 'border-primary ring-1 ring-primary/40'
                     : invoice.hasException
-                        ? 'border-red-500/40 hover:border-red-500/60'
+                        ? 'border-destructive/40 hover:border-destructive/60'
                         : 'border-border hover:border-zinc-300 dark:hover:border-zinc-600'
                 }
             `}
@@ -150,7 +150,7 @@ function InvoiceCard({ invoice, selected, onClick }: { invoice: Invoice; selecte
                 {invoice.hasException && (
                     <CardFlag tone="red" icon={<AlertTriangle className="h-2 w-2" />} label="Fix" />
                 )}
-                <span className={`ml-auto text-[9px] font-bold tabular-nums ${invoice.ocrConfidence >= 95 ? 'text-success' : invoice.ocrConfidence >= 90 ? 'text-zinc-900 dark:text-primary' : 'text-amber-700 dark:text-amber-400'}`}>
+                <span className={`ml-auto text-[9px] font-bold tabular-nums ${invoice.ocrConfidence >= 95 ? 'text-success' : invoice.ocrConfidence >= 90 ? 'text-primary' : 'text-warning'}`}>
                     {invoice.ocrConfidence}%
                 </span>
             </div>
@@ -158,8 +158,8 @@ function InvoiceCard({ invoice, selected, onClick }: { invoice: Invoice; selecte
             {due && (
                 <div className={`flex items-center gap-1 mt-1.5 px-1.5 py-1 rounded text-[9px] font-bold ${
                     due.tone === 'urgent'
-                        ? 'bg-red-500/10 text-red-600 dark:text-red-400'
-                        : 'bg-amber-500/10 text-amber-700 dark:text-amber-400'
+                        ? 'bg-destructive/10 text-destructive'
+                        : 'bg-warning/10 text-warning'
                 }`}>
                     <Clock className="h-2.5 w-2.5 shrink-0" />
                     <span>Due {due.label} · {due.days < 0 ? 'overdue' : `${due.days}d`}</span>
@@ -172,7 +172,7 @@ function InvoiceCard({ invoice, selected, onClick }: { invoice: Invoice; selecte
                 </div>
             )}
             {invoice.status === 'pending' && invoice.exceptionReason && (
-                <div className="text-[9.5px] text-red-600 dark:text-red-400 mt-1 leading-tight line-clamp-2">
+                <div className="text-[9.5px] text-destructive mt-1 leading-tight line-clamp-2">
                     {invoice.exceptionReason}
                 </div>
             )}
@@ -182,9 +182,9 @@ function InvoiceCard({ invoice, selected, onClick }: { invoice: Invoice; selecte
 
 function CardFlag({ tone, icon, label }: { tone: 'blue' | 'amber' | 'red'; icon: React.ReactNode; label: string }) {
     const cls =
-        tone === 'blue' ? 'bg-blue-500/15 text-blue-700 dark:text-blue-400' :
-        tone === 'amber' ? 'bg-amber-500/15 text-amber-700 dark:text-amber-400' :
-        'bg-red-500/15 text-red-700 dark:text-red-400'
+        tone === 'blue' ? 'bg-info/15 text-info' :
+        tone === 'amber' ? 'bg-warning/15 text-warning' :
+        'bg-destructive/15 text-destructive'
     return (
         <span className={`text-[8.5px] font-bold px-1 py-0.5 rounded inline-flex items-center gap-0.5 ${cls}`}>
             {icon}

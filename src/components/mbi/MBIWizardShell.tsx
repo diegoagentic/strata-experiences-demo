@@ -73,7 +73,7 @@ export default function MBIWizardShell({
     const visibleTotal = visibleSteps.length
 
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             {/* Header: caption + persona + stepper chips */}
             <div className="px-5 pt-4 pb-3 border-b border-border bg-muted/10 dark:bg-zinc-900/40 space-y-3">
                 {activeSpec && (
@@ -102,7 +102,7 @@ export default function MBIWizardShell({
                                     onClick={clickable ? () => onStepClick!(entry.originalIndex) : undefined}
                                     className={`
                                         flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold border transition-all
-                                        ${isActive ? 'bg-primary/10 text-zinc-900 dark:text-primary border-primary/40 shadow-sm' : ''}
+                                        ${isActive ? 'bg-primary/10 text-primary border-primary/40 shadow-sm' : ''}
                                         ${isCompleted ? 'text-success border-success/30 bg-success/5' : ''}
                                         ${!isActive && !isCompleted ? 'text-muted-foreground border-border' : ''}
                                         ${clickable ? 'hover:border-primary/40 hover:text-foreground cursor-pointer' : ''}
@@ -168,7 +168,7 @@ export default function MBIWizardShell({
                         </div>
                     </div>
                     {!canAdvance && (
-                        <div className="text-[11px] text-amber-600 dark:text-amber-400 text-center italic">
+                        <div className="text-[11px] text-warning text-center italic">
                             Complete this step's action to continue.
                         </div>
                     )}

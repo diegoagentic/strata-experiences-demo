@@ -44,7 +44,7 @@ export default function SpecCheckReport({ reportId = 'SC-002', decisions }: Spec
     const allResolved = decisions !== undefined && criticalCount === 0 && warningCount === 0
 
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-border flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     <div className="h-7 w-7 rounded-lg bg-ai/10 text-ai flex items-center justify-center">
@@ -67,8 +67,8 @@ export default function SpecCheckReport({ reportId = 'SC-002', decisions }: Spec
             {/* Summary counts */}
             <div className="px-4 py-3 border-b border-border grid grid-cols-3 gap-2">
                 <SummaryCell label="Scanned" value={report.lineItemsScanned} className="text-foreground" />
-                <SummaryCell label="Critical" value={criticalCount} className="text-red-600 dark:text-red-400" />
-                <SummaryCell label="Warnings" value={warningCount} className="text-amber-600 dark:text-amber-400" />
+                <SummaryCell label="Critical" value={criticalCount} className="text-destructive" />
+                <SummaryCell label="Warnings" value={warningCount} className="text-warning" />
             </div>
 
             {/* Flags list */}
@@ -93,14 +93,14 @@ export default function SpecCheckReport({ reportId = 'SC-002', decisions }: Spec
                                 bg: 'bg-success/5 dark:bg-success/10',
                             }
                             if (flag.severity === 'critical') return {
-                                icon: <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400" />,
-                                pill: 'bg-red-500/10 text-red-700 dark:text-red-400',
-                                bg: 'bg-red-50/40 dark:bg-red-500/5',
+                                icon: <AlertCircle className="h-4 w-4 text-destructive" />,
+                                pill: 'bg-destructive/10 text-destructive',
+                                bg: 'bg-destructive/10',
                             }
                             if (flag.severity === 'warning') return {
-                                icon: <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400" />,
-                                pill: 'bg-amber-500/10 text-amber-700 dark:text-amber-400',
-                                bg: 'bg-amber-50/30 dark:bg-amber-500/5',
+                                icon: <AlertTriangle className="h-4 w-4 text-warning" />,
+                                pill: 'bg-warning/10 text-warning',
+                                bg: 'bg-warning/10',
                             }
                             return {
                                 icon: <Info className="h-4 w-4 text-info" />,

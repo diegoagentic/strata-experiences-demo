@@ -155,7 +155,7 @@ export default function AIEmailDraftsPanel() {
 
     return (
         <>
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <div className="px-4 py-3 border-b border-border flex items-center gap-2">
                     <div className="h-7 w-7 rounded-lg bg-ai/10 text-ai flex items-center justify-center">
                         <Sparkles className="h-3.5 w-3.5" />
@@ -468,7 +468,7 @@ function PolishButton({ label, hint, active, onClick }: { label: string; hint: s
             className={`text-left px-3 py-2 rounded-lg border transition-colors ${
                 active
                     ? 'bg-ai/15 border-ai/60 text-foreground'
-                    : 'bg-card dark:bg-zinc-900 border-border hover:border-ai/40 hover:bg-ai/5'
+                    : 'bg-card border-border hover:border-ai/40 hover:bg-ai/5'
             }`}
         >
             <div className="text-xs font-bold text-foreground">{label}</div>

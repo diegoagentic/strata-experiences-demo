@@ -35,15 +35,15 @@ export default function ARAgingWrapScene() {
                 <div className="text-xs flex-1">
                     <span className="font-bold text-foreground">6 standard follow-ups auto-sent today</span>
                     <span className="text-muted-foreground"> · per payment terms · </span>
-                    <span className="font-semibold text-amber-700 dark:text-amber-400">2 held back by Strata</span>
+                    <span className="font-semibold text-warning">2 held back by Strata</span>
                 </div>
             </div>
 
             {/* Collections hold context */}
-            <div className="bg-amber-50/60 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/30 rounded-xl overflow-hidden">
-                <div className="px-3 py-2 border-b border-amber-200 dark:border-amber-500/20 flex items-center gap-2">
-                    <PauseCircle className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
-                    <span className="text-[10px] font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">
+            <div className="bg-warning/10 border border-warning/30 rounded-xl overflow-hidden">
+                <div className="px-3 py-2 border-b border-warning/20 flex items-center gap-2">
+                    <PauseCircle className="h-3.5 w-3.5 text-warning shrink-0" />
+                    <span className="text-[10px] font-bold text-warning uppercase tracking-wider">
                         {heldAccounts.length} accounts excluded from auto-collections
                     </span>
                 </div>
@@ -58,13 +58,13 @@ export default function ARAgingWrapScene() {
                                         : `· ${r.punchListOpen} punch list items open`}
                                 </span>
                             </div>
-                            <span className="shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 uppercase tracking-wider">
+                            <span className="shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded bg-warning/15 text-warning uppercase tracking-wider">
                                 {r.holdReason === 'installation-pending' ? 'Install pending' : 'Punch list'}
                             </span>
                         </div>
                     ))}
                 </div>
-                <div className="px-3 py-2 bg-amber-50/40 dark:bg-amber-500/5 text-[10px] text-amber-700/80 dark:text-amber-400/80">
+                <div className="px-3 py-2 bg-warning/10 text-[10px] text-warning/80">
                     Strata holds these from collections until the project is complete.
                 </div>
             </div>
@@ -92,7 +92,7 @@ export default function ARAgingWrapScene() {
 
             {/* Close morning CTA · gates FlowHandoff */}
             {!morningClosed ? (
-                <div className="bg-card dark:bg-zinc-800 border border-primary/30 rounded-2xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div className="bg-card border border-primary/30 rounded-2xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
                     <div className="min-w-0">
                         <div className="text-sm font-bold text-foreground">Ready to wrap up the queue?</div>
                         <div className="text-[11px] text-muted-foreground mt-0.5">

@@ -23,7 +23,7 @@ export default function OrderExecutionPanel() {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* EDI Transmission */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <div className="px-4 py-3 border-b border-border flex items-center gap-2">
                     <div className="h-7 w-7 rounded-lg bg-info/10 text-info flex items-center justify-center">
                         <Zap className="h-3.5 w-3.5" />
@@ -52,9 +52,9 @@ export default function OrderExecutionPanel() {
             </div>
 
             {/* Non-EDI Email PO */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <div className="px-4 py-3 border-b border-border flex items-center gap-2">
-                    <div className="h-7 w-7 rounded-lg bg-amber-500/10 text-amber-700 dark:text-amber-400 flex items-center justify-center">
+                    <div className="h-7 w-7 rounded-lg bg-warning/10 text-warning flex items-center justify-center">
                         <Mail className="h-3.5 w-3.5" />
                     </div>
                     <div>
@@ -68,7 +68,7 @@ export default function OrderExecutionPanel() {
                     {nonEDIMfrs.map(m => (
                         <div key={m.id} className="px-4 py-2 flex items-center justify-between text-xs">
                             <div className="flex items-center gap-2">
-                                <Mail className="h-3 w-3 text-amber-600 dark:text-amber-400" />
+                                <Mail className="h-3 w-3 text-warning" />
                                 <span className="font-semibold text-foreground">{m.name}</span>
                             </div>
                             <button className="text-[10px] font-bold text-primary-foreground bg-primary px-2 py-0.5 rounded hover:opacity-90 transition-opacity inline-flex items-center gap-1">

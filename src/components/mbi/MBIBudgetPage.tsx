@@ -277,7 +277,7 @@ function QueueView() {
                     icon={<Clock className="h-4 w-4" />}
                     value={`${inFlightCount}`}
                     label="In flight"
-                    accent="text-zinc-900 dark:text-primary"
+                    accent="text-primary"
                 />
                 <StatCard
                     icon={<CheckCircle2 className="h-4 w-4" />}
@@ -320,7 +320,7 @@ function QueueView() {
 
 function StatCard({ icon, value, label, accent }: { icon: React.ReactNode; value: string; label: string; accent: string }) {
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl p-4">
+        <div className="bg-card border border-border rounded-2xl p-4">
             <div className={`flex items-center gap-2 ${accent}`}>
                 {icon}
                 <span className="text-2xl font-bold leading-none">{value}</span>

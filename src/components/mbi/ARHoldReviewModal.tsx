@@ -41,7 +41,7 @@ export default function ARHoldReviewModal({ record, onClose, onRelease, onCommen
                         leaveFrom="opacity-100 scale-100"
                         leaveTo="opacity-0 scale-95"
                     >
-                        <DialogPanel className="w-full max-w-lg bg-card dark:bg-zinc-900 border border-border rounded-2xl shadow-2xl overflow-hidden">
+                        <DialogPanel className="w-full max-w-lg bg-card border border-border rounded-2xl shadow-2xl overflow-hidden">
                             {record && <ModalContent record={record} onClose={onClose} onRelease={onRelease} onComment={onComment} />}
                         </DialogPanel>
                     </TransitionChild>
@@ -69,7 +69,7 @@ function ModalContent({ record, onClose, onRelease, onComment }: {
             {/* Header */}
             <div className="flex items-center justify-between gap-3 px-5 py-4 border-b border-border bg-muted/40 dark:bg-zinc-800">
                 <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="h-8 w-8 rounded-lg bg-amber-100 dark:bg-amber-500/20 flex items-center justify-center shrink-0">
+                    <div className="h-8 w-8 rounded-lg bg-warning/15 flex items-center justify-center shrink-0">
                         <PauseCircle className="h-4 w-4 text-warning" />
                     </div>
                     <div className="min-w-0">
@@ -119,7 +119,7 @@ function ModalContent({ record, onClose, onRelease, onComment }: {
                     <div className="px-4 py-3 space-y-1">
                         {record.holdReason === 'installation-pending' ? (
                             <>
-                                <div className="text-sm font-semibold text-amber-800 dark:text-amber-300">
+                                <div className="text-sm font-semibold text-warning">
                                     Scheduled installation: {installDate}
                                 </div>
                                 <div className="text-[11px] text-warning/80">
@@ -128,7 +128,7 @@ function ModalContent({ record, onClose, onRelease, onComment }: {
                             </>
                         ) : (
                             <>
-                                <div className="text-sm font-semibold text-amber-800 dark:text-amber-300">
+                                <div className="text-sm font-semibold text-warning">
                                     {record.punchListOpen} punch list item{record.punchListOpen !== 1 ? 's' : ''} still open
                                 </div>
                                 <div className="text-[11px] text-warning/80">
@@ -155,7 +155,7 @@ function ModalContent({ record, onClose, onRelease, onComment }: {
                             </button>
                             <button
                                 onClick={() => setMode('comment')}
-                                className="w-full flex items-center gap-2.5 px-4 py-3 rounded-xl text-sm font-bold bg-card dark:bg-zinc-800 text-foreground hover:bg-muted border border-border transition-colors text-left"
+                                className="w-full flex items-center gap-2.5 px-4 py-3 rounded-xl text-sm font-bold bg-card text-foreground hover:bg-muted border border-border transition-colors text-left"
                             >
                                 <MessageSquare className="h-4 w-4 shrink-0" />
                                 <span>Keep on hold · add a comment</span>
@@ -187,7 +187,7 @@ function ModalContent({ record, onClose, onRelease, onComment }: {
                                 </button>
                                 <button
                                     onClick={() => { setMode('choose'); setComment('') }}
-                                    className="px-3 py-2.5 rounded-xl text-sm text-muted-foreground hover:text-foreground bg-card dark:bg-zinc-800 border border-border transition-colors"
+                                    className="px-3 py-2.5 rounded-xl text-sm text-muted-foreground hover:text-foreground bg-card border border-border transition-colors"
                                 >
                                     Back
                                 </button>

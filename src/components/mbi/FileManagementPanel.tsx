@@ -36,9 +36,9 @@ export default function FileManagementPanel() {
 // ─── 1. ProjectNumberGenerator ───────────────────────────────────────────────
 function ProjectNumberGenerator() {
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-border flex items-center gap-2">
-                <div className="h-7 w-7 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center">
+                <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                     <Hash className="h-3.5 w-3.5" />
                 </div>
                 <div>
@@ -62,7 +62,7 @@ function ProjectNumberGenerator() {
                             </div>
                             <div className="text-right">
                                 <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Next</div>
-                                <div className="text-sm font-bold text-zinc-900 dark:text-primary tabular-nums font-mono">{s.next}</div>
+                                <div className="text-sm font-bold text-primary tabular-nums font-mono">{s.next}</div>
                             </div>
                         </div>
                     ))}
@@ -79,7 +79,7 @@ function ProjectNumberGenerator() {
 // ─── 2. FolderTemplateTree ───────────────────────────────────────────────────
 function FolderTemplateTree() {
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-border flex items-center gap-2">
                 <div className="h-7 w-7 rounded-lg bg-info/10 text-info flex items-center justify-center">
                     <FolderTree className="h-3.5 w-3.5" />
@@ -131,7 +131,7 @@ function VersionHistoryTimeline() {
         { v: 'v3', author: 'AP Lead', timestamp: 'Apr 14 · 11:30 AM', note: 'Initial floor plan import' },
     ]
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-border flex items-center gap-2">
                 <div className="h-7 w-7 rounded-lg bg-success/10 text-success flex items-center justify-center">
                     <History className="h-3.5 w-3.5" />
@@ -174,7 +174,7 @@ function VersionHistoryTimeline() {
 // ─── 4. TeamsBotMessagePreview ───────────────────────────────────────────────
 function TeamsBotMessagePreview() {
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-border flex items-center gap-2">
                 <div className="h-7 w-7 rounded-lg bg-ai/10 text-ai flex items-center justify-center">
                     <Bot className="h-3.5 w-3.5" />
@@ -238,7 +238,7 @@ function Cell({ label, value, warn }: { label: string; value: string; warn?: boo
     return (
         <div>
             <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider">{label}</div>
-            <div className={`text-sm font-bold tabular-nums ${warn ? 'text-amber-600 dark:text-amber-400' : 'text-foreground'}`}>{value}</div>
+            <div className={`text-sm font-bold tabular-nums ${warn ? 'text-warning' : 'text-foreground'}`}>{value}</div>
         </div>
     )
 }

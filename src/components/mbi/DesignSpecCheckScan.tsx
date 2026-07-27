@@ -144,7 +144,7 @@ export default function DesignSpecCheckScan() {
                     ? 'bg-success/10 dark:bg-success/15 border-success/40'
                     : scanning
                         ? 'bg-ai/5 dark:bg-ai/10 border-ai/40'
-                        : 'bg-card dark:bg-zinc-800 border-border'
+                        : 'bg-card border-border'
                 }
             `}>
                 <div className={`
@@ -214,7 +214,7 @@ export default function DesignSpecCheckScan() {
                             key={check.id}
                             className={`
                                 rounded-xl border border-l-4 p-3 transition-colors
-                                ${isDone && hasFindings ? 'bg-amber-50/60 dark:bg-amber-500/10 border-amber-300 dark:border-amber-500/40 border-l-amber-500' : ''}
+                                ${isDone && hasFindings ? 'bg-warning/10 border-warning/40 border-l-warning' : ''}
                                 ${isDone && !hasFindings ? 'bg-success/5 dark:bg-success/10 border-success/30 border-l-success' : ''}
                                 ${isRunning ? 'bg-ai/10 dark:bg-ai/15 border-ai/40 border-l-ai' : ''}
                                 ${isPending ? 'bg-muted/50 dark:bg-zinc-800 border-border border-l-muted-foreground/30 opacity-60' : ''}
@@ -223,7 +223,7 @@ export default function DesignSpecCheckScan() {
                             <div className="flex items-start gap-2.5">
                                 <div className={`
                                     h-8 w-8 rounded-lg flex items-center justify-center shrink-0
-                                    ${isDone && hasFindings ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400' : ''}
+                                    ${isDone && hasFindings ? 'bg-warning/15 text-warning' : ''}
                                     ${isDone && !hasFindings ? 'bg-success/15 text-success' : ''}
                                     ${isRunning ? 'bg-ai/15 text-ai' : ''}
                                     ${isPending ? 'bg-muted text-muted-foreground' : ''}
@@ -257,10 +257,10 @@ export default function DesignSpecCheckScan() {
 
             {/* Drawing comparison panel — appears after spec checks complete */}
             {specsDone && (
-                <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className="bg-card border border-border rounded-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-300">
                     {/* Header */}
-                    <div className={`px-4 py-3 border-b border-border flex items-center gap-2 ${drawingDone ? 'bg-amber-50/40 dark:bg-amber-500/5' : 'bg-ai/5 dark:bg-ai/10'}`}>
-                        <div className={`h-7 w-7 rounded-lg flex items-center justify-center shrink-0 ${drawingDone ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400' : 'bg-ai/15 text-ai'}`}>
+                    <div className={`px-4 py-3 border-b border-border flex items-center gap-2 ${drawingDone ? 'bg-warning/10' : 'bg-ai/5 dark:bg-ai/10'}`}>
+                        <div className={`h-7 w-7 rounded-lg flex items-center justify-center shrink-0 ${drawingDone ? 'bg-warning/15 text-warning' : 'bg-ai/15 text-ai'}`}>
                             {drawingDone
                                 ? <FileText className="h-3.5 w-3.5" />
                                 : <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -326,7 +326,7 @@ export default function DesignSpecCheckScan() {
                                             key={line.id}
                                             className={`
                                                 grid grid-cols-[1fr_6rem_3.5rem_3.5rem_4rem_5.5rem] gap-3 px-4 py-2.5 items-center text-xs border-l-4 transition-colors
-                                                ${isCritical ? 'border-l-red-500 bg-red-50/40 dark:bg-red-500/5' : 'border-l-success/50 bg-success/5 dark:bg-success/10'}
+                                                ${isCritical ? 'border-l-destructive bg-destructive/10' : 'border-l-success/50 bg-success/5 dark:bg-success/10'}
                                             `}
                                         >
                                             <div className="min-w-0">
@@ -337,15 +337,15 @@ export default function DesignSpecCheckScan() {
                                             <div className="text-center tabular-nums font-bold text-[13px] text-foreground">
                                                 {line.drawingQty}
                                             </div>
-                                            <div className={`text-center tabular-nums font-bold text-[13px] ${isCritical ? 'text-red-600 dark:text-red-400' : 'text-foreground'}`}>
+                                            <div className={`text-center tabular-nums font-bold text-[13px] ${isCritical ? 'text-destructive' : 'text-foreground'}`}>
                                                 {line.sifQty}
                                             </div>
-                                            <div className={`text-center tabular-nums font-bold text-[12px] ${isCritical ? 'text-red-600 dark:text-red-400' : 'text-muted-foreground'}`}>
+                                            <div className={`text-center tabular-nums font-bold text-[12px] ${isCritical ? 'text-destructive' : 'text-muted-foreground'}`}>
                                                 {delta === 0 ? '—' : `${delta > 0 ? '+' : ''}${delta}`}
                                             </div>
                                             <div className="flex justify-end">
                                                 {isCritical
-                                                    ? <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded bg-red-500/15 text-red-700 dark:text-red-400 uppercase tracking-wider">
+                                                    ? <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded bg-destructive/15 text-destructive uppercase tracking-wider">
                                                         <AlertTriangle className="h-2.5 w-2.5" />
                                                         Short
                                                     </span>
@@ -357,7 +357,7 @@ export default function DesignSpecCheckScan() {
                                             </div>
                                             <div>
                                                 {isCritical && (
-                                                    <div className="text-[9px] font-bold text-red-600 dark:text-red-400 leading-tight">
+                                                    <div className="text-[9px] font-bold text-destructive leading-tight">
                                                         Drawing: {line.drawingQty}<br />
                                                         SIF: {line.sifQty} · −{line.drawingQty - line.sifQty} unit
                                                     </div>
@@ -389,7 +389,7 @@ export default function DesignSpecCheckScan() {
             {/* Forward cue once done */}
             {done && (
                 <div className="flex items-center gap-3 text-xs bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-3 animate-in fade-in duration-300">
-                    <ArrowRight className="h-4 w-4 text-zinc-900 dark:text-primary shrink-0" />
+                    <ArrowRight className="h-4 w-4 text-primary shrink-0" />
                     <span className="flex-1 text-foreground">
                         Next: Beth reviews <strong>2 findings</strong> — 1 quantity mismatch (Allsteel desk · Conf. Room 204 · −2 units) and 1 finish inconsistency. One click to resolve each — the exact class of mistake that used to slip to the client.
                     </span>

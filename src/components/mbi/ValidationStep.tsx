@@ -28,7 +28,7 @@
  *   - Resolution: card fades border + swaps action bar for state badge (200ms)
  *   - Summary banner: slides up when all resolved
  *
- * DS TOKENS: bg-red-500/10 (critical) · bg-amber-500/10 (warning) ·
+ * DS TOKENS: bg-destructive/10 (critical) · bg-warning/10 (warning) ·
  *            bg-success/5 (accepted) · DS tokens throughout
  *
  * USED BY: MBIBudgetPage (wizard step 3 · demo tour m1.4)
@@ -201,7 +201,7 @@ export default function ValidationStep({ validations, statusById, onStatusChange
                         title: "Your value won't trigger the AI swap.",
                         body: (
                             <>
-                                The <strong className="text-amber-700 dark:text-amber-400 tabular-nums">${pendingAction.validation.estimatedImpact.toLocaleString()}</strong> impact stays in the budget. Make sure this is intentional — your reason is logged.
+                                The <strong className="text-warning tabular-nums">${pendingAction.validation.estimatedImpact.toLocaleString()}</strong> impact stays in the budget. Make sure this is intentional — your reason is logged.
                             </>
                         ),
                     } : undefined}
@@ -289,10 +289,10 @@ function ValidationSummary({
 }) {
     const pct = Math.round((resolved / total) * 100)
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl p-4">
+        <div className="bg-card border border-border rounded-2xl p-4">
             <div className="flex items-start justify-between mb-3 gap-3">
                 <div className="flex items-center gap-2 min-w-0">
-                    <div className="h-8 w-8 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center shrink-0">
+                    <div className="h-8 w-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
                         <Shield className="h-4 w-4" />
                     </div>
                     <div className="min-w-0">
@@ -443,19 +443,19 @@ function ValidationCard({
         }
         // pending — uses severity color
         if (isCritical) return {
-            border: 'border-red-400 dark:border-red-500/50',
-            bg: 'bg-red-50 dark:bg-red-500/10',
+            border: 'border-destructive/50',
+            bg: 'bg-destructive/10',
             ring: pulseActive ? 'ring-4 ring-red-500/20 animate-pulse' : 'ring-2 ring-red-500/10',
-            iconBg: 'bg-red-100 dark:bg-red-500/20',
-            iconColor: 'text-red-600',
+            iconBg: 'bg-destructive/15',
+            iconColor: 'text-destructive',
             icon: <AlertCircle className="h-5 w-5" />,
         }
         return {
-            border: 'border-amber-300 dark:border-amber-500/40',
-            bg: 'bg-amber-50 dark:bg-amber-500/10',
+            border: 'border-warning/40',
+            bg: 'bg-warning/10',
             ring: '',
-            iconBg: 'bg-amber-100 dark:bg-amber-500/20',
-            iconColor: 'text-amber-600',
+            iconBg: 'bg-warning/15',
+            iconColor: 'text-warning',
             icon: <AlertTriangle className="h-5 w-5" />,
         }
     })()
@@ -511,8 +511,8 @@ function ValidationCard({
 
                     {/* Blocks approval signal — only when critical AND pending */}
                     {isCritical && status === 'pending' && (
-                        <div className="text-[10px] font-bold text-red-600 dark:text-red-400 flex items-center gap-1 mt-1.5">
-                            <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+                        <div className="text-[10px] font-bold text-destructive flex items-center gap-1 mt-1.5">
+                            <span className="h-1.5 w-1.5 rounded-full bg-destructive animate-pulse" />
                             {severityBadge.blocksHint}
                         </div>
                     )}
@@ -525,8 +525,8 @@ function ValidationCard({
                     <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1">Expected</div>
                     <div className="text-xs text-foreground">{validation.expected}</div>
                 </div>
-                <div className={`${innerPanel} ${isCritical && status === 'pending' ? 'border-red-200 dark:border-red-500/30' : ''}`}>
-                    <div className={`text-[10px] font-bold uppercase tracking-wider mb-1 ${isCritical && status === 'pending' ? 'text-red-600 dark:text-red-400' : 'text-muted-foreground'}`}>Actual</div>
+                <div className={`${innerPanel} ${isCritical && status === 'pending' ? 'border-destructive/30' : ''}`}>
+                    <div className={`text-[10px] font-bold uppercase tracking-wider mb-1 ${isCritical && status === 'pending' ? 'text-destructive' : 'text-muted-foreground'}`}>Actual</div>
                     <div className="text-xs text-foreground">{validation.actual}</div>
                 </div>
                 <div className={innerPanel}>
@@ -546,7 +546,7 @@ function ValidationCard({
                             <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
                                 {isCritical ? 'Impact prevented' : 'Estimated impact'}
                             </span>
-                            <span className={`text-2xl font-bold tabular-nums ${isCritical ? 'text-red-600 dark:text-red-400' : 'text-amber-600 dark:text-amber-400'}`}>
+                            <span className={`text-2xl font-bold tabular-nums ${isCritical ? 'text-destructive' : 'text-warning'}`}>
                                 +${validation.estimatedImpact.toLocaleString()}
                             </span>
                         </div>

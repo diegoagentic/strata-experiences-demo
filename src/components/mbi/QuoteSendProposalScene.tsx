@@ -142,7 +142,7 @@ function SendBar({
                             <Send className="h-3 w-3" />
                             Sent {sentAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} · copy to Amanda + sales rep
                         </div>
-                        <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 uppercase tracking-wider">
+                        <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-warning/15 text-warning uppercase tracking-wider">
                             Pending Client Approval
                         </span>
                     </div>
@@ -175,11 +175,11 @@ function FormalProposalPanel({ sent, sentAt, onSend }: { sent: boolean; sentAt: 
     const today = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
 
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             {/* Header */}
             <div className="px-4 py-3 border-b border-border bg-muted/20 flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
-                    <div className="h-7 w-7 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center shrink-0">
+                    <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
                         <Mail className="h-3.5 w-3.5" />
                     </div>
                     <div>
@@ -266,11 +266,11 @@ function BudgetProposalPanel({ sent, sentAt, onSend }: { sent: boolean; sentAt: 
     const today = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
 
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             {/* Header */}
             <div className="px-4 py-3 border-b border-border bg-muted/20 flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
-                    <div className="h-7 w-7 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center shrink-0">
+                    <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
                         <BarChart3 className="h-3.5 w-3.5" />
                     </div>
                     <div>

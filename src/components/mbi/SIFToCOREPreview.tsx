@@ -58,7 +58,7 @@ export default function SIFToCOREPreview() {
     const isRunning = phase === 'running'
 
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-border flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     <div className="h-7 w-7 rounded-lg bg-ai/10 text-ai flex items-center justify-center">
@@ -152,16 +152,16 @@ export default function SIFToCOREPreview() {
                     {/* Arrow 2 */}
                     <div className="hidden md:flex items-center justify-center">
                         <div className="flex flex-col items-center gap-1">
-                            <ArrowRight className={`h-4 w-4 transition-colors duration-300 ${isDone ? 'text-zinc-900 dark:text-primary' : 'text-border'}`} />
-                            <span className={`text-[9px] font-bold uppercase tracking-wider transition-colors duration-300 ${isDone ? 'text-zinc-900 dark:text-primary' : 'text-border'}`}>Build</span>
+                            <ArrowRight className={`h-4 w-4 transition-colors duration-300 ${isDone ? 'text-primary' : 'text-border'}`} />
+                            <span className={`text-[9px] font-bold uppercase tracking-wider transition-colors duration-300 ${isDone ? 'text-primary' : 'text-border'}`}>Build</span>
                         </div>
                     </div>
 
                     {/* Column 3: CORE output — reveals on done */}
                     <div className={`border rounded-xl p-3 flex flex-col transition-all duration-500 ${isDone ? 'bg-primary/10 dark:bg-primary/15 border-primary/30 opacity-100' : 'bg-muted/20 border-border opacity-40'}`}>
                         <div className="flex items-center gap-1.5 mb-2">
-                            <FileText className="h-3.5 w-3.5 text-zinc-900 dark:text-primary" />
-                            <span className="text-[10px] font-bold text-zinc-900 dark:text-primary uppercase tracking-wider">CORE Quote</span>
+                            <FileText className="h-3.5 w-3.5 text-primary" />
+                            <span className="text-[10px] font-bold text-primary uppercase tracking-wider">CORE Quote</span>
                         </div>
                         <div className="text-xs font-bold text-foreground font-mono">{proposal.id}</div>
                         <div className="text-[10px] text-muted-foreground">Pending GP review</div>

@@ -21,9 +21,9 @@ import { MBI_STAKEHOLDERS } from '../../config/profiles/mbi-data'
 
 const TIERS = [
     { id: 'innovator', label: 'Innovators', pct: '2.5%', accent: 'border-success/30 bg-success/5 text-success', dotBg: 'bg-success/20 text-success' },
-    { id: 'early-adopter', label: 'Early Adopters', pct: '13.5%', accent: 'border-primary/30 bg-primary/5 text-zinc-900 dark:text-primary', dotBg: 'bg-primary/20 text-zinc-900 dark:text-primary' },
+    { id: 'early-adopter', label: 'Early Adopters', pct: '13.5%', accent: 'border-primary/30 bg-primary/5 text-primary', dotBg: 'bg-primary/20 text-primary' },
     { id: 'early-majority', label: 'Early Majority', pct: '34%', accent: 'border-info/30 bg-info/5 text-info', dotBg: 'bg-info/20 text-info' },
-    { id: 'late-majority', label: 'Late Majority', pct: '34%', accent: 'border-amber-300 bg-amber-50/30 dark:bg-amber-500/5 dark:border-amber-500/30 text-amber-700 dark:text-amber-400', dotBg: 'bg-amber-500/20 text-amber-700 dark:text-amber-400' },
+    { id: 'late-majority', label: 'Late Majority', pct: '34%', accent: 'border-warning/30 bg-warning/10 text-warning', dotBg: 'bg-warning/20 text-warning' },
     { id: 'laggard', label: 'Laggards', pct: '16%', accent: 'border-muted bg-muted/20 text-muted-foreground', dotBg: 'bg-muted text-muted-foreground' },
 ] as const
 
@@ -38,10 +38,10 @@ export default function AdoptionProgressStrip() {
     }, {} as Record<string, typeof designTeam>)
 
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-border flex items-start justify-between gap-3">
                 <div className="flex items-center gap-2">
-                    <div className="h-7 w-7 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center">
+                    <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                         <Users className="h-3.5 w-3.5" />
                     </div>
                     <div>

@@ -87,9 +87,9 @@ export default function FlowHandoff({
     return (
         <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
             {/* 1. Recap */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl p-5">
+            <div className="bg-card border border-border rounded-2xl p-5">
                 <div className="flex items-start gap-3 mb-4">
-                    <div className="h-10 w-10 rounded-xl bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center shrink-0">
+                    <div className="h-10 w-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                         <Sparkles className="h-5 w-5" />
                     </div>
                     <div>
@@ -114,7 +114,7 @@ export default function FlowHandoff({
 
             {/* 2. Timeline */}
             {timeline.length > 0 && (
-                <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl p-5">
+                <div className="bg-card border border-border rounded-2xl p-5">
                     <div className="flex items-center gap-2 mb-4">
                         <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">What happens next</div>
                         <div className="flex-1 h-px bg-border" />

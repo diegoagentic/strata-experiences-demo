@@ -113,7 +113,7 @@ const FLOWS: FlowCard[] = [
 
 const TINT_MAP = {
     ai: { bg: 'bg-ai/10 dark:bg-ai/15', border: 'border-ai/30', icon: 'text-ai bg-ai/15', badge: 'bg-ai/15 text-ai' },
-    primary: { bg: 'bg-primary/10 dark:bg-primary/15', border: 'border-primary/30', icon: 'text-zinc-900 dark:text-primary bg-primary/10', badge: 'bg-primary/15 text-zinc-900 dark:text-primary' },
+    primary: { bg: 'bg-primary/10 dark:bg-primary/15', border: 'border-primary/30', icon: 'text-primary bg-primary/10', badge: 'bg-primary/15 text-primary' },
     success: { bg: 'bg-success/10 dark:bg-success/15', border: 'border-success/30', icon: 'text-success bg-success/15', badge: 'bg-success/15 text-success' },
     info: { bg: 'bg-info/10 dark:bg-info/15', border: 'border-info/30', icon: 'text-info bg-info/15', badge: 'bg-info/15 text-info' },
 }
@@ -136,7 +136,7 @@ export default function MBIOverviewPage() {
         >
             {/* Pitch banner */}
             <div className="bg-gradient-to-br from-primary/5 to-ai/5 dark:from-primary/10 dark:to-ai/10 border border-primary/30 rounded-2xl p-5 flex items-start gap-4">
-                <div className="h-12 w-12 rounded-xl bg-primary/15 text-zinc-900 dark:text-primary flex items-center justify-center shrink-0">
+                <div className="h-12 w-12 rounded-xl bg-primary/15 text-primary flex items-center justify-center shrink-0">
                     <Sparkles className="h-6 w-6" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -164,7 +164,7 @@ export default function MBIOverviewPage() {
 
             {/* Tour CTA when the demo is inactive */}
             {!isDemoActive && (
-                <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="bg-card border border-border rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div className="min-w-0">
                         <div className="text-sm font-bold text-foreground">Walk the active tour · 9 beats</div>
                         <div className="text-[11px] text-muted-foreground mt-0.5">
@@ -322,8 +322,8 @@ function FlowCardView({ flow, onLaunch }: { flow: FlowCard; onLaunch: () => void
 
             {/* Availability note for flows kept in code but excluded from the active tour */}
             {flow.availabilityNote && (
-                <div className="bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/30 rounded-lg px-2.5 py-1.5 text-[10px] text-foreground leading-snug">
-                    <strong className="text-amber-700 dark:text-amber-400">Note:</strong> {flow.availabilityNote}
+                <div className="bg-warning/10 dark:bg-warning/15 border border-warning/30 rounded-lg px-2.5 py-1.5 text-[10px] text-foreground leading-snug">
+                    <strong className="text-warning">Note:</strong> {flow.availabilityNote}
                 </div>
             )}
 
@@ -382,7 +382,7 @@ function UpstreamCard({
     return (
         <Wrapper
             onClick={onClick}
-            className={`text-left bg-card dark:bg-zinc-800 border border-border rounded-2xl p-4 flex flex-col gap-2 transition-all ${
+            className={`text-left bg-card border border-border rounded-2xl p-4 flex flex-col gap-2 transition-all ${
                 interactive ? 'hover:border-zinc-400 dark:hover:border-zinc-600 hover:shadow-sm cursor-pointer' : ''
             }`}
         >
@@ -421,7 +421,7 @@ function ImpactStat({
     accent?: string
 }) {
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl p-3">
+        <div className="bg-card border border-border rounded-2xl p-3">
             <div className={`flex items-center gap-2 ${accent}`}>
                 {icon}
                 <span className="text-base font-bold tabular-nums leading-none truncate">{value}</span>

@@ -122,7 +122,7 @@ export default function QuoteGPReviewScene() {
 
             {/* GP Review table */}
             {(phase === 'gp-ready' || phase === 'creating' || phase === 'created') && (
-                <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className="bg-card border border-border rounded-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-300">
                     <div className="px-4 py-3 border-b border-border flex items-center justify-between flex-wrap gap-2">
                         <div>
                             <div className="text-xs font-bold text-foreground">GP review · by vendor</div>
@@ -217,7 +217,7 @@ export default function QuoteGPReviewScene() {
                     phase === 'created' ? 'bg-primary/5 dark:bg-primary/10 border-primary/30' : 'bg-ai/5 dark:bg-ai/10 border-ai/30'
                 }`}>
                     <div className="px-4 py-3 border-b border-inherit flex items-center gap-2">
-                        <div className="h-7 w-7 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center shrink-0">
+                        <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
                             {phase === 'creating'
                                 ? <Loader2 className="h-3.5 w-3.5 animate-spin" />
                                 : <FileText className="h-3.5 w-3.5" />
@@ -243,9 +243,9 @@ export default function QuoteGPReviewScene() {
                                     className={`flex items-center gap-2 text-[11px] transition-opacity duration-200 ${visible ? 'opacity-100' : 'opacity-20'}`}
                                 >
                                     {done
-                                        ? <Check className="h-3 w-3 text-zinc-900 dark:text-primary shrink-0" />
+                                        ? <Check className="h-3 w-3 text-primary shrink-0" />
                                         : running
-                                            ? <Loader2 className="h-3 w-3 text-zinc-900 dark:text-primary shrink-0 animate-spin" />
+                                            ? <Loader2 className="h-3 w-3 text-primary shrink-0 animate-spin" />
                                             : <div className="h-3 w-3 rounded-full border border-border shrink-0" />
                                     }
                                     <span className={done ? 'text-foreground' : 'text-muted-foreground'}>{step}</span>
@@ -266,7 +266,7 @@ export default function QuoteGPReviewScene() {
             {/* Forward cue */}
             {phase === 'created' && (
                 <div className="flex items-center gap-3 text-xs bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-3 animate-in fade-in duration-300">
-                    <ArrowRight className="h-4 w-4 text-zinc-900 dark:text-primary shrink-0" />
+                    <ArrowRight className="h-4 w-4 text-primary shrink-0" />
                     <span className="flex-1 text-foreground">
                         Proposal ready. Next: Final Review
                     </span>
@@ -349,7 +349,7 @@ function GPVendorRow({
 
 function CoreQuoteStat({ label, value, mono, highlight }: { label: string; value: string; mono?: boolean; highlight?: boolean }) {
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-lg p-2.5">
+        <div className="bg-card border border-border rounded-lg p-2.5">
             <div className="text-[10px] text-muted-foreground">{label}</div>
             <div className={`text-sm font-bold mt-0.5 ${highlight ? 'text-success' : 'text-foreground'} ${mono ? 'font-mono text-xs' : ''}`}>
                 {value}

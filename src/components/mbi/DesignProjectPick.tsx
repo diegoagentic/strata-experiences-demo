@@ -53,10 +53,10 @@ export default function DesignProjectPick() {
             </div>
 
             {/* Beth's project picker */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <div className="px-4 py-3 border-b border-border flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <div className="h-7 w-7 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center">
+                        <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                             <Palette className="h-3.5 w-3.5" />
                         </div>
                         <div>
@@ -86,7 +86,7 @@ export default function DesignProjectPick() {
                             >
                                 <div className={`
                                     h-8 w-8 rounded-lg flex items-center justify-center shrink-0
-                                    ${active ? 'bg-primary/15 text-zinc-900 dark:text-primary' : 'bg-muted text-muted-foreground'}
+                                    ${active ? 'bg-primary/15 text-primary' : 'bg-muted text-muted-foreground'}
                                 `}>
                                     <Building2 className="h-4 w-4" />
                                 </div>
@@ -111,7 +111,7 @@ export default function DesignProjectPick() {
                                         {p.client} · {p.vertical} · {p.hoursLogged}h logged
                                     </div>
                                 </div>
-                                {active && <CheckCircle2 className="h-4 w-4 text-zinc-900 dark:text-primary shrink-0" />}
+                                {active && <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />}
                             </button>
                         )
                     })}
@@ -149,7 +149,7 @@ export default function DesignProjectPick() {
             </div>
 
             {/* Palette preview — makes the "this chair is green" story visible */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-xl p-3">
+            <div className="bg-card border border-border rounded-xl p-3">
                 <div className="flex items-center justify-between mb-2">
                     <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
                         Project palette · {selected.name}
@@ -171,7 +171,7 @@ export default function DesignProjectPick() {
 
             {/* Forward cue */}
             <div className="flex items-center gap-3 text-xs bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-3">
-                <ArrowRight className="h-4 w-4 text-zinc-900 dark:text-primary shrink-0" />
+                <ArrowRight className="h-4 w-4 text-primary shrink-0" />
                 <span className="flex-1 text-foreground">
                     Click <strong>Run Spec Check</strong> below to let Strata scan all 47 items — dimensions, finish, palette match, availability. Under 5 minutes vs. today's manual review.
                 </span>

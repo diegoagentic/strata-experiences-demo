@@ -137,7 +137,7 @@ export default function QuoteProposalReviewScene() {
                     { label: 'Avg GP%',    value: '33.5%',          mono: false, highlight: true  },
                     { label: 'Line items', value: '7 · 3 vendors',  mono: false, highlight: false },
                 ] as const).map(s => (
-                    <div key={s.label} className="bg-card dark:bg-zinc-800 border border-border rounded-xl p-3">
+                    <div key={s.label} className="bg-card border border-border rounded-xl p-3">
                         <div className="text-[10px] text-muted-foreground">{s.label}</div>
                         <div className={`text-sm font-bold mt-0.5 ${s.highlight ? 'text-success' : 'text-foreground'} ${s.mono ? 'font-mono text-xs' : ''}`}>
                             {s.value}
@@ -147,7 +147,7 @@ export default function QuoteProposalReviewScene() {
             </div>
 
             {/* Vendor table */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <div className="px-4 py-3 border-b border-border">
                     <div className="text-xs font-bold text-foreground">Line items · Quote QUOT-2026-003</div>
                     <div className="text-[10px] text-muted-foreground">
@@ -246,7 +246,7 @@ export default function QuoteProposalReviewScene() {
                                                     ))}
                                                 </div>
                                             ) : (
-                                                <div className="grid grid-cols-[1.2rem_1fr_1fr_1fr_1fr_2.5rem_2rem_1fr_3.2rem] gap-x-2 px-3 py-2 text-[10px] tabular-nums bg-card dark:bg-zinc-800">
+                                                <div className="grid grid-cols-[1.2rem_1fr_1fr_1fr_1fr_2.5rem_2rem_1fr_3.2rem] gap-x-2 px-3 py-2 text-[10px] tabular-nums bg-card">
                                                     <span className="text-muted-foreground">{v.lines}</span>
                                                     <span className="text-muted-foreground">${Number(displayVal(v.vendor,'list',v.list)).toLocaleString()}</span>
                                                     <span className="font-semibold text-foreground">${Number(displayVal(v.vendor,'sell',v.sell)).toLocaleString()}</span>

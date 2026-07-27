@@ -80,7 +80,7 @@ export default function PreflightScanChain({
     const allDone = phase >= CHECKS.length
 
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl">
+        <div className="bg-card border border-border rounded-2xl">
             <div className="px-4 py-3 border-b border-border bg-muted/20 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     <div className={`h-7 w-7 rounded-lg flex items-center justify-center ${allDone ? 'bg-success/10 text-success' : 'bg-ai/10 text-ai'}`}>

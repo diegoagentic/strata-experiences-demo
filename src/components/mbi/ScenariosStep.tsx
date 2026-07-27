@@ -66,11 +66,11 @@ export default function ScenariosStep({
                     </div>
                     <button
                         onClick={() => setBreakdownOpen(true)}
-                        className="lg:col-span-2 bg-card dark:bg-zinc-800 border border-border rounded-2xl p-4 text-left hover:border-primary/40 transition-colors"
+                        className="lg:col-span-2 bg-card border border-border rounded-2xl p-4 text-left hover:border-primary/40 transition-colors"
                     >
                         <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center gap-2">
-                                <div className="h-7 w-7 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center">
+                                <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                                     <DollarSign className="h-3.5 w-3.5" />
                                 </div>
                                 <div>
@@ -83,7 +83,7 @@ export default function ScenariosStep({
                         <div className="text-3xl font-bold text-foreground tabular-nums leading-none">
                             ${totals.total.toLocaleString()}
                         </div>
-                        <div className="text-[10px] text-zinc-900 dark:text-primary font-bold uppercase tracking-wider mt-2">
+                        <div className="text-[10px] text-primary font-bold uppercase tracking-wider mt-2">
                             View breakdown
                         </div>
                     </button>

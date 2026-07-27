@@ -69,7 +69,7 @@ export default function ReviewStep({
                 {/* Client card */}
                 <div className="bg-muted/30 dark:bg-zinc-800 border border-border rounded-2xl p-4">
                     <div className="flex items-center gap-2 mb-3">
-                        <div className="h-7 w-7 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center">
+                        <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                             <Briefcase className="h-3.5 w-3.5" />
                         </div>
                         <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Client</span>
@@ -82,7 +82,7 @@ export default function ReviewStep({
                 {/* Scenario card */}
                 <div className="bg-muted/30 dark:bg-zinc-800 border border-primary/30 ring-2 ring-primary/10 rounded-2xl p-4">
                     <div className="flex items-center gap-2 mb-3">
-                        <div className="h-7 w-7 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center">
+                        <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                             <FileCheck2 className="h-3.5 w-3.5" />
                         </div>
                         <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Scenario selected</span>
@@ -95,9 +95,9 @@ export default function ReviewStep({
                 </div>
 
                 {/* Validations card */}
-                <div className={`bg-muted/30 dark:bg-zinc-800 border rounded-2xl p-4 ${allValidationsResolved ? 'border-success/30' : 'border-amber-300 dark:border-amber-500/30'}`}>
+                <div className={`bg-muted/30 dark:bg-zinc-800 border rounded-2xl p-4 ${allValidationsResolved ? 'border-success/30' : 'border-warning/30'}`}>
                     <div className="flex items-center gap-2 mb-3">
-                        <div className={`h-7 w-7 rounded-lg flex items-center justify-center ${allValidationsResolved ? 'bg-success/10 text-success' : 'bg-amber-500/10 text-amber-600 dark:text-amber-400'}`}>
+                        <div className={`h-7 w-7 rounded-lg flex items-center justify-center ${allValidationsResolved ? 'bg-success/10 text-success' : 'bg-warning/10 text-warning'}`}>
                             <ShieldCheck className="h-3.5 w-3.5" />
                         </div>
                         <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Validations</span>
@@ -121,7 +121,7 @@ export default function ReviewStep({
                 onClick={() => setItemsOpen(true)}
                 className="w-full flex items-center gap-3 bg-muted/30 dark:bg-zinc-800 border border-border rounded-2xl px-4 py-3 hover:border-primary/40 transition-colors text-left"
             >
-                <div className="h-9 w-9 rounded-xl bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center shrink-0">
+                <div className="h-9 w-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                     <ListChecks className="h-4 w-4" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -130,7 +130,7 @@ export default function ReviewStep({
                         From SIF · {sifLineItems.filter(li => li.quantity > 0).length} active · post-validation
                     </div>
                 </div>
-                <span className="text-[10px] font-bold text-zinc-900 dark:text-primary uppercase tracking-wider">View</span>
+                <span className="text-[10px] font-bold text-primary uppercase tracking-wider">View</span>
                 <ChevronRight className="h-4 w-4 text-muted-foreground" />
             </button>
 

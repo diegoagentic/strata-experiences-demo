@@ -111,7 +111,7 @@ export default function BudgetRequestFormPreview({ onUse }: BudgetRequestFormPre
 
 function FutureFieldFile({ label, icon, placeholder }: { label: string; icon: React.ReactNode; placeholder: string }) {
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-xl p-3">
+        <div className="bg-card border border-border rounded-xl p-3">
             <div className="flex items-center gap-1.5 text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-2">
                 {icon}
                 <span>{label}</span>
@@ -126,7 +126,7 @@ function FutureFieldFile({ label, icon, placeholder }: { label: string; icon: Re
 
 function FutureFieldSelect({ label, icon, value, options }: { label: string; icon: React.ReactNode; value: string; options: string[] }) {
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-xl p-3">
+        <div className="bg-card border border-border rounded-xl p-3">
             <div className="flex items-center gap-1.5 text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-2">
                 {icon}
                 <span>{label}</span>

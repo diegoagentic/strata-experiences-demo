@@ -38,11 +38,11 @@ export default function LiveBillingForecast() {
         : 0
 
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             {/* Header */}
             <div className="px-4 py-3 border-b border-border flex items-start justify-between">
                 <div className="flex items-center gap-2">
-                    <div className="h-7 w-7 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center">
+                    <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                         <BarChart3 className="h-3.5 w-3.5" />
                     </div>
                     <div>
@@ -124,7 +124,7 @@ export default function LiveBillingForecast() {
                         </div>
                         <div>
                             <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Delta</div>
-                            <div className={`text-sm font-bold tabular-nums ${lastDelta >= 0 ? 'text-success' : 'text-amber-600 dark:text-amber-400'}`}>
+                            <div className={`text-sm font-bold tabular-nums ${lastDelta >= 0 ? 'text-success' : 'text-warning'}`}>
                                 {lastDelta >= 0 ? '+' : ''}${lastDelta.toLocaleString()}
                                 <span className="text-[10px] ml-1">({lastDeltaPct >= 0 ? '+' : ''}{lastDeltaPct}%)</span>
                             </div>

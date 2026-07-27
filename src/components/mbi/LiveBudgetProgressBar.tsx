@@ -22,9 +22,9 @@ export default function LiveBudgetProgressBar() {
     const tracked = MBI_DESIGN_PROJECTS.filter(p => p.budgetTracked)
 
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-border flex items-center gap-2">
-                <div className="h-7 w-7 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center">
+                <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                     <Wallet className="h-3.5 w-3.5" />
                 </div>
                 <div>
@@ -44,9 +44,9 @@ export default function LiveBudgetProgressBar() {
                     const overBudget = pct > 100
                     const tight = pct > 95
 
-                    const barColor = overBudget ? 'bg-red-500' : tight ? 'bg-amber-500' : pct > 80 ? 'bg-primary' : 'bg-success'
-                    const statusIcon = overBudget ? <AlertTriangle className="h-3 w-3 text-red-600" /> :
-                        tight ? <AlertTriangle className="h-3 w-3 text-amber-600 dark:text-amber-400" /> :
+                    const barColor = overBudget ? 'bg-destructive' : tight ? 'bg-warning' : pct > 80 ? 'bg-primary' : 'bg-success'
+                    const statusIcon = overBudget ? <AlertTriangle className="h-3 w-3 text-destructive" /> :
+                        tight ? <AlertTriangle className="h-3 w-3 text-warning" /> :
                             <CheckCircle2 className="h-3 w-3 text-success" />
 
                     return (
@@ -78,7 +78,7 @@ export default function LiveBudgetProgressBar() {
                                     Spent: <span className="font-bold text-foreground">${project.budgetTracked.spent.toLocaleString()}</span>
                                 </span>
                                 <span>
-                                    Remaining: <span className={`font-bold ${remaining < 0 ? 'text-red-600' : 'text-foreground'}`}>
+                                    Remaining: <span className={`font-bold ${remaining < 0 ? 'text-destructive' : 'text-foreground'}`}>
                                         ${Math.abs(remaining).toLocaleString()}{remaining < 0 ? ' over' : ''}
                                     </span>
                                 </span>

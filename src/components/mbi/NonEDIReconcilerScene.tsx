@@ -98,19 +98,19 @@ function HealthTrustRebateCard() {
     }
 
     return (
-        <div className={`bg-card dark:bg-zinc-800 border-2 rounded-2xl overflow-hidden transition-all
+        <div className={`bg-card border-2 rounded-2xl overflow-hidden transition-all
             ${htStatus === 'approved' ? 'border-success/30' : ''}
             ${htStatus === 'overridden' ? 'border-info/30' : ''}
-            ${htStatus === 'escalated' ? 'border-red-300 dark:border-red-500/40' : ''}
-            ${htStatus === 'pending' ? 'border-amber-400/60' : ''}
+            ${htStatus === 'escalated' ? 'border-destructive/40' : ''}
+            ${htStatus === 'pending' ? 'border-warning/60' : ''}
         `}>
             {/* Header */}
             <div className="px-4 py-3 flex items-center gap-3">
                 <div className={`h-9 w-9 rounded-xl flex items-center justify-center shrink-0
-                    ${htStatus === 'pending' ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400' : ''}
+                    ${htStatus === 'pending' ? 'bg-warning/15 text-warning' : ''}
                     ${htStatus === 'approved' ? 'bg-success/15 text-success' : ''}
                     ${htStatus === 'overridden' ? 'bg-info/15 text-info' : ''}
-                    ${htStatus === 'escalated' ? 'bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400' : ''}
+                    ${htStatus === 'escalated' ? 'bg-destructive/15 text-destructive' : ''}
                 `}>
                     {htStatus === 'pending' && <Heart className="h-4.5 w-4.5" />}
                     {htStatus === 'approved' && <CheckCircle2 className="h-4.5 w-4.5" />}
@@ -119,7 +119,7 @@ function HealthTrustRebateCard() {
                 </div>
                 <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 uppercase tracking-wider inline-flex items-center gap-1">
+                        <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-warning/10 text-warning uppercase tracking-wider inline-flex items-center gap-1">
                             <Heart className="h-2.5 w-2.5" /> HealthTrust GPO
                         </span>
                         <span className="text-[10px] font-mono text-muted-foreground">{htInvoice.id}</span>
@@ -130,7 +130,7 @@ function HealthTrustRebateCard() {
                 </div>
                 <div className="text-right shrink-0">
                     <div className="text-[10px] text-muted-foreground">Rebate</div>
-                    <div className="text-sm font-bold text-amber-700 dark:text-amber-400 tabular-nums">${rebate.toLocaleString()}</div>
+                    <div className="text-sm font-bold text-warning tabular-nums">${rebate.toLocaleString()}</div>
                 </div>
             </div>
 
@@ -141,7 +141,7 @@ function HealthTrustRebateCard() {
                         <div className="grid grid-cols-3 gap-2">
                             <button
                                 onClick={() => setHtModal('escalate')}
-                                className="flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-bold text-red-700 dark:text-red-400 bg-background dark:bg-zinc-800 border border-red-300 dark:border-red-500/40 rounded-lg hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
+                                className="flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-bold text-destructive bg-background dark:bg-zinc-800 border border-destructive/40 rounded-lg hover:bg-destructive/10 transition-colors"
                             >
                                 <Flag className="h-3.5 w-3.5" />
                                 Escalate
@@ -167,7 +167,7 @@ function HealthTrustRebateCard() {
                     <div className="flex items-center gap-2 text-xs">
                         {htStatus === 'approved' && <CheckCircle2 className="h-4 w-4 text-success shrink-0" />}
                         {htStatus === 'overridden' && <Pencil className="h-4 w-4 text-info shrink-0" />}
-                        {htStatus === 'escalated' && <Send className="h-4 w-4 text-red-600 dark:text-red-400 shrink-0" />}
+                        {htStatus === 'escalated' && <Send className="h-4 w-4 text-destructive shrink-0" />}
                         <div className="flex-1 min-w-0">
                             <div className="font-semibold text-foreground">
                                 {htStatus === 'approved' && <>Rebate posted · <span className="text-success tabular-nums">${rebate.toLocaleString()}</span> to GPO payable</>}
@@ -185,7 +185,7 @@ function HealthTrustRebateCard() {
                     <div className={`mt-2 flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[11px] font-semibold animate-in fade-in duration-300
                         ${htStatus === 'approved' ? 'bg-success/15 text-success border border-success/30' : ''}
                         ${htStatus === 'overridden' ? 'bg-info/15 text-info border border-info/30' : ''}
-                        ${htStatus === 'escalated' ? 'bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-400 border border-red-300 dark:border-red-500/30' : ''}
+                        ${htStatus === 'escalated' ? 'bg-destructive/15 text-destructive border border-destructive/30' : ''}
                     `}>
                         <Sparkles className="h-3.5 w-3.5 shrink-0" />
                         {htToast}
@@ -301,10 +301,10 @@ export default function NonEDIReconcilerScene() {
             </div>
 
             {/* Invoice header + total comparison — single unified card */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 {/* Header row */}
                 <div className="px-4 py-3 border-b border-border flex items-center gap-3">
-                    <div className={`h-9 w-9 rounded-xl flex items-center justify-center shrink-0 ${diff < 0 ? 'bg-success/15 text-success' : 'bg-amber-500/15 text-amber-600 dark:text-amber-400'}`}>
+                    <div className={`h-9 w-9 rounded-xl flex items-center justify-center shrink-0 ${diff < 0 ? 'bg-success/15 text-success' : 'bg-warning/15 text-warning'}`}>
                         <GitCompare className="h-4.5 w-4.5" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -319,7 +319,7 @@ export default function NonEDIReconcilerScene() {
                                 <CheckCircle2 className="h-2.5 w-2.5" />
                                 10 auto-posted
                             </span>
-                            <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400">
+                            <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-warning/10 text-warning">
                                 <AlertTriangle className="h-2.5 w-2.5" />
                                 2 exceptions pending
                             </span>
@@ -329,10 +329,10 @@ export default function NonEDIReconcilerScene() {
                         <div className="flex items-center gap-2 justify-end">
                             <span className="text-sm font-bold text-muted-foreground tabular-nums">${totalPO.toLocaleString()}</span>
                             <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/40 shrink-0" />
-                            <span className={`text-sm font-bold tabular-nums ${diff < 0 ? 'text-success' : 'text-amber-600 dark:text-amber-400'}`}>
+                            <span className={`text-sm font-bold tabular-nums ${diff < 0 ? 'text-success' : 'text-warning'}`}>
                                 ${totalInv.toLocaleString()}
                             </span>
-                            <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${diff < 0 ? 'bg-success/15 text-success' : 'bg-amber-500/15 text-amber-600 dark:text-amber-400'}`}>
+                            <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${diff < 0 ? 'bg-success/15 text-success' : 'bg-warning/15 text-warning'}`}>
                                 {diff < 0 ? `−$${Math.abs(diff).toLocaleString()}` : `+$${Math.abs(diff).toLocaleString()}`}
                             </span>
                         </div>
@@ -348,7 +348,7 @@ export default function NonEDIReconcilerScene() {
             </div>
 
             {/* Line-by-line diff table */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 {/* Column headers */}
                 <div className="px-4 py-2.5 border-b border-border bg-muted/20 dark:bg-zinc-900/40 grid grid-cols-[2.5rem_1fr_3rem_3rem_5rem_5rem_4rem_8rem] gap-2 items-end">
                     <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Line</div>
@@ -394,7 +394,7 @@ export default function NonEDIReconcilerScene() {
                                     grid grid-cols-[2.5rem_1fr_3rem_3rem_5rem_5rem_4rem_8rem] gap-2 px-4 items-center text-xs transition-colors border-l-4 min-h-[60px]
                                     ${status === 'accepted' ? 'border-l-success/60 bg-success/5 dark:bg-success/10 py-2.5' : ''}
                                     ${status === 'overridden' ? 'border-l-info/60 bg-info/5 dark:bg-info/10 py-2.5' : ''}
-                                    ${status === 'pending' && isException ? 'border-l-amber-500 bg-amber-50/40 dark:bg-amber-500/5 py-2.5' : ''}
+                                    ${status === 'pending' && isException ? 'border-l-warning bg-warning/10 py-2.5' : ''}
                                     ${status === 'pending' && !isException ? 'border-l-transparent py-2.5' : ''}
                                 `}
                             >
@@ -408,7 +408,7 @@ export default function NonEDIReconcilerScene() {
                                     <div className="text-[10px] text-muted-foreground/80 truncate italic">{row.spec}</div>
                                     {isException && status === 'pending' && (
                                         <div className="mt-0.5">
-                                            <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-400 uppercase tracking-wider">
+                                            <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded bg-warning/15 text-warning uppercase tracking-wider">
                                                 <AlertTriangle className="h-2 w-2 shrink-0" />
                                                 {mismatchLabel}
                                             </span>
@@ -425,10 +425,10 @@ export default function NonEDIReconcilerScene() {
                                 </div>
 
                                 {/* Bill Qty */}
-                                <div className={`text-center tabular-nums font-bold text-[12px] ${qtyMismatch && status === 'pending' ? 'text-amber-600 dark:text-amber-400' : 'text-muted-foreground'}`}>
+                                <div className={`text-center tabular-nums font-bold text-[12px] ${qtyMismatch && status === 'pending' ? 'text-warning' : 'text-muted-foreground'}`}>
                                     {row.invQty}
                                     {qtyMismatch && status === 'pending' && (
-                                        <div className="text-[9px] font-normal text-amber-600/80 dark:text-amber-400/80">
+                                        <div className="text-[9px] font-normal text-warning/80">
                                             {row.invQty < row.poQty ? `−${row.poQty - row.invQty}` : `+${row.invQty - row.poQty}`}
                                         </div>
                                     )}
@@ -440,17 +440,17 @@ export default function NonEDIReconcilerScene() {
                                 </div>
 
                                 {/* Bill Unit Price */}
-                                <div className={`text-right tabular-nums text-[11px] font-semibold ${priceMismatch && status === 'pending' ? 'text-amber-600 dark:text-amber-400' : 'text-muted-foreground'}`}>
+                                <div className={`text-right tabular-nums text-[11px] font-semibold ${priceMismatch && status === 'pending' ? 'text-warning' : 'text-muted-foreground'}`}>
                                     ${row.invUnitPrice.toLocaleString()}
                                     {priceMismatch && status === 'pending' && (
-                                        <div className="text-[9px] font-normal text-amber-600/80 dark:text-amber-400/80">
+                                        <div className="text-[9px] font-normal text-warning/80">
                                             {row.invUnitPrice > row.poUnitPrice ? `+$${row.invUnitPrice - row.poUnitPrice}` : `−$${row.poUnitPrice - row.invUnitPrice}`}
                                         </div>
                                     )}
                                 </div>
 
                                 {/* Line Delta */}
-                                <div className={`text-right tabular-nums font-bold text-[11px] ${lineDiff < 0 ? 'text-success' : lineDiff > 0 ? 'text-amber-600 dark:text-amber-400' : 'text-muted-foreground'}`}>
+                                <div className={`text-right tabular-nums font-bold text-[11px] ${lineDiff < 0 ? 'text-success' : lineDiff > 0 ? 'text-warning' : 'text-muted-foreground'}`}>
                                     {lineDiff === 0 ? '—' : `${lineDiff > 0 ? '+' : '−'}$${Math.abs(lineDiff).toLocaleString()}`}
                                 </div>
 
@@ -509,7 +509,7 @@ export default function NonEDIReconcilerScene() {
                             <div className="text-center tabular-nums font-bold text-info text-[12px]">1</div>
                             <div className="text-right text-muted-foreground text-[11px]">—</div>
                             <div className="text-right tabular-nums font-semibold text-info text-[11px]">$680</div>
-                            <div className="text-right tabular-nums font-bold text-[11px] text-amber-600 dark:text-amber-400">+$680</div>
+                            <div className="text-right tabular-nums font-bold text-[11px] text-warning">+$680</div>
                             <div className="flex justify-end">
                                 <StatusBadge label="Pending" tone="info" size="sm" />
                             </div>

@@ -46,11 +46,11 @@ export default function NonCatalogValidatorTable({ resolvedIds = new Set() }: Pr
     const mismatchCount = MOCK_ITEMS.filter(i => i.match === 'mismatch' && !resolvedIds.has(i.id)).length
 
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-border">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <div className="h-7 w-7 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center">
+                        <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                             <Search className="h-3.5 w-3.5" />
                         </div>
                         <div>
@@ -64,7 +64,7 @@ export default function NonCatalogValidatorTable({ resolvedIds = new Set() }: Pr
                         <div>
                             <span className="text-success font-bold tabular-nums">{exactCount} exact</span>
                             <span className="text-muted-foreground"> · </span>
-                            <span className="text-amber-600 dark:text-amber-400 font-bold tabular-nums">{mismatchCount} flagged</span>
+                            <span className="text-warning font-bold tabular-nums">{mismatchCount} flagged</span>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ export default function NonCatalogValidatorTable({ resolvedIds = new Set() }: Pr
                     const rowAccent = isResolved
                         ? 'bg-success/5 dark:bg-success/10 border-l-4 border-l-success/60'
                         : effectiveMatch === 'mismatch'
-                            ? 'bg-amber-50/40 dark:bg-amber-500/5 border-l-4 border-l-amber-500/70'
+                            ? 'bg-warning/10 border-l-4 border-l-warning/70'
                             : effectiveMatch === 'close'
                                 ? 'border-l-4 border-l-info/40'
                                 : 'border-l-4 border-l-transparent hover:bg-muted/20'
@@ -113,7 +113,7 @@ export default function NonCatalogValidatorTable({ resolvedIds = new Set() }: Pr
                                     <>
                                         <div className="text-foreground">${item.priceBook.toLocaleString()}</div>
                                         {deltaPct !== 0 && !isResolved && (
-                                            <div className={`text-[9px] font-semibold ${deltaPct > 0 ? 'text-amber-600 dark:text-amber-400' : 'text-success'}`}>
+                                            <div className={`text-[9px] font-semibold ${deltaPct > 0 ? 'text-warning' : 'text-success'}`}>
                                                 {deltaPct > 0 ? '+' : ''}{deltaPct}%
                                             </div>
                                         )}
@@ -153,7 +153,7 @@ function MatchPill({ match, confidence, quoteResolved }: { match: 'exact' | 'clo
         </span>
     )
     return (
-        <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400" title={`${confidence}% confidence`}>
+        <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-warning/10 text-warning" title={`${confidence}% confidence`}>
             <AlertTriangle className="h-2.5 w-2.5" />
             Fix
         </span>

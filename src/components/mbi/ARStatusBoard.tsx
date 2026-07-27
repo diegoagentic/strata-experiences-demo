@@ -117,7 +117,7 @@ export default function ARStatusBoard({ records, highlightedIds }: ARStatusBoard
         <div className="space-y-3">
             {/* Helper inline component declaration above */}
             {/* Summary banner */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl p-4 flex items-center justify-between">
+            <div className="bg-card border border-border rounded-2xl p-4 flex items-center justify-between">
                 <div>
                     <div className="text-xs font-bold text-foreground">AR Status Taxonomy</div>
                     <div className="text-[10px] text-muted-foreground">
@@ -352,9 +352,9 @@ function ARQuickActions({
                     key={a.label}
                     onClick={() => onAction(a.label)}
                     className={`w-full flex items-center gap-1.5 px-2 py-1.5 rounded text-[10px] font-bold transition-colors text-left ${
-                        a.tone === 'primary' ? 'bg-primary/10 text-zinc-900 dark:text-primary hover:bg-primary/15' :
+                        a.tone === 'primary' ? 'bg-primary/10 text-primary hover:bg-primary/15' :
                         a.tone === 'danger' ? 'bg-destructive/10 text-destructive hover:bg-destructive/15' :
-                        'bg-card dark:bg-zinc-800 text-foreground hover:bg-muted border border-border'
+                        'bg-card text-foreground hover:bg-muted border border-border'
                     }`}
                 >
                     {a.icon}

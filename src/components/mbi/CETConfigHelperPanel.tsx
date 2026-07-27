@@ -42,7 +42,7 @@ const CONVERSATION: Message[] = [
 
 export default function CETConfigHelperPanel() {
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden flex flex-col">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col">
             <div className="px-4 py-3 border-b border-border flex items-center gap-2">
                 <div className="h-7 w-7 rounded-lg bg-ai/10 text-ai flex items-center justify-center">
                     <Bot className="h-3.5 w-3.5" />
@@ -58,7 +58,7 @@ export default function CETConfigHelperPanel() {
             <div className="p-4 space-y-3 max-h-96 overflow-y-auto">
                 {CONVERSATION.map((m, i) => (
                     <div key={i} className={`flex gap-2 ${m.role === 'user' ? 'flex-row-reverse' : ''}`}>
-                        <div className={`h-7 w-7 rounded-full flex items-center justify-center shrink-0 ${m.role === 'assistant' ? 'bg-ai/10 text-ai' : 'bg-primary/10 text-zinc-900 dark:text-primary'}`}>
+                        <div className={`h-7 w-7 rounded-full flex items-center justify-center shrink-0 ${m.role === 'assistant' ? 'bg-ai/10 text-ai' : 'bg-primary/10 text-primary'}`}>
                             {m.role === 'assistant' ? <Sparkles className="h-3.5 w-3.5" /> : <User className="h-3.5 w-3.5" />}
                         </div>
                         <div className={`flex-1 max-w-[80%] ${m.role === 'user' ? 'text-right' : ''}`}>

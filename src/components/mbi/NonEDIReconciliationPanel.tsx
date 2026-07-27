@@ -44,7 +44,7 @@ export default function NonEDIReconciliationPanel({ invoices }: NonEDIReconcilia
     return (
         <div className="space-y-3">
             {/* Summary */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl p-4 grid grid-cols-3 gap-4">
+            <div className="bg-card border border-border rounded-2xl p-4 grid grid-cols-3 gap-4">
                 <div>
                     <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Non-EDI invoices</div>
                     <div className="text-2xl font-bold text-foreground tabular-nums mt-0.5">{nonEDI.length}</div>
@@ -55,8 +55,8 @@ export default function NonEDIReconciliationPanel({ invoices }: NonEDIReconcilia
                     <div className="text-[10px] text-muted-foreground">clean · no review needed</div>
                 </div>
                 <div>
-                    <div className="text-[10px] font-bold text-red-600 dark:text-red-400 uppercase tracking-wider">Mismatches</div>
-                    <div className="text-2xl font-bold text-red-600 dark:text-red-400 tabular-nums mt-0.5">
+                    <div className="text-[10px] font-bold text-destructive uppercase tracking-wider">Mismatches</div>
+                    <div className="text-2xl font-bold text-destructive tabular-nums mt-0.5">
                         {mismatches.length - resolvedCount}
                     </div>
                     <div className="text-[10px] text-muted-foreground">pending approval</div>
@@ -65,7 +65,7 @@ export default function NonEDIReconciliationPanel({ invoices }: NonEDIReconcilia
 
             {/* Mismatch cards */}
             {mismatches.length === 0 ? (
-                <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl p-8 text-center text-sm text-muted-foreground">
+                <div className="bg-card border border-border rounded-2xl p-8 text-center text-sm text-muted-foreground">
                     <CheckCircle2 className="h-8 w-8 text-success mx-auto mb-2" />
                     All non-EDI invoices reconciled automatically.
                 </div>
@@ -128,9 +128,9 @@ function MismatchCard({
     }
 
     return (
-        <div className="bg-red-50/40 dark:bg-red-500/5 border-2 border-red-300 dark:border-red-500/30 rounded-2xl p-4">
+        <div className="bg-destructive/10 border-2 border-destructive/30 rounded-2xl p-4">
             <div className="flex items-start gap-3 mb-3">
-                <div className="h-9 w-9 rounded-lg bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 flex items-center justify-center shrink-0">
+                <div className="h-9 w-9 rounded-lg bg-destructive/15 text-destructive flex items-center justify-center shrink-0">
                     <AlertTriangle className="h-4 w-4" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -151,8 +151,8 @@ function MismatchCard({
                 <div className="hidden md:flex items-center justify-center">
                     <ArrowRight className="h-4 w-4 text-muted-foreground" />
                 </div>
-                <div className="bg-background border border-red-300 dark:border-red-500/30 rounded-xl p-3">
-                    <div className="text-[10px] font-bold text-red-600 dark:text-red-400 uppercase tracking-wider mb-1">Invoice (vendor)</div>
+                <div className="bg-background border border-destructive/30 rounded-xl p-3">
+                    <div className="text-[10px] font-bold text-destructive uppercase tracking-wider mb-1">Invoice (vendor)</div>
                     <div className="text-xs text-foreground">{d.actual}</div>
                 </div>
             </div>

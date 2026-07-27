@@ -67,7 +67,7 @@ export default function ARAgingReviewScene({ onContinue }: ARAgingReviewScenePro
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
                     <InsightChip
-                        icon={<AlertTriangle className="h-3 w-3 text-red-600 dark:text-red-400" />}
+                        icon={<AlertTriangle className="h-3 w-3 text-destructive" />}
                         text={`${escalated} accounts 30+ days past due — escalation recommended`}
                         tone="red"
                     />
@@ -82,7 +82,7 @@ export default function ARAgingReviewScene({ onContinue }: ARAgingReviewScenePro
                         tone="ai"
                     />
                     <InsightChip
-                        icon={<PauseCircle className="h-3 w-3 text-amber-600 dark:text-amber-400" />}
+                        icon={<PauseCircle className="h-3 w-3 text-warning" />}
                         text={`${holdCount} invoices on collections hold · installation or punch list pending`}
                         tone="amber"
                     />
@@ -107,7 +107,7 @@ export default function ARAgingReviewScene({ onContinue }: ARAgingReviewScenePro
                     label="Escalated"
                     value={`${escalated}`}
                     sub={`$${(escalatedAmount / 1000).toFixed(0)}K at risk`}
-                    accent="text-red-600 dark:text-red-400"
+                    accent="text-destructive"
                 />
                 <SummaryTile
                     label="Forecast"
@@ -132,7 +132,7 @@ export default function ARAgingReviewScene({ onContinue }: ARAgingReviewScenePro
                         className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border ${
                             arFilter === chip.key
                                 ? 'bg-primary text-zinc-900 border-primary/50'
-                                : 'bg-card dark:bg-zinc-800 border-border text-muted-foreground hover:text-foreground hover:border-zinc-300 dark:hover:border-zinc-600'
+                                : 'bg-card border-border text-muted-foreground hover:text-foreground hover:border-zinc-300 dark:hover:border-zinc-600'
                         }`}
                     >
                         {chip.icon}
@@ -149,7 +149,7 @@ export default function ARAgingReviewScene({ onContinue }: ARAgingReviewScenePro
                 is one click instead of "next" copy without a control */}
             <div className="flex flex-col md:flex-row md:items-center gap-3 text-xs bg-primary/5 dark:bg-primary/10 border border-primary/30 rounded-xl p-3">
                 <div className="flex items-start gap-3 flex-1 min-w-0">
-                    <ArrowRight className="h-4 w-4 text-zinc-900 dark:text-primary shrink-0 mt-0.5" />
+                    <ArrowRight className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                     <div className="min-w-0">
                         <div className="font-bold text-foreground">
                             Next · review the {draftReadyIds.length} AI-drafted follow-up{draftReadyIds.length === 1 ? '' : 's'}
@@ -183,11 +183,11 @@ export default function ARAgingReviewScene({ onContinue }: ARAgingReviewScenePro
 
 function InsightChip({ icon, text, tone }: { icon: React.ReactNode; text: string; tone: 'red' | 'green' | 'ai' | 'amber' }) {
     const cls = tone === 'red'
-        ? 'bg-red-50 dark:bg-red-500/10 border-red-200 dark:border-red-500/20'
+        ? 'bg-destructive/10 border-destructive/30'
         : tone === 'green'
             ? 'bg-success/5 border-success/20'
             : tone === 'amber'
-                ? 'bg-amber-50 dark:bg-amber-500/10 border-amber-200 dark:border-amber-500/20'
+                ? 'bg-warning/10 border-warning/20'
                 : 'bg-ai/5 border-ai/20'
     return (
         <div className={`flex items-start gap-1.5 rounded-lg px-2.5 py-2 border text-[10px] text-foreground ${cls}`}>
@@ -199,7 +199,7 @@ function InsightChip({ icon, text, tone }: { icon: React.ReactNode; text: string
 
 function SummaryTile({ label, value, sub, accent }: { label: string; value: string; sub: string; accent: string }) {
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-xl p-3">
+        <div className="bg-card border border-border rounded-xl p-3">
             <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">{label}</div>
             <div className={`text-xl font-bold tabular-nums mt-0.5 ${accent}`}>{value}</div>
             <div className="text-[10px] text-muted-foreground mt-1">{sub}</div>

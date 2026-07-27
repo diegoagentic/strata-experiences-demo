@@ -41,9 +41,9 @@ interface DataSourcesBarProps {
 }
 
 const TYPE_STYLE: Record<SourceType, { bg: string; text: string; dot: string }> = {
-    erp:           { bg: 'bg-blue-500/10',   text: 'text-blue-700 dark:text-blue-400',   dot: 'bg-blue-500' },
+    erp:           { bg: 'bg-info/10',   text: 'text-info',   dot: 'bg-info' },
     ai:            { bg: 'bg-ai/10',          text: 'text-ai',                             dot: 'bg-ai' },
-    external:      { bg: 'bg-amber-500/10',   text: 'text-amber-700 dark:text-amber-400', dot: 'bg-amber-500' },
+    external:      { bg: 'bg-warning/10',   text: 'text-warning', dot: 'bg-warning' },
     communication: { bg: 'bg-ai/10',  text: 'text-violet-700 dark:text-ai', dot: 'bg-ai' },
     file:          { bg: 'bg-muted',          text: 'text-muted-foreground',               dot: 'bg-zinc-400' },
 }

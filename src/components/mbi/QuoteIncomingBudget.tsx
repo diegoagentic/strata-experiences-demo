@@ -30,13 +30,13 @@ export default function QuoteIncomingBudget() {
     return (
         <div className="space-y-4">
             {/* PC morning queue — list first, then drill into the active project */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <div className="px-4 py-3 border-b border-border bg-muted/20 flex items-center justify-between">
                     <div>
                         <div className="text-xs font-bold text-foreground">PC quote queue · 4 projects</div>
                         <div className="text-[10px] text-muted-foreground">Signed budgets ready for CORE proposal conversion</div>
                     </div>
-                    <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-primary/15 text-zinc-900 dark:text-primary uppercase tracking-wider">Marcia's view</span>
+                    <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-primary/15 text-primary uppercase tracking-wider">Marcia's view</span>
                 </div>
                 <div className="divide-y divide-border">
                     {PC_QUEUE.map(item => (
@@ -50,7 +50,7 @@ export default function QuoteIncomingBudget() {
                             </div>
                             <div className={`tabular-nums font-bold shrink-0 ${item.status === 'active' ? 'text-foreground' : 'text-muted-foreground'}`}>{item.amount}</div>
                             <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full shrink-0 ${
-                                item.status === 'active' ? 'bg-primary/15 text-zinc-900 dark:text-primary' :
+                                item.status === 'active' ? 'bg-primary/15 text-primary' :
                                 item.status === 'done' ? 'bg-success/15 text-success' :
                                 'bg-muted text-muted-foreground'
                             }`}>{item.statusLabel}</span>
@@ -88,8 +88,8 @@ export default function QuoteIncomingBudget() {
 
             {/* Before / After contrast strip */}
             <div className="grid grid-cols-2 gap-3">
-                <div className="bg-red-50/60 dark:bg-red-500/10 border border-red-300 dark:border-red-500/30 rounded-xl p-3 flex items-start gap-2.5">
-                    <div className="h-7 w-7 rounded-lg bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-400 flex items-center justify-center shrink-0">
+                <div className="bg-destructive/10 border border-destructive/30 rounded-xl p-3 flex items-start gap-2.5">
+                    <div className="h-7 w-7 rounded-lg bg-destructive/15 text-destructive flex items-center justify-center shrink-0">
                         <Building2 className="h-3.5 w-3.5" />
                     </div>
                     <div className="text-xs min-w-0">
@@ -117,7 +117,7 @@ export default function QuoteIncomingBudget() {
 
             {/* Forward cue */}
             <div className="flex items-center gap-3 text-xs bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-3">
-                <ArrowRight className="h-4 w-4 text-zinc-900 dark:text-primary shrink-0" />
+                <ArrowRight className="h-4 w-4 text-primary shrink-0" />
                 <span className="flex-1 text-foreground">
                     All 4 readiness checks passed. Next: Strata validates the quote — non-catalog pricing, BOM completeness, duplicates — 4 audit loops collapse to 1 review.
                 </span>

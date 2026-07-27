@@ -32,10 +32,10 @@ export default function DesignerCapacityBoard() {
     }).sort((a, b) => b.hoursLogged - a.hoursLogged)
 
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-border flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <div className="h-7 w-7 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center">
+                    <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                         <Users className="h-3.5 w-3.5" />
                     </div>
                     <div>
@@ -53,14 +53,14 @@ export default function DesignerCapacityBoard() {
                     const high = utilization > 70 && !overload
                     const isHybrid = designer.role.toLowerCase().includes('hybrid')
                     const accent = overload
-                        ? 'border-l-4 border-l-amber-500'
+                        ? 'border-l-4 border-l-warning'
                         : high
                             ? 'border-l-4 border-l-primary'
                             : 'border-l-4 border-l-success/60'
                     const avatarBg = overload
-                        ? 'bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400'
+                        ? 'bg-warning/15 text-warning'
                         : high
-                            ? 'bg-primary/15 text-zinc-900 dark:text-primary'
+                            ? 'bg-primary/15 text-primary'
                             : 'bg-success/10 text-success'
                     const initials = designer.name.split(' ').map(n => n[0]).slice(0, 2).join('')
                     return (
@@ -103,7 +103,7 @@ export default function DesignerCapacityBoard() {
                             {/* Utilization bar */}
                             <div className="h-1.5 bg-background rounded-full overflow-hidden">
                                 <div
-                                    className={`h-full rounded-full transition-all ${overload ? 'bg-amber-500' : high ? 'bg-primary' : 'bg-success'}`}
+                                    className={`h-full rounded-full transition-all ${overload ? 'bg-warning' : high ? 'bg-primary' : 'bg-success'}`}
                                     style={{ width: `${utilization}%` }}
                                 />
                             </div>
@@ -114,7 +114,7 @@ export default function DesignerCapacityBoard() {
                                     {projects.length > 2 && ` · +${projects.length - 2} more`}
                                 </div>
                                 {overload && (
-                                    <span className="inline-flex items-center gap-0.5 text-amber-600 dark:text-amber-400 font-bold tabular-nums shrink-0">
+                                    <span className="inline-flex items-center gap-0.5 text-warning font-bold tabular-nums shrink-0">
                                         <AlertTriangle className="h-2.5 w-2.5" />
                                         {utilization}%
                                     </span>

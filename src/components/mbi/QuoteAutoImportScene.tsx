@@ -21,8 +21,8 @@ export default function QuoteAutoImportScene() {
         <div className="space-y-4">
             {/* Before / After contrast strip */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <div className="bg-red-50/60 dark:bg-red-500/10 border border-red-300 dark:border-red-500/30 rounded-xl p-3 flex items-start gap-2.5">
-                    <div className="h-8 w-8 rounded-lg bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-400 flex items-center justify-center shrink-0">
+                <div className="bg-destructive/10 border border-destructive/30 rounded-xl p-3 flex items-start gap-2.5">
+                    <div className="h-8 w-8 rounded-lg bg-destructive/15 text-destructive flex items-center justify-center shrink-0">
                         <Keyboard className="h-4 w-4" />
                     </div>
                     <div className="text-xs min-w-0">
@@ -49,7 +49,7 @@ export default function QuoteAutoImportScene() {
             <SIFToCOREPreview />
 
             {/* What just happened */}
-            <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl p-4">
+            <div className="bg-card border border-border rounded-2xl p-4">
                 <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-3">
                     What Strata just did · no PC intervention
                 </div>
@@ -79,7 +79,7 @@ export default function QuoteAutoImportScene() {
 
             {/* Forward cue */}
             <div className="flex items-center gap-3 text-xs bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-3">
-                <ArrowRight className="h-4 w-4 text-zinc-900 dark:text-primary shrink-0" />
+                <ArrowRight className="h-4 w-4 text-primary shrink-0" />
                 <span className="flex-1 text-foreground">
                     Next: Strata runs <strong>Spec Check</strong> against CORE constraints, vendor availability, and non-catalog pricing — the 4-loop audit collapses into 1 AI pass + 1 PC review.
                 </span>

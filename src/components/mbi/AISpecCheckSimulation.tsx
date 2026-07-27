@@ -252,7 +252,7 @@ function QuestionCard({
     onSelect: (value: string) => void
 }) {
     return (
-        <div className="bg-card dark:bg-zinc-900 border border-border rounded-xl p-3 space-y-2">
+        <div className="bg-card border border-border rounded-xl p-3 space-y-2">
             <div className="flex items-center gap-2">
                 <span className="h-5 w-5 rounded-full bg-ai/15 text-ai text-[10px] font-bold flex items-center justify-center">{index}</span>
                 <span className="text-[10px] text-muted-foreground font-mono truncate" dangerouslySetInnerHTML={{ __html: context }} />

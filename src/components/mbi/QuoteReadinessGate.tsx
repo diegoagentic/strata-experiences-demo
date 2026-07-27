@@ -55,7 +55,7 @@ export default function QuoteReadinessGate() {
     const isRunning = phase === 'running'
 
     return (
-        <div className={`border rounded-2xl p-4 transition-colors duration-500 ${isPassed ? 'bg-success/5 border-success/30' : 'bg-card dark:bg-zinc-800 border-border'}`}>
+        <div className={`border rounded-2xl p-4 transition-colors duration-500 ${isPassed ? 'bg-success/5 border-success/30' : 'bg-card border-border'}`}>
             <div className="flex items-start gap-3 mb-3">
                 <div className={`h-10 w-10 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 ${isPassed ? 'bg-success/10 text-success' : 'bg-muted text-muted-foreground'}`}>
                     {isRunning
@@ -103,7 +103,7 @@ export default function QuoteReadinessGate() {
                                     ? 'bg-success/5 border-success/30 dark:bg-success/10'
                                     : isCurrent
                                         ? 'bg-ai/5 border-ai/30 dark:bg-ai/10'
-                                        : 'bg-card dark:bg-zinc-800/60 border-border'
+                                        : 'bg-card/60 border-border'
                             }`}
                         >
                             {isChecked

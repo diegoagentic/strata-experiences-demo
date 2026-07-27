@@ -162,7 +162,7 @@ export default function EmailInboxDropZone({ onIngest, activeFilter = 'all' }: E
     const isHover = stage === 'dragover'
 
     return (
-        <div className="bg-card dark:bg-zinc-800 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl overflow-hidden">
             {/* Inbox header */}
             <div className="px-4 py-2.5 border-b border-border bg-muted/20 flex items-center gap-2">
                 <Inbox className="h-4 w-4 text-foreground" />
@@ -291,16 +291,16 @@ type EmailType = 'bill' | 'rebate-bill' | 'statement' | 'healthtrust' | 'excepti
 
 const EMAIL_TYPE_CHIP: Record<EmailType, { label: string; cls: string }> = {
     'bill':        { label: 'Bill → AP queue',          cls: 'text-success bg-success/10' },
-    'rebate-bill': { label: 'Rebate · Bill → AP',       cls: 'text-amber-600 dark:text-amber-400 bg-amber-500/10' },
+    'rebate-bill': { label: 'Rebate · Bill → AP',       cls: 'text-warning bg-warning/10' },
     'statement':   { label: 'Statement · tagged',        cls: 'text-muted-foreground bg-muted/60' },
-    'healthtrust': { label: 'HealthTrust GPO · review',  cls: 'text-amber-700 dark:text-amber-400 bg-amber-500/10' },
-    'exception':   { label: 'Exception · needs review',  cls: 'text-red-600 dark:text-red-400 bg-red-500/10' },
+    'healthtrust': { label: 'HealthTrust GPO · review',  cls: 'text-warning bg-warning/10' },
+    'exception':   { label: 'Exception · needs review',  cls: 'text-destructive bg-destructive/10' },
 }
 
 function FauxEmailRow({ vendor, subject, attached, time, muted, emailType, highlight }: { vendor: string; subject: string; attached?: boolean; time: string; muted?: boolean; emailType?: EmailType; highlight?: boolean }) {
     const chip = emailType ? EMAIL_TYPE_CHIP[emailType] : null
     return (
-        <div className={`flex items-start gap-3 px-2 py-1.5 rounded transition-all ${muted ? 'opacity-60' : ''} ${highlight ? 'ring-1 ring-amber-400/60 bg-amber-50/60 dark:bg-amber-500/10 rounded-lg' : ''}`}>
+        <div className={`flex items-start gap-3 px-2 py-1.5 rounded transition-all ${muted ? 'opacity-60' : ''} ${highlight ? 'ring-1 ring-amber-400/60 bg-warning/10 rounded-lg' : ''}`}>
             <Mail className="h-3 w-3 text-muted-foreground shrink-0 mt-0.5" />
             <div className="flex-1 min-w-0">
                 <div className="text-[11px] font-semibold text-foreground truncate">{vendor}</div>
