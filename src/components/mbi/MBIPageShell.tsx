@@ -52,7 +52,9 @@ export default function MBIPageShell({ title, subtitle, icon, actions, preHeader
                 <div className="flex items-center justify-between gap-4 pb-4 border-b border-border">
                     <div className="flex items-center gap-3">
                         {icon && (
-                            <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                            // F38.b · era bg-primary/10 + text-primary (LAW 3 hack · lime sobre lime ilegible).
+                            // Pattern F22/F23.f/F29.d · icon pill sólido brand.
+                            <div className="h-10 w-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shrink-0">
                                 {icon}
                             </div>
                         )}
