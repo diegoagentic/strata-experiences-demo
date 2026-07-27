@@ -10,6 +10,8 @@ import { useTenant } from './TenantContext';
 import { useDemo } from './context/DemoContext';
 import { useDemoProfile } from './context/useDemoProfile';
 import StatusBadge, { type StatusTone } from './components/shared/StatusBadge';
+import ContinuaHealthAnalysis from './components/continua/ContinuaHealthAnalysis';
+import ContinuaReceiving from './components/continua/ContinuaReceiving';
 import { CONTINUA_STEP_TIMING } from './config/profiles/continua-demo';
 import { AIAgentAvatar } from './components/simulations/DemoAvatars';
 import Breadcrumbs from './components/Breadcrumbs';
@@ -1037,254 +1039,33 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                 }
 
 
-                {/* ═══ Continua Step 1.4 — Warehouse Receiving & QC ═══ */}
-                {isContinua && stepId === '3.5' && rcvPhase !== 'idle' && (
-                    <div className="space-y-4 mb-6">
-                        {/* F42.a · Notification "Shipment Receiving Initiated" migrado al ActionCenter
-                            (continua-3.5-receiving). */}
-
-                        {/* Processing */}
-                        {rcvPhase === 'processing' && (
-                            <div className="p-4 rounded-xl bg-card border border-border shadow-sm animate-in fade-in duration-300">
-                                <div className="flex items-center gap-2 mb-3">
-                                    <AIAgentAvatar size="sm" />
-                                    <span className="text-xs font-bold text-foreground">ReceivingAgent Processing Shipments...</span>
-                                </div>
-                                <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                    <div className="h-full rounded-full bg-primary transition-all duration-[3500ms] ease-linear" style={{ width: `${rcvProgress}%` }} />
-                                </div>
-                                <div className="space-y-1.5">
-                                    {rcvAgents.map(agent => (
-                                        <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-ai animate-spin shrink-0" />}
-                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-ai")}>{agent.name}</span>
-                                            <span className="text-muted-foreground">{agent.detail}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Breathing */}
-                        {rcvPhase === 'breathing' && (
-                            <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-success/10 animate-pulse" />
-                                <span className="text-xs font-semibold text-muted-foreground">Processing complete — syncing external systems...</span>
-                            </div>
-                        )}
-
-                        {/* Confirmed */}
-                        {(rcvPhase === 'revealed' || rcvPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-success/10 border-2 border-success/30 dark:border-success/30 animate-in fade-in duration-300">
-                                <div className="flex items-start gap-2">
-                                    <AIAgentAvatar size="sm" />
-                                    <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-success"><span className="font-bold">ReceivingAgent:</span> 3 shipments processed — <span className="font-semibold">47/50 items matched</span>. 2 QC flags raised, warranty claims auto-filed.</p>
-                                        <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
-                                        </div>
-                                        <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
-                                            {['QR Scanner', 'PO Match Engine', 'QC Database', 'Warranty Portal', 'WMS'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/10 text-success text-[10px] font-medium border border-success/50 dark:border-success/20">
-                                                    <CheckCircleIcon className="h-3 w-3" />{sys}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Results */}
-                        {rcvPhase === 'results' && (
-                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm">
-                                    {/* Header */}
-                                    <div className="p-4 border-b border-border/50 flex items-center justify-between">
-                                        <div>
-                                            <h3 className="text-sm font-bold text-foreground">Receiving Summary — Chicago Warehouse</h3>
-                                            <p className="text-[11px] text-muted-foreground mt-0.5">3 shipments processed · 47/50 matched · Utilization 72%</p>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-success/10 text-success font-bold">47 Matched</span>
-                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-destructive/10 text-destructive font-bold">2 QC Flags</span>
-                                        </div>
-                                    </div>
-
-                                    {/* Shipment Cards */}
-                                    <div className="p-4 grid grid-cols-3 gap-3">
-                                        {SHIPMENT_DATA.map(s => (
-                                            <div key={s.id} className={cn("p-3 rounded-xl border", s.defects > 0 ? "border-warning/30 dark:border-warning/20 bg-warning/50 dark:bg-warning/5" : "border-border bg-muted/20")}>
-                                                <div className="flex items-center justify-between mb-2">
-                                                    <span className="text-[10px] font-bold text-foreground">{s.id}</span>
-                                                    <span className={cn("text-[9px] px-2 py-0.5 rounded-full font-bold", s.status === 'complete' ? "bg-success/10 text-success dark:bg-success/10 dark:text-success" : "bg-warning/10 text-warning dark:bg-warning/10 dark:text-warning")}>{s.status === 'complete' ? 'Complete' : 'Partial'}</span>
-                                                </div>
-                                                <p className="text-[11px] font-medium text-foreground">{s.manufacturer}</p>
-                                                <p className="text-[10px] text-muted-foreground mt-1">{s.matched}/{s.items} items matched</p>
-                                                {s.defects > 0 && <p className="text-[10px] text-warning mt-1 flex items-center gap-1"><ExclamationTriangleIcon className="h-3 w-3" />{s.defects} defect{s.defects > 1 ? 's' : ''} flagged</p>}
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    {/* QC Flags */}
-                                    <div className="mx-4 mb-4 p-4 rounded-xl bg-destructive/10 border border-destructive/30 dark:border-destructive/20">
-                                        <h4 className="text-xs font-bold text-destructive mb-2 flex items-center gap-1.5"><ExclamationTriangleIcon className="h-4 w-4" />QC Flags — Auto-Reported to Manufacturer</h4>
-                                        <div className="space-y-2">
-                                            {QC_FLAGS.map((qc, i) => (
-                                                <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-card/60 border border-destructive/30 dark:border-destructive/10">
-                                                    <div>
-                                                        <p className="text-[11px] font-medium text-foreground">{qc.item}</p>
-                                                        <p className="text-[10px] text-muted-foreground">{qc.sku} · {qc.defect}</p>
-                                                    </div>
-                                                    <div className="flex items-center gap-2">
-                                                        <span className={cn("text-[9px] px-2 py-0.5 rounded-full font-bold", qc.severity === 'Major' ? "bg-destructive/10 text-destructive" : "bg-warning/10 text-warning")}>{qc.severity}</span>
-                                                        <PhotoIcon className="h-4 w-4 text-muted-foreground" />
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Location & CTA */}
-                                    <div className="px-4 py-3 border-t border-border/50 flex items-center justify-between bg-muted/20">
-                                        <div className="flex items-center gap-4">
-                                            <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground"><MapPinIcon className="h-3.5 w-3.5" /><span className="font-medium text-foreground">Zone B, Rack 14</span></div>
-                                            <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground"><ChartBarIcon className="h-3.5 w-3.5" />Utilization: <span className="font-medium text-foreground">72%</span></div>
-                                        </div>
-                                        <button onClick={nextStep} className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm text-[11px] font-bold shadow-sm transition-all hover:scale-[1.02]">
-                                            <ClipboardDocumentCheckIcon className="h-3.5 w-3.5" />Confirm Receiving<ArrowRightIcon className="h-3 w-3" />
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
+                {/* F42.d.2 · scene 3.5 Warehouse Receiving extraído a
+                    ./components/continua/ContinuaReceiving.tsx */}
+                {isContinua && stepId === '3.5' && rcvPhase !== 'idle' && rcvPhase !== 'notification' && (
+                    <ContinuaReceiving
+                        rcvPhase={rcvPhase as 'processing' | 'breathing' | 'revealed' | 'results'}
+                        rcvProgress={rcvProgress}
+                        rcvAgents={rcvAgents}
+                        shipments={SHIPMENT_DATA}
+                        qcFlags={QC_FLAGS}
+                        onConfirm={nextStep}
+                    />
                 )}
 
                 {/* ═══ Continua Step 3.1 — Inventory Health & Forecasting ═══ */}
-                {isContinua && stepId === '1.1' && hlthPhase !== 'idle' && (
-                    <div data-demo-target="inventory-health-forecast" className="space-y-4 mb-6">
-                        {/* F42.a · Notification "Inventory Health Analysis" migrado al ActionCenter
-                            (WORKSPACES_STEP_NOTIFICATIONS · continua-1.1-inventory-health).
-                            El listener de continua:advance-phase avanza a processing al click Review. */}
-
-                        {/* Processing */}
-                        {hlthPhase === 'processing' && (
-                            <div className="p-4 rounded-xl bg-card border border-border shadow-sm animate-in fade-in duration-300">
-                                <div className="flex items-center gap-2 mb-3">
-                                    <AIAgentAvatar size="sm" />
-                                    <span className="text-xs font-bold text-foreground">InventoryIntelAgent Analyzing Warehouses...</span>
-                                </div>
-                                <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                    <div className="h-full rounded-full bg-primary transition-all duration-[3500ms] ease-linear" style={{ width: `${hlthProgress}%` }} />
-                                </div>
-                                <div className="space-y-1.5">
-                                    {hlthAgents.map(agent => (
-                                        <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-ai animate-spin shrink-0" />}
-                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-ai")}>{agent.name}</span>
-                                            <span className="text-muted-foreground">{agent.detail}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Breathing */}
-                        {hlthPhase === 'breathing' && (
-                            <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-success/10 animate-pulse" />
-                                <span className="text-xs font-semibold text-muted-foreground">Processing complete — syncing external systems...</span>
-                            </div>
-                        )}
-
-                        {/* Confirmed */}
-                        {(hlthPhase === 'revealed' || hlthPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-success/10 border-2 border-success/30 dark:border-success/30 animate-in fade-in duration-300">
-                                <div className="flex items-start gap-2">
-                                    <AIAgentAvatar size="sm" />
-                                    <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-success"><span className="font-bold">InventoryIntelAgent:</span> Analysis complete — <span className="font-semibold">Chicago at 68%</span>, forecast 85% in 2 weeks. 120 items recommended for relocation — <span className="font-semibold">$4,200/mo savings</span>.</p>
-                                        <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
-                                        </div>
-                                        <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
-                                            {['WMS', 'Capacity Planner', 'Cost Engine', 'Logistics API', 'Forecast Model'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/10 text-success text-[10px] font-medium border border-success/50 dark:border-success/20">
-                                                    <CheckCircleIcon className="h-3 w-3" />{sys}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Results */}
-                        {hlthPhase === 'results' && (
-                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm">
-                                    {/* Header */}
-                                    <div className="p-4 border-b border-border/50 flex items-center justify-between">
-                                        <div>
-                                            <h3 className="text-sm font-bold text-foreground">Warehouse Capacity Overview</h3>
-                                            <p className="text-[11px] text-muted-foreground mt-0.5">2,400 items · 3 locations · Forecast: 2-week horizon</p>
-                                        </div>
-                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-warning/10 text-warning font-bold">1 Alert</span>
-                                    </div>
-
-                                    {/* Warehouse Gauges */}
-                                    <div className="p-4 grid grid-cols-3 gap-3">
-                                        {WAREHOUSE_DATA.map(wh => (
-                                            <div key={wh.name} className={cn("p-3 rounded-xl border", wh.alert ? "border-warning/30 dark:border-warning/20 bg-warning/50 dark:bg-warning/5" : "border-border bg-muted/20")}>
-                                                <div className="flex items-center justify-between mb-2">
-                                                    <span className="text-[11px] font-bold text-foreground">{wh.name}</span>
-                                                    <span className="text-[10px] text-muted-foreground">{wh.items} items</span>
-                                                </div>
-                                                {/* Gauge bar */}
-                                                <div className="h-2 rounded-full bg-muted overflow-hidden mb-1.5">
-                                                    <div className={cn("h-full rounded-full transition-all duration-700", wh.current > 70 ? "bg-warning/10" : wh.current > 50 ? "bg-primary" : "bg-success/10")} style={{ width: `${wh.current}%` }} />
-                                                </div>
-                                                <div className="flex items-center justify-between">
-                                                    <span className={cn("text-xs font-bold", wh.current > 70 ? "text-warning" : "text-foreground")}>{wh.current}%</span>
-                                                    {wh.alert && <span className="text-[9px] text-warning font-medium">→ {wh.forecast}% in 2wk</span>}
-                                                </div>
-                                                {wh.alert && <p className="text-[10px] text-warning mt-1.5 flex items-center gap-1"><ExclamationTriangleIcon className="h-3 w-3 shrink-0" />{wh.alertText}</p>}
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    {/* Relocation Recommendations */}
-                                    <div className="mx-4 mb-4 p-4 rounded-xl bg-ai/10 dark:bg-ai/5 border border-ai/30 dark:border-ai/20">
-                                        <h4 className="text-xs font-bold text-ai mb-3 flex items-center gap-1.5"><LightBulbIcon className="h-4 w-4" />AI Relocation Recommendations</h4>
-                                        <div className="space-y-2">
-                                            {RELOCATION_RECS.map((rec, i) => (
-                                                <div key={i} className="flex items-center justify-between p-2.5 rounded-lg bg-card/60 border border-ai/30 dark:border-ai/10">
-                                                    <div className="flex-1 min-w-0">
-                                                        <p className="text-[11px] font-medium text-foreground">{rec.items} items · {rec.type}</p>
-                                                        <p className="text-[10px] text-muted-foreground mt-0.5">{rec.from} → {rec.to}</p>
-                                                    </div>
-                                                    <span className="text-[10px] px-2 py-1 rounded-full bg-success/10 text-success font-bold shrink-0 ml-2">{rec.savings}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                        <div className="mt-3 flex items-center justify-between p-2.5 rounded-lg bg-success/10 border border-success/30 dark:border-success/20">
-                                            <span className="text-[11px] font-bold text-success">Total Monthly Savings</span>
-                                            <span className="text-sm font-bold text-success">$4,200/mo</span>
-                                        </div>
-                                    </div>
-
-                                    {/* CTA */}
-                                    <div className="px-4 py-3 border-t border-border/50 flex items-center justify-between bg-muted/20">
-                                        <p className="text-[10px] text-muted-foreground">Relocating 120 items optimizes capacity and reduces storage costs.</p>
-                                        <button onClick={nextStep} className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm text-[11px] font-bold shadow-sm transition-all hover:scale-[1.02]">
-                                            <CheckCircleIcon className="h-3.5 w-3.5" />Apply Recommendations<ArrowRightIcon className="h-3 w-3" />
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
+                {/* F42.d.1 · scene 1.1 Inventory Health Analysis extraído a
+                    ./components/continua/ContinuaHealthAnalysis.tsx. State machine
+                    (hlthPhase · hlthProgress · hlthAgents · timers) queda en el
+                    parent · el listener continua:advance-phase avanza a processing. */}
+                {isContinua && stepId === '1.1' && hlthPhase !== 'idle' && hlthPhase !== 'notification' && (
+                    <ContinuaHealthAnalysis
+                        hlthPhase={hlthPhase as 'processing' | 'breathing' | 'revealed' | 'results'}
+                        hlthProgress={hlthProgress}
+                        hlthAgents={hlthAgents}
+                        warehouses={WAREHOUSE_DATA}
+                        relocationRecs={RELOCATION_RECS}
+                        onApplyRecommendations={nextStep}
+                    />
                 )}
 
                 {/* ═══ Continua Step 1.4 — Multi-Location Sync (auto 8s) ═══ */}
