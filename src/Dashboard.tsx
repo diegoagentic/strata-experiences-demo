@@ -308,7 +308,7 @@ const recentQuotes = [
 const recentOrders = [
     { id: "#ORD-2055", customer: "AutoManfacture Co.", client: "AutoManfacture Co.", project: "Office Renovation", amount: "$385,000", status: "PO received", date: "Dec 20, 2025", initials: "AC", statusColor: "bg-zinc-100 text-muted-foreground" },
     { id: "#ORD-2054", customer: "TechDealer Solutions", client: "TechDealer Solutions", project: "HQ Upgrade", amount: "$62,500", status: "In production", date: "Nov 15, 2025", initials: "TS", statusColor: "bg-brand-50 text-brand-700 ring-brand-600/20" },
-    { id: "#ORD-2053", customer: "Urban Living Inc.", client: "Urban Living Inc.", project: "Lobby Refresh", amount: "$112,000", status: "Shipped", date: "Oct 30, 2025", initials: "UL", statusColor: "bg-green-50 text-green-700 ring-green-600/20" },
+    { id: "#ORD-2053", customer: "Urban Living Inc.", client: "Urban Living Inc.", project: "Lobby Refresh", amount: "$112,000", status: "Shipped", date: "Oct 30, 2025", initials: "UL", statusColor: "bg-success/10 text-success ring-green-600/20" },
     { id: "#ORD-2052", customer: "Global Logistics", client: "Global Logistics", project: "Warehouse Expansion", amount: "$45,000", status: "Delivered", date: "Oct 15, 2025", initials: "GL", statusColor: "bg-gray-100 text-foreground" },
 ]
 
@@ -319,30 +319,30 @@ const performanceMetricsByPeriod: Record<string, { label: string; value: number;
     Day:   [
         { label: 'Quote win rate', value: 72, target: 65, color: 'bg-brand-400', trend: '+4%', trendUp: true },
         { label: 'On-time delivery', value: 95, target: 90, color: 'bg-brand-400', trend: '+3%', trendUp: true },
-        { label: 'Discrepancy resolution', value: 50, target: 80, color: 'bg-amber-500', trend: '+5%', trendUp: true },
+        { label: 'Discrepancy resolution', value: 50, target: 80, color: 'bg-warning/10', trend: '+5%', trendUp: true },
         { label: 'Payment speed', value: 80, target: 75, color: 'bg-brand-400', trend: '+2%', trendUp: true },
         { label: 'Inventory accuracy', value: 99, target: 98, color: 'bg-brand-400', trend: '0%', trendUp: true },
     ],
     Month: [
         { label: 'Quote win rate', value: 68, target: 65, color: 'bg-brand-400', trend: '+3%', trendUp: true },
         { label: 'On-time delivery', value: 92, target: 90, color: 'bg-brand-400', trend: '+2%', trendUp: true },
-        { label: 'Discrepancy resolution', value: 45, target: 80, color: 'bg-amber-500', trend: '-8%', trendUp: false },
+        { label: 'Discrepancy resolution', value: 45, target: 80, color: 'bg-warning/10', trend: '-8%', trendUp: false },
         { label: 'Payment speed', value: 78, target: 75, color: 'bg-brand-400', trend: '+5%', trendUp: true },
         { label: 'Inventory accuracy', value: 99, target: 98, color: 'bg-brand-400', trend: '+1%', trendUp: true },
     ],
     Sem: [
-        { label: 'Quote win rate', value: 64, target: 65, color: 'bg-amber-500', trend: '-2%', trendUp: false },
-        { label: 'On-time delivery', value: 89, target: 90, color: 'bg-amber-500', trend: '-1%', trendUp: false },
-        { label: 'Discrepancy resolution', value: 52, target: 80, color: 'bg-amber-500', trend: '+12%', trendUp: true },
-        { label: 'Payment speed', value: 74, target: 75, color: 'bg-amber-500', trend: '-3%', trendUp: false },
-        { label: 'Inventory accuracy', value: 97, target: 98, color: 'bg-amber-500', trend: '-1%', trendUp: false },
+        { label: 'Quote win rate', value: 64, target: 65, color: 'bg-warning/10', trend: '-2%', trendUp: false },
+        { label: 'On-time delivery', value: 89, target: 90, color: 'bg-warning/10', trend: '-1%', trendUp: false },
+        { label: 'Discrepancy resolution', value: 52, target: 80, color: 'bg-warning/10', trend: '+12%', trendUp: true },
+        { label: 'Payment speed', value: 74, target: 75, color: 'bg-warning/10', trend: '-3%', trendUp: false },
+        { label: 'Inventory accuracy', value: 97, target: 98, color: 'bg-warning/10', trend: '-1%', trendUp: false },
     ],
     Year: [
-        { label: 'Quote win rate', value: 61, target: 65, color: 'bg-amber-500', trend: '-4%', trendUp: false },
-        { label: 'On-time delivery', value: 88, target: 90, color: 'bg-amber-500', trend: '-3%', trendUp: false },
-        { label: 'Discrepancy resolution', value: 38, target: 80, color: 'bg-amber-500', trend: '-15%', trendUp: false },
-        { label: 'Payment speed', value: 71, target: 75, color: 'bg-amber-500', trend: '-6%', trendUp: false },
-        { label: 'Inventory accuracy', value: 96, target: 98, color: 'bg-amber-500', trend: '-2%', trendUp: false },
+        { label: 'Quote win rate', value: 61, target: 65, color: 'bg-warning/10', trend: '-4%', trendUp: false },
+        { label: 'On-time delivery', value: 88, target: 90, color: 'bg-warning/10', trend: '-3%', trendUp: false },
+        { label: 'Discrepancy resolution', value: 38, target: 80, color: 'bg-warning/10', trend: '-15%', trendUp: false },
+        { label: 'Payment speed', value: 71, target: 75, color: 'bg-warning/10', trend: '-6%', trendUp: false },
+        { label: 'Inventory accuracy', value: 96, target: 98, color: 'bg-warning/10', trend: '-2%', trendUp: false },
     ],
 }
 
@@ -406,22 +406,22 @@ const aiSuggestions = [
 
 // Color Mapping for Status Icons - Optimized for Dark Mode Contrast
 const colorStyles: Record<string, string> = {
-    blue: 'bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300 ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
-    purple: 'bg-indigo-50 text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300 ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
-    orange: 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
-    green: 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
-    pink: 'bg-pink-50 text-pink-700 dark:bg-pink-500/15 dark:text-pink-300 ring-1 ring-inset ring-pink-600/20 dark:ring-pink-400/30',
-    indigo: 'bg-indigo-50 text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300 ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
+    blue: 'bg-info/10 text-info dark:bg-info/15 dark:text-info ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
+    purple: 'bg-ai/10 text-ai dark:bg-ai/15 dark:text-ai ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
+    orange: 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
+    green: 'bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
+    pink: 'bg-destructive/10 text-destructive dark:bg-destructive/15 dark:text-destructive ring-1 ring-inset ring-pink-600/20 dark:ring-pink-400/30',
+    indigo: 'bg-ai/10 text-ai dark:bg-ai/15 dark:text-ai ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
 }
 
 // Solid Color Mapping for Action Buttons (High Contrast)
 const solidColorStyles: Record<string, string> = {
-    blue: 'bg-blue-600 hover:bg-blue-700 text-white shadow-sm shadow-blue-500/20 border-blue-500',
-    purple: 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-purple-500/20 border-indigo-500',
-    orange: 'bg-amber-600 hover:bg-amber-700 text-white shadow-sm shadow-orange-500/20 border-amber-500',
-    green: 'bg-green-600 hover:bg-green-700 text-white shadow-sm shadow-green-500/20 border-green-500',
-    pink: 'bg-pink-600 hover:bg-pink-700 text-white shadow-sm shadow-pink-500/20 border-pink-500',
-    indigo: 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-indigo-500/20 border-indigo-500',
+    blue: 'bg-info/10 hover:bg-info/10 text-white shadow-sm shadow-blue-500/20 border-info/30',
+    purple: 'bg-ai/10 hover:bg-ai/10 text-white shadow-sm shadow-purple-500/20 border-ai/30',
+    orange: 'bg-warning/10 hover:bg-warning/10 text-white shadow-sm shadow-orange-500/20 border-warning/30',
+    green: 'bg-success/10 hover:bg-success/10 text-white shadow-sm shadow-green-500/20 border-success/30',
+    pink: 'bg-destructive/10 hover:bg-destructive/10 text-white shadow-sm shadow-pink-500/20 border-destructive/30',
+    indigo: 'bg-ai/10 hover:bg-ai/10 text-white shadow-sm shadow-indigo-500/20 border-ai/30',
 }
 
 // Simulate Platform Summary Data
@@ -837,24 +837,24 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                             <div className="flex items-center gap-2">
                                 <div className="relative">
                                     <BellIcon className="w-5 h-5 text-foreground" />
-                                    <div className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-red-500 text-white text-[8px] font-bold flex items-center justify-center">1</div>
+                                    <div className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-destructive/10 text-white text-[8px] font-bold flex items-center justify-center">1</div>
                                 </div>
-                                <div className="w-7 h-7 rounded-full bg-indigo-100 dark:bg-indigo-500/20 flex items-center justify-center">
-                                    <span className="text-[10px] font-bold text-indigo-600 dark:text-indigo-400">EC</span>
+                                <div className="w-7 h-7 rounded-full bg-ai/10 dark:bg-ai/20 flex items-center justify-center">
+                                    <span className="text-[10px] font-bold text-ai">EC</span>
                                 </div>
                             </div>
                         </div>
 
                         {/* Push Notification */}
-                        <div className="mx-3 mt-3 p-3 rounded-xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 animate-in slide-in-from-top-2 duration-500">
+                        <div className="mx-3 mt-3 p-3 rounded-xl bg-info/10 dark:bg-info/10 border border-info/30 dark:border-info/20 animate-in slide-in-from-top-2 duration-500">
                             <div className="flex items-start gap-2.5">
-                                <div className="p-1.5 bg-blue-500/20 rounded-lg shrink-0">
-                                    <DocumentTextIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                                <div className="p-1.5 bg-info/20 rounded-lg shrink-0">
+                                    <DocumentTextIcon className="w-4 h-4 text-info" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-[10px] text-blue-500 font-medium">Just now</p>
-                                    <p className="text-xs font-bold text-blue-700 dark:text-blue-300">Inventory Intelligence Report</p>
-                                    <p className="text-[11px] text-blue-600/80 dark:text-blue-400/80 mt-0.5">UAL HQ — 5 modules analyzed, ready for your approval.</p>
+                                    <p className="text-[10px] text-info font-medium">Just now</p>
+                                    <p className="text-xs font-bold text-info">Inventory Intelligence Report</p>
+                                    <p className="text-[11px] text-info/80 dark:text-info/80 mt-0.5">UAL HQ — 5 modules analyzed, ready for your approval.</p>
                                 </div>
                             </div>
                         </div>
@@ -867,9 +867,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-white rounded-full blur-3xl"></div>
                                 </div>
                                 <div className="relative z-10 text-center">
-                                    <SparklesIcon className="w-5 h-5 mx-auto mb-1.5 text-indigo-200" />
+                                    <SparklesIcon className="w-5 h-5 mx-auto mb-1.5 text-ai" />
                                     <p className="font-bold text-sm tracking-tight">UAL HQ — Chicago</p>
-                                    <p className="text-indigo-200 text-[9px] uppercase tracking-widest mt-0.5">Inventory Intelligence Report</p>
+                                    <p className="text-ai text-[9px] uppercase tracking-widest mt-0.5">Inventory Intelligence Report</p>
                                 </div>
                             </div>
 
@@ -882,19 +882,19 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     { step: '1.4', title: 'Locations Synced', summary: '4 locations — deliveries confirmed', color: 'violet' },
                                     { step: '1.5', title: 'Consignment', summary: '4 RMA + 4 convert-to-purchase', color: 'rose' },
                                 ].map((section, i) => (
-                                    <div key={section.step} className={`p-2.5 rounded-lg border ${clientApproved ? 'border-green-300 dark:border-green-500/30 bg-green-50/30 dark:bg-green-500/5' : 'border-border bg-muted/20'} transition-all duration-300`} style={{ animationDelay: `${i * 80}ms` }}>
+                                    <div key={section.step} className={`p-2.5 rounded-lg border ${clientApproved ? 'border-success/30 dark:border-success/30 bg-success/30 dark:bg-success/5' : 'border-border bg-muted/20'} transition-all duration-300`} style={{ animationDelay: `${i * 80}ms` }}>
                                         <div className="flex items-center gap-2.5">
                                             <div className={`w-6 h-6 rounded-md flex items-center justify-center text-white text-[9px] font-bold shrink-0 ${
-                                                section.color === 'blue' ? 'bg-blue-500' :
+                                                section.color === 'blue' ? 'bg-info/10' :
                                                 section.color === 'emerald' ? 'bg-success' :
-                                                section.color === 'amber' ? 'bg-amber-500' :
-                                                section.color === 'violet' ? 'bg-ai' : 'bg-rose-500'
+                                                section.color === 'amber' ? 'bg-warning/10' :
+                                                section.color === 'violet' ? 'bg-ai' : 'bg-destructive/10'
                                             }`}>{section.step}</div>
                                             <div className="flex-1 min-w-0">
                                                 <p className="text-[11px] font-bold text-foreground">{section.title}</p>
                                                 <p className="text-[9px] text-muted-foreground">{section.summary}</p>
                                             </div>
-                                            {clientApproved && <CheckCircleIcon className="w-4 h-4 text-green-500 shrink-0" />}
+                                            {clientApproved && <CheckCircleIcon className="w-4 h-4 text-success shrink-0" />}
                                         </div>
                                     </div>
                                 ))}
@@ -918,8 +918,8 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         </div>
 
                         {/* AI Verified badge */}
-                        <div className="mx-3 mt-2 px-3 py-2 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20">
-                            <p className="text-[9px] text-indigo-700 dark:text-indigo-300 text-center leading-relaxed">
+                        <div className="mx-3 mt-2 px-3 py-2 rounded-lg bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/20">
+                            <p className="text-[9px] text-ai text-center leading-relaxed">
                                 <span className="font-semibold">AI Verified</span> — All 5 modules analyzed by Strata Intelligence Engine
                             </p>
                         </div>
@@ -936,18 +936,18 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 </button>
                             ) : (
                                 <div className="space-y-3 animate-in fade-in duration-300">
-                                    <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20">
+                                    <div className="p-3 rounded-xl bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20">
                                         <div className="flex items-center gap-2">
-                                            <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                                            <CheckCircleIcon className="w-5 h-5 text-success" />
                                             <div>
-                                                <p className="text-xs font-bold text-green-700 dark:text-green-300">All Changes Approved</p>
-                                                <p className="text-[10px] text-green-600/80 dark:text-green-400/70">Emily Chen · $166,600 savings confirmed</p>
+                                                <p className="text-xs font-bold text-success">All Changes Approved</p>
+                                                <p className="text-[10px] text-success/80 dark:text-success/70">Emily Chen · $166,600 savings confirmed</p>
                                             </div>
                                         </div>
                                     </div>
                                     <button
                                         onClick={() => nextStep()}
-                                        className="w-full py-2.5 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded-xl transition-colors shadow-sm active:scale-[0.98]"
+                                        className="w-full py-2.5 bg-success/10 hover:bg-success/10 text-white text-xs font-bold rounded-xl transition-colors shadow-sm active:scale-[0.98]"
                                     >
                                         Continue
                                     </button>
@@ -978,24 +978,24 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                             <div className="flex items-center gap-2">
                                 <div className="relative">
                                     <BellIcon className="w-5 h-5 text-foreground" />
-                                    <div className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-red-500 text-white text-[8px] font-bold flex items-center justify-center">2</div>
+                                    <div className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-destructive/10 text-white text-[8px] font-bold flex items-center justify-center">2</div>
                                 </div>
-                                <div className="w-7 h-7 rounded-full bg-amber-100 dark:bg-amber-500/20 flex items-center justify-center">
-                                    <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400">CR</span>
+                                <div className="w-7 h-7 rounded-full bg-warning/10 dark:bg-warning/20 flex items-center justify-center">
+                                    <span className="text-[10px] font-bold text-warning">CR</span>
                                 </div>
                             </div>
                         </div>
 
                         {/* Service Request Banner */}
-                        <div className="mx-3 mt-3 p-3 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 animate-in slide-in-from-top-2 duration-500">
+                        <div className="mx-3 mt-3 p-3 rounded-xl bg-warning/10 dark:bg-warning/10 border border-warning/30 dark:border-warning/20 animate-in slide-in-from-top-2 duration-500">
                             <div className="flex items-start gap-2.5">
-                                <div className="p-1.5 bg-amber-500/20 rounded-lg shrink-0">
-                                    <ExclamationTriangleIcon className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                                <div className="p-1.5 bg-warning/20 rounded-lg shrink-0">
+                                    <ExclamationTriangleIcon className="w-4 h-4 text-warning" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-[10px] text-amber-500 font-medium">Service Request</p>
-                                    <p className="text-xs font-bold text-amber-700 dark:text-amber-300">Report a Facility Issue</p>
-                                    <p className="text-[11px] text-amber-600/80 dark:text-amber-400/80 mt-0.5">Submit details to the Strata service center.</p>
+                                    <p className="text-[10px] text-warning font-medium">Service Request</p>
+                                    <p className="text-xs font-bold text-warning">Report a Facility Issue</p>
+                                    <p className="text-[11px] text-warning/80 dark:text-warning/80 mt-0.5">Submit details to the Strata service center.</p>
                                 </div>
                             </div>
                         </div>
@@ -1008,9 +1008,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-white rounded-full blur-3xl"></div>
                                 </div>
                                 <div className="relative z-10 text-center">
-                                    <WrenchScrewdriverIcon className="w-5 h-5 mx-auto mb-1.5 text-amber-200" />
+                                    <WrenchScrewdriverIcon className="w-5 h-5 mx-auto mb-1.5 text-warning" />
                                     <p className="font-bold text-sm tracking-tight">Office 3-214 — Issue Report</p>
-                                    <p className="text-amber-200 text-[9px] uppercase tracking-widest mt-0.5">Facility Service Request</p>
+                                    <p className="text-warning text-[9px] uppercase tracking-widest mt-0.5">Facility Service Request</p>
                                 </div>
                             </div>
 
@@ -1020,20 +1020,20 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     { icon: ExclamationTriangleIcon, label: 'Issue #1 — SAFETY', value: 'Aeron Chair — Gas cylinder failure', asset: 'AST-1847', color: 'red', priority: true },
                                     { icon: LightBulbIcon, label: 'Issue #2', value: 'Desk Lamp — Flickering / intermittent', asset: 'AST-2103', color: 'amber', priority: false },
                                 ].map((item, i) => (
-                                    <div key={item.label} className={`p-2.5 rounded-lg border ${serviceSubmitted ? 'border-green-300 dark:border-green-500/30 bg-green-50/30 dark:bg-green-500/5' : item.priority ? 'border-red-300 dark:border-red-500/30 bg-red-50/30 dark:bg-red-500/5' : 'border-border bg-muted/20'} transition-all duration-300 animate-in fade-in slide-in-from-bottom-1`} style={{ animationDelay: `${i * 80}ms` }}>
+                                    <div key={item.label} className={`p-2.5 rounded-lg border ${serviceSubmitted ? 'border-success/30 dark:border-success/30 bg-success/30 dark:bg-success/5' : item.priority ? 'border-destructive/30 dark:border-destructive/30 bg-destructive/30 dark:bg-destructive/5' : 'border-border bg-muted/20'} transition-all duration-300 animate-in fade-in slide-in-from-bottom-1`} style={{ animationDelay: `${i * 80}ms` }}>
                                         <div className="flex items-center gap-2.5">
-                                            <div className={`w-6 h-6 rounded-md flex items-center justify-center text-white shrink-0 ${item.color === 'red' ? 'bg-red-500' : 'bg-amber-500'}`}>
+                                            <div className={`w-6 h-6 rounded-md flex items-center justify-center text-white shrink-0 ${item.color === 'red' ? 'bg-destructive/10' : 'bg-warning/10'}`}>
                                                 <item.icon className="w-3.5 h-3.5" />
                                             </div>
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center gap-1.5">
                                                     <p className="text-[9px] text-muted-foreground">{item.label}</p>
-                                                    {item.priority && <span className="text-[7px] px-1 py-0.5 rounded bg-red-500 text-white font-bold">SAFETY</span>}
+                                                    {item.priority && <span className="text-[7px] px-1 py-0.5 rounded bg-destructive/10 text-white font-bold">SAFETY</span>}
                                                 </div>
                                                 <p className="text-[11px] font-bold text-foreground">{item.value}</p>
                                                 <p className="text-[9px] text-muted-foreground">Asset: {item.asset}</p>
                                             </div>
-                                            {serviceSubmitted && <CheckCircleIcon className="w-4 h-4 text-green-500 shrink-0" />}
+                                            {serviceSubmitted && <CheckCircleIcon className="w-4 h-4 text-success shrink-0" />}
                                         </div>
                                     </div>
                                 ))}
@@ -1047,9 +1047,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                         { label: 'Priority', value: 'HIGH' },
                                         { label: 'Department', value: 'Facilities' },
                                     ].map(item => (
-                                        <div key={item.label} className={`p-1.5 rounded-lg text-center ${item.label === 'Priority' ? 'bg-red-50 dark:bg-red-500/10' : 'bg-muted/50'}`}>
+                                        <div key={item.label} className={`p-1.5 rounded-lg text-center ${item.label === 'Priority' ? 'bg-destructive/10 dark:bg-destructive/10' : 'bg-muted/50'}`}>
                                             <p className="text-[8px] text-muted-foreground">{item.label}</p>
-                                            <p className={`text-[11px] font-bold ${item.label === 'Priority' ? 'text-red-600 dark:text-red-400' : 'text-foreground'}`}>{item.value}</p>
+                                            <p className={`text-[11px] font-bold ${item.label === 'Priority' ? 'text-destructive' : 'text-foreground'}`}>{item.value}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -1057,8 +1057,8 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         </div>
 
                         {/* Safety Flag Notice */}
-                        <div className="mx-3 mt-2 px-3 py-2 rounded-lg bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20">
-                            <p className="text-[9px] text-red-700 dark:text-red-300 text-center leading-relaxed">
+                        <div className="mx-3 mt-2 px-3 py-2 rounded-lg bg-destructive/10 dark:bg-destructive/10 border border-destructive/30 dark:border-destructive/20">
+                            <p className="text-[9px] text-destructive text-center leading-relaxed">
                                 <span className="font-semibold">⚠ Safety Flag:</span> Gas cylinder failure requires immediate attention
                             </p>
                         </div>
@@ -1075,18 +1075,18 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 </button>
                             ) : (
                                 <div className="space-y-3 animate-in fade-in duration-300">
-                                    <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20">
+                                    <div className="p-3 rounded-xl bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20">
                                         <div className="flex items-center gap-2">
-                                            <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                                            <CheckCircleIcon className="w-5 h-5 text-success" />
                                             <div>
-                                                <p className="text-xs font-bold text-green-700 dark:text-green-300">REQ-FM-2026-018 Created</p>
-                                                <p className="text-[10px] text-green-600/80 dark:text-green-400/70">Facilities Coord Cardo · Routed to Service Center</p>
+                                                <p className="text-xs font-bold text-success">REQ-FM-2026-018 Created</p>
+                                                <p className="text-[10px] text-success/80 dark:text-success/70">Facilities Coord Cardo · Routed to Service Center</p>
                                             </div>
                                         </div>
                                     </div>
                                     <button
                                         onClick={() => nextStep()}
-                                        className="w-full py-2.5 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded-xl transition-colors shadow-sm active:scale-[0.98]"
+                                        className="w-full py-2.5 bg-success/10 hover:bg-success/10 text-white text-xs font-bold rounded-xl transition-colors shadow-sm active:scale-[0.98]"
                                     >
                                         Continue
                                     </button>
@@ -1116,7 +1116,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                             <div className="flex items-center gap-2">
                                 <div className="relative">
                                     <BellIcon className="w-5 h-5 text-foreground" />
-                                    <div className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-red-500 text-white text-[8px] font-bold flex items-center justify-center">1</div>
+                                    <div className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-destructive/10 text-white text-[8px] font-bold flex items-center justify-center">1</div>
                                 </div>
                                 <img
                                     src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face"
@@ -1127,15 +1127,15 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         </div>
 
                         {/* Push Notification Banner */}
-                        <div className="mx-3 mt-3 p-3 rounded-xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 animate-in slide-in-from-top-2 duration-500">
+                        <div className="mx-3 mt-3 p-3 rounded-xl bg-info/10 dark:bg-info/10 border border-info/30 dark:border-info/20 animate-in slide-in-from-top-2 duration-500">
                             <div className="flex items-start gap-2.5">
-                                <div className="p-1.5 bg-blue-500/20 rounded-lg shrink-0">
-                                    <BellIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                                <div className="p-1.5 bg-info/20 rounded-lg shrink-0">
+                                    <BellIcon className="w-4 h-4 text-info" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-[10px] text-blue-500 font-medium">Just now</p>
-                                    <p className="text-xs font-bold text-blue-700 dark:text-blue-300">Quote Approved</p>
-                                    <p className="text-[11px] text-blue-600/80 dark:text-blue-400/80 mt-0.5">QT-1025 for Apex Furniture has been fully approved and transmitted.</p>
+                                    <p className="text-[10px] text-info font-medium">Just now</p>
+                                    <p className="text-xs font-bold text-info">Quote Approved</p>
+                                    <p className="text-[11px] text-info/80 dark:text-info/80 mt-0.5">QT-1025 for Apex Furniture has been fully approved and transmitted.</p>
                                 </div>
                             </div>
                         </div>
@@ -1148,9 +1148,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-white rounded-full blur-3xl"></div>
                                 </div>
                                 <div className="relative z-10 text-center">
-                                    <SparklesIcon className="w-5 h-5 mx-auto mb-1.5 text-indigo-200" />
+                                    <SparklesIcon className="w-5 h-5 mx-auto mb-1.5 text-ai" />
                                     <p className="font-bold text-sm tracking-tight">Apex Furniture</p>
-                                    <p className="text-indigo-200 text-[9px] uppercase tracking-widest mt-0.5">Customer Proposal</p>
+                                    <p className="text-ai text-[9px] uppercase tracking-widest mt-0.5">Customer Proposal</p>
                                 </div>
                             </div>
 
@@ -1163,7 +1163,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     </div>
                                     <div className="text-right">
                                         <p className="text-[9px] text-muted-foreground uppercase font-semibold">Total</p>
-                                        <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400">$43,750</p>
+                                        <p className="text-sm font-bold text-ai">$43,750</p>
                                     </div>
                                 </div>
 
@@ -1194,8 +1194,8 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         </div>
 
                         {/* Narrative footer — what the customer sees vs doesn't */}
-                        <div className="mx-3 mt-2 px-3 py-2 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20">
-                            <p className="text-[9px] text-indigo-700 dark:text-indigo-300 text-center leading-relaxed">
+                        <div className="mx-3 mt-2 px-3 py-2 rounded-lg bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/20">
+                            <p className="text-[9px] text-ai text-center leading-relaxed">
                                 <span className="font-semibold">Customer sees</span>: products, style & timeline — <span className="font-semibold">not</span> part numbers, unit costs or line items.
                             </p>
                         </div>
@@ -1231,7 +1231,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                             <div className="flex items-center gap-2">
                                 <div className="relative">
                                     <BellIcon className="w-5 h-5 text-foreground" />
-                                    <div className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-red-500 text-white text-[8px] font-bold flex items-center justify-center">1</div>
+                                    <div className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-destructive/10 text-white text-[8px] font-bold flex items-center justify-center">1</div>
                                 </div>
                                 <img
                                     src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face"
@@ -1266,15 +1266,15 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         {/* ═══ ORDERS TAB ═══ */}
                         {portalTab === 'orders' && <>
                         {/* Push Notification — Shipment */}
-                        <div className="mx-3 mt-3 p-3 rounded-xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 animate-in slide-in-from-top-2 duration-300">
+                        <div className="mx-3 mt-3 p-3 rounded-xl bg-info/10 dark:bg-info/10 border border-info/30 dark:border-info/20 animate-in slide-in-from-top-2 duration-300">
                             <div className="flex items-start gap-2.5">
-                                <div className="p-1.5 bg-blue-500/20 rounded-lg shrink-0">
-                                    <TruckIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                                <div className="p-1.5 bg-info/20 rounded-lg shrink-0">
+                                    <TruckIcon className="w-4 h-4 text-info" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-[10px] text-blue-500 font-medium">2 min ago</p>
-                                    <p className="text-xs font-bold text-blue-700 dark:text-blue-300">Zone A Shipment Out for Delivery</p>
-                                    <p className="text-[11px] text-blue-600/80 dark:text-blue-400/80 mt-0.5">82 items · FastFreight #FF-2055-A · ETA today</p>
+                                    <p className="text-[10px] text-info font-medium">2 min ago</p>
+                                    <p className="text-xs font-bold text-info">Zone A Shipment Out for Delivery</p>
+                                    <p className="text-[11px] text-info/80 dark:text-info/80 mt-0.5">82 items · FastFreight #FF-2055-A · ETA today</p>
                                 </div>
                             </div>
                         </div>
@@ -1284,7 +1284,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         <div className="mx-3 mt-3 p-3 rounded-xl bg-card border border-border space-y-3">
                             <div className="flex items-center justify-between">
                                 <p className="text-[9px] text-muted-foreground uppercase tracking-wider">Order Shipment Tracking</p>
-                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 font-medium">Live</span>
+                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-info/10 dark:bg-info/20 text-info font-medium">Live</span>
                             </div>
 
                             {/* Progress Bar — Amazon style */}
@@ -1296,13 +1296,13 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                         return (
                                             <div key={label} className="flex flex-col items-center" style={{ width: '16.66%' }}>
                                                 <div className={`w-3.5 h-3.5 rounded-full flex items-center justify-center ${
-                                                    completed ? 'bg-green-500' : active ? 'bg-blue-500' : 'bg-zinc-200 dark:bg-zinc-700'
+                                                    completed ? 'bg-success/10' : active ? 'bg-info/10' : 'bg-zinc-200 dark:bg-zinc-700'
                                                 }`}>
                                                     {completed && <CheckCircleIcon className="w-3.5 h-3.5 text-white" />}
                                                     {active && <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />}
                                                 </div>
                                                 <span className={`text-[7px] mt-0.5 text-center leading-tight ${
-                                                    completed ? 'text-green-600 dark:text-green-400 font-medium' : active ? 'text-blue-600 dark:text-blue-400 font-bold' : 'text-muted-foreground'
+                                                    completed ? 'text-success font-medium' : active ? 'text-info font-bold' : 'text-muted-foreground'
                                                 }`}>{label}</span>
                                             </div>
                                         )
@@ -1310,7 +1310,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 </div>
                                 {/* Progress bar line */}
                                 <div className="relative h-1 bg-zinc-200 dark:bg-zinc-700 rounded-full mx-4 -mt-[26px] mb-5">
-                                    <div className="absolute inset-y-0 left-0 bg-green-500 rounded-full" style={{ width: '75%' }} />
+                                    <div className="absolute inset-y-0 left-0 bg-success/10 rounded-full" style={{ width: '75%' }} />
                                 </div>
                             </div>
 
@@ -1324,15 +1324,15 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 ].map((shipment) => (
                                     <div key={shipment.zone} className={`p-2.5 rounded-lg border ${
                                         shipment.active
-                                            ? 'border-blue-200 dark:border-blue-500/30 bg-blue-50/50 dark:bg-blue-500/5'
+                                            ? 'border-info/30 dark:border-info/30 bg-info/50 dark:bg-info/5'
                                             : 'border-border bg-muted/30'
                                     }`}>
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-2">
                                                 <div className={`w-6 h-6 rounded-md flex items-center justify-center ${
-                                                    shipment.active ? 'bg-blue-100 dark:bg-blue-500/20' : 'bg-muted/50'
+                                                    shipment.active ? 'bg-info/10 dark:bg-info/20' : 'bg-muted/50'
                                                 }`}>
-                                                    <TruckIcon className={`w-3.5 h-3.5 ${shipment.active ? 'text-blue-600 dark:text-blue-400' : 'text-muted-foreground'}`} />
+                                                    <TruckIcon className={`w-3.5 h-3.5 ${shipment.active ? 'text-info' : 'text-muted-foreground'}`} />
                                                 </div>
                                                 <div>
                                                     <p className="text-[11px] font-bold text-foreground">{shipment.zone} — {shipment.desc}</p>
@@ -1341,18 +1341,18 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                             </div>
                                             <div className="text-right">
                                                 <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-medium ${
-                                                    shipment.status === 'Shipped' || shipment.status === 'Delivered' ? 'bg-green-100 dark:bg-green-500/20 text-green-600 dark:text-green-400' :
-                                                    shipment.status === 'Ready to ship' ? 'bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400' :
-                                                    shipment.status === 'In production' || shipment.status === 'Scheduled for production' ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400' :
+                                                    shipment.status === 'Shipped' || shipment.status === 'Delivered' ? 'bg-success/10 dark:bg-success/20 text-success' :
+                                                    shipment.status === 'Ready to ship' ? 'bg-info/10 dark:bg-info/20 text-info' :
+                                                    shipment.status === 'In production' || shipment.status === 'Scheduled for production' ? 'bg-warning/10 dark:bg-warning/20 text-warning' :
                                                     'bg-zinc-100 dark:bg-muted0/20 text-muted-foreground'
                                                 }`}>{shipment.status}</span>
                                                 <p className="text-[9px] text-muted-foreground mt-0.5">ETA {shipment.eta}</p>
                                             </div>
                                         </div>
                                         {shipment.active && (
-                                            <div className="mt-2 flex items-center justify-between pt-2 border-t border-blue-200 dark:border-blue-500/20">
-                                                <span className="text-[9px] text-blue-600 dark:text-blue-400">Last update: Today, 8:42 AM — Departed Austin hub</span>
-                                                <button className="text-[9px] font-bold text-blue-600 dark:text-blue-400 hover:underline">Track →</button>
+                                            <div className="mt-2 flex items-center justify-between pt-2 border-t border-info/30 dark:border-info/20">
+                                                <span className="text-[9px] text-info">Last update: Today, 8:42 AM — Departed Austin hub</span>
+                                                <button className="text-[9px] font-bold text-info hover:underline">Track →</button>
                                             </div>
                                         )}
                                     </div>
@@ -1365,21 +1365,21 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                             {!deliveryConfirmed ? (
                                 <button
                                     onClick={() => setDeliveryConfirmed(true)}
-                                    className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-colors shadow-sm active:scale-[0.98] flex items-center justify-center gap-2"
+                                    className="w-full py-2.5 bg-info/10 hover:bg-info/10 text-white text-xs font-bold rounded-xl transition-colors shadow-sm active:scale-[0.98] flex items-center justify-center gap-2"
                                 >
                                     <CheckCircleIcon className="w-4 h-4" />
                                     Confirm Zone A Delivery
                                 </button>
                             ) : (
-                                <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 animate-in fade-in duration-300">
+                                <div className="p-3 rounded-xl bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20 animate-in fade-in duration-300">
                                     <div className="flex items-center gap-2">
-                                        <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                                        <CheckCircleIcon className="w-5 h-5 text-success" />
                                         <div>
-                                            <p className="text-xs font-bold text-green-700 dark:text-green-300">Delivery Confirmed</p>
-                                            <p className="text-[10px] text-green-600/80 dark:text-green-400/70">Zone A · 82 items received in good condition</p>
+                                            <p className="text-xs font-bold text-success">Delivery Confirmed</p>
+                                            <p className="text-[10px] text-success/80 dark:text-success/70">Zone A · 82 items received in good condition</p>
                                         </div>
                                     </div>
-                                    <p className="text-[9px] text-green-600/60 dark:text-green-400/50 mt-1.5">Confirmation sent to dealer. Invoice updated.</p>
+                                    <p className="text-[9px] text-success/60 dark:text-success/50 mt-1.5">Confirmation sent to dealer. Invoice updated.</p>
                                 </div>
                             )}
                         </div>
@@ -1388,15 +1388,15 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         {/* ═══ CLAIMS TAB ═══ */}
                         {portalTab === 'claims' && <>
                         {/* Punch List Notification */}
-                        <div className="mx-3 mt-3 p-3 rounded-xl bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 animate-in slide-in-from-top-2 duration-500">
+                        <div className="mx-3 mt-3 p-3 rounded-xl bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20 animate-in slide-in-from-top-2 duration-500">
                             <div className="flex items-start gap-2.5">
-                                <div className="p-1.5 bg-green-500/20 rounded-lg shrink-0">
-                                    <CheckCircleIcon className="w-4 h-4 text-green-600 dark:text-green-400" />
+                                <div className="p-1.5 bg-success/20 rounded-lg shrink-0">
+                                    <CheckCircleIcon className="w-4 h-4 text-success" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-[10px] text-green-500 font-medium">Just now</p>
-                                    <p className="text-xs font-bold text-green-700 dark:text-green-300">Punch List Report Ready</p>
-                                    <p className="text-[11px] text-green-600/80 dark:text-green-400/80 mt-0.5">REQ-PL-2026-047 has been resolved. Review details below.</p>
+                                    <p className="text-[10px] text-success font-medium">Just now</p>
+                                    <p className="text-xs font-bold text-success">Punch List Report Ready</p>
+                                    <p className="text-[11px] text-success/80 dark:text-success/80 mt-0.5">REQ-PL-2026-047 has been resolved. Review details below.</p>
                                 </div>
                             </div>
                         </div>
@@ -1408,7 +1408,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     <p className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider">Service Request</p>
                                     <p className="text-base font-bold text-foreground">REQ-PL-2026-047</p>
                                 </div>
-                                <span className="px-2 py-0.5 bg-green-500/15 text-green-600 dark:text-green-400 text-[10px] font-bold rounded-full">Resolved</span>
+                                <span className="px-2 py-0.5 bg-success/15 text-success text-[10px] font-bold rounded-full">Resolved</span>
                             </div>
                             <div className="grid grid-cols-2 gap-2">
                                 {[
@@ -1435,13 +1435,13 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     ].map((step, i) => (
                                         <div key={i} className="flex items-center gap-2">
                                             {step.status === 'done' ? (
-                                                <CheckCircleIcon className="w-4 h-4 text-green-500 shrink-0" />
+                                                <CheckCircleIcon className="w-4 h-4 text-success shrink-0" />
                                             ) : (
-                                                <div className="w-4 h-4 rounded-full border-2 border-blue-500 flex items-center justify-center shrink-0">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                                                <div className="w-4 h-4 rounded-full border-2 border-info/30 flex items-center justify-center shrink-0">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-info/10 animate-pulse" />
                                                 </div>
                                             )}
-                                            <span className={`text-[11px] font-medium ${step.status === 'done' ? 'text-muted-foreground' : 'text-blue-600 dark:text-blue-400'}`}>{step.label}</span>
+                                            <span className={`text-[11px] font-medium ${step.status === 'done' ? 'text-muted-foreground' : 'text-info'}`}>{step.label}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -1452,8 +1452,8 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         <div className="mx-3 mt-3 p-3 rounded-xl bg-muted/30 border border-border/50">
                             <p className="text-[9px] text-muted-foreground uppercase tracking-wider mb-2">Evidence Summary</p>
                             <div className="flex items-center gap-3 text-[11px] text-foreground">
-                                <span className="flex items-center gap-1"><CheckCircleIcon className="w-3.5 h-3.5 text-green-500" /> 5 photos verified</span>
-                                <span className="flex items-center gap-1"><CheckCircleIcon className="w-3.5 h-3.5 text-green-500" /> QR confirmed</span>
+                                <span className="flex items-center gap-1"><CheckCircleIcon className="w-3.5 h-3.5 text-success" /> 5 photos verified</span>
+                                <span className="flex items-center gap-1"><CheckCircleIcon className="w-3.5 h-3.5 text-success" /> QR confirmed</span>
                             </div>
                             <div className="mt-1.5 text-[11px] text-muted-foreground">
                                 Liability: <span className="font-bold text-foreground">Carrier 65%</span> / <span className="font-bold text-foreground">Manufacturer 35%</span>
@@ -1499,7 +1499,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         <div className="mx-3 mt-4 mb-4">
                             <button
                                 onClick={() => setShowAckModal(true)}
-                                className="w-full py-3 bg-green-600 hover:bg-green-700 text-white text-sm font-bold rounded-xl transition-colors shadow-sm active:scale-[0.98]"
+                                className="w-full py-3 bg-success/10 hover:bg-success/10 text-white text-sm font-bold rounded-xl transition-colors shadow-sm active:scale-[0.98]"
                             >
                                 Acknowledge Report
                             </button>
@@ -1516,19 +1516,19 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 { label: 'Acknowledgment Summary', preview: '47/50 items matched from supplier AIS. 3 items require design review.', date: 'Mar 19', read: true },
                                 { label: 'Delivery Schedule', preview: 'Your complete delivery schedule for all 4 zones is ready to review.', date: 'Mar 27', read: false },
                             ].map((msg, i) => (
-                                <div key={i} className={`p-3 rounded-xl border ${msg.read ? 'bg-card border-border' : 'bg-blue-50 dark:bg-blue-500/5 border-blue-200 dark:border-blue-500/20'} animate-in fade-in duration-300`} style={{ animationDelay: `${i * 100}ms` }}>
+                                <div key={i} className={`p-3 rounded-xl border ${msg.read ? 'bg-card border-border' : 'bg-info/10 dark:bg-info/5 border-info/30 dark:border-info/20'} animate-in fade-in duration-300`} style={{ animationDelay: `${i * 100}ms` }}>
                                     <div className="flex items-start gap-2.5">
-                                        <div className={`p-1.5 rounded-lg shrink-0 ${msg.read ? 'bg-muted/50' : 'bg-blue-100 dark:bg-blue-500/20'}`}>
-                                            <svg className={`w-3.5 h-3.5 ${msg.read ? 'text-muted-foreground' : 'text-blue-600 dark:text-blue-400'}`} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                                        <div className={`p-1.5 rounded-lg shrink-0 ${msg.read ? 'bg-muted/50' : 'bg-info/10 dark:bg-info/20'}`}>
+                                            <svg className={`w-3.5 h-3.5 ${msg.read ? 'text-muted-foreground' : 'text-info'}`} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
                                         </div>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center justify-between">
-                                                <p className={`text-[11px] font-medium ${msg.read ? 'text-foreground' : 'text-blue-700 dark:text-blue-300 font-bold'}`}>{msg.label}</p>
+                                                <p className={`text-[11px] font-medium ${msg.read ? 'text-foreground' : 'text-info font-bold'}`}>{msg.label}</p>
                                                 <span className="text-[9px] text-muted-foreground">{msg.date}</span>
                                             </div>
                                             <p className="text-[10px] text-muted-foreground mt-0.5 line-clamp-2">{msg.preview}</p>
                                         </div>
-                                        {!msg.read && <div className="w-2 h-2 rounded-full bg-blue-500 shrink-0 mt-1" />}
+                                        {!msg.read && <div className="w-2 h-2 rounded-full bg-info/10 shrink-0 mt-1" />}
                                     </div>
                                 </div>
                             ))}
@@ -1547,8 +1547,8 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     {/* Modal Header */}
                                     <div className="px-4 pt-4 pb-3 border-b border-border">
                                         <div className="flex items-center gap-2">
-                                            <div className="p-1.5 bg-green-500/15 rounded-lg">
-                                                <CheckCircleIcon className="w-4 h-4 text-green-500" />
+                                            <div className="p-1.5 bg-success/15 rounded-lg">
+                                                <CheckCircleIcon className="w-4 h-4 text-success" />
                                             </div>
                                             <div>
                                                 <p className="text-xs font-bold text-foreground">Punch List Summary</p>
@@ -1587,7 +1587,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                     'Serial SN-2025-88712 within warranty',
                                                 ].map((item, i) => (
                                                     <div key={i} className="flex items-center gap-1.5">
-                                                        <CheckCircleIcon className="w-3 h-3 text-green-500 shrink-0" />
+                                                        <CheckCircleIcon className="w-3 h-3 text-success shrink-0" />
                                                         <span className="text-[10px] text-foreground">{item}</span>
                                                     </div>
                                                 ))}
@@ -1615,22 +1615,22 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                         <div className="pt-2 border-t border-border">
                                             <p className="text-[9px] text-muted-foreground uppercase tracking-wider mb-1.5">Liability Split</p>
                                             <div className="flex gap-2">
-                                                <div className="flex-1 p-2 rounded-lg bg-red-500/10 border border-red-500/20 text-center">
-                                                    <p className="text-[10px] text-red-400 font-medium">Carrier</p>
-                                                    <p className="text-sm font-bold text-red-500">65%</p>
+                                                <div className="flex-1 p-2 rounded-lg bg-destructive/10 border border-destructive/20 text-center">
+                                                    <p className="text-[10px] text-destructive font-medium">Carrier</p>
+                                                    <p className="text-sm font-bold text-destructive">65%</p>
                                                 </div>
-                                                <div className="flex-1 p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-center">
-                                                    <p className="text-[10px] text-amber-400 font-medium">Manufacturer</p>
-                                                    <p className="text-sm font-bold text-amber-500">35%</p>
+                                                <div className="flex-1 p-2 rounded-lg bg-warning/10 border border-warning/20 text-center">
+                                                    <p className="text-[10px] text-warning font-medium">Manufacturer</p>
+                                                    <p className="text-sm font-bold text-warning">35%</p>
                                                 </div>
                                             </div>
                                         </div>
 
                                         {/* Delivery */}
                                         <div className="pt-2 border-t border-border">
-                                            <div className="flex items-center justify-between p-2 rounded-lg bg-blue-500/10 border border-blue-500/20">
-                                                <span className="text-[10px] text-blue-400 font-medium">Estimated Delivery</span>
-                                                <span className="text-xs font-bold text-blue-500">8 business days</span>
+                                            <div className="flex items-center justify-between p-2 rounded-lg bg-info/10 border border-info/20">
+                                                <span className="text-[10px] text-info font-medium">Estimated Delivery</span>
+                                                <span className="text-xs font-bold text-info">8 business days</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1645,7 +1645,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                         </button>
                                         <button
                                             onClick={() => nextStep()}
-                                            className="flex-1 py-2.5 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded-xl transition-colors shadow-sm active:scale-[0.98]"
+                                            className="flex-1 py-2.5 bg-success/10 hover:bg-success/10 text-white text-xs font-bold rounded-xl transition-colors shadow-sm active:scale-[0.98]"
                                         >
                                             Confirm Acknowledgement
                                         </button>
@@ -1686,8 +1686,8 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         <div className="bg-card glass border border-border rounded-2xl overflow-hidden shadow-lg">
                             <div className="px-6 py-4 border-b border-border/50 flex items-center justify-between">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-9 h-9 rounded-xl bg-amber-500/10 flex items-center justify-center">
-                                        <ExclamationTriangleIcon className="w-5 h-5 text-amber-500" />
+                                    <div className="w-9 h-9 rounded-xl bg-warning/10 flex items-center justify-center">
+                                        <ExclamationTriangleIcon className="w-5 h-5 text-warning" />
                                     </div>
                                     <div>
                                         <h3 className="text-sm font-bold text-foreground">Quote Approval Chain</h3>
@@ -1698,9 +1698,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                             </div>
 
                             <div className="p-6 space-y-5">
-                                <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 flex items-start gap-3">
+                                <div className="p-3 rounded-xl bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/20 flex items-start gap-3">
                                     <AIAgentAvatar className="mt-0.5" />
-                                    <div className="text-xs text-indigo-700 dark:text-indigo-300">
+                                    <div className="text-xs text-ai">
                                         <span className="font-bold">ApprovalOrchestratorAgent:</span> Routing to 2-level approval chain — automated compliance check first, then manager sign-off for quote value bracket ($100k-$250k).
                                     </div>
                                 </div>
@@ -1715,9 +1715,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                             <div className={cn(
                                                 "flex items-center gap-4 p-3 rounded-xl transition-all duration-500",
                                                 approvalStates16[i] === 'approved'
-                                                    ? 'bg-emerald-50 dark:bg-success/10 border border-emerald-200 dark:border-emerald-500/20'
+                                                    ? 'bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20'
                                                     : i === approvedCount16
-                                                        ? 'bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 animate-pulse'
+                                                        ? 'bg-info/10 dark:bg-info/10 border border-info/30 dark:border-info/20 animate-pulse'
                                                         : 'bg-muted/30 border border-border/50'
                                             )}>
                                                 <div className="relative shrink-0">
@@ -1726,7 +1726,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                         <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-success text-white flex items-center justify-center ring-2 ring-background"><CheckIcon className="w-2.5 h-2.5" /></div>
                                                     )}
                                                     {approvalStates16[i] !== 'approved' && i === approvedCount16 && (
-                                                        <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-blue-500 text-white flex items-center justify-center ring-2 ring-background"><ArrowPathIcon className="w-2.5 h-2.5 animate-spin" /></div>
+                                                        <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-info/10 text-white flex items-center justify-center ring-2 ring-background"><ArrowPathIcon className="w-2.5 h-2.5 animate-spin" /></div>
                                                     )}
                                                 </div>
                                                 <div className="flex-1 min-w-0">
@@ -1741,9 +1741,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                     {approvalStates16[i] === 'approved' ? (
                                                         <span className="text-[10px] font-bold text-success dark:text-success">Auto-Approved</span>
                                                     ) : i === approvedCount16 ? (
-                                                        <span className="text-[10px] font-bold text-blue-600 dark:text-blue-400">Reviewing...</span>
+                                                        <span className="text-[10px] font-bold text-info">Reviewing...</span>
                                                     ) : (
-                                                        <span className="text-[10px] text-amber-600 dark:text-amber-400 font-medium">Pending Approval</span>
+                                                        <span className="text-[10px] text-warning font-medium">Pending Approval</span>
                                                     )}
                                                 </div>
                                             </div>
@@ -1757,19 +1757,19 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                         <span className="text-[10px] font-bold text-foreground">{approvedCount16}/2</span>
                                     </div>
                                     <div className="h-2 bg-muted rounded-full overflow-hidden">
-                                        <div className={cn("h-full rounded-full transition-all duration-700", approvedCount16 === 2 ? 'bg-success' : 'bg-blue-500')} style={{ width: `${(approvedCount16 / 2) * 100}%` }} />
+                                        <div className={cn("h-full rounded-full transition-all duration-700", approvedCount16 === 2 ? 'bg-success' : 'bg-info/10')} style={{ width: `${(approvedCount16 / 2) * 100}%` }} />
                                     </div>
                                 </div>
 
                                 {approvedCount16 === 2 ? (
-                                    <div className="p-3 rounded-xl bg-emerald-50 dark:bg-success/10 border border-emerald-200 dark:border-emerald-500/20 flex items-center gap-2 animate-in fade-in duration-500">
+                                    <div className="p-3 rounded-xl bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20 flex items-center gap-2 animate-in fade-in duration-500">
                                         <CheckCircleIcon className="w-4 h-4 text-success shrink-0" />
-                                        <span className="text-[10px] text-emerald-700 dark:text-emerald-300 font-medium">All approvals complete — advancing to PO generation</span>
+                                        <span className="text-[10px] text-success dark:text-success font-medium">All approvals complete — advancing to PO generation</span>
                                     </div>
                                 ) : (
-                                    <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 flex items-center gap-2">
-                                        <ClockIcon className="w-4 h-4 text-amber-500 shrink-0" />
-                                        <span className="text-[10px] text-amber-700 dark:text-amber-300">
+                                    <div className="p-3 rounded-xl bg-warning/10 dark:bg-warning/10 border border-warning/30 dark:border-warning/20 flex items-center gap-2">
+                                        <ClockIcon className="w-4 h-4 text-warning shrink-0" />
+                                        <span className="text-[10px] text-warning">
                                             {approvedCount16 === 0 ? 'System Policy Engine running compliance check...' : 'Awaiting manager approval — notification sent to Regional Sales Manager Reyes'}
                                         </span>
                                     </div>
@@ -1783,19 +1783,19 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                 {currentStep?.id === '1.9' && !isOps && (
                     <div data-demo-target="po-order-approval" className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
                         {/* AI Context */}
-                        <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 flex items-start gap-3">
+                        <div className="p-3 rounded-xl bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/20 flex items-start gap-3">
                             <AIAgentAvatar className="mt-0.5" />
-                            <div className="text-xs text-indigo-700 dark:text-indigo-300">
+                            <div className="text-xs text-ai">
                                 <span className="font-bold">POBuilderAgent:</span> Auto-generating purchase order PO-1029 from approved quote QT-1025, then routing to automated order approval chain.
                             </div>
                         </div>
 
                         {/* Quote Approval Complete */}
-                        <div className="bg-card border border-emerald-200 dark:border-emerald-500/20 rounded-2xl overflow-hidden shadow-sm">
-                            <div className="px-5 py-3 bg-emerald-50 dark:bg-success/10 flex items-center gap-3">
+                        <div className="bg-card border border-success/30 dark:border-success/20 rounded-2xl overflow-hidden shadow-sm">
+                            <div className="px-5 py-3 bg-success/10 dark:bg-success/10 flex items-center gap-3">
                                 <CheckCircleIcon className="w-5 h-5 text-success shrink-0" />
                                 <div className="flex-1">
-                                    <p className="text-xs font-bold text-emerald-700 dark:text-emerald-300">Quote Approval Chain — Complete</p>
+                                    <p className="text-xs font-bold text-success dark:text-success">Quote Approval Chain — Complete</p>
                                     <p className="text-[10px] text-success dark:text-success">QT-1025 approved by System Policy Engine + Regional Sales Manager Reyes</p>
                                 </div>
                             </div>
@@ -1822,8 +1822,8 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         {['po-generating', 'po-complete', 'order-chain', 'order-complete', 'done'].includes(phase18) && (
                             <div className="bg-card border border-border rounded-2xl p-5 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300">
                                 <div className="flex items-center gap-3 mb-4">
-                                    <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-500/10">
-                                        <DocumentPlusIcon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                                    <div className="p-2 rounded-xl bg-info/10 dark:bg-info/10">
+                                        <DocumentPlusIcon className="w-5 h-5 text-info" />
                                     </div>
                                     <div className="flex-1">
                                         <h3 className="text-sm font-bold text-foreground">PO Generation</h3>
@@ -1831,7 +1831,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     </div>
                                     <div className="flex items-center gap-2">
                                         {poGenPhase18 === 'complete' && <span className="text-[10px] font-bold text-success dark:text-success flex items-center gap-1"><CheckCircleIcon className="w-3.5 h-3.5" /> PO-1029</span>}
-                                        <span className="text-[9px] px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-medium">⚡ Supplier Portal</span>
+                                        <span className="text-[9px] px-2 py-0.5 rounded-full bg-ai/10 dark:bg-ai/30 text-ai font-medium">⚡ Supplier Portal</span>
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-4 gap-2">
@@ -1847,11 +1847,11 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                         const isDone = currentIdx > stepIdx || (currentIdx === stepIdx && poGenPhase18 === 'complete' && step.phase === 'complete');
                                         const isActive = currentIdx === stepIdx && poGenPhase18 !== 'complete';
                                         return (
-                                            <div key={step.phase} className={cn("p-2.5 rounded-lg border text-center transition-all", isDone ? 'border-emerald-500/30 bg-emerald-50 dark:bg-success/5' : isActive ? 'border-blue-500/30 bg-blue-50 dark:bg-blue-500/5 animate-pulse' : 'border-border bg-muted/20')}>
-                                                <div className={cn("w-5 h-5 rounded-full mx-auto mb-1 flex items-center justify-center", isDone ? 'bg-success text-white' : isActive ? 'bg-blue-500 text-white' : 'bg-muted text-muted-foreground')}>
+                                            <div key={step.phase} className={cn("p-2.5 rounded-lg border text-center transition-all", isDone ? 'border-success/30 bg-success/10 dark:bg-success/5' : isActive ? 'border-info/30 bg-info/10 dark:bg-info/5 animate-pulse' : 'border-border bg-muted/20')}>
+                                                <div className={cn("w-5 h-5 rounded-full mx-auto mb-1 flex items-center justify-center", isDone ? 'bg-success text-white' : isActive ? 'bg-info/10 text-white' : 'bg-muted text-muted-foreground')}>
                                                     {isDone ? <CheckIcon className="w-3 h-3" /> : isActive ? <ArrowPathIcon className="w-3 h-3 animate-spin" /> : <ClockIcon className="w-3 h-3" />}
                                                 </div>
-                                                <p className={cn("text-[9px] font-medium", isDone ? 'text-success dark:text-success' : isActive ? 'text-blue-600 dark:text-blue-400' : 'text-muted-foreground')}>{step.label}</p>
+                                                <p className={cn("text-[9px] font-medium", isDone ? 'text-success dark:text-success' : isActive ? 'text-info' : 'text-muted-foreground')}>{step.label}</p>
                                             </div>
                                         );
                                     })}
@@ -1864,8 +1864,8 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                             <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm animate-in fade-in slide-in-from-top-2 duration-300">
                                 <div className="px-5 py-3 border-b border-border flex items-center justify-between">
                                     <div className="flex items-center gap-3">
-                                        <div className="p-2 rounded-xl bg-purple-50 dark:bg-ai/10">
-                                            <ClipboardDocumentCheckIcon className="w-5 h-5 text-ai dark:text-purple-400" />
+                                        <div className="p-2 rounded-xl bg-ai/10 dark:bg-ai/10">
+                                            <ClipboardDocumentCheckIcon className="w-5 h-5 text-ai dark:text-ai" />
                                         </div>
                                         <div>
                                             <h3 className="text-sm font-bold text-foreground">Order Approval Chain</h3>
@@ -1885,9 +1885,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                             <div className={cn(
                                                 "flex items-center gap-3 p-2.5 rounded-lg transition-all duration-500",
                                                 orderApprovalStates18[i] === 'approved'
-                                                    ? 'bg-emerald-50 dark:bg-success/10 border border-emerald-200 dark:border-emerald-500/20'
+                                                    ? 'bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20'
                                                     : i === orderApprovedCount18
-                                                        ? 'bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 animate-pulse'
+                                                        ? 'bg-info/10 dark:bg-info/10 border border-info/30 dark:border-info/20 animate-pulse'
                                                         : 'bg-muted/30 border border-border/50'
                                             )}>
                                                 <div className="relative shrink-0">
@@ -1896,14 +1896,14 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                         <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-success text-white flex items-center justify-center ring-1 ring-background"><CheckIcon className="w-2 h-2" /></div>
                                                     )}
                                                     {orderApprovalStates18[i] !== 'approved' && i === orderApprovedCount18 && (
-                                                        <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-blue-500 text-white flex items-center justify-center ring-1 ring-background"><ArrowPathIcon className="w-2 h-2 animate-spin" /></div>
+                                                        <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-info/10 text-white flex items-center justify-center ring-1 ring-background"><ArrowPathIcon className="w-2 h-2 animate-spin" /></div>
                                                     )}
                                                 </div>
                                                 <div className="flex-1 min-w-0">
                                                     <span className="text-[11px] font-bold text-foreground">{approver.name}</span>
                                                     <span className="text-[10px] text-muted-foreground ml-1.5">· {approver.role}</span>
                                                 </div>
-                                                <span className={cn("text-[10px] font-bold", orderApprovalStates18[i] === 'approved' ? 'text-success dark:text-success' : i === orderApprovedCount18 ? 'text-blue-600 dark:text-blue-400' : 'text-muted-foreground')}>
+                                                <span className={cn("text-[10px] font-bold", orderApprovalStates18[i] === 'approved' ? 'text-success dark:text-success' : i === orderApprovedCount18 ? 'text-info' : 'text-muted-foreground')}>
                                                     {orderApprovalStates18[i] === 'approved' ? 'Approved' : i === orderApprovedCount18 ? 'Reviewing...' : 'Pending'}
                                                 </span>
                                             </div>
@@ -1912,10 +1912,10 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 </div>
                                 {(phase18 === 'order-complete' || phase18 === 'done') && (
                                     <div className="px-5 pb-4">
-                                        <div className="p-3 rounded-xl bg-emerald-50 dark:bg-success/10 border border-emerald-200 dark:border-emerald-500/20 flex items-center gap-3">
+                                        <div className="p-3 rounded-xl bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20 flex items-center gap-3">
                                             <CheckCircleIcon className="w-5 h-5 text-success shrink-0" />
                                             <div>
-                                                <p className="text-xs font-bold text-emerald-700 dark:text-emerald-300">Order PO-1029 Fully Approved</p>
+                                                <p className="text-xs font-bold text-success dark:text-success">Order PO-1029 Fully Approved</p>
                                                 <p className="text-[10px] text-success dark:text-success">All 3 approval levels complete — order entering production pipeline</p>
                                             </div>
                                         </div>
@@ -1931,20 +1931,20 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                     <div data-demo-target="manager-approval-view" className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
                         {/* Notification arrival toast */}
                         {notifArrived17 && (
-                            <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-500/10 border-2 border-blue-300 dark:border-blue-500/30 shadow-lg animate-in fade-in slide-in-from-top-4 duration-500">
+                            <div className="p-4 rounded-xl bg-info/10 dark:bg-info/10 border-2 border-info/30 dark:border-info/30 shadow-lg animate-in fade-in slide-in-from-top-4 duration-500">
                                 <div className="flex items-start gap-3">
-                                    <div className="p-2 rounded-full bg-blue-500 text-white shrink-0 animate-bounce">
+                                    <div className="p-2 rounded-full bg-info/10 text-white shrink-0 animate-bounce">
                                         <BellIcon className="w-5 h-5" />
                                     </div>
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2 mb-1">
-                                            <p className="text-sm font-bold text-blue-700 dark:text-blue-300">Quote Ready for Review</p>
-                                            <span className="px-1.5 py-0.5 rounded-full bg-red-500 text-white text-[9px] font-bold">NEW</span>
+                                            <p className="text-sm font-bold text-info">Quote Ready for Review</p>
+                                            <span className="px-1.5 py-0.5 rounded-full bg-destructive/10 text-white text-[9px] font-bold">NEW</span>
                                         </div>
-                                        <p className="text-xs text-blue-600 dark:text-blue-400">Quote <span className="font-bold">QT-1025</span> for your RFQ — <span className="font-bold">$134,250</span> · 5 SKUs</p>
-                                        <p className="text-[10px] text-blue-500 dark:text-blue-400 mt-1">AI-generated from your RFQ submission · Ready for your approval</p>
+                                        <p className="text-xs text-info">Quote <span className="font-bold">QT-1025</span> for your RFQ — <span className="font-bold">$134,250</span> · 5 SKUs</p>
+                                        <p className="text-[10px] text-info mt-1">AI-generated from your RFQ submission · Ready for your approval</p>
                                     </div>
-                                    <span className="text-[10px] text-blue-500 dark:text-blue-400 font-medium shrink-0">Just now</span>
+                                    <span className="text-[10px] text-info font-medium shrink-0">Just now</span>
                                 </div>
                             </div>
                         )}
@@ -1952,9 +1952,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         {/* Main quote review card — appears after notification */}
                         {contentVisible17 && (
                             <div className="bg-card glass border border-border rounded-2xl overflow-hidden shadow-lg animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                <div className="px-6 py-4 border-b border-border/50 flex items-center justify-between bg-green-50/50 dark:bg-green-500/5">
+                                <div className="px-6 py-4 border-b border-border/50 flex items-center justify-between bg-success/50 dark:bg-success/5">
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-xl bg-green-600 text-white flex items-center justify-center text-sm font-bold">AF</div>
+                                        <div className="w-10 h-10 rounded-xl bg-success/10 text-white flex items-center justify-center text-sm font-bold">AF</div>
                                         <div>
                                             <h3 className="text-sm font-bold text-foreground">Quote Review — Apex Furniture</h3>
                                             <p className="text-[10px] text-muted-foreground mt-0.5">New HQ RFQ · Austin, TX · Dealer Approval Required</p>
@@ -2120,41 +2120,41 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     })()}
 
                                     {/* External Connections — Data Sources */}
-                                    <div className="p-3 rounded-xl bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-500/5 dark:to-blue-500/5 border border-purple-200/50 dark:border-purple-500/20">
+                                    <div className="p-3 rounded-xl bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-500/5 dark:to-blue-500/5 border border-ai/50 dark:border-ai/20">
                                         <div className="flex items-center gap-2 mb-2.5">
-                                            <LinkIcon className="w-3.5 h-3.5 text-ai dark:text-purple-400" />
-                                            <span className="text-[10px] font-bold text-purple-700 dark:text-purple-300 uppercase tracking-wider">External Systems — Synced</span>
-                                            <span className="text-[8px] px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-400 font-bold uppercase">Live</span>
+                                            <LinkIcon className="w-3.5 h-3.5 text-ai dark:text-ai" />
+                                            <span className="text-[10px] font-bold text-ai uppercase tracking-wider">External Systems — Synced</span>
+                                            <span className="text-[8px] px-1.5 py-0.5 rounded bg-success/10 dark:bg-success/20 text-success font-bold uppercase">Live</span>
                                         </div>
                                         <div className="grid grid-cols-3 gap-2">
-                                            <div className="flex items-center gap-2 p-2 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-blue-200/50 dark:border-blue-500/20">
-                                                <EnvelopeIcon className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                                            <div className="flex items-center gap-2 p-2 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-info/50 dark:border-info/20">
+                                                <EnvelopeIcon className="w-4 h-4 text-info shrink-0" />
                                                 <div>
                                                     <div className="flex items-center gap-1">
-                                                        <p className="text-[10px] font-bold text-blue-700 dark:text-blue-300">MillerKnoll</p>
-                                                        <span className="text-[7px] px-1 py-px rounded bg-blue-200/60 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 font-bold">EXTERNAL</span>
+                                                        <p className="text-[10px] font-bold text-info">MillerKnoll</p>
+                                                        <span className="text-[7px] px-1 py-px rounded bg-info/60 dark:bg-info/20 text-info font-bold">EXTERNAL</span>
                                                     </div>
-                                                    <p className="text-[8px] text-blue-500 dark:text-blue-400">Vendor Email (PDF + CSV)</p>
+                                                    <p className="text-[8px] text-info">Vendor Email (PDF + CSV)</p>
                                                 </div>
                                             </div>
-                                            <div className="flex items-center gap-2 p-2 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-purple-200/50 dark:border-purple-500/20">
-                                                <ComputerDesktopIcon className="w-4 h-4 text-ai dark:text-purple-400 shrink-0" />
+                                            <div className="flex items-center gap-2 p-2 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-ai/50 dark:border-ai/20">
+                                                <ComputerDesktopIcon className="w-4 h-4 text-ai dark:text-ai shrink-0" />
                                                 <div>
                                                     <div className="flex items-center gap-1">
-                                                        <p className="text-[10px] font-bold text-purple-700 dark:text-purple-300">MillerKnoll</p>
-                                                        <span className="text-[7px] px-1 py-px rounded bg-purple-200/60 dark:bg-ai/20 text-ai dark:text-purple-400 font-bold">EXTERNAL</span>
+                                                        <p className="text-[10px] font-bold text-ai">MillerKnoll</p>
+                                                        <span className="text-[7px] px-1 py-px rounded bg-ai/60 dark:bg-ai/20 text-ai dark:text-ai font-bold">EXTERNAL</span>
                                                     </div>
-                                                    <p className="text-[8px] text-ai dark:text-purple-400">Product Catalog (API) — Synced</p>
+                                                    <p className="text-[8px] text-ai dark:text-ai">Product Catalog (API) — Synced</p>
                                                 </div>
                                             </div>
-                                            <div className="flex items-center gap-2 p-2 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-amber-200/50 dark:border-amber-500/20">
-                                                <TruckIcon className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
+                                            <div className="flex items-center gap-2 p-2 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-warning/50 dark:border-warning/20">
+                                                <TruckIcon className="w-4 h-4 text-warning shrink-0" />
                                                 <div>
                                                     <div className="flex items-center gap-1">
-                                                        <p className="text-[10px] font-bold text-amber-700 dark:text-amber-300">ShipCalc</p>
-                                                        <span className="text-[7px] px-1 py-px rounded bg-amber-200/60 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 font-bold">EXTERNAL</span>
+                                                        <p className="text-[10px] font-bold text-warning">ShipCalc</p>
+                                                        <span className="text-[7px] px-1 py-px rounded bg-warning/60 dark:bg-warning/20 text-warning font-bold">EXTERNAL</span>
                                                     </div>
-                                                    <p className="text-[8px] text-amber-500 dark:text-amber-400">Freight Calculator (API) — Synced</p>
+                                                    <p className="text-[8px] text-warning">Freight Calculator (API) — Synced</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2174,17 +2174,17 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     </div>
 
                                     {/* AI Summary for dealer */}
-                                    <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 flex items-start gap-3">
+                                    <div className="p-3 rounded-xl bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/20 flex items-start gap-3">
                                         <AIAgentAvatar className="mt-0.5" />
-                                        <div className="text-xs text-indigo-700 dark:text-indigo-300 space-y-1">
+                                        <div className="text-xs text-ai space-y-1">
                                             <p><span className="font-bold">QuoteSummaryAgent:</span> Quote generated from MillerKnoll vendor email + attachments. All 200 SKUs matched to MillerKnoll catalog across 8 product categories. Pricing cross-validated against manufacturer API. Early payment discount (2%) + volume discount (2%) applied automatically.</p>
-                                            <p>Estimated savings vs. list price: <span className="font-bold text-green-600 dark:text-green-400">$27,497 (4%)</span></p>
+                                            <p>Estimated savings vs. list price: <span className="font-bold text-success">$27,497 (4%)</span></p>
                                         </div>
                                     </div>
 
                                     {/* What was resolved */}
-                                    <div className="p-3 rounded-xl bg-emerald-50 dark:bg-success/10 border border-emerald-200 dark:border-emerald-500/20">
-                                        <p className="text-[10px] font-bold text-emerald-700 dark:text-emerald-300 mb-2">Automatically Resolved</p>
+                                    <div className="p-3 rounded-xl bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20">
+                                        <p className="text-[10px] font-bold text-success dark:text-success mb-2">Automatically Resolved</p>
                                         <div className="space-y-1">
                                             {[
                                                 'Freight calculated via ShipCalc API: $12,850 (multi-zone LTL to Austin, TX)',
@@ -2218,8 +2218,8 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                             className={cn(
                                                 'px-5 py-3 text-sm font-bold rounded-xl transition-all shadow-sm flex items-center gap-2 border',
                                                 requestChangesOpen17
-                                                    ? 'bg-amber-500 text-white border-amber-500'
-                                                    : 'bg-card text-amber-600 dark:text-amber-400 border-amber-300 dark:border-amber-500/30 hover:bg-amber-50 dark:hover:bg-amber-500/10 disabled:opacity-50'
+                                                    ? 'bg-warning/10 text-white border-warning/30'
+                                                    : 'bg-card text-warning border-warning/30 dark:border-warning/30 hover:bg-warning/10 dark:hover:bg-warning/10 disabled:opacity-50'
                                             )}
                                         >
                                             <PencilSquareIcon className="w-4 h-4" /> Request Changes
@@ -2231,20 +2231,20 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
 
                                     {/* Request Changes panel */}
                                     {requestChangesOpen17 && (
-                                        <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 space-y-3 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                                        <div className="p-4 rounded-xl bg-warning/10 dark:bg-warning/10 border border-warning/30 dark:border-warning/20 space-y-3 animate-in fade-in slide-in-from-bottom-2 duration-300">
                                             <div className="flex items-center gap-2">
-                                                <ExclamationTriangleIcon className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                                                <p className="text-xs font-bold text-amber-700 dark:text-amber-300">Request Changes to Expert</p>
+                                                <ExclamationTriangleIcon className="w-4 h-4 text-warning" />
+                                                <p className="text-xs font-bold text-warning">Request Changes to Expert</p>
                                             </div>
-                                            <p className="text-[11px] text-amber-600 dark:text-amber-400">Describe any inconsistencies found in the 50 line items. The quote will be sent back to the Expert for revision.</p>
+                                            <p className="text-[11px] text-warning">Describe any inconsistencies found in the 50 line items. The quote will be sent back to the Expert for revision.</p>
                                             <textarea
                                                 placeholder="e.g. Line items 12-15 show incorrect unit pricing for Acoustic Panels. Also, SKU-PLT-0200 quantity should be 30 not 20..."
-                                                className="w-full h-20 px-3 py-2 text-xs rounded-lg bg-card border border-amber-200 dark:border-amber-500/30 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-amber-400 resize-none"
+                                                className="w-full h-20 px-3 py-2 text-xs rounded-lg bg-card border border-warning/30 dark:border-warning/30 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-amber-400 resize-none"
                                             />
                                             <div className="flex items-center gap-2">
                                                 <button
                                                     onClick={() => setRequestChangesOpen17(false)}
-                                                    className="px-4 py-2 text-xs font-bold rounded-lg bg-amber-500 hover:bg-amber-600 text-white transition-colors flex items-center gap-1.5"
+                                                    className="px-4 py-2 text-xs font-bold rounded-lg bg-warning/10 hover:bg-warning/10 text-white transition-colors flex items-center gap-1.5"
                                                 >
                                                     <EnvelopeIcon className="w-3.5 h-3.5" /> Send to Expert
                                                 </button>
@@ -2267,20 +2267,20 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                 {currentStep?.id === '2.7' && !isOps && (
                     <div className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
                         {/* AI Attribution */}
-                        <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 flex items-start gap-3">
+                        <div className="p-3 rounded-xl bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/20 flex items-start gap-3">
                             <AIAgentAvatar className="mt-0.5" />
-                            <div className="flex-1 text-xs text-indigo-700 dark:text-indigo-300">
+                            <div className="flex-1 text-xs text-ai">
                                 <span className="font-bold">NotificationAgent:</span> Generated 4 persona-specific notifications from 8-agent Acknowledgement pipeline. Dealer receives full lifecycle summary. Expert receives only actionable items — reducing noise by 60%.
                             </div>
                         </div>
 
                         {/* Completion Summary */}
-                        <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 space-y-2">
+                        <div className="p-4 rounded-xl bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20 space-y-2">
                             <div className="flex items-center gap-2">
-                                <CheckCircleIcon className="w-5 h-5 text-green-600 dark:text-green-400" />
-                                <h3 className="text-sm font-bold text-green-700 dark:text-green-400">Flow 2 Complete — Acknowledgement Processing</h3>
+                                <CheckCircleIcon className="w-5 h-5 text-success" />
+                                <h3 className="text-sm font-bold text-success">Flow 2 Complete — Acknowledgement Processing</h3>
                             </div>
-                            <p className="text-xs text-green-600 dark:text-green-500 ml-7">2 Acknowledgements processed for Premier Underground Design. HAT: 5 lines confirmed (AI vendor rule). AIS: 50 lines, 3 exceptions resolved, sent to client.</p>
+                            <p className="text-xs text-success ml-7">2 Acknowledgements processed for Premier Underground Design. HAT: 5 lines confirmed (AI vendor rule). AIS: 50 lines, 3 exceptions resolved, sent to client.</p>
                         </div>
                     </div>
                 )}
@@ -2291,19 +2291,19 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                 {currentStep?.id === '1.10' && !isOps && (
                     <div className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
                         {/* AI Attribution */}
-                        <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 flex items-start gap-3">
+                        <div className="p-3 rounded-xl bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/20 flex items-start gap-3">
                             <AIAgentAvatar className="mt-0.5" />
-                            <div className="flex-1 text-xs text-indigo-700 dark:text-indigo-300">
+                            <div className="flex-1 text-xs text-ai">
                                 <span className="font-bold">NotificationAgent:</span> PO-1029 notification delivered to Dealer portal. Click "View PO" in Action Center to continue to pipeline.
                             </div>
                             <ConfidenceScoreBadge score={97} label="Relevance" />
                         </div>
 
                         {/* Completion Summary */}
-                        <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 space-y-3 animate-in fade-in duration-500">
+                        <div className="p-4 rounded-xl bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20 space-y-3 animate-in fade-in duration-500">
                             <div className="flex items-center gap-2">
-                                <CheckCircleIcon className="w-5 h-5 text-green-500" />
-                                <span className="text-sm font-bold text-green-700 dark:text-green-300">Flow 1 Complete — RFQ to PO Processing</span>
+                                <CheckCircleIcon className="w-5 h-5 text-success" />
+                                <span className="text-sm font-bold text-success">Flow 1 Complete — RFQ to PO Processing</span>
                             </div>
                             <div className="grid grid-cols-4 gap-3">
                                 {[
@@ -2313,8 +2313,8 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     { label: 'Auto-Resolved', value: '94%' },
                                 ].map(stat => (
                                     <div key={stat.label} className="text-center">
-                                        <p className="text-[10px] text-green-600 dark:text-green-400">{stat.label}</p>
-                                        <p className="text-sm font-bold text-green-700 dark:text-green-300">{stat.value}</p>
+                                        <p className="text-[10px] text-success">{stat.label}</p>
+                                        <p className="text-sm font-bold text-success">{stat.value}</p>
                                     </div>
                                 ))}
                             </div>
@@ -2330,9 +2330,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                 {currentStep?.id === '1.6' && isOps && (
                     <div data-demo-target="qb-sync-batch-panel" className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
                         {/* Agent Context */}
-                        <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 flex items-start gap-3">
+                        <div className="p-3 rounded-xl bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/20 flex items-start gap-3">
                             <AIAgentAvatar className="mt-0.5" />
-                            <div className="flex-1 text-xs text-indigo-700 dark:text-indigo-300">
+                            <div className="flex-1 text-xs text-ai">
                                 <span className="font-bold">QuickBooksAgent:</span> Sync batch ready — 2 invoices totaling $44,605 mapped to GL codes. Customer "Apex Furniture" matched in QuickBooks.
                             </div>
                         </div>
@@ -2362,7 +2362,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                         <div className="flex items-center gap-2 mb-1.5">
                                             <inv.icon className="w-4 h-4 text-muted-foreground" />
                                             <span className="text-xs font-bold text-foreground">{inv.id}</span>
-                                            <span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold">{inv.type}</span>
+                                            <span className="text-[9px] px-2 py-0.5 rounded-full bg-info/10 dark:bg-info/30 text-info font-bold">{inv.type}</span>
                                         </div>
                                         <p className="text-lg font-bold text-foreground">{inv.amount}</p>
                                         <p className="text-[10px] text-muted-foreground">{inv.lines} line items</p>
@@ -2405,7 +2405,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     <CheckCircleIcon className="w-4 h-4 text-success" />
                                     <span className="text-[11px] text-foreground font-medium">Customer: Apex Furniture (matched in QB)</span>
                                 </div>
-                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-bold">Tax Applied</span>
+                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-success/10 dark:bg-success/30 text-success dark:text-success font-bold">Tax Applied</span>
                             </div>
                         </div>
 
@@ -2427,9 +2427,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                 {currentStep?.id === '1.7' && isOps && (
                     <div data-demo-target="qb-sync-confirmation" className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
                         {/* Success Banner */}
-                        <div className="p-4 rounded-xl bg-emerald-50 dark:bg-success/10 border border-emerald-200 dark:border-emerald-500/20 flex items-center gap-3">
+                        <div className="p-4 rounded-xl bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20 flex items-center gap-3">
                             <CheckCircleIcon className="w-6 h-6 text-success" />
-                            <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">QuickBooks Sync Complete</span>
+                            <span className="text-sm font-bold text-success dark:text-success">QuickBooks Sync Complete</span>
                         </div>
 
                         {/* Confirmation Cards */}
@@ -2439,14 +2439,14 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     { invoice: 'INV-2055', qbBill: 'QB-4421', amount: '$41,150', type: 'Product' },
                                     { invoice: 'SVC-03-2026', qbBill: 'QB-4424', amount: '$3,455', type: 'Services' },
                                 ].map((item, i) => (
-                                    <div key={i} className="flex items-center gap-3 p-3 rounded-xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/20">
+                                    <div key={i} className="flex items-center gap-3 p-3 rounded-xl border border-success/30 dark:border-success/30 bg-success/50 dark:bg-success/20">
                                         <CheckCircleIcon className="w-5 h-5 text-success flex-shrink-0" />
                                         <div className="flex-1">
                                             <div className="flex items-center gap-2">
                                                 <span className="text-xs font-bold text-foreground">{item.invoice}</span>
                                                 <ArrowRightIcon className="w-3 h-3 text-muted-foreground" />
                                                 <span className="text-xs font-bold text-success dark:text-success">{item.qbBill}</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold">{item.type}</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-info/10 dark:bg-info/30 text-info font-bold">{item.type}</span>
                                             </div>
                                         </div>
                                         <span className="text-sm font-bold text-foreground">{item.amount}</span>
@@ -2476,7 +2476,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                     <td className="px-3 py-2 text-xs text-foreground">{row.category}</td>
                                                     <td className="px-3 py-2 text-xs text-right font-bold text-foreground">{row.amount}</td>
                                                     <td className="px-3 py-2 text-center">
-                                                        <span className="text-[9px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-bold">Posted</span>
+                                                        <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/10 dark:bg-success/30 text-success dark:text-success font-bold">Posted</span>
                                                     </td>
                                                 </tr>
                                             ))}
@@ -2516,27 +2516,27 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                 {currentStep?.id === '2.1' && isOps && (
                     <div data-demo-target="co-request-incoming" className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
                         {/* Agent Context */}
-                        <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 flex items-start gap-3">
+                        <div className="p-3 rounded-xl bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/20 flex items-start gap-3">
                             <AIAgentAvatar className="mt-0.5" />
-                            <div className="flex-1 text-xs text-indigo-700 dark:text-indigo-300">
+                            <div className="flex-1 text-xs text-ai">
                                 <span className="font-bold">CostAnalysisAgent:</span> Change Order CO-007 received via Customer Portal — 22 line items, ergonomic upgrade request for Apex Furniture. No emails, no phone calls required to initiate.
                             </div>
                         </div>
 
                         {/* CO Request Card */}
-                        <div className="bg-card glass border-2 border-amber-300 dark:border-amber-600 rounded-2xl overflow-hidden shadow-xl shadow-amber-500/10">
+                        <div className="bg-card glass border-2 border-warning/30 dark:border-warning/30 rounded-2xl overflow-hidden shadow-xl shadow-amber-500/10">
                             <div className="p-5">
                                 <div className="flex items-center justify-between mb-3">
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
-                                            <DocumentPlusIcon className="w-5 h-5 text-amber-500" />
+                                        <div className="w-10 h-10 rounded-xl bg-warning/10 flex items-center justify-center">
+                                            <DocumentPlusIcon className="w-5 h-5 text-warning" />
                                         </div>
                                         <div>
                                             <h3 className="text-sm font-bold text-foreground">Change Order CO-007</h3>
                                             <p className="text-[10px] text-muted-foreground mt-0.5">From: Apex Furniture Customer Portal</p>
                                         </div>
                                     </div>
-                                    <span className="text-[10px] px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 font-bold">Under Review</span>
+                                    <span className="text-[10px] px-2.5 py-1 rounded-full bg-warning/10 dark:bg-warning/30 text-warning font-bold">Under Review</span>
                                 </div>
 
                                 <div className="grid grid-cols-3 gap-3 mt-4">
@@ -2549,7 +2549,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                         <p className="text-[9px] text-muted-foreground uppercase tracking-wider">Upgrade Type</p>
                                     </div>
                                     <div className="text-center p-3 rounded-lg bg-muted/30">
-                                        <p className="text-lg font-bold text-blue-600 dark:text-blue-400">Portal</p>
+                                        <p className="text-lg font-bold text-info">Portal</p>
                                         <p className="text-[9px] text-muted-foreground uppercase tracking-wider">Source</p>
                                     </div>
                                 </div>
@@ -2558,15 +2558,15 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 <div className="mt-4">
                                     <span className="text-[8px] font-bold text-success dark:text-success uppercase tracking-wider">External Systems · Synced</span>
                                     <div className="flex flex-wrap gap-1.5 mt-1">
-                                        <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold flex items-center gap-1">🌐 Customer Portal</span>
-                                        <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-bold flex items-center gap-1">📋 PO ORD-2055</span>
+                                        <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-info/10 dark:bg-info/30 text-info font-bold flex items-center gap-1">🌐 Customer Portal</span>
+                                        <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-ai/10 dark:bg-ai/30 text-ai font-bold flex items-center gap-1">📋 PO ORD-2055</span>
                                     </div>
                                 </div>
 
-                                <div className="mt-4 p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800">
+                                <div className="mt-4 p-3 rounded-lg bg-success/10 dark:bg-success/20 border border-success/30 dark:border-success/30">
                                     <div className="flex items-center gap-2">
                                         <SparklesIcon className="w-4 h-4 text-success" />
-                                        <span className="text-[11px] text-emerald-700 dark:text-emerald-300 font-medium">No emails, no phone calls to initiate — received automatically via portal</span>
+                                        <span className="text-[11px] text-success dark:text-success font-medium">No emails, no phone calls to initiate — received automatically via portal</span>
                                     </div>
                                 </div>
                             </div>
@@ -2590,9 +2590,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                 {currentStep?.id === '2.4' && isOps && (
                     <div data-demo-target="invoice-amendment-parallel" className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
                         {/* Agent Context */}
-                        <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 flex items-start gap-3">
+                        <div className="p-3 rounded-xl bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/20 flex items-start gap-3">
                             <AIAgentAvatar className="mt-0.5" />
-                            <div className="flex-1 text-xs text-indigo-700 dark:text-indigo-300">
+                            <div className="flex-1 text-xs text-ai">
                                 <span className="font-bold">ParallelSyncAgent:</span> Applying CO-007 amendments across all systems in parallel — invoice, QuickBooks, and Daily Log updated simultaneously.
                             </div>
                         </div>
@@ -2608,7 +2608,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     key={i}
                                     className={`bg-card glass border rounded-2xl p-4 shadow-lg transition-all duration-700 ${
                                         i < opsAmendCards
-                                            ? 'border-emerald-300 dark:border-emerald-700 opacity-100 translate-y-0'
+                                            ? 'border-success/30 dark:border-success/30 opacity-100 translate-y-0'
                                             : 'border-border opacity-30 translate-y-2'
                                     }`}
                                 >
@@ -2627,15 +2627,15 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                             <div className="flex items-center gap-2">
                                                 <span className="text-xs font-bold text-foreground">{card.title}</span>
                                                 <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold ${
-                                                    card.color === 'blue' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300' :
-                                                    card.color === 'emerald' ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300' :
-                                                    'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
+                                                    card.color === 'blue' ? 'bg-info/10 dark:bg-info/30 text-info' :
+                                                    card.color === 'emerald' ? 'bg-success/10 dark:bg-success/30 text-success dark:text-success' :
+                                                    'bg-ai/10 dark:bg-ai/30 text-ai'
                                                 }`}>{card.agent}</span>
                                             </div>
                                             <p className="text-[11px] text-muted-foreground mt-0.5">{card.detail}</p>
                                         </div>
                                         {i < opsAmendCards && (
-                                            <span className="text-[9px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-bold">Synced</span>
+                                            <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/10 dark:bg-success/30 text-success dark:text-success font-bold">Synced</span>
                                         )}
                                     </div>
                                 </div>
@@ -2644,10 +2644,10 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
 
                         {/* Footer note */}
                         {opsAmendCards >= 3 && (
-                            <div className="p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800 animate-in fade-in duration-500">
+                            <div className="p-3 rounded-lg bg-success/10 dark:bg-success/20 border border-success/30 dark:border-success/30 animate-in fade-in duration-500">
                                 <div className="flex items-center gap-2">
                                     <SparklesIcon className="w-4 h-4 text-success" />
-                                    <span className="text-[11px] text-emerald-700 dark:text-emerald-300 font-medium">All systems updated in parallel — zero re-entry</span>
+                                    <span className="text-[11px] text-success dark:text-success font-medium">All systems updated in parallel — zero re-entry</span>
                                 </div>
                             </div>
                         )}
@@ -2667,13 +2667,13 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                             <button onClick={() => setSustPhase('processing')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
                                 <div className="p-4 rounded-xl">
                                     <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-green-600 text-white"><ChartBarIcon className="h-4 w-4" /></div>
+                                        <div className="p-2 rounded-lg bg-success/10 text-white"><ChartBarIcon className="h-4 w-4" /></div>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
                                                 <span className="text-xs font-bold text-foreground">Sustainability Impact Report</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-green-600 text-white font-bold">UAL Project</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/10 text-white font-bold">UAL Project</span>
                                             </div>
-                                            <p className="text-[11px] text-muted-foreground mt-1">SustainabilityMetricsAgent: Compiling <span className="font-semibold text-foreground">194 tons diverted</span> from landfill, <span className="font-semibold text-green-600 dark:text-green-400">78% carbon reduction</span>, 2,000 items refurbished.</p>
+                                            <p className="text-[11px] text-muted-foreground mt-1">SustainabilityMetricsAgent: Compiling <span className="font-semibold text-foreground">194 tons diverted</span> from landfill, <span className="font-semibold text-success">78% carbon reduction</span>, 2,000 items refurbished.</p>
                                             <p className="text-[10px] text-brand-600 dark:text-brand-400 mt-2 flex items-center gap-1">Click to view metrics <ArrowRightIcon className="h-3 w-3" /></p>
                                         </div>
                                     </div>
@@ -2689,13 +2689,13 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     <span className="text-xs font-bold text-foreground">SustainabilityMetricsAgent Compiling...</span>
                                 </div>
                                 <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                    <div className="h-full rounded-full bg-green-500 transition-all duration-[3500ms] ease-linear" style={{ width: `${sustProgress}%` }} />
+                                    <div className="h-full rounded-full bg-success/10 transition-all duration-[3500ms] ease-linear" style={{ width: `${sustProgress}%` }} />
                                 </div>
                                 <div className="space-y-1.5">
                                     {sustAgents.map(agent => (
                                         <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"}`}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-green-600 animate-spin shrink-0" />}
-                                            <span className={`font-medium ${agent.done ? "text-foreground" : "text-green-600 dark:text-green-400"}`}>{agent.name}</span>
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-success animate-spin shrink-0" />}
+                                            <span className={`font-medium ${agent.done ? "text-foreground" : "text-success"}`}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
                                     ))}
@@ -2705,17 +2705,17 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
 
                         {/* Confirmed */}
                         {(sustPhase === 'revealed' || sustPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/5 border-2 border-success/30 dark:border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">SustainabilityMetricsAgent:</span> Report complete — <span className="font-semibold">194 tons diverted</span>, 78% carbon reduction, <span className="font-semibold">$340K savings</span> from reuse program. Award submission narrative ready.</p>
+                                        <p className="text-xs text-success"><span className="font-bold">SustainabilityMetricsAgent:</span> Report complete — <span className="font-semibold">194 tons diverted</span>, 78% carbon reduction, <span className="font-semibold">$340K savings</span> from reuse program. Award submission narrative ready.</p>
                                         <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">External Systems · Synced</span>
+                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                             {['Carbon Engine', 'Waste Tracker', 'Award Portal', 'Benchmark DB', 'Report Service'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/10 dark:bg-success/10 text-success text-[10px] font-medium border border-success/50 dark:border-success/20">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -2735,16 +2735,16 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                             <h3 className="text-sm font-bold text-foreground">Sustainability Impact — UAL HQ Project</h3>
                                             <p className="text-[11px] text-muted-foreground mt-0.5">Full lifecycle impact · Metropolis Award eligible</p>
                                         </div>
-                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-bold">78% Carbon Reduction</span>
+                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-success/10 dark:bg-success/10 text-success font-bold">78% Carbon Reduction</span>
                                     </div>
 
                                     {/* Big Metrics */}
                                     <div className="p-4 grid grid-cols-4 gap-3">
                                         {[
-                                            { label: 'Tons Diverted', value: '194', sub: 'from landfill', color: 'text-green-600 dark:text-green-400' },
+                                            { label: 'Tons Diverted', value: '194', sub: 'from landfill', color: 'text-success' },
                                             { label: 'Carbon Reduction', value: '78%', sub: 'embodied carbon', color: 'text-success dark:text-success' },
-                                            { label: 'Items Refurbished', value: '2,000', sub: 'reuse program', color: 'text-blue-600 dark:text-blue-400' },
-                                            { label: 'Cost Savings', value: '$340K', sub: 'vs new procurement', color: 'text-amber-600 dark:text-amber-400' },
+                                            { label: 'Items Refurbished', value: '2,000', sub: 'reuse program', color: 'text-info' },
+                                            { label: 'Cost Savings', value: '$340K', sub: 'vs new procurement', color: 'text-warning' },
                                         ].map(m => (
                                             <div key={m.label} className="text-center p-3 rounded-xl bg-muted/20 border border-border">
                                                 <p className={`text-xl font-bold ${m.color}`}>{m.value}</p>
@@ -2762,19 +2762,19 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                 <div key={cat.label} className="flex items-center gap-3">
                                                     <span className="text-[10px] text-muted-foreground w-20 shrink-0">{cat.label}</span>
                                                     <div className="flex-1 h-2 rounded-full bg-muted overflow-hidden">
-                                                        <div className="h-full rounded-full bg-green-500 transition-all duration-700" style={{ width: `${(cat.diverted / 82) * 100}%` }} />
+                                                        <div className="h-full rounded-full bg-success/10 transition-all duration-700" style={{ width: `${(cat.diverted / 82) * 100}%` }} />
                                                     </div>
                                                     <span className="text-[10px] font-bold text-foreground w-10 text-right">{cat.diverted}t</span>
-                                                    <span className="text-[10px] text-green-600 dark:text-green-400 w-14 text-right">{cat.savings}</span>
+                                                    <span className="text-[10px] text-success w-14 text-right">{cat.savings}</span>
                                                 </div>
                                             ))}
                                         </div>
                                     </div>
 
                                     {/* Award Narrative */}
-                                    <div className="mx-4 mb-4 p-3 rounded-xl bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/20">
-                                        <h4 className="text-xs font-bold text-amber-800 dark:text-amber-300 mb-1.5 flex items-center gap-1.5"><SparklesIcon className="h-3.5 w-3.5" />AI-Generated Award Narrative</h4>
-                                        <p className="text-[10px] text-amber-700 dark:text-amber-400 italic leading-relaxed">"Continua's UAL HQ project exemplifies circular economy principles in commercial interiors. Through systematic reuse, refurbishment, and material recovery, the project diverted 194 tons from landfill while achieving a 78% reduction in embodied carbon — setting a new benchmark for sustainable workplace transformation."</p>
+                                    <div className="mx-4 mb-4 p-3 rounded-xl bg-warning/10 dark:bg-warning/5 border border-warning/30 dark:border-warning/20">
+                                        <h4 className="text-xs font-bold text-warning mb-1.5 flex items-center gap-1.5"><SparklesIcon className="h-3.5 w-3.5" />AI-Generated Award Narrative</h4>
+                                        <p className="text-[10px] text-warning italic leading-relaxed">"Continua's UAL HQ project exemplifies circular economy principles in commercial interiors. Through systematic reuse, refurbishment, and material recovery, the project diverted 194 tons from landfill while achieving a 78% reduction in embodied carbon — setting a new benchmark for sustainable workplace transformation."</p>
                                     </div>
 
                                     {/* Auto-advance footer */}
@@ -2792,9 +2792,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                 {currentStep?.id === '3.1' && isOps && (
                     <div data-demo-target="financial-command-center" className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
                         {/* Agent Context */}
-                        <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 flex items-start gap-3">
+                        <div className="p-3 rounded-xl bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/20 flex items-start gap-3">
                             <AIAgentAvatar className="mt-0.5" />
-                            <div className="flex-1 text-xs text-indigo-700 dark:text-indigo-300">
+                            <div className="flex-1 text-xs text-ai">
                                 <span className="font-bold">FinancialCommandAgent:</span> Multi-project financial overview ready — 3 active projects, $157,650 total pipeline. All data synced from QuickBooks and project management systems.
                             </div>
                         </div>
@@ -2802,7 +2802,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         {/* Header */}
                         <div className="flex items-center justify-between">
                             <h2 className="text-lg font-bold text-foreground">Financial Command Center</h2>
-                            <span className="text-sm px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-bold">$157,650</span>
+                            <span className="text-sm px-3 py-1 rounded-full bg-success/10 dark:bg-success/30 text-success dark:text-success font-bold">$157,650</span>
                         </div>
 
                         {/* Project Cards */}
@@ -2816,9 +2816,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     <div className="flex items-center justify-between mb-3">
                                         <h3 className="text-xs font-bold text-foreground">{project.name}</h3>
                                         <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold ${
-                                            project.color === 'emerald' ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300' :
-                                            project.color === 'blue' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300' :
-                                            'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300'
+                                            project.color === 'emerald' ? 'bg-success/10 dark:bg-success/30 text-success dark:text-success' :
+                                            project.color === 'blue' ? 'bg-info/10 dark:bg-info/30 text-info' :
+                                            'bg-warning/10 dark:bg-warning/30 text-warning'
                                         }`}>{project.status}</span>
                                     </div>
                                     <p className="text-xl font-bold text-foreground mb-2">{project.amount}</p>
@@ -2838,7 +2838,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                         {i === 2 && (
                                             <div className="flex justify-between">
                                                 <span>Win Probability</span>
-                                                <span className="font-bold text-amber-600 dark:text-amber-400">68%</span>
+                                                <span className="font-bold text-warning">68%</span>
                                             </div>
                                         )}
                                     </div>
@@ -2852,7 +2852,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 {[
                                     { label: 'Total Pipeline', value: '$157,650', color: 'text-foreground' },
                                     { label: 'QB-Synced', value: '2', color: 'text-success dark:text-success' },
-                                    { label: 'Open COs', value: '1', color: 'text-amber-600 dark:text-amber-400' },
+                                    { label: 'Open COs', value: '1', color: 'text-warning' },
                                     { label: 'Overdue', value: '0', color: 'text-success dark:text-success' },
                                 ].map(kpi => (
                                     <div key={kpi.label} className="text-center">
@@ -2864,10 +2864,10 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         </div>
 
                         {/* Zero re-entry callout */}
-                        <div className="p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800">
+                        <div className="p-3 rounded-lg bg-success/10 dark:bg-success/20 border border-success/30 dark:border-success/30">
                             <div className="flex items-center gap-2">
                                 <SparklesIcon className="w-4 h-4 text-success" />
-                                <span className="text-[11px] text-emerald-700 dark:text-emerald-300 font-medium">No Excel, no QB login, no calls — real-time financial visibility</span>
+                                <span className="text-[11px] text-success dark:text-success font-medium">No Excel, no QB login, no calls — real-time financial visibility</span>
                             </div>
                         </div>
 
@@ -2887,9 +2887,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                 {currentStep?.id === '3.2' && isOps && (
                     <div data-demo-target="qb-reconciliation-report" className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
                         {/* Agent Context */}
-                        <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 flex items-start gap-3">
+                        <div className="p-3 rounded-xl bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/20 flex items-start gap-3">
                             <AIAgentAvatar className="mt-0.5" />
-                            <div className="flex-1 text-xs text-indigo-700 dark:text-indigo-300">
+                            <div className="flex-1 text-xs text-ai">
                                 <span className="font-bold">ReconciliationAgent:</span> QuickBooks reconciliation complete — all invoices match QB bills with zero discrepancies. Total posted: $60,250.
                             </div>
                         </div>
@@ -2897,7 +2897,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                         {/* Header */}
                         <div className="flex items-center justify-between">
                             <h2 className="text-lg font-bold text-foreground">QB Reconciliation</h2>
-                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-bold">0 Discrepancies</span>
+                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-success/10 dark:bg-success/30 text-success dark:text-success font-bold">0 Discrepancies</span>
                         </div>
 
                         {/* Reconciliation Table */}
@@ -2923,7 +2923,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                 <td className="px-4 py-3 text-xs text-right font-bold text-foreground">{row.amount}</td>
                                                 <td className="px-4 py-3 text-xs text-success dark:text-success font-bold">{row.qb}</td>
                                                 <td className="px-4 py-3 text-center">
-                                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-bold flex items-center gap-1 justify-center w-fit mx-auto">
+                                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/10 dark:bg-success/30 text-success dark:text-success font-bold flex items-center gap-1 justify-center w-fit mx-auto">
                                                         <CheckCircleIcon className="w-3 h-3" /> Matched
                                                     </span>
                                                 </td>
@@ -3019,7 +3019,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                 {/* Main Value */}
                                                 <div className="flex items-baseline gap-2 mb-2">
                                                     <span className="text-xl font-bold text-foreground tracking-tight">{data.value}</span>
-                                                    <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${data.positive ? 'bg-green-50 text-green-700 dark:bg-green-500/20 dark:text-green-400' : 'bg-red-50 text-red-700 dark:bg-red-500/20 dark:text-red-400'}`}>
+                                                    <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${data.positive ? 'bg-success/10 text-success dark:bg-success/20 dark:text-success' : 'bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive'}`}>
                                                         {data.change}
                                                     </span>
                                                 </div>
@@ -3141,7 +3141,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                         {/* Stacked Value & Change */}
                                         <div className="flex flex-col">
                                             <span className="text-lg font-bold text-foreground leading-none">{data.value}</span>
-                                            <span className={`text-[10px] font-bold mt-1 ${data.positive ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                                            <span className={`text-[10px] font-bold mt-1 ${data.positive ? 'text-success' : 'text-destructive'}`}>
                                                 {data.change}
                                             </span>
                                         </div>
@@ -3269,22 +3269,22 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                             <div className="flex-1">
                                                 <div className="flex items-center gap-2 mb-1">
                                                     <span className="text-xs font-bold text-foreground">Warehouse Intelligence Report Ready</span>
-                                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold">PENDING REVIEW</span>
+                                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-warning/10 text-warning font-bold">PENDING REVIEW</span>
                                                 </div>
                                                 <p className="text-[11px] text-muted-foreground">
                                                     Mercy Health Phase 2 — 5 agents completed 6 checkpoints. 24/26 items staged, 2 pending (Park Table backorder). $2,770 vendor credits processed. Dispatch scheduled: Interior Installations, Thursday 8AM.
                                                 </p>
                                                 <div className="flex items-center gap-3 mt-2">
                                                     <div className="flex items-center gap-1.5">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-success/10" />
                                                         <span className="text-[10px] text-muted-foreground">28/30 received</span>
                                                     </div>
                                                     <div className="flex items-center gap-1.5">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-info/10" />
                                                         <span className="text-[10px] text-muted-foreground">5 shipments tracked</span>
                                                     </div>
                                                     <div className="flex items-center gap-1.5">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-warning/10" />
                                                         <span className="text-[10px] text-muted-foreground">3 claims resolved</span>
                                                     </div>
                                                 </div>
@@ -3314,8 +3314,8 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                             </div>
                                             <span className={`ml-auto px-2.5 py-1 rounded-full text-[10px] font-bold ${
                                                 dealerDispatchApproved
-                                                    ? 'bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400'
-                                                    : 'bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400'
+                                                    ? 'bg-success/10 dark:bg-success/10 text-success'
+                                                    : 'bg-warning/10 dark:bg-warning/10 text-warning'
                                             }`}>{dealerDispatchApproved ? 'APPROVED' : 'PENDING REVIEW'}</span>
                                         </div>
                                     </div>
@@ -3323,11 +3323,11 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                     {/* Summary Grid */}
                                     <div className="grid grid-cols-1 sm:grid-cols-5 divide-y sm:divide-y-0 sm:divide-x divide-border">
                                         {[
-                                            { label: 'Warehouse Health', value: '3 warehouses', detail: 'Columbus 72%→89% forecast', color: 'text-blue-600 dark:text-blue-400' },
+                                            { label: 'Warehouse Health', value: '3 warehouses', detail: 'Columbus 72%→89% forecast', color: 'text-info' },
                                             { label: 'Receiving', value: '28/30 matched', detail: '26 pristine, 2 exceptions', color: 'text-success dark:text-success' },
-                                            { label: 'Price Verified', value: '15 items', detail: '2 margin alerts resolved', color: 'text-ai dark:text-purple-400' },
-                                            { label: 'Transit Synced', value: '5 shipments', detail: 'Dock resolved, -$1,200', color: 'text-indigo-600 dark:text-indigo-400' },
-                                            { label: 'Claims', value: '3 processed', detail: '$2,770 credits approved', color: 'text-rose-600 dark:text-rose-400' },
+                                            { label: 'Price Verified', value: '15 items', detail: '2 margin alerts resolved', color: 'text-ai dark:text-ai' },
+                                            { label: 'Transit Synced', value: '5 shipments', detail: 'Dock resolved, -$1,200', color: 'text-ai' },
+                                            { label: 'Claims', value: '3 processed', detail: '$2,770 credits approved', color: 'text-destructive' },
                                         ].map(section => (
                                             <div key={section.label} className="px-4 py-3 flex sm:flex-col items-center sm:items-start justify-between sm:justify-start gap-1">
                                                 <div>
@@ -3357,24 +3357,24 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                             <div className="flex items-center gap-3">
                                                 <div className="flex items-center gap-2">
                                                     <span className="text-sm font-bold text-foreground">Staging Checklist</span>
-                                                    <span className="text-xs px-2 py-0.5 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 font-semibold">24/26 ready</span>
+                                                    <span className="text-xs px-2 py-0.5 rounded-full bg-success/10 text-success font-semibold">24/26 ready</span>
                                                 </div>
                                                 <div className="flex gap-2">
-                                                    <div className="px-3 py-1 rounded-lg bg-green-50 dark:bg-green-500/10 text-center">
-                                                        <span className="text-sm font-bold text-green-700 dark:text-green-400">24</span>
-                                                        <span className="text-[10px] text-green-600 dark:text-green-400 ml-1">Staged</span>
+                                                    <div className="px-3 py-1 rounded-lg bg-success/10 dark:bg-success/10 text-center">
+                                                        <span className="text-sm font-bold text-success">24</span>
+                                                        <span className="text-[10px] text-success ml-1">Staged</span>
                                                     </div>
-                                                    <div className="px-3 py-1 rounded-lg bg-amber-50 dark:bg-amber-500/10 text-center">
-                                                        <span className="text-sm font-bold text-amber-700 dark:text-amber-400">2</span>
-                                                        <span className="text-[10px] text-amber-600 dark:text-amber-400 ml-1">Pending</span>
+                                                    <div className="px-3 py-1 rounded-lg bg-warning/10 dark:bg-warning/10 text-center">
+                                                        <span className="text-sm font-bold text-warning">2</span>
+                                                        <span className="text-[10px] text-warning ml-1">Pending</span>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20">
-                                                <SparklesIcon className="h-3.5 w-3.5 text-indigo-500" />
-                                                <span className="text-[10px] font-bold text-indigo-700 dark:text-indigo-300">AI Verified</span>
-                                                <span className="text-[9px] text-indigo-600/70 dark:text-indigo-400/70">5 agents · 6 checkpoints</span>
+                                            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/20">
+                                                <SparklesIcon className="h-3.5 w-3.5 text-ai" />
+                                                <span className="text-[10px] font-bold text-ai">AI Verified</span>
+                                                <span className="text-[9px] text-ai/70 dark:text-ai/70">5 agents · 6 checkpoints</span>
                                             </div>
 
                                             <p className="text-xs text-muted-foreground sm:ml-auto">Interior Installations — Thursday 8AM, 3 crew</p>
@@ -3404,7 +3404,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                 >
                                                     <span className="flex items-center justify-center gap-2"><CheckCircleIcon className="h-4 w-4" /> Approve All & Dispatch</span>
                                                 </button>
-                                                <button className="px-4 py-2.5 border border-amber-300 dark:border-amber-500/30 text-amber-700 dark:text-amber-300 text-xs font-bold rounded-xl hover:bg-amber-100 dark:hover:bg-amber-500/10 transition-all">
+                                                <button className="px-4 py-2.5 border border-warning/30 dark:border-warning/30 text-warning text-xs font-bold rounded-xl hover:bg-warning/10 dark:hover:bg-warning/10 transition-all">
                                                     Request Changes
                                                 </button>
                                                 <button className="px-4 py-2.5 border border-border text-muted-foreground text-xs font-bold rounded-xl hover:bg-muted transition-all">
@@ -3413,16 +3413,16 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                             </div>
                                         ) : (
                                             <div className="flex items-center gap-4 animate-in fade-in duration-300">
-                                                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 flex-1">
-                                                    <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                                                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20 flex-1">
+                                                    <CheckCircleIcon className="h-5 w-5 text-success" />
                                                     <div>
-                                                        <p className="text-sm font-bold text-green-700 dark:text-green-300">Dispatch Approved</p>
-                                                        <p className="text-[10px] text-green-600/80 dark:text-green-400/70">Sarah Chen · Interior Installations Thu 8AM confirmed</p>
+                                                        <p className="text-sm font-bold text-success">Dispatch Approved</p>
+                                                        <p className="text-[10px] text-success/80 dark:text-success/70">Sarah Chen · Interior Installations Thu 8AM confirmed</p>
                                                     </div>
                                                 </div>
                                                 <button
                                                     onClick={() => nextStep()}
-                                                    className="px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white text-sm font-bold rounded-xl transition-colors shadow-sm active:scale-[0.98]"
+                                                    className="px-6 py-2.5 bg-success/10 hover:bg-success/10 text-white text-sm font-bold rounded-xl transition-colors shadow-sm active:scale-[0.98]"
                                                 >
                                                     Continue to Flow 3
                                                 </button>
@@ -3439,10 +3439,10 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 <div className="bg-card rounded-2xl border border-border shadow-sm p-6">
                                     <div className="flex items-center justify-between mb-6">
                                         <h3 className="text-lg font-brand font-semibold text-foreground flex items-center gap-2">
-                                            <ExclamationTriangleIcon className="w-5 h-5 text-amber-500" />
+                                            <ExclamationTriangleIcon className="w-5 h-5 text-warning" />
                                             Urgent Actions
                                         </h3>
-                                        <span className="px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-bold">
+                                        <span className="px-2.5 py-0.5 rounded-full bg-warning/10 dark:bg-warning/30 text-warning text-xs font-bold">
                                             3 Pending
                                         </span>
                                     </div>
@@ -3458,9 +3458,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                 >
                                                     <div className="flex items-start justify-between gap-4">
                                                         <div className="flex gap-3">
-                                                            <div className={`mt-0.5 w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${action.type === 'critical' ? 'bg-red-100 text-red-600 dark:bg-red-900/20 dark:text-red-400' :
-                                                                action.type === 'warning' ? 'bg-amber-100 text-amber-600 dark:bg-amber-900/20 dark:text-amber-400' :
-                                                                    'bg-blue-100 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400'
+                                                            <div className={`mt-0.5 w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${action.type === 'critical' ? 'bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive' :
+                                                                action.type === 'warning' ? 'bg-warning/10 text-warning dark:bg-warning/20 dark:text-warning' :
+                                                                    'bg-info/10 text-info dark:bg-info/20 dark:text-info'
                                                                 }`}>
                                                                 <action.icon className="w-4 h-4" />
                                                             </div>
@@ -3470,8 +3470,8 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                             </div>
                                                         </div>
                                                         <div className="flex items-center gap-2 shrink-0">
-                                                            <span className={`text-[10px] font-bold px-2 py-1 rounded-md ${action.type === 'critical' ? 'bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-400' :
-                                                                action.type === 'warning' ? 'bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' :
+                                                            <span className={`text-[10px] font-bold px-2 py-1 rounded-md ${action.type === 'critical' ? 'bg-destructive/10 text-destructive dark:bg-destructive/30 dark:text-destructive' :
+                                                                action.type === 'warning' ? 'bg-warning/10 text-warning dark:bg-warning/30 dark:text-warning' :
                                                                     'bg-zinc-100 text-muted-foreground dark:bg-zinc-800 dark:text-muted-foreground'
                                                                 }`}>
                                                                 {action.time}
@@ -3488,7 +3488,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                             {action.details.fields.map((f, i) => (
                                                                 <div key={i} className="flex flex-col">
                                                                     <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">{f.label}</span>
-                                                                    <span className={`text-xs font-medium mt-0.5 ${(f as any).highlight ? 'text-amber-600 dark:text-amber-400 font-bold' : 'text-foreground'}`}>{f.value}</span>
+                                                                    <span className={`text-xs font-medium mt-0.5 ${(f as any).highlight ? 'text-warning font-bold' : 'text-foreground'}`}>{f.value}</span>
                                                                 </div>
                                                             ))}
                                                         </div>
@@ -3498,12 +3498,12 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                             <div className="space-y-1.5">
                                                                 <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Exceptions</p>
                                                                 {(action.details as any).exceptions.map((exc: any, i: number) => (
-                                                                    <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-amber-50/50 dark:bg-amber-900/10 border border-amber-200/50 dark:border-amber-800/30">
+                                                                    <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-warning/50 dark:bg-warning/10 border border-warning/50 dark:border-warning/30">
                                                                         <div>
                                                                             <span className="text-xs font-mono font-medium text-foreground">{exc.item}</span>
                                                                             <span className="text-xs text-muted-foreground ml-2">{exc.issue}</span>
                                                                         </div>
-                                                                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${exc.confidence >= 90 ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'}`}>{exc.confidence}%</span>
+                                                                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${exc.confidence >= 90 ? 'bg-success/10 text-success dark:bg-success/30 dark:text-success' : 'bg-warning/10 text-warning dark:bg-warning/30 dark:text-warning'}`}>{exc.confidence}%</span>
                                                                     </div>
                                                                 ))}
                                                             </div>
@@ -3529,7 +3529,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                                     {(action.details as any).stockHistory.map((v: number, i: number) => (
                                                                         <div key={i} className="flex-1 flex flex-col items-center gap-0.5">
                                                                             <div
-                                                                                className={`w-full rounded-sm transition-all ${i === 5 ? 'bg-red-500' : i >= 4 ? 'bg-amber-500' : 'bg-zinc-300 dark:bg-zinc-600'}`}
+                                                                                className={`w-full rounded-sm transition-all ${i === 5 ? 'bg-destructive/10' : i >= 4 ? 'bg-warning/10' : 'bg-zinc-300 dark:bg-zinc-600'}`}
                                                                                 style={{ height: `${(v / 42) * 100}%`, minHeight: '2px' }}
                                                                             />
                                                                         </div>
@@ -3537,7 +3537,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                                 </div>
                                                                 <div className="flex justify-between mt-1">
                                                                     <span className="text-[9px] text-muted-foreground">6w ago</span>
-                                                                    <span className="text-[9px] text-red-500 font-bold">Now: 5</span>
+                                                                    <span className="text-[9px] text-destructive font-bold">Now: 5</span>
                                                                 </div>
                                                             </div>
                                                         )}
@@ -3549,7 +3549,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                                 <div className="flex items-center gap-2">
                                                                     {(action.details as any).approvalChain.map((step: any, i: number) => (
                                                                         <div key={i} className="flex items-center gap-2">
-                                                                            <div className={`flex items-center gap-1.5 px-2 py-1 rounded-md text-[10px] font-medium border ${step.status === 'done' ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800' :
+                                                                            <div className={`flex items-center gap-1.5 px-2 py-1 rounded-md text-[10px] font-medium border ${step.status === 'done' ? 'bg-success/10 text-success border-success/30 dark:bg-success/20 dark:text-success dark:border-success/30' :
                                                                                 step.status === 'current' ? 'bg-primary/10 text-zinc-900 dark:text-primary border-primary/30 ring-1 ring-primary/20' :
                                                                                     'bg-muted text-muted-foreground border-zinc-200 dark:bg-zinc-800 dark:text-muted-foreground dark:border-zinc-700'
                                                                                 }`}>
@@ -3620,10 +3620,10 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                     onClick={() => setExpandedActivityId(expandedActivityId === item.id ? null : item.id)}
                                                 >
                                                     <div className="flex items-start gap-4">
-                                                        <div className={`mt-0.5 w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${item.type === 'success' ? 'bg-green-100 text-green-600 dark:bg-green-900/20 dark:text-green-400' :
-                                                            item.type === 'warning' ? 'bg-amber-100 text-amber-600 dark:bg-amber-900/20 dark:text-amber-400' :
-                                                                item.type === 'error' ? 'bg-red-100 text-red-600 dark:bg-red-900/20 dark:text-red-400' :
-                                                                    'bg-blue-100 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400'
+                                                        <div className={`mt-0.5 w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${item.type === 'success' ? 'bg-success/10 text-success dark:bg-success/20 dark:text-success' :
+                                                            item.type === 'warning' ? 'bg-warning/10 text-warning dark:bg-warning/20 dark:text-warning' :
+                                                                item.type === 'error' ? 'bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive' :
+                                                                    'bg-info/10 text-info dark:bg-info/20 dark:text-info'
                                                             }`}>
                                                             <item.icon className="w-4 h-4" />
                                                         </div>
@@ -3674,14 +3674,14 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                                 {item.details.timeline.map((step: { step: string; date: string; done: boolean }, idx: number) => (
                                                                     <div key={idx} className="flex items-center">
                                                                         <div className="flex flex-col items-center">
-                                                                            <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[8px] font-bold ${step.done ? 'bg-green-500 text-white' : 'bg-zinc-200 dark:bg-zinc-700 text-muted-foreground'}`}>
+                                                                            <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[8px] font-bold ${step.done ? 'bg-success/10 text-white' : 'bg-zinc-200 dark:bg-zinc-700 text-muted-foreground'}`}>
                                                                                 {step.done ? '\u2713' : idx + 1}
                                                                             </div>
                                                                             <p className="text-[9px] font-medium text-foreground mt-0.5 whitespace-nowrap">{step.step}</p>
                                                                             <p className="text-[9px] text-muted-foreground">{step.date}</p>
                                                                         </div>
                                                                         {idx < item.details.timeline.length - 1 && (
-                                                                            <div className={`w-8 h-0.5 mx-0.5 mt-[-18px] ${step.done ? 'bg-green-400' : 'bg-zinc-200 dark:bg-zinc-700'}`} />
+                                                                            <div className={`w-8 h-0.5 mx-0.5 mt-[-18px] ${step.done ? 'bg-success/10' : 'bg-zinc-200 dark:bg-zinc-700'}`} />
                                                                         )}
                                                                     </div>
                                                                 ))}
@@ -3703,16 +3703,16 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
 
                                                         {/* Discrepancy Table */}
                                                         {item.details?.discrepancies && (
-                                                            <div className="rounded-lg border border-amber-200 dark:border-amber-500/20 bg-amber-50/50 dark:bg-amber-900/10 p-2.5">
-                                                                <p className="text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-1.5">Discrepancies Found</p>
+                                                            <div className="rounded-lg border border-warning/30 dark:border-warning/20 bg-warning/50 dark:bg-warning/10 p-2.5">
+                                                                <p className="text-[10px] font-bold uppercase tracking-wider text-warning mb-1.5">Discrepancies Found</p>
                                                                 <div className="space-y-1.5">
                                                                     {item.details.discrepancies.map((d: { field: string; expected: string; actual: string; diff: string }, idx: number) => (
                                                                         <div key={idx} className="flex items-center justify-between text-xs">
                                                                             <span className="font-medium text-foreground">{d.field}</span>
                                                                             <div className="flex items-center gap-3">
                                                                                 <span className="text-muted-foreground">Expected: {d.expected}</span>
-                                                                                <span className="text-amber-600 dark:text-amber-400 font-semibold">Actual: {d.actual}</span>
-                                                                                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400">{d.diff}</span>
+                                                                                <span className="text-warning font-semibold">Actual: {d.actual}</span>
+                                                                                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-warning/10 dark:bg-warning/20 text-warning">{d.diff}</span>
                                                                             </div>
                                                                         </div>
                                                                     ))}
@@ -3726,13 +3726,13 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                                 {item.details.trackingSteps.map((ts: { location: string; date: string; status: string }, idx: number) => (
                                                                     <div key={idx} className="flex items-start gap-2.5">
                                                                         <div className="flex flex-col items-center">
-                                                                            <div className={`w-2.5 h-2.5 rounded-full mt-0.5 ${ts.status === 'done' ? 'bg-green-500' : ts.status === 'current' ? 'bg-amber-500 ring-2 ring-amber-200 dark:ring-amber-500/30' : 'bg-zinc-300 dark:bg-zinc-600'}`} />
+                                                                            <div className={`w-2.5 h-2.5 rounded-full mt-0.5 ${ts.status === 'done' ? 'bg-success/10' : ts.status === 'current' ? 'bg-warning/10 ring-2 ring-amber-200 dark:ring-amber-500/30' : 'bg-zinc-300 dark:bg-zinc-600'}`} />
                                                                             {idx < item.details.trackingSteps.length - 1 && (
-                                                                                <div className={`w-0.5 h-5 ${ts.status === 'done' ? 'bg-green-300 dark:bg-green-700' : 'bg-zinc-200 dark:bg-zinc-700'}`} />
+                                                                                <div className={`w-0.5 h-5 ${ts.status === 'done' ? 'bg-success/10 dark:bg-success/10' : 'bg-zinc-200 dark:bg-zinc-700'}`} />
                                                                             )}
                                                                         </div>
                                                                         <div className="pb-2">
-                                                                            <p className={`text-xs font-medium ${ts.status === 'current' ? 'text-amber-600 dark:text-amber-400' : ts.status === 'pending' ? 'text-muted-foreground' : 'text-foreground'}`}>{ts.location}</p>
+                                                                            <p className={`text-xs font-medium ${ts.status === 'current' ? 'text-warning' : ts.status === 'pending' ? 'text-muted-foreground' : 'text-foreground'}`}>{ts.location}</p>
                                                                             <p className="text-[10px] text-muted-foreground">{ts.date}</p>
                                                                         </div>
                                                                     </div>
@@ -3768,14 +3768,14 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                         </div>
 
                                                         {item.aiSuggestion && (
-                                                            <div className="rounded-lg bg-indigo-50 dark:bg-indigo-900/10 border border-indigo-100 dark:border-indigo-500/10 p-3">
+                                                            <div className="rounded-lg bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/10 p-3">
                                                                 <div className="flex items-start gap-3">
                                                                     <AIAgentAvatar className="mt-0.5" />
                                                                     <div className="flex-1">
-                                                                        <p className="text-xs font-semibold text-indigo-700 dark:text-indigo-300 mb-1">
+                                                                        <p className="text-xs font-semibold text-ai mb-1">
                                                                             AI Insight
                                                                         </p>
-                                                                        <p className="text-xs text-indigo-600/80 dark:text-indigo-400/80 leading-relaxed mb-2">
+                                                                        <p className="text-xs text-ai/80 dark:text-ai/80 leading-relaxed mb-2">
                                                                             {item.aiSuggestion}
                                                                         </p>
                                                                         <button
@@ -3791,7 +3791,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                                                     }, 2500);
                                                                                 }
                                                                             }}
-                                                                            className="text-[10px] font-bold bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 px-3 py-1 rounded-md hover:bg-indigo-200 dark:hover:bg-indigo-500/30 transition-colors flex items-center gap-1"
+                                                                            className="text-[10px] font-bold bg-ai/10 dark:bg-ai/20 text-ai px-3 py-1 rounded-md hover:bg-ai/10 dark:hover:bg-ai/30 transition-colors flex items-center gap-1"
                                                                         >
                                                                             Resolve Issue <SparklesIcon className="w-3 h-3" />
                                                                         </button>
@@ -3817,18 +3817,18 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                 <div className="bg-card rounded-2xl border border-border shadow-sm p-6 flex flex-col h-full">
                                     <div className="flex items-center justify-between mb-6">
                                         <h3 className="text-lg font-brand font-semibold text-foreground flex items-center gap-2">
-                                            <SparklesIcon className="w-5 h-5 text-indigo-500" />
+                                            <SparklesIcon className="w-5 h-5 text-ai" />
                                             AI Suggestions
                                         </h3>
-                                        <span className="px-2.5 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 text-xs font-bold">
+                                        <span className="px-2.5 py-0.5 rounded-full bg-ai/10 dark:bg-ai/30 text-ai text-xs font-bold">
                                             3 New
                                         </span>
                                     </div>
                                     <div className="space-y-4 flex-1">
                                         {aiSuggestions.map((suggestion) => (
                                             <div key={suggestion.id} className={`rounded-xl border overflow-hidden transition-all duration-300 ${expandedSuggestionId === suggestion.id
-                                                ? 'bg-muted/30 border-indigo-300 dark:border-indigo-500/30 shadow-sm'
-                                                : 'bg-muted dark:bg-secondary/50 border-border hover:border-indigo-200 dark:hover:border-indigo-900/50'
+                                                ? 'bg-muted/30 border-ai/30 dark:border-ai/30 shadow-sm'
+                                                : 'bg-muted dark:bg-secondary/50 border-border hover:border-ai/30 dark:hover:border-ai/50'
                                                 }`}>
                                                 <div
                                                     className="p-4 cursor-pointer group"
@@ -3872,19 +3872,19 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
 
                                                         {/* AI Reasoning */}
                                                         {suggestion.details?.reasoning && (
-                                                            <div className="rounded-lg bg-indigo-50 dark:bg-indigo-900/10 border border-indigo-100 dark:border-indigo-500/10 p-3">
+                                                            <div className="rounded-lg bg-ai/10 dark:bg-ai/10 border border-ai/30 dark:border-ai/10 p-3">
                                                                 <div className="flex items-start gap-2.5">
                                                                     <AIAgentAvatar className="mt-0.5" />
                                                                     <div className="flex-1">
                                                                         <div className="flex items-center justify-between mb-1">
-                                                                            <p className="text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">AI Reasoning</p>
+                                                                            <p className="text-[10px] font-bold uppercase tracking-wider text-ai">AI Reasoning</p>
                                                                             {suggestion.details.confidence && (
-                                                                                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300">
+                                                                                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-ai/10 dark:bg-ai/20 text-ai">
                                                                                     {suggestion.details.confidence}% confidence
                                                                                 </span>
                                                                             )}
                                                                         </div>
-                                                                        <p className="text-xs text-indigo-600/80 dark:text-indigo-400/80 leading-relaxed">
+                                                                        <p className="text-xs text-ai/80 dark:text-ai/80 leading-relaxed">
                                                                             {suggestion.details.reasoning}
                                                                         </p>
                                                                     </div>
@@ -3896,7 +3896,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                         <div className="pt-2 border-t border-border/50">
                                                             <button
                                                                 onClick={(e) => { e.stopPropagation(); handleGenUIAction(`Apply Suggestion: ${suggestion.title}`); }}
-                                                                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-indigo-600 dark:bg-indigo-500 text-white hover:bg-indigo-700 dark:hover:bg-indigo-400 transition-colors"
+                                                                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-ai/10 dark:bg-ai/10 text-white hover:bg-ai/10 dark:hover:bg-ai/10 transition-colors"
                                                             >
                                                                 <SparklesIcon className="w-3.5 h-3.5" />
                                                                 Apply Suggestion
@@ -3934,7 +3934,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                 <div className="flex justify-between items-end mb-2">
                                                     <span className="text-sm font-medium text-foreground">{metric.label}</span>
                                                     <div className="flex items-center gap-2">
-                                                        <span className={`text-[10px] font-medium ${metric.trendUp ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400'}`}>
+                                                        <span className={`text-[10px] font-medium ${metric.trendUp ? 'text-success' : 'text-destructive'}`}>
                                                             {metric.trendUp ? '\u2191' : '\u2193'} {metric.trend}
                                                         </span>
                                                         <span className="text-lg font-bold text-foreground">{metric.value}%</span>
@@ -4183,7 +4183,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                                                                         </MenuItem>
                                                                                                         <MenuItem>
                                                                                                             {({ active }) => (
-                                                                                                                <button onClick={(e) => e.stopPropagation()} className={`${active ? 'bg-gray-50 dark:bg-white/5' : ''} group flex w-full items-center px-4 py-2 text-sm text-red-600 dark:text-red-400`}>
+                                                                                                                <button onClick={(e) => e.stopPropagation()} className={`${active ? 'bg-gray-50 dark:bg-white/5' : ''} group flex w-full items-center px-4 py-2 text-sm text-destructive`}>
                                                                                                                     <span className="w-4 h-4 mr-2" ><TrashIcon /></span> Delete
                                                                                                                 </button>
                                                                                                             )}
@@ -4233,9 +4233,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                                                                         <div className="p-3 bg-card rounded-xl border border-gray-200 dark:border-white/10 shadow-sm">
                                                                                                             <p className="text-xs font-medium text-muted-foreground uppercase">Alert</p>
                                                                                                             <div className="mt-2 flex items-start gap-2">
-                                                                                                                <ExclamationTriangleIcon className="h-5 w-5 text-amber-500 flex-shrink-0" />
+                                                                                                                <ExclamationTriangleIcon className="h-5 w-5 text-warning flex-shrink-0" />
                                                                                                                 <div>
-                                                                                                                    <p className="text-sm font-medium text-amber-700 dark:text-amber-400">Customs Delay</p>
+                                                                                                                    <p className="text-sm font-medium text-warning">Customs Delay</p>
                                                                                                                     <p className="text-xs text-muted-foreground mt-1">Shipment held at port. ETA +24h.</p>
                                                                                                                     <button onClick={() => setTrackingOrder(order)} className="mt-2 text-xs font-medium text-zinc-900 dark:text-primary decoration-primary underline-offset-2 hover:underline">Track Shipment</button>
                                                                                                                 </div>
@@ -4295,7 +4295,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                                                                 <div className="py-1">
                                                                                                     <MenuItem>
                                                                                                         {({ active }) => (
-                                                                                                            <button onClick={(e) => e.stopPropagation()} className={`${active ? 'bg-gray-50 dark:bg-white/5' : ''} group flex w-full items-center px-4 py-2 text-sm text-red-600 dark:text-red-400`}>
+                                                                                                            <button onClick={(e) => e.stopPropagation()} className={`${active ? 'bg-gray-50 dark:bg-white/5' : ''} group flex w-full items-center px-4 py-2 text-sm text-destructive`}>
                                                                                                                 <span className="w-4 h-4 mr-2" ><TrashIcon /></span> Delete
                                                                                                             </button>
                                                                                                         )}
@@ -4354,12 +4354,12 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                                                     </div>
 
                                                                                     <div className="w-full md:w-[280px]">
-                                                                                        <div className="rounded-xl border border-amber-200 dark:border-amber-500/20 bg-amber-50 dark:bg-amber-500/10 p-4">
+                                                                                        <div className="rounded-xl border border-warning/30 dark:border-warning/20 bg-warning/10 dark:bg-warning/10 p-4">
                                                                                             <div className="flex gap-3">
-                                                                                                <ExclamationTriangleIcon className="h-5 w-5 text-amber-500 shrink-0" />
+                                                                                                <ExclamationTriangleIcon className="h-5 w-5 text-warning shrink-0" />
                                                                                                 <div>
-                                                                                                    <h5 className="text-sm font-bold text-amber-700 dark:text-amber-400">Alert: Customs Delay</h5>
-                                                                                                    <p className="mt-1 text-xs text-amber-600/80 dark:text-amber-400/70">Held at port. ETA +24h.</p>
+                                                                                                    <h5 className="text-sm font-bold text-warning">Alert: Customs Delay</h5>
+                                                                                                    <p className="mt-1 text-xs text-warning/80 dark:text-warning/70">Held at port. ETA +24h.</p>
                                                                                                     <button onClick={(e) => { e.stopPropagation(); setTrackingOrder(order); }} className="mt-2 text-xs font-medium text-zinc-900 dark:text-primary decoration-primary underline-offset-2 hover:underline">
                                                                                                         Track Shipment
                                                                                                     </button>
@@ -4431,8 +4431,8 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                                         <div className="text-right">
                                                                             <p className="text-sm font-bold text-foreground">{quote.amount}</p>
                                                                             {/* Color map aligned with E.1.i taxonomy (Sent/Pending/In Progress/Expired). */}
-                                                                            <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium ${quote.status === 'Sent' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' :
-                                                                                quote.status === 'Pending' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' :
+                                                                            <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium ${quote.status === 'Sent' ? 'bg-info/10 text-info dark:bg-info/30 dark:text-info' :
+                                                                                quote.status === 'Pending' ? 'bg-warning/10 text-warning dark:bg-warning/30 dark:text-warning' :
                                                                                 quote.status === 'In Progress' ? 'bg-zinc-100 text-foreground dark:bg-zinc-800 dark:text-zinc-200' :
                                                                                     'bg-zinc-100 text-muted-foreground dark:bg-zinc-800 dark:text-muted-foreground'
                                                                                 }`}>
@@ -4545,7 +4545,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                                                         <div className={cn(
                                                             "absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full ring-4 ring-background",
                                                             step.completed ? "bg-primary" : "bg-zinc-300 dark:bg-zinc-700",
-                                                            step.alert && "bg-red-500 dark:bg-red-500"
+                                                            step.alert && "bg-destructive/10 dark:bg-destructive/10"
                                                         )} />
                                                         <p className="text-sm font-medium text-foreground">{step.status}</p>
                                                         <p className="text-xs text-muted-foreground mt-0.5">{step.date} · {step.location}</p>

@@ -237,21 +237,21 @@ const trackingSteps = [
 // Entries flagged with stage "po" or "orders" to drive tab filtering.
 const recentOrders = [
     // ORD-2058 NEW · Pending Deposit example (PO tab) · demonstrates 3rd PO status
-    { id: "#ORD-2058", stage: "po" as const, customer: "Ridgeview Workspaces", client: "Atlas Mutual Holdings", project: "Regional HQ Refresh", amount: "$215,000", status: "Pending Deposit", date: "Jan 22, 2026", initials: "RW", statusColor: "bg-amber-50 text-amber-700", location: "Chicago", source: "Email" as const, dealer: "Ridgeview Workspaces", dealerPO: "PO-RW-2026-3001", endCustomer: "Atlas Mutual Holdings", manufacturerNo: "MFG-2-10475002", shipDate: "May 1, 2026", contract: "OMNIA-2024-FP", depositRequired: true, depositPct: 30, depositAmount: 64500 },
+    { id: "#ORD-2058", stage: "po" as const, customer: "Ridgeview Workspaces", client: "Atlas Mutual Holdings", project: "Regional HQ Refresh", amount: "$215,000", status: "Pending Deposit", date: "Jan 22, 2026", initials: "RW", statusColor: "bg-warning/10 text-warning", location: "Chicago", source: "Email" as const, dealer: "Ridgeview Workspaces", dealerPO: "PO-RW-2026-3001", endCustomer: "Atlas Mutual Holdings", manufacturerNo: "MFG-2-10475002", shipDate: "May 1, 2026", contract: "OMNIA-2024-FP", depositRequired: true, depositPct: 30, depositAmount: 64500 },
     // ORD-2046 NEW · derived from QT-1022 Beacon Hill (Approved) → PO Received (Wendy 33:22)
     { id: "#ORD-2046", stage: "po" as const, customer: "Bayline Furnishings", client: "Waterside Hospitality", project: "Beach Hotel · Renovation", amount: "$150,000", status: "PO Received", date: "Jan 18, 2026", initials: "BH", statusColor: "bg-zinc-100 text-muted-foreground", location: "Portland", source: "Email" as const, dealer: "Bayline Furnishings", dealerPO: "PO-BH-2026-0044", endCustomer: "Waterside Hospitality", manufacturerNo: "MFG-2-10474008", shipDate: "Apr 25, 2026", contract: "OMNIA-2024-FP", linkedQuote: "QT-1022" },
     // ORD-2056 · Delayed shipment scenario (Kenya feedback 2026-06-04) · Leland · NorthPoint · Continua
-    { id: "#ORD-2056", stage: "orders" as const, customer: "Northline Furniture Group", client: "Continua Interiors of Illinois", project: "Tech HQ Buildout · Phase 2", amount: "$142,800", status: "Shipped", subPhase: "In Transit", flag: "delayed" as const, date: "Mar 12, 2026", initials: "NP", statusColor: "bg-amber-50 text-amber-700 ring-amber-600/20", location: "Lincolnshire", source: "Email" as const, dealer: "Northline Furniture Group", dealerPO: "PO-NP-2026-002112", endCustomer: "Continua Interiors of Illinois", manufacturerNo: "MFG-2-10470215", shipDate: "Mar 28, 2026", originalShipDate: "Mar 20, 2026", delayDays: 8, delayReason: "Carrier weather hold · I-80 corridor closure", callBeforeDelivery: "24hrs · 480-640-2818", contract: "GSA-28F-0015W", linkedQuote: "QT-1027" },
+    { id: "#ORD-2056", stage: "orders" as const, customer: "Northline Furniture Group", client: "Continua Interiors of Illinois", project: "Tech HQ Buildout · Phase 2", amount: "$142,800", status: "Shipped", subPhase: "In Transit", flag: "delayed" as const, date: "Mar 12, 2026", initials: "NP", statusColor: "bg-warning/10 text-warning ring-amber-600/20", location: "Lincolnshire", source: "Email" as const, dealer: "Northline Furniture Group", dealerPO: "PO-NP-2026-002112", endCustomer: "Continua Interiors of Illinois", manufacturerNo: "MFG-2-10470215", shipDate: "Mar 28, 2026", originalShipDate: "Mar 20, 2026", delayDays: 8, delayReason: "Carrier weather hold · I-80 corridor closure", callBeforeDelivery: "24hrs · 480-640-2818", contract: "GSA-28F-0015W", linkedQuote: "QT-1027" },
     { id: "#ORD-2055", stage: "po" as const, customer: "Northline Furniture Group", client: "Vertex Technologies", project: "Tech HQ Buildout", amount: "$385,000", status: "PO Received", date: "Dec 20, 2025", initials: "NP", statusColor: "bg-zinc-100 text-muted-foreground", location: "Austin", source: "Email" as const, dealer: "Northline Furniture Group", dealerPO: "PO-NP-2025-001605", endCustomer: "Vertex Technologies", manufacturerNo: "MFG-2-10468963", shipDate: "Mar 20, 2026", contract: "GSA-28F-0015W", linkedQuote: "QT-1025" },
     { id: "#ORD-2054", stage: "orders" as const, customer: "Cascade Workplace Co", client: "Greenleaf Holdings", project: "HQ Upgrade · Floor 18", amount: "$62,500", status: "Acknowledged", subPhase: "In Production", date: "Nov 15, 2025", initials: "CW", statusColor: "bg-brand-50 text-brand-700 ring-brand-600/20", location: "London", source: "Email" as const, dealer: "Cascade Workplace Co", dealerPO: "PO-CW-2026-0042", endCustomer: "Greenleaf Holdings", manufacturerNo: "MFG-2-10472501", shipDate: "Feb 15, 2026", contract: "GSA-28F-0015W" },
-    { id: "#ORD-2053", stage: "orders" as const, customer: "Pacific Workspaces", client: "Urban Civic Group", project: "Lobby Refresh", amount: "$112,000", status: "Acknowledged", subPhase: "Ready to Ship", date: "Oct 30, 2025", initials: "PW", statusColor: "bg-green-50 text-green-700 ring-green-600/20", location: "Austin", source: "Email" as const, dealer: "Pacific Workspaces", dealerPO: "PO-PW-2025-1188", endCustomer: "Urban Civic Group", manufacturerNo: "MFG-2-10468100", shipDate: "Jan 30, 2026", contract: "CoNY-ANT122" },
+    { id: "#ORD-2053", stage: "orders" as const, customer: "Pacific Workspaces", client: "Urban Civic Group", project: "Lobby Refresh", amount: "$112,000", status: "Acknowledged", subPhase: "Ready to Ship", date: "Oct 30, 2025", initials: "PW", statusColor: "bg-success/10 text-success ring-green-600/20", location: "Austin", source: "Email" as const, dealer: "Pacific Workspaces", dealerPO: "PO-PW-2025-1188", endCustomer: "Urban Civic Group", manufacturerNo: "MFG-2-10468100", shipDate: "Jan 30, 2026", contract: "CoNY-ANT122" },
     { id: "#ORD-2052", stage: "orders" as const, customer: "Global Furniture Partners", client: "Pioneer Logistics", project: "Warehouse Office", amount: "$45,000", status: "Shipped", subPhase: "Delivered", date: "Oct 15, 2025", initials: "GF", statusColor: "bg-gray-100 text-foreground", location: "Berlin", source: "Email" as const, dealer: "Global Furniture Partners", dealerPO: "PO-GFP-2025-0788", endCustomer: "Pioneer Logistics", manufacturerNo: "MFG-2-10465412", shipDate: "Dec 15, 2025", contract: "OMNIA-2024-FP" },
     { id: "#ORD-2051", stage: "po" as const, customer: "Summit Office Solutions", client: "Civic Builders LLC", project: "City Center · Tower B", amount: "$120,000", status: "PO Received", date: "Jan 05, 2026", initials: "SO", statusColor: "bg-zinc-100 text-muted-foreground", location: "New York", source: "Email" as const, dealer: "Summit Office Solutions", dealerPO: "PO-SO-2026-005", endCustomer: "Civic Builders LLC", manufacturerNo: "MFG-2-10473120", shipDate: "Apr 5, 2026", contract: "CoNY-ANT122" },
     // ORD-2050 · was 'PO Reviewed' (Wendy 42:23 "I don't see our need") → reassigned to More Information Required
-    { id: "#ORD-2050", stage: "po" as const, customer: "Legacy Office Group", client: "Skyline Residences Co", project: "Residential A", amount: "$85,000", status: "More Information Required", date: "Jan 02, 2026", initials: "HO", statusColor: "bg-blue-50 text-blue-700", location: "Austin", source: "Email" as const, dealer: "Legacy Office Group", dealerPO: "PO-HOG-2025-2210", endCustomer: "Skyline Residences Co", manufacturerNo: "MFG-2-10468904", shipDate: "Apr 2, 2026", contract: "GSA-28F-0015W" },
-    { id: "#ORD-2049", stage: "orders" as const, customer: "Bayline Furnishings", client: "Waterside Hospitality", project: "Beach Hotel · Renovation", amount: "$210,000", status: "Acknowledged", subPhase: "In Production", date: "Dec 10, 2025", initials: "BH", statusColor: "bg-indigo-50 text-indigo-700", location: "London", source: "Email" as const, dealer: "Bayline Furnishings", dealerPO: "PO-BH-2025-1156", endCustomer: "Waterside Hospitality", manufacturerNo: "MFG-2-10466050", shipDate: "Mar 10, 2026", contract: "GSA-28F-0015W" },
-    { id: "#ORD-2048", stage: "orders" as const, customer: "Midwest Contract Furniture", client: "Valley Residences", project: "Mountain Retreat Lodge", amount: "$95,000", status: "Acknowledged", subPhase: "Ready to Ship", date: "Nov 20, 2025", initials: "MC", statusColor: "bg-indigo-50 text-indigo-700", location: "Berlin", source: "Manual" as const, dealer: "Midwest Contract Furniture", dealerPO: "PO-MCF-2025-0934", endCustomer: "Valley Residences", manufacturerNo: "MFG-2-10470088", shipDate: "Feb 20, 2026", contract: "OMNIA-2024-FP" },
-    { id: "#ORD-2047", stage: "orders" as const, customer: "Apex Office Design", client: "Skyline Builders Co", project: "Sky Vista · Tower 3", amount: "$450,000", status: "Shipped", subPhase: "In Transit", date: "Nov 05, 2025", initials: "AO", statusColor: "bg-amber-50 text-amber-700", location: "New York", source: "Email" as const, dealer: "Apex Office Design", dealerPO: "PO-AOD-2025-1801", endCustomer: "Skyline Builders Co", manufacturerNo: "MFG-2-10464777", shipDate: "Feb 5, 2026", contract: "CoNY-ANT122" },
+    { id: "#ORD-2050", stage: "po" as const, customer: "Legacy Office Group", client: "Skyline Residences Co", project: "Residential A", amount: "$85,000", status: "More Information Required", date: "Jan 02, 2026", initials: "HO", statusColor: "bg-info/10 text-info", location: "Austin", source: "Email" as const, dealer: "Legacy Office Group", dealerPO: "PO-HOG-2025-2210", endCustomer: "Skyline Residences Co", manufacturerNo: "MFG-2-10468904", shipDate: "Apr 2, 2026", contract: "GSA-28F-0015W" },
+    { id: "#ORD-2049", stage: "orders" as const, customer: "Bayline Furnishings", client: "Waterside Hospitality", project: "Beach Hotel · Renovation", amount: "$210,000", status: "Acknowledged", subPhase: "In Production", date: "Dec 10, 2025", initials: "BH", statusColor: "bg-ai/10 text-ai", location: "London", source: "Email" as const, dealer: "Bayline Furnishings", dealerPO: "PO-BH-2025-1156", endCustomer: "Waterside Hospitality", manufacturerNo: "MFG-2-10466050", shipDate: "Mar 10, 2026", contract: "GSA-28F-0015W" },
+    { id: "#ORD-2048", stage: "orders" as const, customer: "Midwest Contract Furniture", client: "Valley Residences", project: "Mountain Retreat Lodge", amount: "$95,000", status: "Acknowledged", subPhase: "Ready to Ship", date: "Nov 20, 2025", initials: "MC", statusColor: "bg-ai/10 text-ai", location: "Berlin", source: "Manual" as const, dealer: "Midwest Contract Furniture", dealerPO: "PO-MCF-2025-0934", endCustomer: "Valley Residences", manufacturerNo: "MFG-2-10470088", shipDate: "Feb 20, 2026", contract: "OMNIA-2024-FP" },
+    { id: "#ORD-2047", stage: "orders" as const, customer: "Apex Office Design", client: "Skyline Builders Co", project: "Sky Vista · Tower 3", amount: "$450,000", status: "Shipped", subPhase: "In Transit", date: "Nov 05, 2025", initials: "AO", statusColor: "bg-warning/10 text-warning", location: "New York", source: "Email" as const, dealer: "Apex Office Design", dealerPO: "PO-AOD-2025-1801", endCustomer: "Skyline Builders Co", manufacturerNo: "MFG-2-10464777", shipDate: "Feb 5, 2026", contract: "CoNY-ANT122" },
 ]
 
 // Post-Neocon-review (2026-06-05) seed alignment:
@@ -262,9 +262,9 @@ const recentOrders = [
 // - QT-1026 NEW · status Expired (demonstrates Wendy 34:24 add request · validUntil < today)
 // Revision numbers mixed per Wendy 34:36 ("I would not reflect every single one is revision #3").
 const recentQuotes = [
-    { id: "QT-1025", customer: "Northline Furniture Group", project: "Tech HQ Buildout", amount: "$43,750", status: "Pending", date: "Jan 12, 2026", validUntil: "Feb 12, 2026", probability: "High", initials: "NP", statusColor: "bg-amber-50 text-amber-700", location: "Austin", source: "Email" as const, dealer: "Northline Furniture Group", endCustomer: "Vertex Technologies", contract: "GSA-28F-0015W", linkedPO: "#ORD-2055", stageFlag: "textile review", revisionNumber: 3 },
+    { id: "QT-1025", customer: "Northline Furniture Group", project: "Tech HQ Buildout", amount: "$43,750", status: "Pending", date: "Jan 12, 2026", validUntil: "Feb 12, 2026", probability: "High", initials: "NP", statusColor: "bg-warning/10 text-warning", location: "Austin", source: "Email" as const, dealer: "Northline Furniture Group", endCustomer: "Vertex Technologies", contract: "GSA-28F-0015W", linkedPO: "#ORD-2055", stageFlag: "textile review", revisionNumber: 3 },
     { id: "QT-1024", customer: "Pacific Workspaces", project: "Lab Expansion · Phase 2", amount: "$540,000", status: "In Progress", date: "Jan 10, 2026", validUntil: "Feb 10, 2026", probability: "N/A", initials: "PW", statusColor: "bg-zinc-100 text-muted-foreground", location: "Boston", source: "Email" as const, dealer: "Pacific Workspaces", endCustomer: "Northstar Biolabs", contract: "CoNY-ANT122", revisionNumber: 1 },
-    { id: "QT-1023", customer: "Summit Office Solutions", project: "NYC Branch Rollout", amount: "$890,000", status: "Sent", date: "Jan 08, 2026", validUntil: "Feb 08, 2026", probability: "Medium", initials: "SO", statusColor: "bg-blue-50 text-blue-700", location: "New York", source: "Email" as const, dealer: "Summit Office Solutions", endCustomer: "Heritage Financial", contract: "GSA-28F-0015W", revisionNumber: 2 },
+    { id: "QT-1023", customer: "Summit Office Solutions", project: "NYC Branch Rollout", amount: "$890,000", status: "Sent", date: "Jan 08, 2026", validUntil: "Feb 08, 2026", probability: "Medium", initials: "SO", statusColor: "bg-info/10 text-info", location: "New York", source: "Email" as const, dealer: "Summit Office Solutions", endCustomer: "Heritage Financial", contract: "GSA-28F-0015W", revisionNumber: 2 },
     { id: "QT-1026", customer: "Cascade Workplace Co", project: "Floor 22 Refresh", amount: "$45,300", status: "Expired", date: "Nov 15, 2025", validUntil: "Dec 15, 2025", probability: "Closed", initials: "CW", statusColor: "bg-zinc-100 text-muted-foreground", location: "London", source: "Email" as const, dealer: "Cascade Workplace Co", endCustomer: "Greenleaf Holdings", contract: "GSA-28F-0015W", revisionNumber: 1 },
 ]
 
@@ -274,21 +274,21 @@ const recentQuotes = [
 // - Ack-8841 status Partial KEEP + subFlag 'backorder detected' (drives item-level L.17 workflow).
 const recentAcknowledgments = [
     // Amount column inherited from the linked PO per L.4 + L.6 (Wendy 2026-06-05 "Ack inherits from PO").
-    { id: "Ack-8839", relatedPo: "#ORD-2055", vendor: "Vertex Manufacturing", amount: "$385,000", status: "Confirmed", date: "Jan 14, 2026", expShipDate: "Mar 20, 2026", discrepancy: "None", initials: "NP", statusColor: "bg-green-50 text-green-700", location: "Austin", source: "Email" as const, dealer: "Northline Furniture Group", endCustomer: "Vertex Technologies", shipmentNo: "SHP-7437123", linkedOrder: "#ORD-2055", revisionNumber: 2 },
-    { id: "Ack-8840", relatedPo: "#ORD-2049", vendor: "Vertex Manufacturing", amount: "$210,000", status: "Pending", subFlag: "price mismatch detected", date: "Jan 13, 2026", expShipDate: "Mar 10, 2026", discrepancy: "Price Mismatch ($500)", initials: "BH", statusColor: "bg-amber-50 text-amber-700", location: "London", source: "Email" as const, dealer: "Bayline Furnishings", endCustomer: "Waterside Hospitality", shipmentNo: "SHP-7438250", linkedOrder: "#ORD-2049", revisionNumber: 1 },
-    { id: "Ack-8841", relatedPo: "#ORD-2053", vendor: "Vertex Manufacturing", amount: "$112,000", status: "Partial", subFlag: "backorder detected", date: "Jan 12, 2026", expShipDate: "Jan 30, 2026", discrepancy: "Backordered Items", initials: "PW", statusColor: "bg-amber-50 text-amber-700", location: "Austin", source: "Email" as const, dealer: "Pacific Workspaces", endCustomer: "Urban Civic Group", shipmentNo: "SHP-7440188", linkedOrder: "#ORD-2053", revisionNumber: 1 },
+    { id: "Ack-8839", relatedPo: "#ORD-2055", vendor: "Vertex Manufacturing", amount: "$385,000", status: "Confirmed", date: "Jan 14, 2026", expShipDate: "Mar 20, 2026", discrepancy: "None", initials: "NP", statusColor: "bg-success/10 text-success", location: "Austin", source: "Email" as const, dealer: "Northline Furniture Group", endCustomer: "Vertex Technologies", shipmentNo: "SHP-7437123", linkedOrder: "#ORD-2055", revisionNumber: 2 },
+    { id: "Ack-8840", relatedPo: "#ORD-2049", vendor: "Vertex Manufacturing", amount: "$210,000", status: "Pending", subFlag: "price mismatch detected", date: "Jan 13, 2026", expShipDate: "Mar 10, 2026", discrepancy: "Price Mismatch ($500)", initials: "BH", statusColor: "bg-warning/10 text-warning", location: "London", source: "Email" as const, dealer: "Bayline Furnishings", endCustomer: "Waterside Hospitality", shipmentNo: "SHP-7438250", linkedOrder: "#ORD-2049", revisionNumber: 1 },
+    { id: "Ack-8841", relatedPo: "#ORD-2053", vendor: "Vertex Manufacturing", amount: "$112,000", status: "Partial", subFlag: "backorder detected", date: "Jan 12, 2026", expShipDate: "Jan 30, 2026", discrepancy: "Backordered Items", initials: "PW", statusColor: "bg-warning/10 text-warning", location: "Austin", source: "Email" as const, dealer: "Pacific Workspaces", endCustomer: "Urban Civic Group", shipmentNo: "SHP-7440188", linkedOrder: "#ORD-2053", revisionNumber: 1 },
 ]
 
 // RFQs (Request for Quote) — INBOUND transactions per Neocon-review (2026-06-05).
 // Manufacturer receives RFQs from dealers via channels Email · Dealer Portal · NetSuite (Manual = edge-case upload).
 // Lifecycle: New → In Review → (optional Additional Information Required) → Sent (becomes a Quote in outbound side).
 const recentRFQs = [
-    { id: "RFQ-2026-001", customer: "Northline Furniture Group", project: "Tech HQ Buildout · West Wing", amount: "$67,240", status: "Sent", date: "Jan 18, 2026", validUntil: "Feb 18, 2026", initials: "NP", statusColor: "bg-green-50 text-green-700", location: "Austin", source: "Email" as const, dealer: "Northline Furniture Group", endCustomer: "Vertex Technologies", contract: "GSA-28F-0015W", linkedQuote: "QT-1025", revisionNumber: 3 },
-    { id: "RFQ-2026-002", customer: "Pacific Workspaces", project: "Lab Expansion · Phase 3", amount: "$120,800", status: "In Review", date: "Jan 16, 2026", validUntil: "Feb 16, 2026", initials: "PW", statusColor: "bg-blue-50 text-blue-700", location: "Boston", source: "Email" as const, dealer: "Pacific Workspaces", endCustomer: "Northstar Biolabs", contract: "CoNY-ANT122", revisionNumber: 1 },
-    { id: "RFQ-2026-003", customer: "Cascade Workplace Co", project: "Floor 22 Refresh", amount: "$45,300", status: "Additional Information Required", date: "Jan 14, 2026", validUntil: "Feb 14, 2026", initials: "CW", statusColor: "bg-amber-50 text-amber-700", location: "London", source: "Email" as const, dealer: "Cascade Workplace Co", endCustomer: "Greenleaf Holdings", contract: "GSA-28F-0015W", revisionNumber: 1 },
-    { id: "RFQ-2026-004", customer: "Summit Office Solutions", project: "Branch Office · Phoenix", amount: "$89,500", status: "New", date: "Jan 13, 2026", validUntil: "Feb 13, 2026", initials: "SO", statusColor: "bg-amber-50 text-amber-700", location: "Phoenix", source: "Manual" as const, dealer: "Summit Office Solutions", endCustomer: "Heritage Financial", revisionNumber: 1 },
-    { id: "RFQ-2026-005", customer: "Legacy Office Group", project: "Executive Suite", amount: "$210,000", status: "In Review", date: "Jan 10, 2026", validUntil: "Feb 10, 2026", initials: "HO", statusColor: "bg-blue-50 text-blue-700", location: "Chicago", source: "Email" as const, dealer: "Legacy Office Group", endCustomer: "Skyline Residences Co", contract: "OMNIA-2024-FP", revisionNumber: 2 },
-    { id: "RFQ-2026-006", customer: "Apex Office Design", project: "Sky Vista · Tower 5", amount: "$320,400", status: "New", date: "Jan 08, 2026", validUntil: "Feb 08, 2026", initials: "AO", statusColor: "bg-amber-50 text-amber-700", location: "New York", source: "Email" as const, dealer: "Apex Office Design", endCustomer: "Skyline Builders Co", contract: "CoNY-ANT122", revisionNumber: 1 },
+    { id: "RFQ-2026-001", customer: "Northline Furniture Group", project: "Tech HQ Buildout · West Wing", amount: "$67,240", status: "Sent", date: "Jan 18, 2026", validUntil: "Feb 18, 2026", initials: "NP", statusColor: "bg-success/10 text-success", location: "Austin", source: "Email" as const, dealer: "Northline Furniture Group", endCustomer: "Vertex Technologies", contract: "GSA-28F-0015W", linkedQuote: "QT-1025", revisionNumber: 3 },
+    { id: "RFQ-2026-002", customer: "Pacific Workspaces", project: "Lab Expansion · Phase 3", amount: "$120,800", status: "In Review", date: "Jan 16, 2026", validUntil: "Feb 16, 2026", initials: "PW", statusColor: "bg-info/10 text-info", location: "Boston", source: "Email" as const, dealer: "Pacific Workspaces", endCustomer: "Northstar Biolabs", contract: "CoNY-ANT122", revisionNumber: 1 },
+    { id: "RFQ-2026-003", customer: "Cascade Workplace Co", project: "Floor 22 Refresh", amount: "$45,300", status: "Additional Information Required", date: "Jan 14, 2026", validUntil: "Feb 14, 2026", initials: "CW", statusColor: "bg-warning/10 text-warning", location: "London", source: "Email" as const, dealer: "Cascade Workplace Co", endCustomer: "Greenleaf Holdings", contract: "GSA-28F-0015W", revisionNumber: 1 },
+    { id: "RFQ-2026-004", customer: "Summit Office Solutions", project: "Branch Office · Phoenix", amount: "$89,500", status: "New", date: "Jan 13, 2026", validUntil: "Feb 13, 2026", initials: "SO", statusColor: "bg-warning/10 text-warning", location: "Phoenix", source: "Manual" as const, dealer: "Summit Office Solutions", endCustomer: "Heritage Financial", revisionNumber: 1 },
+    { id: "RFQ-2026-005", customer: "Legacy Office Group", project: "Executive Suite", amount: "$210,000", status: "In Review", date: "Jan 10, 2026", validUntil: "Feb 10, 2026", initials: "HO", statusColor: "bg-info/10 text-info", location: "Chicago", source: "Email" as const, dealer: "Legacy Office Group", endCustomer: "Skyline Residences Co", contract: "OMNIA-2024-FP", revisionNumber: 2 },
+    { id: "RFQ-2026-006", customer: "Apex Office Design", project: "Sky Vista · Tower 5", amount: "$320,400", status: "New", date: "Jan 08, 2026", validUntil: "Feb 08, 2026", initials: "AO", statusColor: "bg-warning/10 text-warning", location: "New York", source: "Email" as const, dealer: "Apex Office Design", endCustomer: "Skyline Builders Co", contract: "CoNY-ANT122", revisionNumber: 1 },
 ]
 
 // Pipeline stages
@@ -308,21 +308,21 @@ const orderStages = ['Acknowledged', 'Shipped', 'Invoiced', 'Cancelled', 'Cancel
 
 // Color Mapping for Status Icons
 const colorStyles: Record<string, string> = {
-    blue: 'bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300 ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
-    purple: 'bg-indigo-50 text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300 ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
-    orange: 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
-    green: 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
-    pink: 'bg-pink-50 text-pink-700 dark:bg-pink-500/15 dark:text-pink-300 ring-1 ring-inset ring-pink-600/20 dark:ring-pink-400/30',
-    indigo: 'bg-indigo-50 text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300 ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
+    blue: 'bg-info/10 text-info dark:bg-info/15 dark:text-info ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
+    purple: 'bg-ai/10 text-ai dark:bg-ai/15 dark:text-ai ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
+    orange: 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
+    green: 'bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
+    pink: 'bg-destructive/10 text-destructive dark:bg-destructive/15 dark:text-destructive ring-1 ring-inset ring-pink-600/20 dark:ring-pink-400/30',
+    indigo: 'bg-ai/10 text-ai dark:bg-ai/15 dark:text-ai ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
 }
 
 const solidColorStyles: Record<string, string> = {
-    blue: 'bg-blue-600 hover:bg-blue-700 text-white shadow-sm shadow-blue-500/20 border-blue-500',
-    purple: 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-purple-500/20 border-indigo-500',
-    orange: 'bg-amber-600 hover:bg-amber-700 text-white shadow-sm shadow-orange-500/20 border-amber-500',
-    green: 'bg-green-600 hover:bg-green-700 text-white shadow-sm shadow-green-500/20 border-green-500',
-    pink: 'bg-pink-600 hover:bg-pink-700 text-white shadow-sm shadow-pink-500/20 border-pink-500',
-    indigo: 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-indigo-500/20 border-indigo-500',
+    blue: 'bg-info/10 hover:bg-info/10 text-white shadow-sm shadow-blue-500/20 border-info/30',
+    purple: 'bg-ai/10 hover:bg-ai/10 text-white shadow-sm shadow-purple-500/20 border-ai/30',
+    orange: 'bg-warning/10 hover:bg-warning/10 text-white shadow-sm shadow-orange-500/20 border-warning/30',
+    green: 'bg-success/10 hover:bg-success/10 text-white shadow-sm shadow-green-500/20 border-success/30',
+    pink: 'bg-destructive/10 hover:bg-destructive/10 text-white shadow-sm shadow-pink-500/20 border-destructive/30',
+    indigo: 'bg-ai/10 hover:bg-ai/10 text-white shadow-sm shadow-indigo-500/20 border-ai/30',
 }
 
 // Summary Data by Time Period
@@ -951,7 +951,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                 status: "PO Received",
                 date: "Just Now",
                 initials: currentTenant.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase(),
-                statusColor: "bg-green-50 text-green-700 ring-green-600/20",
+                statusColor: "bg-success/10 text-success ring-green-600/20",
                 location: "New York"
             });
         }
@@ -1109,10 +1109,10 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                 {(() => {
                     const isInbound = activeProfile.id === 'inbound-outbound'
                     const inChip = (
-                        <span className="text-[8px] font-bold px-1 py-0.5 rounded bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-300 uppercase tracking-wider">IN</span>
+                        <span className="text-[8px] font-bold px-1 py-0.5 rounded bg-info/10 text-info dark:bg-info/10 dark:text-info uppercase tracking-wider">IN</span>
                     )
                     const outChip = (
-                        <span className="text-[8px] font-bold px-1 py-0.5 rounded bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-300 uppercase tracking-wider">OUT</span>
+                        <span className="text-[8px] font-bold px-1 py-0.5 rounded bg-success/10 text-success dark:bg-success/10 dark:text-success uppercase tracking-wider">OUT</span>
                     )
                     // New RFQ sub-counter — surfaces 'how many are waiting on us' at the tab level so it isn't missed.
                     // Post-Neocon (2026-06-05) status renamed 'Pending Review' → 'New' (Wendy 18:45 + Asly 19:01).
@@ -1257,11 +1257,11 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                         <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{data.label}</p>
                                                         <p className="mt-1 text-3xl font-semibold text-foreground group-hover:scale-105 transition-transform origin-left">{data.value}</p>
                                                     </div>
-                                                    <div className={`p-3 rounded-xl ${data.color === 'blue' ? 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400' :
-                                                        data.color === 'orange' ? 'bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400' :
-                                                            data.color === 'purple' ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' :
-                                                                data.color === 'indigo' ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' :
-                                                                    'bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400'
+                                                    <div className={`p-3 rounded-xl ${data.color === 'blue' ? 'bg-info/10 text-info dark:bg-info/10 dark:text-info' :
+                                                        data.color === 'orange' ? 'bg-warning/10 text-warning dark:bg-warning/10 dark:text-warning' :
+                                                            data.color === 'purple' ? 'bg-ai/10 text-ai dark:bg-ai/10 dark:text-ai' :
+                                                                data.color === 'indigo' ? 'bg-ai/10 text-ai dark:bg-ai/10 dark:text-ai' :
+                                                                    'bg-success/10 text-success dark:bg-success/10 dark:text-success'
                                                         }`}>
                                                         {data.icon}
                                                     </div>
@@ -1306,7 +1306,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                     <div className="flex flex-col">
                                                         <div className="flex items-center gap-1.5">
                                                             <span className="text-lg font-bold text-foreground leading-none">{data.value}</span>
-                                                            <span className={`text-[10px] font-semibold ${data.trendUp ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400'}`}>
+                                                            <span className={`text-[10px] font-semibold ${data.trendUp ? 'text-success' : 'text-destructive'}`}>
                                                                 {data.trendUp ? '\u2191' : '\u2193'}{data.trend}
                                                             </span>
                                                         </div>
@@ -1365,11 +1365,11 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                         <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{data.label}</p>
                                                         <p className="mt-1 text-3xl font-semibold text-foreground group-hover:scale-105 transition-transform origin-left">{data.value}</p>
                                                     </div>
-                                                    <div className={`p-3 rounded-xl ${data.color === 'blue' ? 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400' :
-                                                        data.color === 'orange' ? 'bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400' :
-                                                            data.color === 'purple' ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' :
-                                                                data.color === 'red' ? 'bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400' :
-                                                                    'bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400'
+                                                    <div className={`p-3 rounded-xl ${data.color === 'blue' ? 'bg-info/10 text-info dark:bg-info/10 dark:text-info' :
+                                                        data.color === 'orange' ? 'bg-warning/10 text-warning dark:bg-warning/10 dark:text-warning' :
+                                                            data.color === 'purple' ? 'bg-ai/10 text-ai dark:bg-ai/10 dark:text-ai' :
+                                                                data.color === 'red' ? 'bg-destructive/10 text-destructive dark:bg-destructive/10 dark:text-destructive' :
+                                                                    'bg-success/10 text-success dark:bg-success/10 dark:text-success'
                                                         }`}>
                                                         {data.icon}
                                                     </div>
@@ -1414,7 +1414,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                     <div className="flex flex-col">
                                                         <div className="flex items-center gap-1.5">
                                                             <span className="text-lg font-bold text-foreground leading-none">{data.value}</span>
-                                                            <span className={`text-[10px] font-semibold ${data.trendUp ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400'}`}>
+                                                            <span className={`text-[10px] font-semibold ${data.trendUp ? 'text-success' : 'text-destructive'}`}>
                                                                 {data.trendUp ? '\u2191' : '\u2193'}{data.trend}
                                                             </span>
                                                         </div>
@@ -1476,11 +1476,11 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                         <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{data.label}</p>
                                                         <p className="mt-1 text-3xl font-semibold text-foreground group-hover:scale-105 transition-transform origin-left">{data.value}</p>
                                                     </div>
-                                                    <div className={`p-3 rounded-xl ${data.color === 'blue' ? 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400' :
-                                                        data.color === 'orange' ? 'bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400' :
-                                                            data.color === 'purple' ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' :
-                                                                data.color === 'indigo' ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' :
-                                                                    'bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400'
+                                                    <div className={`p-3 rounded-xl ${data.color === 'blue' ? 'bg-info/10 text-info dark:bg-info/10 dark:text-info' :
+                                                        data.color === 'orange' ? 'bg-warning/10 text-warning dark:bg-warning/10 dark:text-warning' :
+                                                            data.color === 'purple' ? 'bg-ai/10 text-ai dark:bg-ai/10 dark:text-ai' :
+                                                                data.color === 'indigo' ? 'bg-ai/10 text-ai dark:bg-ai/10 dark:text-ai' :
+                                                                    'bg-success/10 text-success dark:bg-success/10 dark:text-success'
                                                         }`}>
                                                         {data.icon}
                                                     </div>
@@ -1536,7 +1536,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                 <div className="flex flex-col">
                                                     <div className="flex items-center gap-1.5">
                                                         <span className="text-lg font-bold text-foreground leading-none">{data.value}</span>
-                                                        <span className={`text-[10px] font-semibold ${data.trendUp ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400'}`}>
+                                                        <span className={`text-[10px] font-semibold ${data.trendUp ? 'text-success' : 'text-destructive'}`}>
                                                             {data.trendUp ? '\u2191' : '\u2193'}{data.trend}
                                                         </span>
                                                     </div>
@@ -1905,7 +1905,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                             <div className="flex items-center gap-2 flex-wrap">
                                                                 <span className="text-xs font-bold text-foreground">PO Package Generation — Corporate HQ Project</span>
                                                                 <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-brand-500 text-zinc-900 font-bold">12 manufacturers</span>
-                                                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 font-bold">$3.2M project</span>
+                                                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-ai/10 dark:bg-ai/20 text-ai font-bold">$3.2M project</span>
                                                             </div>
                                                             <p className="text-[11px] text-muted-foreground mt-1">
                                                                 <strong className="text-foreground">ProcurementAgent</strong> will parse 1,500 line items, compare contract vs list pricing across <strong className="text-foreground">4 price sources</strong>, apply 5 business rules, and generate consolidated POs.
@@ -1929,15 +1929,15 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                         {procPhase === 'expert-question' && (
                                             <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
                                                 {/* Expert question card */}
-                                                <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-500/5 border-2 border-amber-300 dark:border-amber-500/30">
+                                                <div className="p-4 rounded-xl bg-warning/10 dark:bg-warning/5 border-2 border-warning/30 dark:border-warning/30">
                                                     <div className="flex items-start gap-3">
                                                         <AIAgentAvatar size="sm" />
                                                         <div className="flex-1 min-w-0">
                                                             <div className="flex items-center gap-2 mb-2">
-                                                                <span className="text-xs font-bold text-amber-800 dark:text-amber-300">Expert Review Required</span>
-                                                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-200 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 font-bold">Decision needed</span>
+                                                                <span className="text-xs font-bold text-warning">Expert Review Required</span>
+                                                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-warning/10 dark:bg-warning/20 text-warning font-bold">Decision needed</span>
                                                             </div>
-                                                            <p className="text-[11px] text-amber-800 dark:text-amber-200">
+                                                            <p className="text-[11px] text-warning">
                                                                 DIRTT architectural walls have a <strong>12-week lead time</strong> (exceeds 8-week threshold). This impacts floor 5 installation schedule. Should we:
                                                             </p>
                                                             <div className="mt-3 space-y-2">
@@ -1945,8 +1945,8 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                     onClick={() => setExpertAnswer('priority')}
                                                                     className={cn("w-full text-left p-2.5 rounded-lg border transition-all text-[11px]",
                                                                         expertAnswer === 'priority'
-                                                                            ? "border-green-400 bg-green-50 dark:bg-green-500/10 text-green-800 dark:text-green-200 ring-2 ring-green-400/30"
-                                                                            : "border-amber-200 dark:border-amber-500/20 bg-white/60 dark:bg-zinc-900/40 text-foreground hover:border-amber-300 hover:bg-amber-50/50"
+                                                                            ? "border-success/30 bg-success/10 dark:bg-success/10 text-success ring-2 ring-green-400/30"
+                                                                            : "border-warning/30 dark:border-warning/20 bg-white/60 dark:bg-zinc-900/40 text-foreground hover:border-warning/30 hover:bg-warning/50"
                                                                     )}
                                                                 >
                                                                     <span className="font-bold">A. Priority order DIRTT now</span> — Submit PO-HQ-002 immediately, before the full package. Prevents further delays.
@@ -1955,16 +1955,16 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                     onClick={() => setExpertAnswer('resequence')}
                                                                     className={cn("w-full text-left p-2.5 rounded-lg border transition-all text-[11px]",
                                                                         expertAnswer === 'resequence'
-                                                                            ? "border-green-400 bg-green-50 dark:bg-green-500/10 text-green-800 dark:text-green-200 ring-2 ring-green-400/30"
-                                                                            : "border-amber-200 dark:border-amber-500/20 bg-white/60 dark:bg-zinc-900/40 text-foreground hover:border-amber-300 hover:bg-amber-50/50"
+                                                                            ? "border-success/30 bg-success/10 dark:bg-success/10 text-success ring-2 ring-green-400/30"
+                                                                            : "border-warning/30 dark:border-warning/20 bg-white/60 dark:bg-zinc-900/40 text-foreground hover:border-warning/30 hover:bg-warning/50"
                                                                     )}
                                                                 >
                                                                     <span className="font-bold">B. Resequence installation</span> — Start with floors 4 & 6, push floor 5 to week 12+. Notify GC of schedule change.
                                                                 </button>
                                                             </div>
                                                             {expertAnswer && (
-                                                                <div className="mt-3 p-2 rounded-lg bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 animate-in fade-in duration-300">
-                                                                    <p className="text-[10px] text-green-700 dark:text-green-300 flex items-center gap-1.5">
+                                                                <div className="mt-3 p-2 rounded-lg bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20 animate-in fade-in duration-300">
+                                                                    <p className="text-[10px] text-success flex items-center gap-1.5">
                                                                         <CheckCircleIcon className="h-3.5 w-3.5" />
                                                                         <span><strong>Expert decision recorded.</strong> {expertAnswer === 'priority' ? 'PO-HQ-002 flagged for priority submission.' : 'Installation re-sequence initiated — GC notification queued.'} Processing PO package...</span>
                                                                     </p>
@@ -1984,7 +1984,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                         <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm">
                                             <div className="p-4 border-b border-border/50 flex items-center justify-between">
                                                 <div className="flex items-center gap-3">
-                                                    <div className="p-2 rounded-lg bg-indigo-600 text-white">
+                                                    <div className="p-2 rounded-lg bg-ai/10 text-white">
                                                         <ClipboardDocumentCheckIcon className="h-5 w-5" />
                                                     </div>
                                                     <div>
@@ -1992,19 +1992,19 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                         <p className="text-[11px] text-muted-foreground mt-0.5">3 consolidated POs · 12 manufacturers · $3.2M total</p>
                                                     </div>
                                                 </div>
-                                                <span className="text-[10px] px-2.5 py-1 rounded-full bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-bold">Generated</span>
+                                                <span className="text-[10px] px-2.5 py-1 rounded-full bg-success/10 dark:bg-success/10 text-success font-bold">Generated</span>
                                             </div>
                                             <div className="p-4">
                                                 <div className="space-y-2">
                                                     {PO_LINE_ITEMS.map((po, i) => (
                                                         <div key={i} className={cn("p-3 rounded-xl border flex items-center justify-between gap-4",
-                                                            po.status === 'lead-time' ? "border-amber-200 dark:border-amber-500/20 bg-amber-50/50 dark:bg-amber-500/5" : "border-border bg-muted/20"
+                                                            po.status === 'lead-time' ? "border-warning/30 dark:border-warning/20 bg-warning/50 dark:bg-warning/5" : "border-border bg-muted/20"
                                                         )}>
                                                             <div className="flex-1 min-w-0">
                                                                 <div className="flex items-center gap-2">
                                                                     <p className="text-xs font-bold text-foreground">{po.manufacturer}</p>
                                                                     {po.status === 'lead-time' && (
-                                                                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-200 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 font-bold">12wk Lead Time</span>
+                                                                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-warning/10 dark:bg-warning/20 text-warning font-bold">12wk Lead Time</span>
                                                                     )}
                                                                 </div>
                                                                 <p className="text-[10px] text-muted-foreground mt-0.5">{po.items}</p>
@@ -2016,7 +2016,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                 </div>
                                                                 <div>
                                                                     <p className="text-[10px] text-muted-foreground">Savings</p>
-                                                                    <p className="text-xs font-bold text-green-600 dark:text-green-400">{po.savings}</p>
+                                                                    <p className="text-xs font-bold text-success">{po.savings}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -2043,14 +2043,14 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                             <button onClick={() => setAckPhase('tab-switch')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
                                                 <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
                                                     <div className="flex items-start gap-3">
-                                                        <div className="p-2 rounded-lg bg-indigo-600 text-white">
+                                                        <div className="p-2 rounded-lg bg-ai/10 text-white">
                                                             <DocumentMagnifyingGlassIcon className="h-4 w-4" />
                                                         </div>
                                                         <div className="flex-1 min-w-0">
                                                             <div className="flex items-center gap-2 flex-wrap">
                                                                 <span className="text-xs font-bold text-foreground">TrackingAgent — ACK Validation</span>
-                                                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-600 text-white font-bold">12 POs</span>
-                                                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-300 font-bold">9 ACKs received</span>
+                                                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-ai/10 text-white font-bold">12 POs</span>
+                                                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-success/10 dark:bg-success/20 text-success font-bold">9 ACKs received</span>
                                                             </div>
                                                             <p className="text-[11px] text-muted-foreground mt-1">
                                                                 Monitoring <strong className="text-foreground">12 active purchase orders</strong>. 9 ACKs received — auto-validating qty, price, and delivery dates against POs.
@@ -2077,21 +2077,21 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                         }
                                                     </span>
                                                     {ackKnollAlert && (
-                                                        <span className="text-[9px] px-2 py-0.5 rounded-full bg-red-600 text-white font-bold animate-pulse">Price +4%</span>
+                                                        <span className="text-[9px] px-2 py-0.5 rounded-full bg-destructive/10 text-white font-bold animate-pulse">Price +4%</span>
                                                     )}
                                                 </div>
                                                 <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                                    <div className={cn("h-full rounded-full transition-all duration-700 ease-linear", ackKnollAlert ? "bg-red-500" : "bg-indigo-500")}
+                                                    <div className={cn("h-full rounded-full transition-all duration-700 ease-linear", ackKnollAlert ? "bg-destructive/10" : "bg-ai/10")}
                                                         style={{ width: `${ackKnollAlert ? 100 : Math.round((ackValidatedCount / 9) * 100)}%` }} />
                                                 </div>
                                                 {ackKnollAlert && (
-                                                    <div className="p-3 rounded-lg bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 animate-in fade-in duration-300">
+                                                    <div className="p-3 rounded-lg bg-destructive/10 dark:bg-destructive/10 border border-destructive/30 dark:border-destructive/20 animate-in fade-in duration-300">
                                                         <div className="flex items-center gap-2 text-xs">
-                                                            <ExclamationTriangleIcon className="h-4 w-4 text-red-600 shrink-0" />
-                                                            <span className="font-bold text-red-700 dark:text-red-400">Knoll ACK: +4% price increase</span>
-                                                            <span className="text-red-600/70 dark:text-red-400/70">on task chairs vs contract</span>
+                                                            <ExclamationTriangleIcon className="h-4 w-4 text-destructive shrink-0" />
+                                                            <span className="font-bold text-destructive">Knoll ACK: +4% price increase</span>
+                                                            <span className="text-destructive/70 dark:text-destructive/70">on task chairs vs contract</span>
                                                         </div>
-                                                        <p className="text-[10px] text-red-600/80 dark:text-red-400/70 mt-1 ml-6">Auto-generating dispute draft with contractual evidence...</p>
+                                                        <p className="text-[10px] text-destructive/80 dark:text-destructive/70 mt-1 ml-6">Auto-generating dispute draft with contractual evidence...</p>
                                                     </div>
                                                 )}
                                             </div>
@@ -2102,7 +2102,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                             <div className="p-4 rounded-xl bg-card border border-border shadow-sm animate-in fade-in duration-300">
                                                 <div className="flex items-center justify-between">
                                                     <div className="flex items-center gap-2">
-                                                        <CheckCircleIcon className="h-5 w-5 text-green-600" />
+                                                        <CheckCircleIcon className="h-5 w-5 text-success" />
                                                         <div>
                                                             <p className="text-xs font-bold text-foreground">PO Package Validated — Ready for ACK Conversion</p>
                                                             <p className="text-[10px] text-muted-foreground mt-0.5">9/12 ACKs validated · Knoll dispute draft generated · 3 pending with aging alerts</p>
@@ -2127,13 +2127,13 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                             <button onClick={() => setConvPhase('review')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
                                                 <div className="p-4 rounded-xl">
                                                     <div className="flex items-start gap-3">
-                                                        <div className="p-2 rounded-lg bg-indigo-600 text-white">
+                                                        <div className="p-2 rounded-lg bg-ai/10 text-white">
                                                             <ArrowsRightLeftIcon className="h-4 w-4" />
                                                         </div>
                                                         <div className="flex-1 min-w-0">
                                                             <div className="flex items-center gap-2 flex-wrap">
                                                                 <span className="text-xs font-bold text-foreground">Quick Action — PO to ACK Conversion</span>
-                                                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-600 text-white font-bold">$3.2M</span>
+                                                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-ai/10 text-white font-bold">$3.2M</span>
                                                             </div>
                                                             <p className="text-[11px] text-muted-foreground mt-1">
                                                                 Review conversion checklist: contract compliance, quantities, delivery schedule, and price verification before converting PO package to Acknowledgement.
@@ -2154,7 +2154,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                 <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm">
                                                     <div className="p-4 border-b border-border/50 flex items-center justify-between">
                                                         <div className="flex items-center gap-3">
-                                                            <div className="p-2 rounded-lg bg-indigo-600 text-white">
+                                                            <div className="p-2 rounded-lg bg-ai/10 text-white">
                                                                 <ArrowsRightLeftIcon className="h-5 w-5" />
                                                             </div>
                                                             <div>
@@ -2163,9 +2163,9 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                             </div>
                                                         </div>
                                                         <span className={cn("text-[10px] px-2.5 py-1 rounded-full font-bold",
-                                                            convPhase === 'converted' ? "bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400"
+                                                            convPhase === 'converted' ? "bg-success/10 dark:bg-success/10 text-success"
                                                                 : convPhase === 'ready' ? "bg-brand-100 dark:bg-brand-500/10 text-brand-700 dark:text-brand-400 animate-pulse"
-                                                                    : "bg-indigo-100 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400"
+                                                                    : "bg-ai/10 dark:bg-ai/10 text-ai"
                                                         )}>
                                                             {convPhase === 'converted' ? 'Converted' : convPhase === 'ready' ? 'Ready' : 'Reviewing'}
                                                         </span>
@@ -2179,15 +2179,15 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                 <div key={i} className={cn(
                                                                     "p-3 rounded-xl border flex items-center gap-3 transition-all duration-300",
                                                                     i < convChecklistVisible
-                                                                        ? item.status === 'pass' ? "border-green-200 dark:border-green-500/20 bg-green-50/50 dark:bg-green-500/5"
-                                                                            : item.status === 'warning' ? "border-amber-200 dark:border-amber-500/20 bg-amber-50/50 dark:bg-amber-500/5"
-                                                                                : "border-indigo-200 dark:border-indigo-500/20 bg-indigo-50/50 dark:bg-indigo-500/5"
+                                                                        ? item.status === 'pass' ? "border-success/30 dark:border-success/20 bg-success/50 dark:bg-success/5"
+                                                                            : item.status === 'warning' ? "border-warning/30 dark:border-warning/20 bg-warning/50 dark:bg-warning/5"
+                                                                                : "border-ai/30 dark:border-ai/20 bg-ai/50 dark:bg-ai/5"
                                                                         : "border-border bg-muted/20 opacity-40"
                                                                 )}>
                                                                     {i < convChecklistVisible ? (
-                                                                        item.status === 'pass' ? <CheckCircleIcon className="h-4 w-4 text-green-600 shrink-0" />
-                                                                            : item.status === 'warning' ? <ExclamationTriangleIcon className="h-4 w-4 text-amber-600 shrink-0" />
-                                                                                : <ArrowPathIcon className="h-4 w-4 text-indigo-600 animate-spin shrink-0" />
+                                                                        item.status === 'pass' ? <CheckCircleIcon className="h-4 w-4 text-success shrink-0" />
+                                                                            : item.status === 'warning' ? <ExclamationTriangleIcon className="h-4 w-4 text-warning shrink-0" />
+                                                                                : <ArrowPathIcon className="h-4 w-4 text-ai animate-spin shrink-0" />
                                                                     ) : (
                                                                         <div className="h-4 w-4 rounded-full border-2 border-border shrink-0" />
                                                                     )}
@@ -2202,8 +2202,8 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
 
                                                     {/* Price Verification */}
                                                     {(convPhase === 'price-check' || convPhase === 'ready' || convPhase === 'converted') && (
-                                                        <div className="mx-4 mb-4 p-4 rounded-xl bg-indigo-50 dark:bg-indigo-500/5 border border-indigo-200 dark:border-indigo-500/20 animate-in fade-in duration-300">
-                                                            <h4 className="text-xs font-bold text-indigo-800 dark:text-indigo-300 mb-3 flex items-center gap-1.5">
+                                                        <div className="mx-4 mb-4 p-4 rounded-xl bg-ai/10 dark:bg-ai/5 border border-ai/30 dark:border-ai/20 animate-in fade-in duration-300">
+                                                            <h4 className="text-xs font-bold text-ai mb-3 flex items-center gap-1.5">
                                                                 <DocumentMagnifyingGlassIcon className="h-4 w-4" />
                                                                 Price Verification — Manufacturer Catalogs
                                                             </h4>
@@ -2213,15 +2213,15 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                         "p-2.5 rounded-lg border flex items-center justify-between transition-all duration-300",
                                                                         i < priceChecksVisible
                                                                             ? check.status === 'pass'
-                                                                                ? "border-green-200 dark:border-green-500/20 bg-green-50/50 dark:bg-green-500/5"
-                                                                                : "border-amber-200 dark:border-amber-500/20 bg-amber-50/50 dark:bg-amber-500/5"
+                                                                                ? "border-success/30 dark:border-success/20 bg-success/50 dark:bg-success/5"
+                                                                                : "border-warning/30 dark:border-warning/20 bg-warning/50 dark:bg-warning/5"
                                                                             : "border-border bg-muted/20 opacity-40"
                                                                     )}>
                                                                         <div className="flex items-center gap-2">
                                                                             {i < priceChecksVisible ? (
                                                                                 check.status === 'pass'
-                                                                                    ? <CheckCircleIcon className="h-4 w-4 text-green-600 shrink-0" />
-                                                                                    : <ExclamationTriangleIcon className="h-4 w-4 text-amber-600 shrink-0" />
+                                                                                    ? <CheckCircleIcon className="h-4 w-4 text-success shrink-0" />
+                                                                                    : <ExclamationTriangleIcon className="h-4 w-4 text-warning shrink-0" />
                                                                             ) : (
                                                                                 <div className="h-4 w-4 rounded-full border-2 border-border shrink-0" />
                                                                             )}
@@ -2229,7 +2229,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                         </div>
                                                                         {i < priceChecksVisible && (
                                                                             <span className={cn("text-[10px] font-bold",
-                                                                                check.status === 'pass' ? "text-green-700 dark:text-green-400" : "text-amber-700 dark:text-amber-400"
+                                                                                check.status === 'pass' ? "text-success" : "text-warning"
                                                                             )}>
                                                                                 {check.match}/{check.match + check.mismatch} matched
                                                                             </span>
@@ -2238,8 +2238,8 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                 ))}
                                                             </div>
                                                             {priceChecksVisible >= PRICE_CHECKS.length && (
-                                                                <div className="mt-3 p-2 rounded-lg bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 animate-in fade-in duration-300">
-                                                                    <p className="text-[10px] text-green-700 dark:text-green-300 flex items-center gap-1.5">
+                                                                <div className="mt-3 p-2 rounded-lg bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/20 animate-in fade-in duration-300">
+                                                                    <p className="text-[10px] text-success flex items-center gap-1.5">
                                                                         <CheckCircleIcon className="h-3.5 w-3.5" />
                                                                         <span><strong>Price verification complete.</strong> 45/46 items match contract pricing. 1 volume discount adjustment applied.</span>
                                                                     </p>
@@ -2262,7 +2262,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                         </div>
                                                         {convPhase === 'converted' ? (
                                                             <div className="flex items-center gap-3">
-                                                                <div className="flex items-center gap-1.5 text-[10px] text-green-700 dark:text-green-400 font-bold animate-in fade-in duration-300">
+                                                                <div className="flex items-center gap-1.5 text-[10px] text-success font-bold animate-in fade-in duration-300">
                                                                     <CheckCircleIcon className="h-3.5 w-3.5" />
                                                                     PO Converted to Acknowledgement
                                                                 </div>
@@ -2273,7 +2273,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                             </div>
                                                         ) : convPhase === 'ready' ? (
                                                             <button onClick={() => setConvPhase('converted')}
-                                                                className="flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-bold shadow-lg shadow-indigo-500/20 transition-all hover:scale-[1.02] animate-pulse ring-2 ring-indigo-400 ring-offset-2 ring-offset-card">
+                                                                className="flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-ai/10 hover:bg-ai/10 text-white text-[11px] font-bold shadow-lg shadow-indigo-500/20 transition-all hover:scale-[1.02] animate-pulse ring-2 ring-indigo-400 ring-offset-2 ring-offset-card">
                                                                 <ArrowsRightLeftIcon className="h-4 w-4" />
                                                                 Convert PO to Acknowledgement
                                                             </button>
@@ -2299,13 +2299,13 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                             <button onClick={() => setApprovalPhase('chain')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
                                                 <div className="p-4 rounded-xl">
                                                     <div className="flex items-start gap-3">
-                                                        <div className="p-2 rounded-lg bg-indigo-600 text-white">
+                                                        <div className="p-2 rounded-lg bg-ai/10 text-white">
                                                             <ShieldCheckIcon className="h-4 w-4" />
                                                         </div>
                                                         <div className="flex-1 min-w-0">
                                                             <div className="flex items-center gap-2 flex-wrap">
                                                                 <span className="text-xs font-bold text-foreground">Approval Chain — PO to ACK Conversion</span>
-                                                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-600 text-white font-bold">3-Level</span>
+                                                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-ai/10 text-white font-bold">3-Level</span>
                                                             </div>
                                                             <p className="text-[11px] text-muted-foreground mt-1">
                                                                 Sequential approval required: AI Compliance Agent, Expert Regional Sales Manager Reyes, and Dealer Account Manager Kai must approve the $3.2M conversion.
@@ -2326,7 +2326,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                 <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm">
                                                     <div className="p-4 border-b border-border/50 flex items-center justify-between">
                                                         <div className="flex items-center gap-3">
-                                                            <div className="p-2 rounded-lg bg-indigo-600 text-white">
+                                                            <div className="p-2 rounded-lg bg-ai/10 text-white">
                                                                 <ShieldCheckIcon className="h-5 w-5" />
                                                             </div>
                                                             <div>
@@ -2336,8 +2336,8 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                         </div>
                                                         <span className={cn("text-[10px] px-2.5 py-1 rounded-full font-bold",
                                                             approvalSteps.every(s => s.status === 'approved')
-                                                                ? "bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400"
-                                                                : "bg-indigo-100 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400"
+                                                                ? "bg-success/10 dark:bg-success/10 text-success"
+                                                                : "bg-ai/10 dark:bg-ai/10 text-ai"
                                                         )}>
                                                             {approvalSteps.filter(s => s.status === 'approved').length}/{approvalSteps.length} Approved
                                                         </span>
@@ -2348,14 +2348,14 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                             <div key={step.id} className={cn(
                                                                 "p-3 rounded-xl border flex items-center gap-4 transition-all duration-500",
                                                                 step.status === 'approved'
-                                                                    ? "border-green-200 dark:border-green-500/20 bg-green-50/50 dark:bg-green-500/5"
+                                                                    ? "border-success/30 dark:border-success/20 bg-success/50 dark:bg-success/5"
                                                                     : step.status === 'pending-action'
                                                                         ? "border-brand-400 dark:border-brand-500/40 bg-brand-50 dark:bg-brand-500/5 ring-2 ring-brand-400/30 animate-pulse"
                                                                         : "border-border bg-muted/20 opacity-60"
                                                             )}>
                                                                 {step.status === 'approved' ? (
-                                                                    <div className="h-8 w-8 rounded-full bg-green-100 dark:bg-green-500/20 flex items-center justify-center shrink-0">
-                                                                        <CheckCircleIcon className="h-5 w-5 text-green-600" />
+                                                                    <div className="h-8 w-8 rounded-full bg-success/10 dark:bg-success/20 flex items-center justify-center shrink-0">
+                                                                        <CheckCircleIcon className="h-5 w-5 text-success" />
                                                                     </div>
                                                                 ) : step.status === 'pending-action' ? (
                                                                     <div className="h-8 w-8 rounded-full bg-brand-200 dark:bg-brand-500/20 flex items-center justify-center shrink-0">
@@ -2371,7 +2371,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                     <p className="text-[10px] text-muted-foreground mt-0.5">{step.detail}</p>
                                                                 </div>
                                                                 {step.status === 'approved' ? (
-                                                                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-400 font-bold shrink-0">Approved</span>
+                                                                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-success/10 dark:bg-success/20 text-success font-bold shrink-0">Approved</span>
                                                                 ) : step.status === 'pending-action' ? (
                                                                     <button onClick={() => {
                                                                         setApprovalSteps(prev => prev.map(s => s.id === step.id ? { ...s, status: 'approved' as const } : s))
@@ -2390,7 +2390,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                     <div className="px-4 py-3 border-t border-border/50 flex items-center justify-between bg-muted/20">
                                                         {approvalSteps.every(s => s.status === 'approved') ? (
                                                             <>
-                                                                <div className="flex items-center gap-2 text-[10px] text-green-700 dark:text-green-400 font-bold">
+                                                                <div className="flex items-center gap-2 text-[10px] text-success font-bold">
                                                                     <CheckCircleIcon className="h-4 w-4" />
                                                                     PO-to-ACK Conversion Approved — All levels cleared
                                                                 </div>
@@ -2422,11 +2422,11 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                             <button onClick={() => setCsgnPhase('processing')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
                                                 <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
                                                     <div className="flex items-start gap-3">
-                                                        <div className="p-2 rounded-lg bg-amber-600 text-white"><ClockIcon className="h-4 w-4" /></div>
+                                                        <div className="p-2 rounded-lg bg-warning/10 text-white"><ClockIcon className="h-4 w-4" /></div>
                                                         <div className="flex-1 min-w-0">
                                                             <div className="flex items-center gap-2">
                                                                 <span className="text-xs font-bold text-foreground">Consignment Review — 90-Day Window</span>
-                                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-amber-600 text-white font-bold">12 urgent</span>
+                                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-warning/10 text-white font-bold">12 urgent</span>
                                                             </div>
                                                             <p className="text-[11px] text-muted-foreground mt-1">ConsignmentAgent: <span className="font-semibold text-foreground">35 items on consignment</span> from 4 manufacturers. 12 approaching 90-day return window — decisions needed this week.</p>
                                                             <p className="text-[10px] text-brand-600 dark:text-brand-400 mt-2 flex items-center gap-1">Click to review decisions <ArrowRightIcon className="h-3 w-3" /></p>
@@ -2444,13 +2444,13 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                     <span className="text-xs font-bold text-foreground">ConsignmentAgent Analyzing Items...</span>
                                                 </div>
                                                 <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                                    <div className="h-full rounded-full bg-amber-500 transition-all duration-[3500ms] ease-linear" style={{ width: `${csgnProgress}%` }} />
+                                                    <div className="h-full rounded-full bg-warning/10 transition-all duration-[3500ms] ease-linear" style={{ width: `${csgnProgress}%` }} />
                                                 </div>
                                                 <div className="space-y-1.5">
                                                     {csgnAgents.map(agent => (
                                                         <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-amber-500 animate-spin shrink-0" />}
-                                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-amber-600 dark:text-amber-400")}>{agent.name}</span>
+                                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-warning animate-spin shrink-0" />}
+                                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-warning")}>{agent.name}</span>
                                                             <span className="text-muted-foreground">{agent.detail}</span>
                                                         </div>
                                                     ))}
@@ -2461,24 +2461,24 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                         {/* Breathing */}
                                         {csgnPhase === 'breathing' && (
                                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                                <div className="w-2 h-2 rounded-full bg-success/10 animate-pulse" />
                                                 <span className="text-xs font-semibold text-muted-foreground">Processing complete — syncing external systems...</span>
                                             </div>
                                         )}
 
                                         {/* Confirmed */}
                                         {(csgnPhase === 'revealed' || csgnPhase === 'results') && (
-                                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/5 border-2 border-success/30 dark:border-success/30 animate-in fade-in duration-300">
                                                 <div className="flex items-start gap-2">
                                                     <AIAgentAvatar size="sm" />
                                                     <div className="flex-1 min-w-0">
-                                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">ConsignmentAgent:</span> 35 items reviewed — <span className="font-semibold">4 RMA auto-generated</span> ($8,760). AI recommends converting 4 items to purchase (demand up 12%).</p>
+                                                        <p className="text-xs text-success"><span className="font-bold">ConsignmentAgent:</span> 35 items reviewed — <span className="font-semibold">4 RMA auto-generated</span> ($8,760). AI recommends converting 4 items to purchase (demand up 12%).</p>
                                                         <div className="flex items-center gap-2 mt-2">
-                                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">External Systems · Synced</span>
+                                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
                                                         </div>
                                                         <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                                             {['Consignment DB', 'RMA Portal', 'Demand Forecast', 'Inventory WMS', 'Vendor Portal'].map(sys => (
-                                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/10 dark:bg-success/10 text-success text-[10px] font-medium border border-success/50 dark:border-success/20">
                                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                                 </span>
                                                             ))}
@@ -2499,8 +2499,8 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                             <p className="text-[11px] text-muted-foreground mt-0.5">35 items total · 12 approaching window · 4 RMA generated · 4 convert-to-purchase</p>
                                                         </div>
                                                         <div className="flex items-center gap-2">
-                                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-red-100 dark:bg-red-500/10 text-red-700 dark:text-red-400 font-bold">4 Return</span>
-                                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-bold">4 Purchase</span>
+                                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-destructive/10 dark:bg-destructive/10 text-destructive font-bold">4 Return</span>
+                                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-success/10 dark:bg-success/10 text-success font-bold">4 Purchase</span>
                                                         </div>
                                                     </div>
 
@@ -2508,13 +2508,13 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                     <div className="p-4 space-y-2">
                                                         {CONSIGNMENT_ITEMS.map((item, i) => (
                                                             <div key={i} className={cn("flex items-center justify-between p-3 rounded-xl border",
-                                                                item.decision === 'return' ? "border-red-200 dark:border-red-500/20 bg-red-50/30 dark:bg-red-500/5" :
-                                                                "border-green-200 dark:border-green-500/20 bg-green-50/30 dark:bg-green-500/5"
+                                                                item.decision === 'return' ? "border-destructive/30 dark:border-destructive/20 bg-destructive/30 dark:bg-destructive/5" :
+                                                                "border-success/30 dark:border-success/20 bg-success/30 dark:bg-success/5"
                                                             )}>
                                                                 <div className="flex items-center gap-3 flex-1 min-w-0">
                                                                     <span className={cn("text-[9px] px-2 py-0.5 rounded-full font-bold shrink-0",
-                                                                        item.decision === 'return' ? "bg-red-100 dark:bg-red-500/10 text-red-700 dark:text-red-400" :
-                                                                        "bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400"
+                                                                        item.decision === 'return' ? "bg-destructive/10 dark:bg-destructive/10 text-destructive" :
+                                                                        "bg-success/10 dark:bg-success/10 text-success"
                                                                     )}>{item.decision === 'return' ? 'RMA' : 'Purchase'}</span>
                                                                     <div className="min-w-0">
                                                                         <p className="text-[11px] font-medium text-foreground truncate">{item.name}</p>
@@ -2523,8 +2523,8 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                 </div>
                                                                 <div className="flex items-center gap-2 shrink-0 ml-2">
                                                                     <span className={cn("text-[10px] px-2 py-0.5 rounded-full font-bold",
-                                                                        item.daysLeft <= 14 ? "bg-red-100 dark:bg-red-500/10 text-red-700 dark:text-red-400" :
-                                                                        item.daysLeft <= 30 ? "bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400" :
+                                                                        item.daysLeft <= 14 ? "bg-destructive/10 dark:bg-destructive/10 text-destructive" :
+                                                                        item.daysLeft <= 30 ? "bg-warning/10 dark:bg-warning/10 text-warning" :
                                                                         "bg-zinc-200 dark:bg-zinc-700 text-muted-foreground"
                                                                     )}>{item.daysLeft}d left</span>
                                                                     <span className="text-[11px] font-bold text-foreground">{item.value}</span>
@@ -2590,77 +2590,77 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-in fade-in zoom-in-95 duration-300">
                                             {/* Revenue Card */}
-                                            <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/10 dark:to-emerald-900/10 rounded-2xl p-6 border border-green-200 dark:border-green-800/20 shadow-sm">
+                                            <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/10 dark:to-emerald-900/10 rounded-2xl p-6 border border-success/30 dark:border-success/20 shadow-sm">
                                                 <div className="flex items-center justify-between mb-4">
-                                                    <p className="text-sm font-medium text-green-700 dark:text-green-400">
+                                                    <p className="text-sm font-medium text-success">
                                                         {lifecycleTab === 'quotes' ? 'Quote Value' : lifecycleTab === 'acknowledgments' ? 'Pending Value' : 'Total Revenue'}
                                                     </p>
-                                                    <CurrencyDollarIcon className="h-5 w-5 text-green-600 dark:text-green-400" />
+                                                    <CurrencyDollarIcon className="h-5 w-5 text-success" />
                                                 </div>
                                                 <div>
-                                                    <p className="text-2xl font-bold text-green-700 dark:text-green-300">{metricsData.revenue}</p>
+                                                    <p className="text-2xl font-bold text-success">{metricsData.revenue}</p>
                                                     <div className="flex items-center gap-2 mt-1">
-                                                        <span className={cn('text-xs font-semibold', metricsByPeriod[txTimePeriod].revenueTrendUp ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400')}>
+                                                        <span className={cn('text-xs font-semibold', metricsByPeriod[txTimePeriod].revenueTrendUp ? 'text-success' : 'text-destructive')}>
                                                             {metricsByPeriod[txTimePeriod].revenueTrendUp ? '↑' : '↓'} {metricsByPeriod[txTimePeriod].revenueTrend}
                                                         </span>
-                                                        <span className="text-[10px] text-green-600/60 dark:text-green-400/60">vs prev.</span>
+                                                        <span className="text-[10px] text-success/60 dark:text-success/60">vs prev.</span>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             {/* Active Orders Card */}
-                                            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 rounded-2xl p-6 border border-blue-200 dark:border-blue-800/20 shadow-sm">
+                                            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 rounded-2xl p-6 border border-info/30 dark:border-info/20 shadow-sm">
                                                 <div className="flex items-center justify-between mb-4">
-                                                    <p className="text-sm font-medium text-blue-700 dark:text-blue-400">
+                                                    <p className="text-sm font-medium text-info">
                                                         {lifecycleTab === 'quotes' ? 'Active Quotes' : lifecycleTab === 'acknowledgments' ? 'Pending Acknowledgements' : 'Active Orders'}
                                                     </p>
-                                                    <ShoppingBagIcon className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                                                    <ShoppingBagIcon className="h-5 w-5 text-info" />
                                                 </div>
                                                 <div>
-                                                    <p className="text-2xl font-bold text-blue-700 dark:text-blue-300">{metricsData.activeOrders}</p>
+                                                    <p className="text-2xl font-bold text-info">{metricsData.activeOrders}</p>
                                                     <div className="flex items-center gap-2 mt-1">
-                                                        <span className={cn('text-xs font-semibold', metricsByPeriod[txTimePeriod].activeTrendUp ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400')}>
+                                                        <span className={cn('text-xs font-semibold', metricsByPeriod[txTimePeriod].activeTrendUp ? 'text-success' : 'text-destructive')}>
                                                             {metricsByPeriod[txTimePeriod].activeTrendUp ? '↑' : '↓'} {metricsByPeriod[txTimePeriod].activeTrend}
                                                         </span>
-                                                        <span className="text-[10px] text-blue-600/60 dark:text-blue-400/60">vs prev.</span>
+                                                        <span className="text-[10px] text-info/60 dark:text-info/60">vs prev.</span>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             {/* Completion Rate Card */}
-                                            <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/10 dark:to-pink-900/10 rounded-2xl p-6 border border-indigo-200 dark:border-indigo-800/20 shadow-sm">
+                                            <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/10 dark:to-pink-900/10 rounded-2xl p-6 border border-ai/30 dark:border-ai/20 shadow-sm">
                                                 <div className="flex items-center justify-between mb-4">
-                                                    <p className="text-sm font-medium text-indigo-700 dark:text-indigo-400">
+                                                    <p className="text-sm font-medium text-ai">
                                                         {lifecycleTab === 'quotes' ? 'Win Rate' : lifecycleTab === 'acknowledgments' ? 'Conf. Rate' : 'Completion Rate'}
                                                     </p>
-                                                    <ChartBarIcon className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                                                    <ChartBarIcon className="h-5 w-5 text-ai" />
                                                 </div>
                                                 <div>
-                                                    <p className="text-2xl font-bold text-indigo-700 dark:text-indigo-300">{metricsData.efficiency}%</p>
+                                                    <p className="text-2xl font-bold text-ai">{metricsData.efficiency}%</p>
                                                     <div className="flex items-center gap-2 mt-1">
-                                                        <span className={cn('text-xs font-semibold', metricsByPeriod[txTimePeriod].efficiencyTrendUp ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400')}>
+                                                        <span className={cn('text-xs font-semibold', metricsByPeriod[txTimePeriod].efficiencyTrendUp ? 'text-success' : 'text-destructive')}>
                                                             {metricsByPeriod[txTimePeriod].efficiencyTrendUp ? '↑' : '↓'} {metricsByPeriod[txTimePeriod].efficiencyTrend}
                                                         </span>
-                                                        <span className="text-[10px] text-indigo-600/60 dark:text-indigo-400/60">vs prev.</span>
+                                                        <span className="text-[10px] text-ai/60 dark:text-ai/60">vs prev.</span>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             {/* Project Count Card */}
-                                            <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/10 dark:to-amber-900/10 rounded-2xl p-6 border border-amber-200 dark:border-amber-800/20 shadow-sm">
+                                            <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/10 dark:to-amber-900/10 rounded-2xl p-6 border border-warning/30 dark:border-warning/20 shadow-sm">
                                                 <div className="flex items-center justify-between mb-4">
-                                                    <p className="text-sm font-medium text-amber-700 dark:text-amber-400">Project Count</p>
-                                                    <ClipboardDocumentListIcon className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+                                                    <p className="text-sm font-medium text-warning">Project Count</p>
+                                                    <ClipboardDocumentListIcon className="h-5 w-5 text-warning" />
                                                 </div>
                                                 <div>
-                                                    <p className="text-2xl font-bold text-amber-700 dark:text-amber-300">
+                                                    <p className="text-2xl font-bold text-warning">
                                                         {availableProjects.length > 0 && availableProjects[0] === 'All Projects' ? availableProjects.length - 1 : availableProjects.length}
                                                     </p>
                                                     <div className="flex items-center gap-2 mt-1">
-                                                        <span className={cn('text-xs font-semibold', metricsByPeriod[txTimePeriod].projectTrendUp ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400')}>
+                                                        <span className={cn('text-xs font-semibold', metricsByPeriod[txTimePeriod].projectTrendUp ? 'text-success' : 'text-destructive')}>
                                                             {metricsByPeriod[txTimePeriod].projectTrendUp ? '↑' : '↓'} {metricsByPeriod[txTimePeriod].projectTrend}
                                                         </span>
-                                                        <span className="text-[10px] text-amber-600/60 dark:text-amber-400/60">vs prev.</span>
+                                                        <span className="text-[10px] text-warning/60 dark:text-warning/60">vs prev.</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -2732,7 +2732,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                             <div className="flex items-center gap-2">
                                                                                 <div className="text-xs text-muted-foreground">{order.id}</div>
                                                                                 {order.id === '#ORD-7829' && (
-                                                                                    <span className="px-1.5 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 text-[10px] font-bold uppercase tracking-wider">
+                                                                                    <span className="px-1.5 py-0.5 rounded-full bg-info/10 text-info dark:bg-info/10 dark:text-info text-[10px] font-bold uppercase tracking-wider">
                                                                                         New
                                                                                     </span>
                                                                                 )}
@@ -2863,7 +2863,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                         )}
                                                                         <button
                                                                             onClick={(e) => { e.stopPropagation(); setTrackingOrder(order); }}
-                                                                            className="p-1.5 rounded-lg text-muted-foreground hover:text-blue-500 hover:bg-blue-50/50 transition-colors"
+                                                                            className="p-1.5 rounded-lg text-muted-foreground hover:text-info hover:bg-info/50 transition-colors"
                                                                             title="Track"
                                                                         >
                                                                             <MapPinIcon className="h-4 w-4" />
@@ -2989,7 +2989,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                                 <div className="flex items-center gap-1">
                                                                                     <p className="text-[10px] text-muted-foreground font-mono">{order.id}</p>
                                                                                     {order.id === '#ORD-7829' && (
-                                                                                        <span className="px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 text-[10px] font-bold uppercase tracking-wider">
+                                                                                        <span className="px-2 py-0.5 rounded-full bg-info/10 text-info dark:bg-info/10 dark:text-info text-[10px] font-bold uppercase tracking-wider">
                                                                                             New
                                                                                         </span>
                                                                                     )}
@@ -2997,17 +2997,17 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                                                     {isContinua && lifecycleTab === 'acknowledgments' && (ackPhase === 'validating' || ackPhase === 'alert') && (
                                                                                         <>
                                                                                             {order.id === 'Acknowledgement-8839' && ackValidatedCount >= 1 && (
-                                                                                                <span className="px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 text-[10px] font-bold uppercase tracking-wider animate-in fade-in duration-300">
+                                                                                                <span className="px-2 py-0.5 rounded-full bg-success/10 text-success dark:bg-success/10 dark:text-success text-[10px] font-bold uppercase tracking-wider animate-in fade-in duration-300">
                                                                                                     Validated ✓
                                                                                                 </span>
                                                                                             )}
                                                                                             {order.id === 'Acknowledgement-8840' && ackValidatedCount >= 2 && (
-                                                                                                <span className="px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 text-[10px] font-bold uppercase tracking-wider animate-in fade-in duration-300">
+                                                                                                <span className="px-2 py-0.5 rounded-full bg-success/10 text-success dark:bg-success/10 dark:text-success text-[10px] font-bold uppercase tracking-wider animate-in fade-in duration-300">
                                                                                                     Validated ✓
                                                                                                 </span>
                                                                                             )}
                                                                                             {order.id === 'Acknowledgement-8841' && ackKnollAlert && (
-                                                                                                <span className="px-2 py-0.5 rounded-full bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300 text-[10px] font-bold uppercase tracking-wider animate-in fade-in duration-300">
+                                                                                                <span className="px-2 py-0.5 rounded-full bg-destructive/10 text-destructive dark:bg-destructive/10 dark:text-destructive text-[10px] font-bold uppercase tracking-wider animate-in fade-in duration-300">
                                                                                                     Dispute ⚠
                                                                                                 </span>
                                                                                             )}
@@ -3232,9 +3232,9 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                         <span className="text-sm text-muted-foreground">List Price</span>
                                                         <span className="font-mono text-foreground">$1,200,000</span>
                                                     </div>
-                                                    <div className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800 rounded-lg">
-                                                        <span className="text-sm font-medium text-green-700 dark:text-green-400">Net Margin</span>
-                                                        <span className="font-bold text-green-700 dark:text-green-400">29.2%</span>
+                                                    <div className="flex justify-between items-center p-3 bg-success/10 dark:bg-success/20 border border-success/30 dark:border-success/30 rounded-lg">
+                                                        <span className="text-sm font-medium text-success">Net Margin</span>
+                                                        <span className="font-bold text-success">29.2%</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -3254,11 +3254,11 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                     ) : lifecycleTab === 'acknowledgments' ? (
                                         /* Ack Details View */
                                         <div className="space-y-6">
-                                            <div className="bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30 rounded-lg p-4 flex gap-3">
-                                                <ExclamationTriangleIcon className="w-5 h-5 text-red-600 flex-shrink-0" />
+                                            <div className="bg-destructive/10 dark:bg-destructive/10 border border-destructive/30 dark:border-destructive/30 rounded-lg p-4 flex gap-3">
+                                                <ExclamationTriangleIcon className="w-5 h-5 text-destructive flex-shrink-0" />
                                                 <div>
-                                                    <h4 className="text-sm font-semibold text-red-700 dark:text-red-400">Price Discrepancy Detected</h4>
-                                                    <p className="text-sm text-red-600/90 dark:text-red-400/90 mt-1">Vendor acknowledgement is <span className="font-bold">$500 higher</span> than the Purchase Order.</p>
+                                                    <h4 className="text-sm font-semibold text-destructive">Price Discrepancy Detected</h4>
+                                                    <p className="text-sm text-destructive/90 dark:text-destructive/90 mt-1">Vendor acknowledgement is <span className="font-bold">$500 higher</span> than the Purchase Order.</p>
                                                 </div>
                                             </div>
 
@@ -3268,10 +3268,10 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                     <div className="font-semibold text-lg">$12,500.00</div>
                                                     <div className="text-xs text-muted-foreground mt-2">Unit Price: $250.00</div>
                                                 </div>
-                                                <div className="p-4 border border-red-200 dark:border-red-900/30 bg-red-50/50 dark:bg-red-900/5 rounded-lg">
-                                                    <span className="block text-xs uppercase text-red-600 dark:text-red-400 mb-1">Vendor Acknowledgement</span>
-                                                    <div className="font-semibold text-lg text-red-700 dark:text-red-400">$13,000.00</div>
-                                                    <div className="text-xs text-red-600/80 mt-2">Unit Price: $260.00</div>
+                                                <div className="p-4 border border-destructive/30 dark:border-destructive/30 bg-destructive/50 dark:bg-destructive/5 rounded-lg">
+                                                    <span className="block text-xs uppercase text-destructive mb-1">Vendor Acknowledgement</span>
+                                                    <div className="font-semibold text-lg text-destructive">$13,000.00</div>
+                                                    <div className="text-xs text-destructive/80 mt-2">Unit Price: $260.00</div>
                                                 </div>
                                             </div>
 
@@ -3295,7 +3295,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                             <div className={cn(
                                                                 "absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full ring-4 ring-background",
                                                                 step.completed ? "bg-primary" : "bg-zinc-300 dark:bg-zinc-700",
-                                                                step.alert && "bg-red-500 dark:bg-red-500"
+                                                                step.alert && "bg-destructive/10 dark:bg-destructive/10"
                                                             )} />
                                                             <p className="text-sm font-medium text-foreground">{step.status}</p>
                                                             <p className="text-xs text-muted-foreground mt-0.5">{step.date} · {step.location}</p>
@@ -3363,9 +3363,9 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                             <h3 className="text-base font-bold text-foreground truncate">{project.name}</h3>
                                             <span className={cn(
                                                 "text-[10px] px-2 py-0.5 rounded-full font-bold uppercase whitespace-nowrap",
-                                                project.status === 'In Progress' ? "bg-blue-100 dark:bg-blue-500/15 text-blue-700 dark:text-blue-300" :
-                                                project.status === 'Planning' ? "bg-amber-100 dark:bg-amber-500/15 text-amber-700 dark:text-amber-300" :
-                                                "bg-green-100 dark:bg-green-500/15 text-green-700 dark:text-green-300"
+                                                project.status === 'In Progress' ? "bg-info/10 dark:bg-info/15 text-info" :
+                                                project.status === 'Planning' ? "bg-warning/10 dark:bg-warning/15 text-warning" :
+                                                "bg-success/10 dark:bg-success/15 text-success"
                                             )}>
                                                 {project.status}
                                             </span>
@@ -3404,9 +3404,9 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                     <span className="text-xs font-bold text-foreground">{order.id}</span>
                                                     <span className={cn(
                                                         "text-[9px] px-1.5 py-0.5 rounded-full font-bold",
-                                                        order.status === 'Shipped' || order.status === 'Ready to ship' || order.status === 'Delivered' ? "bg-green-100 dark:bg-green-500/15 text-green-700 dark:text-green-300" :
-                                                        order.status === 'In production' || order.status === 'Scheduled for production' || order.status === 'Quality control' ? "bg-blue-100 dark:bg-blue-500/15 text-blue-700 dark:text-blue-300" :
-                                                        order.status === 'PO Received' || order.status === 'Quote Pending' ? "bg-amber-100 dark:bg-amber-500/15 text-amber-700 dark:text-amber-300" :
+                                                        order.status === 'Shipped' || order.status === 'Ready to ship' || order.status === 'Delivered' ? "bg-success/10 dark:bg-success/15 text-success" :
+                                                        order.status === 'In production' || order.status === 'Scheduled for production' || order.status === 'Quality control' ? "bg-info/10 dark:bg-info/15 text-info" :
+                                                        order.status === 'PO Received' || order.status === 'Quote Pending' ? "bg-warning/10 dark:bg-warning/15 text-warning" :
                                                         "bg-zinc-100 dark:bg-zinc-700 text-muted-foreground dark:text-zinc-300"
                                                     )}>
                                                         {order.status}
@@ -3439,14 +3439,14 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                                 <div className="flex flex-col items-center">
                                                     <div className={cn(
                                                         "w-3 h-3 rounded-full border-2 shrink-0",
-                                                        ms.status === 'completed' ? "bg-green-500 border-green-500" :
-                                                        ms.status === 'in-progress' ? "bg-blue-500 border-blue-500 animate-pulse" :
+                                                        ms.status === 'completed' ? "bg-success/10 border-success/30" :
+                                                        ms.status === 'in-progress' ? "bg-info/10 border-info/30 animate-pulse" :
                                                         "bg-background border-muted-foreground/30"
                                                     )} />
                                                     {idx < project.milestones.length - 1 && (
                                                         <div className={cn(
                                                             "w-0.5 h-6 mt-1",
-                                                            ms.status === 'completed' ? "bg-green-300 dark:bg-green-700" : "bg-border"
+                                                            ms.status === 'completed' ? "bg-success/10 dark:bg-success/10" : "bg-border"
                                                         )} />
                                                     )}
                                                 </div>
@@ -3470,23 +3470,23 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                             {project.fmActions.map((fm, idx) => (
                                                 <div key={idx} className={cn(
                                                     "p-3 rounded-xl border text-xs",
-                                                    fm.priority === 'high' ? "bg-red-50 dark:bg-red-500/5 border-red-200 dark:border-red-500/20" :
-                                                    fm.priority === 'medium' ? "bg-amber-50 dark:bg-amber-500/5 border-amber-200 dark:border-amber-500/20" :
+                                                    fm.priority === 'high' ? "bg-destructive/10 dark:bg-destructive/5 border-destructive/30 dark:border-destructive/20" :
+                                                    fm.priority === 'medium' ? "bg-warning/10 dark:bg-warning/5 border-warning/30 dark:border-warning/20" :
                                                     "bg-muted/30 border-border/50"
                                                 )}>
                                                     <div className="flex items-start justify-between gap-2">
                                                         <p className="text-foreground font-medium">{fm.action}</p>
                                                         <span className={cn(
                                                             "text-[8px] px-1.5 py-0.5 rounded font-bold uppercase shrink-0",
-                                                            fm.priority === 'high' ? "bg-red-100 dark:bg-red-500/15 text-red-700 dark:text-red-400" :
-                                                            fm.priority === 'medium' ? "bg-amber-100 dark:bg-amber-500/15 text-amber-700 dark:text-amber-400" :
+                                                            fm.priority === 'high' ? "bg-destructive/10 dark:bg-destructive/15 text-destructive" :
+                                                            fm.priority === 'medium' ? "bg-warning/10 dark:bg-warning/15 text-warning" :
                                                             "bg-zinc-100 dark:bg-zinc-700 text-muted-foreground"
                                                         )}>
                                                             {fm.priority}
                                                         </span>
                                                     </div>
                                                     <div className="flex gap-2 mt-2">
-                                                        <button onClick={() => triggerToast('Action Approved', `"${fm.action}" has been approved and assigned.`, 'success')} className="text-[9px] px-2 py-1 rounded-lg bg-green-500 text-white font-bold hover:bg-green-600 transition-colors">
+                                                        <button onClick={() => triggerToast('Action Approved', `"${fm.action}" has been approved and assigned.`, 'success')} className="text-[9px] px-2 py-1 rounded-lg bg-success/10 text-white font-bold hover:bg-success/10 transition-colors">
                                                             Approve
                                                         </button>
                                                         <button onClick={() => triggerToast('Details Requested', 'Request sent to facilities team for more information.', 'info')} className="text-[9px] px-2 py-1 rounded-lg border border-border text-muted-foreground font-bold hover:bg-muted transition-colors">
@@ -3498,7 +3498,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                         </div>
                                     ) : (
                                         <div className="text-center py-6 text-muted-foreground">
-                                            <CheckCircleIcon className="w-6 h-6 mx-auto mb-2 text-green-500" />
+                                            <CheckCircleIcon className="w-6 h-6 mx-auto mb-2 text-success" />
                                             <p className="text-xs">No pending FM actions</p>
                                         </div>
                                     )}
@@ -3531,7 +3531,7 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
             {showToast && (
                 <div className="fixed bottom-6 right-6 z-50 animate-in slide-in-from-right-10 fade-in duration-300">
                     <div className="bg-popover rounded-xl shadow-2xl shadow-black/10 border border-border p-4 flex items-start gap-4 max-w-sm">
-                        <div className={`mt-0.5 p-1 rounded-full ${toastMessage.type === 'success' ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400' : toastMessage.type === 'info' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' : 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'}`}>
+                        <div className={`mt-0.5 p-1 rounded-full ${toastMessage.type === 'success' ? 'bg-success/10 dark:bg-success/30 text-success' : toastMessage.type === 'info' ? 'bg-info/10 dark:bg-info/30 text-info' : 'bg-destructive/10 dark:bg-destructive/30 text-destructive'}`}>
                             {toastMessage.type === 'success' ? (
                                 <CheckCircleIcon className="w-5 h-5" />
                             ) : toastMessage.type === 'info' ? (

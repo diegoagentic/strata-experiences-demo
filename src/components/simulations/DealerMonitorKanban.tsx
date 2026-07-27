@@ -77,7 +77,7 @@ const STEP_CARD_PREVIEW: Record<string, {
         title: 'Extraction Complete',
         subtitle: '5 agents — 200 items extracted',
         detail: 'OCR + Parser processed 2 PDF attachments. 4 delivery zones mapped.',
-        accentClass: 'border-emerald-500/20 bg-success/5',
+        accentClass: 'border-success/20 bg-success/5',
     },
     '1.3': {
         icon: <BrainCircuit size={12} className="text-success" />,
@@ -133,11 +133,11 @@ const OPS_STEP_CARD_PREVIEW: typeof STEP_CARD_PREVIEW = {
         accentClass: 'border-teal-500/20 bg-teal-500/5',
     },
     '2.2': {
-        icon: <Cpu size={12} className="text-ai dark:text-purple-400" />,
+        icon: <Cpu size={12} className="text-ai dark:text-ai" />,
         title: 'CO Delta Engine',
         subtitle: '4 agents — Change Order CO-007',
         detail: 'Recalculating impact on QB-4421 and QB-4424. Supplier verification in progress.',
-        accentClass: 'border-purple-500/20 bg-ai/5',
+        accentClass: 'border-ai/20 bg-ai/5',
     },
 };
 
@@ -345,7 +345,7 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                             { icon: <Clock size={18} />, value: '12', label: 'Awaiting Review', color: 'text-warning bg-warning/10' },
                             { icon: <Bot size={18} />, value: '4', label: 'Active Agents', color: 'text-info bg-info/10' },
                             { icon: <CheckCircle2 size={18} />, value: '28', label: 'Completed Today', color: 'text-success bg-success/10' },
-                            { icon: <Zap size={18} />, value: '$892K', label: 'Queue Value', color: 'text-indigo-600 dark:text-indigo-400 bg-indigo-500/10' },
+                            { icon: <Zap size={18} />, value: '$892K', label: 'Queue Value', color: 'text-ai bg-ai/10' },
                         ].map((kpi, i) => (
                             <div key={i} className="flex items-center gap-3 min-w-fit">
                                 <div className={`flex items-center justify-center w-9 h-9 rounded-full ${kpi.color}`}>
@@ -452,7 +452,7 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                         <div
                                             key={card.id}
                                             data-demo-target={demoTarget}
-                                            className={`bg-card border ${previewMode ? 'p-3' : 'p-4'} rounded-2xl transition-all cursor-pointer group shadow-sm ${hasPanel ? 'ring-2 ring-indigo-500/50 border-indigo-500/30 shadow-lg shadow-indigo-500/10 scale-[1.02]' : `border-gray-200 dark:border-zinc-700 hover:border-gray-300 dark:hover:border-zinc-600 ${card.priority === 'critical' ? 'ring-1 ring-red-500/20' : ''}`}`}
+                                            className={`bg-card border ${previewMode ? 'p-3' : 'p-4'} rounded-2xl transition-all cursor-pointer group shadow-sm ${hasPanel ? 'ring-2 ring-indigo-500/50 border-ai/30 shadow-lg shadow-indigo-500/10 scale-[1.02]' : `border-gray-200 dark:border-zinc-700 hover:border-gray-300 dark:hover:border-zinc-600 ${card.priority === 'critical' ? 'ring-1 ring-red-500/20' : ''}`}`}
                                         >
                                             <div className={`flex flex-col ${previewMode ? 'gap-2' : 'gap-3'}`}>
                                                 <div className="flex items-start justify-between">
@@ -503,7 +503,7 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                                             <p className="text-[10px] leading-relaxed text-muted-foreground px-1">
                                                                 {preview.detail}
                                                             </p>
-                                                            <div className="flex items-center gap-2 text-[10px] text-indigo-600/70 dark:text-indigo-300/70 font-medium py-0.5 px-1">
+                                                            <div className="flex items-center gap-2 text-[10px] text-ai/70 dark:text-ai/70 font-medium py-0.5 px-1">
                                                                 <Bot size={10} className="animate-pulse" />
                                                                 <span>Agent processing...</span>
                                                             </div>
@@ -513,15 +513,15 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
 
                                                 {/* AI Takeoff Summary — only on step 1.2 for card 1 */}
                                                 {card.id === 1 && currentStep.id === '1.2' && (
-                                                    <div className="mt-2 pt-3 border-t border-purple-300/30 dark:border-purple-500/20 space-y-2.5 animate-in fade-in slide-in-from-bottom-3 duration-700 delay-300">
-                                                        <div className="flex items-center gap-2 px-2.5 py-2 rounded-lg border border-purple-400/20 bg-ai/5">
-                                                            <Sparkles size={12} className="text-ai dark:text-purple-400" />
-                                                            <span className="text-[11px] font-semibold text-purple-700 dark:text-purple-300 leading-tight">AI Takeoff Summary</span>
+                                                    <div className="mt-2 pt-3 border-t border-ai/30 dark:border-ai/20 space-y-2.5 animate-in fade-in slide-in-from-bottom-3 duration-700 delay-300">
+                                                        <div className="flex items-center gap-2 px-2.5 py-2 rounded-lg border border-ai/20 bg-ai/5">
+                                                            <Sparkles size={12} className="text-ai dark:text-ai" />
+                                                            <span className="text-[11px] font-semibold text-ai leading-tight">AI Takeoff Summary</span>
                                                         </div>
 
                                                         <div className="px-2 space-y-2">
                                                             <p className="text-[10px] font-medium text-muted-foreground">
-                                                                Floor plan analyzed: <span className="text-purple-700 dark:text-purple-400 font-semibold">4 floors, 125 workstations</span>
+                                                                Floor plan analyzed: <span className="text-ai font-semibold">4 floors, 125 workstations</span>
                                                             </p>
 
                                                             {/* Zone breakdown */}
@@ -532,8 +532,8 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                                                     { zone: 'C', count: 31 },
                                                                     { zone: 'D', count: 31 },
                                                                 ].map(z => (
-                                                                    <div key={z.zone} className="text-center py-1 rounded bg-purple-100/60 dark:bg-purple-900/20 border border-purple-200/40 dark:border-purple-700/30">
-                                                                        <p className="text-[9px] font-semibold text-purple-700 dark:text-purple-400">Zone {z.zone}</p>
+                                                                    <div key={z.zone} className="text-center py-1 rounded bg-ai/60 dark:bg-ai/20 border border-ai/40 dark:border-ai/30">
+                                                                        <p className="text-[9px] font-semibold text-ai">Zone {z.zone}</p>
                                                                         <p className="text-[10px] font-bold text-zinc-800 dark:text-zinc-200">{z.count}</p>
                                                                     </div>
                                                                 ))}
@@ -554,9 +554,9 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                                             </div>
 
                                                             {/* Structural validation */}
-                                                            <div className="flex items-center gap-1.5 px-2 py-1.5 rounded-md bg-emerald-50 dark:bg-emerald-900/15 border border-emerald-200/50 dark:border-emerald-700/30">
+                                                            <div className="flex items-center gap-1.5 px-2 py-1.5 rounded-md bg-success/10 dark:bg-success/15 border border-success/50 dark:border-success/30">
                                                                 <CheckCircle2 size={10} className="text-success shrink-0" />
-                                                                <p className="text-[9px] text-emerald-700 dark:text-success font-medium leading-snug">
+                                                                <p className="text-[9px] text-success dark:text-success font-medium leading-snug">
                                                                     Cross-referenced against building specs: all items within structural limits
                                                                 </p>
                                                             </div>
@@ -567,14 +567,14 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                                 {/* AI Insight — normal cards only · skipped in preview to keep cards compact */}
                                                 {!previewMode && !hasPanel && card.aiInsight && (
                                                     <div className="mt-2 pt-3 border-t border-gray-200/50 dark:border-zinc-700/50 space-y-2 animate-in fade-in slide-in-from-bottom-2 duration-500">
-                                                        <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
+                                                        <div className="flex items-center gap-2 text-ai">
                                                             <Sparkles size={12} />
                                                             <span className="text-[10px] font-medium uppercase tracking-wider">AI Insight</span>
                                                         </div>
                                                         <p className="text-[11px] leading-relaxed text-muted-foreground italic bg-gray-50 dark:bg-zinc-800 p-3 rounded-xl border border-gray-200/50 dark:border-zinc-700/50">
                                                             "{card.aiInsight}"
                                                         </p>
-                                                        <button className="w-full flex items-center justify-center gap-2 text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:underline group/btn">
+                                                        <button className="w-full flex items-center justify-center gap-2 text-xs font-medium text-ai hover:underline group/btn">
                                                             {card.id === 1 ? 'Route to Expert Hub' : 'Apply Recommendation'}
                                                             <ArrowUpRight size={14} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                                                         </button>
@@ -602,11 +602,11 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                             <button onClick={() => setPricePhase('processing')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
                                 <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
                                     <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-indigo-600 text-white"><CurrencyDollarIcon className="h-4 w-4" /></div>
+                                        <div className="p-2 rounded-lg bg-ai/10 text-white"><CurrencyDollarIcon className="h-4 w-4" /></div>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
                                                 <span className="text-xs font-bold text-foreground">Price Verification Scan</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-indigo-600 text-white font-bold">200+ lists</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-ai/10 text-white font-bold">200+ lists</span>
                                             </div>
                                             <p className="text-[11px] text-muted-foreground mt-1">PriceVerificationAgent: Scanning <span className="font-semibold text-foreground">200+ manufacturer price lists</span> for Q1 updates — detecting cost changes, recalculating margins, flagging items below threshold.</p>
                                             <p className="text-[10px] text-brand-600 dark:text-brand-400 mt-2 flex items-center gap-1">Click to start scan <ArrowRightIcon className="h-3 w-3" /></p>
@@ -624,13 +624,13 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                     <span className="text-xs font-bold text-foreground">PriceVerificationAgent Scanning Price Lists...</span>
                                 </div>
                                 <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                    <div className="h-full rounded-full bg-indigo-500 transition-all duration-[3500ms] ease-linear" style={{ width: `${priceProgress}%` }} />
+                                    <div className="h-full rounded-full bg-ai/10 transition-all duration-[3500ms] ease-linear" style={{ width: `${priceProgress}%` }} />
                                 </div>
                                 <div className="space-y-1.5">
                                     {priceAgents.map(agent => (
                                         <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"}`}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
-                                            <span className={`font-medium ${agent.done ? "text-foreground" : "text-indigo-600 dark:text-indigo-400"}`}>{agent.name}</span>
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-ai animate-spin shrink-0" />}
+                                            <span className={`font-medium ${agent.done ? "text-foreground" : "text-ai"}`}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
                                     ))}
@@ -680,7 +680,7 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <span className="text-[10px] px-2.5 py-1 rounded-full bg-warning/15 dark:bg-warning/10 text-warning font-bold">6 Below 25%</span>
-                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-indigo-100 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 font-bold">Avg 34%</span>
+                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-ai/10 dark:bg-ai/10 text-ai font-bold">Avg 34%</span>
                                         </div>
                                     </div>
 
@@ -838,7 +838,7 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                     <div className="p-4 grid grid-cols-3 gap-3">
                                         {[
                                             { label: 'Purchase Orders', value: '47', sub: 'All tracked', color: 'text-info' },
-                                            { label: 'Invoices', value: '42', sub: '5 pending', color: 'text-indigo-600 dark:text-indigo-400' },
+                                            { label: 'Invoices', value: '42', sub: '5 pending', color: 'text-ai' },
                                             { label: 'Payments', value: '38', sub: '$2.45M received', color: 'text-success' },
                                         ].map(m => (
                                             <div key={m.label} className="text-center p-3 rounded-xl bg-muted/30 border border-border">
@@ -965,9 +965,9 @@ function PreviewToolbar({
         { initials: 'DU', bg: 'bg-info/100' },
         { initials: 'SJ', bg: 'bg-warning' },
         { initials: 'MW', bg: 'bg-teal-500' },
-        { initials: 'PS', bg: 'bg-indigo-500' },
+        { initials: 'PS', bg: 'bg-ai/10' },
         { initials: 'DO', bg: 'bg-destructive' },
-        { initials: 'EM', bg: 'bg-emerald-500' },
+        { initials: 'EM', bg: 'bg-success/10' },
     ];
     const tabs: Array<{ id: string; title: string; count: number }> = [
         { id: 'all', title: 'All', count: totalCount },

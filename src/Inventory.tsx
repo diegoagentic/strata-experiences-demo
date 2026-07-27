@@ -198,12 +198,12 @@ const inventorySummaryByPeriod: Record<InvTimePeriod, Record<string, InvSummaryI
 
 // Color Mapping for Status Icons (from Transactions)
 const colorStyles: Record<string, string> = {
-    blue: 'bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300 ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
-    purple: 'bg-indigo-50 text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300 ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
-    orange: 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
-    green: 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
-    pink: 'bg-pink-50 text-pink-700 dark:bg-pink-500/15 dark:text-pink-300 ring-1 ring-inset ring-pink-600/20 dark:ring-pink-400/30',
-    indigo: 'bg-indigo-50 text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300 ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
+    blue: 'bg-info/10 text-info dark:bg-info/15 dark:text-info ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
+    purple: 'bg-ai/10 text-ai dark:bg-ai/15 dark:text-ai ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
+    orange: 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
+    green: 'bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
+    pink: 'bg-destructive/10 text-destructive dark:bg-destructive/15 dark:text-destructive ring-1 ring-inset ring-pink-600/20 dark:ring-pink-400/30',
+    indigo: 'bg-ai/10 text-ai dark:bg-ai/15 dark:text-ai ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
 };
 
 // ─── Continua Step 1.4: Warehouse Receiving Constants ──────────────────────────
@@ -805,21 +805,21 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
     // Helper for Status Badge
     const getStatusBadge = (status: string) => {
         switch (status) {
-            case 'Available': return 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400';
-            case 'Under Maintenance': return 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400';
-            case 'In Use': return 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400';
-            case 'Reserved': return 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400';
-            case 'In Consignment': return 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400';
+            case 'Available': return 'bg-success/10 text-success dark:bg-success/30 dark:text-success';
+            case 'Under Maintenance': return 'bg-warning/10 text-warning dark:bg-warning/30 dark:text-warning';
+            case 'In Use': return 'bg-info/10 text-info dark:bg-info/30 dark:text-info';
+            case 'Reserved': return 'bg-ai/10 text-ai dark:bg-ai/30 dark:text-ai';
+            case 'In Consignment': return 'bg-warning/10 text-warning dark:bg-warning/30 dark:text-warning';
             case 'Sold': return 'bg-zinc-100 text-muted-foreground dark:bg-card dark:text-muted-foreground line-through opacity-75';
-            case 'Write-off': return 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400';
+            case 'Write-off': return 'bg-destructive/10 text-destructive dark:bg-destructive/30 dark:text-destructive';
             default: return 'bg-zinc-100 text-muted-foreground dark:bg-card dark:text-muted-foreground';
         }
     };
 
     const getImpactBadge = (impact: string) => {
         return impact === 'Low Impact'
-            ? 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/10'
-            : 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/10';
+            ? 'text-success bg-success/10'
+            : 'text-warning bg-warning/10';
     };
 
     const getCategoryIcon = (category: string, className: string = "w-12 h-12 mb-2 text-zinc-300 dark:text-muted-foreground") => {
@@ -909,7 +909,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                             <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{data.label}</p>
                                             <div className="mt-1 flex items-center gap-2">
                                                 <p className="text-3xl font-semibold text-foreground group-hover:scale-105 transition-transform origin-left">{data.value}</p>
-                                                <span className={`text-xs font-semibold ${data.trendUp ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400'}`}>
+                                                <span className={`text-xs font-semibold ${data.trendUp ? 'text-success' : 'text-destructive'}`}>
                                                     {data.trendUp ? '\u2191' : '\u2193'}{data.trend}
                                                 </span>
                                             </div>
@@ -983,7 +983,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                         <div className="flex flex-col">
                                             <div className="flex items-center gap-1.5">
                                                 <span className="text-lg font-bold text-foreground leading-none">{data.value}</span>
-                                                <span className={`text-[10px] font-semibold ${data.trendUp ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400'}`}>
+                                                <span className={`text-[10px] font-semibold ${data.trendUp ? 'text-success' : 'text-destructive'}`}>
                                                     {data.trendUp ? '\u2191' : '\u2193'}{data.trend}
                                                 </span>
                                             </div>
@@ -1054,8 +1054,8 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                 <div className="space-y-1.5">
                                     {rcvAgents.map(agent => (
                                         <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
-                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-indigo-600 dark:text-indigo-400")}>{agent.name}</span>
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-ai animate-spin shrink-0" />}
+                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-ai")}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
                                     ))}
@@ -1066,24 +1066,24 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                         {/* Breathing */}
                         {rcvPhase === 'breathing' && (
                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/10 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">Processing complete — syncing external systems...</span>
                             </div>
                         )}
 
                         {/* Confirmed */}
                         {(rcvPhase === 'revealed' || rcvPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 border-2 border-success/30 dark:border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">ReceivingAgent:</span> 3 shipments processed — <span className="font-semibold">47/50 items matched</span>. 2 QC flags raised, warranty claims auto-filed.</p>
+                                        <p className="text-xs text-success"><span className="font-bold">ReceivingAgent:</span> 3 shipments processed — <span className="font-semibold">47/50 items matched</span>. 2 QC flags raised, warranty claims auto-filed.</p>
                                         <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">External Systems · Synced</span>
+                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                             {['QR Scanner', 'PO Match Engine', 'QC Database', 'Warranty Portal', 'WMS'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/10 text-success text-[10px] font-medium border border-success/50 dark:border-success/20">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -1104,38 +1104,38 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                             <p className="text-[11px] text-muted-foreground mt-0.5">3 shipments processed · 47/50 matched · Utilization 72%</p>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-bold">47 Matched</span>
-                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-red-100 dark:bg-red-500/10 text-red-700 dark:text-red-400 font-bold">2 QC Flags</span>
+                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-success/10 text-success font-bold">47 Matched</span>
+                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-destructive/10 text-destructive font-bold">2 QC Flags</span>
                                         </div>
                                     </div>
 
                                     {/* Shipment Cards */}
                                     <div className="p-4 grid grid-cols-3 gap-3">
                                         {SHIPMENT_DATA.map(s => (
-                                            <div key={s.id} className={cn("p-3 rounded-xl border", s.defects > 0 ? "border-amber-200 dark:border-amber-500/20 bg-amber-50/50 dark:bg-amber-500/5" : "border-border bg-muted/20")}>
+                                            <div key={s.id} className={cn("p-3 rounded-xl border", s.defects > 0 ? "border-warning/30 dark:border-warning/20 bg-warning/50 dark:bg-warning/5" : "border-border bg-muted/20")}>
                                                 <div className="flex items-center justify-between mb-2">
                                                     <span className="text-[10px] font-bold text-foreground">{s.id}</span>
-                                                    <span className={cn("text-[9px] px-2 py-0.5 rounded-full font-bold", s.status === 'complete' ? "bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400" : "bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400")}>{s.status === 'complete' ? 'Complete' : 'Partial'}</span>
+                                                    <span className={cn("text-[9px] px-2 py-0.5 rounded-full font-bold", s.status === 'complete' ? "bg-success/10 text-success dark:bg-success/10 dark:text-success" : "bg-warning/10 text-warning dark:bg-warning/10 dark:text-warning")}>{s.status === 'complete' ? 'Complete' : 'Partial'}</span>
                                                 </div>
                                                 <p className="text-[11px] font-medium text-foreground">{s.manufacturer}</p>
                                                 <p className="text-[10px] text-muted-foreground mt-1">{s.matched}/{s.items} items matched</p>
-                                                {s.defects > 0 && <p className="text-[10px] text-amber-600 dark:text-amber-400 mt-1 flex items-center gap-1"><ExclamationTriangleIcon className="h-3 w-3" />{s.defects} defect{s.defects > 1 ? 's' : ''} flagged</p>}
+                                                {s.defects > 0 && <p className="text-[10px] text-warning mt-1 flex items-center gap-1"><ExclamationTriangleIcon className="h-3 w-3" />{s.defects} defect{s.defects > 1 ? 's' : ''} flagged</p>}
                                             </div>
                                         ))}
                                     </div>
 
                                     {/* QC Flags */}
-                                    <div className="mx-4 mb-4 p-4 rounded-xl bg-red-50 dark:bg-red-500/5 border border-red-200 dark:border-red-500/20">
-                                        <h4 className="text-xs font-bold text-red-800 dark:text-red-300 mb-2 flex items-center gap-1.5"><ExclamationTriangleIcon className="h-4 w-4" />QC Flags — Auto-Reported to Manufacturer</h4>
+                                    <div className="mx-4 mb-4 p-4 rounded-xl bg-destructive/10 border border-destructive/30 dark:border-destructive/20">
+                                        <h4 className="text-xs font-bold text-destructive mb-2 flex items-center gap-1.5"><ExclamationTriangleIcon className="h-4 w-4" />QC Flags — Auto-Reported to Manufacturer</h4>
                                         <div className="space-y-2">
                                             {QC_FLAGS.map((qc, i) => (
-                                                <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-red-100 dark:border-red-500/10">
+                                                <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-destructive/30 dark:border-destructive/10">
                                                     <div>
                                                         <p className="text-[11px] font-medium text-foreground">{qc.item}</p>
                                                         <p className="text-[10px] text-muted-foreground">{qc.sku} · {qc.defect}</p>
                                                     </div>
                                                     <div className="flex items-center gap-2">
-                                                        <span className={cn("text-[9px] px-2 py-0.5 rounded-full font-bold", qc.severity === 'Major' ? "bg-red-100 text-red-700" : "bg-amber-100 text-amber-700")}>{qc.severity}</span>
+                                                        <span className={cn("text-[9px] px-2 py-0.5 rounded-full font-bold", qc.severity === 'Major' ? "bg-destructive/10 text-destructive" : "bg-warning/10 text-warning")}>{qc.severity}</span>
                                                         <PhotoIcon className="h-4 w-4 text-muted-foreground" />
                                                     </div>
                                                 </div>
@@ -1179,8 +1179,8 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                 <div className="space-y-1.5">
                                     {hlthAgents.map(agent => (
                                         <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
-                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-indigo-600 dark:text-indigo-400")}>{agent.name}</span>
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-ai animate-spin shrink-0" />}
+                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-ai")}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
                                     ))}
@@ -1191,24 +1191,24 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                         {/* Breathing */}
                         {hlthPhase === 'breathing' && (
                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/10 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">Processing complete — syncing external systems...</span>
                             </div>
                         )}
 
                         {/* Confirmed */}
                         {(hlthPhase === 'revealed' || hlthPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 border-2 border-success/30 dark:border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">InventoryIntelAgent:</span> Analysis complete — <span className="font-semibold">Chicago at 68%</span>, forecast 85% in 2 weeks. 120 items recommended for relocation — <span className="font-semibold">$4,200/mo savings</span>.</p>
+                                        <p className="text-xs text-success"><span className="font-bold">InventoryIntelAgent:</span> Analysis complete — <span className="font-semibold">Chicago at 68%</span>, forecast 85% in 2 weeks. 120 items recommended for relocation — <span className="font-semibold">$4,200/mo savings</span>.</p>
                                         <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">External Systems · Synced</span>
+                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                             {['WMS', 'Capacity Planner', 'Cost Engine', 'Logistics API', 'Forecast Model'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/10 text-success text-[10px] font-medium border border-success/50 dark:border-success/20">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -1228,47 +1228,47 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                             <h3 className="text-sm font-bold text-foreground">Warehouse Capacity Overview</h3>
                                             <p className="text-[11px] text-muted-foreground mt-0.5">2,400 items · 3 locations · Forecast: 2-week horizon</p>
                                         </div>
-                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 font-bold">1 Alert</span>
+                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-warning/10 text-warning font-bold">1 Alert</span>
                                     </div>
 
                                     {/* Warehouse Gauges */}
                                     <div className="p-4 grid grid-cols-3 gap-3">
                                         {WAREHOUSE_DATA.map(wh => (
-                                            <div key={wh.name} className={cn("p-3 rounded-xl border", wh.alert ? "border-amber-200 dark:border-amber-500/20 bg-amber-50/50 dark:bg-amber-500/5" : "border-border bg-muted/20")}>
+                                            <div key={wh.name} className={cn("p-3 rounded-xl border", wh.alert ? "border-warning/30 dark:border-warning/20 bg-warning/50 dark:bg-warning/5" : "border-border bg-muted/20")}>
                                                 <div className="flex items-center justify-between mb-2">
                                                     <span className="text-[11px] font-bold text-foreground">{wh.name}</span>
                                                     <span className="text-[10px] text-muted-foreground">{wh.items} items</span>
                                                 </div>
                                                 {/* Gauge bar */}
                                                 <div className="h-2 rounded-full bg-muted overflow-hidden mb-1.5">
-                                                    <div className={cn("h-full rounded-full transition-all duration-700", wh.current > 70 ? "bg-amber-500" : wh.current > 50 ? "bg-primary" : "bg-green-500")} style={{ width: `${wh.current}%` }} />
+                                                    <div className={cn("h-full rounded-full transition-all duration-700", wh.current > 70 ? "bg-warning/10" : wh.current > 50 ? "bg-primary" : "bg-success/10")} style={{ width: `${wh.current}%` }} />
                                                 </div>
                                                 <div className="flex items-center justify-between">
-                                                    <span className={cn("text-xs font-bold", wh.current > 70 ? "text-amber-600 dark:text-amber-400" : "text-foreground")}>{wh.current}%</span>
-                                                    {wh.alert && <span className="text-[9px] text-amber-600 dark:text-amber-400 font-medium">→ {wh.forecast}% in 2wk</span>}
+                                                    <span className={cn("text-xs font-bold", wh.current > 70 ? "text-warning" : "text-foreground")}>{wh.current}%</span>
+                                                    {wh.alert && <span className="text-[9px] text-warning font-medium">→ {wh.forecast}% in 2wk</span>}
                                                 </div>
-                                                {wh.alert && <p className="text-[10px] text-amber-600 dark:text-amber-400 mt-1.5 flex items-center gap-1"><ExclamationTriangleIcon className="h-3 w-3 shrink-0" />{wh.alertText}</p>}
+                                                {wh.alert && <p className="text-[10px] text-warning mt-1.5 flex items-center gap-1"><ExclamationTriangleIcon className="h-3 w-3 shrink-0" />{wh.alertText}</p>}
                                             </div>
                                         ))}
                                     </div>
 
                                     {/* Relocation Recommendations */}
-                                    <div className="mx-4 mb-4 p-4 rounded-xl bg-indigo-50 dark:bg-indigo-500/5 border border-indigo-200 dark:border-indigo-500/20">
-                                        <h4 className="text-xs font-bold text-indigo-800 dark:text-indigo-300 mb-3 flex items-center gap-1.5"><LightBulbIcon className="h-4 w-4" />AI Relocation Recommendations</h4>
+                                    <div className="mx-4 mb-4 p-4 rounded-xl bg-ai/10 dark:bg-ai/5 border border-ai/30 dark:border-ai/20">
+                                        <h4 className="text-xs font-bold text-ai mb-3 flex items-center gap-1.5"><LightBulbIcon className="h-4 w-4" />AI Relocation Recommendations</h4>
                                         <div className="space-y-2">
                                             {RELOCATION_RECS.map((rec, i) => (
-                                                <div key={i} className="flex items-center justify-between p-2.5 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-indigo-100 dark:border-indigo-500/10">
+                                                <div key={i} className="flex items-center justify-between p-2.5 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-ai/30 dark:border-ai/10">
                                                     <div className="flex-1 min-w-0">
                                                         <p className="text-[11px] font-medium text-foreground">{rec.items} items · {rec.type}</p>
                                                         <p className="text-[10px] text-muted-foreground mt-0.5">{rec.from} → {rec.to}</p>
                                                     </div>
-                                                    <span className="text-[10px] px-2 py-1 rounded-full bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-bold shrink-0 ml-2">{rec.savings}</span>
+                                                    <span className="text-[10px] px-2 py-1 rounded-full bg-success/10 text-success font-bold shrink-0 ml-2">{rec.savings}</span>
                                                 </div>
                                             ))}
                                         </div>
-                                        <div className="mt-3 flex items-center justify-between p-2.5 rounded-lg bg-green-100 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20">
-                                            <span className="text-[11px] font-bold text-green-800 dark:text-green-300">Total Monthly Savings</span>
-                                            <span className="text-sm font-bold text-green-700 dark:text-green-400">$4,200/mo</span>
+                                        <div className="mt-3 flex items-center justify-between p-2.5 rounded-lg bg-success/10 border border-success/30 dark:border-success/20">
+                                            <span className="text-[11px] font-bold text-success">Total Monthly Savings</span>
+                                            <span className="text-sm font-bold text-success">$4,200/mo</span>
                                         </div>
                                     </div>
 
@@ -1299,13 +1299,13 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                     <span className="text-xs font-bold text-foreground">LocationSyncAgent Synchronizing...</span>
                                 </div>
                                 <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                    <div className="h-full rounded-full bg-blue-500 transition-all duration-[3500ms] ease-linear" style={{ width: `${syncProgress}%` }} />
+                                    <div className="h-full rounded-full bg-info/10 transition-all duration-[3500ms] ease-linear" style={{ width: `${syncProgress}%` }} />
                                 </div>
                                 <div className="space-y-1.5">
                                     {syncAgents.map(agent => (
                                         <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-blue-500 animate-spin shrink-0" />}
-                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-blue-600 dark:text-blue-400")}>{agent.name}</span>
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-info animate-spin shrink-0" />}
+                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-info")}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
                                     ))}
@@ -1316,24 +1316,24 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                         {/* Breathing */}
                         {syncPhase === 'breathing' && (
                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/10 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">Processing complete — syncing external systems...</span>
                             </div>
                         )}
 
                         {/* Confirmed */}
                         {(syncPhase === 'revealed' || syncPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 border-2 border-success/30 dark:border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">LocationSyncAgent:</span> All locations synced — <span className="font-semibold">45 in-transit</span>, 12 pending QC, 8 allocated. Route optimization: <span className="font-semibold">$1,800 freight savings</span>.</p>
+                                        <p className="text-xs text-success"><span className="font-bold">LocationSyncAgent:</span> All locations synced — <span className="font-semibold">45 in-transit</span>, 12 pending QC, 8 allocated. Route optimization: <span className="font-semibold">$1,800 freight savings</span>.</p>
                                         <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">External Systems · Synced</span>
+                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                             {['WMS', 'GPS Tracker', 'QC System', 'Route Engine', 'Map Service'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/10 text-success text-[10px] font-medium border border-success/50 dark:border-success/20">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -1353,7 +1353,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                             <h3 className="text-sm font-bold text-foreground">Location Sync Status</h3>
                                             <p className="text-[11px] text-muted-foreground mt-0.5">5 locations · 2,580 total items · Real-time tracking</p>
                                         </div>
-                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-bold">All Synced</span>
+                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-success/10 text-success font-bold">All Synced</span>
                                     </div>
 
                                     {/* Location Cards */}
@@ -1369,21 +1369,21 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                             ) : null;
                                             return (
                                             <div key={loc.name} className={cn("flex items-center justify-between p-3 rounded-xl border transition-all duration-500",
-                                                syncCardsAnimated && animatedStatus ? "border-green-300 dark:border-green-500/30 bg-green-50/30 dark:bg-green-500/5" :
-                                                loc.type === 'Job Site' ? "border-blue-200 dark:border-blue-500/20 bg-blue-50/30 dark:bg-blue-500/5" : "border-border bg-muted/20"
+                                                syncCardsAnimated && animatedStatus ? "border-success/30 dark:border-success/30 bg-success/30 dark:bg-success/5" :
+                                                loc.type === 'Job Site' ? "border-info/30 dark:border-info/20 bg-info/30 dark:bg-info/5" : "border-border bg-muted/20"
                                             )}>
                                                 <div className="flex items-center gap-3">
                                                     <MapPinIcon className={cn("h-4 w-4 shrink-0 transition-colors duration-500",
-                                                        syncCardsAnimated && animatedStatus ? "text-green-500" :
-                                                        loc.type === 'Job Site' ? "text-blue-500" : "text-muted-foreground"
+                                                        syncCardsAnimated && animatedStatus ? "text-success" :
+                                                        loc.type === 'Job Site' ? "text-info" : "text-muted-foreground"
                                                     )} />
                                                     <div>
                                                         <p className="text-[11px] font-medium text-foreground">{loc.name}</p>
                                                         <p className="text-[10px] text-muted-foreground">
-                                                            {syncCardsAnimated && loc.inTransit ? <>{loc.items + loc.inTransit} items · <span className="text-green-600 dark:text-green-400 font-semibold">{loc.inTransit} delivered</span></> :
-                                                             syncCardsAnimated && loc.pendingQC ? <>{loc.items} items · <span className="text-green-600 dark:text-green-400 font-semibold">{loc.pendingQC} QC cleared</span></> :
-                                                             syncCardsAnimated && loc.allocated ? <>{loc.items} items · <span className="text-green-600 dark:text-green-400 font-semibold">{loc.allocated} shipped</span></> :
-                                                             syncCardsAnimated && loc.receiving ? <>{loc.items} items · <span className="text-green-600 dark:text-green-400 font-semibold">Delivery received</span></> :
+                                                            {syncCardsAnimated && loc.inTransit ? <>{loc.items + loc.inTransit} items · <span className="text-success font-semibold">{loc.inTransit} delivered</span></> :
+                                                             syncCardsAnimated && loc.pendingQC ? <>{loc.items} items · <span className="text-success font-semibold">{loc.pendingQC} QC cleared</span></> :
+                                                             syncCardsAnimated && loc.allocated ? <>{loc.items} items · <span className="text-success font-semibold">{loc.allocated} shipped</span></> :
+                                                             syncCardsAnimated && loc.receiving ? <>{loc.items} items · <span className="text-success font-semibold">Delivery received</span></> :
                                                              <>{loc.items} items
                                                             {loc.inTransit ? ` · ${loc.inTransit} in-transit` : ''}
                                                             {loc.pendingQC ? ` · ${loc.pendingQC} pending QC` : ''}
@@ -1396,19 +1396,19 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                                     {loc.utilization && (
                                                         <div className="flex items-center gap-1.5">
                                                             <div className="w-16 h-1.5 rounded-full bg-muted overflow-hidden">
-                                                                <div className={cn("h-full rounded-full", loc.utilization > 60 ? "bg-amber-500" : "bg-green-500")} style={{ width: `${loc.utilization}%` }} />
+                                                                <div className={cn("h-full rounded-full", loc.utilization > 60 ? "bg-warning/10" : "bg-success/10")} style={{ width: `${loc.utilization}%` }} />
                                                             </div>
                                                             <span className="text-[10px] font-medium text-foreground">{loc.utilization}%</span>
                                                         </div>
                                                     )}
                                                     {animatedStatus ? (
-                                                        <span className="text-[9px] px-2 py-0.5 rounded-full font-bold bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 animate-in fade-in zoom-in-95 duration-500 flex items-center gap-1">
+                                                        <span className="text-[9px] px-2 py-0.5 rounded-full font-bold bg-success/10 text-success animate-in fade-in zoom-in-95 duration-500 flex items-center gap-1">
                                                             <CheckCircleIcon className="h-3 w-3" />{animatedStatus}
                                                         </span>
                                                     ) : (
                                                         <span className={cn("text-[9px] px-2 py-0.5 rounded-full font-bold",
-                                                            loc.status === 'Active' ? "bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400" :
-                                                            loc.status === 'Receiving' ? "bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400" :
+                                                            loc.status === 'Active' ? "bg-success/10 text-success" :
+                                                            loc.status === 'Receiving' ? "bg-info/10 dark:bg-info/10 text-info" :
                                                             "bg-zinc-200 dark:bg-zinc-700 text-muted-foreground"
                                                         )}>{loc.status}</span>
                                                     )}
@@ -1419,16 +1419,16 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                     </div>
 
                                     {/* Route Optimization */}
-                                    <div className="mx-4 mb-4 p-3 rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
+                                    <div className="mx-4 mb-4 p-3 rounded-xl bg-success/10 border border-success/30 dark:border-success/20">
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-2">
-                                                <TruckIcon className="h-4 w-4 text-green-600 dark:text-green-400" />
+                                                <TruckIcon className="h-4 w-4 text-success" />
                                                 <div>
-                                                    <p className="text-[11px] font-bold text-green-800 dark:text-green-300">Route Optimization Applied</p>
-                                                    <p className="text-[10px] text-green-700 dark:text-green-400">2 deliveries consolidated to UAL HQ — same-day schedule</p>
+                                                    <p className="text-[11px] font-bold text-success">Route Optimization Applied</p>
+                                                    <p className="text-[10px] text-success">2 deliveries consolidated to UAL HQ — same-day schedule</p>
                                                 </div>
                                             </div>
-                                            <span className="text-sm font-bold text-green-600 dark:text-green-400">-$1,800</span>
+                                            <span className="text-sm font-bold text-success">-$1,800</span>
                                         </div>
                                     </div>
 
@@ -1452,12 +1452,12 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                         {/* Committed confirmation */}
                         {fmRelocPhase === 'committed' && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                                <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-300 dark:border-green-500/30">
+                                <div className="p-3 rounded-xl bg-success/10 border border-success/30 dark:border-success/30">
                                     <div className="flex items-start gap-2">
-                                        <CheckCircleIcon className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                                        <CheckCircleIcon className="h-4 w-4 text-success shrink-0 mt-0.5" />
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-xs font-bold text-green-800 dark:text-green-200">Assets Relocated Successfully</p>
-                                            <p className="text-[10px] text-green-700 dark:text-green-300 mt-1">Office 3-214 → Office 3-216. Inventory updated.</p>
+                                            <p className="text-xs font-bold text-success">Assets Relocated Successfully</p>
+                                            <p className="text-[10px] text-success mt-1">Office 3-214 → Office 3-216. Inventory updated.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1485,7 +1485,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                 <div className="space-y-1.5">
                                     {reuseAgents.map(agent => (
                                         <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-success animate-spin shrink-0" />}
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-success animate-spin shrink-0" />}
                                             <span className={cn("font-medium", agent.done ? "text-foreground" : "text-success dark:text-success")}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
@@ -1497,21 +1497,21 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                         {/* Breathing */}
                         {reusePhase === 'breathing' && (
                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/10 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">Assessment complete — cataloging items...</span>
                             </div>
                         )}
 
                         {/* Revealed */}
                         {(reusePhase === 'revealed' || reusePhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 border-2 border-success/30 dark:border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">SustainabilityAgent:</span> 340 items classified — <span className="font-semibold">180 reusable</span>, 95 recyclable, 65 EOL. Savings: <span className="font-semibold">$89,000</span> vs new procurement.</p>
+                                        <p className="text-xs text-success"><span className="font-bold">SustainabilityAgent:</span> 340 items classified — <span className="font-semibold">180 reusable</span>, 95 recyclable, 65 EOL. Savings: <span className="font-semibold">$89,000</span> vs new procurement.</p>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-2">
                                             {['Condition Scanner', 'Reuse Catalog', 'Value Engine', 'Sustainability'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/10 text-success text-[10px] font-medium border border-success/50 dark:border-success/20">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -1530,7 +1530,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                             <h3 className="text-sm font-bold text-foreground">Reuse Assessment — Floor 7 Teardown</h3>
                                             <p className="text-[11px] text-muted-foreground mt-0.5">340 items evaluated · 180 reusable · $89K savings</p>
                                         </div>
-                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-success/10 text-emerald-700 dark:text-success font-bold">ASSESSED</span>
+                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-success/10 dark:bg-success/10 text-success dark:text-success font-bold">ASSESSED</span>
                                     </div>
                                     <div className="p-4 space-y-2">
                                         {REUSE_ITEMS.map(item => (
@@ -1543,18 +1543,18 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                                     </div>
                                                 </div>
                                                 <div className="flex items-center gap-2">
-                                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-success/10 text-emerald-700 dark:text-success font-bold">{item.reusable} reuse</span>
-                                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 font-medium">{item.recyclable} recycle</span>
+                                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/10 dark:bg-success/10 text-success dark:text-success font-bold">{item.reusable} reuse</span>
+                                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-info/10 dark:bg-info/10 text-info font-medium">{item.recyclable} recycle</span>
                                                     {item.eol > 0 && <span className="text-[9px] px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-muted0/10 text-muted-foreground font-medium">{item.eol} EOL</span>}
                                                 </div>
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="px-4 py-3 border-t border-border/50 bg-emerald-50 dark:bg-success/5">
+                                    <div className="px-4 py-3 border-t border-border/50 bg-success/10 dark:bg-success/5">
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-3">
-                                                <span className="text-[10px] text-muted-foreground">Savings vs new: <span className="font-bold text-emerald-700 dark:text-success">$89,000</span></span>
-                                                <span className="text-[10px] text-muted-foreground">Carbon offset: <span className="font-bold text-emerald-700 dark:text-success">2.4 tons</span></span>
+                                                <span className="text-[10px] text-muted-foreground">Savings vs new: <span className="font-bold text-success dark:text-success">$89,000</span></span>
+                                                <span className="text-[10px] text-muted-foreground">Carbon offset: <span className="font-bold text-success dark:text-success">2.4 tons</span></span>
                                             </div>
                                         </div>
                                     </div>
@@ -1582,13 +1582,13 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                     <span className="text-xs font-bold text-foreground">ConsignmentAgent Analyzing...</span>
                                 </div>
                                 <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                    <div className="h-full rounded-full bg-rose-500 transition-all duration-[3500ms] ease-linear" style={{ width: `${consignProgress}%` }} />
+                                    <div className="h-full rounded-full bg-destructive/10 transition-all duration-[3500ms] ease-linear" style={{ width: `${consignProgress}%` }} />
                                 </div>
                                 <div className="space-y-1.5">
                                     {consignAgents.map(agent => (
                                         <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-rose-500 animate-spin shrink-0" />}
-                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-rose-600 dark:text-rose-400")}>{agent.name}</span>
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-destructive animate-spin shrink-0" />}
+                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-destructive")}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
                                     ))}
@@ -1599,21 +1599,21 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                         {/* Breathing */}
                         {consignPhase === 'breathing' && (
                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/10 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">Analysis complete — preparing decisions...</span>
                             </div>
                         )}
 
                         {/* Revealed */}
                         {(consignPhase === 'revealed' || consignPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 border-2 border-success/30 dark:border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">ConsignmentAgent:</span> 12 items analyzed — <span className="font-semibold">4 RMA auto-generated</span> ($8,200), <span className="font-semibold">4 convert-to-purchase</span> recommended (demand +12%).</p>
+                                        <p className="text-xs text-success"><span className="font-bold">ConsignmentAgent:</span> 12 items analyzed — <span className="font-semibold">4 RMA auto-generated</span> ($8,200), <span className="font-semibold">4 convert-to-purchase</span> recommended (demand +12%).</p>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-2">
                                             {['Consignment DB', 'RMA System', 'Demand Forecast', 'Manufacturer Portal'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/10 text-success text-[10px] font-medium border border-success/50 dark:border-success/20">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -1632,19 +1632,19 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                             <h3 className="text-sm font-bold text-foreground">Consignment Decisions</h3>
                                             <p className="text-[11px] text-muted-foreground mt-0.5">8 items · 4 RMA returns · 4 convert-to-purchase</p>
                                         </div>
-                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-500/10 text-rose-700 dark:text-rose-400 font-bold">ACTION REQ</span>
+                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-destructive/10 dark:bg-destructive/10 text-destructive font-bold">ACTION REQ</span>
                                     </div>
                                     <div className="p-4 space-y-2">
                                         {CONSIGNMENT_ITEMS.map(item => (
-                                            <div key={item.name} className={cn("flex items-center justify-between p-3 rounded-xl border", item.action === 'RMA' ? "border-red-200 dark:border-red-500/20 bg-red-50/30 dark:bg-red-500/5" : "border-blue-200 dark:border-blue-500/20 bg-blue-50/30 dark:bg-blue-500/5")}>
+                                            <div key={item.name} className={cn("flex items-center justify-between p-3 rounded-xl border", item.action === 'RMA' ? "border-destructive/30 dark:border-destructive/20 bg-destructive/30 dark:bg-destructive/5" : "border-info/30 dark:border-info/20 bg-info/30 dark:bg-info/5")}>
                                                 <div className="flex items-center gap-3">
-                                                    <CubeIcon className={cn("h-4 w-4 shrink-0", item.action === 'RMA' ? "text-red-500" : "text-blue-500")} />
+                                                    <CubeIcon className={cn("h-4 w-4 shrink-0", item.action === 'RMA' ? "text-destructive" : "text-info")} />
                                                     <div>
                                                         <p className="text-[11px] font-medium text-foreground">{item.name}</p>
                                                         <p className="text-[10px] text-muted-foreground">{item.mfr} · {item.daysLeft} days left · {item.value}</p>
                                                     </div>
                                                 </div>
-                                                <span className={cn("text-[9px] px-2.5 py-1 rounded-full font-bold", item.action === 'RMA' ? "bg-red-100 dark:bg-red-500/10 text-red-700 dark:text-red-400" : "bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400")}>{item.action === 'RMA' ? 'Return (RMA)' : 'Convert to Purchase'}</span>
+                                                <span className={cn("text-[9px] px-2.5 py-1 rounded-full font-bold", item.action === 'RMA' ? "bg-destructive/10 text-destructive" : "bg-info/10 dark:bg-info/10 text-info")}>{item.action === 'RMA' ? 'Return (RMA)' : 'Convert to Purchase'}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -2008,17 +2008,17 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                 onClick={() => setIsRelocateModalOpen(true)}
                                 className="flex items-center gap-2 px-3 py-1.5 hover:bg-accent rounded-lg text-sm font-medium text-foreground transition-colors group"
                             >
-                                <MapPinIcon className="w-4 h-4 text-muted-foreground group-hover:text-blue-500 transition-colors" />
+                                <MapPinIcon className="w-4 h-4 text-muted-foreground group-hover:text-info transition-colors" />
                                 Move
                             </button>
                             <button
                                 onClick={() => setIsMaintenanceModalOpen(true)}
                                 className="flex items-center gap-2 px-3 py-1.5 hover:bg-accent rounded-lg text-sm font-medium text-foreground transition-colors group"
                             >
-                                <WrenchScrewdriverIcon className="w-4 h-4 text-muted-foreground group-hover:text-amber-500 transition-colors" />
+                                <WrenchScrewdriverIcon className="w-4 h-4 text-muted-foreground group-hover:text-warning transition-colors" />
                                 Maintenance
                             </button>
-                            <button className="flex items-center gap-2 px-3 py-1.5 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg text-sm font-medium text-red-600 dark:text-red-400 transition-colors group">
+                            <button className="flex items-center gap-2 px-3 py-1.5 hover:bg-destructive/10 dark:hover:bg-destructive/20 rounded-lg text-sm font-medium text-destructive transition-colors group">
                                 <TrashIcon className="w-4 h-4" />
                                 Delete
                             </button>
@@ -2032,7 +2032,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                 showToast && (
                     <div className="fixed bottom-6 right-6 z-50 animate-in slide-in-from-right-10 fade-in duration-300">
                         <div className="bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 rounded-lg shadow-2xl p-4 flex items-start gap-4 max-w-md border border-zinc-800 dark:border-zinc-200">
-                            <div className="bg-green-500/20 text-green-500 p-2 rounded-full shrink-0">
+                            <div className="bg-success/20 text-success p-2 rounded-full shrink-0">
                                 <CheckCircleIcon className="w-5 h-5" />
                             </div>
                             <div className="flex-1">

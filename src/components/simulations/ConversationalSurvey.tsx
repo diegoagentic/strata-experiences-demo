@@ -189,14 +189,14 @@ export default function ConversationalSurvey() {
                         {/* NOTIFICATION */}
                         {survDemoPhase === 'notification' && (
                             <button onClick={() => setSurvDemoPhase('processing')}
-                                className="w-full bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-400/30 rounded-2xl p-5 flex items-center gap-4 hover:border-indigo-400/60 transition-all group animate-in slide-in-from-top-4 duration-500">
+                                className="w-full bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-ai/30 rounded-2xl p-5 flex items-center gap-4 hover:border-ai/60 transition-all group animate-in slide-in-from-top-4 duration-500">
                                 <AIAgentAvatar name="SurveyDeployer" size="md" />
                                 <div className="flex-1 text-left">
-                                    <div className="text-[10px] font-black uppercase tracking-widest text-indigo-500 mb-1">Post-Occupancy Survey · Floor 4</div>
+                                    <div className="text-[10px] font-black uppercase tracking-widest text-ai mb-1">Post-Occupancy Survey · Floor 4</div>
                                     <div className="text-sm font-bold text-foreground">60-day post-install survey deployed — 85 of 92 responses collected</div>
                                     <div className="text-xs text-muted-foreground mt-1">Click to analyze satisfaction scores and generate insights report</div>
                                 </div>
-                                <ArrowRightIcon className="w-5 h-5 text-indigo-400 group-hover:translate-x-1 transition-transform" />
+                                <ArrowRightIcon className="w-5 h-5 text-ai group-hover:translate-x-1 transition-transform" />
                             </button>
                         )}
 
@@ -205,11 +205,11 @@ export default function ConversationalSurvey() {
                             <div className="bg-card border border-border/60 rounded-2xl p-6 space-y-5 animate-in fade-in duration-300">
                                 <div className="flex items-center gap-3">
                                     <div className="relative flex items-center justify-center w-10 h-10">
-                                        <div className="absolute inset-0 rounded-full border-2 border-indigo-400/30 border-t-indigo-500 animate-spin" />
-                                        <Sparkles className="w-4 h-4 text-indigo-500" />
+                                        <div className="absolute inset-0 rounded-full border-2 border-ai/30 border-t-indigo-500 animate-spin" />
+                                        <Sparkles className="w-4 h-4 text-ai" />
                                     </div>
                                     <div>
-                                        <div className="text-xs font-black uppercase tracking-widest text-indigo-500">Analyzing Responses</div>
+                                        <div className="text-xs font-black uppercase tracking-widest text-ai">Analyzing Responses</div>
                                         <div className="text-[10px] text-muted-foreground font-medium">AI sentiment analysis in progress...</div>
                                     </div>
                                 </div>
@@ -223,7 +223,7 @@ export default function ConversationalSurvey() {
                                             <span className="flex-1 font-semibold text-muted-foreground">{agent.detail}</span>
                                             {agent.done
                                                 ? <CheckCircleIcon className="w-4 h-4 text-success shrink-0" />
-                                                : agent.visible && <ArrowPathIcon className="w-4 h-4 text-indigo-400 animate-spin shrink-0" />
+                                                : agent.visible && <ArrowPathIcon className="w-4 h-4 text-ai animate-spin shrink-0" />
                                             }
                                         </div>
                                     ))}
