@@ -48,7 +48,9 @@ export default function EnteredCelebration({ autoplay = true }: { autoplay?: boo
     return (
         <div className="space-y-4">
             {/* Hero ENTERED card */}
-            <div className="rounded-2xl border-2 border-success/40 bg-gradient-to-br from-success/5 via-card to-brand-300/10 dark:from-success/10 dark:via-zinc-800 dark:to-brand-500/10 p-6 text-center">
+            {/* F32.B2 · LAW 1 · era dark:via-zinc-800 raw · reemplazado
+                por dark:via-card (token semántico). */}
+            <div className="rounded-2xl border-2 border-success/40 bg-gradient-to-br from-success/5 via-card to-brand-300/10 dark:from-success/10 dark:via-card dark:to-brand-500/10 p-6 text-center">
                 <div className="mx-auto size-14 rounded-2xl bg-success/15 text-success flex items-center justify-center mb-3">
                     <CheckCircle2 className="h-7 w-7" />
                 </div>

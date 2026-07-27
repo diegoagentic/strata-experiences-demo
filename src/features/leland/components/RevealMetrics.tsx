@@ -94,7 +94,8 @@ export default function RevealMetrics({ autoplay = true }: { autoplay?: boolean 
             {showHero && (
                 <div className="rounded-2xl border-2 border-brand-400 dark:border-brand-500 bg-gradient-to-br from-brand-300/10 to-card dark:from-brand-500/10 dark:to-zinc-800 p-6 animate-in fade-in slide-in-from-bottom-2 duration-400">
                     <div className="flex items-center gap-2 mb-3">
-                        <div className="size-7 rounded-lg bg-brand-300 dark:bg-brand-500 text-zinc-900 flex items-center justify-center">
+                        {/* F32.A3 · pattern LAW 3 · era bg-brand-300 text-zinc-900. */}
+                        <div className="size-7 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
                             <TrendingUp className="h-4 w-4" />
                         </div>
                         <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-foreground">Hero validation · projection</div>

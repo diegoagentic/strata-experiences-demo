@@ -46,7 +46,9 @@ const TONE_MAP: Record<StatusTone, string> = {
     info:    'bg-info/15 text-info',
     ai:      'bg-ai/15 text-ai',
     neutral: 'bg-muted text-muted-foreground',
-    primary: 'bg-primary/15 text-zinc-900 dark:text-primary',
+    // F32.B1 · LAW 1 · era text-zinc-900 raw · text-primary-foreground es
+    // equivalente semántico (#02060C) y funcionalmente idéntico.
+    primary: 'bg-primary/15 text-primary-foreground dark:text-primary',
 }
 
 const SIZE_MAP = {

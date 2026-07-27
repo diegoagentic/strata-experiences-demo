@@ -9,6 +9,7 @@
 
 import { useEffect, useState } from 'react';
 import { CheckCircle2, MessageSquare, FileBadge, DollarSign } from 'lucide-react';
+import { Callout } from 'strata-design-system';
 import StatusBadge from '../../../components/shared/StatusBadge';
 import StepCompletionCta from './StepCompletionCta';
 import { usePauseAware } from '../../../context/usePauseAware';
@@ -127,21 +128,19 @@ export default function CommentsRebateCanvas({ autoplay = true }: { autoplay?: b
                     </div>
                 </div>
 
-                {/* Commission rebate banner */}
+                {/* Commission rebate banner · F32.B3 · reemplazado por Callout
+                    primitive del DS · era 15 líneas custom que reimplementaban
+                    lo mismo. Diego 2026-07-23. */}
                 {showRebate && (
-                    <div className="rounded-2xl border-2 border-warning/40 bg-warning/5 dark:bg-warning/10 p-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                        <div className="flex items-center gap-2 mb-2">
-                            <div className="size-7 rounded-lg bg-warning/15 text-warning flex items-center justify-center">
-                                <DollarSign className="h-3.5 w-3.5" />
-                            </div>
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-warning">Contract rebate detected</span>
-                        </div>
-                        <div className="text-[13px] text-foreground font-semibold mt-1">
-                            Rebate line added automatically
-                        </div>
-                        <div className="text-[11px] text-muted-foreground mt-1 leading-snug">
-                            Required by the contract · this is a detail that's easy to miss when typed by hand.
-                        </div>
+                    <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
+                        <Callout
+                            tone="warning"
+                            variant="soft"
+                            eyebrow="Contract rebate detected"
+                            icon={<DollarSign className="h-4 w-4" />}
+                            title="Rebate line added automatically"
+                            body="Required by the contract · this is a detail that's easy to miss when typed by hand."
+                        />
                     </div>
                 )}
             </div>

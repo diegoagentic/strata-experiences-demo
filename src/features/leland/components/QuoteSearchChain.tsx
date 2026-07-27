@@ -200,7 +200,10 @@ export default function QuoteSearchChain({
                                             </div>
                                         </div>
 
-                                        {isTop && <ChevronRight className="h-4 w-4 text-brand-400 dark:text-brand-300 shrink-0" />}
+                                        {/* F32.A5 · LAW 2 · era text-brand-400 dark:text-brand-300
+                                            (lime bright sobre card brand-tinted = ilegible en light).
+                                            El border ya carga la brand identity. */}
+                                        {isTop && <ChevronRight className="h-4 w-4 text-foreground shrink-0" />}
                                     </div>
                                 </div>
                             );

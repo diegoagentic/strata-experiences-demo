@@ -222,9 +222,12 @@ function ActionButton({
     tone: 'neutral' | 'primary';
     onClick: () => void;
 }) {
+    // F32.A2 · pattern LAW 3 (bg-primary text-primary-foreground) · era
+    // bg-brand-300 text-zinc-900. Botón hero del único step interactivo
+    // (l1.4 Approve) · debe leer perfect. Diego 2026-07-23.
     const baseClasses = 'inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[12px] font-semibold transition-colors';
     const toneClasses = tone === 'primary'
-        ? 'bg-brand-300 dark:bg-brand-500 text-zinc-900 hover:bg-brand-400 dark:hover:bg-brand-600/80 shadow-[0_4px_14px_-4px_rgba(198,228,51,0.55)]'
+        ? 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_4px_14px_-4px_rgba(198,228,51,0.55)]'
         : 'border border-border bg-card hover:bg-muted text-foreground';
     return (
         <button type="button" onClick={onClick} className={`${baseClasses} ${toneClasses}`}>

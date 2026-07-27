@@ -122,7 +122,8 @@ export default function BriefingCanvas() {
                                             : 'hover:bg-muted/20'}
                                     `}
                                 >
-                                    <div className={`size-8 rounded-lg flex items-center justify-center text-[11px] font-bold shrink-0 ${email.isHero ? 'bg-brand-300 dark:bg-brand-500 text-zinc-900' : 'bg-muted text-muted-foreground'}`}>
+                                    {/* F32.A4 · pattern LAW 3 · era bg-brand-300 text-zinc-900. */}
+                                    <div className={`size-8 rounded-lg flex items-center justify-center text-[11px] font-bold shrink-0 ${email.isHero ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
                                         {email.sender.charAt(0)}
                                     </div>
                                     <div className="flex-1 min-w-0">
@@ -188,9 +189,11 @@ export default function BriefingCanvas() {
                 </div>
             </div>
 
-            {/* Closing tagline */}
+            {/* Closing tagline · F32.A6 · LAW 2 · era text-brand-400 sobre
+                bg-muted/10 casi-blanco = casi invisible en light. Ahora
+                foreground para máxima lectura. */}
             <div className="rounded-xl border border-dashed border-border bg-muted/10 px-4 py-3 text-center text-[12px] text-muted-foreground italic">
-                Click the <span className="font-bold text-brand-400 dark:text-brand-300 not-italic">highlighted email above</span> (or the button) to see Strata take over and run the pipeline end-to-end.
+                Click the <span className="font-bold text-foreground not-italic">highlighted email above</span> (or the button) to see Strata take over and run the pipeline end-to-end.
             </div>
 
             <StepCompletionCta

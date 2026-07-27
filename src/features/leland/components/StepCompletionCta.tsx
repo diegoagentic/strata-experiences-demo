@@ -41,9 +41,11 @@ export default function StepCompletionCta({
     const { nextStep } = useDemo();
     if (!visible) return null;
 
+    // F32.A1 · pattern LAW 3 (bg-primary text-primary-foreground) · era
+    // bg-brand-300 text-zinc-900 · Diego 2026-07-23.
     const baseClasses = 'inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-bold transition-all shadow-sm';
     const intentClasses = intent === 'primary'
-        ? 'bg-brand-300 dark:bg-brand-500 text-zinc-900 hover:bg-brand-400 dark:hover:bg-brand-600/80 hover:shadow-[0_8px_22px_-8px_rgba(198,228,51,0.7)]'
+        ? 'bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-[0_8px_22px_-8px_rgba(198,228,51,0.7)]'
         : 'bg-card border border-border text-foreground hover:bg-muted';
 
     return (
