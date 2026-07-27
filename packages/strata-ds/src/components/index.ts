@@ -81,6 +81,9 @@ export { HeroMetric,
 export { Callout,
     type CalloutProps, type CalloutTone, type CalloutVariant,
 } from './callout';
+export { PaperMockup,
+    type PaperMockupProps, type PaperMockupSize,
+} from './paper-mockup';
 export { ProgressBar,
     type ProgressBarProps, type ProgressTone, type ProgressHeight,
 } from './progress-bar';

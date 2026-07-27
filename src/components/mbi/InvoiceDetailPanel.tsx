@@ -24,7 +24,7 @@
 
 import { useState } from 'react'
 import { FileText, AlertTriangle, Building2, Calendar, DollarSign, Sparkles, Clock, CreditCard, FileDown } from 'lucide-react'
-import { Callout } from 'strata-design-system'
+import { Callout, PaperMockup } from 'strata-design-system'
 import type { Invoice } from '../../config/profiles/mbi-data'
 import MBIDetailSheet from './MBIDetailSheet'
 
@@ -205,7 +205,7 @@ function InvoicePDFFull({ invoice }: { invoice: Invoice }) {
     })
 
     return (
-        <div className="bg-white rounded-2xl border border-zinc-200 overflow-hidden text-zinc-900 font-mono text-[11px] leading-snug shadow-sm">
+        <PaperMockup size="full">
             {/* ── Header ── */}
             <div className="px-6 pt-5 pb-4 border-b-2 border-zinc-900 flex justify-between items-start">
                 <div>
@@ -341,7 +341,7 @@ function InvoicePDFFull({ invoice }: { invoice: Invoice }) {
                 <span>All orders are subject to Terms and Conditions. Auto-extracted by Strata Document AI · logged to CORE on post.</span>
                 <span>Page 1 of 1</span>
             </div>
-        </div>
+        </PaperMockup>
     )
 }
 
@@ -355,7 +355,7 @@ function InvoiceMockup({ invoice }: { invoice: Invoice }) {
         : '—'
 
     return (
-        <div className="h-full w-full text-[8px] text-zinc-900 dark:text-zinc-900 flex flex-col overflow-hidden leading-snug bg-white dark:bg-white">
+        <PaperMockup size="preview" className="h-full w-full flex flex-col border-0 rounded-none shadow-none">
             {/* ── Header ── */}
             <div className="flex justify-between items-start pb-1 border-b border-zinc-400">
                 <div>
@@ -438,6 +438,6 @@ function InvoiceMockup({ invoice }: { invoice: Invoice }) {
                 <span className="italic">Auto-extracted by Strata Document AI · logged to CORE</span>
                 <span>Page 1 of 1</span>
             </div>
-        </div>
+        </PaperMockup>
     )
 }

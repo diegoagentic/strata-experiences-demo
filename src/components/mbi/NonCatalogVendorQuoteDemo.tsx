@@ -17,6 +17,7 @@
 
 import { useState, useEffect } from 'react'
 import { Play, Loader2, CheckCircle2, FileText, Sparkles, Check, Pencil, X, Save } from 'lucide-react'
+import { PaperMockup } from 'strata-design-system'
 import { usePauseAware } from '../../context/usePauseAware'
 import MBIDetailSheet from './MBIDetailSheet'
 
@@ -226,7 +227,7 @@ function VendorQuoteDocument({ stepsDone, phase }: { stepsDone: number; phase: P
         `px-1 py-0.5 rounded transition-all duration-300 ${highlighted(zone) ? 'ring-1 ring-ai/60 bg-ai/10' : ''}`
 
     return (
-        <div className="bg-white text-zinc-900 rounded-2xl shadow-md border border-border overflow-hidden text-[9px] font-mono leading-snug">
+        <PaperMockup size="full" className="text-[9px] shadow-md">
 
             {/* ── Page header — Leland style ── */}
             <div className="px-3 pt-3 pb-2 border-b border-zinc-300">
@@ -361,7 +362,7 @@ function VendorQuoteDocument({ stepsDone, phase }: { stepsDone: number; phase: P
                 <span>All orders subject to Terms &amp; Conditions at bluedotdesign.com</span>
                 <span>Page 1 of 1</span>
             </div>
-        </div>
+        </PaperMockup>
     )
 }
 
