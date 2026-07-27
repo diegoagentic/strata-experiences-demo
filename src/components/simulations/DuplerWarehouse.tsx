@@ -693,7 +693,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                             <div className="h-3 rounded-full bg-muted overflow-hidden relative">
                                                 <div className={`h-full rounded-full ${wh.current >= 70 ? 'bg-warning' : 'bg-success/100'} transition-all duration-700 ease-out`} style={{ width: `${wh.current}%` }} />
                                                 {wh.forecast !== wh.current && (
-                                                    <div className="absolute top-0 h-full rounded-full bg-red-300/40 dark:bg-destructive/20 transition-all duration-700" style={{ width: `${wh.forecast}%` }} />
+                                                    <div className="absolute top-0 h-full rounded-full bg-destructive/20 transition-all duration-700" style={{ width: `${wh.forecast}%` }} />
                                                 )}
                                             </div>
                                             {wh.alert && <p className="text-[10px] text-destructive mt-1 flex items-center gap-1"><ExclamationTriangleIcon className="h-3 w-3" />{wh.alertText}</p>}

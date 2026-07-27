@@ -2433,8 +2433,8 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                             <div className={cn(
                                 'p-4 rounded-2xl border shadow-sm transition-all duration-500',
                                 normPhase22 === 'idle' ? 'border-border bg-card opacity-50' :
-                                ['hat-confirmed', 'norm-ais', 'comparing-ais', 'ais-flagged'].includes(normPhase22) ? 'border-success/40 dark:border-green-700 bg-success/10/30 dark:bg-success/100/5' :
-                                'border-info/40 dark:border-blue-700 bg-card'
+                                ['hat-confirmed', 'norm-ais', 'comparing-ais', 'ais-flagged'].includes(normPhase22) ? 'border-success/40 dark:border-success/40 bg-success/10' :
+                                'border-info/40 dark:border-info/40 bg-card'
                             )}>
                                 <div className="flex items-center gap-2 mb-3">
                                     <span className="w-7 h-7 rounded-full bg-info text-white text-[10px] font-bold flex items-center justify-center">HC</span>
@@ -2506,7 +2506,7 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                             <div className={cn(
                                 'p-4 rounded-2xl border shadow-sm transition-all duration-500',
                                 ['idle', 'norm-hat', 'comparing-hat', 'hat-ai-rule', 'hat-confirmed'].includes(normPhase22) ? 'border-border bg-card opacity-50' :
-                                normPhase22 === 'ais-flagged' ? 'border-destructive/40 dark:border-red-700 bg-destructive/10/30 dark:bg-destructive/5' :
+                                normPhase22 === 'ais-flagged' ? 'border-destructive/40 dark:border-destructive/40 bg-destructive/10' :
                                 'border-purple-300 dark:border-purple-700 bg-card'
                             )}>
                                 <div className="flex items-center gap-2 mb-3">
@@ -2640,7 +2640,7 @@ IEA*1*000002055~`}
                             {['grommet-found', 'grommet-fixed', 'dates-found', 'dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) && (
                                 <div className={cn(
                                     'p-4 rounded-2xl border shadow-sm animate-in fade-in slide-in-from-left-4 duration-300',
-                                    ['grommet-fixed', 'dates-found', 'dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? 'border-success/30 dark:border-success/40 bg-success/10/30 dark:bg-success/100/5' : 'border-destructive/30 dark:border-destructive/40 bg-destructive/10/30 dark:bg-destructive/5'
+                                    ['grommet-fixed', 'dates-found', 'dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? 'border-success/30 dark:border-success/40 bg-success/10' : 'border-destructive/30 dark:border-destructive/40 bg-destructive/10'
                                 )}>
                                     <div className="flex items-center gap-3 mb-2">
                                         <div className={cn('p-2 rounded-xl', ['grommet-fixed', 'dates-found', 'dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? 'bg-success/15 dark:bg-success/15' : 'bg-destructive/15 dark:bg-destructive/15')}>
@@ -2675,7 +2675,7 @@ IEA*1*000002055~`}
                             {['dates-found', 'dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) && (
                                 <div className={cn(
                                     'p-4 rounded-2xl border shadow-sm animate-in fade-in slide-in-from-left-4 duration-300',
-                                    ['dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? 'border-success/30 dark:border-success/40 bg-success/10/30 dark:bg-success/100/5' : 'border-warning/30 dark:border-warning/40 bg-warning/10'
+                                    ['dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? 'border-success/30 dark:border-success/40 bg-success/10' : 'border-warning/30 dark:border-warning/40 bg-warning/10'
                                 )}>
                                     <div className="flex items-center gap-3 mb-2">
                                         <div className={cn('p-2 rounded-xl', ['dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? 'bg-success/15 dark:bg-success/15' : 'bg-warning/15 dark:bg-warning/15')}>
@@ -2704,7 +2704,7 @@ IEA*1*000002055~`}
 
                             {/* Quantity Shortfall */}
                             {['qty-found', 'complete'].includes(deltaPhase23) && (
-                                <div className="p-4 rounded-2xl border-2 border-warning/40 dark:border-amber-700 bg-warning/10 shadow-sm animate-in fade-in slide-in-from-left-4 duration-300">
+                                <div className="p-4 rounded-2xl border-2 border-warning/40 dark:border-warning/40 bg-warning/10 shadow-sm animate-in fade-in slide-in-from-left-4 duration-300">
                                     <div className="flex items-center gap-3 mb-2">
                                         <div className="p-2 rounded-xl bg-warning/15 dark:bg-warning/15">
                                             <ExclamationTriangleIcon className="w-4 h-4 text-warning" />
@@ -3288,7 +3288,7 @@ IEA*1*000002055~`}
                                     { id: 'SHP-002', items: 15, status: 'Verified', color: 'emerald' },
                                     { id: 'SHP-003', items: 15, status: '3 Flags', color: 'amber' },
                                 ].map(s => (
-                                    <div key={s.id} className={`rounded-xl border p-3 ${s.color === 'emerald' ? 'border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/20' : 'border-warning/30 dark:border-warning/40 bg-warning/10 dark:bg-amber-950/20'}`}>
+                                    <div key={s.id} className={`rounded-xl border p-3 ${s.color === 'emerald' ? 'border-emerald-200 dark:border-success/40 bg-emerald-50/50 dark:bg-success/15' : 'border-warning/30 dark:border-warning/40 bg-warning/10 dark:bg-warning/15'}`}>
                                         <div className="flex items-center justify-between mb-1">
                                             <span className="text-[10px] font-bold text-foreground">{s.id}</span>
                                             <TruckIcon className="w-3.5 h-3.5 text-muted-foreground" />
@@ -3321,7 +3321,7 @@ IEA*1*000002055~`}
                             </div>
 
                             {/* Auto-verified summary */}
-                            <div className="px-4 py-2.5 bg-emerald-50/50 dark:bg-emerald-950/20 border-b border-border/30 flex items-center gap-2">
+                            <div className="px-4 py-2.5 bg-emerald-50/50 dark:bg-success/15 border-b border-border/30 flex items-center gap-2">
                                 <CheckCircleIcon className="w-4 h-4 text-success" />
                                 <span className="text-[11px] text-emerald-700 dark:text-emerald-300 font-medium">47 lines auto-verified — quantities, SKUs, and conditions match</span>
                             </div>
@@ -3659,7 +3659,7 @@ IEA*1*000002055~`}
                                         <div className="space-y-2">
                                             {REUSE_ITEMS.map((item, i) => (
                                                 <div key={i} className={cn("flex items-center justify-between p-2.5 rounded-lg border",
-                                                    item.category === 'reusable' ? "border-success/30 dark:border-success/30 bg-success/10/30 dark:bg-success/100/5" :
+                                                    item.category === 'reusable' ? "border-success/30 dark:border-success/30 bg-success/10" :
                                                     item.category === 'recyclable' ? "border-info/20 bg-info/10/30 dark:bg-info/100/5" :
                                                     "border-border bg-muted/20"
                                                 )}>
@@ -4077,7 +4077,7 @@ IEA*1*000002055~`}
                             </div>
 
                             {/* Backorder Callout */}
-                            <div className="mx-4 my-3 p-3 rounded-lg bg-warning/10 dark:bg-amber-950/20 border border-warning/30 dark:border-warning/40">
+                            <div className="mx-4 my-3 p-3 rounded-lg bg-warning/10 dark:bg-warning/15 border border-warning/30 dark:border-warning/40">
                                 <div className="flex items-center gap-2">
                                     <ExclamationTriangleIcon className="w-4 h-4 text-warning" />
                                     <span className="text-[11px] text-warning dark:text-warning font-medium">18/20 Task Chairs received. $2,556 pending backorder — will generate separate invoice on delivery.</span>
@@ -4175,7 +4175,7 @@ IEA*1*000002055~`}
                             </div>
 
                             {/* Zero re-entry note */}
-                            <div className="mx-4 my-3 p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800">
+                            <div className="mx-4 my-3 p-3 rounded-lg bg-emerald-50 dark:bg-success/15 border border-emerald-200 dark:border-success/40">
                                 <div className="flex items-center gap-2">
                                     <SparklesIcon className="w-4 h-4 text-success" />
                                     <span className="text-[11px] text-emerald-700 dark:text-emerald-300 font-medium">Generated from actual registered activity — zero re-entry required</span>

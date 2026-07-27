@@ -408,7 +408,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                             {group.items.map(d => {
                                                                 const fix = allFixes[d.globalIdx];
                                                                 return (
-                                                                    <div key={d.globalIdx} className={`transition-all ${fix ? 'bg-success/10/30 dark:bg-success/100/5' : ''}`}>
+                                                                    <div key={d.globalIdx} className={`transition-all ${fix ? 'bg-success/10' : ''}`}>
                                                                         <div className="px-4 py-3 flex items-center justify-between gap-3">
                                                                             <div className="flex items-center gap-3 min-w-0 flex-1">
                                                                                 {statusIcon(d.field.status)}

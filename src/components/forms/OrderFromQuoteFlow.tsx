@@ -181,7 +181,7 @@ export default function OrderFromQuoteFlow({ onOrderCreate, onEditDetails, onCan
                                                     {quote.formattedValue}
                                                 </td>
                                                 <td className="px-6 py-4 text-center">
-                                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success/15 text-success dark:bg-success/20 dark:text-success border border-success/30 dark:border-green-900">
+                                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success/15 text-success dark:bg-success/20 dark:text-success border border-success/30 dark:border-success/40">
                                                         {quote.status}
                                                     </span>
                                                 </td>

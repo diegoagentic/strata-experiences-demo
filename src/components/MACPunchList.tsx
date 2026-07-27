@@ -1389,7 +1389,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                     <span className={`text-[10px] font-medium text-center ${node.done ? 'text-success' : node.active ? 'text-info' : 'text-muted-foreground'}`}>{node.label}</span>
                                                 </div>
                                                 {i < arr.length - 1 && (
-                                                    <div className={`h-0.5 flex-1 -mt-5 ${node.done ? 'bg-green-300 dark:bg-success/50' : 'bg-zinc-200 dark:bg-zinc-700'}`} />
+                                                    <div className={`h-0.5 flex-1 -mt-5 ${node.done ? 'bg-success/50' : 'bg-zinc-200 dark:bg-zinc-700'}`} />
                                                 )}
                                             </React.Fragment>
                                         ))}

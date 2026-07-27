@@ -2185,8 +2185,8 @@ export default function Transactions({ onLogout, onNavigateToWorkspace, onNaviga
                                                     <div className="p-4 space-y-2">
                                                         {CONSIGNMENT_ITEMS.map((item, i) => (
                                                             <div key={i} className={cn("flex items-center justify-between p-3 rounded-xl border",
-                                                                item.decision === 'return' ? "border-destructive/30 bg-destructive/10/30 dark:bg-destructive/5" :
-                                                                "border-success/30 dark:border-success/30 bg-success/10/30 dark:bg-success/100/5"
+                                                                item.decision === 'return' ? "border-destructive/30 bg-destructive/10" :
+                                                                "border-success/30 dark:border-success/30 bg-success/10"
                                                             )}>
                                                                 <div className="flex items-center gap-3 flex-1 min-w-0">
                                                                     <span className={cn("text-[9px] px-2 py-0.5 rounded-full font-bold shrink-0",
@@ -2389,7 +2389,7 @@ export default function Transactions({ onLogout, onNavigateToWorkspace, onNaviga
                                                                                 <div className="text-xs text-muted-foreground">{order.id}</div>
                                                                                 <TransactionVerifyPill orderId={order.id} compact />
                                                                                 {order.id === '#ORD-7829' && (
-                                                                                    <span className="px-1.5 py-0.5 rounded-full bg-info/15 text-info dark:bg-blue-900 dark:text-info text-[10px] font-bold uppercase tracking-wider">
+                                                                                    <span className="px-1.5 py-0.5 rounded-full bg-info/15 text-info dark:bg-info/20 dark:text-info text-[10px] font-bold uppercase tracking-wider">
                                                                                         New
                                                                                     </span>
                                                                                 )}
@@ -3034,7 +3034,7 @@ export default function Transactions({ onLogout, onNavigateToWorkspace, onNaviga
                                                     {idx < project.milestones.length - 1 && (
                                                         <div className={cn(
                                                             "w-0.5 h-6 mt-1",
-                                                            ms.status === 'completed' ? "bg-green-300 dark:bg-success" : "bg-border"
+                                                            ms.status === 'completed' ? "bg-success" : "bg-border"
                                                         )} />
                                                     )}
                                                 </div>

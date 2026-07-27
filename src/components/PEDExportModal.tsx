@@ -782,7 +782,7 @@ export default function PEDExportModal({ isOpen, onClose, data: initialData, pur
 
                                         {/* === CALL BEFORE DELIVERY === */}
                                         {data.specialShippingInstructions && (
-                                            <div className="bg-warning/10 dark:bg-warning/15 border border-warning/40 dark:border-amber-700 rounded-lg px-4 py-2 flex items-center gap-2">
+                                            <div className="bg-warning/10 dark:bg-warning/15 border border-warning/40 dark:border-warning/40 rounded-lg px-4 py-2 flex items-center gap-2">
                                                 <ExclamationTriangleIcon className="w-4 h-4 text-warning shrink-0" />
                                                 <p className="text-xs font-semibold text-warning">{data.specialShippingInstructions}</p>
                                             </div>

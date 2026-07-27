@@ -996,7 +996,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
 
                             {/* Module 1: Expert Estimation Summary */}
                             {(!searchFilter || 'expert estimation summary delivery installation combined'.includes(searchFilter.toLowerCase())) && (
-                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['estimation'] ? 'bg-success/10/30 dark:bg-success/100/5 border-success/30 dark:border-success/30' : 'bg-card border-border'}`}>
+                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['estimation'] ? 'bg-success/10 border-success/30 dark:border-success/30' : 'bg-card border-border'}`}>
                                     <div className="flex items-center justify-between mb-3">
                                         <div className="flex items-center gap-2">
                                             <button
@@ -1072,7 +1072,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
 
                             {/* Module 2: Project Scope */}
                             {(!searchFilter || 'project scope healthcare hospital items rate card site conditions'.includes(searchFilter.toLowerCase())) && (
-                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['scope'] ? 'bg-success/10/30 dark:bg-success/100/5 border-success/30 dark:border-success/30' : 'bg-card border-border'}`}>
+                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['scope'] ? 'bg-success/10 border-success/30 dark:border-success/30' : 'bg-card border-border'}`}>
                                     <div className="flex items-center justify-between mb-3">
                                         <div className="flex items-center gap-2">
                                             <button
@@ -1130,7 +1130,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
 
                             {/* Module 3: Escalated Item */}
                             {(!searchFilter || 'escalated item ofs serpentine custom assembly lounge'.includes(searchFilter.toLowerCase())) && (
-                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['escalated'] ? 'bg-success/10/30 dark:bg-success/100/5 border-success/30 dark:border-success/30' : 'bg-warning/10 border-warning/20'}`}>
+                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['escalated'] ? 'bg-success/10 border-success/30 dark:border-success/30' : 'bg-warning/10 border-warning/20'}`}>
                                     <div className="flex items-center justify-between mb-3">
                                         <div className="flex items-center gap-2">
                                             <button
@@ -1191,7 +1191,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
 
                             {/* Module 4: Assembly Verification */}
                             {(!searchFilter || 'assembly verification modular brackets hardware'.includes(searchFilter.toLowerCase())) && (
-                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['verification'] ? 'bg-success/10/30 dark:bg-success/100/5 border-success/30 dark:border-success/30' : 'bg-card border-border'}`}>
+                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['verification'] ? 'bg-success/10 border-success/30 dark:border-success/30' : 'bg-card border-border'}`}>
                                     <div className="flex items-center justify-between mb-3">
                                         <div className="flex items-center gap-2">
                                             <button
@@ -1249,7 +1249,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
 
                             {/* Module 5: Applied Rate */}
                             {(!searchFilter || 'applied rate modular assembly hours cost'.includes(searchFilter.toLowerCase())) && (
-                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['rate'] ? 'bg-success/10/30 dark:bg-success/100/5 border-success/30 dark:border-success/30' : 'bg-card border-border'}`}>
+                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['rate'] ? 'bg-success/10 border-success/30 dark:border-success/30' : 'bg-card border-border'}`}>
                                     <div className="flex items-center justify-between mb-3">
                                         <div className="flex items-center gap-2">
                                             <button

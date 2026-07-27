@@ -2497,7 +2497,7 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                                 </div>
 
                                 {/* Daily Log Entry */}
-                                <div className="mt-3 p-3 rounded-lg bg-info/10 dark:bg-blue-950/20 border border-info/30 dark:border-info/40">
+                                <div className="mt-3 p-3 rounded-lg bg-info/10 dark:bg-info/15 border border-info/30 dark:border-info/40">
                                     <div className="flex items-center gap-2 mb-1">
                                         <ClipboardDocumentListIcon className="w-3.5 h-3.5 text-info" />
                                         <span className="text-[10px] font-bold text-info dark:text-info">Daily Log DL-004</span>
@@ -2571,9 +2571,9 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                                 { label: 'Backorder Adjustment', amount: '-$200', pct: '-0.5%', type: 'subtract' as const, note: 'Partial delivery credit for 2 Task Chairs' },
                             ].map((item, i) => (
                                 <div key={i} className={`flex items-center gap-4 p-3 rounded-xl border ${
-                                    item.type === 'base' ? 'border-info/30 dark:border-info/40 bg-info/10 dark:bg-blue-950/20' :
-                                    item.type === 'add' ? 'border-warning/30 dark:border-warning/40 bg-warning/10 dark:bg-amber-950/20' :
-                                    'border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/20'
+                                    item.type === 'base' ? 'border-info/30 dark:border-info/40 bg-info/10 dark:bg-info/15' :
+                                    item.type === 'add' ? 'border-warning/30 dark:border-warning/40 bg-warning/10 dark:bg-warning/15' :
+                                    'border-emerald-200 dark:border-success/40 bg-emerald-50/50 dark:bg-success/15'
                                 }`}>
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2">
@@ -2627,7 +2627,7 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                     </div>
 
                     {/* Zero surprises callout */}
-                    <div className="p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800">
+                    <div className="p-3 rounded-lg bg-emerald-50 dark:bg-success/15 border border-emerald-200 dark:border-success/40">
                         <div className="flex items-center gap-2">
                             <SparklesIcon className="w-4 h-4 text-success" />
                             <span className="text-[11px] text-emerald-700 dark:text-emerald-300 font-medium">Zero surprises — every dollar documented with approval trail</span>

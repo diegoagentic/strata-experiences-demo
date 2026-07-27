@@ -436,7 +436,7 @@ export default function WrgHandoff({ onNavigate }: { onNavigate?: (page: string)
 
                                                     {/* Resolved sub-row */}
                                                     {flagInfo && resolved && (
-                                                        <tr className={`border-b border-border/50 ${resolved === 'requested' ? 'bg-sky-50/30 dark:bg-sky-500/5' : 'bg-success/10/30 dark:bg-success/100/5'}`}>
+                                                        <tr className={`border-b border-border/50 ${resolved === 'requested' ? 'bg-sky-50/30 dark:bg-sky-500/5' : 'bg-success/10'}`}>
                                                             <td colSpan={7} className="px-3 py-2">
                                                                 <div className="flex items-center gap-2">
                                                                     {resolved === 'requested' ? (
