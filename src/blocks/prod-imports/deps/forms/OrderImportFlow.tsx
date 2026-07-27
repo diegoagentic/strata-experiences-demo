@@ -179,7 +179,7 @@ export default function OrderImportFlow({ onImportComplete, onCancel }: OrderImp
                         <div className="bg-card rounded-xl border border-border shadow-sm overflow-hidden mb-6">
                             <div className="p-4 border-b border-border flex items-center justify-between bg-muted/30">
                                 <div className="flex items-center gap-3">
-                                    <div className="p-2 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-lg">
+                                    <div className="p-2 bg-success/15 text-success rounded-lg">
                                         <DocumentTextIcon className="w-5 h-5" />
                                     </div>
                                     <div>
@@ -187,7 +187,7 @@ export default function OrderImportFlow({ onImportComplete, onCancel }: OrderImp
                                         <p className="text-xs text-muted-foreground">Extracted {MOCK_EXTRACTED_DATA.items.length} items from "Order_Request_Q1.pdf"</p>
                                     </div>
                                 </div>
-                                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium">
+                                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-success/15 text-success text-xs font-medium">
                                     <CheckCircleIcon className="w-4 h-4" />
                                     Confidence: High
                                 </span>
@@ -227,7 +227,7 @@ export default function OrderImportFlow({ onImportComplete, onCancel }: OrderImp
                                             <div className="w-20 text-center text-muted-foreground">{item.qty}</div>
                                             <div className="w-24 text-right text-muted-foreground">${item.unitPrice.toFixed(2)}</div>
                                             <div className="w-24 text-right font-medium text-foreground">${item.total.toFixed(2)}</div>
-                                            <div className="w-8 flex justify-center text-green-500">
+                                            <div className="w-8 flex justify-center text-success">
                                                 <CheckCircleIcon className="w-5 h-5" />
                                             </div>
                                         </div>

@@ -191,7 +191,7 @@ export default function CoreConnectionModal({
                         leaveFrom="opacity-100 scale-100"
                         leaveTo="opacity-0 scale-95"
                     >
-                        <DialogPanel className="w-full max-w-4xl bg-card dark:bg-zinc-900 rounded-2xl border border-border shadow-2xl overflow-hidden">
+                        <DialogPanel className="w-full max-w-4xl bg-card rounded-2xl border border-border shadow-2xl overflow-hidden">
 
                             {/* Global modal header — same across phases */}
                             <div className="flex items-center gap-3 px-6 py-4 border-b border-border bg-muted/30">
@@ -319,7 +319,7 @@ function SourcePicker({
                         'relative rounded-2xl p-6 border-2 transition-all duration-300',
                         coreActive
                             ? 'border-primary bg-primary/5 dark:bg-primary/10 ring-4 ring-primary/30 shadow-lg shadow-primary/20'
-                            : 'border-border bg-card dark:bg-zinc-800 hover:border-primary/40',
+                            : 'border-border bg-card hover:border-primary/40',
                         cursorClicked && coreActive && 'scale-[0.98]'
                     )}
                 >
@@ -349,7 +349,7 @@ function SourcePicker({
                 </div>
 
                 {/* Manual upload */}
-                <div className="rounded-2xl p-6 border-2 border-border bg-card dark:bg-zinc-800 opacity-60">
+                <div className="rounded-2xl p-6 border-2 border-border bg-card opacity-60">
                     <div className="flex items-center gap-3 mb-4">
                         <div className="w-10 h-10 rounded-xl bg-muted/60 flex items-center justify-center">
                             <UploadCloud className="w-5 h-5 text-muted-foreground" />
@@ -385,8 +385,8 @@ function CoreLogin({
             <div className="w-full max-w-sm rounded-2xl bg-card dark:bg-zinc-950 border border-border dark:border-zinc-800 shadow-2xl overflow-hidden">
                 <div className="px-6 pt-6 pb-4 text-center border-b border-zinc-800">
                     <div className="inline-flex items-center gap-2 mb-2">
-                        <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                            <Lock className="w-4 h-4 text-blue-400" />
+                        <div className="w-8 h-8 rounded-lg bg-info/20 flex items-center justify-center">
+                            <Lock className="w-4 h-4 text-info" />
                         </div>
                         <span className="text-base font-black text-foreground dark:text-white tracking-tight">
                             CORE
@@ -424,7 +424,7 @@ function CoreLogin({
                             type="button"
                             disabled
                             className={clsx(
-                                'w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-blue-600 text-foreground dark:text-white shadow-lg transition-all duration-200 mt-2',
+                                'w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-info text-foreground dark:text-white shadow-lg transition-all duration-200 mt-2',
                                 authActive && cursorClicked && 'scale-95 ring-4 ring-blue-400/50'
                             )}
                         >
@@ -453,11 +453,11 @@ function CoreLogin({
 function CoreConnecting() {
     return (
         <div className="p-10 bg-muted/10 dark:bg-zinc-900 min-h-[420px] flex flex-col items-center justify-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-blue-500/15 flex items-center justify-center ring-4 ring-blue-500/20">
-                <Shield className="w-7 h-7 text-blue-400 animate-pulse" />
+            <div className="w-14 h-14 rounded-2xl bg-info/15 flex items-center justify-center ring-4 ring-blue-500/20">
+                <Shield className="w-7 h-7 text-info animate-pulse" />
             </div>
             <div className="flex items-center gap-2">
-                <span className="w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full animate-spin" />
+                <span className="w-4 h-4 border-2 border-info border-t-transparent rounded-full animate-spin" />
                 <p className="text-sm font-semibold text-foreground dark:text-white">
                     Establishing secure session with CORE…
                 </p>
@@ -484,8 +484,8 @@ function CoreDashboard({
             {/* Fake CORE navbar */}
             <div className="flex items-center gap-3 px-5 py-3 bg-card dark:bg-zinc-950 border-b border-border dark:border-zinc-800">
                 <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-md bg-blue-500/20 flex items-center justify-center">
-                        <Lock className="w-3 h-3 text-blue-400" />
+                    <div className="w-6 h-6 rounded-md bg-info/20 flex items-center justify-center">
+                        <Lock className="w-3 h-3 text-info" />
                     </div>
                     <span className="text-sm font-black text-foreground dark:text-white tracking-tight">
                         CORE
@@ -505,7 +505,7 @@ function CoreDashboard({
                     </div>
                     <div className="relative">
                         <Bell className="w-4 h-4 text-muted-foreground" />
-                        <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-red-500" />
+                        <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-destructive" />
                     </div>
                     <div className="flex items-center gap-1.5 pl-2 border-l border-zinc-800">
                         <div className="w-6 h-6 rounded-full bg-zinc-700 flex items-center justify-center text-[9px] font-bold text-foreground dark:text-white">
@@ -545,16 +545,16 @@ function CoreDashboard({
                                 key={project.id}
                                 className={clsx(
                                     'relative grid grid-cols-[1.8fr_1fr_0.5fr_0.8fr_0.7fr_0.8fr] gap-2 px-4 py-2.5 border-b border-zinc-800 last:border-b-0 text-[11px] transition-all duration-300',
-                                    project.highlighted && 'bg-blue-500/5',
+                                    project.highlighted && 'bg-info/100/5',
                                     activeRow &&
-                                        'bg-blue-500/15 ring-1 ring-inset ring-blue-500/40',
+                                        'bg-info/15 ring-1 ring-inset ring-blue-500/40',
                                     cursorClicked && activeRow && 'scale-[0.995]'
                                 )}
                             >
                                 <div className="flex items-center gap-2 min-w-0">
                                     {project.customer.includes('Health') ||
                                     project.customer.includes('Resources') ? (
-                                        <Stethoscope className="w-3 h-3 text-blue-400 shrink-0" />
+                                        <Stethoscope className="w-3 h-3 text-info shrink-0" />
                                     ) : (
                                         <Building2 className="w-3 h-3 text-muted-foreground shrink-0" />
                                     )}
@@ -562,7 +562,7 @@ function CoreDashboard({
                                         {project.customer}
                                     </span>
                                     {project.status === 'New' && (
-                                        <span className="shrink-0 text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-green-500/20 text-green-400">
+                                        <span className="shrink-0 text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-success/20 text-success">
                                             New
                                         </span>
                                     )}
@@ -578,7 +578,7 @@ function CoreDashboard({
                                     className={clsx(
                                         'font-semibold',
                                         project.priority === 'High'
-                                            ? 'text-red-400'
+                                            ? 'text-destructive'
                                             : 'text-muted-foreground'
                                     )}
                                 >
@@ -623,7 +623,7 @@ function CoreProjectDetail({
                 <span>Estimating queue</span>
                 <ChevronRight className="w-3 h-3" />
                 <span className="text-foreground dark:text-white font-semibold">JPS Health Network</span>
-                <span className="ml-auto text-[9px] px-1.5 py-0.5 rounded bg-green-500/20 text-green-400 font-bold uppercase tracking-wider">
+                <span className="ml-auto text-[9px] px-1.5 py-0.5 rounded bg-success/20 text-success font-bold uppercase tracking-wider">
                     New · assigned to you
                 </span>
             </div>
@@ -633,7 +633,7 @@ function CoreProjectDetail({
                 <div className="space-y-3">
                     <div className="rounded-xl bg-card dark:bg-zinc-950 border border-border dark:border-zinc-800 p-4">
                         <div className="flex items-center gap-2 mb-2">
-                            <Stethoscope className="w-4 h-4 text-blue-400" />
+                            <Stethoscope className="w-4 h-4 text-info" />
                             <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
                                 Customer
                             </span>
@@ -651,7 +651,7 @@ function CoreProjectDetail({
 
                     <div className="rounded-xl bg-card dark:bg-zinc-950 border border-border dark:border-zinc-800 p-4">
                         <div className="flex items-center gap-2 mb-3">
-                            <FileText className="w-4 h-4 text-blue-400" />
+                            <FileText className="w-4 h-4 text-info" />
                             <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
                                 Attached files
                             </span>
@@ -684,7 +684,7 @@ function CoreProjectDetail({
                 <div className="flex flex-col gap-3">
                     <div className="rounded-xl bg-card dark:bg-zinc-950 border border-border dark:border-zinc-800 p-4 flex-1">
                         <div className="flex items-center gap-2 mb-3">
-                            <Activity className="w-4 h-4 text-blue-400" />
+                            <Activity className="w-4 h-4 text-info" />
                             <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
                                 Site constraints · set by sales
                             </span>
@@ -699,7 +699,7 @@ function CoreProjectDetail({
                                     <span
                                         className={clsx(
                                             'font-semibold truncate flex items-center gap-1',
-                                            row.flagged ? 'text-amber-400' : 'text-foreground dark:text-white'
+                                            row.flagged ? 'text-warning' : 'text-foreground dark:text-white'
                                         )}
                                     >
                                         {row.flagged && <Sparkles className="w-2.5 h-2.5" />}
@@ -751,12 +751,12 @@ function ExtractingPhase({
                 className={clsx(
                     'w-16 h-16 rounded-2xl flex items-center justify-center ring-4 transition-all duration-300',
                     isDone
-                        ? 'bg-green-500/15 ring-green-500/30'
+                        ? 'bg-success/15 ring-green-500/30'
                         : 'bg-primary/15 ring-primary/30'
                 )}
             >
                 {isDone ? (
-                    <CheckCircle2 className="w-8 h-8 text-green-600 dark:text-green-400" />
+                    <CheckCircle2 className="w-8 h-8 text-success" />
                 ) : (
                     <Database className="w-8 h-8 text-foreground dark:text-primary animate-pulse" />
                 )}
@@ -788,7 +788,7 @@ function ExtractingPhase({
 
             <div className="flex items-center gap-2 mt-5 text-[10px] text-muted-foreground">
                 {isDone ? (
-                    <Check className="w-3 h-3 text-green-500" />
+                    <Check className="w-3 h-3 text-success" />
                 ) : (
                     <span className="w-3 h-3 border-2 border-primary border-t-transparent rounded-full animate-spin" />
                 )}

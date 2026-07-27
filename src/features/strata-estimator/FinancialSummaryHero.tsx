@@ -73,7 +73,7 @@ export default function FinancialSummaryHero({
     })()
 
     return (
-        <div className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm p-6 overflow-hidden">
+        <div className="bg-card rounded-2xl border border-border shadow-sm p-6 overflow-hidden">
             <div className="flex items-center gap-6">
 
                 {/* Left: Final Quote Price */}

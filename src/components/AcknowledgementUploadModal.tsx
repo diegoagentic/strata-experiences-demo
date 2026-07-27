@@ -21,10 +21,10 @@ const ackOptions = [
         description: 'Upload PDF or Excel acknowledgement files. We\'ll parse the data automatically.',
         icon: ArrowUpOnSquareIcon,
         estimatedTime: '1-2 mins',
-        color: 'text-blue-600', // Kept for future use or internal logic
-        bgColor: 'bg-blue-100',
-        darkColor: 'dark:text-blue-400',
-        darkBgColor: 'dark:bg-blue-900/30'
+        color: 'text-info', // Kept for future use or internal logic
+        bgColor: 'bg-info/15',
+        darkColor: 'dark:text-info',
+        darkBgColor: 'dark:bg-info/20'
     },
     {
         id: 'order',

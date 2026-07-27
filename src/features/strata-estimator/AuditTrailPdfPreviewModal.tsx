@@ -46,12 +46,12 @@ const CATEGORY_META: Record<
     edit: {
         icon: User,
         label: 'User Edit',
-        tone: 'text-blue-600 dark:text-blue-400',
+        tone: 'text-info',
     },
     approval: {
         icon: UserCheck,
         label: 'Approval',
-        tone: 'text-green-600 dark:text-green-400',
+        tone: 'text-success',
     },
     release: {
         icon: ShieldCheck,
@@ -114,7 +114,7 @@ export default function AuditTrailPdfPreviewModal({
             aria-labelledby="audit-pdf-title"
         >
             <div
-                className="w-full max-w-2xl max-h-[85vh] bg-card dark:bg-zinc-900 rounded-2xl shadow-2xl border border-border overflow-hidden animate-in zoom-in-95 duration-300 flex flex-col"
+                className="w-full max-w-2xl max-h-[85vh] bg-card rounded-2xl shadow-2xl border border-border overflow-hidden animate-in zoom-in-95 duration-300 flex flex-col"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Paper header */}
@@ -173,7 +173,7 @@ export default function AuditTrailPdfPreviewModal({
                                         <span
                                             key={cat}
                                             className={clsx(
-                                                'flex items-center gap-1 px-2 py-1 rounded-full bg-card dark:bg-zinc-800 border border-border text-[10px] font-bold uppercase tracking-wider',
+                                                'flex items-center gap-1 px-2 py-1 rounded-full bg-card border border-border text-[10px] font-bold uppercase tracking-wider',
                                                 meta.tone
                                             )}
                                         >
@@ -208,7 +208,7 @@ export default function AuditTrailPdfPreviewModal({
                                             {/* Dot on the timeline */}
                                             <span
                                                 className={clsx(
-                                                    'absolute -left-[1.35rem] top-1 w-3 h-3 rounded-full bg-card dark:bg-zinc-900 border-2 flex items-center justify-center',
+                                                    'absolute -left-[1.35rem] top-1 w-3 h-3 rounded-full bg-card border-2 flex items-center justify-center',
                                                     meta.tone,
                                                     event.category === 'release'
                                                         ? 'border-primary'

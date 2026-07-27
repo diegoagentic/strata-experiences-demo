@@ -40,9 +40,9 @@ const COMPARISON_SUMMARY = [
 // ─── Color Styles (DS pattern) ──────────────────────────────────────────────
 
 const colorStyles: Record<string, string> = {
-    green: 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
-    blue: 'bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300 ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
-    amber: 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
+    green: 'bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
+    blue: 'bg-info/10 text-info dark:bg-info/15 dark:text-info ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
+    amber: 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
     purple: 'bg-purple-50 text-purple-700 dark:bg-ai/15 dark:text-purple-300 ring-1 ring-inset ring-purple-600/20 dark:ring-purple-400/30',
 };
 
@@ -62,7 +62,7 @@ function renderAgentPipeline(agents: AgentVis[], progress: number, label: string
                 {agents.map(agent => (
                     <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'}`}>
                         {agent.done ?
-                            <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> :
+                            <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> :
                             <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />
                         }
                         <span className={agent.done ? 'text-foreground' : 'text-indigo-600 dark:text-indigo-400'}>{agent.name}</span>
@@ -153,7 +153,7 @@ export default function WrgIntake({ onNavigate }: { onNavigate?: (page: string) 
                 <div className="divide-y divide-border/50">
                     {COMPARISON_SUMMARY.map((item, i) => (
                         <div key={i} className="flex items-center gap-3 p-2.5 bg-card">
-                            <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                            <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
                             <span className="text-[10px] font-bold text-foreground">{item.product}</span>
                             <span className={`text-[8px] px-1 py-0.5 rounded ${colorStyles.green} font-bold`}>{item.type}</span>
                             <span className="text-[9px] text-muted-foreground ml-auto">{item.resolution}</span>
@@ -213,28 +213,28 @@ export default function WrgIntake({ onNavigate }: { onNavigate?: (page: string) 
             <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Strata Expert — Assigned</div>
             <div className="grid grid-cols-2 gap-3">
                 {/* Regional Sales Manager Reyes — ASSIGNED */}
-                <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
+                <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30">
                     <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-full bg-green-200 dark:bg-green-500/20 flex items-center justify-center text-sm font-black text-green-700 dark:text-green-400 ring-2 ring-green-400">DP</div>
+                        <div className="w-10 h-10 rounded-full bg-success/20 dark:bg-success/20 flex items-center justify-center text-sm font-black text-success ring-2 ring-green-400">DP</div>
                         <div>
                             <div className="text-[11px] font-bold text-foreground">Regional Sales Manager Reyes</div>
                             <div className="text-[10px] text-muted-foreground">Strata Expert — Dallas, 32 mi</div>
                         </div>
-                        <CheckCircleIcon className="h-5 w-5 text-green-500 ml-auto" />
+                        <CheckCircleIcon className="h-5 w-5 text-success ml-auto" />
                     </div>
                     <div className="space-y-2">
                         <div>
                             <div className="flex items-center justify-between mb-1">
                                 <span className="text-[9px] text-muted-foreground">Workload: 3 active</span>
-                                <span className="text-[9px] font-bold text-green-700 dark:text-green-400">60%</span>
+                                <span className="text-[9px] font-bold text-success">60%</span>
                             </div>
-                            <div className="h-1.5 rounded-full bg-green-100 dark:bg-green-500/10 overflow-hidden">
-                                <div className="h-full rounded-full bg-green-500 transition-all duration-500" style={{ width: '60%' }} />
+                            <div className="h-1.5 rounded-full bg-success/15 dark:bg-success/10 overflow-hidden">
+                                <div className="h-full rounded-full bg-success/100 transition-all duration-500" style={{ width: '60%' }} />
                             </div>
                         </div>
                         <div className="flex items-center justify-between">
                             <span className="text-[9px] text-muted-foreground">Healthcare Accuracy</span>
-                            <span className="text-[10px] font-bold text-green-700 dark:text-green-400">96.3%</span>
+                            <span className="text-[10px] font-bold text-success">96.3%</span>
                         </div>
                     </div>
                     <div className="mt-2 text-center">
@@ -255,10 +255,10 @@ export default function WrgIntake({ onNavigate }: { onNavigate?: (page: string) 
                         <div>
                             <div className="flex items-center justify-between mb-1">
                                 <span className="text-[9px] text-muted-foreground">Workload: 5 active</span>
-                                <span className="text-[9px] font-bold text-amber-700 dark:text-amber-400">100%</span>
+                                <span className="text-[9px] font-bold text-warning">100%</span>
                             </div>
-                            <div className="h-1.5 rounded-full bg-amber-100 dark:bg-amber-500/10 overflow-hidden">
-                                <div className="h-full rounded-full bg-amber-500 transition-all duration-500" style={{ width: '100%' }} />
+                            <div className="h-1.5 rounded-full bg-warning/15 dark:bg-warning/10 overflow-hidden">
+                                <div className="h-full rounded-full bg-warning transition-all duration-500" style={{ width: '100%' }} />
                             </div>
                         </div>
                         <div className="flex items-center justify-between">
@@ -297,9 +297,9 @@ export default function WrgIntake({ onNavigate }: { onNavigate?: (page: string) 
             {/* Sending toast */}
             {sendingToast && (
                 <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
-                    <div className={`flex items-center gap-3 p-4 rounded-xl border ${toastDone ? 'bg-green-50 dark:bg-green-500/5 border-green-200 dark:border-green-500/20' : 'bg-card border-border'} transition-colors duration-500`}>
+                    <div className={`flex items-center gap-3 p-4 rounded-xl border ${toastDone ? 'bg-success/10 dark:bg-success/100/5 border-success/30 dark:border-success/30' : 'bg-card border-border'} transition-colors duration-500`}>
                         {toastDone ? (
-                            <CheckCircleIcon className="h-5 w-5 text-green-500 shrink-0" />
+                            <CheckCircleIcon className="h-5 w-5 text-success shrink-0" />
                         ) : (
                             <ArrowPathIcon className="h-5 w-5 text-indigo-500 animate-spin shrink-0" />
                         )}
@@ -483,7 +483,7 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
                             <div className="flex-1">
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs font-bold text-foreground">Intake Summary Ready — JPS Health Center</span>
-                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-red-500 text-white font-bold">ACTION REQUIRED</span>
+                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-destructive text-white font-bold">ACTION REQUIRED</span>
                                 </div>
                                 <p className="text-[11px] text-muted-foreground mt-1">
                                     AI-generated intake — assigned to Regional Sales Manager Reyes (Dallas), Smartsheet #2026-JPS-HCW populated
@@ -507,8 +507,8 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
                             { label: 'Estimation', value: 'Complex Sheet', detail: '24 items · >50 threshold', color: 'purple' as const, icon: '📋' },
                         ].map(c => (
                             <div key={c.label} className={`p-3 rounded-lg border ${
-                                c.color === 'green' ? 'bg-green-50 dark:bg-green-500/5 border-green-200 dark:border-green-500/20'
-                                    : c.color === 'amber' ? 'bg-amber-50 dark:bg-amber-500/5 border-amber-200 dark:border-amber-500/20'
+                                c.color === 'green' ? 'bg-success/10 dark:bg-success/100/5 border-success/30 dark:border-success/30'
+                                    : c.color === 'amber' ? 'bg-warning/10 border-warning/20'
                                     : c.color === 'purple' ? 'bg-purple-50 dark:bg-ai/5 border-purple-200 dark:border-purple-500/20'
                                     : 'bg-card border-border'
                             }`}>
@@ -516,8 +516,8 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
                                     <div className="text-[9px] text-muted-foreground uppercase">{c.label}</div>
                                 </div>
                                 <div className={`text-sm font-bold mt-0.5 ${
-                                    c.color === 'green' ? 'text-green-700 dark:text-green-400'
-                                        : c.color === 'amber' ? 'text-amber-700 dark:text-amber-400'
+                                    c.color === 'green' ? 'text-success'
+                                        : c.color === 'amber' ? 'text-warning'
                                         : c.color === 'purple' ? 'text-purple-700 dark:text-purple-400'
                                         : 'text-foreground'
                                 }`}>{c.value}</div>
@@ -566,7 +566,7 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
                             {records.map(r => (
                                 <div key={r.key} className="flex items-center justify-between px-3 py-2 rounded-lg bg-muted/20 border border-border">
                                     <div className="flex items-center gap-2">
-                                        <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                                        <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
                                         <span className="text-[10px] text-foreground">{r.label}</span>
                                     </div>
                                     <div className="flex items-center gap-2">
@@ -602,7 +602,7 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="mt-3 flex items-center gap-2 text-[9px] text-green-600 dark:text-green-400">
+                                    <div className="mt-3 flex items-center gap-2 text-[9px] text-success">
                                         <CheckCircleIcon className="h-3.5 w-3.5 shrink-0" />
                                         <span className="font-bold">Record verified — auto-generated by Strata AI</span>
                                     </div>
@@ -615,13 +615,13 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
                     {showReturnRequest && (
                         <div className="p-4 rounded-xl bg-card border border-border shadow-lg animate-in fade-in slide-in-from-bottom-2 duration-300">
                             <div className="flex items-center gap-2 mb-3">
-                                <EnvelopeIcon className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                                <EnvelopeIcon className="h-4 w-4 text-warning" />
                                 <span className="text-[10px] font-bold text-foreground uppercase tracking-wider">Request Review — Send to Expert</span>
                             </div>
                             {!returnSent ? (
                                 <>
-                                    <div className="p-3 rounded-lg bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/20 mb-3">
-                                        <div className="text-[10px] font-bold text-amber-700 dark:text-amber-400 mb-1">To: Regional Sales Manager Reyes — Strata Expert</div>
+                                    <div className="p-3 rounded-lg bg-warning/10 border border-warning/20 mb-3">
+                                        <div className="text-[10px] font-bold text-warning mb-1">To: Regional Sales Manager Reyes — Strata Expert</div>
                                         <div className="text-[10px] text-foreground leading-relaxed">
                                             Hi David, I've reviewed the intake summary for JPS Health Center and have some questions before approving.
                                             Could you verify the delivery logistics for the hospital site? Restricted hours and freight elevator access
@@ -638,7 +638,7 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
                                         </button>
                                         <button
                                             onClick={handleSendReturn}
-                                            className="flex-1 py-2 rounded-lg text-[10px] font-bold bg-amber-500 text-white hover:bg-amber-600 transition-colors flex items-center justify-center gap-1.5"
+                                            className="flex-1 py-2 rounded-lg text-[10px] font-bold bg-warning text-white hover:bg-warning transition-colors flex items-center justify-center gap-1.5"
                                         >
                                             <EnvelopeIcon className="h-3.5 w-3.5" />
                                             Send to Expert
@@ -646,9 +646,9 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
                                     </div>
                                 </>
                             ) : (
-                                <div className="flex items-center gap-2 p-3 rounded-lg bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
-                                    <CheckCircleIcon className="h-4 w-4 text-green-500 shrink-0" />
-                                    <span className="text-[11px] font-bold text-green-700 dark:text-green-400">Review request sent to Regional Sales Manager Reyes — returned to Expert Hub</span>
+                                <div className="flex items-center gap-2 p-3 rounded-lg bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30">
+                                    <CheckCircleIcon className="h-4 w-4 text-success shrink-0" />
+                                    <span className="text-[11px] font-bold text-success">Review request sent to Regional Sales Manager Reyes — returned to Expert Hub</span>
                                 </div>
                             )}
                         </div>
@@ -657,9 +657,9 @@ export function WrgIntakeReview({ onNavigate }: { onNavigate?: (page: string) =>
                     {/* Confirm toast */}
                     {confirmSending && (
                         <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
-                            <div className={`flex items-center gap-3 p-4 rounded-xl border ${confirmDone ? 'bg-green-50 dark:bg-green-500/5 border-green-200 dark:border-green-500/20' : 'bg-card border-border'} transition-colors duration-500`}>
+                            <div className={`flex items-center gap-3 p-4 rounded-xl border ${confirmDone ? 'bg-success/10 dark:bg-success/100/5 border-success/30 dark:border-success/30' : 'bg-card border-border'} transition-colors duration-500`}>
                                 {confirmDone ? (
-                                    <CheckCircleIcon className="h-5 w-5 text-green-500 shrink-0" />
+                                    <CheckCircleIcon className="h-5 w-5 text-success shrink-0" />
                                 ) : (
                                     <ArrowPathIcon className="h-5 w-5 text-indigo-500 animate-spin shrink-0" />
                                 )}

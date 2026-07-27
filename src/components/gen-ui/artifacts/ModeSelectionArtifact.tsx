@@ -76,11 +76,11 @@ export default function ModeSelectionArtifact() {
     if (view === 'processing') {
         return (
             <div className="flex flex-col items-center justify-center p-8 w-full max-w-lg mx-auto bg-card rounded-2xl border border-border shadow-sm animate-in fade-in zoom-in-95 duration-300">
-                <div className="w-16 h-16 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center mb-6 relative">
+                <div className="w-16 h-16 bg-info/10 dark:bg-info/15 rounded-full flex items-center justify-center mb-6 relative">
                     {progress < 100 ? (
-                        <ArrowPathIcon className="w-8 h-8 text-blue-500 animate-spin" />
+                        <ArrowPathIcon className="w-8 h-8 text-info animate-spin" />
                     ) : (
-                        <CheckCircleIcon className="w-8 h-8 text-green-500 animate-in zoom-in duration-300" />
+                        <CheckCircleIcon className="w-8 h-8 text-success animate-in zoom-in duration-300" />
                     )}
                 </div>
 
@@ -96,7 +96,7 @@ export default function ModeSelectionArtifact() {
                 {/* Progress Bar */}
                 <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
                     <div
-                        className="h-full bg-blue-500 transition-all duration-75 ease-out"
+                        className="h-full bg-info/100 transition-all duration-75 ease-out"
                         style={{ width: `${progress}%` }}
                     />
                 </div>
@@ -159,8 +159,8 @@ export default function ModeSelectionArtifact() {
                         onClick={() => handleFileSelect('Office_Renovation_Specs.pdf')}
                         className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-muted dark:hover:bg-zinc-800/50 transition-colors border border-zinc-100 dark:border-zinc-800 hover:border-brand-300 dark:hover:border-brand-600/50 text-left group shadow-sm hover:shadow"
                     >
-                        <div className="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/20 flex items-center justify-center shrink-0">
-                            <DocumentTextIcon className="w-5 h-5 text-red-500" />
+                        <div className="w-10 h-10 rounded-lg bg-destructive/15 dark:bg-destructive/15 flex items-center justify-center shrink-0">
+                            <DocumentTextIcon className="w-5 h-5 text-destructive" />
                         </div>
                         <div className="flex-1">
                             <p className="text-sm font-semibold text-foreground group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">Office_Renovation_Specs.pdf</p>
@@ -172,8 +172,8 @@ export default function ModeSelectionArtifact() {
                         onClick={() => handleFileSelect('Q1_Requirements.xlsx')}
                         className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-muted dark:hover:bg-zinc-800/50 transition-colors border border-zinc-100 dark:border-zinc-800 hover:border-brand-300 dark:hover:border-brand-600/50 text-left group shadow-sm hover:shadow"
                     >
-                        <div className="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/20 flex items-center justify-center shrink-0">
-                            <DocumentTextIcon className="w-5 h-5 text-green-500" />
+                        <div className="w-10 h-10 rounded-lg bg-success/15 dark:bg-success/15 flex items-center justify-center shrink-0">
+                            <DocumentTextIcon className="w-5 h-5 text-success" />
                         </div>
                         <div className="flex-1">
                             <p className="text-sm font-semibold text-foreground group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">Q1_Requirements.xlsx</p>

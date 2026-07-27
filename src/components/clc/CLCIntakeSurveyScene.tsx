@@ -102,25 +102,25 @@ export default function CLCIntakeSurveyScene({ channel, onOpenChannelDialog }: P
                                     {/* Customer answer */}
                                     <div className="flex items-start gap-2 justify-end">
                                         <div className="flex-1 min-w-0 flex justify-end">
-                                            <div className="rounded-lg bg-blue-50 dark:bg-blue-500/15 p-2.5 inline-block max-w-[80%]">
-                                                <div className="text-sm text-blue-900 dark:text-blue-100 leading-relaxed">{q.customerAnswer}</div>
+                                            <div className="rounded-lg bg-info/10 dark:bg-info/15 p-2.5 inline-block max-w-[80%]">
+                                                <div className="text-sm text-info dark:text-info leading-relaxed">{q.customerAnswer}</div>
                                             </div>
                                         </div>
-                                        <div className="h-7 w-7 rounded-lg bg-blue-100 dark:bg-blue-500/20 flex items-center justify-center shrink-0">
-                                            <User className="h-4 w-4 text-blue-700 dark:text-blue-300" />
+                                        <div className="h-7 w-7 rounded-lg bg-info/15 flex items-center justify-center shrink-0">
+                                            <User className="h-4 w-4 text-info dark:text-info" />
                                         </div>
                                     </div>
                                 </div>
                             ))}
                             {revealedCount < INTAKE_QUESTIONS.length && stepId === 'clc3.2' && (
                                 <div className="flex items-center gap-2 text-xs text-muted-foreground italic">
-                                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" />
+                                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-info/100 animate-pulse" />
                                     Customer typing…
                                 </div>
                             )}
                             {revealedCount >= INTAKE_QUESTIONS.length && (
-                                <div className="rounded-lg border border-green-200 bg-green-50/60 dark:border-green-500/30 dark:bg-green-500/10 p-3 flex items-center gap-2">
-                                    <ShieldCheck className="h-4 w-4 text-green-700 dark:text-green-300" />
+                                <div className="rounded-lg border border-success/30 bg-success/10/60 dark:border-success/30 dark:bg-success/10 p-3 flex items-center gap-2">
+                                    <ShieldCheck className="h-4 w-4 text-success dark:text-success" />
                                     <span className="text-sm font-semibold text-foreground">All 10 answers received</span>
                                     <span className="text-xs text-muted-foreground ml-auto">Ready for reconciliation vs IQ</span>
                                 </div>
@@ -155,7 +155,7 @@ export default function CLCIntakeSurveyScene({ channel, onOpenChannelDialog }: P
                                     const isAnswered = idx < revealedCount
                                     return (
                                         <li key={q.id} className={`flex items-center gap-1.5 ${isAnswered ? 'text-foreground' : 'text-muted-foreground'}`}>
-                                            <span className={`inline-block h-1.5 w-1.5 rounded-full ${isAnswered ? 'bg-green-500' : 'bg-muted-foreground/40'}`} />
+                                            <span className={`inline-block h-1.5 w-1.5 rounded-full ${isAnswered ? 'bg-success/100' : 'bg-muted-foreground/40'}`} />
                                             <span className="truncate">{q.label}</span>
                                         </li>
                                     )
@@ -179,7 +179,7 @@ function ChannelBadge({ channel, onChange }: { channel: 'email' | 'platform'; on
             title="Change channel"
             className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold rounded-lg border transition-colors ${
                 isPlatform
-                    ? 'border-green-200 bg-green-50 text-green-700 hover:bg-green-100 dark:border-green-500/30 dark:bg-green-500/15 dark:text-green-300'
+                    ? 'border-success/30 bg-success/10 text-success hover:bg-success/15 dark:border-success/30 dark:bg-success/15 dark:text-success'
                     : 'border-yellow-200 bg-yellow-50 text-yellow-700 hover:bg-yellow-100 dark:border-yellow-500/30 dark:bg-yellow-500/15 dark:text-yellow-300'
             }`}
         >

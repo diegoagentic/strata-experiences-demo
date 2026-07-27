@@ -35,7 +35,7 @@ interface PersonaBadgeProps {
 }
 
 const TONE_MAP = {
-    neutral: 'bg-primary/10 text-zinc-900 dark:text-primary ring-primary/20',
+    neutral: 'bg-primary/10 text-primary ring-primary/20',
     success: 'bg-success/15 text-success ring-success/30',
     ai: 'bg-ai/15 text-ai ring-ai/30',
     info: 'bg-info/15 text-info ring-info/30',

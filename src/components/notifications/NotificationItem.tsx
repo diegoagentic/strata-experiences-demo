@@ -14,8 +14,8 @@ const PriorityIcon = ({ priority, type }: { priority: Notification['priority'], 
 
 const PriorityBadge = ({ priority, type }: { priority: Notification['priority'], type: Notification['type'] }) => {
     const colors = {
-        high: 'text-red-500 bg-red-500/10 border-red-500/20',
-        medium: 'text-amber-500 bg-amber-500/10 border-amber-500/20',
+        high: 'text-destructive bg-destructive/10 border-destructive/30',
+        medium: 'text-warning bg-warning/10 border-warning/30',
         low: 'text-muted-foreground bg-muted/50 border-border',
     };
 
@@ -42,8 +42,8 @@ const PriorityBadge = ({ priority, type }: { priority: Notification['priority'],
 
 export default function NotificationItem({ notification, onActionClick }: { notification: Notification, onActionClick?: (actionLabel: string) => void }) {
     const priorityColors = {
-        high: 'text-red-500 bg-red-500/10 border-red-500/20',
-        medium: 'text-amber-500 bg-amber-500/10 border-amber-500/20',
+        high: 'text-destructive bg-destructive/10 border-destructive/30',
+        medium: 'text-warning bg-warning/10 border-warning/30',
         low: 'text-muted-foreground bg-zinc-100 dark:bg-zinc-700 border-zinc-200 dark:border-zinc-600',
     };
 
@@ -68,12 +68,12 @@ export default function NotificationItem({ notification, onActionClick }: { noti
                     <div className="flex items-center gap-2 mb-1">
                         <PriorityBadge priority={notification.priority} type={notification.type} />
                         {notification.priority === 'high' && (
-                            <span className="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-400">
+                            <span className="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-destructive/15 text-destructive dark:bg-destructive/20 dark:text-destructive">
                                 High
                             </span>
                         )}
                         {notification.priority === 'medium' && (
-                            <span className="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400">
+                            <span className="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning">
                                 Medium
                             </span>
                         )}
@@ -108,7 +108,7 @@ export default function NotificationItem({ notification, onActionClick }: { noti
                             action.primary
                                 ? "bg-brand-300 hover:bg-brand-400 dark:bg-brand-400 dark:hover:bg-brand-300 text-zinc-900 shadow-sm"
                                 : "bg-muted text-zinc-900 dark:text-gray-200 hover:bg-accent",
-                            actionState[i] === 'Sent!' && "!bg-green-500 !text-white"
+                            actionState[i] === 'Sent!' && "!bg-success/100 !text-white"
                         )}
                         onClick={() => handleActionClick(action.label, i)}
                     >
@@ -122,8 +122,8 @@ export default function NotificationItem({ notification, onActionClick }: { noti
             {/* Absolute priority indicator on left */}
             <div className={clsx(
                 "absolute left-0 top-4 bottom-4 w-1 rounded-r-full",
-                notification.priority === 'high' ? 'bg-red-500' :
-                    notification.priority === 'medium' ? 'bg-amber-500' : 'bg-transparent'
+                notification.priority === 'high' ? 'bg-destructive' :
+                    notification.priority === 'medium' ? 'bg-warning' : 'bg-transparent'
             )} />
 
         </div>

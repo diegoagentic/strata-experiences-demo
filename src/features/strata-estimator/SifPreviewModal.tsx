@@ -69,7 +69,7 @@ export default function SifPreviewModal({
             aria-modal="true"
         >
             <div
-                className="w-full max-w-2xl max-h-[85vh] bg-card dark:bg-zinc-900 rounded-2xl shadow-2xl border border-border overflow-hidden animate-in zoom-in-95 duration-300 flex flex-col"
+                className="w-full max-w-2xl max-h-[85vh] bg-card rounded-2xl shadow-2xl border border-border overflow-hidden animate-in zoom-in-95 duration-300 flex flex-col"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Header */}
@@ -226,7 +226,7 @@ export default function SifPreviewModal({
                         </p>
                         <div className="flex flex-wrap gap-1.5">
                             {['Dual-engine merged', 'Scope limits checked', 'Designer verified', 'Audit trail complete', 'Signed by Strata'].map((c) => (
-                                <span key={c} className="text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-md bg-green-500/10 text-green-700 dark:text-green-400 border border-green-500/30">
+                                <span key={c} className="text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-md bg-success/10 text-success border border-success/30">
                                     {c}
                                 </span>
                             ))}

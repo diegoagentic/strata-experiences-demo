@@ -191,7 +191,7 @@ export default function InventoryLocations() {
                                 </button>
                                 <button
                                     onClick={() => handleDeleteClick(loc.id)}
-                                    className="p-1.5 text-muted-foreground hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                                    className="p-1.5 text-muted-foreground hover:text-destructive hover:bg-destructive/10 dark:hover:bg-destructive/15 rounded-lg transition-colors"
                                 >
                                     <TrashIcon className="w-4 h-4" />
                                 </button>

@@ -137,7 +137,7 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
                     <div key={i} className="flex flex-col items-center gap-1 group cursor-pointer mb-2">
                         <div className={cn(
                             "p-1.5 rounded-full transition-all duration-200 relative",
-                            app.active ? "bg-blue-100 dark:bg-brand-500/20 text-blue-950 dark:text-brand-400" : "hover:bg-zinc-200 dark:hover:bg-zinc-800 text-muted-foreground"
+                            app.active ? "bg-info/15 dark:bg-brand-500/20 text-blue-950 dark:text-brand-400" : "hover:bg-zinc-200 dark:hover:bg-zinc-800 text-muted-foreground"
                         )}>
                             <app.icon className="w-6 h-6" />
                             {app.active && <div className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-1 h-4 bg-brand-600 dark:bg-brand-400 rounded-r-full" />}
@@ -152,7 +152,7 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
                 "flex flex-col px-3 shrink-0 transition-all duration-300",
                 isSidebarOpen ? "w-64 opacity-100" : "w-0 opacity-0 overflow-hidden"
             )}>
-                <button className="flex items-center gap-4 bg-blue-200 dark:bg-brand-500 hover:shadow-lg py-4 px-6 rounded-2xl mb-4 transition-all w-fit mt-2 group shadow-sm active:scale-95">
+                <button className="flex items-center gap-4 bg-info/20 dark:bg-brand-500 hover:shadow-lg py-4 px-6 rounded-2xl mb-4 transition-all w-fit mt-2 group shadow-sm active:scale-95">
                     <PencilIcon className="w-6 h-6 text-blue-950 dark:text-zinc-900 group-hover:scale-110 transition-transform" />
                     <span className="text-sm font-bold text-blue-950 dark:text-zinc-900 pr-2">Compose</span>
                 </button>
@@ -171,7 +171,7 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
                             className={cn(
                                 "flex items-center gap-4 py-1 px-5 rounded-full cursor-pointer group transition-all",
                                 item.active
-                                    ? "bg-blue-100 dark:bg-brand-500/30 text-blue-950 dark:text-brand-100 font-bold"
+                                    ? "bg-info/15 dark:bg-brand-500/30 text-blue-950 dark:text-brand-100 font-bold"
                                     : "hover:bg-gray-200 dark:hover:bg-zinc-800/80 text-muted-foreground dark:text-muted-foreground hover:text-foreground"
                             )}
                         >
@@ -411,7 +411,7 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
                                             </div>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
                                                 <div className="inline-flex items-center gap-4 bg-card border border-border p-4 rounded-2xl hover:bg-muted dark:hover:bg-zinc-800/50 transition-all cursor-pointer group shadow-sm hover:shadow-md">
-                                                    <div className="p-3 bg-red-50 dark:bg-red-500/10 rounded-xl text-red-600 group-hover:scale-105 transition-transform">
+                                                    <div className="p-3 bg-destructive/10 rounded-xl text-destructive group-hover:scale-105 transition-transform">
                                                         <DocumentIcon className="w-8 h-8" />
                                                     </div>
                                                     <div className="flex-1 min-w-0 pr-4">
@@ -421,7 +421,7 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
                                                     <ArrowDownTrayIcon className="w-5 h-5 text-muted-foreground group-hover:text-brand-600 group-hover:translate-y-0.5 transition-all" />
                                                 </div>
                                                 <div className="inline-flex items-center gap-4 bg-card border border-border p-4 rounded-2xl hover:bg-muted dark:hover:bg-zinc-800/50 transition-all cursor-pointer group shadow-sm hover:shadow-md">
-                                                    <div className="p-3 bg-green-50 dark:bg-green-500/10 rounded-xl text-green-600 group-hover:scale-105 transition-transform">
+                                                    <div className="p-3 bg-success/10 rounded-xl text-success group-hover:scale-105 transition-transform">
                                                         <DocumentIcon className="w-8 h-8" />
                                                     </div>
                                                     <div className="flex-1 min-w-0 pr-4">
@@ -506,9 +506,9 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
                                             </div>
                                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl">
                                                 {[
-                                                    { name: 'JPS_Spec_Narrative.pdf', size: '1.8 MB • 12 pages', color: 'bg-blue-50 dark:bg-blue-500/10 text-blue-600' },
-                                                    { name: 'JPS_Selection_Document.pdf', size: '2.4 MB • 18 pages', color: 'bg-red-50 dark:bg-red-500/10 text-red-600' },
-                                                    { name: 'JPS_Site_Requirements.pdf', size: '0.9 MB • 8 pages', color: 'bg-amber-50 dark:bg-amber-500/10 text-amber-600' },
+                                                    { name: 'JPS_Spec_Narrative.pdf', size: '1.8 MB • 12 pages', color: 'bg-info/10 dark:bg-info/10 text-info' },
+                                                    { name: 'JPS_Selection_Document.pdf', size: '2.4 MB • 18 pages', color: 'bg-destructive/10 text-destructive' },
+                                                    { name: 'JPS_Site_Requirements.pdf', size: '0.9 MB • 8 pages', color: 'bg-warning/10 text-warning' },
                                                 ].map((file) => (
                                                     <div key={file.name} className="inline-flex items-center gap-3 bg-card border border-border p-3 rounded-2xl hover:bg-muted dark:hover:bg-zinc-800/50 transition-all cursor-pointer group shadow-sm hover:shadow-md">
                                                         <div className={cn("p-2.5 rounded-xl group-hover:scale-105 transition-transform", file.color)}>
@@ -536,9 +536,9 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
                                                 <p>Good morning,</p>
                                                 <p>You have <strong className="text-foreground">12 transactions</strong> requiring your review in the Expert Hub today. Below is a quick summary:</p>
                                                 <ul className="list-disc pl-5 space-y-2 font-medium">
-                                                    <li><span className="text-red-600 dark:text-red-400">3 Orders</span> flagged for margin override</li>
-                                                    <li><span className="text-amber-600 dark:text-amber-400">5 Quotes</span> requiring technical approval</li>
-                                                    <li><span className="text-blue-600 dark:text-blue-400">4 Acknowledgements</span> with vendor discrepancies</li>
+                                                    <li><span className="text-destructive">3 Orders</span> flagged for margin override</li>
+                                                    <li><span className="text-warning">5 Quotes</span> requiring technical approval</li>
+                                                    <li><span className="text-info">4 Acknowledgements</span> with vendor discrepancies</li>
                                                 </ul>
                                                 <div className="pt-4">
                                                     <button className="px-6 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-lg shadow-sm font-semibold transition-colors">Go to Expert Hub</button>
@@ -558,7 +558,7 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
                                                 </div>
                                             </div>
                                             <div className="p-6 space-y-4 text-sm text-muted-foreground">
-                                                <p><strong>Priority:</strong> <span className="text-red-600 font-bold bg-red-50 px-2 py-0.5 rounded">High (P2)</span></p>
+                                                <p><strong>Priority:</strong> <span className="text-destructive font-bold bg-destructive/10 px-2 py-0.5 rounded">High (P2)</span></p>
                                                 <p><strong>Caller:</strong> John Doe (Marketing Team)</p>
                                                 <p><strong>Short description:</strong> CRM Gateway API Timeout</p>
                                                 <div className="bg-muted dark:bg-zinc-800/50 p-4 rounded-lg border border-zinc-100 dark:border-zinc-800 mt-4">

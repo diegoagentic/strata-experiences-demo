@@ -82,14 +82,14 @@ export default function CLCIntakeChannelDialog({ isOpen, onClose, onPick }: Prop
                                 {/* Platform — recommended */}
                                 <button
                                     onClick={() => onPick('platform')}
-                                    className="w-full text-left p-4 border border-green-200 bg-green-50/60 hover:bg-green-50 dark:border-green-500/30 dark:bg-green-500/10 rounded-xl transition-colors"
+                                    className="w-full text-left p-4 border border-success/30 bg-success/10/60 hover:bg-success/10 dark:border-success/30 dark:bg-success/10 rounded-xl transition-colors"
                                 >
                                     <div className="flex items-start gap-3">
-                                        <Layers className="h-5 w-5 text-green-700 dark:text-green-300 mt-0.5 shrink-0" />
+                                        <Layers className="h-5 w-5 text-success dark:text-success mt-0.5 shrink-0" />
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2 mb-0.5">
                                                 <span className="text-sm font-bold text-foreground">Procore project channel</span>
-                                                <span className="inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-300 uppercase tracking-wider">
+                                                <span className="inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-success/15 text-success dark:bg-success/20 dark:text-success uppercase tracking-wider">
                                                     <ShieldCheck className="h-3 w-3" />
                                                     Recommended
                                                 </span>

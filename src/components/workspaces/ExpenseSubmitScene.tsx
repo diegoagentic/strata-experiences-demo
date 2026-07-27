@@ -226,11 +226,11 @@ export default function ExpenseSubmitScene({ onSubmit, initialScreen }: { onSubm
                         {PAST_EXPENSES.map((exp) => (
                             <div key={exp.label} className="flex items-center gap-3 px-4 py-3">
                                 <div className={`h-7 w-7 rounded-full flex items-center justify-center shrink-0 ${
-                                    exp.status === 'paid' ? 'bg-success/10' : 'bg-amber-500/10'
+                                    exp.status === 'paid' ? 'bg-success/10' : 'bg-warning/10'
                                 }`}>
                                     {exp.status === 'paid'
                                         ? <CheckCircle2 className="h-4 w-4 text-success" />
-                                        : <Clock className="h-4 w-4 text-amber-500" />
+                                        : <Clock className="h-4 w-4 text-warning" />
                                     }
                                 </div>
                                 <div className="flex-1 min-w-0">
@@ -240,7 +240,7 @@ export default function ExpenseSubmitScene({ onSubmit, initialScreen }: { onSubm
                                 <div className="text-right shrink-0">
                                     <p className="text-xs font-bold text-foreground">{exp.amount}</p>
                                     <p className={`text-[9px] font-medium capitalize ${
-                                        exp.status === 'paid' ? 'text-success' : 'text-amber-500'
+                                        exp.status === 'paid' ? 'text-success' : 'text-warning'
                                     }`}>
                                         {exp.status === 'pending' ? '4 days pending' : 'Paid'}
                                     </p>

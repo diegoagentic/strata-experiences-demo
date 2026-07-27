@@ -10,8 +10,8 @@ export default function ERPConnectModal({ data }: { data: any }) {
     const [isConnected, setIsConnected] = useState(false);
 
     const systems = [
-        { id: 'netsuite', name: 'NetSuite', icon: <BuildingOfficeIcon className="w-6 h-6" />, color: 'bg-blue-600' },
-        { id: 'quickbooks', name: 'QuickBooks', icon: <CloudIcon className="w-6 h-6" />, color: 'bg-green-600' },
+        { id: 'netsuite', name: 'NetSuite', icon: <BuildingOfficeIcon className="w-6 h-6" />, color: 'bg-info' },
+        { id: 'quickbooks', name: 'QuickBooks', icon: <CloudIcon className="w-6 h-6" />, color: 'bg-success' },
         { id: 'sap', name: 'SAP S/4HANA', icon: <ArrowPathIcon className="w-6 h-6" />, color: 'bg-blue-900' },
     ];
 
@@ -32,7 +32,7 @@ export default function ERPConnectModal({ data }: { data: any }) {
     if (isConnected) {
         return (
             <div className="bg-card rounded-xl border border-border p-8 flex flex-col items-center justify-center text-center space-y-4 animate-in fade-in zoom-in duration-300">
-                <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center text-green-600 dark:text-green-500 mb-2">
+                <div className="w-16 h-16 bg-success/15 rounded-full flex items-center justify-center text-success dark:text-success mb-2">
                     <CheckCircleIcon className="w-10 h-10" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground">Successfully Connected!</h3>
@@ -95,7 +95,7 @@ export default function ERPConnectModal({ data }: { data: any }) {
                     ))}
                 </div>
 
-                <div className="bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/30 rounded-lg p-4 flex gap-3 text-sm text-amber-800 dark:text-amber-200">
+                <div className="bg-warning/10 dark:bg-warning/10 border border-warning/30 dark:border-warning/40/30 rounded-lg p-4 flex gap-3 text-sm text-warning dark:text-warning">
                     <BuildingOfficeIcon className="w-5 h-5 flex-shrink-0" />
                     <p>
                         <strong>Secure Connection:</strong> All credentials are encrypted. We only access product catalog and pricing information needed for quoting.

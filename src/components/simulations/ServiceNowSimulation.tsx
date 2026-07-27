@@ -128,7 +128,7 @@ export default function ServiceNowSimulation() {
                                 </thead>
                                 <tbody className="divide-y divide-gray-100">
                                     {incidents.map((inc) => (
-                                        <tr key={inc.id} id={inc.id === 'INC-1102' ? "sn-request-detail" : ""} className="hover:bg-blue-50/30 transition-colors group cursor-pointer">
+                                        <tr key={inc.id} id={inc.id === 'INC-1102' ? "sn-request-detail" : ""} className="hover:bg-info/10/30 transition-colors group cursor-pointer">
                                             <td className="p-3 text-center">
                                                 <div className="w-4 h-4 mx-auto border border-gray-300 rounded-[2px] group-hover:border-[#278efc]" />
                                             </td>
@@ -145,7 +145,7 @@ export default function ServiceNowSimulation() {
                                                 <div className="flex items-center gap-2">
                                                     <div className={cn(
                                                         "w-2 h-2 rounded-full",
-                                                        inc.priority.includes('1') ? 'bg-red-500 animate-pulse' : inc.priority.includes('2') ? 'bg-orange-500' : 'bg-green-500'
+                                                        inc.priority.includes('1') ? 'bg-destructive animate-pulse' : inc.priority.includes('2') ? 'bg-orange-500' : 'bg-success/100'
                                                     )} />
                                                     <span className="text-[11px] font-bold text-foreground">{inc.priority}</span>
                                                 </div>
@@ -153,7 +153,7 @@ export default function ServiceNowSimulation() {
                                             <td className="p-3">
                                                 <span className={cn(
                                                     "px-2 py-0.5 rounded text-[10px] font-bold uppercase",
-                                                    inc.state === 'New' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'
+                                                    inc.state === 'New' ? 'bg-info/15 text-info' : 'bg-success/15 text-success'
                                                 )}>
                                                     {inc.state}
                                                 </span>
@@ -185,7 +185,7 @@ export default function ServiceNowSimulation() {
                             <div className="bg-white rounded-lg border border-gray-200 p-6">
                                 <div className="flex items-center justify-between mb-4">
                                     <h3 className="text-sm font-bold text-foreground">Warranty Claim — WC-2026-0042</h3>
-                                    <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-bold uppercase rounded">Pending Review</span>
+                                    <span className="px-2 py-0.5 bg-warning/15 text-warning text-[10px] font-bold uppercase rounded">Pending Review</span>
                                 </div>
 
                                 {/* Evidence Photos */}
@@ -204,7 +204,7 @@ export default function ServiceNowSimulation() {
                                 {/* OCR Extraction Results */}
                                 <div className="mb-4">
                                     <div className="flex items-center gap-2 mb-2">
-                                        <ScanLine size={14} className="text-blue-500" />
+                                        <ScanLine size={14} className="text-info" />
                                         <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">OCR Extraction Results</p>
                                     </div>
                                     <div className="grid grid-cols-3 gap-3">
@@ -213,8 +213,8 @@ export default function ServiceNowSimulation() {
                                             { label: 'Model', value: 'Aeron Remastered Size B' },
                                             { label: 'Damage Type', value: 'Structural — Front Panel Crack' },
                                         ].map((item, i) => (
-                                            <div key={i} className="bg-blue-50 border border-blue-100 rounded-lg p-3">
-                                                <p className="text-[10px] font-bold text-blue-600 uppercase tracking-wider mb-0.5">{item.label}</p>
+                                            <div key={i} className="bg-info/10 border border-info/20 rounded-lg p-3">
+                                                <p className="text-[10px] font-bold text-info uppercase tracking-wider mb-0.5">{item.label}</p>
                                                 <p className="text-xs font-bold text-foreground">{item.value}</p>
                                             </div>
                                         ))}
@@ -243,14 +243,14 @@ export default function ServiceNowSimulation() {
             {/* ServiceNow Bottom Bar */}
             <footer className="h-6 bg-[#293e40] text-muted-foreground text-[9px] flex items-center px-4 justify-between border-t border-white/5 font-medium uppercase tracking-widest shrink-0">
                 <div className="flex items-center gap-4">
-                    <span className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-green-400"></div> wellsfargo.service-now.com</span>
+                    <span className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-success"></div> wellsfargo.service-now.com</span>
                     <span className="opacity-40">|</span>
                     <span>Node: app121.sea1</span>
                 </div>
                 <div className="flex gap-4 items-center">
                     <span>v.VANCOUVER-08-2025</span>
                     <div className="h-3 w-px bg-white/10"></div>
-                    <span className="text-green-400 font-black">Sync: 100% Functional</span>
+                    <span className="text-success font-black">Sync: 100% Functional</span>
                 </div>
             </footer>
         </div>

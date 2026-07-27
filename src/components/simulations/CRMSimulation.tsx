@@ -215,8 +215,8 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
     const [selectedTeam, setSelectedTeam] = useState<string[]>([])
 
     const suggestionStyles = {
-        optimization: { bg: 'bg-blue-50 dark:bg-blue-500/10', border: 'border-blue-200 dark:border-blue-500/20', text: 'text-blue-600 dark:text-blue-400', icon: <BoltIcon className="h-3.5 w-3.5" /> },
-        risk: { bg: 'bg-amber-50 dark:bg-amber-500/10', border: 'border-amber-200 dark:border-amber-500/20', text: 'text-amber-600 dark:text-amber-400', icon: <ExclamationTriangleIcon className="h-3.5 w-3.5" /> },
+        optimization: { bg: 'bg-info/10 dark:bg-info/10', border: 'border-info/20', text: 'text-info', icon: <BoltIcon className="h-3.5 w-3.5" /> },
+        risk: { bg: 'bg-warning/10', border: 'border-warning/20', text: 'text-warning', icon: <ExclamationTriangleIcon className="h-3.5 w-3.5" /> },
         upsell: { bg: 'bg-emerald-50 dark:bg-success/10', border: 'border-emerald-200 dark:border-emerald-500/20', text: 'text-success dark:text-success', icon: <LightBulbIcon className="h-3.5 w-3.5" /> },
     }
 
@@ -313,7 +313,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                     {isProjectIntake ? 'Corporate HQ — 8-Floor Fit-Out' : 'Apex HQ Office Renovation'}
                                 </h4>
                                 {isNewProject && <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-brand-500 text-zinc-900 font-bold">New Project</span>}
-                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 font-medium">
+                                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-warning/15 dark:bg-warning/10 text-warning font-medium">
                                     {isProjectIntake ? 'Scoping' : 'Procurement'}
                                 </span>
                             </div>
@@ -426,9 +426,9 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                                     </div>
                                                     <div className="flex items-center gap-1 shrink-0">
                                                         <p className={cn("text-[9px] font-medium tabular-nums mr-1",
-                                                            member.capacity < 50 ? "text-green-600 dark:text-green-400" :
-                                                            member.capacity < 80 ? "text-amber-600 dark:text-amber-400" :
-                                                            "text-red-600 dark:text-red-400"
+                                                            member.capacity < 50 ? "text-success" :
+                                                            member.capacity < 80 ? "text-warning" :
+                                                            "text-destructive"
                                                         )}>{member.capacity}%</p>
                                                         <button className="p-0.5 rounded hover:bg-muted/50 text-muted-foreground hover:text-foreground transition-colors" title="Replace member">
                                                             <ArrowsRightLeftIcon className="h-3 w-3" />
@@ -451,7 +451,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                     {milestones.map(m => (
                                         <div key={m.milestone} className="flex items-center gap-2 px-2 py-1.5 rounded-lg border border-border">
                                             {m.status === 'done' ? (
-                                                <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                                                <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
                                             ) : (
                                                 <ClockIcon className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
                                             )}
@@ -493,7 +493,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                         <div className="flex items-center gap-1 ml-2">
                                             <span className={cn(
                                                 "text-[8px] px-1.5 py-0.5 rounded-full font-medium",
-                                                i === 3 ? 'bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400' : 'bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400'
+                                                i === 3 ? 'bg-warning/15 dark:bg-warning/10 text-warning' : 'bg-success/15 dark:bg-success/10 text-success'
                                             )}>
                                                 {i === 3 ? 'Rate Flagged' : 'On Track'}
                                             </span>
@@ -569,7 +569,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                                             <div className="flex items-center gap-1.5">
                                                                 <span className="text-[9px] text-muted-foreground">Confidence:</span>
                                                                 <div className="w-16 h-1.5 rounded-full bg-muted overflow-hidden">
-                                                                    <div className={cn("h-full rounded-full", s.confidence >= 90 ? 'bg-green-500' : 'bg-amber-500')} style={{ width: `${s.confidence}%` }} />
+                                                                    <div className={cn("h-full rounded-full", s.confidence >= 90 ? 'bg-success/100' : 'bg-warning')} style={{ width: `${s.confidence}%` }} />
                                                                 </div>
                                                                 <span className="text-[9px] font-medium text-foreground tabular-nums">{s.confidence}%</span>
                                                             </div>
@@ -611,7 +611,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
             {/* CTA footer — always visible regardless of active tab */}
             <div className="px-4 py-3 border-t border-border flex items-center gap-3">
                 <div className="flex items-center gap-2 text-[10px] text-muted-foreground flex-1">
-                    <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                    <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
                     <span>
                         {isProjectIntake
                             ? <>RFP parsed → Requirements extracted → Manufacturers matched → Estimate calculated — <strong className="text-foreground">zero manual entry</strong></>
@@ -810,7 +810,7 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                                         agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
                                     )}>
                                         {agent.done ? (
-                                            <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                                            <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
                                         ) : (
                                             <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />
                                         )}
@@ -829,8 +829,8 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                 <div className={cn(
                     "rounded-xl p-4 animate-in fade-in duration-300",
                     isProjectIntake
-                        ? "bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30"
-                        : "bg-card border border-green-200 dark:border-green-800/30"
+                        ? "bg-success/10 dark:bg-success/100/5 border-2 border-success/30"
+                        : "bg-card border border-success/30 dark:border-success/40/30"
                 )}>
                     <div className="flex items-start gap-3">
                         <AIAgentAvatar size="sm" />
@@ -847,7 +847,7 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                             {isProjectIntake && (
                                 <>
                                     <div className="flex items-center gap-2 mt-2.5">
-                                        <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">External Systems · Synced</span>
+                                        <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
                                     </div>
                                     <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                         {[
@@ -858,7 +858,7 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                                             { icon: <CurrencyDollarIcon className="h-3 w-3" />, label: 'Estimation Engine' },
                                             { icon: <UserGroupIcon className="h-3 w-3" />, label: 'Team Capacity DB' },
                                         ].map(sys => (
-                                            <span key={sys.label} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                            <span key={sys.label} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/15 dark:bg-success/10 text-success text-[10px] font-medium border border-success/30/50 dark:border-success/30">
                                                 {sys.icon}
                                                 {sys.label}
                                             </span>
@@ -949,7 +949,7 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                                         </td>
                                         <td className="px-4 py-2.5 text-right">
                                             {project.stage === 'Complete' ? (
-                                                <span className="text-[10px] text-green-600 font-medium">100%</span>
+                                                <span className="text-[10px] text-success font-medium">100%</span>
                                             ) : project.deliveryRate > 0 ? (
                                                 <span className="text-[10px] text-foreground tabular-nums">{project.deliveryRate}%</span>
                                             ) : (
@@ -1000,7 +1000,7 @@ function Customer360View({ stepId }: { stepId: string }) {
                     <div className="flex-1">
                         <div className="flex items-center gap-2 text-xs">
                             <span className="font-medium text-foreground">CustomerIntelligenceAgent</span>
-                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300">Updated</span>
+                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-success/15 text-success dark:bg-success/20 dark:text-success">Updated</span>
                         </div>
                         <p className="text-xs text-muted-foreground mt-0.5">
                             Cross-system data aggregated: Dealer Experience + Expert Hub + Email/RFQ + Service Center. Profile completeness: <strong className="text-foreground">96%</strong>.
@@ -1070,7 +1070,7 @@ function Customer360View({ stepId }: { stepId: string }) {
                         <div className="space-y-2">
                             {c.systems.map(sys => (
                                 <div key={sys.name} className="flex items-center gap-2 p-2 rounded-lg bg-muted/30 border border-border">
-                                    <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                                    <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
                                     <div className="flex-1 min-w-0">
                                         <p className="text-[11px] font-medium text-foreground">{sys.name}</p>
                                         <p className="text-[10px] text-muted-foreground">{sys.records} records synced</p>
@@ -1174,12 +1174,12 @@ function OrderTimelineView({ stepId }: { stepId: string }) {
     });
 
     const timelineIcons: Record<string, React.ReactNode> = {
-        email: <Mail size={14} className="text-blue-500" />,
+        email: <Mail size={14} className="text-info" />,
         ai: <Bot size={14} className="text-ai" />,
-        quote: <FileText size={14} className="text-amber-500" />,
-        po: <Package size={14} className="text-green-500" />,
+        quote: <FileText size={14} className="text-warning" />,
+        po: <Package size={14} className="text-success" />,
         ack: <Truck size={14} className="text-sky-500" />,
-        service: <Wrench size={14} className="text-red-500" />,
+        service: <Wrench size={14} className="text-destructive" />,
     }
 
     return (
@@ -1191,7 +1191,7 @@ function OrderTimelineView({ stepId }: { stepId: string }) {
                     <div className="flex-1">
                         <div className="flex items-center gap-2 text-xs">
                             <span className="font-medium text-foreground">OrderSyncAgent</span>
-                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300">Synced</span>
+                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-success/15 text-success dark:bg-success/20 dark:text-success">Synced</span>
                         </div>
                         <p className="text-xs text-muted-foreground mt-0.5">
                             AIS acknowledgment (50 lines, $65K) — 3 exceptions resolved, dates +14d. HAT (5 lines, $8K) — confirmed. Project timeline auto-updated.
@@ -1227,16 +1227,16 @@ function OrderTimelineView({ stepId }: { stepId: string }) {
                     ].map(s => (
                         <div key={s.supplier} className={cn(
                             'p-3 rounded-lg border',
-                            s.color === 'green' && 'border-green-200 bg-green-50/30 dark:border-green-800/30 dark:bg-green-900/10',
-                            s.color === 'amber' && 'border-amber-200 bg-amber-50/30 dark:border-amber-800/30 dark:bg-amber-900/10',
+                            s.color === 'green' && 'border-success/30 bg-success/10/30 dark:border-success/40/30 dark:bg-success/10',
+                            s.color === 'amber' && 'border-warning/30 bg-warning/10/30 dark:border-warning/40/30 dark:bg-warning/10',
                             s.color === 'zinc' && 'border-border bg-card',
                         )}>
                             <div className="flex items-center justify-between mb-1">
                                 <span className="text-[10px] font-medium text-foreground">{s.supplier}</span>
                                 <span className={cn(
                                     'text-[9px] px-1.5 py-0.5 rounded font-medium',
-                                    s.color === 'green' && 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
-                                    s.color === 'amber' && 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
+                                    s.color === 'green' && 'bg-success/15 text-success dark:bg-success/20 dark:text-success',
+                                    s.color === 'amber' && 'bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning',
                                     s.color === 'zinc' && 'bg-muted text-muted-foreground',
                                 )}>{s.status}</span>
                             </div>
@@ -1270,24 +1270,24 @@ function OrderTimelineView({ stepId }: { stepId: string }) {
                                 className={cn(
                                     'flex items-start gap-3 px-4 py-3 transition-colors duration-700',
                                     isNS && phase === 'synced' && event.expandedDetail && 'cursor-pointer',
-                                    isNS && phase === 'syncing' && 'bg-amber-50/60 dark:bg-amber-500/10',
+                                    isNS && phase === 'syncing' && 'bg-warning/10',
                                     isNS && phase === 'synced' && isExpanded && 'bg-sky-50/60 dark:bg-sky-500/10',
                                     isNS && phase === 'synced' && !isExpanded && 'bg-sky-50/40 dark:bg-sky-500/5 hover:bg-sky-50/70 dark:hover:bg-sky-500/10',
-                                    !isNS && event.status === 'active' && 'bg-amber-50/30 dark:bg-amber-900/10',
+                                    !isNS && event.status === 'active' && 'bg-warning/10/30 dark:bg-warning/10',
                                     !isNS && event.status !== 'active' && 'bg-card hover:bg-muted dark:hover:bg-zinc-700/60',
                                 )}
                             >
                                 <div className="relative">
                                     <div className={cn(
                                         'h-7 w-7 rounded-full flex items-center justify-center shrink-0 transition-all duration-700',
-                                        isNS && phase === 'syncing' && 'ring-2 ring-amber-400 ring-offset-1 dark:ring-offset-zinc-800 bg-amber-100 dark:bg-amber-900/30',
-                                        isNS && phase === 'synced' && 'ring-2 ring-sky-400 dark:ring-sky-500 ring-offset-1 dark:ring-offset-zinc-800 bg-green-100 dark:bg-green-900/30',
-                                        !isNS && event.status === 'complete' && 'bg-green-100 dark:bg-green-900/30',
-                                        !isNS && event.status === 'active' && 'bg-amber-100 dark:bg-amber-900/30',
+                                        isNS && phase === 'syncing' && 'ring-2 ring-amber-400 ring-offset-1 dark:ring-offset-zinc-800 bg-warning/15',
+                                        isNS && phase === 'synced' && 'ring-2 ring-sky-400 dark:ring-sky-500 ring-offset-1 dark:ring-offset-zinc-800 bg-success/15',
+                                        !isNS && event.status === 'complete' && 'bg-success/15',
+                                        !isNS && event.status === 'active' && 'bg-warning/15',
                                         !isNS && event.status === 'pending' && 'bg-muted',
                                     )}>
                                         {isNS && phase === 'syncing'
-                                            ? <ArrowPathIcon className="w-3.5 h-3.5 text-amber-500 animate-spin" />
+                                            ? <ArrowPathIcon className="w-3.5 h-3.5 text-warning animate-spin" />
                                             : timelineIcons[event.icon]
                                         }
                                     </div>
@@ -1298,12 +1298,12 @@ function OrderTimelineView({ stepId }: { stepId: string }) {
                                 <div className="flex-1 min-w-0 pb-1">
                                     <div className="flex items-center gap-2 flex-wrap">
                                         <span className={cn('text-[11px] font-medium transition-colors duration-700',
-                                            isNS && phase === 'syncing' ? 'text-amber-700 dark:text-amber-300' :
+                                            isNS && phase === 'syncing' ? 'text-warning dark:text-warning' :
                                             isNS && phase === 'synced' ? 'text-sky-700 dark:text-sky-300' :
                                             'text-foreground'
                                         )}>{event.event}</span>
                                         {isNS && phase === 'syncing' && (
-                                            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold flex items-center gap-1">
+                                            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-warning/15 text-warning dark:text-warning font-bold flex items-center gap-1">
                                                 <ArrowPathIcon className="w-2.5 h-2.5 animate-spin" /> Syncing...
                                             </span>
                                         )}
@@ -1313,7 +1313,7 @@ function OrderTimelineView({ stepId }: { stepId: string }) {
                                             </span>
                                         )}
                                         {!isNS && event.status === 'active' && (
-                                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300 font-medium">Active</span>
+                                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning font-medium">Active</span>
                                         )}
                                     </div>
                                     <p className="text-[10px] text-muted-foreground mt-0.5">
@@ -1369,7 +1369,7 @@ function ReportsView({ stepId }: { stepId: string }) {
                     <div className="flex-1">
                         <div className="flex items-center gap-2 text-xs">
                             <span className="font-medium text-foreground">ServiceRecordAgent</span>
-                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300">Logged</span>
+                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-success/15 text-success dark:bg-success/20 dark:text-success">Logged</span>
                         </div>
                         <p className="text-xs text-muted-foreground mt-0.5">
                             Warranty claim linked to project. Full lifecycle: email (1.1) → AI extraction (1.2) → quote (1.7) → PO (1.9) → ack (2.4) → service (3.4). <strong className="text-foreground">Zero data re-entered.</strong>
@@ -1407,7 +1407,7 @@ function ReportsView({ stepId }: { stepId: string }) {
                         <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-2">
                                 <h3 className="text-xs font-medium text-foreground">Pending Orders by Supplier</h3>
-                                <span className="text-[10px] px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-medium flex items-center gap-1">
+                                <span className="text-[10px] px-2 py-0.5 rounded bg-info/15 text-info dark:text-info font-medium flex items-center gap-1">
                                     <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
                                     Rule-Based · Deterministic
                                 </span>
@@ -1420,7 +1420,7 @@ function ReportsView({ stepId }: { stepId: string }) {
                                     <th className="text-left py-2 font-medium text-muted-foreground">Supplier</th>
                                     <th className="text-center py-2 font-medium text-muted-foreground">0–30d</th>
                                     <th className="text-center py-2 font-medium text-muted-foreground">30–60d</th>
-                                    <th className="text-center py-2 font-medium text-amber-600 dark:text-amber-400">60+d</th>
+                                    <th className="text-center py-2 font-medium text-warning">60+d</th>
                                     <th className="text-right py-2 font-medium text-muted-foreground">Total $</th>
                                     <th className="text-center py-2 font-medium text-muted-foreground">Risk</th>
                                 </tr>
@@ -1437,13 +1437,13 @@ function ReportsView({ stepId }: { stepId: string }) {
                                         <td className="py-2 font-medium text-foreground">{row.supplier}</td>
                                         <td className="py-2 text-center text-muted-foreground">{row.d30}</td>
                                         <td className="py-2 text-center text-muted-foreground">{row.d60}</td>
-                                        <td className={cn("py-2 text-center font-medium", row.d90 > 0 ? 'text-amber-600 dark:text-amber-400' : 'text-muted-foreground')}>{row.d90}</td>
+                                        <td className={cn("py-2 text-center font-medium", row.d90 > 0 ? 'text-warning' : 'text-muted-foreground')}>{row.d90}</td>
                                         <td className="py-2 text-right font-medium text-foreground">{row.total}</td>
                                         <td className="py-2 text-center">
                                             <span className={cn("text-[9px] px-1.5 py-0.5 rounded-full font-medium",
-                                                row.risk === 'high' ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400' :
-                                                row.risk === 'medium' ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400' :
-                                                'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400'
+                                                row.risk === 'high' ? 'bg-destructive/15 text-destructive' :
+                                                row.risk === 'medium' ? 'bg-warning/15 text-warning' :
+                                                'bg-success/15 text-success'
                                             )}>{row.risk}</span>
                                         </td>
                                     </tr>
@@ -1465,7 +1465,7 @@ function ReportsView({ stepId }: { stepId: string }) {
                         <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-2">
                                 <h3 className="text-xs font-medium text-foreground">Weekly Bookings vs. Target</h3>
-                                <span className="text-[10px] px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-medium flex items-center gap-1">
+                                <span className="text-[10px] px-2 py-0.5 rounded bg-info/15 text-info dark:text-info font-medium flex items-center gap-1">
                                     <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
                                     Rule-Based · Deterministic
                                 </span>
@@ -1495,7 +1495,7 @@ function ReportsView({ stepId }: { stepId: string }) {
                                         <td className="py-2 font-medium text-foreground">{row.week}</td>
                                         <td className="py-2 text-right text-foreground">{row.booked}</td>
                                         <td className="py-2 text-right text-muted-foreground">{row.target}</td>
-                                        <td className={cn("py-2 text-right font-medium", row.positive ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400')}>{row.variance}</td>
+                                        <td className={cn("py-2 text-right font-medium", row.positive ? 'text-success' : 'text-destructive')}>{row.variance}</td>
                                         <td className="py-2 text-center">{row.trend}</td>
                                     </tr>
                                 ))}
@@ -1534,7 +1534,7 @@ function ReportsView({ stepId }: { stepId: string }) {
                     </div>
                     <div className="flex items-center gap-2">
                         <span className="text-[10px] px-2 py-1 rounded bg-primary/10 text-foreground font-medium">AI Generated</span>
-                        <span className="text-[10px] px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-medium flex items-center gap-1">
+                        <span className="text-[10px] px-2 py-1 rounded bg-info/15 text-info dark:text-info font-medium flex items-center gap-1">
                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
                             Rule-Based · Deterministic
                         </span>
@@ -1556,9 +1556,9 @@ function ReportsView({ stepId }: { stepId: string }) {
                 <div className="grid grid-cols-4 gap-3 mb-4">
                     {[
                         { label: 'Project Value', value: '$43,750', sub: 'Quote #QT-1025', color: '' },
-                        { label: 'Delivery Rate', value: '98%', sub: 'On track', color: 'text-green-600' },
-                        { label: 'Open Claims', value: '1', sub: 'SKU mismatch (3.4)', color: 'text-amber-600' },
-                        { label: 'Systems Synced', value: '5', sub: 'Zero re-entry', color: 'text-green-600' },
+                        { label: 'Delivery Rate', value: '98%', sub: 'On track', color: 'text-success' },
+                        { label: 'Open Claims', value: '1', sub: 'SKU mismatch (3.4)', color: 'text-warning' },
+                        { label: 'Systems Synced', value: '5', sub: 'Zero re-entry', color: 'text-success' },
                     ].map(m => (
                         <div key={m.label} className="p-3 rounded-lg bg-muted/30 border border-border text-center">
                             <p className="text-[10px] text-muted-foreground">{m.label}</p>
@@ -1601,14 +1601,14 @@ function ReportsView({ stepId }: { stepId: string }) {
 
             {/* AI Impact KPIs — Spec Errors + Manual Entries */}
             <div className="grid grid-cols-2 gap-4">
-                <div className="bg-card border border-amber-200 dark:border-amber-800 rounded-xl p-4">
+                <div className="bg-card border border-warning/30 dark:border-warning/40 rounded-xl p-4">
                     <div className="flex items-center gap-2 mb-2">
-                        <div className="h-7 w-7 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
-                            <svg className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
+                        <div className="h-7 w-7 rounded-lg bg-warning/15 flex items-center justify-center">
+                            <svg className="h-3.5 w-3.5 text-warning" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
                         </div>
                         <h4 className="text-xs font-medium text-foreground">Spec Errors Caught by AI</h4>
                     </div>
-                    <p className="text-2xl font-bold text-amber-600 dark:text-amber-400">7</p>
+                    <p className="text-2xl font-bold text-warning">7</p>
                     <p className="text-[10px] text-muted-foreground mt-1">Review time saved: <strong className="text-foreground">3.2 hours</strong></p>
                     <div className="mt-2 space-y-1">
                         {[
@@ -1625,14 +1625,14 @@ function ReportsView({ stepId }: { stepId: string }) {
                     </div>
                 </div>
 
-                <div className="bg-card border border-green-200 dark:border-green-800 rounded-xl p-4">
+                <div className="bg-card border border-success/30 dark:border-success/40 rounded-xl p-4">
                     <div className="flex items-center gap-2 mb-2">
-                        <div className="h-7 w-7 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                            <svg className="h-3.5 w-3.5 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <div className="h-7 w-7 rounded-lg bg-success/15 flex items-center justify-center">
+                            <svg className="h-3.5 w-3.5 text-success" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                         </div>
                         <h4 className="text-xs font-medium text-foreground">Manual Entries Eliminated</h4>
                     </div>
-                    <p className="text-2xl font-bold text-green-600 dark:text-green-400">847</p>
+                    <p className="text-2xl font-bold text-success">847</p>
                     <p className="text-[10px] text-muted-foreground mt-1">Time saved: <strong className="text-foreground">12.4 hours</strong></p>
                     <div className="mt-2 space-y-1">
                         {[
@@ -1693,7 +1693,7 @@ function ReportsView({ stepId }: { stepId: string }) {
                                     'text-[9px] px-1.5 py-0.5 rounded font-medium',
                                     app.status === 'Source'
                                         ? 'bg-primary text-primary-foreground'
-                                        : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
+                                        : 'bg-success/15 text-success dark:bg-success/20 dark:text-success'
                                 )}>{app.status}</span>
                             </div>
                         ))}
@@ -1708,7 +1708,7 @@ function ReportsView({ stepId }: { stepId: string }) {
             <details className="bg-card border border-border rounded-xl overflow-hidden group">
                 <summary className="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-muted/30 transition-colors list-none">
                     <div className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+                        <svg className="w-4 h-4 text-info" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
                         <span className="text-xs font-medium text-foreground">Report Consistency Guarantee</span>
                     </div>
                     <svg className="w-3.5 h-3.5 text-muted-foreground transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
@@ -1734,15 +1734,15 @@ function ReportsView({ stepId }: { stepId: string }) {
                                 'Confidence > 85%',
                             ].map(t => (
                                 <div key={t} className="flex items-center gap-2 text-[10px]">
-                                    <svg className="w-3 h-3 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                    <svg className="w-3 h-3 text-success shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
                                     <span className="text-muted-foreground">{t}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
-                    <div className="flex items-center gap-2 p-2 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-200 dark:border-green-800">
-                        <svg className="w-3.5 h-3.5 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        <p className="text-[10px] text-green-700 dark:text-green-400 font-medium">Last 52 weekly runs: <strong>100% identical format</strong> — no LLM variation</p>
+                    <div className="flex items-center gap-2 p-2 rounded-lg bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/40">
+                        <svg className="w-3.5 h-3.5 text-success shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <p className="text-[10px] text-success font-medium">Last 52 weekly runs: <strong>100% identical format</strong> — no LLM variation</p>
                     </div>
                 </div>
             </details>
@@ -1757,11 +1757,11 @@ function ReportsView({ stepId }: { stepId: string }) {
 
 function StageBadge({ stage }: { stage: Project['stage'] }) {
     const styles: Record<string, string> = {
-        Planning: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
-        Procurement: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
+        Planning: 'bg-info/15 text-info dark:bg-info/20 dark:text-info',
+        Procurement: 'bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning',
         Delivery: 'bg-sky-100 text-sky-700 dark:bg-sky-900/30 dark:text-sky-300',
         Installation: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300',
-        Complete: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
+        Complete: 'bg-success/15 text-success dark:bg-success/20 dark:text-success',
     }
     return <span className={cn('text-[10px] px-1.5 py-0.5 rounded font-medium', styles[stage])}>{stage}</span>
 }
@@ -1769,8 +1769,8 @@ function StageBadge({ stage }: { stage: Project['stage'] }) {
 function ProjectStatusBadge({ status }: { status: Project['status'] }) {
     const styles: Record<string, string> = {
         Active: 'bg-primary/10 text-foreground',
-        'On Track': 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
-        'At Risk': 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300',
+        'On Track': 'bg-success/15 text-success dark:bg-success/20 dark:text-success',
+        'At Risk': 'bg-destructive/15 text-destructive dark:bg-destructive/20 dark:text-destructive',
         Complete: 'bg-zinc-100 text-muted-foreground dark:bg-zinc-800 dark:text-muted-foreground',
     }
     return <span className={cn('text-[10px] px-1.5 py-0.5 rounded font-medium', styles[status])}>{status}</span>
@@ -1864,9 +1864,9 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
 
     const typeIcons: Record<string, { icon: React.ReactNode; color: string }> = {
         change_order: { icon: <ReceiptPercentIcon className="h-3.5 w-3.5" />, color: 'text-ai bg-purple-50 dark:bg-ai/10' },
-        claim: { icon: <ExclamationTriangleIcon className="h-3.5 w-3.5" />, color: 'text-amber-500 bg-amber-50 dark:bg-amber-500/10' },
-        delivery: { icon: <Truck className="h-3.5 w-3.5" />, color: 'text-blue-500 bg-blue-50 dark:bg-blue-500/10' },
-        ack: { icon: <CheckCircleIcon className="h-3.5 w-3.5" />, color: 'text-green-500 bg-green-50 dark:bg-green-500/10' },
+        claim: { icon: <ExclamationTriangleIcon className="h-3.5 w-3.5" />, color: 'text-warning bg-warning/10' },
+        delivery: { icon: <Truck className="h-3.5 w-3.5" />, color: 'text-info bg-info/10 dark:bg-info/10' },
+        ack: { icon: <CheckCircleIcon className="h-3.5 w-3.5" />, color: 'text-success bg-success/10' },
         po: { icon: <DocumentTextIcon className="h-3.5 w-3.5" />, color: 'text-foreground bg-muted/50' },
         quote: { icon: <FileText className="h-3.5 w-3.5" />, color: 'text-foreground bg-muted/50' },
         project_created: { icon: <BuildingOfficeIcon className="h-3.5 w-3.5" />, color: 'text-zinc-900 bg-brand-400 dark:text-zinc-900 dark:bg-brand-400' },
@@ -1982,7 +1982,7 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
                                                 </span>
                                             )}
                                             {('invoiceLink' in entry) && (entry as any).invoiceLink && (
-                                                <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium">
+                                                <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-info/15 text-info font-medium">
                                                     → {(entry as any).invoiceLink}
                                                 </span>
                                             )}
@@ -2069,9 +2069,9 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
                 <div className="bg-card border border-border rounded-xl overflow-hidden animate-in fade-in slide-in-from-bottom-3 duration-700 delay-300">
                     <div className="px-4 py-3 border-b border-border flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                            <svg className="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                            <svg className="w-4 h-4 text-info" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
                             <h3 className="text-xs font-medium text-foreground">Customer Communications</h3>
-                            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-medium">Auto-sent</span>
+                            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-info/15 text-info dark:text-info font-medium">Auto-sent</span>
                         </div>
                         <span className="text-[10px] text-muted-foreground">4 sent · 0 manual drafts</span>
                     </div>
@@ -2083,7 +2083,7 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
                             { label: 'Delivery Schedule', recipient: 'Apex Furniture', date: 'Mar 27', status: 'scheduled' },
                         ].map((comm, i) => (
                             <div key={i} className={`px-4 py-2 flex items-center gap-3 animate-in fade-in duration-300`} style={{ animationDelay: `${(i + 1) * 150}ms` }}>
-                                <svg className={cn("w-3.5 h-3.5 shrink-0", comm.status === 'sent' ? 'text-green-500' : 'text-blue-500')} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                                <svg className={cn("w-3.5 h-3.5 shrink-0", comm.status === 'sent' ? 'text-success' : 'text-info')} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                                     {comm.status === 'sent'
                                         ? <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         : <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -2095,7 +2095,7 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
                                 </div>
                                 <div className="text-right shrink-0">
                                     <span className={cn("text-[9px] px-1.5 py-0.5 rounded-full font-medium",
-                                        comm.status === 'sent' ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' : 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
+                                        comm.status === 'sent' ? 'bg-success/15 text-success' : 'bg-info/15 text-info'
                                     )}>{comm.status === 'sent' ? 'Sent' : 'Scheduled'}</span>
                                     <p className="text-[9px] text-muted-foreground mt-0.5">{comm.date}</p>
                                 </div>
@@ -2109,20 +2109,20 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
             {isNewProject && showNotification && (
                 <div className="bg-card border border-border rounded-xl p-4 animate-in fade-in slide-in-from-bottom-3 duration-700 delay-500">
                     <h4 className="text-[11px] font-semibold text-foreground mb-3 flex items-center gap-2">
-                        <svg className="w-3.5 h-3.5 text-green-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
+                        <svg className="w-3.5 h-3.5 text-success" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
                         Data Entry: Before vs. After Strata
                     </h4>
                     <div className="grid grid-cols-2 gap-3">
                         <div className="p-3 rounded-lg bg-muted border border-border opacity-60">
                             <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider mb-2">Before</p>
                             <p className="text-sm font-bold text-foreground line-through">200 items × 5 systems</p>
-                            <p className="text-2xl font-black text-red-500 mt-1 line-through">1,000</p>
+                            <p className="text-2xl font-black text-destructive mt-1 line-through">1,000</p>
                             <p className="text-[10px] text-muted-foreground mt-0.5 line-through">manual entries required</p>
                         </div>
-                        <div className="p-3 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-200 dark:border-green-800">
-                            <p className="text-[9px] font-bold text-green-600 dark:text-green-400 uppercase tracking-wider mb-2">After — Strata</p>
+                        <div className="p-3 rounded-lg bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/40">
+                            <p className="text-[9px] font-bold text-success uppercase tracking-wider mb-2">After — Strata</p>
                             <p className="text-sm font-bold text-foreground">200 items × 1 entry</p>
-                            <p className="text-2xl font-black text-green-600 dark:text-green-400 mt-1">0</p>
+                            <p className="text-2xl font-black text-success mt-1">0</p>
                             <p className="text-[10px] text-muted-foreground mt-0.5">re-entries needed</p>
                         </div>
                     </div>
@@ -2151,8 +2151,8 @@ function InvoicingView() {
                     <p className="text-[10px] text-muted-foreground mt-0.5">Built from PO, change orders, and service labor — zero manual line items</p>
                 </div>
                 <div className="flex items-center gap-2">
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-medium">Rule-Based</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 font-medium">
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-info/15 text-info dark:text-info font-medium">Rule-Based</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-warning/15 text-warning font-medium">
                         Ready for Review
                     </span>
                 </div>
@@ -2161,13 +2161,13 @@ function InvoicingView() {
             {/* 3-Way Match Visual */}
             <div className="bg-card border border-border rounded-xl p-4">
                 <div className="flex items-center gap-2 mb-3">
-                    <svg className="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
+                    <svg className="w-4 h-4 text-info" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
                     <h4 className="text-[11px] font-medium text-foreground">3-Way Match — PO / Acknowledgment / Invoice</h4>
                 </div>
                 <div className="flex items-center justify-between gap-2">
                     {[
-                        { id: 'PO #ORD-2055', amount: '$43,750', items: '200 items', color: 'border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-900/10' },
-                        { id: 'ACK #ACK-2055', amount: '$43,750', items: '200 items', color: 'border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-900/10' },
+                        { id: 'PO #ORD-2055', amount: '$43,750', items: '200 items', color: 'border-info/30 dark:border-info/40 bg-info/10 dark:bg-info/10' },
+                        { id: 'ACK #ACK-2055', amount: '$43,750', items: '200 items', color: 'border-success/30 dark:border-success/40 bg-success/10 dark:bg-success/10' },
                         { id: 'INV #INV-2055', amount: '$44,210', items: '202 items (+CO)', color: 'border-purple-200 dark:border-purple-800 bg-purple-50/50 dark:bg-purple-900/10' },
                     ].map((doc, i) => (
                         <div key={doc.id} className="flex items-center gap-2 flex-1">
@@ -2179,8 +2179,8 @@ function InvoicingView() {
                             {i < 2 && (
                                 <div className="flex flex-col items-center gap-0.5 shrink-0">
                                     <span className="text-[8px] text-muted-foreground">↔</span>
-                                    <svg className="w-3.5 h-3.5 text-green-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                    <span className="text-[8px] text-green-600 dark:text-green-400 font-medium">{i === 0 ? 'Match' : 'Reconciled'}</span>
+                                    <svg className="w-3.5 h-3.5 text-success" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    <span className="text-[8px] text-success font-medium">{i === 0 ? 'Match' : 'Reconciled'}</span>
                                 </div>
                             )}
                         </div>
@@ -2238,12 +2238,12 @@ function InvoicingView() {
                         </div>
                     </div>
 
-                        <div className="flex items-center justify-between py-1.5 px-2 rounded bg-blue-50/50 dark:bg-blue-500/5 border border-blue-100 dark:border-blue-500/10">
+                        <div className="flex items-center justify-between py-1.5 px-2 rounded bg-info/10 border border-info/20 dark:border-info/30">
                             <div className="flex items-center gap-2">
-                                <Truck className="h-3.5 w-3.5 text-blue-500" />
+                                <Truck className="h-3.5 w-3.5 text-info" />
                                 <div>
                                     <p className="text-[11px] font-medium text-foreground">Freight — Zone A delivery confirmed</p>
-                                    <p className="text-[9px] text-muted-foreground">Source: <span className="text-blue-600 dark:text-blue-400 font-medium">Daily Log DL-004</span> · FastFreight Logistics</p>
+                                    <p className="text-[9px] text-muted-foreground">Source: <span className="text-info font-medium">Daily Log DL-004</span> · FastFreight Logistics</p>
                                 </div>
                             </div>
                             <p className="text-xs font-semibold text-foreground">$1,200.00</p>
@@ -2266,7 +2266,7 @@ function InvoicingView() {
                             className={cn(
                                 'flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-md text-xs font-medium transition-colors',
                                 synced
-                                    ? 'bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-500/20'
+                                    ? 'bg-success/15 text-success border border-success/30 dark:border-success/30'
                                     : 'bg-primary text-primary-foreground hover:bg-primary/90'
                             )}
                         >
@@ -2287,12 +2287,12 @@ function InvoicingView() {
                     {/* QB Connection Card */}
                     <div className="rounded-lg border border-border bg-card p-3 space-y-3">
                         <div className="flex items-center gap-2">
-                            <div className="h-7 w-7 rounded-md bg-green-100 dark:bg-green-500/20 flex items-center justify-center">
-                                <CurrencyDollarIcon className="h-4 w-4 text-green-600 dark:text-green-400" />
+                            <div className="h-7 w-7 rounded-md bg-success/15 flex items-center justify-center">
+                                <CurrencyDollarIcon className="h-4 w-4 text-success" />
                             </div>
                             <div>
                                 <p className="text-xs font-semibold text-foreground">QuickBooks Online</p>
-                                <p className="text-[10px] text-green-600 dark:text-green-400 font-medium">Connected ✓</p>
+                                <p className="text-[10px] text-success font-medium">Connected ✓</p>
                             </div>
                         </div>
 
@@ -2307,7 +2307,7 @@ function InvoicingView() {
                                     <span className="text-[10px] text-muted-foreground">{item.label}</span>
                                     <span className={cn(
                                         'text-[10px] font-medium',
-                                        item.synced ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'
+                                        item.synced ? 'text-success' : 'text-warning'
                                     )}>
                                         {item.status}
                                     </span>
@@ -2497,10 +2497,10 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                                 </div>
 
                                 {/* Daily Log Entry */}
-                                <div className="mt-3 p-3 rounded-lg bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
+                                <div className="mt-3 p-3 rounded-lg bg-info/10 dark:bg-blue-950/20 border border-info/30 dark:border-info/40">
                                     <div className="flex items-center gap-2 mb-1">
-                                        <ClipboardDocumentListIcon className="w-3.5 h-3.5 text-blue-500" />
-                                        <span className="text-[10px] font-bold text-blue-700 dark:text-blue-300">Daily Log DL-004</span>
+                                        <ClipboardDocumentListIcon className="w-3.5 h-3.5 text-info" />
+                                        <span className="text-[10px] font-bold text-info dark:text-info">Daily Log DL-004</span>
                                     </div>
                                     <p className="text-[11px] text-muted-foreground">"Receiving complete — partial delivery noted. 2 Task Chairs pending backorder."</p>
                                 </div>
@@ -2509,7 +2509,7 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                                 <div className="mt-3">
                                     <span className="text-[8px] font-bold text-success dark:text-success uppercase tracking-wider">External Systems · Synced</span>
                                     <div className="flex flex-wrap gap-1.5 mt-1">
-                                        <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold">📦 Receiving System</span>
+                                        <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-info/15 text-info dark:text-info font-bold">📦 Receiving System</span>
                                         <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-bold">💰 QuickBooks</span>
                                         <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-bold">📋 Daily Log</span>
                                     </div>
@@ -2571,16 +2571,16 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                                 { label: 'Backorder Adjustment', amount: '-$200', pct: '-0.5%', type: 'subtract' as const, note: 'Partial delivery credit for 2 Task Chairs' },
                             ].map((item, i) => (
                                 <div key={i} className={`flex items-center gap-4 p-3 rounded-xl border ${
-                                    item.type === 'base' ? 'border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/20' :
-                                    item.type === 'add' ? 'border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/20' :
+                                    item.type === 'base' ? 'border-info/30 dark:border-info/40 bg-info/10 dark:bg-blue-950/20' :
+                                    item.type === 'add' ? 'border-warning/30 dark:border-warning/40 bg-warning/10 dark:bg-amber-950/20' :
                                     'border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/20'
                                 }`}>
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2">
                                             <span className="text-xs font-bold text-foreground">{item.label}</span>
                                             <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold ${
-                                                item.type === 'base' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300' :
-                                                item.type === 'add' ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300' :
+                                                item.type === 'base' ? 'bg-info/15 text-info dark:text-info' :
+                                                item.type === 'add' ? 'bg-warning/15 text-warning dark:text-warning' :
                                                 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300'
                                             }`}>{item.pct}</span>
                                         </div>
@@ -2588,7 +2588,7 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                                     </div>
                                     <span className={`text-sm font-bold ${
                                         item.type === 'base' ? 'text-foreground' :
-                                        item.type === 'add' ? 'text-amber-600 dark:text-amber-400' :
+                                        item.type === 'add' ? 'text-warning' :
                                         'text-success dark:text-success'
                                     }`}>{item.amount}</span>
                                 </div>
@@ -2607,11 +2607,11 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                         <div className="px-4 py-3 border-t border-border/50 bg-muted/20">
                             <div className="flex items-center gap-6">
                                 <div className="text-center">
-                                    <p className="text-sm font-bold text-amber-600 dark:text-amber-400">+$6,455</p>
+                                    <p className="text-sm font-bold text-warning">+$6,455</p>
                                     <p className="text-[9px] text-muted-foreground uppercase tracking-wider">Variance</p>
                                 </div>
                                 <div className="text-center">
-                                    <p className="text-sm font-bold text-amber-600 dark:text-amber-400">+14.7%</p>
+                                    <p className="text-sm font-bold text-warning">+14.7%</p>
                                     <p className="text-[9px] text-muted-foreground uppercase tracking-wider">vs. Base</p>
                                 </div>
                                 <div className="text-center">

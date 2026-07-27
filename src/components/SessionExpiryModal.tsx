@@ -36,8 +36,8 @@ export default function SessionExpiryModal({ isOpen, onExtend, onLogout }: Sessi
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full max-w-sm transform overflow-hidden rounded-2xl bg-card p-6 text-center shadow-xl transition-all border border-border space-y-4">
-                <div className="mx-auto w-12 h-12 bg-amber-100 dark:bg-amber-500/20 rounded-full flex items-center justify-center">
-                  <ClockIcon className="w-6 h-6 text-amber-600 dark:text-amber-400" />
+                <div className="mx-auto w-12 h-12 bg-warning/15 rounded-full flex items-center justify-center">
+                  <ClockIcon className="w-6 h-6 text-warning" />
                 </div>
 
                 <div className="space-y-2">

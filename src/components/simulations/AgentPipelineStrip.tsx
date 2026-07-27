@@ -19,19 +19,19 @@ const colorMap = {
         glow: 'shadow-indigo-500/20',
     },
     blue: {
-        running: 'text-blue-400 border-blue-500/30 bg-blue-500/5',
+        running: 'text-info border-info/30 bg-info/100/5',
         glow: 'shadow-blue-500/20',
     },
     green: {
-        running: 'text-green-400 border-green-500/30 bg-green-500/5',
+        running: 'text-success border-success/30 bg-success/100/5',
         glow: 'shadow-green-500/20',
     },
     amber: {
-        running: 'text-amber-400 border-amber-500/30 bg-amber-500/5',
+        running: 'text-warning border-warning/30 bg-warning/10',
         glow: 'shadow-amber-500/20',
     },
     red: {
-        running: 'text-red-400 border-red-500/30 bg-red-500/5',
+        running: 'text-destructive border-destructive/30 bg-destructive/5',
         glow: 'shadow-red-500/20',
     },
 };
@@ -39,11 +39,11 @@ const colorMap = {
 function StatusIcon({ status, accent }: { status: AgentStep['status']; accent: string }) {
     switch (status) {
         case 'done':
-            return <CheckCircle2 size={14} className="text-green-500 shrink-0" />;
+            return <CheckCircle2 size={14} className="text-success shrink-0" />;
         case 'running':
-            return <Loader2 size={14} className={clsx('animate-spin shrink-0', colorMap[accent as keyof typeof colorMap]?.running?.split(' ')[0] || 'text-blue-400')} />;
+            return <Loader2 size={14} className={clsx('animate-spin shrink-0', colorMap[accent as keyof typeof colorMap]?.running?.split(' ')[0] || 'text-info')} />;
         case 'error':
-            return <XCircle size={14} className="text-red-500 shrink-0" />;
+            return <XCircle size={14} className="text-destructive shrink-0" />;
         default:
             return <Circle size={14} className="text-muted-foreground/30 shrink-0" />;
     }
@@ -68,17 +68,17 @@ export default function AgentPipelineStrip({ agents, accentColor = 'blue' }: Age
                     <div className={clsx(
                         'flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border min-w-fit transition-all duration-300',
                         agent.status === 'running' && clsx(colors.running, 'shadow-sm', colors.glow),
-                        agent.status === 'done' && 'border-green-500/30 bg-green-500/5',
-                        agent.status === 'error' && 'border-red-500/30 bg-red-500/5',
+                        agent.status === 'done' && 'border-success/30 bg-success/100/5',
+                        agent.status === 'error' && 'border-destructive/30 bg-destructive/5',
                         agent.status === 'pending' && 'border-border/20 bg-card',
                     )}>
                         <StatusIcon status={agent.status} accent={accentColor} />
                         <div className="flex flex-col">
                             <span className={clsx(
                                 'text-[10px] font-medium uppercase tracking-wider leading-tight',
-                                agent.status === 'done' && 'text-green-500',
+                                agent.status === 'done' && 'text-success',
                                 agent.status === 'running' && colorMap[accentColor].running.split(' ')[0],
-                                agent.status === 'error' && 'text-red-500',
+                                agent.status === 'error' && 'text-destructive',
                                 agent.status === 'pending' && 'text-muted-foreground/50',
                             )}>
                                 {spaceName(agent.name)}

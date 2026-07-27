@@ -40,9 +40,9 @@ interface ProjectsArchiveViewProps {
 // ── Status badge palette ─────────────────────────────────────────────────────
 const STATUS_STYLES: Record<EstimateStatus, string> = {
     DRAFT:     'bg-muted text-muted-foreground border-border',
-    PENDING:   'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20',
+    PENDING:   'bg-warning/10 text-warning border-warning/30',
     APPROVED:  'bg-brand-300/10 text-brand-600 dark:text-brand-400 border-brand-300/30',
-    COMPLETED: 'bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20',
+    COMPLETED: 'bg-success/10 text-success border-success/30',
 }
 
 const STATUS_ORDER: EstimateStatus[] = ['DRAFT', 'PENDING', 'APPROVED', 'COMPLETED']
@@ -99,14 +99,14 @@ export default function ProjectsArchiveView({
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         placeholder="Search by client or ZIP…"
-                        className="pl-9 pr-3 py-2 w-72 bg-card dark:bg-zinc-800 border border-border rounded-xl text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
+                        className="pl-9 pr-3 py-2 w-72 bg-card border border-border rounded-xl text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
                     />
                 </div>
             </div>
 
             {/* Empty state */}
             {filtered.length === 0 && (
-                <div className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm p-12 text-center">
+                <div className="bg-card rounded-2xl border border-border shadow-sm p-12 text-center">
                     <p className="text-sm text-muted-foreground">
                         No saved estimates match &quot;{query}&quot;.
                     </p>
@@ -126,7 +126,7 @@ export default function ProjectsArchiveView({
                     return (
                         <div
                             key={est.id}
-                            className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm p-5 hover:border-primary/40 transition-colors flex flex-col gap-4"
+                            className="bg-card rounded-2xl border border-border shadow-sm p-5 hover:border-primary/40 transition-colors flex flex-col gap-4"
                         >
                             {/* Top: client + status */}
                             <div className="flex items-start justify-between gap-3">
@@ -161,7 +161,7 @@ export default function ProjectsArchiveView({
                                             leaveFrom="opacity-100"
                                             leaveTo="opacity-0"
                                         >
-                                            <ListboxOptions className="absolute right-0 z-30 mt-1 w-36 overflow-hidden rounded-xl bg-card dark:bg-zinc-800 border border-border shadow-xl py-1 focus:outline-none">
+                                            <ListboxOptions className="absolute right-0 z-30 mt-1 w-36 overflow-hidden rounded-xl bg-card border border-border shadow-xl py-1 focus:outline-none">
                                                 {STATUS_ORDER.map((s) => (
                                                     <ListboxOption
                                                         key={s}
@@ -238,7 +238,7 @@ export default function ProjectsArchiveView({
                                             className={clsx(
                                                 'text-sm font-semibold mt-0.5 flex items-center justify-center gap-0.5',
                                                 variancePositive
-                                                    ? 'text-green-600 dark:text-green-400'
+                                                    ? 'text-success'
                                                     : 'text-destructive'
                                             )}
                                         >

@@ -134,7 +134,7 @@ export default function OcrDocCard({ doc, onPreview, onMarkCompleted, onPrefligh
                         {isReconciled ? (
                             <span
                                 title="Reviewed"
-                                className="p-1.5 rounded-md text-green-600 bg-green-50 dark:text-green-300 dark:bg-green-500/15 inline-flex"
+                                className="p-1.5 rounded-md text-success bg-success/10 dark:text-success dark:bg-success/15 inline-flex"
                             >
                                 <CheckCircle2 className="h-4 w-4" />
                             </span>
@@ -159,7 +159,7 @@ export default function OcrDocCard({ doc, onPreview, onMarkCompleted, onPrefligh
                                 onClick={(e) => { e.stopPropagation(); onPreflightSync() }}
                                 title="Preflight Sync"
                                 aria-label="Preflight Sync"
-                                className="p-1.5 rounded-md text-green-600 bg-green-50 dark:text-green-300 dark:bg-green-500/15 hover:brightness-95 transition-all"
+                                className="p-1.5 rounded-md text-success bg-success/10 dark:text-success dark:bg-success/15 hover:brightness-95 transition-all"
                             >
                                 <Send className="h-4 w-4" />
                             </button>
@@ -169,7 +169,7 @@ export default function OcrDocCard({ doc, onPreview, onMarkCompleted, onPrefligh
                                 onClick={(e) => { e.stopPropagation(); onMarkCompleted() }}
                                 title="Mark as Completed"
                                 aria-label="Mark as Completed"
-                                className="p-1.5 rounded-md text-green-700 bg-green-100 dark:text-green-200 dark:bg-green-500/25 hover:brightness-95 transition-all"
+                                className="p-1.5 rounded-md text-success bg-success/15 dark:text-success dark:bg-success/100/25 hover:brightness-95 transition-all"
                             >
                                 <CheckSquare className="h-4 w-4" />
                             </button>
@@ -177,7 +177,7 @@ export default function OcrDocCard({ doc, onPreview, onMarkCompleted, onPrefligh
                             <span
                                 title="Mark as Reviewed first"
                                 aria-label="Mark as Reviewed first (disabled — review first)"
-                                className="p-1.5 rounded-md text-green-400 bg-green-50/60 dark:text-green-500 dark:bg-green-500/10 inline-flex cursor-not-allowed opacity-70"
+                                className="p-1.5 rounded-md text-success bg-success/10/60 dark:text-success dark:bg-success/10 inline-flex cursor-not-allowed opacity-70"
                             >
                                 <CheckSquare className="h-4 w-4" />
                             </span>
@@ -186,7 +186,7 @@ export default function OcrDocCard({ doc, onPreview, onMarkCompleted, onPrefligh
                             onClick={(e) => { e.stopPropagation(); onDeprecate() }}
                             title="Deprecate"
                             aria-label="Deprecate document"
-                            className="p-1.5 rounded-md text-red-600 bg-red-50 dark:text-red-300 dark:bg-red-500/15 hover:brightness-95 transition-all"
+                            className="p-1.5 rounded-md text-destructive bg-destructive/10 dark:text-destructive dark:bg-destructive/15 hover:brightness-95 transition-all"
                         >
                             <Trash2 className="h-4 w-4" />
                         </button>

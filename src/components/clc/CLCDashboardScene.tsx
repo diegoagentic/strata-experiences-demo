@@ -112,14 +112,14 @@ export default function CLCDashboardScene() {
                     <div className="divide-y divide-border">
                         {AT_RISK.map(item => {
                             const borderColor = item.severity === 'red'
-                                ? 'border-l-4 border-l-red-500'
-                                : 'border-l-4 border-l-amber-500'
+                                ? 'border-l-4 border-l-destructive'
+                                : 'border-l-4 border-l-warning'
                             return (
                                 <div key={item.id} className={`p-4 ${borderColor}`}>
                                     <div className="flex items-center gap-2 mb-1">
                                         <span className="text-sm font-bold text-foreground">{item.title}</span>
                                         <span className={`inline-flex items-center text-[10px] font-bold px-1.5 py-0.5 rounded-md uppercase tracking-wider ${
-                                            item.severity === 'red' ? 'bg-red-50 text-red-700 dark:bg-red-500/15 dark:text-red-300' : 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300'
+                                            item.severity === 'red' ? 'bg-destructive/10 text-destructive dark:bg-destructive/15 dark:text-destructive' : 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning'
                                         }`}>
                                             {item.flow}
                                         </span>
@@ -159,9 +159,9 @@ export default function CLCDashboardScene() {
 
 function KpiCard({ kpi }: { kpi: KpiCardData }) {
     const deltaColor = kpi.deltaTone === 'good'
-        ? 'text-green-700 dark:text-green-300'
+        ? 'text-success dark:text-success'
         : kpi.deltaTone === 'bad'
-            ? 'text-red-700 dark:text-red-300'
+            ? 'text-destructive dark:text-destructive'
             : 'text-muted-foreground'
     const icon = kpi.id === 'cycle' ? <Clock className="h-3.5 w-3.5" />
         : kpi.id === 'backlog' ? <DollarSign className="h-3.5 w-3.5" />
@@ -214,9 +214,9 @@ function ChartPanel({ title, subtitle, source, icon, children }: ChartPanelProps
 
 function FlowChip({ flow }: { flow: string }) {
     const meta: Record<string, { icon: React.ReactNode; classes: string }> = {
-        'Calendar':   { icon: <Calendar className="h-3 w-3" />, classes: 'bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300' },
+        'Calendar':   { icon: <Calendar className="h-3 w-3" />, classes: 'bg-info/10 text-info dark:bg-info/15 dark:text-info' },
         'SharePoint': { icon: <FolderTree className="h-3 w-3" />, classes: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300' },
-        'Intake':     { icon: <ClipboardCheck className="h-3 w-3" />, classes: 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300' },
+        'Intake':     { icon: <ClipboardCheck className="h-3 w-3" />, classes: 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning' },
     }
     const m = meta[flow] ?? { icon: null, classes: 'bg-muted text-muted-foreground' }
     return (

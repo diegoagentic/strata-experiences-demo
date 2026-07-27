@@ -23,16 +23,16 @@ export default function LiabilityAnalysisPanel({ carrierLiability, mfgLiability,
             {/* Split Bar */}
             <div className="mb-4">
                 <div className="flex items-center justify-between text-[10px] font-medium mb-1.5">
-                    <span className="text-red-600 dark:text-red-400">Carrier ({carrierPct}%)</span>
-                    <span className="text-amber-600 dark:text-amber-400">Manufacturer ({mfgPct}%)</span>
+                    <span className="text-destructive">Carrier ({carrierPct}%)</span>
+                    <span className="text-warning">Manufacturer ({mfgPct}%)</span>
                 </div>
                 <div className="h-2 w-full bg-muted rounded-full overflow-hidden flex">
                     <div
-                        className="bg-red-500 dark:bg-red-400 h-full transition-all duration-700 ease-out"
+                        className="bg-destructive dark:bg-destructive h-full transition-all duration-700 ease-out"
                         style={{ width: `${carrierPct}%` }}
                     />
                     <div
-                        className="bg-amber-500 dark:bg-amber-400 h-full transition-all duration-700 ease-out"
+                        className="bg-warning dark:bg-warning h-full transition-all duration-700 ease-out"
                         style={{ width: `${mfgPct}%` }}
                     />
                 </div>
@@ -41,12 +41,12 @@ export default function LiabilityAnalysisPanel({ carrierLiability, mfgLiability,
             {/* Liability Details */}
             <div className="grid grid-cols-2 gap-3 mb-4">
                 <div className="bg-muted/30 border border-border rounded-xl p-3">
-                    <p className="text-[10px] font-medium text-red-600 dark:text-red-400 uppercase tracking-wider mb-1">Carrier Liability</p>
+                    <p className="text-[10px] font-medium text-destructive uppercase tracking-wider mb-1">Carrier Liability</p>
                     <p className="text-lg font-semibold text-foreground">{carrierPct}%</p>
                     <p className="text-[10px] text-muted-foreground mt-1">Transit damage, handling</p>
                 </div>
                 <div className="bg-muted/30 border border-border rounded-xl p-3">
-                    <p className="text-[10px] font-medium text-amber-600 dark:text-amber-400 uppercase tracking-wider mb-1">Manufacturer Liability</p>
+                    <p className="text-[10px] font-medium text-warning uppercase tracking-wider mb-1">Manufacturer Liability</p>
                     <p className="text-lg font-semibold text-foreground">{mfgPct}%</p>
                     <p className="text-[10px] text-muted-foreground mt-1">Defect, packaging</p>
                 </div>

@@ -59,9 +59,9 @@ export default function QuoteApprovedArtifact({ onGeneratePO }: QuoteApprovedArt
     }
 
     return (
-        <div className="h-full flex flex-col items-center justify-center p-8 bg-card rounded-2xl border border-green-100 dark:border-green-900 shadow-sm animate-in fade-in zoom-in duration-500">
-            <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-6">
-                <CheckCircleIcon className="w-10 h-10 text-green-600 dark:text-green-400" />
+        <div className="h-full flex flex-col items-center justify-center p-8 bg-card rounded-2xl border border-success/20 dark:border-green-900 shadow-sm animate-in fade-in zoom-in duration-500">
+            <div className="w-20 h-20 bg-success/15 rounded-full flex items-center justify-center mb-6">
+                <CheckCircleIcon className="w-10 h-10 text-success" />
             </div>
             <h3 className="text-2xl font-bold font-brand text-foreground mb-2">Quote Approved</h3>
             <p className="text-muted-foreground text-center max-w-md mb-8">

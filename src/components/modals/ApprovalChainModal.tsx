@@ -99,10 +99,10 @@ export default function ApprovalChainModal({ isOpen, onClose, trigger, approvers
                             {/* Content */}
                             <div className="p-6 space-y-6">
                                 {/* Trigger reason */}
-                                <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-800">
+                                <div className="p-3 rounded-xl bg-warning/10 border border-warning/30 dark:border-warning/40">
                                     <div className="flex items-center gap-2">
-                                        <ExclamationCircleIcon className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
-                                        <p className="text-xs font-bold text-amber-700 dark:text-amber-400">{trigger}</p>
+                                        <ExclamationCircleIcon className="w-4 h-4 text-warning shrink-0" />
+                                        <p className="text-xs font-bold text-warning">{trigger}</p>
                                     </div>
                                 </div>
 
@@ -114,17 +114,17 @@ export default function ApprovalChainModal({ isOpen, onClose, trigger, approvers
                                             {i < simulatedApprovers.length - 1 && (
                                                 <div className={clsx(
                                                     'absolute left-[15px] top-8 w-0.5 h-[calc(100%-16px)]',
-                                                    approver.status === 'approved' ? 'bg-green-500' : 'bg-border'
+                                                    approver.status === 'approved' ? 'bg-success/100' : 'bg-border'
                                                 )} />
                                             )}
 
                                             {/* Status circle */}
                                             <div className={clsx(
                                                 'w-8 h-8 rounded-full flex items-center justify-center shrink-0 z-10 transition-all duration-300',
-                                                approver.status === 'approved' && 'bg-green-500 text-white',
-                                                approver.status === 'current' && 'bg-amber-500 text-white animate-pulse',
+                                                approver.status === 'approved' && 'bg-success/100 text-white',
+                                                approver.status === 'current' && 'bg-warning text-white animate-pulse',
                                                 approver.status === 'pending' && 'bg-zinc-200 dark:bg-zinc-700 text-muted-foreground',
-                                                approver.status === 'rejected' && 'bg-red-500 text-white',
+                                                approver.status === 'rejected' && 'bg-destructive text-white',
                                             )}>
                                                 {approver.status === 'approved' && <CheckCircleIcon className="w-5 h-5" />}
                                                 {approver.status === 'current' && <ClockIcon className="w-5 h-5" />}
@@ -137,9 +137,9 @@ export default function ApprovalChainModal({ isOpen, onClose, trigger, approvers
                                                 <div className="flex items-center justify-between gap-2">
                                                     <span className={clsx(
                                                         'text-sm font-bold',
-                                                        approver.status === 'approved' && 'text-green-700 dark:text-green-400',
-                                                        approver.status === 'current' && 'text-amber-700 dark:text-amber-400',
-                                                        approver.status === 'rejected' && 'text-red-700 dark:text-red-400',
+                                                        approver.status === 'approved' && 'text-success',
+                                                        approver.status === 'current' && 'text-warning',
+                                                        approver.status === 'rejected' && 'text-destructive',
                                                         approver.status === 'pending' && 'text-muted-foreground',
                                                     )}>
                                                         {approver.name}
@@ -164,7 +164,7 @@ export default function ApprovalChainModal({ isOpen, onClose, trigger, approvers
                                         <div
                                             className={clsx(
                                                 'h-full rounded-full transition-all duration-500',
-                                                isComplete ? 'bg-green-500' : 'bg-primary'
+                                                isComplete ? 'bg-success/100' : 'bg-primary'
                                             )}
                                             style={{ width: `${progressPercent}%` }}
                                         />
@@ -175,7 +175,7 @@ export default function ApprovalChainModal({ isOpen, onClose, trigger, approvers
                             {/* Footer */}
                             <div className="p-4 bg-muted/30 border-t border-border text-center">
                                 {isComplete ? (
-                                    <p className="text-sm font-bold text-green-700 dark:text-green-400">All approvals complete</p>
+                                    <p className="text-sm font-bold text-success">All approvals complete</p>
                                 ) : (
                                     <p className="text-xs text-muted-foreground">Waiting for approvals...</p>
                                 )}

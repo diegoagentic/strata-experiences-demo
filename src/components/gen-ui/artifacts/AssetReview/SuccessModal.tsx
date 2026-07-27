@@ -19,11 +19,11 @@ export default function SuccessModal({ isOpen, type = 'po', poNumber = 'PO-2026-
                 <div className={`absolute top-0 left-0 w-full h-2 bg-gradient-to-r ${isPO ? 'from-green-400 to-emerald-600' : 'from-amber-400 to-orange-600'}`}></div>
 
                 <div className="flex justify-center mb-6">
-                    <div className={`w-20 h-20 rounded-full flex items-center justify-center animate-in zoom-in spin-in-12 duration-500 ${isPO ? 'bg-green-100 dark:bg-green-900/30' : 'bg-amber-100 dark:bg-amber-900/30'}`}>
+                    <div className={`w-20 h-20 rounded-full flex items-center justify-center animate-in zoom-in spin-in-12 duration-500 ${isPO ? 'bg-success/15' : 'bg-warning/15'}`}>
                         {isPO ? (
-                            <CheckBadgeIcon className="w-12 h-12 text-green-600 dark:text-green-400" />
+                            <CheckBadgeIcon className="w-12 h-12 text-success" />
                         ) : (
-                            <DocumentTextIcon className="w-12 h-12 text-amber-600 dark:text-amber-400" />
+                            <DocumentTextIcon className="w-12 h-12 text-warning" />
                         )}
                     </div>
                 </div>

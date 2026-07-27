@@ -67,26 +67,26 @@ const rfqTrackingSteps = [
 const recentOrders = [
     { id: "#ORD-2055", customer: "AutoManfacture Co.", client: "AutoManfacture Co.", project: "Office Renovation", amount: "$385,000", status: "Order Received", date: "Dec 20, 2025", initials: "AC", statusColor: "bg-zinc-100 text-muted-foreground", location: "New York" },
     { id: "#ORD-2054", customer: "TechDealer Solutions", client: "TechDealer Solutions", project: "HQ Upgrade", amount: "$62,500", status: "In Production", date: "Nov 15, 2025", initials: "TS", statusColor: "bg-brand-50 text-brand-700 ring-brand-600/20", location: "London" },
-    { id: "#ORD-2053", customer: "Urban Living Inc.", client: "Urban Living Inc.", project: "Lobby Refresh", amount: "$112,000", status: "Ready to Ship", date: "Oct 30, 2025", initials: "UL", statusColor: "bg-green-50 text-green-700 ring-green-600/20", location: "Austin" },
+    { id: "#ORD-2053", customer: "Urban Living Inc.", client: "Urban Living Inc.", project: "Lobby Refresh", amount: "$112,000", status: "Ready to Ship", date: "Oct 30, 2025", initials: "UL", statusColor: "bg-success/10 text-success ring-green-600/20", location: "Austin" },
     { id: "#ORD-2052", customer: "Global Logistics", client: "Global Logistics", project: "Warehouse Expansion", amount: "$45,000", status: "Delivered", date: "Oct 15, 2025", initials: "GL", statusColor: "bg-gray-100 text-foreground", location: "Berlin" },
     { id: "#ORD-2051", customer: "City Builders", client: "City Builders", project: "City Center", amount: "$120,000", status: "Order Received", date: "Jan 05, 2026", initials: "CB", statusColor: "bg-zinc-100 text-muted-foreground", location: "New York" },
-    { id: "#ORD-2050", customer: "Modern Homes", client: "Modern Homes", project: "Residential A", amount: "$85,000", status: "Acknowledgement", date: "Jan 02, 2026", initials: "MH", statusColor: "bg-blue-50 text-blue-700", location: "Austin" },
+    { id: "#ORD-2050", customer: "Modern Homes", client: "Modern Homes", project: "Residential A", amount: "$85,000", status: "Acknowledgement", date: "Jan 02, 2026", initials: "MH", statusColor: "bg-info/10 text-info", location: "Austin" },
     { id: "#ORD-2049", customer: "Coastal Props", client: "Coastal Props", project: "Beach House", amount: "$210,000", status: "In Production", date: "Dec 10, 2025", initials: "CP", statusColor: "bg-indigo-50 text-indigo-700", location: "London" },
     { id: "#ORD-2048", customer: "Valley Homes", client: "Valley Homes", project: "Mountain Retreat", amount: "$95,000", status: "Ready to Ship", date: "Nov 20, 2025", initials: "VH", statusColor: "bg-indigo-50 text-indigo-700", location: "Berlin" },
-    { id: "#ORD-2047", customer: "Elite Builders", client: "Elite Builders", project: "Sky V", amount: "$450,000", status: "In Transit", date: "Nov 05, 2025", initials: "EB", statusColor: "bg-amber-50 text-amber-700", location: "New York" },
+    { id: "#ORD-2047", customer: "Elite Builders", client: "Elite Builders", project: "Sky V", amount: "$450,000", status: "In Transit", date: "Nov 05, 2025", initials: "EB", statusColor: "bg-warning/10 text-warning", location: "New York" },
 ]
 
 const recentQuotes = [
-    { id: "QT-1025", customer: "Apex Furniture", project: "New HQ RFQ", amount: "Pending Approval", status: "Draft", date: "Just now", validUntil: "N/A", probability: "High", initials: "AF", statusColor: "bg-red-50 text-red-700", location: "Austin" },
+    { id: "QT-1025", customer: "Apex Furniture", project: "New HQ RFQ", amount: "Pending Approval", status: "Draft", date: "Just now", validUntil: "N/A", probability: "High", initials: "AF", statusColor: "bg-destructive/10 text-destructive", location: "Austin" },
     { id: "QT-1024", customer: "BioLife Inc", project: "Lab Expansion", amount: "$540,000", status: "Draft", date: "Jan 10, 2026", validUntil: "Draft", probability: "N/A", initials: "BL", statusColor: "bg-zinc-100 text-muted-foreground", location: "Boston" },
-    { id: "QT-1023", customer: "FinServe Corp", project: "Branch Rollout", amount: "$890,000", status: "Sent", date: "Jan 08, 2026", validUntil: "Feb 08, 2026", probability: "Medium", initials: "FS", statusColor: "bg-blue-50 text-blue-700", location: "New York" },
-    { id: "QT-1022", customer: "Redwood School", project: "Classroom Refresh", amount: "$150,000", status: "Approved", date: "Dec 28, 2025", validUntil: "Jan 28, 2026", probability: "Closed", initials: "RS", statusColor: "bg-green-50 text-green-700", location: "Portland" },
+    { id: "QT-1023", customer: "FinServe Corp", project: "Branch Rollout", amount: "$890,000", status: "Sent", date: "Jan 08, 2026", validUntil: "Feb 08, 2026", probability: "Medium", initials: "FS", statusColor: "bg-info/10 text-info", location: "New York" },
+    { id: "QT-1022", customer: "Redwood School", project: "Classroom Refresh", amount: "$150,000", status: "Approved", date: "Dec 28, 2025", validUntil: "Jan 28, 2026", probability: "Closed", initials: "RS", statusColor: "bg-success/10 text-success", location: "Portland" },
 ]
 
 const recentAcknowledgments = [
-    { id: "Acknowledgement-8839", relatedPo: "PO-2026-001", vendor: "Herman Miller", status: "Confirmed", date: "Jan 14, 2026", expShipDate: "Feb 20, 2026", discrepancy: "None", initials: "HM", statusColor: "bg-green-50 text-green-700", location: "Zeeland" },
-    { id: "Acknowledgement-8840", relatedPo: "PO-2026-002", vendor: "Steelcase", status: "Discrepancy", date: "Jan 13, 2026", expShipDate: "Pending", discrepancy: "Price Mismatch ($500)", initials: "SC", statusColor: "bg-red-50 text-red-700", location: "Grand Rapids" },
-    { id: "Acknowledgement-8841", relatedPo: "PO-2026-003", vendor: "Knoll", status: "Partial", date: "Jan 12, 2026", expShipDate: "Mar 01, 2026", discrepancy: "Backordered Items", initials: "KN", statusColor: "bg-amber-50 text-amber-700", location: "East Greenville" },
+    { id: "Acknowledgement-8839", relatedPo: "PO-2026-001", vendor: "Herman Miller", status: "Confirmed", date: "Jan 14, 2026", expShipDate: "Feb 20, 2026", discrepancy: "None", initials: "HM", statusColor: "bg-success/10 text-success", location: "Zeeland" },
+    { id: "Acknowledgement-8840", relatedPo: "PO-2026-002", vendor: "Steelcase", status: "Discrepancy", date: "Jan 13, 2026", expShipDate: "Pending", discrepancy: "Price Mismatch ($500)", initials: "SC", statusColor: "bg-destructive/10 text-destructive", location: "Grand Rapids" },
+    { id: "Acknowledgement-8841", relatedPo: "PO-2026-003", vendor: "Knoll", status: "Partial", date: "Jan 12, 2026", expShipDate: "Mar 01, 2026", discrepancy: "Backordered Items", initials: "KN", statusColor: "bg-warning/10 text-warning", location: "East Greenville" },
 ]
 
 // ═══════════════════════════════════════════
@@ -96,7 +96,7 @@ const ACK_AIS = {
     id: 'Acknowledgement-7842', relatedPo: 'PO-1064B', vendor: 'AIS', vendorFull: 'AIS (Adaptive Interior Solutions)',
     status: 'Discrepancy', date: 'Feb 18, 2026', lineItems: 50, total: '$65,439.09', discrepancies: 3,
     project: 'Premier Underground Design', customer: 'Corporate Interior Systems',
-    shipTo: '135 E Watkins St, Phoenix, AZ 85004', initials: 'AI', statusColor: 'bg-red-50 text-red-700',
+    shipTo: '135 E Watkins St, Phoenix, AZ 85004', initials: 'AI', statusColor: 'bg-destructive/10 text-destructive',
     location: 'Leominster, MA',
 };
 
@@ -104,7 +104,7 @@ const ACK_HAT = {
     id: 'Acknowledgement-7841', relatedPo: 'PO-1064', vendor: 'HAT', vendorFull: 'HAT Contract',
     status: 'Confirmed', date: 'Feb 18, 2026', lineItems: 5, total: '$8,220.00', discrepancies: 0,
     project: 'Premier Underground Design', customer: 'Corporate Interior Systems',
-    initials: 'HC', statusColor: 'bg-green-50 text-green-700', location: 'Holland, MI',
+    initials: 'HC', statusColor: 'bg-success/10 text-success', location: 'Holland, MI',
 };
 
 const HAT_COMPARISON_LINES = [
@@ -131,19 +131,19 @@ const ackStages = ['Pending', 'Partial', 'Confirmed']
 
 // Color Mapping for Status Icons
 const colorStyles: Record<string, string> = {
-    blue: 'bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300 ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
+    blue: 'bg-info/10 text-info dark:bg-info/15 dark:text-info ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
     purple: 'bg-indigo-50 text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300 ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
-    orange: 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
-    green: 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
+    orange: 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
+    green: 'bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
     pink: 'bg-pink-50 text-pink-700 dark:bg-pink-500/15 dark:text-pink-300 ring-1 ring-inset ring-pink-600/20 dark:ring-pink-400/30',
     indigo: 'bg-indigo-50 text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300 ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
 }
 
 const solidColorStyles: Record<string, string> = {
-    blue: 'bg-blue-600 hover:bg-blue-700 text-white shadow-sm shadow-blue-500/20 border-blue-500',
+    blue: 'bg-info hover:bg-info/90 text-white shadow-sm shadow-blue-500/20 border-info',
     purple: 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-purple-500/20 border-indigo-500',
-    orange: 'bg-amber-600 hover:bg-amber-700 text-white shadow-sm shadow-orange-500/20 border-amber-500',
-    green: 'bg-green-600 hover:bg-green-700 text-white shadow-sm shadow-green-500/20 border-green-500',
+    orange: 'bg-warning hover:bg-warning/90 text-white shadow-sm shadow-orange-500/20 border-warning',
+    green: 'bg-success hover:bg-success/90 text-white shadow-sm shadow-green-500/20 border-success',
     pink: 'bg-pink-600 hover:bg-pink-700 text-white shadow-sm shadow-pink-500/20 border-pink-500',
     indigo: 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-indigo-500/20 border-indigo-500',
 }
@@ -209,8 +209,8 @@ const REUSE_ITEMS = [
     { name: 'Keyboard Tray', qty: 65, condition: 1.4, category: 'eol' as const, value: '$0', action: 'Dispose' },
 ]
 const REUSE_BREAKDOWN = [
-    { label: 'Reusable (Refurbish)', count: 180, pct: 53, color: 'bg-green-500' },
-    { label: 'Recyclable (Metal/Fabric)', count: 95, pct: 28, color: 'bg-blue-500' },
+    { label: 'Reusable (Refurbish)', count: 180, pct: 53, color: 'bg-success/100' },
+    { label: 'Recyclable (Metal/Fabric)', count: 95, pct: 28, color: 'bg-info/100' },
     { label: 'End of Life', count: 65, pct: 19, color: 'bg-zinc-400' },
 ]
 type ReusePhase = 'idle' | 'notification' | 'processing' | 'breathing' | 'revealed' | 'results'
@@ -1001,11 +1001,11 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                                         <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{data.label}</p>
                                                         <p className="mt-1 text-3xl font-semibold text-foreground group-hover:scale-105 transition-transform origin-left">{data.value}</p>
                                                     </div>
-                                                    <div className={`p-3 rounded-xl ${data.color === 'blue' ? 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400' :
-                                                        data.color === 'orange' ? 'bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400' :
+                                                    <div className={`p-3 rounded-xl ${data.color === 'blue' ? 'bg-info/10 text-info dark:bg-info/10 dark:text-info' :
+                                                        data.color === 'orange' ? 'bg-warning/10 text-warning dark:bg-warning/10 dark:text-warning' :
                                                             data.color === 'purple' ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' :
                                                                 data.color === 'indigo' ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' :
-                                                                    'bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400'
+                                                                    'bg-success/10 text-success dark:bg-success/10 dark:text-success'
                                                         }`}>
                                                         {data.icon}
                                                     </div>
@@ -1097,11 +1097,11 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                                         <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{data.label}</p>
                                                         <p className="mt-1 text-3xl font-semibold text-foreground group-hover:scale-105 transition-transform origin-left">{data.value}</p>
                                                     </div>
-                                                    <div className={`p-3 rounded-xl ${data.color === 'blue' ? 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400' :
-                                                        data.color === 'orange' ? 'bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400' :
+                                                    <div className={`p-3 rounded-xl ${data.color === 'blue' ? 'bg-info/10 text-info dark:bg-info/10 dark:text-info' :
+                                                        data.color === 'orange' ? 'bg-warning/10 text-warning dark:bg-warning/10 dark:text-warning' :
                                                             data.color === 'purple' ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' :
-                                                                data.color === 'red' ? 'bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400' :
-                                                                    'bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400'
+                                                                data.color === 'red' ? 'bg-destructive/10 text-destructive dark:bg-destructive/10 dark:text-destructive' :
+                                                                    'bg-success/10 text-success dark:bg-success/10 dark:text-success'
                                                         }`}>
                                                         {data.icon}
                                                     </div>
@@ -1200,11 +1200,11 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                                         <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{data.label}</p>
                                                         <p className="mt-1 text-3xl font-semibold text-foreground group-hover:scale-105 transition-transform origin-left">{data.value}</p>
                                                     </div>
-                                                    <div className={`p-3 rounded-xl ${data.color === 'blue' ? 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400' :
-                                                        data.color === 'orange' ? 'bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400' :
+                                                    <div className={`p-3 rounded-xl ${data.color === 'blue' ? 'bg-info/10 text-info dark:bg-info/10 dark:text-info' :
+                                                        data.color === 'orange' ? 'bg-warning/10 text-warning dark:bg-warning/10 dark:text-warning' :
                                                             data.color === 'purple' ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' :
                                                                 data.color === 'indigo' ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' :
-                                                                    'bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400'
+                                                                    'bg-success/10 text-success dark:bg-success/10 dark:text-success'
                                                         }`}>
                                                         {data.icon}
                                                     </div>
@@ -1279,9 +1279,9 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
 
                                 <div className="flex items-center gap-1 overflow-x-auto min-w-max pl-4 border-l border-border xl:border-none xl:pl-0">
                                     {[
-                                        { icon: <DocumentPlusIcon className="w-5 h-5" />, label: "New Quote", color: "text-blue-500" },
-                                        { icon: <CubeIcon className="w-5 h-5" />, label: "Check Stock", color: "text-amber-500" },
-                                        { icon: <ChartBarIcon className="w-5 h-5" />, label: "Gen. Report", color: "text-green-500" },
+                                        { icon: <DocumentPlusIcon className="w-5 h-5" />, label: "New Quote", color: "text-info" },
+                                        { icon: <CubeIcon className="w-5 h-5" />, label: "Check Stock", color: "text-warning" },
+                                        { icon: <ChartBarIcon className="w-5 h-5" />, label: "Gen. Report", color: "text-success" },
                                         { icon: <CloudArrowUpIcon className="w-5 h-5" />, label: "ERP Sync", color: "text-indigo-500" },
                                     ].map((action, i) => (
                                         <button
@@ -1407,9 +1407,9 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                         <div className="mt-2 ml-9">
                             <span className="text-[8px] font-bold text-success dark:text-success uppercase tracking-wider">External Systems · Synced</span>
                             <div className="flex flex-wrap gap-1.5 mt-0.5">
-                                <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold flex items-center gap-1">📧 MillerKnoll Vendor Email</span>
+                                <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-info/15 text-info dark:text-info font-bold flex items-center gap-1">📧 MillerKnoll Vendor Email</span>
                                 <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-bold flex items-center gap-1">⚡ MillerKnoll Catalog (API)</span>
-                                <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 font-bold flex items-center gap-1">📋 Dealer Pricing Rules</span>
+                                <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-warning/15 text-warning dark:text-warning font-bold flex items-center gap-1">📋 Dealer Pricing Rules</span>
                             </div>
                         </div>
                     </div>
@@ -1420,8 +1420,8 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                     <div className="p-4 rounded-2xl bg-card border border-border shadow-sm animate-in fade-in slide-in-from-top-4 duration-500">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">
-                                <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-500/10">
-                                    <ExclamationTriangleIcon className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                                <div className="p-2.5 rounded-xl bg-warning/10">
+                                    <ExclamationTriangleIcon className="w-5 h-5 text-warning" />
                                 </div>
                                 <div>
                                     <div className="flex items-center gap-2">
@@ -1456,7 +1456,7 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                     <div>
                                         <div className="flex items-center gap-2">
                                             <h2 className="text-sm font-semibold text-foreground">QT-1025 — Expert Review</h2>
-                                            <span className="px-2 py-0.5 text-[10px] font-medium bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-full ring-1 ring-inset ring-amber-500/20">In Review</span>
+                                            <span className="px-2 py-0.5 text-[10px] font-medium bg-warning/10 text-warning rounded-full ring-1 ring-inset ring-amber-500/20">In Review</span>
                                         </div>
                                         <p className="text-xs text-muted-foreground mt-0.5">Apex Furniture — New HQ RFQ — Austin, TX</p>
                                     </div>
@@ -1493,9 +1493,9 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                             <div className="flex items-center gap-2 mb-4">
                                 {['Email Intake', 'OCR Extract', 'Parser', 'Normalizer', 'Quote Builder'].map((agent, i) => (
                                     <Fragment key={agent}>
-                                        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-green-500/30 bg-green-500/5">
-                                            <CheckCircleIcon className="w-3 h-3 text-green-500" />
-                                            <span className="text-[10px] font-medium text-green-600 dark:text-green-400 uppercase tracking-wider">{agent}</span>
+                                        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-success/30 bg-success/100/5">
+                                            <CheckCircleIcon className="w-3 h-3 text-success" />
+                                            <span className="text-[10px] font-medium text-success uppercase tracking-wider">{agent}</span>
                                         </div>
                                         {i < 4 && <ChevronRightIcon className="w-3 h-3 text-muted-foreground/30 shrink-0" />}
                                     </Fragment>
@@ -1504,7 +1504,7 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                             <p className="text-xs leading-relaxed text-muted-foreground">
                                 RFQ from <span className="text-foreground font-medium">Apex Furniture</span> processed through 5-agent pipeline.
                                 Extracted <span className="text-foreground font-medium">125 Ergonomic Task Chairs</span> with specifications.
-                                <span className="text-amber-600 dark:text-amber-400 font-medium"> 3 fields flagged</span> for expert review — freight calculation could not resolve non-standard building restrictions at destination.
+                                <span className="text-warning font-medium"> 3 fields flagged</span> for expert review — freight calculation could not resolve non-standard building restrictions at destination.
                             </p>
                         </div>
 
@@ -1525,7 +1525,7 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                             <th className="px-5 py-2.5 text-[10px] font-medium text-muted-foreground uppercase tracking-wider text-right">Unit Cost</th>
                                             <th className="px-5 py-2.5 text-[10px] font-medium text-muted-foreground uppercase tracking-wider text-right">Sell Price</th>
                                             <th className="px-5 py-2.5 text-[10px] font-medium text-muted-foreground uppercase tracking-wider text-right">Margin</th>
-                                            <th className="px-5 py-2.5 text-[10px] font-medium text-amber-600 dark:text-amber-400 uppercase tracking-wider text-center">Confidence</th>
+                                            <th className="px-5 py-2.5 text-[10px] font-medium text-warning uppercase tracking-wider text-center">Confidence</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1538,19 +1538,19 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                             <td className="px-5 py-3 text-xs text-foreground text-center">
                                                 <span className="inline-flex items-center gap-1">
                                                     125
-                                                    <span className="text-[9px] text-amber-500">*</span>
+                                                    <span className="text-[9px] text-warning">*</span>
                                                 </span>
                                             </td>
                                             <td className="px-5 py-3 text-xs text-muted-foreground text-right">$226.30</td>
                                             <td className="px-5 py-3 text-xs font-medium text-foreground text-right">$350.00</td>
-                                            <td className="px-5 py-3 text-xs font-medium text-green-600 dark:text-green-400 text-right">35.3%</td>
+                                            <td className="px-5 py-3 text-xs font-medium text-success text-right">35.3%</td>
                                             <td className="px-5 py-3 text-center"><ConfidenceScoreBadge score={95} size="sm" /></td>
                                         </tr>
-                                        <tr className="bg-amber-500/5">
+                                        <tr className="bg-warning/10">
                                             <td className="px-5 py-3 text-xs text-muted-foreground" colSpan={2}>
                                                 <div className="flex items-center gap-1.5">
-                                                    <ExclamationTriangleIcon className="w-3.5 h-3.5 text-amber-500" />
-                                                    <span className="text-amber-600 dark:text-amber-400 font-medium">Freight (LTL — Austin, TX)</span>
+                                                    <ExclamationTriangleIcon className="w-3.5 h-3.5 text-warning" />
+                                                    <span className="text-warning font-medium">Freight (LTL — Austin, TX)</span>
                                                 </div>
                                             </td>
                                             <td className="px-5 py-3 text-xs text-muted-foreground text-center">—</td>
@@ -1562,7 +1562,7 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                         <tr className="border-t border-border">
                                             <td colSpan={4} className="px-5 py-3 text-xs font-medium text-foreground">Subtotal (before freight)</td>
                                             <td className="px-5 py-3 text-xs font-semibold text-foreground text-right">$43,750.00</td>
-                                            <td className="px-5 py-3 text-xs font-medium text-green-600 dark:text-green-400 text-right">35.4%</td>
+                                            <td className="px-5 py-3 text-xs font-medium text-success text-right">35.4%</td>
                                             <td></td>
                                         </tr>
                                     </tfoot>
@@ -1579,13 +1579,13 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                     </div>
 
                                     {/* ——— Freight Rate ——— */}
-                                    <div className={cn("rounded-xl border transition-all overflow-hidden", reviewCorrections.freight === 'accepted' ? 'border-green-500/30 bg-green-500/5' : reviewCorrections.freight === 'rejected' ? 'border-red-500/30 bg-red-500/5' : 'border-border bg-muted/20')}>
+                                    <div className={cn("rounded-xl border transition-all overflow-hidden", reviewCorrections.freight === 'accepted' ? 'border-success/30 bg-success/100/5' : reviewCorrections.freight === 'rejected' ? 'border-destructive/30 bg-destructive/5' : 'border-border bg-muted/20')}>
                                         <div className="p-3">
                                             <div className="flex items-center justify-between mb-1.5">
                                                 <div className="flex items-center gap-2">
-                                                    <ExclamationTriangleIcon className="w-3.5 h-3.5 text-amber-500" />
+                                                    <ExclamationTriangleIcon className="w-3.5 h-3.5 text-warning" />
                                                     <span className="text-xs font-medium text-foreground">Freight Rate</span>
-                                                    <span className="text-[9px] px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 font-medium">High Priority</span>
+                                                    <span className="text-[9px] px-1.5 py-0.5 rounded bg-warning/15 text-warning dark:text-warning font-medium">High Priority</span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <ConfidenceScoreBadge score={42} size="sm" />
@@ -1621,15 +1621,15 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                             {/* Action buttons */}
                                             {reviewCorrections.freight ? (
                                                 <div className="flex items-center gap-2">
-                                                    <span className={cn("text-[10px] font-medium flex items-center gap-1", reviewCorrections.freight === 'accepted' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400')}>
+                                                    <span className={cn("text-[10px] font-medium flex items-center gap-1", reviewCorrections.freight === 'accepted' ? 'text-success' : 'text-destructive')}>
                                                         {reviewCorrections.freight === 'accepted' ? <><CheckCircleIcon className="w-3 h-3" /> Accepted</> : <><XMarkIcon className="w-3 h-3" /> Rejected</>}
                                                     </span>
                                                     <button onClick={() => setReviewCorrections(p => ({ ...p, freight: null }))} className="text-[9px] text-muted-foreground underline ml-1">undo</button>
                                                 </div>
                                             ) : (
                                                 <div className="flex items-center gap-1.5">
-                                                    <button onClick={() => handleReviewAction('freight', 'accepted')} className="px-2.5 py-1 bg-green-600 hover:bg-green-700 text-white text-[10px] font-medium rounded-md transition-colors flex items-center gap-1"><CheckIcon className="w-3 h-3" /> Accept</button>
-                                                    <button onClick={() => handleReviewAction('freight', 'rejected')} className="px-2.5 py-1 bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 text-[10px] font-medium rounded-md transition-colors hover:bg-red-500/20 flex items-center gap-1"><XMarkIcon className="w-3 h-3" /> Reject</button>
+                                                    <button onClick={() => handleReviewAction('freight', 'accepted')} className="px-2.5 py-1 bg-success hover:bg-success/90 text-white text-[10px] font-medium rounded-md transition-colors flex items-center gap-1"><CheckIcon className="w-3 h-3" /> Accept</button>
+                                                    <button onClick={() => handleReviewAction('freight', 'rejected')} className="px-2.5 py-1 bg-destructive/10 text-destructive border border-destructive/30 text-[10px] font-medium rounded-md transition-colors hover:bg-destructive/20 flex items-center gap-1"><XMarkIcon className="w-3 h-3" /> Reject</button>
                                                     <button onClick={() => setEditingField('freight')} className="px-2.5 py-1 bg-muted text-muted-foreground text-[10px] font-medium rounded-md transition-colors hover:bg-muted/80 flex items-center gap-1"><PencilSquareIcon className="w-3 h-3" /> Edit Value</button>
                                                 </div>
                                             )}
@@ -1643,11 +1643,11 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                                     <p className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Source Documents</p>
                                                     <div className="grid grid-cols-2 gap-2">
                                                         <div className="flex items-start gap-2 p-2 bg-background rounded-lg border border-border/50">
-                                                            <DocumentTextIcon className="w-3.5 h-3.5 text-blue-500 mt-0.5 shrink-0" />
+                                                            <DocumentTextIcon className="w-3.5 h-3.5 text-info mt-0.5 shrink-0" />
                                                             <div>
                                                                 <p className="text-[10px] font-medium text-foreground">RFQ Email Body</p>
                                                                 <p className="text-[9px] text-muted-foreground">No freight terms specified</p>
-                                                                <p className="text-[9px] text-amber-600 dark:text-amber-400 mt-0.5">Missing data</p>
+                                                                <p className="text-[9px] text-warning mt-0.5">Missing data</p>
                                                             </div>
                                                         </div>
                                                         <div className="flex items-start gap-2 p-2 bg-background rounded-lg border border-border/50">
@@ -1655,7 +1655,7 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                                             <div>
                                                                 <p className="text-[10px] font-medium text-foreground">PDF Attachment</p>
                                                                 <p className="text-[9px] text-muted-foreground">Delivery: "Austin, TX 78701"</p>
-                                                                <p className="text-[9px] text-green-600 dark:text-green-400 mt-0.5">Address extracted</p>
+                                                                <p className="text-[9px] text-success mt-0.5">Address extracted</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1730,13 +1730,13 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                     </div>
 
                                     {/* ——— Quantity Mismatch ——— */}
-                                    <div className={cn("rounded-xl border transition-all overflow-hidden", reviewCorrections.quantity === 'accepted' ? 'border-green-500/30 bg-green-500/5' : reviewCorrections.quantity === 'rejected' ? 'border-red-500/30 bg-red-500/5' : 'border-border bg-muted/20')}>
+                                    <div className={cn("rounded-xl border transition-all overflow-hidden", reviewCorrections.quantity === 'accepted' ? 'border-success/30 bg-success/100/5' : reviewCorrections.quantity === 'rejected' ? 'border-destructive/30 bg-destructive/5' : 'border-border bg-muted/20')}>
                                         <div className="p-3">
                                             <div className="flex items-center justify-between mb-1.5">
                                                 <div className="flex items-center gap-2">
                                                     <SparklesIcon className="w-3.5 h-3.5 text-indigo-500" />
                                                     <span className="text-xs font-medium text-foreground">Quantity Mismatch</span>
-                                                    <span className="text-[9px] px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 font-medium">AI Resolved</span>
+                                                    <span className="text-[9px] px-1.5 py-0.5 rounded bg-info/15 text-info dark:text-info font-medium">AI Resolved</span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <ConfidenceScoreBadge score={88} size="sm" />
@@ -1772,15 +1772,15 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                             {/* Action buttons */}
                                             {reviewCorrections.quantity ? (
                                                 <div className="flex items-center gap-2">
-                                                    <span className={cn("text-[10px] font-medium flex items-center gap-1", reviewCorrections.quantity === 'accepted' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400')}>
+                                                    <span className={cn("text-[10px] font-medium flex items-center gap-1", reviewCorrections.quantity === 'accepted' ? 'text-success' : 'text-destructive')}>
                                                         {reviewCorrections.quantity === 'accepted' ? <><CheckCircleIcon className="w-3 h-3" /> Accepted (AI suggestion)</> : <><XMarkIcon className="w-3 h-3" /> Rejected — using original</>}
                                                     </span>
                                                     <button onClick={() => setReviewCorrections(p => ({ ...p, quantity: null }))} className="text-[9px] text-muted-foreground underline ml-1">undo</button>
                                                 </div>
                                             ) : (
                                                 <div className="flex items-center gap-1.5">
-                                                    <button onClick={() => handleReviewAction('quantity', 'accepted')} className="px-2.5 py-1 bg-green-600 hover:bg-green-700 text-white text-[10px] font-medium rounded-md transition-colors flex items-center gap-1"><CheckIcon className="w-3 h-3" /> Accept (125)</button>
-                                                    <button onClick={() => handleReviewAction('quantity', 'rejected')} className="px-2.5 py-1 bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 text-[10px] font-medium rounded-md transition-colors hover:bg-red-500/20 flex items-center gap-1"><XMarkIcon className="w-3 h-3" /> Keep Original (200)</button>
+                                                    <button onClick={() => handleReviewAction('quantity', 'accepted')} className="px-2.5 py-1 bg-success hover:bg-success/90 text-white text-[10px] font-medium rounded-md transition-colors flex items-center gap-1"><CheckIcon className="w-3 h-3" /> Accept (125)</button>
+                                                    <button onClick={() => handleReviewAction('quantity', 'rejected')} className="px-2.5 py-1 bg-destructive/10 text-destructive border border-destructive/30 text-[10px] font-medium rounded-md transition-colors hover:bg-destructive/20 flex items-center gap-1"><XMarkIcon className="w-3 h-3" /> Keep Original (200)</button>
                                                     <button onClick={() => setEditingField('quantity')} className="px-2.5 py-1 bg-muted text-muted-foreground text-[10px] font-medium rounded-md transition-colors hover:bg-muted/80 flex items-center gap-1"><PencilSquareIcon className="w-3 h-3" /> Edit</button>
                                                 </div>
                                             )}
@@ -1793,23 +1793,23 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                                 <div>
                                                     <p className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Source Comparison</p>
                                                     <div className="grid grid-cols-2 gap-2">
-                                                        <div className="p-2.5 bg-red-50 dark:bg-red-500/5 rounded-lg border border-red-200 dark:border-red-500/20">
+                                                        <div className="p-2.5 bg-destructive/10 dark:bg-destructive/5 rounded-lg border border-destructive/30">
                                                             <div className="flex items-center gap-1.5 mb-1">
-                                                                <EnvelopeIcon className="w-3 h-3 text-red-500" />
-                                                                <p className="text-[9px] font-medium text-red-700 dark:text-red-400 uppercase">Email Body</p>
+                                                                <EnvelopeIcon className="w-3 h-3 text-destructive" />
+                                                                <p className="text-[9px] font-medium text-destructive uppercase">Email Body</p>
                                                             </div>
-                                                            <p className="text-[11px] font-bold text-red-600 dark:text-red-400 line-through">200 units</p>
-                                                            <p className="text-[9px] text-red-600 dark:text-red-300 mt-0.5 italic">"...requesting quote for 200 ergonomic chairs for the new building..."</p>
-                                                            <p className="text-[9px] text-red-500 mt-1 font-medium">Likely outdated — email sent 3 days before attachment</p>
+                                                            <p className="text-[11px] font-bold text-destructive line-through">200 units</p>
+                                                            <p className="text-[9px] text-destructive dark:text-destructive mt-0.5 italic">"...requesting quote for 200 ergonomic chairs for the new building..."</p>
+                                                            <p className="text-[9px] text-destructive mt-1 font-medium">Likely outdated — email sent 3 days before attachment</p>
                                                         </div>
-                                                        <div className="p-2.5 bg-green-50 dark:bg-green-500/5 rounded-lg border border-green-200 dark:border-green-500/20">
+                                                        <div className="p-2.5 bg-success/10 dark:bg-success/100/5 rounded-lg border border-success/30 dark:border-success/30">
                                                             <div className="flex items-center gap-1.5 mb-1">
-                                                                <DocumentTextIcon className="w-3 h-3 text-green-500" />
-                                                                <p className="text-[9px] font-medium text-green-700 dark:text-green-400 uppercase">PDF Spec Sheet</p>
+                                                                <DocumentTextIcon className="w-3 h-3 text-success" />
+                                                                <p className="text-[9px] font-medium text-success uppercase">PDF Spec Sheet</p>
                                                             </div>
-                                                            <p className="text-[11px] font-bold text-green-600 dark:text-green-400">125 units</p>
-                                                            <p className="text-[9px] text-green-600 dark:text-green-300 mt-0.5 italic">"Floor plan: 125 workstations, floors 12-15, Building C"</p>
-                                                            <p className="text-[9px] text-green-500 mt-1 font-medium">Matches floor plan count exactly</p>
+                                                            <p className="text-[11px] font-bold text-success">125 units</p>
+                                                            <p className="text-[9px] text-success dark:text-success mt-0.5 italic">"Floor plan: 125 workstations, floors 12-15, Building C"</p>
+                                                            <p className="text-[9px] text-success mt-1 font-medium">Matches floor plan count exactly</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1833,13 +1833,13 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                                             <p className="text-[9px] text-muted-foreground">If 200 units</p>
                                                             <p className="text-[11px] font-bold text-foreground">$70,000</p>
                                                         </div>
-                                                        <div className="p-2 bg-green-50 dark:bg-green-500/5 rounded-lg border border-green-200 dark:border-green-500/20 text-center">
-                                                            <p className="text-[9px] text-green-600 dark:text-green-400">If 125 units (AI)</p>
-                                                            <p className="text-[11px] font-bold text-green-600 dark:text-green-400">$43,750</p>
+                                                        <div className="p-2 bg-success/10 dark:bg-success/100/5 rounded-lg border border-success/30 dark:border-success/30 text-center">
+                                                            <p className="text-[9px] text-success">If 125 units (AI)</p>
+                                                            <p className="text-[11px] font-bold text-success">$43,750</p>
                                                         </div>
                                                         <div className="p-2 bg-background rounded-lg border border-border/50 text-center">
                                                             <p className="text-[9px] text-muted-foreground">Difference</p>
-                                                            <p className="text-[11px] font-bold text-amber-600">-$26,250</p>
+                                                            <p className="text-[11px] font-bold text-warning">-$26,250</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1865,14 +1865,14 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                 <div className="bg-card border border-border rounded-2xl shadow-sm p-4 space-y-3">
                                     <div className="flex items-center justify-between">
                                         <h3 className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">AI Substitution Proposals</h3>
-                                        <span className="text-[9px] px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 font-medium">1 suggestion</span>
+                                        <span className="text-[9px] px-1.5 py-0.5 rounded bg-info/15 text-info dark:text-info font-medium">1 suggestion</span>
                                     </div>
 
-                                    <div className={cn("rounded-xl border transition-all overflow-hidden", reviewCorrections.armrest === 'accepted' ? 'border-green-500/30 bg-green-500/5' : reviewCorrections.armrest === 'rejected' ? 'border-red-500/30 bg-red-500/5' : 'border-border bg-muted/20')}>
+                                    <div className={cn("rounded-xl border transition-all overflow-hidden", reviewCorrections.armrest === 'accepted' ? 'border-success/30 bg-success/100/5' : reviewCorrections.armrest === 'rejected' ? 'border-destructive/30 bg-destructive/5' : 'border-border bg-muted/20')}>
                                         <div className="p-3">
                                             <div className="flex items-center justify-between mb-1.5">
                                                 <div className="flex items-center gap-2">
-                                                    <ArrowPathIcon className="w-3.5 h-3.5 text-blue-500" />
+                                                    <ArrowPathIcon className="w-3.5 h-3.5 text-info" />
                                                     <span className="text-xs font-medium text-foreground">Armrest Upgrade</span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
@@ -1888,8 +1888,8 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                                     <p className="text-[11px] font-medium text-foreground mt-0.5">Fixed Armrest</p>
                                                     <p className="text-[10px] text-muted-foreground">$12/unit · 3-week lead</p>
                                                 </div>
-                                                <div className="bg-blue-500/5 border border-blue-500/20 rounded-lg p-2">
-                                                    <p className="text-[10px] text-blue-600 dark:text-blue-400 uppercase tracking-wider">Suggested</p>
+                                                <div className="bg-info/100/5 border border-info/30 rounded-lg p-2">
+                                                    <p className="text-[10px] text-info uppercase tracking-wider">Suggested</p>
                                                     <p className="text-[11px] font-medium text-foreground mt-0.5">Adjustable 4D</p>
                                                     <p className="text-[10px] text-muted-foreground">$18/unit · In Stock</p>
                                                 </div>
@@ -1899,14 +1899,14 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                             {/* Action buttons */}
                                             {reviewCorrections.armrest ? (
                                                 <div className="flex items-center gap-2">
-                                                    <span className={cn("text-[10px] font-medium flex items-center gap-1", reviewCorrections.armrest === 'accepted' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400')}>
+                                                    <span className={cn("text-[10px] font-medium flex items-center gap-1", reviewCorrections.armrest === 'accepted' ? 'text-success' : 'text-destructive')}>
                                                         {reviewCorrections.armrest === 'accepted' ? <><CheckCircleIcon className="w-3 h-3" /> Substitution Accepted</> : <><XMarkIcon className="w-3 h-3" /> Keeping Original</>}
                                                     </span>
                                                     <button onClick={() => setReviewCorrections(p => ({ ...p, armrest: null }))} className="text-[9px] text-muted-foreground underline ml-1">undo</button>
                                                 </div>
                                             ) : (
                                                 <div className="flex items-center gap-1.5">
-                                                    <button onClick={() => handleReviewAction('armrest', 'accepted')} className="px-2.5 py-1 bg-green-600 hover:bg-green-700 text-white text-[10px] font-medium rounded-md transition-colors flex items-center gap-1"><CheckIcon className="w-3 h-3" /> Accept Substitution</button>
+                                                    <button onClick={() => handleReviewAction('armrest', 'accepted')} className="px-2.5 py-1 bg-success hover:bg-success/90 text-white text-[10px] font-medium rounded-md transition-colors flex items-center gap-1"><CheckIcon className="w-3 h-3" /> Accept Substitution</button>
                                                     <button onClick={() => handleReviewAction('armrest', 'rejected')} className="px-2.5 py-1 bg-muted text-muted-foreground text-[10px] font-medium rounded-md transition-colors hover:bg-muted/80 flex items-center gap-1"><XMarkIcon className="w-3 h-3" /> Keep Original</button>
                                                 </div>
                                             )}
@@ -1924,7 +1924,7 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                                                 <tr className="bg-muted/30 border-b border-border/50">
                                                                     <th className="px-3 py-1.5 text-[9px] font-medium text-muted-foreground uppercase">Spec</th>
                                                                     <th className="px-3 py-1.5 text-[9px] font-medium text-muted-foreground uppercase text-center">Current</th>
-                                                                    <th className="px-3 py-1.5 text-[9px] font-medium text-blue-600 dark:text-blue-400 uppercase text-center">Suggested</th>
+                                                                    <th className="px-3 py-1.5 text-[9px] font-medium text-info uppercase text-center">Suggested</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody className="divide-y divide-border/30">
@@ -1940,7 +1940,7 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                                                     <tr key={i}>
                                                                         <td className="px-3 py-1.5 text-[10px] font-medium text-foreground">{row.spec}</td>
                                                                         <td className="px-3 py-1.5 text-[10px] text-muted-foreground text-center">{row.current}</td>
-                                                                        <td className="px-3 py-1.5 text-[10px] text-blue-600 dark:text-blue-400 text-center font-medium">{row.suggested}</td>
+                                                                        <td className="px-3 py-1.5 text-[10px] text-info text-center font-medium">{row.suggested}</td>
                                                                     </tr>
                                                                 ))}
                                                             </tbody>
@@ -1953,10 +1953,10 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                                     <p className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Financial Impact</p>
                                                     <div className="grid grid-cols-4 gap-1.5">
                                                         {[
-                                                            { label: 'Price Delta', value: '+$6/unit', color: 'text-amber-600 dark:text-amber-400' },
-                                                            { label: 'Total Impact', value: '+$750', color: 'text-amber-600 dark:text-amber-400' },
-                                                            { label: 'Margin Uplift', value: '+2.1%', color: 'text-green-600 dark:text-green-400' },
-                                                            { label: 'Lead Time Saved', value: '3 weeks', color: 'text-green-600 dark:text-green-400' },
+                                                            { label: 'Price Delta', value: '+$6/unit', color: 'text-warning' },
+                                                            { label: 'Total Impact', value: '+$750', color: 'text-warning' },
+                                                            { label: 'Margin Uplift', value: '+2.1%', color: 'text-success' },
+                                                            { label: 'Lead Time Saved', value: '3 weeks', color: 'text-success' },
                                                         ].map(item => (
                                                             <div key={item.label} className="p-2 bg-background rounded-lg border border-border/50 text-center">
                                                                 <p className="text-[9px] text-muted-foreground">{item.label}</p>
@@ -1995,38 +1995,38 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                 </div>
 
                                 {/* Discount Structure */}
-                                <div className={cn("bg-card border rounded-2xl shadow-sm overflow-hidden transition-all", reviewCorrections.discount === 'accepted' ? 'border-green-500/30' : 'border-border')}>
+                                <div className={cn("bg-card border rounded-2xl shadow-sm overflow-hidden transition-all", reviewCorrections.discount === 'accepted' ? 'border-success/30' : 'border-border')}>
                                     {/* Discount Header */}
                                     <div className="p-4 border-b border-border">
                                         <div className="flex items-center justify-between mb-2">
                                             <div className="flex items-center gap-2">
-                                                <div className="p-1.5 bg-green-50 dark:bg-green-500/10 rounded-lg">
-                                                    <CurrencyDollarIcon className="w-4 h-4 text-green-600 dark:text-green-400" />
+                                                <div className="p-1.5 bg-success/10 rounded-lg">
+                                                    <CurrencyDollarIcon className="w-4 h-4 text-success" />
                                                 </div>
                                                 <h3 className="text-xs font-medium text-foreground">Discount Structure</h3>
                                             </div>
                                             {reviewCorrections.discount === 'accepted' && (
-                                                <span className="text-[10px] text-green-600 dark:text-green-400 font-medium flex items-center gap-1"><CheckCircleIcon className="w-3 h-3" /> Confirmed</span>
+                                                <span className="text-[10px] text-success font-medium flex items-center gap-1"><CheckCircleIcon className="w-3 h-3" /> Confirmed</span>
                                             )}
                                         </div>
                                         <p className="text-[10px] text-muted-foreground leading-relaxed">Toggle applicable discounts by category. AI pre-activated contract and volume pricing based on dealer tier and order value. Approval chain triggers automatically for totals above $40K.</p>
                                     </div>
 
                                     {/* Green Summary Card */}
-                                    <div className="mx-4 mt-3 p-3 bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-800/30 rounded-xl">
+                                    <div className="mx-4 mt-3 p-3 bg-success/10 dark:bg-success/10 border border-success/20 dark:border-success/40/30 rounded-xl">
                                         <div className="flex items-center justify-between mb-1.5">
-                                            <span className="text-[10px] font-medium text-green-700 dark:text-green-400 uppercase tracking-wider">Active Discounts</span>
-                                            <span className="text-[10px] font-bold text-green-700 dark:text-green-300 bg-green-100 dark:bg-green-500/20 px-1.5 py-0.5 rounded-full">{discountActiveCount} applied</span>
+                                            <span className="text-[10px] font-medium text-success uppercase tracking-wider">Active Discounts</span>
+                                            <span className="text-[10px] font-bold text-success dark:text-success bg-success/15 px-1.5 py-0.5 rounded-full">{discountActiveCount} applied</span>
                                         </div>
-                                        <div className="text-xl font-bold text-green-700 dark:text-green-400 mb-2">{formatCurrencyShort(discountFinalTotal)}</div>
-                                        <div className="flex items-center justify-between border-t border-green-200/50 dark:border-green-800/30 pt-2">
+                                        <div className="text-xl font-bold text-success mb-2">{formatCurrencyShort(discountFinalTotal)}</div>
+                                        <div className="flex items-center justify-between border-t border-success/30/50 dark:border-success/40/30 pt-2">
                                             <div>
-                                                <div className="text-[9px] text-green-600 dark:text-green-500">Total Savings</div>
-                                                <div className="text-sm font-semibold text-green-700 dark:text-green-400">{formatCurrencyShort(discountTotalAmount)}</div>
+                                                <div className="text-[9px] text-success dark:text-success">Total Savings</div>
+                                                <div className="text-sm font-semibold text-success">{formatCurrencyShort(discountTotalAmount)}</div>
                                             </div>
                                             <div className="text-right">
-                                                <div className="text-[9px] text-green-600 dark:text-green-500">Discount Rate</div>
-                                                <div className="text-sm font-semibold text-green-700 dark:text-green-400">{discountRate.toFixed(1)}%</div>
+                                                <div className="text-[9px] text-success dark:text-success">Discount Rate</div>
+                                                <div className="text-sm font-semibold text-success">{discountRate.toFixed(1)}%</div>
                                             </div>
                                         </div>
                                     </div>
@@ -2037,11 +2037,11 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                             const activeInSection = section.items.filter(i => i.enabled).length;
                                             const isAllEnabled = activeInSection === section.items.length && section.items.length > 0;
                                             const sectionColors: Record<string, { bg: string; border: string; text: string }> = {
-                                                contract: { bg: 'bg-blue-50 dark:bg-blue-900/10', border: 'border-blue-100 dark:border-blue-800/30', text: 'text-blue-700 dark:text-blue-400' },
-                                                special: { bg: 'bg-amber-50 dark:bg-amber-900/10', border: 'border-amber-100 dark:border-amber-800/30', text: 'text-amber-700 dark:text-amber-400' },
+                                                contract: { bg: 'bg-info/10 dark:bg-info/10', border: 'border-info/20 dark:border-info/40/30', text: 'text-info' },
+                                                special: { bg: 'bg-warning/10 dark:bg-warning/10', border: 'border-warning/20 dark:border-warning/40/30', text: 'text-warning' },
                                                 volume: { bg: 'bg-indigo-50 dark:bg-indigo-900/10', border: 'border-indigo-100 dark:border-indigo-800/30', text: 'text-indigo-700 dark:text-indigo-400' },
-                                                promo: { bg: 'bg-green-50 dark:bg-green-900/10', border: 'border-green-100 dark:border-green-800/30', text: 'text-green-700 dark:text-green-400' },
-                                                additional: { bg: 'bg-blue-50 dark:bg-blue-900/10', border: 'border-blue-100 dark:border-blue-800/30', text: 'text-blue-700 dark:text-blue-400' },
+                                                promo: { bg: 'bg-success/10 dark:bg-success/10', border: 'border-success/20 dark:border-success/40/30', text: 'text-success' },
+                                                additional: { bg: 'bg-info/10 dark:bg-info/10', border: 'border-info/20 dark:border-info/40/30', text: 'text-info' },
                                             };
                                             const sc = sectionColors[section.id] || sectionColors.contract;
 
@@ -2077,7 +2077,7 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                                                         </div>
                                                                         <span className="text-[9px] text-muted-foreground">{item.desc}</span>
                                                                         {item.enabled && (
-                                                                            <div className="mt-1 flex items-center gap-1 text-[9px] text-green-600 dark:text-green-400 font-medium">
+                                                                            <div className="mt-1 flex items-center gap-1 text-[9px] text-success font-medium">
                                                                                 <CheckCircleIcon className="w-3 h-3" />
                                                                                 Applied: -{formatCurrencyShort(subtotalForDiscount * (item.rate / 100))}
                                                                             </div>
@@ -2099,11 +2099,11 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                     </div>
 
                                     {/* Discount Info Footer */}
-                                    <div className="mx-4 mb-3 p-2.5 bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-800/30 rounded-lg flex gap-2">
-                                        <SparklesIcon className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+                                    <div className="mx-4 mb-3 p-2.5 bg-info/10 dark:bg-info/10 border border-info/20 dark:border-info/40/30 rounded-lg flex gap-2">
+                                        <SparklesIcon className="w-3.5 h-3.5 text-info shrink-0 mt-0.5" />
                                         <div>
-                                            <p className="text-[10px] text-blue-700 dark:text-blue-400 font-medium mb-0.5">AI-Optimized Pricing</p>
-                                            <p className="text-[9px] text-blue-600 dark:text-blue-300">Contract and volume discounts were pre-activated based on dealer tier (Tier 2) and order value. Toggle any discount to see real-time impact on the quote total.</p>
+                                            <p className="text-[10px] text-info font-medium mb-0.5">AI-Optimized Pricing</p>
+                                            <p className="text-[9px] text-info dark:text-info">Contract and volume discounts were pre-activated based on dealer tier (Tier 2) and order value. Toggle any discount to see real-time impact on the quote total.</p>
                                         </div>
                                     </div>
 
@@ -2137,10 +2137,10 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                     {reviewAuditLog.map((entry, i) => (
                                         <div key={i} className="px-4 py-2 flex items-center gap-3 hover:bg-muted/20 transition-colors">
                                             <div className={cn("w-5 h-5 rounded-full flex items-center justify-center shrink-0",
-                                                entry.icon === 'check' ? 'bg-green-100 dark:bg-green-500/20 text-green-600 dark:text-green-400' :
-                                                entry.icon === 'reject' ? 'bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400' :
-                                                entry.icon === 'edit' ? 'bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400' :
-                                                'bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400'
+                                                entry.icon === 'check' ? 'bg-success/15 text-success' :
+                                                entry.icon === 'reject' ? 'bg-destructive/15 text-destructive' :
+                                                entry.icon === 'edit' ? 'bg-info/15 text-info' :
+                                                'bg-warning/15 text-warning'
                                             )}>
                                                 {entry.icon === 'check' ? <CheckIcon className="w-3 h-3" /> :
                                                  entry.icon === 'reject' ? <XMarkIcon className="w-3 h-3" /> :
@@ -2162,15 +2162,15 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                         <div className="bg-card border border-border rounded-2xl p-5 shadow-sm animate-in fade-in slide-in-from-bottom-3 duration-700">
                             <div className="flex items-center justify-between mb-3">
                                 <div className="flex items-center gap-2">
-                                    <div className="p-1.5 rounded-lg bg-amber-50 dark:bg-amber-500/10">
-                                        <svg className="w-4 h-4 text-amber-600 dark:text-amber-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+                                    <div className="p-1.5 rounded-lg bg-warning/10">
+                                        <svg className="w-4 h-4 text-warning" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
                                     </div>
                                     <div>
                                         <h3 className="text-xs font-semibold text-foreground">AI Spec Review</h3>
                                         <p className="text-[10px] text-muted-foreground">200 items validated against building requirements</p>
                                     </div>
                                 </div>
-                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-300 font-medium">197/200 validated</span>
+                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/15 text-success dark:text-success font-medium">197/200 validated</span>
                             </div>
 
                             <div className="space-y-2">
@@ -2179,11 +2179,11 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                     { icon: '⚠️', text: 'Fabric X-297 discontinued', detail: '2 alternatives suggested (same price tier)', delay: 'delay-300' },
                                     { icon: '⚠️', text: 'Panel height 54" doesn\'t match ceiling clearance floor 15', detail: '48" max — requires design adjustment', delay: 'delay-500' },
                                 ].map((flag, i) => (
-                                    <div key={i} className={`flex items-start gap-2.5 px-3 py-2 rounded-lg bg-amber-50/70 dark:bg-amber-500/5 border border-amber-200/50 dark:border-amber-500/15 animate-in fade-in slide-in-from-left-2 duration-500 ${flag.delay}`}>
+                                    <div key={i} className={`flex items-start gap-2.5 px-3 py-2 rounded-lg bg-warning/10/70 dark:bg-warning/10 border border-warning/30 dark:border-warning/30 animate-in fade-in slide-in-from-left-2 duration-500 ${flag.delay}`}>
                                         <span className="text-sm shrink-0 mt-0.5">{flag.icon}</span>
                                         <div className="min-w-0">
-                                            <p className="text-[10px] font-medium text-amber-800 dark:text-amber-300">{flag.text}</p>
-                                            <p className="text-[9px] text-amber-600/70 dark:text-amber-400/60">{flag.detail}</p>
+                                            <p className="text-[10px] font-medium text-warning">{flag.text}</p>
+                                            <p className="text-[9px] text-warning/70 dark:text-warning/60">{flag.detail}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -2192,12 +2192,12 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                             <div className="mt-3 flex items-center justify-between pt-3 border-t border-border">
                                 <div className="flex items-center gap-4">
                                     <div className="flex items-center gap-1.5">
-                                        <svg className="w-3.5 h-3.5 text-green-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                        <span className="text-[10px] font-medium text-green-700 dark:text-green-400">197 specs validated</span>
+                                        <svg className="w-3.5 h-3.5 text-success" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                        <span className="text-[10px] font-medium text-success">197 specs validated</span>
                                     </div>
                                     <div className="flex items-center gap-1.5">
-                                        <svg className="w-3.5 h-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
-                                        <span className="text-[10px] font-medium text-amber-700 dark:text-amber-400">3 require design review</span>
+                                        <svg className="w-3.5 h-3.5 text-warning" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+                                        <span className="text-[10px] font-medium text-warning">3 require design review</span>
                                     </div>
                                 </div>
                                 <button disabled className="px-3 py-1.5 text-[10px] font-medium text-muted-foreground bg-muted rounded-lg opacity-50 cursor-not-allowed">
@@ -2215,11 +2215,11 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                             {Object.values(reviewCorrections).filter(v => v !== null).length}/{Object.keys(reviewCorrections).length} items reviewed
                                         </p>
                                         {Object.values(reviewCorrections).every(v => v !== null) && (
-                                            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-300 font-medium flex items-center gap-0.5"><CheckCircleIcon className="w-3 h-3" /> All reviewed</span>
+                                            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-success/15 text-success dark:text-success font-medium flex items-center gap-0.5"><CheckCircleIcon className="w-3 h-3" /> All reviewed</span>
                                         )}
                                     </div>
                                     <p className="text-[10px] text-muted-foreground">
-                                        Revised total: <span className="text-foreground font-medium">{formatCurrencyShort(discountFinalTotal)}</span> (incl. discounts) · Savings: <span className="text-green-600 dark:text-green-400 font-medium">{formatCurrencyShort(discountTotalAmount)}</span>
+                                        Revised total: <span className="text-foreground font-medium">{formatCurrencyShort(discountFinalTotal)}</span> (incl. discounts) · Savings: <span className="text-success font-medium">{formatCurrencyShort(discountTotalAmount)}</span>
                                     </p>
                                     {reviewAuditLog.length > 0 && (
                                         <p className="text-[9px] text-muted-foreground mt-0.5">{reviewAuditLog.length} review actions logged · Expert: Dr. James Wilson</p>
@@ -2246,26 +2246,26 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
 
                         {/* Design Validation Complete — post-approval panel */}
                         {showDesignValidation && (
-                            <div className="bg-card border border-green-200 dark:border-green-800 rounded-2xl p-5 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-700">
+                            <div className="bg-card border border-success/30 dark:border-success/40 rounded-2xl p-5 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-700">
                                 <div className="flex items-center justify-between mb-4">
                                     <div className="flex items-center gap-3">
-                                        <div className="p-2 rounded-xl bg-green-100 dark:bg-green-900/30">
-                                            <CheckBadgeIcon className="w-5 h-5 text-green-600 dark:text-green-400" />
+                                        <div className="p-2 rounded-xl bg-success/15">
+                                            <CheckBadgeIcon className="w-5 h-5 text-success" />
                                         </div>
                                         <div>
                                             <h3 className="text-sm font-semibold text-foreground">Spec Validation Agent — Final Report</h3>
                                             <p className="text-[10px] text-muted-foreground">Design review completed · All flagged items resolved</p>
                                         </div>
                                     </div>
-                                    <span className="text-[10px] px-2 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 font-bold">Validated</span>
+                                    <span className="text-[10px] px-2 py-1 rounded-full bg-success/15 text-success font-bold">Validated</span>
                                 </div>
 
                                 <div className="grid grid-cols-4 gap-3 mb-4">
                                     {[
                                         { label: 'Items Validated', value: '200', color: 'text-foreground' },
-                                        { label: 'Spec Issues Caught', value: '7', color: 'text-amber-600 dark:text-amber-400' },
-                                        { label: 'Hours Saved', value: '3.2', color: 'text-green-600 dark:text-green-400' },
-                                        { label: 'Pass Rate', value: '96.5%', color: 'text-green-600 dark:text-green-400' },
+                                        { label: 'Spec Issues Caught', value: '7', color: 'text-warning' },
+                                        { label: 'Hours Saved', value: '3.2', color: 'text-success' },
+                                        { label: 'Pass Rate', value: '96.5%', color: 'text-success' },
                                     ].map(stat => (
                                         <div key={stat.label} className="text-center p-2.5 rounded-lg bg-muted/30 border border-border">
                                             <p className={`text-lg font-black ${stat.color}`}>{stat.value}</p>
@@ -2289,10 +2289,10 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                     ))}
                                 </div>
 
-                                <div className="p-3 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-200 dark:border-green-800 mb-4">
+                                <div className="p-3 rounded-lg bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/40 mb-4">
                                     <div className="flex items-start gap-2">
-                                        <CheckCircleIcon className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
-                                        <p className="text-[10px] text-green-700 dark:text-green-400 leading-relaxed">
+                                        <CheckCircleIcon className="w-4 h-4 text-success shrink-0 mt-0.5" />
+                                        <p className="text-[10px] text-success leading-relaxed">
                                             <strong>All flagged items resolved by expert.</strong> Zero spec errors will reach vendor. Approval chain initiated.
                                         </p>
                                     </div>
@@ -2333,7 +2333,7 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                     <div className="flex items-center gap-2">
                                         <span className="text-[9px] px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-medium">47 today — showing 2</span>
                                         <span className="text-[9px] px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-bold flex items-center gap-1">⚡ eManage ONE</span>
-                                        <span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold flex items-center gap-1">📄 MillerKnoll EDI/855</span>
+                                        <span className="text-[9px] px-2 py-0.5 rounded-full bg-info/15 text-info dark:text-info font-bold flex items-center gap-1">📄 MillerKnoll EDI/855</span>
                                     </div>
                                 </div>
                                 <p className="text-xs text-muted-foreground mt-0.5">2 new acknowledgments received from ERPConnector</p>
@@ -2356,14 +2356,14 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                             {/* New Acknowledgement cards in Pending column */}
                                             {si === 0 && ackArrival21.HAT !== 'hidden' && (
                                                 <div className={cn(
-                                                    'p-3 rounded-xl border-2 border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-500/5 transition-all duration-500',
+                                                    'p-3 rounded-xl border-2 border-info/30 dark:border-info/40 bg-info/10 transition-all duration-500',
                                                     ackArrival21.HAT === 'appearing' && 'opacity-70 scale-95',
                                                     ackArrival21.HAT === 'placed' && 'opacity-100 scale-100',
                                                 )}>
                                                     <div className="flex items-center gap-2 mb-1">
-                                                        <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-[9px] font-bold flex items-center justify-center">HC</span>
+                                                        <span className="w-6 h-6 rounded-full bg-info text-white text-[9px] font-bold flex items-center justify-center">HC</span>
                                                         <span className="text-xs font-bold text-foreground">{ACK_HAT.id}</span>
-                                                        <span className="ml-auto px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-500/20 text-[9px] font-bold text-blue-700 dark:text-blue-400">HAT</span>
+                                                        <span className="ml-auto px-1.5 py-0.5 rounded bg-info/15 text-[9px] font-bold text-info">HAT</span>
                                                     </div>
                                                     <p className="text-[10px] text-muted-foreground">{ACK_HAT.lineItems} lines · {ACK_HAT.total}</p>
                                                     <p className="text-[10px] text-muted-foreground truncate">{ACK_HAT.project}</p>
@@ -2422,8 +2422,8 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                 <span className="text-[8px] font-bold text-success dark:text-success uppercase tracking-wider">External Systems · Synced</span>
                                 <div className="flex flex-wrap gap-1.5 mt-0.5">
                                     <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-bold flex items-center gap-1">⚡ eManage ONE → PO-1064B</span>
-                                    <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold flex items-center gap-1">📄 MillerKnoll → EDI/855 ACK</span>
-                                    <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 font-bold flex items-center gap-1">🤖 AI Vendor Rules (HAT)</span>
+                                    <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-info/15 text-info dark:text-info font-bold flex items-center gap-1">📄 MillerKnoll → EDI/855 ACK</span>
+                                    <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-success/15 text-success dark:text-success font-bold flex items-center gap-1">🤖 AI Vendor Rules (HAT)</span>
                                 </div>
                             </div>
                         </div>
@@ -2433,17 +2433,17 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                             <div className={cn(
                                 'p-4 rounded-2xl border shadow-sm transition-all duration-500',
                                 normPhase22 === 'idle' ? 'border-border bg-card opacity-50' :
-                                ['hat-confirmed', 'norm-ais', 'comparing-ais', 'ais-flagged'].includes(normPhase22) ? 'border-green-300 dark:border-green-700 bg-green-50/30 dark:bg-green-500/5' :
-                                'border-blue-300 dark:border-blue-700 bg-card'
+                                ['hat-confirmed', 'norm-ais', 'comparing-ais', 'ais-flagged'].includes(normPhase22) ? 'border-success/40 dark:border-green-700 bg-success/10/30 dark:bg-success/100/5' :
+                                'border-info/40 dark:border-blue-700 bg-card'
                             )}>
                                 <div className="flex items-center gap-2 mb-3">
-                                    <span className="w-7 h-7 rounded-full bg-blue-600 text-white text-[10px] font-bold flex items-center justify-center">HC</span>
+                                    <span className="w-7 h-7 rounded-full bg-info text-white text-[10px] font-bold flex items-center justify-center">HC</span>
                                     <div>
                                         <h4 className="text-sm font-bold text-foreground">{ACK_HAT.id} — HAT Contract</h4>
                                         <p className="text-[10px] text-muted-foreground">{ACK_HAT.lineItems} lines · {ACK_HAT.total}</p>
                                     </div>
                                     {['hat-confirmed', 'norm-ais', 'comparing-ais', 'ais-flagged'].includes(normPhase22) && (
-                                        <span className="ml-auto px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-500/20 text-[10px] font-bold text-green-700 dark:text-green-400 flex items-center gap-1">
+                                        <span className="ml-auto px-2 py-0.5 rounded-full bg-success/15 text-[10px] font-bold text-success flex items-center gap-1">
                                             <CheckCircleIcon className="w-3 h-3" /> Confirmed
                                         </span>
                                     )}
@@ -2465,18 +2465,18 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                                 </thead>
                                                 <tbody className="divide-y divide-border">
                                                     {HAT_COMPARISON_LINES.map(ln => (
-                                                        <tr key={ln.line} className={ln.line === 1 ? 'bg-amber-50/50 dark:bg-amber-500/5' : 'bg-amber-50/50 dark:bg-amber-500/5'}>
+                                                        <tr key={ln.line} className={ln.line === 1 ? 'bg-warning/10' : 'bg-warning/10'}>
                                                             <td className="px-2 py-1.5 font-mono">{ln.line}</td>
                                                             <td className="px-2 py-1.5 font-bold text-foreground">{ln.partPO}</td>
                                                             <td className="px-2 py-1.5 text-muted-foreground">{ln.line === 1 ? ln.colorPO : ln.descPO}</td>
                                                             <td className="px-2 py-1.5">
-                                                                <span className="text-amber-700 dark:text-amber-400 font-medium">{ln.line === 1 ? ln.colorACK : ln.descACK}</span>
+                                                                <span className="text-warning font-medium">{ln.line === 1 ? ln.colorACK : ln.descACK}</span>
                                                             </td>
                                                             <td className="px-2 py-1.5">
                                                                 {['hat-ai-rule', 'hat-confirmed', 'norm-ais', 'comparing-ais', 'ais-flagged'].includes(normPhase22) ? (
-                                                                    <span className="text-green-600 dark:text-green-400 font-bold">✓ OK</span>
+                                                                    <span className="text-success font-bold">✓ OK</span>
                                                                 ) : (
-                                                                    <span className="text-amber-600 dark:text-amber-400 font-bold">Mismatch</span>
+                                                                    <span className="text-warning font-bold">Mismatch</span>
                                                                 )}
                                                             </td>
                                                         </tr>
@@ -2506,7 +2506,7 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                             <div className={cn(
                                 'p-4 rounded-2xl border shadow-sm transition-all duration-500',
                                 ['idle', 'norm-hat', 'comparing-hat', 'hat-ai-rule', 'hat-confirmed'].includes(normPhase22) ? 'border-border bg-card opacity-50' :
-                                normPhase22 === 'ais-flagged' ? 'border-red-300 dark:border-red-700 bg-red-50/30 dark:bg-red-500/5' :
+                                normPhase22 === 'ais-flagged' ? 'border-destructive/40 dark:border-red-700 bg-destructive/10/30 dark:bg-destructive/5' :
                                 'border-purple-300 dark:border-purple-700 bg-card'
                             )}>
                                 <div className="flex items-center gap-2 mb-3">
@@ -2523,7 +2523,7 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                         View Original EDI
                                     </button>
                                     {normPhase22 === 'ais-flagged' && (
-                                        <span className="px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-500/20 text-[10px] font-bold text-red-700 dark:text-red-400 flex items-center gap-1">
+                                        <span className="px-2 py-0.5 rounded-full bg-destructive/15 text-[10px] font-bold text-destructive flex items-center gap-1">
                                             <ExclamationTriangleIcon className="w-3 h-3" /> Discrepancy
                                         </span>
                                     )}
@@ -2534,21 +2534,21 @@ export default function ExpertHubTransactions({ onLogout, onNavigateToDetail, on
                                         <div className="space-y-2">
                                             <div className="px-3 py-2 rounded-lg bg-muted/50 flex items-center justify-between">
                                                 <span className="text-[10px] text-foreground">Scanning {ACK_AIS.lineItems} Acknowledgement line items...</span>
-                                                {normPhase22 === 'comparing-ais' && <span className="text-[10px] text-blue-600 dark:text-blue-400 animate-pulse">Comparing...</span>}
-                                                {normPhase22 === 'ais-flagged' && <span className="text-[10px] text-red-600 dark:text-red-400 font-bold">3 discrepancies found</span>}
+                                                {normPhase22 === 'comparing-ais' && <span className="text-[10px] text-info animate-pulse">Comparing...</span>}
+                                                {normPhase22 === 'ais-flagged' && <span className="text-[10px] text-destructive font-bold">3 discrepancies found</span>}
                                             </div>
                                             {normPhase22 === 'ais-flagged' && (
                                                 <div className="space-y-3 animate-in fade-in duration-300">
-                                                    <div className="p-3 rounded-lg border border-red-200 dark:border-red-800 bg-red-50/50 dark:bg-red-500/5">
-                                                        <p className="text-[10px] font-bold text-red-700 dark:text-red-400 mb-1">Line 41: Grommet Configuration Error</p>
+                                                    <div className="p-3 rounded-lg border border-destructive/30 dark:border-destructive/40 bg-destructive/10">
+                                                        <p className="text-[10px] font-bold text-destructive mb-1">Line 41: Grommet Configuration Error</p>
                                                         <div className="grid grid-cols-2 gap-2 text-[10px]">
                                                             <div><span className="text-muted-foreground">PO spec:</span> <span className="font-medium text-foreground">No Grommet</span></div>
-                                                            <div><span className="text-muted-foreground">Acknowledgement:</span> <span className="font-medium text-red-600 dark:text-red-400">Grommet Option C - Left Rear Corner #2</span></div>
+                                                            <div><span className="text-muted-foreground">Acknowledgement:</span> <span className="font-medium text-destructive">Grommet Option C - Left Rear Corner #2</span></div>
                                                         </div>
                                                     </div>
                                                     <button
                                                         onClick={() => nextStep()}
-                                                        className="w-full py-2.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-xl transition-all shadow-sm hover:shadow-md active:scale-[0.98] flex items-center justify-center gap-2"
+                                                        className="w-full py-2.5 bg-destructive hover:bg-destructive/90 text-white text-xs font-bold rounded-xl transition-all shadow-sm hover:shadow-md active:scale-[0.98] flex items-center justify-center gap-2"
                                                     >
                                                         <ExclamationTriangleIcon className="w-4 h-4" />
                                                         Review Discrepancies
@@ -2597,7 +2597,7 @@ ACK*IA*125*EA*002*20250410~`}</span>{`
 `}<span className="text-success">{`PO1*002*125*EA*89.50**VP*MA-ADJ-2024*PI*MONITOR-ARM-ADJ~
 PID*F****Adjustable Monitor Arm - Dual Mount~
 ACK*IA*125*EA*002*20250417~`}</span>{`
-`}<span className="text-amber-400">{`PO1*041*1*EA*226.30**VP*CC-AZ-2024*PI*TASK-CHAIR-AZURE~
+`}<span className="text-warning">{`PO1*041*1*EA*226.30**VP*CC-AZ-2024*PI*TASK-CHAIR-AZURE~
 PID*F****Executive Task Chair - Grommet Option C~
 ACK*IA*1*EA*002*20250410*CO*GROMMET-C-LRC2~`}</span>{`
 SE*28*0001~
@@ -2606,7 +2606,7 @@ IEA*1*000002055~`}
                                         </pre>
                                         <div className="mt-3 flex items-center justify-between text-[10px]">
                                             <span className="text-muted-foreground">AI extracted and normalized <strong className="text-foreground">{ACK_AIS.lineItems} line items</strong> from this EDI/855</span>
-                                            <span className="text-[9px] px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 font-medium">Line 41 flagged</span>
+                                            <span className="text-[9px] px-2 py-0.5 rounded-full bg-warning/15 text-warning font-medium">Line 41 flagged</span>
                                         </div>
                                     </div>
                                 </div>
@@ -2630,7 +2630,7 @@ IEA*1*000002055~`}
                                 <span className="text-[8px] font-bold text-success dark:text-success uppercase tracking-wider">External Systems · Synced</span>
                                 <div className="flex flex-wrap gap-1.5 mt-0.5">
                                     <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-bold flex items-center gap-1">⚡ eManage ONE → PO Original</span>
-                                    <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold flex items-center gap-1">📄 MillerKnoll → EDI/855 ACK</span>
+                                    <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-info/15 text-info dark:text-info font-bold flex items-center gap-1">📄 MillerKnoll → EDI/855 ACK</span>
                                 </div>
                             </div>
                         </div>
@@ -2640,11 +2640,11 @@ IEA*1*000002055~`}
                             {['grommet-found', 'grommet-fixed', 'dates-found', 'dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) && (
                                 <div className={cn(
                                     'p-4 rounded-2xl border shadow-sm animate-in fade-in slide-in-from-left-4 duration-300',
-                                    ['grommet-fixed', 'dates-found', 'dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? 'border-green-200 dark:border-green-800 bg-green-50/30 dark:bg-green-500/5' : 'border-red-200 dark:border-red-800 bg-red-50/30 dark:bg-red-500/5'
+                                    ['grommet-fixed', 'dates-found', 'dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? 'border-success/30 dark:border-success/40 bg-success/10/30 dark:bg-success/100/5' : 'border-destructive/30 dark:border-destructive/40 bg-destructive/10/30 dark:bg-destructive/5'
                                 )}>
                                     <div className="flex items-center gap-3 mb-2">
-                                        <div className={cn('p-2 rounded-xl', ['grommet-fixed', 'dates-found', 'dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? 'bg-green-100 dark:bg-green-500/15' : 'bg-red-100 dark:bg-red-500/15')}>
-                                            {['grommet-fixed', 'dates-found', 'dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? <CheckCircleIcon className="w-4 h-4 text-green-600 dark:text-green-400" /> : <ExclamationTriangleIcon className="w-4 h-4 text-red-600 dark:text-red-400" />}
+                                        <div className={cn('p-2 rounded-xl', ['grommet-fixed', 'dates-found', 'dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? 'bg-success/15 dark:bg-success/15' : 'bg-destructive/15 dark:bg-destructive/15')}>
+                                            {['grommet-fixed', 'dates-found', 'dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? <CheckCircleIcon className="w-4 h-4 text-success" /> : <ExclamationTriangleIcon className="w-4 h-4 text-destructive" />}
                                         </div>
                                         <div className="flex-1">
                                             <h4 className="text-xs font-bold text-foreground">Grommet Config Error — Line 41</h4>
@@ -2657,9 +2657,9 @@ IEA*1*000002055~`}
                                             <span className="text-muted-foreground block">PO Spec:</span>
                                             <span className="font-bold text-foreground">Calibrate Grommet Choice: No Grommet</span>
                                         </div>
-                                        <div className="p-2 rounded-lg bg-card border border-red-200 dark:border-red-800">
+                                        <div className="p-2 rounded-lg bg-card border border-destructive/30 dark:border-destructive/40">
                                             <span className="text-muted-foreground block">Acknowledgement Value:</span>
-                                            <span className="font-bold text-red-600 dark:text-red-400 line-through">Grommet Option C - Left Rear Corner #2</span>
+                                            <span className="font-bold text-destructive line-through">Grommet Option C - Left Rear Corner #2</span>
                                         </div>
                                     </div>
                                     {['grommet-fixed', 'dates-found', 'dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) && (
@@ -2675,28 +2675,28 @@ IEA*1*000002055~`}
                             {['dates-found', 'dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) && (
                                 <div className={cn(
                                     'p-4 rounded-2xl border shadow-sm animate-in fade-in slide-in-from-left-4 duration-300',
-                                    ['dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? 'border-green-200 dark:border-green-800 bg-green-50/30 dark:bg-green-500/5' : 'border-amber-200 dark:border-amber-800 bg-amber-50/30 dark:bg-amber-500/5'
+                                    ['dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? 'border-success/30 dark:border-success/40 bg-success/10/30 dark:bg-success/100/5' : 'border-warning/30 dark:border-warning/40 bg-warning/10'
                                 )}>
                                     <div className="flex items-center gap-3 mb-2">
-                                        <div className={cn('p-2 rounded-xl', ['dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? 'bg-green-100 dark:bg-green-500/15' : 'bg-amber-100 dark:bg-amber-500/15')}>
-                                            {['dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? <CheckCircleIcon className="w-4 h-4 text-green-600 dark:text-green-400" /> : <ClockIcon className="w-4 h-4 text-amber-600 dark:text-amber-400" />}
+                                        <div className={cn('p-2 rounded-xl', ['dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? 'bg-success/15 dark:bg-success/15' : 'bg-warning/15 dark:bg-warning/15')}>
+                                            {['dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) ? <CheckCircleIcon className="w-4 h-4 text-success" /> : <ClockIcon className="w-4 h-4 text-warning" />}
                                         </div>
                                         <div className="flex-1">
                                             <h4 className="text-xs font-bold text-foreground">Date Shifts — 2 Items</h4>
                                             <p className="text-[10px] text-muted-foreground">Within 21-day guardrail threshold</p>
                                         </div>
                                         {['dates-fixed', 'qty-found', 'complete'].includes(deltaPhase23) && (
-                                            <span className="text-[10px] font-bold text-green-600 dark:text-green-400">Auto-Accepted</span>
+                                            <span className="text-[10px] font-bold text-success">Auto-Accepted</span>
                                         )}
                                     </div>
                                     <div className="ml-11 space-y-1.5 text-[10px]">
                                         <div className="flex items-center justify-between px-3 py-1.5 rounded bg-muted dark:bg-zinc-700/40">
                                             <span>Line 12: X-W3060 CB Wardrobe</span>
-                                            <span className="font-bold text-amber-600 dark:text-amber-400">+14 days</span>
+                                            <span className="font-bold text-warning">+14 days</span>
                                         </div>
                                         <div className="flex items-center justify-between px-3 py-1.5 rounded bg-muted dark:bg-zinc-700/40">
                                             <span>Line 34: X-BK4818 CB Bookcase</span>
-                                            <span className="font-bold text-amber-600 dark:text-amber-400">+11 days</span>
+                                            <span className="font-bold text-warning">+11 days</span>
                                         </div>
                                     </div>
                                 </div>
@@ -2704,16 +2704,16 @@ IEA*1*000002055~`}
 
                             {/* Quantity Shortfall */}
                             {['qty-found', 'complete'].includes(deltaPhase23) && (
-                                <div className="p-4 rounded-2xl border-2 border-amber-300 dark:border-amber-700 bg-amber-50/30 dark:bg-amber-500/5 shadow-sm animate-in fade-in slide-in-from-left-4 duration-300">
+                                <div className="p-4 rounded-2xl border-2 border-warning/40 dark:border-amber-700 bg-warning/10 shadow-sm animate-in fade-in slide-in-from-left-4 duration-300">
                                     <div className="flex items-center gap-3 mb-2">
-                                        <div className="p-2 rounded-xl bg-amber-100 dark:bg-amber-500/15">
-                                            <ExclamationTriangleIcon className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                                        <div className="p-2 rounded-xl bg-warning/15 dark:bg-warning/15">
+                                            <ExclamationTriangleIcon className="w-4 h-4 text-warning" />
                                         </div>
                                         <div className="flex-1">
                                             <h4 className="text-xs font-bold text-foreground">Quantity Shortfall — 3 Items</h4>
                                             <p className="text-[10px] text-muted-foreground">Exceeds auto-fix threshold → Expert must review</p>
                                         </div>
-                                        <span className="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-500/20 text-[10px] font-bold text-amber-700 dark:text-amber-400">Escalated</span>
+                                        <span className="px-2 py-0.5 rounded-full bg-warning/15 text-[10px] font-bold text-warning">Escalated</span>
                                     </div>
                                     <div className="ml-11 space-y-1.5 text-[10px]">
                                         {[
@@ -2723,7 +2723,7 @@ IEA*1*000002055~`}
                                         ].filter(l => l.ordered !== l.acked).map(l => (
                                             <div key={l.line} className="flex items-center justify-between px-3 py-1.5 rounded bg-muted dark:bg-zinc-700/40">
                                                 <span>Line {l.line}: {l.sku}</span>
-                                                <span><span className="text-muted-foreground">Ordered: {l.ordered}</span> → <span className="font-bold text-amber-600 dark:text-amber-400">Acknowledged: {l.acked}</span></span>
+                                                <span><span className="text-muted-foreground">Ordered: {l.ordered}</span> → <span className="font-bold text-warning">Acknowledged: {l.acked}</span></span>
                                             </div>
                                         ))}
                                     </div>
@@ -2745,7 +2745,7 @@ IEA*1*000002055~`}
                                                 )}
                                             </button>
                                             {backorderTriggered23 && (
-                                                <span className="text-[10px] text-green-600 dark:text-green-400 font-medium animate-pulse">Sending to client...</span>
+                                                <span className="text-[10px] text-success font-medium animate-pulse">Sending to client...</span>
                                             )}
                                         </div>
                                     )}
@@ -2778,7 +2778,7 @@ IEA*1*000002055~`}
                                 <span className="text-[8px] font-bold text-success dark:text-success uppercase tracking-wider">External Systems · Synced</span>
                                 <div className="flex flex-wrap gap-1.5 mt-0.5">
                                     <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-bold flex items-center gap-1">⚡ eManage ONE → PO-1029</span>
-                                    <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold flex items-center gap-1">📄 MillerKnoll → ACK-855</span>
+                                    <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-info/15 text-info dark:text-info font-bold flex items-center gap-1">📄 MillerKnoll → ACK-855</span>
                                 </div>
                             </div>
                         </div>
@@ -2796,7 +2796,7 @@ IEA*1*000002055~`}
                                     </div>
                                     <div className="flex items-center gap-2">
                                         {Object.keys(editedItems24).length > 0 && (
-                                            <span className="px-2 py-1 rounded-lg bg-blue-100 dark:bg-blue-500/20 text-[10px] font-bold text-blue-700 dark:text-blue-400">{Object.keys(editedItems24).length} edited</span>
+                                            <span className="px-2 py-1 rounded-lg bg-info/15 text-[10px] font-bold text-info">{Object.keys(editedItems24).length} edited</span>
                                         )}
                                         <span className="px-2 py-1 rounded-lg bg-muted text-[10px] font-bold text-foreground">{ACK_AIS.lineItems} lines</span>
                                         <span className="px-2 py-1 rounded-lg bg-muted text-[10px] font-bold text-foreground">{ACK_AIS.total}</span>
@@ -2804,9 +2804,9 @@ IEA*1*000002055~`}
                                 </div>
                                 {/* Resolution status badges */}
                                 <div className="flex items-center gap-2">
-                                    <span className="px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-500/20 text-[9px] font-bold text-green-700 dark:text-green-400">✓ Grommet corrected</span>
-                                    <span className="px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-500/20 text-[9px] font-bold text-green-700 dark:text-green-400">✓ Dates accepted</span>
-                                    <span className={cn('px-2 py-0.5 rounded-full text-[9px] font-bold', editedItems24[23] || editedItems24[47] ? 'bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400' : 'bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400')}>{editedItems24[23] || editedItems24[47] ? '✎ Qty modified' : '⚠ Qty shortfall'}</span>
+                                    <span className="px-2 py-0.5 rounded-full bg-success/15 text-[9px] font-bold text-success">✓ Grommet corrected</span>
+                                    <span className="px-2 py-0.5 rounded-full bg-success/15 text-[9px] font-bold text-success">✓ Dates accepted</span>
+                                    <span className={cn('px-2 py-0.5 rounded-full text-[9px] font-bold', editedItems24[23] || editedItems24[47] ? 'bg-info/15 text-info' : 'bg-warning/15 text-warning')}>{editedItems24[23] || editedItems24[47] ? '✎ Qty modified' : '⚠ Qty shortfall'}</span>
                                 </div>
                             </div>
 
@@ -2835,26 +2835,26 @@ IEA*1*000002055~`}
                                                     <tr className={cn(
                                                         'transition-colors',
                                                         isEditing && 'ring-2 ring-inset ring-blue-500/30',
-                                                        wasEdited ? 'bg-blue-50/50 dark:bg-blue-500/10' :
-                                                        item.status === 'grommet-error' ? 'bg-green-50/50 dark:bg-green-500/10' :
-                                                        item.status === 'qty-short' ? 'bg-amber-50/50 dark:bg-amber-500/10' :
-                                                        item.status === 'date-shift' ? 'bg-blue-50/50 dark:bg-blue-500/10' :
+                                                        wasEdited ? 'bg-info/10 dark:bg-info/10' :
+                                                        item.status === 'grommet-error' ? 'bg-success/10 dark:bg-success/10' :
+                                                        item.status === 'qty-short' ? 'bg-warning/10' :
+                                                        item.status === 'date-shift' ? 'bg-info/10 dark:bg-info/10' :
                                                         'bg-card',
                                                     )}>
                                                         <td className="px-3 py-2 font-mono text-muted-foreground">{item.line}</td>
                                                         <td className="px-3 py-2 font-bold text-foreground">{item.sku}</td>
                                                         <td className="px-3 py-2 text-foreground">{item.desc}</td>
                                                         <td className="px-3 py-2 text-center">{item.qty}</td>
-                                                        <td className={cn('px-3 py-2 text-center font-bold', wasEdited ? 'text-blue-600 dark:text-blue-400' : item.status === 'qty-short' ? 'text-amber-600 dark:text-amber-400' : 'text-foreground')}>
+                                                        <td className={cn('px-3 py-2 text-center font-bold', wasEdited ? 'text-info' : item.status === 'qty-short' ? 'text-warning' : 'text-foreground')}>
                                                             {wasEdited && editedItems24[item.line]?.qtyAck != null ? editedItems24[item.line].qtyAck : item.qtyAck}
                                                         </td>
                                                         <td className="px-3 py-2 text-right text-muted-foreground">{item.price}</td>
                                                         <td className="px-3 py-2 text-center">
-                                                            {wasEdited && <span className="px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-500/20 text-[9px] font-bold text-blue-700 dark:text-blue-400">Edited</span>}
-                                                            {!wasEdited && item.status === 'match' && <span className="text-green-600 dark:text-green-400 font-bold">✓</span>}
-                                                            {!wasEdited && item.status === 'grommet-error' && <span className="px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-500/20 text-[9px] font-bold text-green-700 dark:text-green-400">AI Fixed</span>}
-                                                            {!wasEdited && item.status === 'date-shift' && <span className="px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-500/20 text-[9px] font-bold text-blue-700 dark:text-blue-400">{item.dateShift}</span>}
-                                                            {!wasEdited && item.status === 'qty-short' && <span className="px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-500/20 text-[9px] font-bold text-amber-700 dark:text-amber-400">-{item.shortfall}</span>}
+                                                            {wasEdited && <span className="px-1.5 py-0.5 rounded bg-info/15 text-[9px] font-bold text-info">Edited</span>}
+                                                            {!wasEdited && item.status === 'match' && <span className="text-success font-bold">✓</span>}
+                                                            {!wasEdited && item.status === 'grommet-error' && <span className="px-1.5 py-0.5 rounded bg-success/15 text-[9px] font-bold text-success">AI Fixed</span>}
+                                                            {!wasEdited && item.status === 'date-shift' && <span className="px-1.5 py-0.5 rounded bg-info/15 text-[9px] font-bold text-info">{item.dateShift}</span>}
+                                                            {!wasEdited && item.status === 'qty-short' && <span className="px-1.5 py-0.5 rounded bg-warning/15 text-[9px] font-bold text-warning">-{item.shortfall}</span>}
                                                         </td>
                                                         <td className="px-3 py-2 text-center">
                                                             {isFlagged && !isEditing && (
@@ -2863,13 +2863,13 @@ IEA*1*000002055~`}
                                                                 </button>
                                                             )}
                                                             {isEditing && (
-                                                                <span className="text-[9px] font-bold text-blue-600 dark:text-blue-400">Editing</span>
+                                                                <span className="text-[9px] font-bold text-info">Editing</span>
                                                             )}
                                                         </td>
                                                     </tr>
                                                     {/* Inline edit form */}
                                                     {isEditing && (
-                                                        <tr className="bg-blue-50/80 dark:bg-blue-500/10">
+                                                        <tr className="bg-info/10/80 dark:bg-info/10">
                                                             <td colSpan={8} className="px-4 py-3">
                                                                 <div className="flex items-end gap-4 animate-in fade-in slide-in-from-top-2 duration-200">
                                                                     {item.status === 'qty-short' && (
@@ -2880,7 +2880,7 @@ IEA*1*000002055~`}
                                                                                 defaultValue={editedItems24[item.line]?.qtyAck ?? item.qtyAck}
                                                                                 min={0}
                                                                                 max={item.qty}
-                                                                                className="w-20 px-2 py-1.5 text-xs font-bold rounded-lg border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                                                                                className="w-20 px-2 py-1.5 text-xs font-bold rounded-lg border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-info/30"
                                                                                 id={`edit-qty-${item.line}`}
                                                                             />
                                                                         </div>
@@ -2891,7 +2891,7 @@ IEA*1*000002055~`}
                                                                             type="text"
                                                                             defaultValue={editedItems24[item.line]?.note ?? ''}
                                                                             placeholder={item.status === 'qty-short' ? 'e.g. Accept partial, backorder remainder' : item.status === 'grommet-error' ? 'e.g. Confirm grommet spec correction' : 'Add note...'}
-                                                                            className="w-full px-2 py-1.5 text-xs rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                                                                            className="w-full px-2 py-1.5 text-xs rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-info/30"
                                                                             id={`edit-note-${item.line}`}
                                                                         />
                                                                     </div>
@@ -2909,7 +2909,7 @@ IEA*1*000002055~`}
                                                                                 }));
                                                                                 setEditingLine24(null);
                                                                             }}
-                                                                            className="px-3 py-1.5 text-[10px] font-bold rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors"
+                                                                            className="px-3 py-1.5 text-[10px] font-bold rounded-lg bg-info hover:bg-info/90 text-white transition-colors"
                                                                         >
                                                                             Save
                                                                         </button>
@@ -2933,7 +2933,7 @@ IEA*1*000002055~`}
                             <div className="px-3 py-2 bg-muted/30 border-t border-border text-[10px] text-muted-foreground flex items-center justify-between">
                                 <span>Showing 8 of {ACK_AIS.lineItems} line items (flagged items highlighted)</span>
                                 {Object.keys(editedItems24).length > 0 && (
-                                    <span className="text-blue-600 dark:text-blue-400 font-bold">{Object.keys(editedItems24).length} item(s) modified by expert</span>
+                                    <span className="text-info font-bold">{Object.keys(editedItems24).length} item(s) modified by expert</span>
                                 )}
                             </div>
                         </div>
@@ -2954,11 +2954,11 @@ IEA*1*000002055~`}
                                 <span className="text-[9px] px-2 py-1 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-medium whitespace-nowrap">⚡ System of Record</span>
                             </div>
                         ) : (
-                            <div className="flex items-center gap-3 p-3 rounded-xl bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-800 animate-in fade-in zoom-in duration-300">
-                                <CheckCircleIcon className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0" />
+                            <div className="flex items-center gap-3 p-3 rounded-xl bg-success/10 border border-success/30 dark:border-success/40 animate-in fade-in zoom-in duration-300">
+                                <CheckCircleIcon className="w-5 h-5 text-success shrink-0" />
                                 <div>
-                                    <p className="text-xs font-bold text-green-700 dark:text-green-400">Expert Review Approved — Routing to Approval Chain</p>
-                                    <p className="text-[10px] text-green-600 dark:text-green-500">50 line items reviewed — routing to 3-approver authorization{Object.keys(editedItems24).length > 0 ? ` · ${Object.keys(editedItems24).length} expert correction(s) applied` : ''}</p>
+                                    <p className="text-xs font-bold text-success">Expert Review Approved — Routing to Approval Chain</p>
+                                    <p className="text-[10px] text-success dark:text-success">50 line items reviewed — routing to 3-approver authorization{Object.keys(editedItems24).length > 0 ? ` · ${Object.keys(editedItems24).length} expert correction(s) applied` : ''}</p>
                                 </div>
                             </div>
                         )}
@@ -2980,7 +2980,7 @@ IEA*1*000002055~`}
                                 <span className="text-[8px] font-bold text-success dark:text-success uppercase tracking-wider">External Systems · Synced</span>
                                 <div className="flex flex-wrap gap-1.5 mt-0.5">
                                     <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-bold flex items-center gap-1">⚡ eManage ONE → PO Original</span>
-                                    <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold flex items-center gap-1">📄 MillerKnoll → EDI/855 ACK</span>
+                                    <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-info/15 text-info dark:text-info font-bold flex items-center gap-1">📄 MillerKnoll → EDI/855 ACK</span>
                                 </div>
                             </div>
                         </div>
@@ -2999,21 +2999,21 @@ IEA*1*000002055~`}
                                     ].map((approver, i) => (
                                         <div key={i} className="flex items-start gap-4 relative pb-5 last:pb-0">
                                             {i < 2 && (
-                                                <div className={cn('absolute left-[15px] top-8 w-0.5 h-[calc(100%-16px)]', approvalStates25[i] === 'approved' ? 'bg-green-500' : 'bg-border')} />
+                                                <div className={cn('absolute left-[15px] top-8 w-0.5 h-[calc(100%-16px)]', approvalStates25[i] === 'approved' ? 'bg-success/100' : 'bg-border')} />
                                             )}
                                             <div className="relative shrink-0 z-10">
                                                 <DemoAvatar name={approver.name} size="md" />
                                                 {approvalStates25[i] === 'approved' && (
-                                                    <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-green-500 text-white flex items-center justify-center ring-2 ring-background"><CheckIcon className="w-2.5 h-2.5" /></div>
+                                                    <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-success/100 text-white flex items-center justify-center ring-2 ring-background"><CheckIcon className="w-2.5 h-2.5" /></div>
                                                 )}
                                                 {approvalStates25[i] === 'pending' && i === approvedCount25 && (
-                                                    <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-amber-500 text-white flex items-center justify-center ring-2 ring-background animate-pulse"><ClockIcon className="w-2.5 h-2.5" /></div>
+                                                    <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-warning text-white flex items-center justify-center ring-2 ring-background animate-pulse"><ClockIcon className="w-2.5 h-2.5" /></div>
                                                 )}
                                             </div>
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center justify-between gap-2">
-                                                    <span className={cn('text-sm font-bold', approvalStates25[i] === 'approved' && 'text-green-700 dark:text-green-400', approvalStates25[i] === 'pending' && i === approvedCount25 && 'text-amber-700 dark:text-amber-400', approvalStates25[i] === 'pending' && i !== approvedCount25 && 'text-muted-foreground')}>{approver.name}</span>
-                                                    {approvalStates25[i] === 'approved' && <span className="text-[10px] text-green-600 dark:text-green-400 font-medium">Approved</span>}
+                                                    <span className={cn('text-sm font-bold', approvalStates25[i] === 'approved' && 'text-success', approvalStates25[i] === 'pending' && i === approvedCount25 && 'text-warning', approvalStates25[i] === 'pending' && i !== approvedCount25 && 'text-muted-foreground')}>{approver.name}</span>
+                                                    {approvalStates25[i] === 'approved' && <span className="text-[10px] text-success font-medium">Approved</span>}
                                                 </div>
                                                 <p className="text-xs text-muted-foreground">{approver.role}</p>
                                             </div>
@@ -3027,14 +3027,14 @@ IEA*1*000002055~`}
                                         <span className="text-[10px] font-bold text-foreground">{approvedCount25}/3</span>
                                     </div>
                                     <div className="h-1.5 rounded-full bg-muted overflow-hidden">
-                                        <div className={cn('h-full rounded-full transition-all duration-500', approvedCount25 === 3 ? 'bg-green-500' : 'bg-primary')} style={{ width: `${(approvedCount25 / 3) * 100}%` }} />
+                                        <div className={cn('h-full rounded-full transition-all duration-500', approvedCount25 === 3 ? 'bg-success/100' : 'bg-primary')} style={{ width: `${(approvedCount25 / 3) * 100}%` }} />
                                     </div>
                                 </div>
                                 {approvedCount25 === 3 && (
-                                    <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-800 text-center animate-in fade-in zoom-in duration-300">
-                                        <CheckCircleIcon className="w-6 h-6 text-green-600 dark:text-green-400 mx-auto mb-1" />
-                                        <p className="text-xs font-bold text-green-700 dark:text-green-400">All Approvals Complete</p>
-                                        <p className="text-[10px] text-green-600 dark:text-green-500">{ACK_AIS.id} approved — ready for pipeline resolution</p>
+                                    <div className="p-3 rounded-xl bg-success/10 border border-success/30 dark:border-success/40 text-center animate-in fade-in zoom-in duration-300">
+                                        <CheckCircleIcon className="w-6 h-6 text-success mx-auto mb-1" />
+                                        <p className="text-xs font-bold text-success">All Approvals Complete</p>
+                                        <p className="text-[10px] text-success dark:text-success">{ACK_AIS.id} approved — ready for pipeline resolution</p>
                                     </div>
                                 )}
                             </div>
@@ -3054,12 +3054,12 @@ IEA*1*000002055~`}
                         </div>
 
                         {/* Success Banner */}
-                        <div className="p-4 rounded-2xl bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20">
+                        <div className="p-4 rounded-2xl bg-success/10 border border-success/30 dark:border-success/30">
                             <div className="flex items-center gap-3">
-                                <CheckCircleIcon className="w-6 h-6 text-green-600 dark:text-green-400 shrink-0" />
+                                <CheckCircleIcon className="w-6 h-6 text-success shrink-0" />
                                 <div>
-                                    <p className="text-sm font-bold text-green-700 dark:text-green-400">Both Acknowledgements Resolved</p>
-                                    <p className="text-xs text-green-600 dark:text-green-500">HAT: 5 lines confirmed (AI vendor rule) · AIS: 50 lines, 3 exceptions resolved, sent to client</p>
+                                    <p className="text-sm font-bold text-success">Both Acknowledgements Resolved</p>
+                                    <p className="text-xs text-success dark:text-success">HAT: 5 lines confirmed (AI vendor rule) · AIS: 50 lines, 3 exceptions resolved, sent to client</p>
                                 </div>
                             </div>
                         </div>
@@ -3077,22 +3077,22 @@ IEA*1*000002055~`}
                                             {/* HAT in Confirmed */}
                                             {stage === 'Confirmed' && resolvedCards26.HAT !== 'hidden' && (
                                                 <div className={cn(
-                                                    'p-3 rounded-xl border-2 border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-500/5 transition-all duration-500',
+                                                    'p-3 rounded-xl border-2 border-success/30 dark:border-success/40 bg-success/10 dark:bg-success/100/5 transition-all duration-500',
                                                     resolvedCards26.HAT === 'appearing' && 'opacity-70 scale-95',
                                                     resolvedCards26.HAT === 'placed' && 'opacity-100 scale-100',
                                                 )}>
                                                     <div className="flex items-center gap-2 mb-1">
-                                                        <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-[9px] font-bold flex items-center justify-center">HC</span>
+                                                        <span className="w-6 h-6 rounded-full bg-info text-white text-[9px] font-bold flex items-center justify-center">HC</span>
                                                         <span className="text-xs font-bold text-foreground">{ACK_HAT.id}</span>
                                                     </div>
                                                     <p className="text-[10px] text-muted-foreground">HAT · {ACK_HAT.lineItems} lines</p>
-                                                    <span className="text-[9px] text-green-600 dark:text-green-400 font-medium">AI vendor rule applied</span>
+                                                    <span className="text-[9px] text-success font-medium">AI vendor rule applied</span>
                                                 </div>
                                             )}
                                             {/* AIS in Discrepancy */}
                                             {stage === 'Discrepancy' && resolvedCards26.AIS !== 'hidden' && (
                                                 <div className={cn(
-                                                    'p-3 rounded-xl border-2 border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-500/5 transition-all duration-500',
+                                                    'p-3 rounded-xl border-2 border-warning/30 dark:border-warning/40 bg-warning/10 transition-all duration-500',
                                                     resolvedCards26.AIS === 'appearing' && 'opacity-70 scale-95',
                                                     resolvedCards26.AIS === 'placed' && 'opacity-100 scale-100',
                                                 )}>
@@ -3101,7 +3101,7 @@ IEA*1*000002055~`}
                                                         <span className="text-xs font-bold text-foreground">{ACK_AIS.id}</span>
                                                     </div>
                                                     <p className="text-[10px] text-muted-foreground">AIS · {ACK_AIS.lineItems} lines</p>
-                                                    <span className="px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-500/20 text-[8px] font-bold text-amber-700 dark:text-amber-400">Manufacturer Approval</span>
+                                                    <span className="px-1.5 py-0.5 rounded bg-warning/15 text-[8px] font-bold text-warning">Manufacturer Approval</span>
                                                 </div>
                                             )}
                                             {/* Existing Acknowledgement cards */}
@@ -3150,11 +3150,11 @@ IEA*1*000002055~`}
 
                         {/* Notification toast */}
                         {pipelineNotifShown19 && (
-                            <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-500">
-                                <CheckCircleIcon className="w-5 h-5 text-green-500 shrink-0" />
+                            <div className="p-3 rounded-xl bg-success/10 border border-success/30 dark:border-success/30 flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-500">
+                                <CheckCircleIcon className="w-5 h-5 text-success shrink-0" />
                                 <div className="flex-1">
-                                    <p className="text-xs font-bold text-green-700 dark:text-green-300">Order #ORD-2056 Created from PO-1029</p>
-                                    <p className="text-[10px] text-green-600 dark:text-green-400">Apex Furniture — $134,256 — Automatically added to pipeline</p>
+                                    <p className="text-xs font-bold text-success dark:text-success">Order #ORD-2056 Created from PO-1029</p>
+                                    <p className="text-[10px] text-success">Apex Furniture — $134,256 — Automatically added to pipeline</p>
                                 </div>
                             </div>
                         )}
@@ -3268,7 +3268,7 @@ IEA*1*000002055~`}
                                 </div>
                                 <div className="flex gap-2">
                                     <span className="text-[10px] px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-bold">47 Matched</span>
-                                    <span className="text-[10px] px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 font-bold">3 Flagged</span>
+                                    <span className="text-[10px] px-2.5 py-1 rounded-full bg-warning/15 text-warning dark:text-warning font-bold">3 Flagged</span>
                                 </div>
                             </div>
 
@@ -3276,7 +3276,7 @@ IEA*1*000002055~`}
                             <div className="mb-4">
                                 <span className="text-[8px] font-bold text-success dark:text-success uppercase tracking-wider">External Systems · Synced</span>
                                 <div className="flex flex-wrap gap-1.5 mt-1">
-                                    <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold flex items-center gap-1">📦 Carrier ASN</span>
+                                    <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-info/15 text-info dark:text-info font-bold flex items-center gap-1">📦 Carrier ASN</span>
                                     <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-bold flex items-center gap-1">📋 PO ORD-2055</span>
                                 </div>
                             </div>
@@ -3288,13 +3288,13 @@ IEA*1*000002055~`}
                                     { id: 'SHP-002', items: 15, status: 'Verified', color: 'emerald' },
                                     { id: 'SHP-003', items: 15, status: '3 Flags', color: 'amber' },
                                 ].map(s => (
-                                    <div key={s.id} className={`rounded-xl border p-3 ${s.color === 'emerald' ? 'border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/20' : 'border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/20'}`}>
+                                    <div key={s.id} className={`rounded-xl border p-3 ${s.color === 'emerald' ? 'border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/20' : 'border-warning/30 dark:border-warning/40 bg-warning/10 dark:bg-amber-950/20'}`}>
                                         <div className="flex items-center justify-between mb-1">
                                             <span className="text-[10px] font-bold text-foreground">{s.id}</span>
                                             <TruckIcon className="w-3.5 h-3.5 text-muted-foreground" />
                                         </div>
                                         <p className="text-[11px] text-muted-foreground">{s.items} items</p>
-                                        <span className={`text-[9px] font-bold mt-1 inline-block ${s.color === 'emerald' ? 'text-success dark:text-success' : 'text-amber-600 dark:text-amber-400'}`}>{s.status}</span>
+                                        <span className={`text-[9px] font-bold mt-1 inline-block ${s.color === 'emerald' ? 'text-success dark:text-success' : 'text-warning'}`}>{s.status}</span>
                                     </div>
                                 ))}
                             </div>
@@ -3348,13 +3348,13 @@ IEA*1*000002055~`}
                                                 <td className="px-4 py-3 text-xs font-medium text-foreground">{row.item}</td>
                                                 <td className="px-4 py-3 text-xs text-muted-foreground text-center">{row.poQty}</td>
                                                 <td className="px-4 py-3 text-xs font-bold text-center">
-                                                    <span className={row.received < row.poQty ? 'text-amber-600 dark:text-amber-400' : 'text-blue-600 dark:text-blue-400'}>{row.received}</span>
+                                                    <span className={row.received < row.poQty ? 'text-warning' : 'text-info'}>{row.received}</span>
                                                 </td>
                                                 <td className="px-4 py-3">
                                                     <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
-                                                        row.status === 'Partial' ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300' :
-                                                        row.status === 'Shortfall' ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300' :
-                                                        'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
+                                                        row.status === 'Partial' ? 'bg-warning/15 text-warning dark:text-warning' :
+                                                        row.status === 'Shortfall' ? 'bg-destructive/15 text-destructive dark:text-destructive' :
+                                                        'bg-info/15 text-info dark:text-info'
                                                     }`}>{row.status}</span>
                                                 </td>
                                                 <td className="px-4 py-3 text-[11px] text-indigo-600 dark:text-indigo-400 italic">{row.suggestion}</td>
@@ -3368,8 +3368,8 @@ IEA*1*000002055~`}
                             <div className="px-4 py-3 border-t border-border/50 flex items-center gap-6 bg-muted/20">
                                 {[
                                     { label: 'Matched', value: '47', color: 'text-success dark:text-success' },
-                                    { label: 'Flagged', value: '3', color: 'text-amber-600 dark:text-amber-400' },
-                                    { label: 'Auto-Resolved', value: '94%', color: 'text-blue-600 dark:text-blue-400' },
+                                    { label: 'Flagged', value: '3', color: 'text-warning' },
+                                    { label: 'Auto-Resolved', value: '94%', color: 'text-info' },
                                     { label: 'Confidence', value: '96%', color: 'text-indigo-600 dark:text-indigo-400' },
                                 ].map(kpi => (
                                     <div key={kpi.label} className="text-center">
@@ -3429,7 +3429,7 @@ IEA*1*000002055~`}
                                 <div className="space-y-1.5">
                                     {ackAgents.map(agent => (
                                         <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
                                             <span className={cn("font-medium", agent.done ? "text-foreground" : "text-indigo-600 dark:text-indigo-400")}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
@@ -3441,24 +3441,24 @@ IEA*1*000002055~`}
                         {/* Breathing */}
                         {ackPhase === 'breathing' && (
                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/100 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">Processing complete — syncing external systems...</span>
                             </div>
                         )}
 
                         {/* Confirmed */}
                         {(ackPhase === 'revealed' || ackPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">TrackingAgent:</span> ACK validation complete — <span className="font-semibold">9/12 validated</span>, 3 pending, <span className="font-semibold text-amber-700 dark:text-amber-400">1 dispute detected</span> (Knoll +4% price increase).</p>
+                                        <p className="text-xs text-success dark:text-success"><span className="font-bold">TrackingAgent:</span> ACK validation complete — <span className="font-semibold">9/12 validated</span>, 3 pending, <span className="font-semibold text-warning">1 dispute detected</span> (Knoll +4% price increase).</p>
                                         <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">External Systems · Synced</span>
+                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                             {['PO Tracker', 'ACK Engine', 'Contract DB', 'Dispute Queue'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/15 dark:bg-success/10 text-success text-[10px] font-medium border border-success/30/50 dark:border-success/30">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -3479,9 +3479,9 @@ IEA*1*000002055~`}
                                             <p className="text-[11px] text-muted-foreground mt-0.5">12 POs across 6 manufacturer groups</p>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-bold">9 Validated</span>
-                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 font-bold">2 Pending</span>
-                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-red-100 dark:bg-red-500/10 text-red-700 dark:text-red-400 font-bold">1 Dispute</span>
+                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-success/15 dark:bg-success/10 text-success font-bold">9 Validated</span>
+                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-warning/15 dark:bg-warning/10 text-warning font-bold">2 Pending</span>
+                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-destructive/15 dark:bg-destructive/10 text-destructive font-bold">1 Dispute</span>
                                         </div>
                                     </div>
 
@@ -3497,16 +3497,16 @@ IEA*1*000002055~`}
                                             </tr></thead>
                                             <tbody>
                                                 {MANUFACTURER_ACKS.map(m => (
-                                                    <tr key={m.manufacturer} className={cn("border-b border-border/30 transition-colors", m.status === 'dispute' && "bg-red-50/50 dark:bg-red-500/5")}>
+                                                    <tr key={m.manufacturer} className={cn("border-b border-border/30 transition-colors", m.status === 'dispute' && "bg-destructive/10")}>
                                                         <td className="px-4 py-3 text-xs font-medium text-foreground">{m.manufacturer}</td>
                                                         <td className="px-4 py-3 text-xs text-muted-foreground">{m.pos}</td>
                                                         <td className="px-4 py-3 text-xs text-muted-foreground">{m.acks}/{m.pos}</td>
                                                         <td className="px-4 py-3 text-xs text-muted-foreground">{m.match}</td>
                                                         <td className="px-4 py-3">
                                                             <span className={cn("text-[10px] px-2 py-0.5 rounded-full font-bold",
-                                                                m.status === 'validated' && "bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400",
-                                                                m.status === 'pending' && "bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400",
-                                                                m.status === 'dispute' && "bg-red-100 dark:bg-red-500/10 text-red-700 dark:text-red-400",
+                                                                m.status === 'validated' && "bg-success/15 dark:bg-success/10 text-success",
+                                                                m.status === 'pending' && "bg-warning/15 dark:bg-warning/10 text-warning",
+                                                                m.status === 'dispute' && "bg-destructive/15 dark:bg-destructive/10 text-destructive",
                                                             )}>
                                                                 {m.status === 'validated' ? 'Validated' : m.status === 'pending' ? 'Pending' : 'Dispute'}
                                                             </span>
@@ -3518,13 +3518,13 @@ IEA*1*000002055~`}
                                     </div>
 
                                     {/* Dispute Highlight Card */}
-                                    <div className="m-4 p-4 rounded-xl bg-red-50 dark:bg-red-500/5 border border-red-200 dark:border-red-500/20">
+                                    <div className="m-4 p-4 rounded-xl bg-destructive/10 dark:bg-destructive/5 border border-destructive/30">
                                         <div className="flex items-start gap-3">
-                                            <ExclamationTriangleIcon className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
+                                            <ExclamationTriangleIcon className="h-5 w-5 text-destructive shrink-0 mt-0.5" />
                                             <div className="flex-1 min-w-0">
-                                                <h4 className="text-xs font-bold text-red-800 dark:text-red-300">Dispute Detected — Knoll Task Seating</h4>
-                                                <p className="text-[11px] text-red-700 dark:text-red-400 mt-1">ACK shows +4% price increase on task chairs ($1,149 vs contract $1,105). Affects 200 units — potential overcharge of <span className="font-bold">$8,800</span>.</p>
-                                                <div className="mt-3 p-3 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-red-100 dark:border-red-500/10">
+                                                <h4 className="text-xs font-bold text-destructive">Dispute Detected — Knoll Task Seating</h4>
+                                                <p className="text-[11px] text-destructive mt-1">ACK shows +4% price increase on task chairs ($1,149 vs contract $1,105). Affects 200 units — potential overcharge of <span className="font-bold">$8,800</span>.</p>
+                                                <div className="mt-3 p-3 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-destructive/20 dark:border-destructive/30">
                                                     <p className="text-[10px] font-bold text-foreground mb-1">Auto-Generated Dispute Draft</p>
                                                     <p className="text-[10px] text-muted-foreground italic">"Per Contract #MK-2024-HQ, Section 4.2: Pricing fixed for project duration. ACK #KN-4892 reflects $1,149/unit vs contractual $1,105/unit. Request correction to honor contracted pricing for all 200 task chair units."</p>
                                                 </div>
@@ -3547,7 +3547,7 @@ IEA*1*000002055~`}
                                 <p className="text-[11px] font-bold text-foreground">United Airlines HQ — Office Renovation Project</p>
                                 <p className="text-[10px] text-muted-foreground">Chicago, IL · Floor 7 Pre-Renovation Teardown · Order #ORD-2055 · $385,000 scope</p>
                             </div>
-                            <span className="text-[9px] px-2 py-1 rounded-full bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-bold border border-green-200 dark:border-green-500/20 shrink-0">ACTIVE PROJECT</span>
+                            <span className="text-[9px] px-2 py-1 rounded-full bg-success/15 dark:bg-success/10 text-success font-bold border border-success/30 dark:border-success/30 shrink-0">ACTIVE PROJECT</span>
                         </div>
 
                         {/* Notification */}
@@ -3555,11 +3555,11 @@ IEA*1*000002055~`}
                             <button onClick={() => setReusePhase('processing')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
                                 <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
                                     <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-green-600 text-white"><ArrowPathIcon className="h-4 w-4" /></div>
+                                        <div className="p-2 rounded-lg bg-success text-white"><ArrowPathIcon className="h-4 w-4" /></div>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
                                                 <span className="text-xs font-bold text-foreground">UAL HQ — Floor 7 Reuse Assessment</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-green-600 text-white font-bold">340 items</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-success text-white font-bold">340 items</span>
                                             </div>
                                             <p className="text-[11px] text-muted-foreground mt-1">SustainabilityAgent: Cataloging <span className="font-semibold text-foreground">340 items</span> from <span className="font-semibold text-foreground">UAL HQ Floor 7</span> pre-renovation teardown — AI condition scoring, material classification, value estimation.</p>
                                             <p className="text-[10px] text-brand-600 dark:text-brand-400 mt-2 flex items-center gap-1">Click to review assessment <ArrowRightIcon className="h-3 w-3" /></p>
@@ -3577,13 +3577,13 @@ IEA*1*000002055~`}
                                     <span className="text-xs font-bold text-foreground">SustainabilityAgent — UAL HQ Floor 7 Teardown...</span>
                                 </div>
                                 <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                    <div className="h-full rounded-full bg-green-500 transition-all duration-[3500ms] ease-linear" style={{ width: `${reuseProgress}%` }} />
+                                    <div className="h-full rounded-full bg-success/100 transition-all duration-[3500ms] ease-linear" style={{ width: `${reuseProgress}%` }} />
                                 </div>
                                 <div className="space-y-1.5">
                                     {reuseAgents.map(agent => (
                                         <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-green-600 animate-spin shrink-0" />}
-                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-green-600 dark:text-green-400")}>{agent.name}</span>
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-success animate-spin shrink-0" />}
+                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-success")}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
                                     ))}
@@ -3594,24 +3594,24 @@ IEA*1*000002055~`}
                         {/* Breathing */}
                         {reusePhase === 'breathing' && (
                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/100 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">UAL HQ Floor 7 — cataloging complete, syncing to Chicago Warehouse...</span>
                             </div>
                         )}
 
                         {/* Confirmed */}
                         {(reusePhase === 'revealed' || reusePhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">SustainabilityAgent:</span> <span className="font-semibold">UAL HQ Floor 7</span> — 340 items cataloged. <span className="font-semibold">180 reusable</span>, 95 recyclable, 65 EOL. Savings: <span className="font-semibold">$89,000</span> vs new. Items routed to Chicago Warehouse.</p>
+                                        <p className="text-xs text-success dark:text-success"><span className="font-bold">SustainabilityAgent:</span> <span className="font-semibold">UAL HQ Floor 7</span> — 340 items cataloged. <span className="font-semibold">180 reusable</span>, 95 recyclable, 65 EOL. Savings: <span className="font-semibold">$89,000</span> vs new. Items routed to Chicago Warehouse.</p>
                                         <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">External Systems · Synced</span>
+                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                             {['Condition AI', 'Material DB', 'Value Engine', 'Inventory WMS', 'Sustainability Tracker'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/15 dark:bg-success/10 text-success text-[10px] font-medium border border-success/30/50 dark:border-success/30">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -3631,7 +3631,7 @@ IEA*1*000002055~`}
                                             <h3 className="text-sm font-bold text-foreground">UAL HQ — Floor 7 Reuse Assessment</h3>
                                             <p className="text-[11px] text-muted-foreground mt-0.5">Client: United Airlines · Chicago, IL · 340 items · AI condition scoring</p>
                                         </div>
-                                        <span className="text-sm font-bold text-green-600 dark:text-green-400">$89K savings</span>
+                                        <span className="text-sm font-bold text-success">$89K savings</span>
                                     </div>
 
                                     {/* Category Breakdown */}
@@ -3659,14 +3659,14 @@ IEA*1*000002055~`}
                                         <div className="space-y-2">
                                             {REUSE_ITEMS.map((item, i) => (
                                                 <div key={i} className={cn("flex items-center justify-between p-2.5 rounded-lg border",
-                                                    item.category === 'reusable' ? "border-green-200 dark:border-green-500/20 bg-green-50/30 dark:bg-green-500/5" :
-                                                    item.category === 'recyclable' ? "border-blue-200 dark:border-blue-500/20 bg-blue-50/30 dark:bg-blue-500/5" :
+                                                    item.category === 'reusable' ? "border-success/30 dark:border-success/30 bg-success/10/30 dark:bg-success/100/5" :
+                                                    item.category === 'recyclable' ? "border-info/20 bg-info/10/30 dark:bg-info/100/5" :
                                                     "border-border bg-muted/20"
                                                 )}>
                                                     <div className="flex items-center gap-3 flex-1 min-w-0">
                                                         <span className={cn("text-[9px] px-2 py-0.5 rounded-full font-bold shrink-0",
-                                                            item.category === 'reusable' ? "bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400" :
-                                                            item.category === 'recyclable' ? "bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400" :
+                                                            item.category === 'reusable' ? "bg-success/15 dark:bg-success/10 text-success" :
+                                                            item.category === 'recyclable' ? "bg-info/15 dark:bg-info/10 text-info" :
                                                             "bg-zinc-200 dark:bg-zinc-700 text-muted-foreground"
                                                         )}>{item.category === 'eol' ? 'EOL' : item.category}</span>
                                                         <div className="min-w-0">
@@ -3674,7 +3674,7 @@ IEA*1*000002055~`}
                                                             <p className="text-[10px] text-muted-foreground">Qty: {item.qty} · Score: {item.condition}/5 · {item.action}</p>
                                                         </div>
                                                     </div>
-                                                    <span className={cn("text-[11px] font-bold shrink-0 ml-2", item.value !== '$0' ? "text-green-600 dark:text-green-400" : "text-muted-foreground")}>{item.value}</span>
+                                                    <span className={cn("text-[11px] font-bold shrink-0 ml-2", item.value !== '$0' ? "text-success" : "text-muted-foreground")}>{item.value}</span>
                                                 </div>
                                             ))}
                                         </div>
@@ -3684,7 +3684,7 @@ IEA*1*000002055~`}
                                     <div className="px-4 py-3 border-t border-border/50 flex items-center justify-between bg-muted/20">
                                         <div>
                                             <p className="text-[10px] text-muted-foreground">UAL Floor 7 → 180 items auto-listed with "Refurbished" tag in Chicago Warehouse</p>
-                                            <p className="text-[11px] font-bold text-green-600 dark:text-green-400 mt-0.5">Total savings vs new: $89,000</p>
+                                            <p className="text-[11px] font-bold text-success mt-0.5">Total savings vs new: $89,000</p>
                                         </div>
                                         <button onClick={nextStep} className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-brand-300 hover:bg-brand-400 dark:bg-brand-400 dark:hover:bg-brand-300 text-zinc-900 text-[11px] font-bold shadow-sm transition-all hover:scale-[1.02]">
                                             <CheckCircleIcon className="h-3.5 w-3.5" />Catalog Reusable Items<ArrowRightIcon className="h-3 w-3" />
@@ -3704,11 +3704,11 @@ IEA*1*000002055~`}
                             <button onClick={() => setPortalPhase('processing')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
                                 <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
                                     <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-blue-600 text-white"><EyeIcon className="h-4 w-4" /></div>
+                                        <div className="p-2 rounded-lg bg-info text-white"><EyeIcon className="h-4 w-4" /></div>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
                                                 <span className="text-xs font-bold text-foreground">Client Portal Update — UAL HQ</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-600 text-white font-bold">82% complete</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-info text-white font-bold">82% complete</span>
                                             </div>
                                             <p className="text-[11px] text-muted-foreground mt-1">ClientPortalAgent: Generating project view — <span className="font-semibold text-foreground">$2.65M/$3.2M invoiced</span>, 5 floors tracked, 3 pending deliveries, 1 warranty claim.</p>
                                             <p className="text-[10px] text-brand-600 dark:text-brand-400 mt-2 flex items-center gap-1">Click to review portal <ArrowRightIcon className="h-3 w-3" /></p>
@@ -3726,13 +3726,13 @@ IEA*1*000002055~`}
                                     <span className="text-xs font-bold text-foreground">ClientPortalAgent Building View...</span>
                                 </div>
                                 <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                    <div className="h-full rounded-full bg-blue-500 transition-all duration-[3500ms] ease-linear" style={{ width: `${portalProgress}%` }} />
+                                    <div className="h-full rounded-full bg-info/100 transition-all duration-[3500ms] ease-linear" style={{ width: `${portalProgress}%` }} />
                                 </div>
                                 <div className="space-y-1.5">
                                     {portalAgents.map(agent => (
                                         <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-blue-500 animate-spin shrink-0" />}
-                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-blue-600 dark:text-blue-400")}>{agent.name}</span>
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-info animate-spin shrink-0" />}
+                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-info")}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
                                     ))}
@@ -3743,24 +3743,24 @@ IEA*1*000002055~`}
                         {/* Breathing */}
                         {portalPhase === 'breathing' && (
                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/100 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">Processing complete — syncing external systems...</span>
                             </div>
                         )}
 
                         {/* Confirmed */}
                         {(portalPhase === 'revealed' || portalPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">ClientPortalAgent:</span> Portal ready — <span className="font-semibold">82% complete</span>, $2.65M invoiced. 3 deliveries pending, 1 warranty claim active. One contact, one contract, one invoice.</p>
+                                        <p className="text-xs text-success dark:text-success"><span className="font-bold">ClientPortalAgent:</span> Portal ready — <span className="font-semibold">82% complete</span>, $2.65M invoiced. 3 deliveries pending, 1 warranty claim active. One contact, one contract, one invoice.</p>
                                         <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">External Systems · Synced</span>
+                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                             {['Timeline Engine', 'Budget Tracker', 'Change Router', 'Invoice System', 'Portal CMS'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/15 dark:bg-success/10 text-success text-[10px] font-medium border border-success/30/50 dark:border-success/30">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -3782,7 +3782,7 @@ IEA*1*000002055~`}
                                         </div>
                                         <div className="flex items-center gap-3">
                                             <div className="text-center">
-                                                <p className="text-lg font-bold text-blue-600 dark:text-blue-400">82%</p>
+                                                <p className="text-lg font-bold text-info">82%</p>
                                                 <p className="text-[9px] text-muted-foreground">Progress</p>
                                             </div>
                                             <div className="text-center">
@@ -3799,7 +3799,7 @@ IEA*1*000002055~`}
                                             <span className="font-bold text-foreground">$2.65M / $3.2M (82.8%)</span>
                                         </div>
                                         <div className="h-2.5 rounded-full bg-muted overflow-hidden">
-                                            <div className="h-full rounded-full bg-blue-500 transition-all duration-700" style={{ width: '82.8%' }} />
+                                            <div className="h-full rounded-full bg-info/100 transition-all duration-700" style={{ width: '82.8%' }} />
                                         </div>
                                     </div>
 
@@ -3807,13 +3807,13 @@ IEA*1*000002055~`}
                                     <div className="p-4 grid grid-cols-5 gap-2">
                                         {FLOOR_STATUS.map(f => (
                                             <div key={f.floor} className={cn("p-2.5 rounded-xl border text-center",
-                                                f.progress === 100 ? "border-green-200 dark:border-green-500/20 bg-green-50/50 dark:bg-green-500/5" :
-                                                f.progress > 50 ? "border-blue-200 dark:border-blue-500/20 bg-blue-50/30 dark:bg-blue-500/5" :
+                                                f.progress === 100 ? "border-success/30 dark:border-success/30 bg-success/10 dark:bg-success/100/5" :
+                                                f.progress > 50 ? "border-info/20 bg-info/10/30 dark:bg-info/100/5" :
                                                 "border-border bg-muted/20"
                                             )}>
                                                 <p className="text-[10px] font-bold text-foreground">{f.floor}</p>
                                                 <div className="h-1.5 rounded-full bg-muted overflow-hidden my-1.5">
-                                                    <div className={cn("h-full rounded-full", f.progress === 100 ? "bg-green-500" : f.progress > 50 ? "bg-blue-500" : "bg-zinc-400")} style={{ width: `${f.progress}%` }} />
+                                                    <div className={cn("h-full rounded-full", f.progress === 100 ? "bg-success/100" : f.progress > 50 ? "bg-info/100" : "bg-zinc-400")} style={{ width: `${f.progress}%` }} />
                                                 </div>
                                                 <p className="text-[9px] text-muted-foreground">{f.status}</p>
                                             </div>
@@ -3828,8 +3828,8 @@ IEA*1*000002055~`}
                                                 <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-card border border-border/50">
                                                     <div className="flex items-center gap-2">
                                                         <span className={cn("text-[9px] px-2 py-0.5 rounded-full font-bold",
-                                                            item.type === 'Delivery' ? "bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400" :
-                                                            "bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400"
+                                                            item.type === 'Delivery' ? "bg-info/15 dark:bg-info/10 text-info" :
+                                                            "bg-warning/15 dark:bg-warning/10 text-warning"
                                                         )}>{item.type}</span>
                                                         <span className="text-[10px] text-foreground">{item.desc}</span>
                                                     </div>
@@ -3877,7 +3877,7 @@ IEA*1*000002055~`}
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
                                                 <span className="text-xs font-bold text-foreground">Expert Review — Service Request REQ-FM-2026-018</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-red-500 text-white font-bold">SAFETY</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-destructive text-white font-bold">SAFETY</span>
                                             </div>
                                             <p className="text-[11px] text-muted-foreground mt-1">TriageAgent has prepared a resolution plan — <span className="font-semibold text-foreground">warranty claim, consignment swap, installer dispatch</span>. Awaiting expert approval.</p>
                                             <p className="text-[10px] text-brand-600 dark:text-brand-400 mt-2 flex items-center gap-1">Click to review plan <ArrowRightIcon className="h-3 w-3" /></p>
@@ -3900,7 +3900,7 @@ IEA*1*000002055~`}
                                 <div className="space-y-1.5">
                                     {fmExpertAgents.map(agent => (
                                         <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-ai animate-spin shrink-0" />}
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-ai animate-spin shrink-0" />}
                                             <span className={cn("font-medium", agent.done ? "text-foreground" : "text-ai dark:text-ai")}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
@@ -3912,24 +3912,24 @@ IEA*1*000002055~`}
                         {/* Breathing */}
                         {fmExpertPhase === 'breathing' && (
                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/100 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">Validation complete — preparing decision card...</span>
                             </div>
                         )}
 
                         {/* Confirmed */}
                         {(fmExpertPhase === 'revealed' || fmExpertPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">TriageAgent:</span> Resolution plan validated. <span className="font-semibold">Warranty active, consignment match 98%, installer available tomorrow</span>. Total cost: $0.</p>
+                                        <p className="text-xs text-success dark:text-success"><span className="font-bold">TriageAgent:</span> Resolution plan validated. <span className="font-semibold">Warranty active, consignment match 98%, installer available tomorrow</span>. Total cost: $0.</p>
                                         <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">All Checks · Passed</span>
+                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">All Checks · Passed</span>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                             {['Warranty', 'Consignment', 'Installer', 'Cost'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/15 dark:bg-success/10 text-success text-[10px] font-medium border border-success/30/50 dark:border-success/30">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -3953,10 +3953,10 @@ IEA*1*000002055~`}
 
                                     <div className="p-4 space-y-3">
                                         {/* Warranty Section */}
-                                        <div className="p-3 rounded-xl border border-green-200 dark:border-green-500/20 bg-green-50/50 dark:bg-green-500/5">
+                                        <div className="p-3 rounded-xl border border-success/30 dark:border-success/30 bg-success/10 dark:bg-success/100/5">
                                             <div className="flex items-center justify-between mb-1">
                                                 <span className="text-xs font-bold text-foreground">Warranty Claim</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400 font-bold">AUTO-FILED</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/15 text-success dark:bg-success/10 dark:text-success font-bold">AUTO-FILED</span>
                                             </div>
                                             <p className="text-[10px] text-muted-foreground">CLM-FM-2026-018 — Herman Miller will replace gas cylinder under active warranty (exp. 2027-06)</p>
                                         </div>
@@ -3971,10 +3971,10 @@ IEA*1*000002055~`}
                                         </div>
 
                                         {/* Dispatch Section */}
-                                        <div className="p-3 rounded-xl border border-blue-200 dark:border-blue-500/20 bg-blue-50/50 dark:bg-blue-500/5">
+                                        <div className="p-3 rounded-xl border border-info/20 bg-info/10">
                                             <div className="flex items-center justify-between mb-1">
                                                 <span className="text-xs font-bold text-foreground">Installer Dispatch</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400 font-bold">SCHEDULED</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-info/15 text-info dark:bg-info/10 dark:text-info font-bold">SCHEDULED</span>
                                             </div>
                                             <p className="text-[10px] text-muted-foreground">ProInstall LLC — James Mercer — Tomorrow 9:00-12:00 AM — Certified Herman Miller installer</p>
                                         </div>
@@ -3988,7 +3988,7 @@ IEA*1*000002055~`}
                                             </button>
                                         ) : (
                                             <div className="space-y-2 animate-in fade-in duration-300">
-                                                <div className="flex items-center justify-center gap-2 text-green-600 dark:text-green-400">
+                                                <div className="flex items-center justify-center gap-2 text-success">
                                                     <CheckCircleIcon className="h-5 w-5" />
                                                     <span className="text-sm font-bold">Approved — Notifying stakeholders</span>
                                                 </div>
@@ -4001,7 +4001,7 @@ IEA*1*000002055~`}
                                                         <div key={i} className="flex items-center gap-1.5 animate-in fade-in slide-in-from-bottom-2 duration-300" style={{ animationDelay: `${i * 200}ms` }}>
                                                             <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${p.color} text-white flex items-center justify-center text-[9px] font-bold`}>{p.initials}</div>
                                                             <span className="text-[10px] text-muted-foreground">{p.name}</span>
-                                                            <CheckCircleIcon className="h-3 w-3 text-green-500" />
+                                                            <CheckCircleIcon className="h-3 w-3 text-success" />
                                                         </div>
                                                     ))}
                                                 </div>
@@ -4077,10 +4077,10 @@ IEA*1*000002055~`}
                             </div>
 
                             {/* Backorder Callout */}
-                            <div className="mx-4 my-3 p-3 rounded-lg bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800">
+                            <div className="mx-4 my-3 p-3 rounded-lg bg-warning/10 dark:bg-amber-950/20 border border-warning/30 dark:border-warning/40">
                                 <div className="flex items-center gap-2">
-                                    <ExclamationTriangleIcon className="w-4 h-4 text-amber-500" />
-                                    <span className="text-[11px] text-amber-700 dark:text-amber-300 font-medium">18/20 Task Chairs received. $2,556 pending backorder — will generate separate invoice on delivery.</span>
+                                    <ExclamationTriangleIcon className="w-4 h-4 text-warning" />
+                                    <span className="text-[11px] text-warning dark:text-warning font-medium">18/20 Task Chairs received. $2,556 pending backorder — will generate separate invoice on delivery.</span>
                                 </div>
                             </div>
 
@@ -4089,8 +4089,8 @@ IEA*1*000002055~`}
                                 {[
                                     { label: 'Total', value: '$41,150', color: 'text-foreground' },
                                     { label: 'Avg Margin', value: '37.8%', color: 'text-success dark:text-success' },
-                                    { label: 'Lines', value: '6', color: 'text-blue-600 dark:text-blue-400' },
-                                    { label: 'Backorder', value: '$2,556', color: 'text-amber-600 dark:text-amber-400' },
+                                    { label: 'Lines', value: '6', color: 'text-info' },
+                                    { label: 'Backorder', value: '$2,556', color: 'text-warning' },
                                 ].map(kpi => (
                                     <div key={kpi.label} className="text-center">
                                         <p className={`text-sm font-bold ${kpi.color}`}>{kpi.value}</p>
@@ -4139,7 +4139,7 @@ IEA*1*000002055~`}
                             <div className="px-4 pt-3">
                                 <span className="text-[8px] font-bold text-success dark:text-success uppercase tracking-wider">External Systems · Synced</span>
                                 <div className="flex flex-wrap gap-1.5 mt-1">
-                                    <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold flex items-center gap-1">📋 Daily Log (DL-004)</span>
+                                    <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-info/15 text-info dark:text-info font-bold flex items-center gap-1">📋 Daily Log (DL-004)</span>
                                     <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-bold flex items-center gap-1">⏱ Time Tracking System</span>
                                 </div>
                             </div>
@@ -4164,7 +4164,7 @@ IEA*1*000002055~`}
                                             <tr key={i} className="border-b border-border/30 hover:bg-muted/30 transition-colors">
                                                 <td className="px-4 py-3 text-xs font-medium text-foreground">{row.service}</td>
                                                 <td className="px-4 py-3">
-                                                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold">{row.source}</span>
+                                                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-info/15 text-info dark:text-info font-bold">{row.source}</span>
                                                 </td>
                                                 <td className="px-4 py-3 text-xs text-muted-foreground">{row.detail}</td>
                                                 <td className="px-4 py-3 text-xs text-right font-bold text-foreground">{row.amount}</td>
@@ -4258,9 +4258,9 @@ IEA*1*000002055~`}
                             <div className="px-4 py-3 border-t border-border/50 flex items-center gap-6 bg-muted/20">
                                 {[
                                     { label: 'Revenue', value: '+$3,200', color: 'text-success dark:text-success' },
-                                    { label: 'Cost', value: '+$2,010', color: 'text-amber-600 dark:text-amber-400' },
+                                    { label: 'Cost', value: '+$2,010', color: 'text-warning' },
                                     { label: 'Margin', value: '35.4% → 36.1% ↑', color: 'text-success dark:text-success' },
-                                    { label: 'Delivery', value: '+7d', color: 'text-blue-600 dark:text-blue-400' },
+                                    { label: 'Delivery', value: '+7d', color: 'text-info' },
                                 ].map(kpi => (
                                     <div key={kpi.label} className="text-center">
                                         <p className={`text-sm font-bold ${kpi.color}`}>{kpi.value}</p>
@@ -4348,7 +4348,7 @@ IEA*1*000002055~`}
                                                         <button className="p-2 rounded-lg hover:bg-white dark:hover:bg-zinc-700 text-muted-foreground hover:text-foreground transition-colors shadow-sm ring-1 ring-inset ring-black/5" title="Edit">
                                                             <PencilIcon className="w-4 h-4" />
                                                         </button>
-                                                        <button className="p-2 rounded-lg hover:bg-white dark:hover:bg-zinc-700 text-muted-foreground hover:text-red-500 transition-colors shadow-sm ring-1 ring-inset ring-black/5" title="Delete">
+                                                        <button className="p-2 rounded-lg hover:bg-white dark:hover:bg-zinc-700 text-muted-foreground hover:text-destructive transition-colors shadow-sm ring-1 ring-inset ring-black/5" title="Delete">
                                                             <TrashIcon className="w-4 h-4" />
                                                         </button>
                                                     </div>
@@ -4361,8 +4361,8 @@ IEA*1*000002055~`}
                                                         {currentStep.id === '1.5' && item.id === "QT-1025" ? (
                                                             <div className="flex items-center justify-between p-4 bg-card border border-border rounded-xl animate-in fade-in duration-300">
                                                                 <div className="flex items-center gap-3">
-                                                                    <div className="p-2 rounded-lg bg-amber-50 dark:bg-amber-500/10">
-                                                                        <ExclamationTriangleIcon className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                                                                    <div className="p-2 rounded-lg bg-warning/10">
+                                                                        <ExclamationTriangleIcon className="w-4 h-4 text-warning" />
                                                                     </div>
                                                                     <div>
                                                                         <p className="text-xs font-medium text-foreground">3 discrepancies flagged by AI — freight, quantity, substitution</p>
@@ -4386,8 +4386,8 @@ IEA*1*000002055~`}
                                                                         <div key={idx} className="flex gap-3 relative">
                                                                             <div className={cn(
                                                                                 "w-7 h-7 rounded-full flex items-center justify-center shrink-0 z-10",
-                                                                                step.completed ? "bg-green-500 text-white" :
-                                                                                    step.alert ? "bg-red-500 text-white" : "bg-zinc-200 dark:bg-zinc-800 text-muted-foreground"
+                                                                                step.completed ? "bg-success/100 text-white" :
+                                                                                    step.alert ? "bg-destructive text-white" : "bg-zinc-200 dark:bg-zinc-800 text-muted-foreground"
                                                                             )}>
                                                                                 {step.completed ? <CheckIcon className="w-3.5 h-3.5" /> :
                                                                                     step.alert ? <ExclamationTriangleIcon className="w-3.5 h-3.5" /> : <div className="w-1.5 h-1.5 rounded-full bg-current" />}
@@ -4538,9 +4538,9 @@ IEA*1*000002055~`}
                             <div className="p-5">
                                 <div className="flex items-start">
                                     <div className="flex-shrink-0">
-                                        {toastMessage.type === 'success' && <CheckCircleIcon className="h-6 w-6 text-green-500" aria-hidden="true" />}
-                                        {toastMessage.type === 'error' && <ExclamationCircleIcon className="h-6 w-6 text-red-500" aria-hidden="true" />}
-                                        {toastMessage.type === 'info' && <BellIcon className="h-6 w-6 text-blue-500" aria-hidden="true" />}
+                                        {toastMessage.type === 'success' && <CheckCircleIcon className="h-6 w-6 text-success" aria-hidden="true" />}
+                                        {toastMessage.type === 'error' && <ExclamationCircleIcon className="h-6 w-6 text-destructive" aria-hidden="true" />}
+                                        {toastMessage.type === 'info' && <BellIcon className="h-6 w-6 text-info" aria-hidden="true" />}
                                     </div>
                                     <div className="ml-4 w-0 flex-1">
                                         <p className="text-sm font-black text-foreground uppercase tracking-widest">{toastMessage.title}</p>

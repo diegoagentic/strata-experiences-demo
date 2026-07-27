@@ -66,7 +66,7 @@ const INITIAL_CATALOGS = [
         version: 'Seating 2023',
         items: 54,
         lastSync: '1 week ago',
-        cover: 'bg-amber-500',
+        cover: 'bg-warning',
         status: 'Active',
         owner: 'Mike Johnson',
         image: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&q=80&w=800'
@@ -228,7 +228,7 @@ export default function CatalogLibrary() {
             {notification && (
                 <div className="fixed bottom-6 right-6 z-50 animate-in slide-in-from-bottom-5 fade-in duration-300">
                     <div className="bg-zinc-900 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 border border-zinc-800">
-                        <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                        <CheckCircleIcon className="w-5 h-5 text-success" />
                         <span className="font-medium text-sm">{notification.msg}</span>
                     </div>
                 </div>
@@ -354,9 +354,9 @@ export default function CatalogLibrary() {
                                         {generateLogs(catalog.id).map((item, idx) => (
                                             <div key={idx} className="flex items-start gap-2 p-2 rounded-lg hover:bg-muted dark:hover:bg-zinc-800/50 transition-colors text-xs border border-zinc-100 dark:border-zinc-800">
                                                 <div className="mt-0.5 shrink-0">
-                                                    {item.type === 'price_increase' && <ArrowTrendingUpIcon className="w-3.5 h-3.5 text-red-500" />}
-                                                    {item.type === 'spec_update' && <WrenchIcon className="w-3.5 h-3.5 text-blue-500" />}
-                                                    {item.type === 'new' && <SparklesIcon className="w-3.5 h-3.5 text-amber-500" />}
+                                                    {item.type === 'price_increase' && <ArrowTrendingUpIcon className="w-3.5 h-3.5 text-destructive" />}
+                                                    {item.type === 'spec_update' && <WrenchIcon className="w-3.5 h-3.5 text-info" />}
+                                                    {item.type === 'new' && <SparklesIcon className="w-3.5 h-3.5 text-warning" />}
                                                     {item.type === 'discontinued' && <TrashIcon className="w-3.5 h-3.5 text-muted-foreground" />}
                                                 </div>
                                                 <div className="flex-1 min-w-0">
@@ -382,9 +382,9 @@ export default function CatalogLibrary() {
                                                 <CalendarIcon className="w-4 h-4" />
                                                 {catalog.version}
                                             </span>
-                                            <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${catalog.status === 'Active' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' :
-                                                catalog.status === 'Processing' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 animate-pulse' :
-                                                    'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'
+                                            <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${catalog.status === 'Active' ? 'bg-success/15 text-success dark:bg-success/20 dark:text-success' :
+                                                catalog.status === 'Processing' ? 'bg-info/15 text-info dark:bg-info/20 dark:text-info animate-pulse' :
+                                                    'bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning'
                                                 }`}>
                                                 {catalog.status}
                                             </span>
@@ -410,7 +410,7 @@ export default function CatalogLibrary() {
                                             <div className="animate-in fade-in zoom-in-95 duration-300">
                                                 <button
                                                     onClick={(e) => { e.stopPropagation(); toggleResults(catalog.id); }}
-                                                    className="w-full flex items-center justify-between text-xs px-2 py-1.5 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors"
+                                                    className="w-full flex items-center justify-between text-xs px-2 py-1.5 bg-success/10 dark:bg-success/15 text-success rounded-lg hover:bg-success/15 dark:hover:bg-success/15 transition-colors"
                                                 >
                                                     <div className="flex items-center gap-1.5 font-medium">
                                                         <CheckCircleIcon className="w-3.5 h-3.5" />
@@ -423,11 +423,11 @@ export default function CatalogLibrary() {
                                                     <div className="mt-2 space-y-1 overflow-y-auto max-h-[100px] custom-scrollbar pr-1">
                                                         {syncResults[catalog.id].map((result, idx) => (
                                                             <div key={idx} className="flex items-start gap-2 p-2 rounded-md bg-muted dark:bg-zinc-800/50 text-[11px]">
-                                                                {result.type === 'price_increase' && <ArrowTrendingUpIcon className="w-3.5 h-3.5 text-red-500 mt-0.5 shrink-0" />}
-                                                                {result.type === 'price_decrease' && <ArrowTrendingDownIcon className="w-3.5 h-3.5 text-green-500 mt-0.5 shrink-0" />}
+                                                                {result.type === 'price_increase' && <ArrowTrendingUpIcon className="w-3.5 h-3.5 text-destructive mt-0.5 shrink-0" />}
+                                                                {result.type === 'price_decrease' && <ArrowTrendingDownIcon className="w-3.5 h-3.5 text-success mt-0.5 shrink-0" />}
                                                                 {result.type === 'discontinued' && <TrashIcon className="w-3.5 h-3.5 text-muted-foreground mt-0.5 shrink-0" />}
-                                                                {result.type === 'new' && <SparklesIcon className="w-3.5 h-3.5 text-amber-500 mt-0.5 shrink-0" />}
-                                                                {result.type === 'spec_update' && <WrenchIcon className="w-3.5 h-3.5 text-blue-500 mt-0.5 shrink-0" />}
+                                                                {result.type === 'new' && <SparklesIcon className="w-3.5 h-3.5 text-warning mt-0.5 shrink-0" />}
+                                                                {result.type === 'spec_update' && <WrenchIcon className="w-3.5 h-3.5 text-info mt-0.5 shrink-0" />}
 
                                                                 <div className="flex-1">
                                                                     <div className="font-medium text-foreground">{result.name}</div>
@@ -472,7 +472,7 @@ export default function CatalogLibrary() {
                                             {/* Delete Button (New) */}
                                             <button
                                                 onClick={(e) => { e.stopPropagation(); setDeleteId(catalog.id); }}
-                                                className="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-muted-foreground hover:text-red-600 transition-colors"
+                                                className="p-2 rounded-lg hover:bg-destructive/10 dark:hover:bg-destructive/15 text-muted-foreground hover:text-destructive transition-colors"
                                                 title="Delete Catalog"
                                             >
                                                 <TrashIcon className="w-4 h-4" />
@@ -538,7 +538,7 @@ export default function CatalogLibrary() {
                             >
                                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-card p-6 text-left align-middle shadow-xl transition-all border border-border">
                                     <div className="flex items-center gap-4 mb-4">
-                                        <div className="p-3 bg-red-100 dark:bg-red-900/30 rounded-full text-red-600 dark:text-red-400">
+                                        <div className="p-3 bg-destructive/15 rounded-full text-destructive">
                                             <ExclamationTriangleIcon className="w-6 h-6" />
                                         </div>
                                         <Dialog.Title

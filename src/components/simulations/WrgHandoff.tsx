@@ -64,9 +64,9 @@ const FLAGGED_COUNT = Object.keys(FLAGGED_ITEMS).length;
 // ─── Color Styles (DS pattern) ──────────────────────────────────────────────
 
 const colorStyles: Record<string, string> = {
-    green: 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
-    amber: 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
-    blue: 'bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300 ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
+    green: 'bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
+    amber: 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
+    blue: 'bg-info/10 text-info dark:bg-info/15 dark:text-info ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
 };
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -213,7 +213,7 @@ export default function WrgHandoff({ onNavigate }: { onNavigate?: (page: string)
                 {agts.map(agent => (
                     <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'}`}>
                         {agent.done ?
-                            <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> :
+                            <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> :
                             <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />
                         }
                         <span className={agent.done ? 'text-foreground' : 'text-indigo-600 dark:text-indigo-400'}>{agent.name}</span>
@@ -296,22 +296,22 @@ export default function WrgHandoff({ onNavigate }: { onNavigate?: (page: string)
                                                     {/* Main row */}
                                                     <tr className={`border-b border-border/50 transition-all duration-200 ${
                                                         phase === 'revealed' && idx < rowsRevealed ? 'opacity-100' : phase === 'breathing' ? 'opacity-100' : 'opacity-0'
-                                                    } ${flagInfo && !resolved ? 'bg-amber-50/50 dark:bg-amber-500/5 border-l-2 border-l-amber-400' : ''} ${resolved === 'requested' ? 'bg-sky-50/50 dark:bg-sky-500/5 border-l-2 !border-l-sky-400' : ''} ${resolved && resolved !== 'requested' ? 'bg-green-50/50 dark:bg-green-500/5 border-l-2 !border-l-green-400' : ''}`}
+                                                    } ${flagInfo && !resolved ? 'bg-warning/10 border-l-2 border-l-amber-400' : ''} ${resolved === 'requested' ? 'bg-sky-50/50 dark:bg-sky-500/5 border-l-2 !border-l-sky-400' : ''} ${resolved && resolved !== 'requested' ? 'bg-success/10 dark:bg-success/100/5 border-l-2 !border-l-green-400' : ''}`}
                                                     >
                                                         <td className="px-3 py-2 text-muted-foreground">{item.id}</td>
                                                         <td className="px-3 py-2 text-foreground">{item.product}</td>
                                                         <td className="px-3 py-2 text-muted-foreground">{item.mfr}</td>
-                                                        <td className={`px-3 py-2 text-center font-mono font-bold ${!item.match && !resolved ? 'text-amber-700 dark:text-amber-400' : 'text-foreground'}`}>{item.specQty}</td>
-                                                        <td className={`px-3 py-2 text-center font-mono font-bold ${!item.match && !resolved ? 'text-amber-700 dark:text-amber-400' : 'text-foreground'}`}>{item.selQty}</td>
+                                                        <td className={`px-3 py-2 text-center font-mono font-bold ${!item.match && !resolved ? 'text-warning' : 'text-foreground'}`}>{item.specQty}</td>
+                                                        <td className={`px-3 py-2 text-center font-mono font-bold ${!item.match && !resolved ? 'text-warning' : 'text-foreground'}`}>{item.selQty}</td>
                                                         <td className="px-3 py-2 text-center">
                                                             {resolved && resolved !== 'requested' ? (
-                                                                <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 mx-auto" />
+                                                                <CheckCircleIcon className="h-3.5 w-3.5 text-success mx-auto" />
                                                             ) : resolved === 'requested' ? (
                                                                 <PaperAirplaneIcon className="h-3.5 w-3.5 text-sky-500 mx-auto" />
                                                             ) : !flagInfo ? (
-                                                                <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 mx-auto" />
+                                                                <CheckCircleIcon className="h-3.5 w-3.5 text-success mx-auto" />
                                                             ) : (
-                                                                <ExclamationTriangleIcon className="h-3.5 w-3.5 text-amber-500 mx-auto" />
+                                                                <ExclamationTriangleIcon className="h-3.5 w-3.5 text-warning mx-auto" />
                                                             )}
                                                         </td>
                                                         <td className="px-3 py-2">
@@ -335,11 +335,11 @@ export default function WrgHandoff({ onNavigate }: { onNavigate?: (page: string)
                                                     {/* Inline resolution sub-row for unresolved flagged items */}
                                                     {flagInfo && phase === 'revealed' && idx < rowsRevealed && !resolved && (
                                                         <tr className="border-b border-border/50">
-                                                            <td colSpan={7} className="px-3 py-2.5 bg-amber-50/30 dark:bg-amber-500/5">
+                                                            <td colSpan={7} className="px-3 py-2.5 bg-warning/10">
                                                                 {/* Buttons row */}
                                                                 <div className="flex items-center justify-between gap-3">
                                                                     <div className="flex items-center gap-2 flex-1 min-w-0">
-                                                                        <ExclamationTriangleIcon className="h-3.5 w-3.5 text-amber-500 shrink-0" />
+                                                                        <ExclamationTriangleIcon className="h-3.5 w-3.5 text-warning shrink-0" />
                                                                         <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold shrink-0 ${colorStyles.amber}`}>{flagInfo.type}</span>
                                                                         <span className="text-[10px] text-muted-foreground truncate">{flagInfo.detail}</span>
                                                                     </div>
@@ -436,7 +436,7 @@ export default function WrgHandoff({ onNavigate }: { onNavigate?: (page: string)
 
                                                     {/* Resolved sub-row */}
                                                     {flagInfo && resolved && (
-                                                        <tr className={`border-b border-border/50 ${resolved === 'requested' ? 'bg-sky-50/30 dark:bg-sky-500/5' : 'bg-green-50/30 dark:bg-green-500/5'}`}>
+                                                        <tr className={`border-b border-border/50 ${resolved === 'requested' ? 'bg-sky-50/30 dark:bg-sky-500/5' : 'bg-success/10/30 dark:bg-success/100/5'}`}>
                                                             <td colSpan={7} className="px-3 py-2">
                                                                 <div className="flex items-center gap-2">
                                                                     {resolved === 'requested' ? (
@@ -446,8 +446,8 @@ export default function WrgHandoff({ onNavigate }: { onNavigate?: (page: string)
                                                                         </>
                                                                     ) : (
                                                                         <>
-                                                                            <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
-                                                                            <span className="text-[10px] text-green-700 dark:text-green-400">{flagInfo.aiSuggestion}</span>
+                                                                            <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
+                                                                            <span className="text-[10px] text-success">{flagInfo.aiSuggestion}</span>
                                                                         </>
                                                                     )}
                                                                 </div>
@@ -477,7 +477,7 @@ export default function WrgHandoff({ onNavigate }: { onNavigate?: (page: string)
                                             </div>
 
                                             {/* Item being sent */}
-                                            <div className="p-2.5 rounded-lg bg-amber-50/50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/20 mb-3">
+                                            <div className="p-2.5 rounded-lg bg-warning/10 border border-warning/20 mb-3">
                                                 <div className="flex items-center gap-2 mb-1">
                                                     <span className="text-[11px] font-bold text-foreground">{reqItem.product}</span>
                                                     <span className={`text-[8px] px-1 py-0.5 rounded font-bold ${colorStyles.amber}`}>{reqFlag.type}</span>
@@ -519,24 +519,24 @@ export default function WrgHandoff({ onNavigate }: { onNavigate?: (page: string)
 
                             {/* Summary footer */}
                             <div className="flex items-center gap-2 p-2.5 rounded-lg bg-muted/30 border border-border text-[10px] text-muted-foreground">
-                                <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                                <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
                                 <span>21 items match</span>
                                 <span className="text-border">|</span>
-                                <span className={resolutions[3] ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'}>1 qty mismatch</span>
+                                <span className={resolutions[3] ? 'text-success' : 'text-warning'}>1 qty mismatch</span>
                                 <span className="text-border">|</span>
-                                <span className={resolutions[5] === 'requested' ? 'text-sky-600 dark:text-sky-400' : resolutions[5] ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'}>
+                                <span className={resolutions[5] === 'requested' ? 'text-sky-600 dark:text-sky-400' : resolutions[5] ? 'text-success' : 'text-warning'}>
                                     1 custom config{resolutions[5] === 'requested' ? ' → designer' : ''}
                                 </span>
                                 <span className="text-border">|</span>
-                                <span className={resolutions[6] ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'}>1 SKU update</span>
+                                <span className={resolutions[6] ? 'text-success' : 'text-warning'}>1 SKU update</span>
                             </div>
 
                             {/* Action toast */}
                             {actionToast && (
-                                <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                                <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 animate-in fade-in slide-in-from-bottom-2 duration-300">
                                     <div className="flex items-center gap-2">
-                                        <CheckCircleIcon className="h-4 w-4 text-green-600 dark:text-green-400 shrink-0" />
-                                        <span className="text-[11px] font-bold text-green-700 dark:text-green-400">{actionToast}</span>
+                                        <CheckCircleIcon className="h-4 w-4 text-success shrink-0" />
+                                        <span className="text-[11px] font-bold text-success">{actionToast}</span>
                                     </div>
                                 </div>
                             )}

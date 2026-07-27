@@ -193,7 +193,7 @@ export default function CatalogImportModal({ isOpen, onClose, onImportComplete }
                 </div>
 
                 {/* Terminal Effect Log */}
-                <div className="mt-8 w-full max-w-sm bg-zinc-900 rounded-lg p-3 text-left font-mono text-xs text-green-400 opacity-80 shadow-inner">
+                <div className="mt-8 w-full max-w-sm bg-zinc-900 rounded-lg p-3 text-left font-mono text-xs text-success opacity-80 shadow-inner">
                     <p>{'>'} connect --source="{sourceType}"</p>
                     <p className={cn(progress > 10 && 'block', 'hidden')}>{'>'} connection established</p>
                     <p className={cn(progress > 30 && 'block', 'hidden')}>{'>'} schema validated</p>
@@ -303,7 +303,7 @@ export default function CatalogImportModal({ isOpen, onClose, onImportComplete }
                                                         onChange={(e) => setUrl(e.target.value)}
                                                     />
                                                 </div>
-                                                <p className="text-xs text-muted-foreground bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 p-3 rounded-lg border border-blue-100 dark:border-blue-800/50">
+                                                <p className="text-xs text-muted-foreground bg-info/10 dark:bg-info/15 text-info p-3 rounded-lg border border-info/20 dark:border-info/40/50">
                                                     <span className="font-semibold">AI Assistant:</span> I will traverse the manufacturer's site and extract product data.
                                                 </p>
                                             </div>
@@ -474,7 +474,7 @@ export default function CatalogImportModal({ isOpen, onClose, onImportComplete }
 
                                 {step === 'complete' && (
                                     <div className="flex flex-col items-center justify-center p-12 text-center animate-in fade-in zoom-in duration-300">
-                                        <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center text-green-600 dark:text-green-400 mb-6">
+                                        <div className="w-16 h-16 bg-success/15 rounded-full flex items-center justify-center text-success mb-6">
                                             <CheckCircleIcon className="w-8 h-8" />
                                         </div>
                                         <h3 className="text-xl font-bold text-foreground mb-2">Import Successful!</h3>

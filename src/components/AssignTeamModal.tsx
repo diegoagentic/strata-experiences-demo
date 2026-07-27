@@ -86,8 +86,8 @@ export default function AssignTeamModal({ isOpen, onClose, onConfirm, item, type
                                     className="flex items-center justify-between border-b border-border pb-4 mb-6"
                                 >
                                     <div className="flex items-center gap-3">
-                                        <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                                            <UserGroupIcon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                                        <div className="p-2 bg-info/10 dark:bg-info/15 rounded-lg">
+                                            <UserGroupIcon className="w-6 h-6 text-info" />
                                         </div>
                                         <div>
                                             <h3 className="text-lg font-semibold text-foreground">
@@ -108,43 +108,43 @@ export default function AssignTeamModal({ isOpen, onClose, onConfirm, item, type
 
                                 <div className="space-y-6">
                                     {/* Context Card */}
-                                    <div className="bg-blue-50/50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-800 rounded-xl p-4">
+                                    <div className="bg-info/10 dark:bg-info/10 border border-info/20 dark:border-info/40 rounded-xl p-4">
                                         <div className="flex items-start justify-between mb-3">
                                             <div>
-                                                <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-100">
+                                                <h4 className="text-sm font-semibold text-info dark:text-info">
                                                     {type === 'movement' ? 'Movement Details' : 'Task Details'}
                                                 </h4>
                                                 <div className="flex items-center gap-2 mt-1">
-                                                    <span className="text-xs font-medium px-2 py-0.5 rounded bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border border-amber-200 dark:border-amber-700/50 uppercase">
+                                                    <span className="text-xs font-medium px-2 py-0.5 rounded bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning border border-warning/30 dark:border-warning/30 uppercase">
                                                         {item.status}
                                                     </span>
                                                 </div>
                                             </div>
                                             <div className="text-right">
-                                                <p className="text-xs text-blue-700 dark:text-blue-300">Order Date: {item.requestDate || item.scheduledDate}</p>
+                                                <p className="text-xs text-info dark:text-info">Order Date: {item.requestDate || item.scheduledDate}</p>
                                             </div>
                                         </div>
 
                                         <div className="grid grid-cols-2 gap-4 text-sm">
                                             <div>
-                                                <p className="text-xs text-blue-600 dark:text-blue-400 font-medium mb-1">Asset</p>
+                                                <p className="text-xs text-info font-medium mb-1">Asset</p>
                                                 <p className="font-semibold text-foreground">{item.assetName}</p>
                                                 <p className="text-muted-foreground text-xs">{item.assetType || item.issueType}</p>
                                             </div>
                                             {type === 'movement' ? (
                                                 <div className="grid grid-cols-2 gap-2">
                                                     <div>
-                                                        <p className="text-xs text-blue-600 dark:text-blue-400 font-medium mb-1">From</p>
+                                                        <p className="text-xs text-info font-medium mb-1">From</p>
                                                         <p className="text-foreground">{item.fromLocation}</p>
                                                     </div>
                                                     <div>
-                                                        <p className="text-xs text-blue-600 dark:text-blue-400 font-medium mb-1">To</p>
+                                                        <p className="text-xs text-info font-medium mb-1">To</p>
                                                         <p className="text-foreground">{item.toLocation}</p>
                                                     </div>
                                                 </div>
                                             ) : (
                                                 <div>
-                                                    <p className="text-xs text-blue-600 dark:text-blue-400 font-medium mb-1">Issue Description</p>
+                                                    <p className="text-xs text-info font-medium mb-1">Issue Description</p>
                                                     <p className="text-foreground line-clamp-2">{item.description}</p>
                                                 </div>
                                             )}
@@ -155,7 +155,7 @@ export default function AssignTeamModal({ isOpen, onClose, onConfirm, item, type
                                     <div className="space-y-4">
                                         <div>
                                             <label className="block text-sm font-medium text-foreground mb-1">
-                                                Assigned Team <span className="text-red-500">*</span>
+                                                Assigned Team <span className="text-destructive">*</span>
                                             </label>
                                             <div className="relative">
                                                 <select
@@ -178,9 +178,9 @@ export default function AssignTeamModal({ isOpen, onClose, onConfirm, item, type
                                             </label>
                                             <div className="grid grid-cols-3 gap-3">
                                                 {[
-                                                    { value: 'Low', icon: CheckCircleIcon, color: 'text-green-600', border: 'peer-checked:border-green-500 peer-checked:bg-green-50 dark:peer-checked:bg-green-900/20' },
-                                                    { value: 'Medium', icon: ClockIcon, color: 'text-amber-600', border: 'peer-checked:border-amber-500 peer-checked:bg-amber-50 dark:peer-checked:bg-amber-900/20' },
-                                                    { value: 'High', icon: ExclamationTriangleIcon, color: 'text-red-600', border: 'peer-checked:border-red-500 peer-checked:bg-red-50 dark:peer-checked:bg-red-900/20' }
+                                                    { value: 'Low', icon: CheckCircleIcon, color: 'text-success', border: 'peer-checked:border-success peer-checked:bg-success/10 dark:peer-checked:bg-success/20' },
+                                                    { value: 'Medium', icon: ClockIcon, color: 'text-warning', border: 'peer-checked:border-warning peer-checked:bg-warning/10 dark:peer-checked:bg-warning/20' },
+                                                    { value: 'High', icon: ExclamationTriangleIcon, color: 'text-destructive', border: 'peer-checked:border-destructive peer-checked:bg-destructive/10 dark:peer-checked:bg-destructive/20' }
                                                 ].map((p) => (
                                                     <label key={p.value} className="cursor-pointer">
                                                         <input
@@ -206,7 +206,7 @@ export default function AssignTeamModal({ isOpen, onClose, onConfirm, item, type
                                         <div className="grid grid-cols-2 gap-4">
                                             <div>
                                                 <label className="block text-sm font-medium text-foreground mb-1">
-                                                    Scheduled Date <span className="text-red-500">*</span>
+                                                    Scheduled Date <span className="text-destructive">*</span>
                                                 </label>
                                                 <div className="relative">
                                                     <input
@@ -220,7 +220,7 @@ export default function AssignTeamModal({ isOpen, onClose, onConfirm, item, type
                                             </div>
                                             <div>
                                                 <label className="block text-sm font-medium text-foreground mb-1">
-                                                    Scheduled Time <span className="text-red-500">*</span>
+                                                    Scheduled Time <span className="text-destructive">*</span>
                                                 </label>
                                                 <div className="relative">
                                                     <input

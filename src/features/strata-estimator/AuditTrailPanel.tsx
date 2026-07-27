@@ -41,8 +41,8 @@ const CATEGORY_META: Record<
 > = {
     system:   { icon: Activity,    tone: 'text-muted-foreground' },
     ai:       { icon: Sparkles,    tone: 'text-indigo-500 dark:text-indigo-400' },
-    edit:     { icon: User,        tone: 'text-blue-500 dark:text-blue-400' },
-    approval: { icon: UserCheck,   tone: 'text-green-500 dark:text-green-400' },
+    edit:     { icon: User,        tone: 'text-info dark:text-info' },
+    approval: { icon: UserCheck,   tone: 'text-success dark:text-success' },
     release:  { icon: ShieldCheck, tone: 'text-foreground dark:text-primary' },
 }
 

@@ -37,7 +37,7 @@ export default function FieldMappingArtifact({ data }: { data: any }) {
             {/* Header */}
             <div className="bg-muted dark:bg-zinc-800/50 px-4 py-3 border-b border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg">
+                    <div className="p-1.5 bg-info/15 text-info rounded-lg">
                         <DocumentMagnifyingGlassIcon className="w-4 h-4" />
                     </div>
                     <div>
@@ -45,7 +45,7 @@ export default function FieldMappingArtifact({ data }: { data: any }) {
                         <p className="text-[10px] text-muted-foreground">{data.fileName}</p>
                     </div>
                 </div>
-                <span className="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-[10px] font-bold rounded-full">
+                <span className="px-2 py-0.5 bg-warning/15 text-warning text-[10px] font-bold rounded-full">
                     {reviewFields.filter(f => f.status === 'review').length} Needs Review
                 </span>
             </div>
@@ -53,15 +53,15 @@ export default function FieldMappingArtifact({ data }: { data: any }) {
             <div className="p-4 space-y-6">
                 {/* Auto Detected Section */}
                 <div className="space-y-2">
-                    <p className="text-xs font-medium text-green-600 dark:text-green-400 flex items-center gap-1.5">
+                    <p className="text-xs font-medium text-success flex items-center gap-1.5">
                         <CheckCircleIcon className="w-3.5 h-3.5" />
                         Auto-Detected (High Confidence)
                     </p>
                     <div className="grid grid-cols-2 gap-2">
                         {data.detectedFields.map((field: any, idx: number) => (
-                            <div key={idx} className="flex justify-between items-center p-2 rounded-lg bg-green-50/50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
+                            <div key={idx} className="flex justify-between items-center p-2 rounded-lg bg-success/10 dark:bg-success/10 border border-success/20 dark:border-success/40">
                                 <span className="text-[10px] font-medium text-muted-foreground">{field.name}</span>
-                                <span className="text-[9px] font-bold text-green-600 dark:text-green-400">{(field.confidence * 100).toFixed(0)}%</span>
+                                <span className="text-[9px] font-bold text-success">{(field.confidence * 100).toFixed(0)}%</span>
                             </div>
                         ))}
                     </div>
@@ -69,7 +69,7 @@ export default function FieldMappingArtifact({ data }: { data: any }) {
 
                 {/* Needs Mapping Section */}
                 <div className="space-y-3">
-                    <p className="text-xs font-medium text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
+                    <p className="text-xs font-medium text-warning flex items-center gap-1.5">
                         <ExclamationTriangleIcon className="w-3.5 h-3.5" />
                         Needs Verification
                     </p>
@@ -79,15 +79,15 @@ export default function FieldMappingArtifact({ data }: { data: any }) {
                                 key={idx}
                                 className={`p-3 rounded-lg border transition-all ${field.status === 'confirmed'
                                     ? 'bg-muted dark:bg-zinc-800/30 border-border opacity-75'
-                                    : 'bg-card border-amber-200 dark:border-amber-900/50 shadow-sm'
+                                    : 'bg-card border-warning/30 dark:border-warning/40 shadow-sm'
                                     }`}
                             >
                                 <div className="flex justify-between items-start mb-2">
                                     <div className="flex items-center gap-2">
-                                        <span className={`w-1.5 h-1.5 rounded-full ${field.status === 'confirmed' ? 'bg-green-500' : 'bg-amber-500'}`} />
+                                        <span className={`w-1.5 h-1.5 rounded-full ${field.status === 'confirmed' ? 'bg-success/100' : 'bg-warning'}`} />
                                         <span className="text-xs font-semibold text-foreground">{field.name}</span>
                                     </div>
-                                    <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${field.status === 'confirmed' ? 'bg-zinc-100 text-muted-foreground' : 'bg-amber-100 text-amber-700'
+                                    <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${field.status === 'confirmed' ? 'bg-zinc-100 text-muted-foreground' : 'bg-warning/15 text-warning'
                                         }`}>
                                         {(field.confidence * 100).toFixed(0)}% Match
                                     </span>

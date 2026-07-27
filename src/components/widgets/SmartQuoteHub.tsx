@@ -292,7 +292,7 @@ function SmartQuoteHubContent({ onNavigate, demoPhase = 'IDLE', onUploadStart, o
 
                 {mode === 'success' && (
                     <div className="h-full flex flex-col items-center justify-center p-8 text-center animate-in zoom-in duration-300">
-                        <div className="w-20 h-20 bg-green-100 dark:bg-green-900/20 text-green-600 rounded-full flex items-center justify-center mb-6">
+                        <div className="w-20 h-20 bg-success/15 dark:bg-success/15 text-success rounded-full flex items-center justify-center mb-6">
                             <CheckCircleIcon className="w-10 h-10" />
                         </div>
                         <h3 className="text-2xl font-bold text-foreground mb-2">Order Submitted!</h3>

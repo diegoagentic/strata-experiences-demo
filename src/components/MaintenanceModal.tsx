@@ -58,7 +58,7 @@ export default function MaintenanceModal({ isOpen, onClose, selectedCount, onCon
             <div className="relative bg-card rounded-2xl shadow-xl w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-200 border border-border">
                 <div className="flex items-center justify-between p-6 border-b border-border">
                     <div className="flex items-center gap-3">
-                        <div className="p-2 bg-amber-50 dark:bg-amber-900/20 rounded-lg text-amber-600 dark:text-amber-400">
+                        <div className="p-2 bg-warning/10 dark:bg-warning/15 rounded-lg text-warning">
                             <WrenchScrewdriverIcon className="w-5 h-5" />
                         </div>
                         <div>
@@ -84,7 +84,7 @@ export default function MaintenanceModal({ isOpen, onClose, selectedCount, onCon
                                     className={cn(
                                         "py-2 px-3 text-sm font-medium rounded-lg border transition-all",
                                         issueType === type
-                                            ? "bg-amber-50 border-amber-200 text-amber-700 dark:bg-amber-900/20 dark:border-amber-800 dark:text-amber-400"
+                                            ? "bg-warning/10 border-warning/30 text-warning dark:bg-warning/15 dark:border-warning/40 dark:text-warning"
                                             : "bg-card border-input text-muted-foreground hover:bg-accent"
                                     )}
                                 >

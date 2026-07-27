@@ -121,16 +121,16 @@ export default function MACRequests() {
     const getOriginIcon = (origin: RequestOrigin) => {
         switch (origin) {
             case 'Slack': return <ChatBubbleLeftEllipsisIcon className="w-5 h-5 text-indigo-500" />;
-            case 'Email': return <EnvelopeIcon className="w-5 h-5 text-blue-500" />;
-            case 'MobileApp': return <DevicePhoneMobileIcon className="w-5 h-5 text-green-500" />;
+            case 'Email': return <EnvelopeIcon className="w-5 h-5 text-info" />;
+            case 'MobileApp': return <DevicePhoneMobileIcon className="w-5 h-5 text-success" />;
         }
     };
 
     const getUrgencyStyle = (urgency: RequestUrgency) => {
         switch (urgency) {
-            case 'High': return 'text-red-600 bg-red-50 border-red-100 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800/30';
-            case 'Medium': return 'text-amber-600 bg-amber-50 border-amber-100 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-800/30';
-            case 'Low': return 'text-green-600 bg-green-50 border-green-100 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800/30';
+            case 'High': return 'text-destructive bg-destructive/10 border-destructive/20 dark:bg-destructive/15 dark:text-destructive dark:border-destructive/40/30';
+            case 'Medium': return 'text-warning bg-warning/10 border-warning/20 dark:bg-warning/15 dark:text-warning dark:border-warning/40/30';
+            case 'Low': return 'text-success bg-success/10 border-success/20 dark:bg-success/15 dark:text-success dark:border-success/40/30';
         }
     };
 
@@ -203,21 +203,21 @@ export default function MACRequests() {
                                         <button
                                             onClick={() => handleAction(req.id, 'move')}
                                             title="Convert to Move"
-                                            className="p-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-full transition-colors"
+                                            className="p-2 text-info hover:bg-info/10 dark:hover:bg-info/15 rounded-full transition-colors"
                                         >
                                             <TruckIcon className="w-5 h-5" />
                                         </button>
                                         <button
                                             onClick={() => handleAction(req.id, 'maintenance')}
                                             title="Convert to Maintenance"
-                                            className="p-2 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 rounded-full transition-colors"
+                                            className="p-2 text-warning hover:bg-warning/10 dark:hover:bg-warning/15 rounded-full transition-colors"
                                         >
                                             <WrenchIcon className="w-5 h-5" />
                                         </button>
                                         <button
                                             onClick={() => handleAction(req.id, 'reject')}
                                             title="Reject Request"
-                                            className="p-2 text-muted-foreground hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-full transition-colors"
+                                            className="p-2 text-muted-foreground hover:text-destructive hover:bg-destructive/10 dark:hover:bg-destructive/15 rounded-full transition-colors"
                                         >
                                             <XCircleIcon className="w-5 h-5" />
                                         </button>

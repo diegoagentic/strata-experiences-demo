@@ -22,13 +22,13 @@ export default function StockMatrixArtifact({ data }: { data: any }) {
 
     if (reserved) {
         return (
-            <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800 flex items-start gap-3 animate-in fade-in zoom-in duration-300">
-                <div className="p-1 bg-blue-100 dark:bg-blue-900/40 rounded-full text-blue-600 dark:text-blue-400">
+            <div className="p-4 bg-info/10 dark:bg-info/15 rounded-lg border border-info/30 dark:border-info/40 flex items-start gap-3 animate-in fade-in zoom-in duration-300">
+                <div className="p-1 bg-info/15 dark:bg-info/20 rounded-full text-info">
                     <TruckIcon className="w-5 h-5" />
                 </div>
                 <div>
-                    <h4 className="font-semibold text-blue-900 dark:text-blue-100 text-sm">Stock Reserved</h4>
-                    <p className="text-xs text-blue-800 dark:text-blue-200 mt-1">Pickup scheduled for tomorrow at Chicago Warehouse.</p>
+                    <h4 className="font-semibold text-info dark:text-info text-sm">Stock Reserved</h4>
+                    <p className="text-xs text-info dark:text-info mt-1">Pickup scheduled for tomorrow at Chicago Warehouse.</p>
                 </div>
             </div>
         );
@@ -37,9 +37,9 @@ export default function StockMatrixArtifact({ data }: { data: any }) {
     return (
         <div className="bg-card rounded-xl border border-border shadow-sm overflow-hidden">
             {/* Header */}
-            <div className="bg-blue-50 dark:bg-blue-900/20 px-4 py-3 border-b border-blue-100 dark:border-blue-800 flex items-center gap-2">
-                <TruckIcon className="w-4 h-4 text-blue-600 dark:text-blue-500" />
-                <h4 className="font-semibold text-blue-900 dark:text-blue-100 text-sm">Urgent Stock Locator</h4>
+            <div className="bg-info/10 dark:bg-info/15 px-4 py-3 border-b border-info/20 dark:border-info/40 flex items-center gap-2">
+                <TruckIcon className="w-4 h-4 text-info dark:text-info" />
+                <h4 className="font-semibold text-info dark:text-info text-sm">Urgent Stock Locator</h4>
             </div>
 
             <div className="p-4 space-y-4">
@@ -54,19 +54,19 @@ export default function StockMatrixArtifact({ data }: { data: any }) {
                         </div>
                     </div>
                     <div className="text-right">
-                        <div className="text-lg font-bold text-green-600 dark:text-green-400">{data.qty} Available</div>
+                        <div className="text-lg font-bold text-success">{data.qty} Available</div>
                         <div className="text-xs text-muted-foreground">Total Stock</div>
                     </div>
                 </div>
 
                 {/* Location Match */}
                 <div className="bg-muted dark:bg-zinc-800/50 rounded-lg p-3 flex items-start gap-3 border border-zinc-100 dark:border-zinc-700">
-                    <MapPinIcon className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                    <MapPinIcon className="w-5 h-5 text-destructive shrink-0 mt-0.5" />
                     <div>
                         <p className="text-sm font-semibold text-foreground">{data.location}</p>
                         <p className="text-xs text-muted-foreground mt-0.5">25 mins away • Open until 8 PM</p>
                         {data.canPickup && (
-                            <span className="inline-block mt-2 px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold rounded">
+                            <span className="inline-block mt-2 px-2 py-0.5 bg-success/15 text-success text-[10px] font-bold rounded">
                                 Available for Tomorrow Pickup
                             </span>
                         )}
@@ -75,7 +75,7 @@ export default function StockMatrixArtifact({ data }: { data: any }) {
 
                 <button
                     onClick={handleReserve}
-                    className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-all shadow-sm flex items-center justify-center gap-2"
+                    className="w-full py-2.5 bg-info hover:bg-info/90 text-white rounded-lg text-sm font-semibold transition-all shadow-sm flex items-center justify-center gap-2"
                 >
                     <ShoppingCartIcon className="w-4 h-4" />
                     Fast-Track Checkout

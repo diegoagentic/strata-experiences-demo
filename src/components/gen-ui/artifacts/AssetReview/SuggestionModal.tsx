@@ -16,7 +16,7 @@ export default function SuggestionModal({ isOpen, onClose, asset, onAccept, onRe
     const options = [
         {
             id: 'budget',
-            badge: { text: 'Cost Savings', color: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' },
+            badge: { text: 'Cost Savings', color: 'bg-success/15 text-success dark:bg-success/20 dark:text-success' },
             title: 'Budget-Friendly Height Adjustable Workstation',
             sku: 'DESK-ELECTRIC-7230-BUDGET',
             total: 95000,
@@ -32,7 +32,7 @@ export default function SuggestionModal({ isOpen, onClose, asset, onAccept, onRe
         },
         {
             id: 'express',
-            badge: { text: 'Fast Delivery', color: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' },
+            badge: { text: 'Fast Delivery', color: 'bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning' },
             title: 'Express Height Adjustable Workstation',
             sku: 'DESK-ELECTRIC-7230-EXPRESS',
             total: 130625,
@@ -40,7 +40,7 @@ export default function SuggestionModal({ isOpen, onClose, asset, onAccept, onRe
         },
         {
             id: 'eco',
-            badge: { text: 'Eco-Friendly', color: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' },
+            badge: { text: 'Eco-Friendly', color: 'bg-success/15 text-success dark:bg-success/20 dark:text-success' },
             title: 'Eco-Friendly Height Adjustable Workstation',
             sku: 'DESK-ELECTRIC-7230-ECO',
             total: 124687.5,
@@ -57,11 +57,11 @@ export default function SuggestionModal({ isOpen, onClose, asset, onAccept, onRe
                 <div className="flex justify-between items-start p-6 border-b border-zinc-100 dark:border-zinc-800 shrink-0">
                     <div>
                         <div className="flex items-center gap-2 mb-1">
-                            <SparklesIcon className="w-5 h-5 text-blue-600" />
+                            <SparklesIcon className="w-5 h-5 text-info" />
                             <h3 className="text-lg font-bold text-foreground">AI Suggestions</h3>
                             <span className="text-muted-foreground font-normal ml-2">{asset.description}</span>
                         </div>
-                        <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">
+                        <p className="text-sm text-info font-medium">
                             <span className="inline-block mr-2">💡</span>
                             Choose the best option for your needs
                         </p>
@@ -90,7 +90,7 @@ export default function SuggestionModal({ isOpen, onClose, asset, onAccept, onRe
                                             {opt.badge.text}
                                         </span>
                                         {opt.savings && (
-                                            <span className="text-green-600 font-bold text-sm">
+                                            <span className="text-success font-bold text-sm">
                                                 {formatCurrency(opt.savings)}
                                             </span>
                                         )}
@@ -117,7 +117,7 @@ export default function SuggestionModal({ isOpen, onClose, asset, onAccept, onRe
 
                                     <button
                                         onClick={onAccept}
-                                        className="w-full py-2 bg-card border border-border hover:border-blue-500 hover:text-blue-600 dark:hover:border-blue-500 dark:hover:text-blue-400 rounded-lg text-sm font-medium transition-all"
+                                        className="w-full py-2 bg-card border border-border hover:border-info hover:text-info dark:hover:border-info dark:hover:text-info rounded-lg text-sm font-medium transition-all"
                                     >
                                         Select
                                     </button>

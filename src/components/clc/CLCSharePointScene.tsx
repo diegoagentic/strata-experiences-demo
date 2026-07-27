@@ -31,11 +31,11 @@ const STATUS_LABEL: Record<SeedingStatus, string> = {
 }
 
 const STATUS_TONE: Record<SeedingStatus, string> = {
-    ready:      'bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300',
-    filtering:  'bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300',
-    reviewing:  'bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300',
+    ready:      'bg-info/10 text-info dark:bg-info/15 dark:text-info',
+    filtering:  'bg-info/10 text-info dark:bg-info/15 dark:text-info',
+    reviewing:  'bg-info/10 text-info dark:bg-info/15 dark:text-info',
     publishing: 'bg-yellow-50 text-yellow-700 dark:bg-yellow-500/15 dark:text-yellow-300',
-    live:       'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300',
+    live:       'bg-success/10 text-success dark:bg-success/15 dark:text-success',
     archived:   'bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300',
 }
 
@@ -531,13 +531,13 @@ function SharePointRow({ project, onOpen, inProgress = false, onOpenFolder }: { 
     const isPrior = project.status === 'archived'
     return (
         <div className={`grid grid-cols-[28px_1fr_180px_120px_120px] gap-2 px-3 py-3 items-center transition-colors ${isPrior ? 'opacity-75' : 'hover:bg-muted/30'}`}>
-            {isPrior ? <Folder className="h-4 w-4 text-muted-foreground" /> : <FolderOpen className="h-4 w-4 text-blue-600 dark:text-blue-400" />}
+            {isPrior ? <Folder className="h-4 w-4 text-muted-foreground" /> : <FolderOpen className="h-4 w-4 text-info" />}
             <div className="min-w-0">
                 <div className="text-sm font-semibold text-foreground truncate">{project.name}</div>
                 <div className="text-[11px] text-muted-foreground flex items-center gap-2">
                     {project.assetCount} files
                     {project.flaggedCount > 0 && (
-                        <span className="inline-flex items-center gap-0.5 text-amber-700 dark:text-amber-300">
+                        <span className="inline-flex items-center gap-0.5 text-warning dark:text-warning">
                             <AlertCircle className="h-3 w-3" />
                             {project.flaggedCount} flagged
                         </span>
@@ -557,7 +557,7 @@ function SharePointRow({ project, onOpen, inProgress = false, onOpenFolder }: { 
                 {project.url ? (
                     <button
                         onClick={onOpenFolder}
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-blue-700 dark:text-blue-300 hover:underline"
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-info dark:text-info hover:underline"
                         title="Open the SharePoint folder · simulated view"
                     >
                         Open folder <ExternalLink className="h-3 w-3" />
@@ -608,11 +608,11 @@ function FlaggedAssetsPanel() {
     return (
         <div className="p-3 space-y-2">
             <div className="flex items-center gap-2">
-                <AlertCircle className="h-4 w-4 text-amber-700 dark:text-amber-300" />
+                <AlertCircle className="h-4 w-4 text-warning dark:text-warning" />
                 <h3 className="text-sm font-bold text-foreground">Flagged assets</h3>
             </div>
             {FAIRPORT_VENDOR_JOBS.flatMap(v => v.assets.filter(a => a.aiFlagged).map(a => ({ vendor: v.vendor, asset: a }))).map(({ vendor, asset }) => (
-                <div key={asset.id} className="rounded-md border border-amber-200 bg-amber-50/40 dark:border-amber-500/30 dark:bg-amber-500/10 p-2.5">
+                <div key={asset.id} className="rounded-md border border-warning/30 bg-warning/10/40 dark:border-warning/30 dark:bg-warning/10 p-2.5">
                     <div className="text-[11px] font-bold text-foreground">{asset.name}</div>
                     <div className="text-[10px] text-muted-foreground mt-0.5">Vendor · {vendor}</div>
                     <p className="text-[11px] text-foreground mt-1 leading-snug">{asset.flagReason}</p>

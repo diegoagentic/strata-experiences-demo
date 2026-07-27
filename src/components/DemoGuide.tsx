@@ -23,8 +23,8 @@ export default function DemoGuide({ isOpen, onClose, onNavigate }: DemoGuideProp
             title: "Quote Generation Flow",
             description: "End-to-end quote creation with AI analysis, catalog configuration, and PDF generation.",
             icon: CalculatorIcon,
-            color: "text-blue-500",
-            bg: "bg-blue-50 dark:bg-blue-500/10",
+            color: "text-info",
+            bg: "bg-info/10 dark:bg-info/10",
             action: () => {
                 onNavigate('dashboard');
                 onClose();
@@ -35,8 +35,8 @@ export default function DemoGuide({ isOpen, onClose, onNavigate }: DemoGuideProp
             title: "PO vs Acknowledgement Discrepancy",
             description: "AI Assistant resolution flow for acknowledgement exceptions (ship date & finish substitution).",
             icon: DocumentCheckIcon,
-            color: "text-amber-500",
-            bg: "bg-amber-50 dark:bg-amber-500/10",
+            color: "text-warning",
+            bg: "bg-warning/10",
             action: () => {
                 onNavigate('dashboard');
                 onClose();
@@ -47,8 +47,8 @@ export default function DemoGuide({ isOpen, onClose, onNavigate }: DemoGuideProp
             title: "Service Center",
             description: "Moves, Adds, Changes, and warranty claim tracking with logistics assignment.",
             icon: WrenchScrewdriverIcon,
-            color: "text-green-500",
-            bg: "bg-green-50 dark:bg-green-500/10",
+            color: "text-success",
+            bg: "bg-success/10",
             action: () => {
                 onNavigate('mac');
                 onClose();
@@ -164,9 +164,9 @@ export default function DemoGuide({ isOpen, onClose, onNavigate }: DemoGuideProp
                                             </div>
 
                                             {/* Note */}
-                                            <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/10 rounded-xl border border-blue-100 dark:border-blue-800/30">
-                                                <h4 className="text-sm font-medium text-blue-800 dark:text-blue-300 mb-1">Presenter Tip</h4>
-                                                <p className="text-xs text-blue-600 dark:text-blue-400">
+                                            <div className="mt-8 p-4 bg-info/10 dark:bg-info/10 rounded-xl border border-info/20 dark:border-info/40/30">
+                                                <h4 className="text-sm font-medium text-info mb-1">Presenter Tip</h4>
+                                                <p className="text-xs text-info">
                                                     Use this guide during live demos to quickly jump between key features without manually navigating through the application.
                                                 </p>
                                             </div>

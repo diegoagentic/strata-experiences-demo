@@ -39,17 +39,17 @@ export default function ScopeBreachAlert({
 
     return (
         <div
-            className="rounded-2xl bg-amber-500/5 dark:bg-amber-500/10 border border-amber-500/30 animate-in fade-in slide-in-from-top-2 duration-300 overflow-hidden"
+            className="rounded-2xl bg-warning/10 dark:bg-warning/10 border border-warning/30 animate-in fade-in slide-in-from-top-2 duration-300 overflow-hidden"
             role="status"
             aria-live="polite"
         >
             {/* Scope breach row */}
             <div className="flex items-start gap-3 px-5 py-3">
                 <div className="shrink-0 mt-0.5">
-                    <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                    <AlertTriangle className="w-4 h-4 text-warning" />
                 </div>
                 <div className="flex-1 min-w-0">
-                    <p className="text-xs font-bold text-amber-700 dark:text-amber-300 uppercase tracking-wider">
+                    <p className="text-xs font-bold text-warning dark:text-warning uppercase tracking-wider">
                         Scope breach detected
                     </p>
                     <p className="text-xs text-foreground mt-0.5">
@@ -60,19 +60,19 @@ export default function ScopeBreachAlert({
                         <span>AI applied a documented override — overhead captured in the audit trail.</span>
                     </p>
                 </div>
-                <div className="shrink-0 flex items-center gap-1 text-[10px] font-bold text-green-600 dark:text-green-400 uppercase tracking-wider">
+                <div className="shrink-0 flex items-center gap-1 text-[10px] font-bold text-success uppercase tracking-wider">
                     <ShieldCheck className="w-3 h-3" />
                     Override logged
                 </div>
             </div>
 
             {/* v8 Paso E · Gap D · Mismatch detection row */}
-            <div className="flex items-start gap-3 px-5 py-3 border-t border-amber-500/20 bg-amber-500/5">
+            <div className="flex items-start gap-3 px-5 py-3 border-t border-warning/30 bg-warning/10">
                 <div className="shrink-0 mt-0.5">
-                    <FileWarning className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                    <FileWarning className="w-4 h-4 text-warning" />
                 </div>
                 <div className="flex-1 min-w-0">
-                    <p className="text-xs font-bold text-amber-700 dark:text-amber-300 uppercase tracking-wider">
+                    <p className="text-xs font-bold text-warning dark:text-warning uppercase tracking-wider">
                         Spec vs drawing mismatch
                     </p>
                     <p className="text-xs text-foreground mt-0.5">

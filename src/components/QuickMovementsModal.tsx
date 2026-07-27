@@ -597,14 +597,14 @@ export default function QuickMovementsModal({ isOpen, onClose }: QuickMovementsM
                                                                 className="p-1 hover:bg-accent rounded text-xs"
                                                                 title="Move to 3-214"
                                                             >
-                                                                <BuildingOfficeIcon className="w-4 h-4 text-blue-500" />
+                                                                <BuildingOfficeIcon className="w-4 h-4 text-info" />
                                                             </button>
                                                             <button
                                                                 onClick={() => stageMove(asset, 'zone-3-216', 'unassigned')}
                                                                 className="p-1 hover:bg-accent rounded text-xs"
                                                                 title="Move to 3-216"
                                                             >
-                                                                <HomeModernIcon className="w-4 h-4 text-green-500" />
+                                                                <HomeModernIcon className="w-4 h-4 text-success" />
                                                             </button>
                                                         </div>
                                                     </motion.div>
@@ -612,7 +612,7 @@ export default function QuickMovementsModal({ isOpen, onClose }: QuickMovementsM
                                             </AnimatePresence>
                                             {effectiveAssets.length === 0 && (
                                                 <div className="text-center py-10 text-muted-foreground border-2 border-dashed border-border rounded-xl">
-                                                    <CheckCircleIcon className="w-8 h-8 mx-auto mb-2 text-green-500" />
+                                                    <CheckCircleIcon className="w-8 h-8 mx-auto mb-2 text-success" />
                                                     <p className="text-sm">All assets assigned!</p>
                                                 </div>
                                             )}
@@ -650,8 +650,8 @@ export default function QuickMovementsModal({ isOpen, onClose }: QuickMovementsM
                                                         <div className="p-4 border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-30">
                                                             <div className="flex items-center gap-3">
                                                                 <div className={clsx("p-2 rounded-xl shadow-sm",
-                                                                    zone.type === 'office' ? "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400" :
-                                                                        zone.type === 'warehouse' ? "bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400" :
+                                                                    zone.type === 'office' ? "bg-info/15 text-info dark:bg-info/20 dark:text-info" :
+                                                                        zone.type === 'warehouse' ? "bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning" :
                                                                             "bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400"
                                                                 )}>
                                                                     <zone.icon className="w-5 h-5" />
@@ -665,8 +665,8 @@ export default function QuickMovementsModal({ isOpen, onClose }: QuickMovementsM
                                                                                 animate={{ width: `${Math.min((zone.items.length / zone.capacity) * 100, 100)}%` }}
                                                                                 className={clsx(
                                                                                     "h-full rounded-full transition-all duration-500",
-                                                                                    zone.items.length >= zone.capacity ? "bg-red-500" :
-                                                                                        zone.items.length > zone.capacity * 0.8 ? "bg-amber-500" : "bg-green-500"
+                                                                                    zone.items.length >= zone.capacity ? "bg-destructive" :
+                                                                                        zone.items.length > zone.capacity * 0.8 ? "bg-warning" : "bg-success/100"
                                                                                 )}
                                                                             />
                                                                         </div>
@@ -850,7 +850,7 @@ export default function QuickMovementsModal({ isOpen, onClose }: QuickMovementsM
                                                 className={clsx(
                                                     "px-5 py-2 text-white text-sm font-semibold rounded-lg shadow-lg active:scale-95 transition-all flex items-center gap-2",
                                                     highlightConfirm
-                                                        ? "bg-green-600 hover:bg-green-500 shadow-green-500/30 animate-pulse ring-2 ring-green-400 ring-offset-2 ring-offset-card"
+                                                        ? "bg-success hover:bg-success/100 shadow-green-500/30 animate-pulse ring-2 ring-green-400 ring-offset-2 ring-offset-card"
                                                         : "bg-indigo-600 hover:bg-indigo-500 shadow-indigo-500/20"
                                                 )}
                                             >
@@ -875,8 +875,8 @@ export default function QuickMovementsModal({ isOpen, onClose }: QuickMovementsM
                                                 transition={{ delay: 0.1, type: 'spring', damping: 20 }}
                                                 className="text-center max-w-md px-8"
                                             >
-                                                <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                                                    <CheckCircleIcon className="w-10 h-10 text-green-500" />
+                                                <div className="w-16 h-16 bg-success/15 rounded-full flex items-center justify-center mx-auto mb-4">
+                                                    <CheckCircleIcon className="w-10 h-10 text-success" />
                                                 </div>
                                                 <h3 className="text-xl font-bold text-foreground mb-2">Transfers Confirmed</h3>
                                                 <p className="text-sm text-muted-foreground mb-4">
@@ -888,11 +888,11 @@ export default function QuickMovementsModal({ isOpen, onClose }: QuickMovementsM
                                                         <span className="text-muted-foreground">Notification sent to <span className="font-semibold text-foreground">Expert Regional Sales Manager Reyes</span></span>
                                                     </div>
                                                     <div className="flex items-center gap-2 text-sm">
-                                                        <CheckCircleIcon className="w-4 h-4 text-green-500 shrink-0" />
+                                                        <CheckCircleIcon className="w-4 h-4 text-success shrink-0" />
                                                         <span className="text-muted-foreground"><span className="font-semibold text-foreground">Facilities Coord Cardo</span> notified of relocation</span>
                                                     </div>
                                                     <div className="flex items-center gap-2 text-sm">
-                                                        <ArrowPathIcon className="w-4 h-4 text-blue-500 shrink-0" />
+                                                        <ArrowPathIcon className="w-4 h-4 text-info shrink-0" />
                                                         <span className="text-muted-foreground">Service ticket <span className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">FM-2024-0892</span> updated</span>
                                                     </div>
                                                 </div>

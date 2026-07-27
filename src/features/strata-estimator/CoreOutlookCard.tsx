@@ -63,7 +63,7 @@ export default function CoreOutlookCard({
             role="status"
             aria-live="polite"
         >
-            <div className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm overflow-hidden">
+            <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
                 <div
                     className={clsx(
                         'p-5 border-l-4 ring-1 rounded-r-2xl',
@@ -174,7 +174,7 @@ export default function CoreOutlookCard({
                                             <Sparkles className="w-2.5 h-2.5" />
                                             Audit trail attached
                                         </span>
-                                        <span className="text-[9px] font-bold px-2 py-1 rounded-md bg-green-500/10 text-green-700 dark:text-green-400 border border-green-500/30 uppercase tracking-wider">
+                                        <span className="text-[9px] font-bold px-2 py-1 rounded-md bg-success/10 text-success border border-success/30 uppercase tracking-wider">
                                             Both engines merged
                                         </span>
                                     </div>

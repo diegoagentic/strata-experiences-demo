@@ -98,7 +98,7 @@ export default function SpecializedCatalog() {
                                 </div>
                                 <div className="absolute inset-0 bg-gradient-to-t from-muted/40 to-transparent" />
 
-                                <button className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center text-muted-foreground hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-opacity-transform">
+                                <button className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center text-muted-foreground hover:text-destructive transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-opacity-transform">
                                     <Heart size={20} />
                                 </button>
 
@@ -131,7 +131,7 @@ export default function SpecializedCatalog() {
                                         <Star size={14} className="text-yellow-500 fill-current" />
                                         <span className="text-xs font-bold">{product.rating}</span>
                                     </div>
-                                    <span className={`text-[10px] font-black uppercase tracking-tighter ${product.availability === 'In Stock' ? 'text-green-500' : 'text-orange-500'}`}>
+                                    <span className={`text-[10px] font-black uppercase tracking-tighter ${product.availability === 'In Stock' ? 'text-success' : 'text-orange-500'}`}>
                                         • {product.availability}
                                     </span>
                                 </div>

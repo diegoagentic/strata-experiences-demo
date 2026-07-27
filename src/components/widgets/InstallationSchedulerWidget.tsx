@@ -51,7 +51,7 @@ export default function InstallationSchedulerWidget() {
                     <div key={item.id} className="flex gap-4 p-3 rounded-xl border border-border bg-muted/20 hover:border-primary/30 transition-colors group">
                         {/* Date Box */}
                         <div className="flex flex-col items-center justify-center w-14 h-14 rounded-lg bg-card border border-border shadow-sm shrink-0">
-                            <span className="text-[10px] font-bold text-red-600 dark:text-red-400 uppercase">
+                            <span className="text-[10px] font-bold text-destructive uppercase">
                                 {new Date(item.date).toLocaleDateString('en-US', { month: 'short' })}
                             </span>
                             <span className="text-xl font-bold text-foreground">
@@ -66,8 +66,8 @@ export default function InstallationSchedulerWidget() {
                                     {item.client}
                                 </h4>
                                 <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${item.status === 'confirmed'
-                                    ? 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-800'
-                                    : 'bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800'
+                                    ? 'bg-success/15 text-success border-success/30 dark:bg-success/20 dark:text-success dark:border-success/40'
+                                    : 'bg-warning/15 text-warning border-warning/30 dark:bg-warning/20 dark:text-warning dark:border-warning/40'
                                     }`}>
                                     {item.status}
                                 </span>

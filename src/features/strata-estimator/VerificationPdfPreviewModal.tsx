@@ -75,7 +75,7 @@ export default function VerificationPdfPreviewModal({
             aria-labelledby="verification-pdf-title"
         >
             <div
-                className="w-full max-w-2xl max-h-[85vh] bg-card dark:bg-zinc-900 rounded-2xl shadow-2xl border border-border overflow-hidden animate-in zoom-in-95 duration-300 flex flex-col"
+                className="w-full max-w-2xl max-h-[85vh] bg-card rounded-2xl shadow-2xl border border-border overflow-hidden animate-in zoom-in-95 duration-300 flex flex-col"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Paper header */}
@@ -137,7 +137,7 @@ export default function VerificationPdfPreviewModal({
                                                 {mod.title}
                                             </p>
                                             {mod.required && (
-                                                <span className="shrink-0 text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/30">
+                                                <span className="shrink-0 text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-warning/10 text-warning border border-warning/30">
                                                     Required
                                                 </span>
                                             )}
@@ -146,8 +146,8 @@ export default function VerificationPdfPreviewModal({
                                             className={clsx(
                                                 'shrink-0 flex items-center gap-1 text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border',
                                                 ok
-                                                    ? 'bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/30'
-                                                    : 'bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/30'
+                                                    ? 'bg-success/10 text-success border-success/30'
+                                                    : 'bg-warning/10 text-warning border-warning/30'
                                             )}
                                         >
                                             {ok ? (

@@ -259,7 +259,7 @@ export default function AIProcessingModal({ open, onComplete }: AIProcessingModa
                 {/* External Source Connection */}
                 <div className="px-6 pb-3 flex flex-wrap items-center gap-2">
                     <span className="text-[9px] text-muted-foreground font-medium uppercase tracking-wider">Connected to:</span>
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/20 text-[11px] font-bold text-blue-500">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-info/10 border border-info/30 text-[11px] font-bold text-info">
                         <EnvelopeOpenIcon className="w-3.5 h-3.5" /> {isWRG ? 'JPS Health Network Email' : 'MillerKnoll Vendor Email'}
                     </span>
                     <ArrowRightIcon className="w-3 h-3 text-muted-foreground" />
@@ -302,7 +302,7 @@ export default function AIProcessingModal({ open, onComplete }: AIProcessingModa
                                         <div className="flex-1 min-w-0">
                                             <span className={`text-[10px] font-bold mr-1.5 ${
                                                 log.type === 'success' ? 'text-success' :
-                                                log.type === 'extract' ? 'text-amber-400' : 'text-indigo-400'
+                                                log.type === 'extract' ? 'text-warning' : 'text-indigo-400'
                                             }`}>
                                                 {log.agent}:
                                             </span>

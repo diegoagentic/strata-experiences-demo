@@ -23,10 +23,10 @@ const creationOptions = [
         icon: ArrowUpOnSquareIcon,
         actionLabel: 'Upload Files',
         estimatedTime: '3-5 minutes',
-        color: 'text-green-600',
-        bgColor: 'bg-green-100',
-        darkColor: 'dark:text-green-400',
-        darkBgColor: 'dark:bg-green-900/30'
+        color: 'text-success',
+        bgColor: 'bg-success/15',
+        darkColor: 'dark:text-success',
+        darkBgColor: 'dark:bg-success/20'
     },
     {
         id: 'quote',
@@ -35,10 +35,10 @@ const creationOptions = [
         icon: DocumentTextIcon,
         actionLabel: 'Select Quote',
         estimatedTime: '2-3 minutes',
-        color: 'text-blue-600',
-        bgColor: 'bg-blue-100',
-        darkColor: 'dark:text-blue-400',
-        darkBgColor: 'dark:bg-blue-900/30'
+        color: 'text-info',
+        bgColor: 'bg-info/15',
+        darkColor: 'dark:text-info',
+        darkBgColor: 'dark:bg-info/20'
     },
     {
         id: 'template',

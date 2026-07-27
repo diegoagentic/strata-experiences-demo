@@ -84,7 +84,7 @@ function InlineListbox({
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                 >
-                    <ListboxOptions className="absolute z-30 mt-1 max-h-60 w-max min-w-full overflow-auto rounded-xl bg-card dark:bg-zinc-800 border border-border shadow-xl py-1 text-xs focus:outline-none">
+                    <ListboxOptions className="absolute z-30 mt-1 max-h-60 w-max min-w-full overflow-auto rounded-xl bg-card border border-border shadow-xl py-1 text-xs focus:outline-none">
                         {options.map((option) => (
                             <ListboxOption
                                 key={option.id}
@@ -169,7 +169,7 @@ export default function BillOfMaterialsTable({
     const categories = Object.values(config.categories)
 
     return (
-        <div className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm overflow-hidden">
+        <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
 
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-border">
@@ -183,7 +183,7 @@ export default function BillOfMaterialsTable({
                     </span>
                     {scopeBreachBadge && (
                         <span
-                            className="ml-2 flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider whitespace-nowrap"
+                            className="ml-2 flex items-center gap-1 px-2 py-0.5 rounded-full bg-warning/10 border border-warning/30 text-[10px] font-bold text-warning uppercase tracking-wider whitespace-nowrap"
                             title={`Scope breach · ${scopeBreachBadge.count} ${scopeBreachBadge.category} exceeds the ${scopeBreachBadge.limit}-unit Delivery Pricer limit (override logged)`}
                         >
                             <AlertTriangle className="w-3 h-3 shrink-0" />
@@ -232,7 +232,7 @@ export default function BillOfMaterialsTable({
             {/* Table · constrained height with internal scroll, sticky header */}
             <div className="max-h-[420px] overflow-y-auto overflow-x-auto scrollbar-minimal">
                 <table className="w-full">
-                    <thead className="sticky top-0 z-10 bg-card dark:bg-zinc-800 shadow-[0_1px_0_0] shadow-border">
+                    <thead className="sticky top-0 z-10 bg-card shadow-[0_1px_0_0] shadow-border">
                         <tr className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider bg-muted/40">
                             <th className="text-left px-6 py-3 w-[18%]">Group</th>
                             <th className="text-left px-4 py-3 w-[22%]">Product Line</th>
@@ -274,7 +274,7 @@ export default function BillOfMaterialsTable({
                                     className={clsx(
                                         'transition-all duration-500',
                                         !isFlagged && !isDimmed && 'hover:bg-muted/30',
-                                        isFlagged && 'bg-amber-500/5 dark:bg-amber-500/10 ring-1 ring-inset ring-amber-500/40',
+                                        isFlagged && 'bg-warning/10 dark:bg-warning/10 ring-1 ring-inset ring-amber-500/40',
                                         isDimmed && 'opacity-30',
                                         isFocused && !isFlagged && 'bg-primary/5 ring-1 ring-inset ring-primary/40',
                                         staggerImport && 'animate-in fade-in slide-in-from-left-1 duration-300'
@@ -288,7 +288,7 @@ export default function BillOfMaterialsTable({
                                                 className={clsx(
                                                     'inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider animate-pulse',
                                                     chipIsFallback
-                                                        ? 'bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/30'
+                                                        ? 'bg-warning/10 text-warning border border-warning/30'
                                                         : 'bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/30'
                                                 )}
                                                 title={
@@ -351,13 +351,13 @@ export default function BillOfMaterialsTable({
                                                         className={clsx(
                                                             'block w-1.5 h-1.5 rounded-full',
                                                             confidenceMap[item.id] === 'HIGH'
-                                                                ? 'bg-green-500'
-                                                                : 'bg-amber-500'
+                                                                ? 'bg-success/100'
+                                                                : 'bg-warning'
                                                         )}
                                                         aria-hidden
                                                     />
                                                     {confidenceMap[item.id] === 'LOW' && (
-                                                        <span className="text-[9px] font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">
+                                                        <span className="text-[9px] font-bold text-warning uppercase tracking-wider">
                                                             Low
                                                         </span>
                                                     )}

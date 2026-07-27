@@ -5,7 +5,7 @@
  *          DOH-0671 at 100% has the active "Despachar work order" button.
  *          Clicking it IS the transition to Scene 2 — no separate Next button.
  *
- * DS TOKENS: bg-card · bg-success/5 · bg-amber-50 · border-border
+ * DS TOKENS: bg-card · bg-success/5 · bg-warning/10 · border-border
  */
 
 import { useState, useRef, useCallback, useEffect } from 'react'
@@ -127,7 +127,7 @@ function OrderMonitorCard({ order, fedexExpanded, onToggleFedex, onDispatch, dis
             isReady
                 ? 'border-success/40 bg-success/5'
                 : isWarning && order.fedexGap
-                ? 'border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/5'
+                ? 'border-warning/30 bg-warning/10'
                 : 'border-border bg-card'
         }`}>
             <div className="p-3.5">
@@ -137,7 +137,7 @@ function OrderMonitorCard({ order, fedexExpanded, onToggleFedex, onDispatch, dis
                         {isReady
                             ? <CheckCircle2 className="h-4 w-4 text-success" />
                             : order.fedexGap
-                            ? <AlertTriangle className="h-4 w-4 text-amber-500" />
+                            ? <AlertTriangle className="h-4 w-4 text-warning" />
                             : <Package className="h-4 w-4 text-muted-foreground" />
                         }
                     </div>
@@ -150,7 +150,7 @@ function OrderMonitorCard({ order, fedexExpanded, onToggleFedex, onDispatch, dis
                                 {/* Carrier badge */}
                                 <span className={`inline-flex items-center gap-1 text-[10px] font-medium px-1.5 py-0.5 rounded-full border ${
                                     order.carrier === 'Freight + FedEx'
-                                        ? 'text-amber-600 dark:text-amber-400 bg-amber-500/10 border-amber-500/20'
+                                        ? 'text-warning bg-warning/10 border-warning/30'
                                         : 'text-muted-foreground bg-muted border-border'
                                 }`}>
                                     <Truck className="h-2.5 w-2.5" />
@@ -176,7 +176,7 @@ function OrderMonitorCard({ order, fedexExpanded, onToggleFedex, onDispatch, dis
 
                         <div className="mt-1.5 flex items-center gap-3 text-[11px] text-muted-foreground">
                             <span>{order.daysInWig} days in WIG</span>
-                            <span className={`font-medium ${order.daysRemaining <= 10 ? 'text-amber-600 dark:text-amber-400' : ''}`}>
+                            <span className={`font-medium ${order.daysRemaining <= 10 ? 'text-warning' : ''}`}>
                                 {order.daysRemaining} days remaining
                             </span>
                         </div>
@@ -186,7 +186,7 @@ function OrderMonitorCard({ order, fedexExpanded, onToggleFedex, onDispatch, dis
                             <div className="mt-1.5 flex items-center gap-1.5 text-[10px] text-muted-foreground">
                                 <span className="text-success font-medium">35/36 Bingo #s confirmed</span>
                                 <span>·</span>
-                                <span className="text-amber-600 dark:text-amber-400 font-medium">1 FedEx subpath</span>
+                                <span className="text-warning font-medium">1 FedEx subpath</span>
                             </div>
                         )}
 
@@ -194,7 +194,7 @@ function OrderMonitorCard({ order, fedexExpanded, onToggleFedex, onDispatch, dis
                         {order.fedexGap && (
                             <button
                                 onClick={onToggleFedex}
-                                className="mt-2 flex items-center gap-1.5 text-[11px] font-bold text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition-colors"
+                                className="mt-2 flex items-center gap-1.5 text-[11px] font-bold text-warning hover:text-warning dark:hover:text-warning transition-colors"
                             >
                                 <AlertTriangle className="h-3 w-3 shrink-0" />
                                 FedEx gap detected · 3 items unconfirmed
@@ -203,7 +203,7 @@ function OrderMonitorCard({ order, fedexExpanded, onToggleFedex, onDispatch, dis
                         )}
 
                         {fedexExpanded && order.fedexGap && (
-                            <div className="mt-2 text-[11px] text-foreground bg-amber-100 dark:bg-amber-500/10 rounded-lg px-2.5 py-2 border border-amber-200 dark:border-amber-500/20 animate-in fade-in slide-in-from-top-1 duration-200 space-y-1">
+                            <div className="mt-2 text-[11px] text-foreground bg-warning/15 dark:bg-warning/10 rounded-lg px-2.5 py-2 border border-warning/20 animate-in fade-in slide-in-from-top-1 duration-200 space-y-1">
                                 <p className="text-muted-foreground">{order.fedexGap.detail}</p>
                                 <p className="font-medium">Tracking: {order.fedexGap.trackingNums.join(' · ')}</p>
                                 <p className="text-muted-foreground">Status: tracking — response pending</p>

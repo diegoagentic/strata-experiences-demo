@@ -55,7 +55,7 @@ export default function EstimatorAdminView({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
                 {/* Margin slider */}
-                <div className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm p-6">
+                <div className="bg-card rounded-2xl border border-border shadow-sm p-6">
                     <div className="flex items-center justify-between mb-4">
                         <div>
                             <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
@@ -86,7 +86,7 @@ export default function EstimatorAdminView({
                 </div>
 
                 {/* Hourly costs */}
-                <div className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm p-6">
+                <div className="bg-card rounded-2xl border border-border shadow-sm p-6">
                     <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-4">
                         Base Labor Hourly Costs
                     </p>
@@ -205,7 +205,7 @@ function CategoryConfigCard({ category, onChange }: CategoryConfigCardProps) {
     }
 
     return (
-        <div className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm p-5">
+        <div className="bg-card rounded-2xl border border-border shadow-sm p-5">
             <div className="flex items-start justify-between gap-3 mb-4">
                 <div className="min-w-0 flex-1">
                     <h3 className="text-sm font-bold text-foreground truncate">

@@ -122,34 +122,34 @@ const COMPARISON_MAP: Record<string, ComparisonField[]> = {
 // ── Status helpers ─────────────────────────────────────────────
 
 const statusIcon = (s: 'match' | 'mismatch' | 'partial') => {
-    if (s === 'match') return <CheckCircleIcon className="w-5 h-5 text-green-500 dark:text-green-400" />;
-    if (s === 'mismatch') return <XCircleIcon className="w-5 h-5 text-red-500 dark:text-red-400" />;
-    return <ExclamationTriangleIcon className="w-5 h-5 text-amber-500 dark:text-amber-400" />;
+    if (s === 'match') return <CheckCircleIcon className="w-5 h-5 text-success dark:text-success" />;
+    if (s === 'mismatch') return <XCircleIcon className="w-5 h-5 text-destructive dark:text-destructive" />;
+    return <ExclamationTriangleIcon className="w-5 h-5 text-warning" />;
 };
 
 const statusRowBg = (s: 'match' | 'mismatch' | 'partial') => {
     if (s === 'match') return '';
-    if (s === 'mismatch') return 'bg-red-50/40 dark:bg-red-500/5';
-    return 'bg-amber-50/40 dark:bg-amber-500/5';
+    if (s === 'mismatch') return 'bg-destructive/10';
+    return 'bg-warning/10';
 };
 
 const severityColor = (sev?: 'low' | 'medium' | 'high') => {
-    if (sev === 'high') return 'border-red-200 dark:border-red-800 bg-red-50/50 dark:bg-red-500/5';
-    if (sev === 'medium') return 'border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-500/5';
-    return 'border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-500/5';
+    if (sev === 'high') return 'border-destructive/30 dark:border-destructive/40 bg-destructive/10';
+    if (sev === 'medium') return 'border-warning/30 dark:border-warning/40 bg-warning/10';
+    return 'border-info/30 dark:border-info/40 bg-info/10';
 };
 
 const severityBadge = (sev?: 'low' | 'medium' | 'high') => {
-    if (sev === 'high') return <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-400">High</span>;
-    if (sev === 'medium') return <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400">Medium</span>;
-    return <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400">Low</span>;
+    if (sev === 'high') return <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-destructive/15 text-destructive">High</span>;
+    if (sev === 'medium') return <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-warning/15 text-warning">Medium</span>;
+    return <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-info/15 text-info">Low</span>;
 };
 
 const pairStatusBadge = (status: AckPair['status']) => {
     const styles: Record<AckPair['status'], string> = {
-        'Pending Review': 'bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400',
-        'Matched': 'bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-400',
-        'In Production': 'bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400',
+        'Pending Review': 'bg-warning/15 text-warning',
+        'Matched': 'bg-success/15 text-success',
+        'In Production': 'bg-info/15 text-info',
         'Partial Ship': 'bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-400',
         'Completed': 'bg-zinc-100 dark:bg-zinc-700/40 text-muted-foreground',
     };
@@ -326,7 +326,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                         <div className="flex justify-between items-start mb-4">
                                             <div>
                                                 <Dialog.Title as="h3" className="text-xl font-brand font-bold text-foreground mb-1 flex items-center gap-2.5">
-                                                    <ExclamationTriangleIcon className="w-6 h-6 text-amber-500" />
+                                                    <ExclamationTriangleIcon className="w-6 h-6 text-warning" />
                                                     All Inconsistencies
                                                 </Dialog.Title>
                                                 <p className="text-sm text-muted-foreground">
@@ -385,7 +385,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                                 <div>
                                                                     <div className="flex items-center gap-2">
                                                                         <span className="text-sm font-bold text-foreground">{group.vendor}</span>
-                                                                        <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-400">
+                                                                        <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-destructive/15 text-destructive">
                                                                             {group.items.length} discrepanc{group.items.length === 1 ? 'y' : 'ies'}
                                                                         </span>
                                                                     </div>
@@ -408,7 +408,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                             {group.items.map(d => {
                                                                 const fix = allFixes[d.globalIdx];
                                                                 return (
-                                                                    <div key={d.globalIdx} className={`transition-all ${fix ? 'bg-green-50/30 dark:bg-green-500/5' : ''}`}>
+                                                                    <div key={d.globalIdx} className={`transition-all ${fix ? 'bg-success/10/30 dark:bg-success/100/5' : ''}`}>
                                                                         <div className="px-4 py-3 flex items-center justify-between gap-3">
                                                                             <div className="flex items-center gap-3 min-w-0 flex-1">
                                                                                 {statusIcon(d.field.status)}
@@ -433,7 +433,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                                             </div>
                                                                             <div className="bg-muted/40 rounded-lg px-3 py-2">
                                                                                 <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider mb-0.5">ACK Value</div>
-                                                                                <div className={`text-sm font-medium ${d.field.status === 'mismatch' ? 'text-red-600 dark:text-red-400' : 'text-amber-600 dark:text-amber-400'}`}>{d.field.ackValue}</div>
+                                                                                <div className={`text-sm font-medium ${d.field.status === 'mismatch' ? 'text-destructive' : 'text-warning'}`}>{d.field.ackValue}</div>
                                                                             </div>
                                                                         </div>
 
@@ -448,7 +448,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                                                     <div className="flex gap-2 mt-2">
                                                                                         <button
                                                                                             onClick={() => setAllFixes(prev => ({ ...prev, [d.globalIdx]: 'accept' }))}
-                                                                                            className="flex items-center gap-1 px-3 py-1.5 text-xs font-semibold bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors"
+                                                                                            className="flex items-center gap-1 px-3 py-1.5 text-xs font-semibold bg-success/100 hover:bg-success text-white rounded-lg transition-colors"
                                                                                         >
                                                                                             <CheckCircleIcon className="w-3.5 h-3.5" /> Accept ACK
                                                                                         </button>
@@ -461,7 +461,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                                                     </div>
                                                                                 )}
                                                                                 {fix && (
-                                                                                    <div className="mt-2 text-xs font-semibold text-green-600 dark:text-green-400 flex items-center gap-1">
+                                                                                    <div className="mt-2 text-xs font-semibold text-success flex items-center gap-1">
                                                                                         <CheckCircleIcon className="w-4 h-4" />
                                                                                         {fix === 'accept' ? 'ACK value accepted' : 'PO value kept'}
                                                                                     </div>
@@ -554,7 +554,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                                     <span className="text-muted-foreground/50">|</span>
                                                                     <span className="font-medium text-foreground">PO: {pair.poAmount}</span>
                                                                     <span className="text-muted-foreground/50">→</span>
-                                                                    <span className={`font-semibold ${pair.poAmount !== pair.ackAmount ? 'text-amber-600 dark:text-amber-400' : 'text-green-600 dark:text-green-400'}`}>
+                                                                    <span className={`font-semibold ${pair.poAmount !== pair.ackAmount ? 'text-warning' : 'text-success'}`}>
                                                                         ACK: {pair.ackAmount}
                                                                     </span>
                                                                     <span className="text-muted-foreground/50">|</span>
@@ -644,13 +644,13 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                             <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
                                                 {/* Summary badges */}
                                                 <div className="flex items-center gap-3 mb-4">
-                                                    <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-400">
+                                                    <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-success/15 text-success">
                                                         {matchedCount} Matched
                                                     </span>
-                                                    <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-400">
+                                                    <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-destructive/15 text-destructive">
                                                         {inconsistencies.filter(d => d.status === 'mismatch').length} Mismatch
                                                     </span>
-                                                    <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400">
+                                                    <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-warning/15 text-warning">
                                                         {inconsistencies.filter(d => d.status === 'partial').length} Partial
                                                     </span>
                                                 </div>
@@ -672,7 +672,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                                     <td className={`px-4 py-2.5 text-[12px] ${row.status === 'mismatch' ? 'text-foreground font-medium' : 'text-foreground'}`}>
                                                                         {row.poValue}
                                                                     </td>
-                                                                    <td className={`px-4 py-2.5 text-[12px] ${row.status === 'mismatch' ? 'text-red-600 dark:text-red-400 font-semibold' : row.status === 'partial' ? 'text-amber-600 dark:text-amber-400' : 'text-foreground'}`}>
+                                                                    <td className={`px-4 py-2.5 text-[12px] ${row.status === 'mismatch' ? 'text-destructive font-semibold' : row.status === 'partial' ? 'text-warning' : 'text-foreground'}`}>
                                                                         {row.ackValue}
                                                                     </td>
                                                                     <td className="px-4 py-2.5 text-center">{statusIcon(row.status)}</td>
@@ -714,23 +714,23 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
 
                                         {/* KPI Strip */}
                                         <div className="grid grid-cols-4 gap-3 mb-5">
-                                            <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-800 text-center">
-                                                <span className="text-lg font-bold text-green-700 dark:text-green-400">{matchedCount}</span>
-                                                <span className="text-[10px] text-green-600 dark:text-green-300 block font-medium">Matched</span>
+                                            <div className="p-3 rounded-xl bg-success/10 border border-success/30 dark:border-success/40 text-center">
+                                                <span className="text-lg font-bold text-success">{matchedCount}</span>
+                                                <span className="text-[10px] text-success dark:text-success block font-medium">Matched</span>
                                             </div>
-                                            <div className="p-3 rounded-xl bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-800 text-center">
-                                                <span className="text-lg font-bold text-red-700 dark:text-red-400">{inconsistencies.length}</span>
-                                                <span className="text-[10px] text-red-600 dark:text-red-300 block font-medium">Inconsistencies</span>
+                                            <div className="p-3 rounded-xl bg-destructive/10 border border-destructive/30 dark:border-destructive/40 text-center">
+                                                <span className="text-lg font-bold text-destructive">{inconsistencies.length}</span>
+                                                <span className="text-[10px] text-destructive dark:text-destructive block font-medium">Inconsistencies</span>
                                             </div>
                                             <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-800 text-center">
                                                 <span className="text-lg font-bold text-indigo-700 dark:text-indigo-400">{acceptedCount}</span>
                                                 <span className="text-[10px] text-indigo-600 dark:text-indigo-300 block font-medium">Accepted</span>
                                             </div>
-                                            <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-800 text-center">
-                                                <span className="text-lg font-bold text-blue-700 dark:text-blue-400">
+                                            <div className="p-3 rounded-xl bg-info/10 dark:bg-info/10 border border-info/30 dark:border-info/40 text-center">
+                                                <span className="text-lg font-bold text-info">
                                                     {inconsistencies.length > 0 ? Math.round(inconsistencies.reduce((sum, d) => sum + (d.confidence || 90), 0) / inconsistencies.length) : 0}%
                                                 </span>
-                                                <span className="text-[10px] text-blue-600 dark:text-blue-300 block font-medium">Avg Confidence</span>
+                                                <span className="text-[10px] text-info dark:text-info block font-medium">Avg Confidence</span>
                                             </div>
                                         </div>
 
@@ -743,7 +743,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                         key={i}
                                                         className={`p-4 rounded-xl border-2 transition-all ${
                                                             fixed === 'accept'
-                                                                ? 'border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-500/5'
+                                                                ? 'border-success/30 dark:border-success/40 bg-success/10 dark:bg-success/100/5'
                                                                 : fixed === 'reject'
                                                                     ? 'border-border bg-muted/30'
                                                                     : severityColor(disc.severity)
@@ -752,7 +752,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                         <div className="flex items-start justify-between mb-3">
                                                             <div className="flex items-center gap-2">
                                                                 {fixed === 'accept'
-                                                                    ? <CheckCircleIcon className="w-5 h-5 text-green-500 dark:text-green-400" />
+                                                                    ? <CheckCircleIcon className="w-5 h-5 text-success dark:text-success" />
                                                                     : fixed === 'reject'
                                                                         ? <XCircleIcon className="w-5 h-5 text-muted-foreground" />
                                                                         : statusIcon(disc.status)
@@ -779,7 +779,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                             </div>
                                                             <div className="p-2.5 rounded-lg bg-card border border-border">
                                                                 <span className="text-[9px] font-semibold text-muted-foreground uppercase block mb-1">ACK Value</span>
-                                                                <span className={`text-sm font-medium ${fixed === 'accept' ? 'text-green-600 dark:text-green-400 font-bold' : disc.status === 'mismatch' ? 'text-red-600 dark:text-red-400' : 'text-amber-600 dark:text-amber-400'}`}>
+                                                                <span className={`text-sm font-medium ${fixed === 'accept' ? 'text-success font-bold' : disc.status === 'mismatch' ? 'text-destructive' : 'text-warning'}`}>
                                                                     {disc.ackValue}
                                                                 </span>
                                                             </div>
@@ -798,7 +798,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                             <div className="flex items-center gap-2">
                                                                 <button
                                                                     onClick={() => setInconsistencyFixes(prev => ({ ...prev, [i]: 'accept' }))}
-                                                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-semibold bg-green-600 hover:bg-green-700 text-white transition-colors"
+                                                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-semibold bg-success hover:bg-success/90 text-white transition-colors"
                                                                 >
                                                                     <CheckCircleIcon className="w-3.5 h-3.5" />
                                                                     Accept ACK
@@ -813,7 +813,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                         )}
                                                         {fixed !== undefined && (
                                                             <div className="flex items-center gap-2">
-                                                                <span className={`text-[11px] font-semibold ${fixed === 'accept' ? 'text-green-600 dark:text-green-400' : 'text-muted-foreground'}`}>
+                                                                <span className={`text-[11px] font-semibold ${fixed === 'accept' ? 'text-success' : 'text-muted-foreground'}`}>
                                                                     {fixed === 'accept' ? 'ACK value accepted' : 'PO spec kept'}
                                                                 </span>
                                                                 <button
@@ -865,8 +865,8 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                         </button>
 
                                         {/* Success icon */}
-                                        <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-500/20 flex items-center justify-center mx-auto mb-4">
-                                            <CheckCircleIcon className="w-10 h-10 text-green-600 dark:text-green-400" />
+                                        <div className="w-16 h-16 rounded-full bg-success/15 flex items-center justify-center mx-auto mb-4">
+                                            <CheckCircleIcon className="w-10 h-10 text-success" />
                                         </div>
 
                                         <h3 className="text-xl font-brand font-bold text-foreground mb-1">Comparison Complete</h3>
@@ -881,8 +881,8 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                     <DocumentTextIcon className="w-4 h-4 text-muted-foreground" />
                                                     <span className="text-sm font-bold text-foreground">{selectedPair?.poId}</span>
                                                     <span className="text-muted-foreground">↔</span>
-                                                    <ClipboardDocumentCheckIcon className="w-4 h-4 text-green-500" />
-                                                    <span className="text-sm font-bold text-green-600 dark:text-green-400">{selectedPair?.id}</span>
+                                                    <ClipboardDocumentCheckIcon className="w-4 h-4 text-success" />
+                                                    <span className="text-sm font-bold text-success">{selectedPair?.id}</span>
                                                 </div>
                                             </div>
                                             <div className="space-y-2 text-[12px]">
@@ -908,7 +908,7 @@ export default function AckReconciliationModal({ isOpen, onClose, triggerToast }
                                                 </div>
                                                 <div className="flex justify-between">
                                                     <span className="text-muted-foreground">Status</span>
-                                                    <span className="font-semibold text-green-600 dark:text-green-400">Reconciled</span>
+                                                    <span className="font-semibold text-success">Reconciled</span>
                                                 </div>
                                                 <div className="flex justify-between">
                                                     <span className="text-muted-foreground">Reconciled On</span>

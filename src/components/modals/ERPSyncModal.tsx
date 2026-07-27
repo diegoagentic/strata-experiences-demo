@@ -20,24 +20,24 @@ const SYSTEMS = [
         name: 'NetSuite',
         status: 'Connected',
         icon: CubeIcon,
-        color: 'text-blue-600 bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400',
-        borderColor: 'hover:border-blue-400'
+        color: 'text-info bg-info/15 dark:text-info',
+        borderColor: 'hover:border-info'
     },
     {
         id: 'rcp',
         name: 'RCP Core',
         status: 'Available',
         icon: BoltIcon,
-        color: 'text-amber-600 bg-amber-100 dark:bg-amber-900/30 dark:text-amber-400',
-        borderColor: 'hover:border-amber-400'
+        color: 'text-warning bg-warning/15 dark:text-warning',
+        borderColor: 'hover:border-warning'
     },
     {
         id: 'emanage',
         name: 'EManage One',
         status: 'Available',
         icon: BuildingOffice2Icon,
-        color: 'text-green-600 bg-green-100 dark:bg-green-900/30 dark:text-green-400',
-        borderColor: 'hover:border-green-400'
+        color: 'text-success bg-success/15 dark:text-success',
+        borderColor: 'hover:border-success'
     }
 ];
 
@@ -143,7 +143,7 @@ export default function ERPSyncModal({ isOpen, onClose }: { isOpen: boolean; onC
                                                 key={system.id}
                                                 onClick={() => handleConnect(system)}
                                                 className={`w-full flex items-center gap-4 p-4 rounded-2xl border bg-card shadow-sm transition-all group text-left ${system.status === 'Connected'
-                                                    ? 'border-green-200 dark:border-green-900/30 ring-1 ring-green-500/20'
+                                                    ? 'border-success/30 dark:border-success/40 ring-1 ring-green-500/20'
                                                     : 'border-border hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md'
                                                     }`}
                                             >
@@ -157,7 +157,7 @@ export default function ERPSyncModal({ isOpen, onClose }: { isOpen: boolean; onC
                                                     <div className="flex items-center gap-2">
                                                         <h3 className="font-bold text-foreground truncate">{system.name}</h3>
                                                         {system.status === 'Connected' && (
-                                                            <span className="px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+                                                            <span className="px-2 py-0.5 rounded-full bg-success/15 text-success text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
                                                                 <CheckIcon className="w-3 h-3" /> Connected
                                                             </span>
                                                         )}
@@ -285,7 +285,7 @@ export default function ERPSyncModal({ isOpen, onClose }: { isOpen: boolean; onC
 
                                 {step === 'success' && selectedSystem && (
                                     <div className="flex flex-col items-center justify-center py-6 animate-in fade-in zoom-in-95 duration-500">
-                                        <div className="w-20 h-20 bg-green-100 dark:bg-green-500/20 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-green-500/20">
+                                        <div className="w-20 h-20 bg-success/15 text-success rounded-full flex items-center justify-center mb-6 shadow-lg shadow-green-500/20">
                                             <ShieldCheckIcon className="w-10 h-10" />
                                         </div>
                                         <h3 className="text-2xl font-bold text-foreground">Sync Complete!</h3>

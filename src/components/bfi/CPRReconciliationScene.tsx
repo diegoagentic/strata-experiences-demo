@@ -11,7 +11,7 @@
  * Real process: Lauren goes line by line manually (~45–60 min).
  *   75% of orders have at least one discrepancy. Payment-critical.
  *
- * DS TOKENS: bg-card · bg-amber-50 · bg-success/5 · border-border
+ * DS TOKENS: bg-card · bg-warning/10 · bg-success/5 · border-border
  */
 
 import { useState, useRef, useEffect, useCallback } from 'react'
@@ -128,7 +128,7 @@ export default function CPRReconciliationScene() {
                         <div key={line.id} className="border-t border-border">
                             <div className={`grid grid-cols-5 gap-0 px-3.5 py-2.5 text-xs transition-colors duration-300 ${
                                 state === 'pending' && !line.ok
-                                    ? 'bg-amber-50 dark:bg-amber-500/5'
+                                    ? 'bg-warning/10'
                                     : isResolved
                                     ? allApproved ? 'bg-success/5' : ''
                                     : ''
@@ -137,12 +137,12 @@ export default function CPRReconciliationScene() {
                                 <span className="text-muted-foreground tabular-nums">{line.quoted}</span>
                                 <span className={`tabular-nums font-medium ${
                                     !line.ok && state === 'pending'
-                                        ? 'text-amber-600 dark:text-amber-400'
+                                        ? 'text-warning'
                                         : 'text-foreground'
                                 }`}>
                                     {line.cpr}
                                     {line.diff && state === 'pending' && (
-                                        <span className="ml-1 text-[10px] text-amber-500">{line.diff}</span>
+                                        <span className="ml-1 text-[10px] text-warning">{line.diff}</span>
                                     )}
                                 </span>
                                 <span className="text-right flex items-center justify-end gap-1">
@@ -150,7 +150,7 @@ export default function CPRReconciliationScene() {
                                         <CheckCircle2 className="h-3.5 w-3.5 text-success" />
                                     )}
                                     {!line.ok && state === 'pending' && (
-                                        <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 font-bold tabular-nums">
+                                        <span className="inline-flex items-center gap-1 text-warning font-bold tabular-nums">
                                             <AlertTriangle className="h-3 w-3 shrink-0" />
                                             {line.impact}
                                         </span>
@@ -168,7 +168,7 @@ export default function CPRReconciliationScene() {
 
                             {/* Per-line actions — only for discrepancy lines in pending state */}
                             {!line.ok && state === 'pending' && !allApproved && (
-                                <div className="flex items-center gap-2 px-3.5 pb-2.5 bg-amber-50 dark:bg-amber-500/5">
+                                <div className="flex items-center gap-2 px-3.5 pb-2.5 bg-warning/10">
                                     <span className="text-[10px] text-muted-foreground flex-1">
                                         {line.category}: {line.quoted} quoted → {line.cpr} actual ({line.diff})
                                     </span>
@@ -196,7 +196,7 @@ export default function CPRReconciliationScene() {
                 <div className="px-3.5 py-2.5 border-t border-border bg-muted/20 flex items-center justify-between text-xs">
                     <span className="text-muted-foreground font-medium">Total adjustment</span>
                     <span className={`font-bold tabular-nums ${
-                        allApproved ? 'text-success' : 'text-amber-600 dark:text-amber-400'
+                        allApproved ? 'text-success' : 'text-warning'
                     }`}>
                         {allApproved ? '✓ Applied in CORE' : `${totalImpact < 0 ? '-' : ''}$${Math.abs(totalImpact).toLocaleString()}`}
                     </span>

@@ -132,7 +132,7 @@ export default function OrderAdaptationArtifact({ initialData, onConfirm, onCanc
                     <div>
                         <div className="flex items-center gap-3 mb-1">
                             <h2 className="text-xl font-bold font-brand text-foreground tracking-tight">Order Adaptation</h2>
-                            <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800 rounded-full text-[10px] font-semibold uppercase tracking-widest">Editing</span>
+                            <span className="px-2 py-0.5 bg-info/15 dark:bg-info/15 text-info border border-info/30 dark:border-info/40 rounded-full text-[10px] font-semibold uppercase tracking-widest">Editing</span>
                         </div>
                         <p className="text-muted-foreground text-xs">Reviewing {stats.total} items from Quote {initialData.poNumber}</p>
                     </div>
@@ -187,7 +187,7 @@ export default function OrderAdaptationArtifact({ initialData, onConfirm, onCanc
                                         </button>
                                         <button
                                             onClick={() => setFilter('attention')}
-                                            className={`px-3 py-1 rounded-md text-xs font-medium transition-all flex items-center gap-1.5 ${filter === 'attention' ? 'bg-white dark:bg-zinc-700 shadow-sm text-amber-600 dark:text-amber-500' : 'text-muted-foreground hover:text-foreground'}`}
+                                            className={`px-3 py-1 rounded-md text-xs font-medium transition-all flex items-center gap-1.5 ${filter === 'attention' ? 'bg-white dark:bg-zinc-700 shadow-sm text-warning dark:text-warning' : 'text-muted-foreground hover:text-foreground'}`}
                                         >
                                             <ExclamationTriangleIcon className="w-3.5 h-3.5" />
                                             Alerts ({stats.attention})
@@ -202,7 +202,7 @@ export default function OrderAdaptationArtifact({ initialData, onConfirm, onCanc
                                 {filteredAssets.map(asset => (
                                     <div key={asset.id} className="bg-card rounded-xl border border-border p-4 shadow-sm hover:shadow-md transition-shadow group">
                                         <div className="flex gap-4 items-start">
-                                            <div className={`mt-1 flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${asset.status === 'review' ? 'bg-amber-100 text-amber-600' : 'bg-green-100 text-green-600'}`}>
+                                            <div className={`mt-1 flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${asset.status === 'review' ? 'bg-warning/15 text-warning' : 'bg-success/15 text-success'}`}>
                                                 {asset.status === 'review' ? <ExclamationTriangleIcon className="w-5 h-5" /> : <CheckCircleIcon className="w-5 h-5" />}
                                             </div>
                                             <div className="flex-1 min-w-0">
@@ -219,7 +219,7 @@ export default function OrderAdaptationArtifact({ initialData, onConfirm, onCanc
                                                     </div>
                                                 </div>
                                                 {asset.status === 'review' && asset.issues && (
-                                                    <div className="mt-2 bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-800/30 rounded-lg p-2 flex items-center gap-2 text-xs text-amber-700 dark:text-amber-400">
+                                                    <div className="mt-2 bg-warning/10 dark:bg-warning/10 border border-warning/20 dark:border-warning/40/30 rounded-lg p-2 flex items-center gap-2 text-xs text-warning">
                                                         <ExclamationTriangleIcon className="w-4 h-4" />
                                                         <span>{asset.issues.join(', ')}</span>
                                                     </div>
@@ -296,7 +296,7 @@ export default function OrderAdaptationArtifact({ initialData, onConfirm, onCanc
                 {currentStep === 'finalize' && (
                     <div className="absolute inset-0 z-20 bg-background flex flex-col animate-in slide-in-from-right duration-300">
                         <div className="flex-1 flex flex-col items-center justify-center p-8 text-center max-w-lg mx-auto">
-                            <div className="w-16 h-16 bg-green-100 dark:bg-green-900/20 text-green-600 rounded-full flex items-center justify-center mb-6">
+                            <div className="w-16 h-16 bg-success/15 dark:bg-success/15 text-success rounded-full flex items-center justify-center mb-6">
                                 <CheckCircleIcon className="w-8 h-8" />
                             </div>
                             <h3 className="text-2xl font-bold mb-2">Ready to Create?</h3>

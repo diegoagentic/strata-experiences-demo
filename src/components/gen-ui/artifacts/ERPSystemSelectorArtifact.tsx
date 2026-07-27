@@ -15,21 +15,21 @@ const SYSTEMS = [
         name: 'NetSuite',
         status: 'Connected',
         icon: CubeIcon,
-        color: 'text-blue-600 bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400'
+        color: 'text-info bg-info/15 dark:text-info'
     },
     {
         id: 'rcp',
         name: 'RCP Core',
         status: 'Available',
         icon: BoltIcon,
-        color: 'text-amber-600 bg-amber-100 dark:bg-amber-900/30 dark:text-amber-400'
+        color: 'text-warning bg-warning/15 dark:text-warning'
     },
     {
         id: 'emanage',
         name: 'EManage One',
         status: 'Available',
         icon: BuildingOffice2Icon,
-        color: 'text-green-600 bg-green-100 dark:bg-green-900/30 dark:text-green-400'
+        color: 'text-success bg-success/15 dark:text-success'
     }
 ];
 
@@ -77,7 +77,7 @@ export default function ERPSystemSelectorArtifact() {
                             </div>
                             <span className="font-bold text-foreground text-lg">{selectedSystem.name}</span>
                             {selectedSystem.status === 'Connected' && (
-                                <span className="px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold rounded-full uppercase tracking-wider">
+                                <span className="px-2 py-0.5 bg-success/15 text-success text-[10px] font-bold rounded-full uppercase tracking-wider">
                                     Connected
                                 </span>
                             )}
@@ -118,7 +118,7 @@ export default function ERPSystemSelectorArtifact() {
             <div className="bg-muted dark:bg-zinc-800/30 p-4 border-t border-zinc-100 dark:border-zinc-800">
                 <div className="flex items-start gap-3 p-3 bg-card rounded-xl border border-border/50 shadow-sm">
                     <div className="mt-0.5">
-                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                        <div className="w-1.5 h-1.5 bg-success/100 rounded-full animate-pulse"></div>
                     </div>
                     <div>
                         <h4 className="text-xs font-bold text-foreground">Secure Connection Ready</h4>

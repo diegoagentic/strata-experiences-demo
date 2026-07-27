@@ -107,7 +107,7 @@ export default function PricingValidationScene() {
                             <div className="text-xs font-bold text-foreground">NYPD-0394 · SIF received from Miller Knoll designer</div>
                             <div className="text-[11px] text-muted-foreground mt-0.5">NYC Police Dept. · Precinct 40 · May 6, 7:52 AM</div>
                         </div>
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/20 shrink-0">Pending</span>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-warning/20 text-warning border border-warning/30 shrink-0">Pending</span>
                     </div>
                     {/* Summary metrics */}
                     <div className="grid grid-cols-3 border-t border-border divide-x divide-border">
@@ -140,7 +140,7 @@ export default function PricingValidationScene() {
                     ))}
                     <div className="px-3.5 py-2 border-t border-border bg-muted/20 flex items-center justify-between">
                         <span className="text-[11px] text-muted-foreground">4 SIF items · not yet validated against CoNY contract</span>
-                        <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400">Unverified</span>
+                        <span className="text-[10px] font-bold text-warning">Unverified</span>
                     </div>
                 </div>
 
@@ -189,9 +189,9 @@ export default function PricingValidationScene() {
                         key={item.product}
                         className={`px-3.5 py-2.5 border-t border-border animate-in fade-in slide-in-from-left-1 duration-300 ${
                             item.status === 'restricted'
-                                ? 'bg-red-50 dark:bg-red-500/5'
+                                ? 'bg-destructive/10 dark:bg-destructive/5'
                                 : item.status === 'price' && !applied
-                                ? 'bg-amber-50 dark:bg-amber-500/5'
+                                ? 'bg-warning/10'
                                 : ''
                         }`}
                     >
@@ -211,20 +211,20 @@ export default function PricingValidationScene() {
                                     <><CheckCircle2 className="h-3.5 w-3.5 text-success shrink-0" /><span className="text-foreground">{item.contract}</span></>
                                 )}
                                 {item.status === 'price' && !applied && (
-                                    <><AlertTriangle className="h-3.5 w-3.5 text-amber-500 shrink-0" /><span className="text-foreground">{item.contract}</span></>
+                                    <><AlertTriangle className="h-3.5 w-3.5 text-warning shrink-0" /><span className="text-foreground">{item.contract}</span></>
                                 )}
                                 {item.status === 'price' && applied && (
                                     <><CheckCircle2 className="h-3.5 w-3.5 text-success shrink-0" /><span className="text-foreground">{item.contract}</span></>
                                 )}
                                 {item.status === 'restricted' && (
-                                    <><Ban className="h-3.5 w-3.5 text-red-500 shrink-0" /><span className="text-red-600 dark:text-red-400">Restricted</span></>
+                                    <><Ban className="h-3.5 w-3.5 text-destructive shrink-0" /><span className="text-destructive">Restricted</span></>
                                 )}
                             </span>
                         </div>
 
                         {/* Restriction detail row */}
                         {item.status === 'restricted' && item.restrictionNote && (
-                            <div className="mt-1.5 col-span-4 text-[11px] text-red-600 dark:text-red-400 pl-0">
+                            <div className="mt-1.5 col-span-4 text-[11px] text-destructive pl-0">
                                 {item.restrictionNote}
                             </div>
                         )}
@@ -234,10 +234,10 @@ export default function PricingValidationScene() {
 
             {/* Restricted item exception — appears after that row reveals */}
             {allRevealed && !noticeSent && (
-                <div className="border border-red-200 dark:border-red-500/30 rounded-xl overflow-hidden animate-in fade-in slide-in-from-top-1 duration-300">
-                    <div className="flex items-center gap-2 px-3.5 py-2 border-b border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/5">
-                        <Ban className="h-3.5 w-3.5 text-red-500 shrink-0" />
-                        <span className="text-[10px] font-bold text-red-600 dark:text-red-400 uppercase tracking-wide">
+                <div className="border border-destructive/30 dark:border-destructive/30 rounded-xl overflow-hidden animate-in fade-in slide-in-from-top-1 duration-300">
+                    <div className="flex items-center gap-2 px-3.5 py-2 border-b border-destructive/30 dark:border-destructive/30 bg-destructive/10 dark:bg-destructive/5">
+                        <Ban className="h-3.5 w-3.5 text-destructive shrink-0" />
+                        <span className="text-[10px] font-bold text-destructive uppercase tracking-wide">
                             Restricted item detected · designer notification required
                         </span>
                     </div>

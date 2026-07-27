@@ -115,7 +115,7 @@ export default function WorkOrderScene({ onApprove }: WorkOrderSceneProps) {
                     </div>
                     <div>
                         <div className="text-muted-foreground">Storage remaining</div>
-                        <div className="flex items-center gap-1 font-medium text-amber-600 dark:text-amber-400 mt-0.5">
+                        <div className="flex items-center gap-1 font-medium text-warning mt-0.5">
                             <AlertTriangle className="h-3 w-3" />
                             8 days
                         </div>
@@ -123,8 +123,8 @@ export default function WorkOrderScene({ onApprove }: WorkOrderSceneProps) {
                 </div>
 
                 {/* NYC signature requirement — prominently called out */}
-                <div className="flex items-start gap-2 border border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/5 rounded-lg px-3 py-2.5">
-                    <AlertTriangle className="h-3.5 w-3.5 text-amber-500 shrink-0 mt-0.5" />
+                <div className="flex items-start gap-2 border border-warning/30 bg-warning/10 rounded-lg px-3 py-2.5">
+                    <AlertTriangle className="h-3.5 w-3.5 text-warning shrink-0 mt-0.5" />
                     <div className="text-[11px]">
                         <div className="font-bold text-foreground">NYC requires physical ink signature</div>
                         <div className="text-muted-foreground mt-0.5">Print and deliver with installation drawings. Digital signatures not accepted.</div>

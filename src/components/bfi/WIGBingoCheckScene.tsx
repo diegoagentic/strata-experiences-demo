@@ -123,7 +123,7 @@ function BingoSheetCard() {
                 <div className="bg-warning/5 border border-warning/20 rounded-lg px-2.5 py-2">
                     <div className="text-[10px] text-muted-foreground">
                         <span className="font-medium text-foreground">Carton #34 — </span>
-                        <span className="italic text-amber-600 dark:text-amber-400">"Monitor Arm · carton missing"</span>
+                        <span className="italic text-warning">"Monitor Arm · carton missing"</span>
                         {' '}(written manually by Workplace)
                     </div>
                 </div>

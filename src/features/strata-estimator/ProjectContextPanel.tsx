@@ -299,7 +299,7 @@ export default function ProjectContextPanel({
     const flaggedCount = facts.filter((f) => f.aiFlagged).length
 
     return (
-        <div className="rounded-2xl bg-card dark:bg-zinc-800 border border-border overflow-hidden">
+        <div className="rounded-2xl bg-card border border-border overflow-hidden">
             {/* Header */}
             <button
                 type="button"
@@ -355,7 +355,7 @@ export default function ProjectContextPanel({
                                     !isEditing && 'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
                                     fact.aiFlagged
                                         ? 'bg-primary/5 dark:bg-primary/10 border-primary/30 ring-1 ring-primary/20 hover:ring-primary/40'
-                                        : 'bg-card dark:bg-zinc-800 border-border hover:border-border/60'
+                                        : 'bg-card border-border hover:border-border/60'
                                 )}
                             >
                                 {/* Header row · icon + label + AI chip + edit */}
@@ -430,7 +430,7 @@ export default function ProjectContextPanel({
                                                         if (e.key === 'Escape') cancelEdit()
                                                     }}
                                                     placeholder="Custom value…"
-                                                    className="flex-1 min-w-0 text-[11px] font-semibold text-foreground bg-card dark:bg-zinc-900 border border-border rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40"
+                                                    className="flex-1 min-w-0 text-[11px] font-semibold text-foreground bg-card border border-border rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40"
                                                 />
                                                 <button
                                                     type="button"

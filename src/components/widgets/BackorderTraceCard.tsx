@@ -22,8 +22,8 @@ export default function BackorderTraceCard({ lines, orderId }: BackorderTraceCar
         <div className="bg-card border border-border rounded-2xl p-6 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-500/10">
-                        <ExclamationTriangleIcon className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                    <div className="p-2.5 rounded-xl bg-warning/10">
+                        <ExclamationTriangleIcon className="w-5 h-5 text-warning" />
                     </div>
                     <div>
                         <h3 className="text-sm font-medium text-foreground">Backorder Alert — {orderId}</h3>
@@ -32,7 +32,7 @@ export default function BackorderTraceCard({ lines, orderId }: BackorderTraceCar
                         </p>
                     </div>
                 </div>
-                <span className="px-3 py-1 bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 text-[10px] font-medium uppercase rounded-full tracking-wider ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30">
+                <span className="px-3 py-1 bg-warning/10 text-warning text-[10px] font-medium uppercase rounded-full tracking-wider ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30">
                     Partial Fulfillment
                 </span>
             </div>
@@ -61,11 +61,11 @@ export default function BackorderTraceCard({ lines, orderId }: BackorderTraceCar
                             <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
                                 <div className="flex h-full">
                                     <div
-                                        className="bg-green-500 dark:bg-green-400 h-full"
+                                        className="bg-success/100 dark:bg-success h-full"
                                         style={{ width: `${(line.fulfilledQty / line.originalQty) * 100}%` }}
                                     />
                                     <div
-                                        className="bg-amber-500 dark:bg-amber-400 h-full"
+                                        className="bg-warning dark:bg-warning h-full"
                                         style={{ width: `${(line.backorderedQty / line.originalQty) * 100}%` }}
                                     />
                                 </div>
@@ -74,8 +74,8 @@ export default function BackorderTraceCard({ lines, orderId }: BackorderTraceCar
 
                         <div className="flex items-center gap-4 text-[10px] font-medium">
                             <span className="text-muted-foreground">Ordered: {line.originalQty}</span>
-                            <span className="text-green-600 dark:text-green-400">Fulfilled: {line.fulfilledQty}</span>
-                            <span className="text-amber-600 dark:text-amber-400">Backordered: {line.backorderedQty}</span>
+                            <span className="text-success">Fulfilled: {line.fulfilledQty}</span>
+                            <span className="text-warning">Backordered: {line.backorderedQty}</span>
                         </div>
 
                         <p className="mt-2 text-[11px] text-muted-foreground italic">

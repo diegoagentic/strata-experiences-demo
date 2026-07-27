@@ -93,7 +93,7 @@ export default function BatchAckModal({ isOpen, onClose }: BatchAckModalProps) {
                             <Dialog.Panel className="relative transform overflow-hidden rounded-2xl bg-card text-left shadow-2xl transition-all w-full sm:max-w-4xl border border-border">
                                 {showSuccess ? (
                                     <div className="p-12 flex flex-col items-center justify-center text-center">
-                                        <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mb-4">
+                                        <div className="w-16 h-16 bg-success/15 text-success rounded-full flex items-center justify-center mb-4">
                                             <CheckCircleIcon className="w-10 h-10" />
                                         </div>
                                         <h3 className="text-xl font-bold text-foreground">Success!</h3>
@@ -133,7 +133,7 @@ export default function BatchAckModal({ isOpen, onClose }: BatchAckModalProps) {
                                                         }
                                                     >
                                                         Ready for Approval
-                                                        <span className="ml-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 py-0.5 px-2 rounded-full text-xs">
+                                                        <span className="ml-2 bg-success/15 text-success py-0.5 px-2 rounded-full text-xs">
                                                             {readyOrders.length}
                                                         </span>
                                                     </Tab>
@@ -142,13 +142,13 @@ export default function BatchAckModal({ isOpen, onClose }: BatchAckModalProps) {
                                                             classNames(
                                                                 'pb-3 text-sm font-medium border-b-2 outline-none transition-colors',
                                                                 selected
-                                                                    ? 'border-red-500 text-red-600 dark:text-red-400'
+                                                                    ? 'border-destructive text-destructive'
                                                                     : 'border-transparent text-muted-foreground hover:text-foreground hover:border-primary/50'
                                                             )
                                                         }
                                                     >
                                                         Attention Needed
-                                                        <span className="ml-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 py-0.5 px-2 rounded-full text-xs">
+                                                        <span className="ml-2 bg-destructive/15 text-destructive py-0.5 px-2 rounded-full text-xs">
                                                             {attentionOrders.length}
                                                         </span>
                                                     </Tab>
@@ -191,7 +191,7 @@ export default function BatchAckModal({ isOpen, onClose }: BatchAckModalProps) {
                                                                         <div className="text-sm text-foreground">{order.vendor}</div>
                                                                         <div className="text-sm font-mono text-muted-foreground">{order.amount}</div>
                                                                         <div className="flex justify-end">
-                                                                            <span className="inline-flex items-center rounded-full bg-green-50 dark:bg-green-900/20 px-2 py-1 text-xs font-medium text-green-700 dark:text-green-400 ring-1 ring-inset ring-green-600/20">
+                                                                            <span className="inline-flex items-center rounded-full bg-success/10 dark:bg-success/15 px-2 py-1 text-xs font-medium text-success ring-1 ring-inset ring-green-600/20">
                                                                                 {order.status}
                                                                             </span>
                                                                         </div>
@@ -239,7 +239,7 @@ export default function BatchAckModal({ isOpen, onClose }: BatchAckModalProps) {
                                                     <div className="space-y-3">
                                                         {attentionOrders.map((order) => (
                                                             <div key={order.id} className="p-4 rounded-xl border border-destructive/20 bg-destructive/10 flex items-start gap-4">
-                                                                <ExclamationTriangleIcon className="w-5 h-5 text-red-600 mt-0.5" />
+                                                                <ExclamationTriangleIcon className="w-5 h-5 text-destructive mt-0.5" />
                                                                 <div className="flex-1">
                                                                     <div className="flex justify-between items-start mb-1">
                                                                         <h4 className="font-semibold text-foreground">{order.id}</h4>
@@ -249,7 +249,7 @@ export default function BatchAckModal({ isOpen, onClose }: BatchAckModalProps) {
                                                                         </div>
                                                                     </div>
                                                                     <p className="text-sm text-muted-foreground mb-2">{order.vendor} • {order.amount}</p>
-                                                                    <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-card border border-destructive/20 text-xs font-medium text-red-700 dark:text-red-400">
+                                                                    <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-card border border-destructive/20 text-xs font-medium text-destructive">
                                                                         {order.discrepancy}
                                                                     </div>
                                                                 </div>

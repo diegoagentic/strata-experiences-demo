@@ -80,27 +80,27 @@ export default function DemoAIIndicator() {
     const accent = isAuto
         ? {
             bg: 'bg-indigo-500/[0.05] dark:bg-indigo-500/[0.08]',
-            border: completed ? 'border-green-500/25 dark:border-green-400/25' : 'border-indigo-500/20 dark:border-indigo-400/20',
-            iconBox: completed ? 'bg-green-500/10 dark:bg-green-400/15' : 'bg-indigo-500/10 dark:bg-indigo-400/15',
-            iconColor: completed ? 'text-green-500 dark:text-green-400' : 'text-indigo-500 dark:text-indigo-400',
-            label: completed ? 'text-green-600 dark:text-green-400' : 'text-indigo-600 dark:text-indigo-400',
-            badgeBg: completed ? 'bg-green-500/10' : 'bg-indigo-500/10',
-            badgeText: completed ? 'text-green-600 dark:text-green-400' : 'text-indigo-600 dark:text-indigo-400',
-            badgeDot: completed ? 'bg-green-500' : 'bg-indigo-500 animate-pulse',
+            border: completed ? 'border-success/30 dark:border-success/25' : 'border-indigo-500/20 dark:border-indigo-400/20',
+            iconBox: completed ? 'bg-success/10 dark:bg-success/15' : 'bg-indigo-500/10 dark:bg-indigo-400/15',
+            iconColor: completed ? 'text-success dark:text-success' : 'text-indigo-500 dark:text-indigo-400',
+            label: completed ? 'text-success' : 'text-indigo-600 dark:text-indigo-400',
+            badgeBg: completed ? 'bg-success/10' : 'bg-indigo-500/10',
+            badgeText: completed ? 'text-success' : 'text-indigo-600 dark:text-indigo-400',
+            badgeDot: completed ? 'bg-success/100' : 'bg-indigo-500 animate-pulse',
             barBg: 'bg-indigo-500/10',
             barFill: completed
                 ? 'bg-gradient-to-r from-green-500/70 to-emerald-500/70'
                 : 'bg-gradient-to-r from-indigo-500/60 to-purple-500/60',
         }
         : {
-            bg: 'bg-amber-500/[0.05] dark:bg-amber-500/[0.08]',
-            border: 'border-amber-500/20 dark:border-amber-400/20',
-            iconBox: 'bg-amber-500/10 dark:bg-amber-400/15',
-            iconColor: 'text-amber-500 dark:text-amber-400',
-            label: 'text-amber-600 dark:text-amber-400',
-            badgeBg: 'bg-amber-500/10',
-            badgeText: 'text-amber-600 dark:text-amber-400',
-            badgeDot: 'bg-amber-500',
+            bg: 'bg-warning/[0.05] dark:bg-warning/[0.08]',
+            border: 'border-warning/30 dark:border-warning/20',
+            iconBox: 'bg-warning/10 dark:bg-warning/15',
+            iconColor: 'text-warning',
+            label: 'text-warning',
+            badgeBg: 'bg-warning/10',
+            badgeText: 'text-warning',
+            badgeDot: 'bg-warning',
             barBg: '',
             barFill: '',
         };

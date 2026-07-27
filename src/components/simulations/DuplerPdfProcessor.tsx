@@ -165,10 +165,10 @@ interface VendorLibraryEntry {
 }
 
 const VENDOR_LIBRARY: VendorLibraryEntry[] = [
-    { id: 'steelcase',     name: 'Steelcase',     sourceType: 'SIF', version: 'July 2025', itemsCount: 156, lastImportedAt: '2 days ago',  status: 'active',       owner: 'Alden', cover: 'bg-red-600',   image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800' },
-    { id: 'herman-miller', name: 'Herman Miller', sourceType: 'CET', version: '2025 Master', itemsCount: 143, lastImportedAt: '1 week ago', status: 'active',       owner: 'Kai',   cover: 'bg-blue-600',  image: 'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&q=80&w=800' },
+    { id: 'steelcase',     name: 'Steelcase',     sourceType: 'SIF', version: 'July 2025', itemsCount: 156, lastImportedAt: '2 days ago',  status: 'active',       owner: 'Alden', cover: 'bg-destructive',   image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800' },
+    { id: 'herman-miller', name: 'Herman Miller', sourceType: 'CET', version: '2025 Master', itemsCount: 143, lastImportedAt: '1 week ago', status: 'active',       owner: 'Kai',   cover: 'bg-info',  image: 'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&q=80&w=800' },
     { id: 'millerknoll',   name: 'MillerKnoll',   sourceType: 'URL', version: 'Q3 2025', itemsCount: 128, lastImportedAt: '3 days ago',  status: 'update-avail', owner: 'Ellis', cover: 'bg-zinc-800',  image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800' },
-    { id: 'haworth',       name: 'Haworth',       sourceType: 'SIF', version: 'Seating 2025', itemsCount: 90,  lastImportedAt: '3 weeks ago', status: 'active',       owner: 'Marks', cover: 'bg-amber-500', image: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&q=80&w=800' },
+    { id: 'haworth',       name: 'Haworth',       sourceType: 'SIF', version: 'Seating 2025', itemsCount: 90,  lastImportedAt: '3 weeks ago', status: 'active',       owner: 'Marks', cover: 'bg-warning', image: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&q=80&w=800' },
 ];
 
 const VENDOR_LIBRARY_TOTAL_ITEMS = VENDOR_LIBRARY.reduce((sum, v) => sum + v.itemsCount, 0);
@@ -367,10 +367,10 @@ interface DuplerPdfProcessorProps {
 
 const SOURCE_BADGE_COLORS = {
     teal:   'bg-teal-100 dark:bg-teal-500/10 text-teal-700 dark:text-teal-400 border-teal-200 dark:border-teal-500/20',
-    amber:  'bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/20',
-    green:  'bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 border-green-200 dark:border-green-500/20',
+    amber:  'bg-warning/15 dark:bg-warning/10 text-warning border-warning/20',
+    green:  'bg-success/15 dark:bg-success/10 text-success border-success/30 dark:border-success/30',
     purple: 'bg-purple-100 dark:bg-ai/10 text-purple-700 dark:text-purple-400 border-purple-200 dark:border-purple-500/20',
-    blue:   'bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-200 dark:border-blue-500/20',
+    blue:   'bg-info/15 dark:bg-info/10 text-info border-info/20',
 };
 
 function SourceBadge({ label, color = 'teal' }: { label: string; color?: 'teal' | 'amber' | 'green' | 'purple' | 'blue' }) {
@@ -722,7 +722,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                 {agents.map(agent => (
                     <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'}`}>
                         {agent.done ?
-                            <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> :
+                            <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> :
                             <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />
                         }
                         <span className={agent.done ? 'text-foreground' : 'text-indigo-600 dark:text-indigo-400'}>{agent.name}</span>
@@ -1083,11 +1083,11 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
 
                             {/* SIF tab — file drop zone */}
                             {uploadTab === 'sif' && (
-                                <div className="rounded-xl bg-card border-2 border-dashed border-blue-300 dark:border-blue-500/40 overflow-hidden">
+                                <div className="rounded-xl bg-card border-2 border-dashed border-info/40 dark:border-info/30 overflow-hidden">
                                     <div className="p-6">
                                         <div className="flex flex-col items-center justify-center py-4 gap-3">
-                                            <div className="p-3 rounded-full bg-blue-100 dark:bg-blue-500/10">
-                                                <ArrowUpTrayIcon className="h-10 w-10 text-blue-600 dark:text-blue-400" />
+                                            <div className="p-3 rounded-full bg-info/15 dark:bg-info/10">
+                                                <ArrowUpTrayIcon className="h-10 w-10 text-info" />
                                             </div>
                                             <div className="text-center">
                                                 <p className="text-sm font-bold text-foreground">Import SIF File</p>
@@ -1110,10 +1110,10 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                         <div className="animate-in fade-in duration-300 space-y-4">
                             <div className="p-4 rounded-xl bg-card border border-border shadow-sm">
                                 <div className="flex items-center gap-3 mb-3">
-                                    <div className={`p-2 rounded-lg ${uploadTab === 'url' ? 'bg-purple-100 dark:bg-ai/10' : 'bg-amber-100 dark:bg-amber-500/10'}`}>
+                                    <div className={`p-2 rounded-lg ${uploadTab === 'url' ? 'bg-purple-100 dark:bg-ai/10' : 'bg-warning/15 dark:bg-warning/10'}`}>
                                         {uploadTab === 'url'
                                             ? <LinkIcon className="h-5 w-5 text-ai" />
-                                            : <DocumentTextIcon className="h-5 w-5 text-amber-500" />
+                                            : <DocumentTextIcon className="h-5 w-5 text-warning" />
                                         }
                                     </div>
                                     <div className="flex-1 min-w-0">
@@ -1125,7 +1125,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                     <SourceBadge label={uploadTab === 'url' ? 'SCRAPING' : 'PARSING PDF'} color={uploadTab === 'url' ? 'purple' : 'amber'} />
                                 </div>
                                 <div className="h-1.5 rounded-full bg-muted overflow-hidden">
-                                    <div className={`h-full rounded-full transition-all duration-200 ease-linear ${uploadTab === 'url' ? 'bg-purple-400' : 'bg-amber-400'}`} style={{ width: `${scanProgress}%` }} />
+                                    <div className={`h-full rounded-full transition-all duration-200 ease-linear ${uploadTab === 'url' ? 'bg-purple-400' : 'bg-warning'}`} style={{ width: `${scanProgress}%` }} />
                                 </div>
                                 <p className="text-[10px] text-muted-foreground mt-2">
                                     {scanProgress < 100
@@ -1151,24 +1151,24 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                     {(scrapePhase === 'revealed' || scrapePhase === 'results') && (
                         <div className="animate-in fade-in duration-500 space-y-4">
                             {/* Success summary */}
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30">
                                 <div className="flex items-start gap-2 mb-3">
                                     <AIAgentAvatar />
                                     <div className="flex-1">
-                                        <p className="text-xs text-green-800 dark:text-green-200">
+                                        <p className="text-xs text-success dark:text-success">
                                             <span className="font-bold">DocumentParser:</span> {CATALOG_ITEMS_TOTAL} items extracted from {MANUFACTURER} vendor quote. Part numbers, quantities, options, and pricing fields identified.
                                         </p>
                                     </div>
                                     <SourceBadge label="VENDOR PDF" color="amber" />
                                 </div>
                                 <div className="flex flex-wrap gap-2">
-                                    <span className="flex items-center gap-1 text-[9px] text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-500/10 px-2 py-0.5 rounded-full">
+                                    <span className="flex items-center gap-1 text-[9px] text-success bg-success/15 dark:bg-success/10 px-2 py-0.5 rounded-full">
                                         <CheckCircleIcon className="h-3 w-3" />{MAPPED_ITEMS_COUNT} Fully Mapped
                                     </span>
                                     <span className="flex items-center gap-1 text-[9px] text-brand-700 dark:text-brand-400 bg-brand-100 dark:bg-brand-500/10 px-2 py-0.5 rounded-full">
                                         <CheckCircleIcon className="h-3 w-3" />{AI_SUGGESTED_ITEMS.length} AI-Suggested
                                     </span>
-                                    <span className="flex items-center gap-1 text-[9px] text-amber-700 dark:text-amber-400 bg-amber-100 dark:bg-amber-500/10 px-2 py-0.5 rounded-full">
+                                    <span className="flex items-center gap-1 text-[9px] text-warning bg-warning/15 dark:bg-warning/10 px-2 py-0.5 rounded-full">
                                         <ExclamationTriangleIcon className="h-3 w-3" />{EXPERT_HUB_ITEMS.length} Need Expert Hub
                                     </span>
                                 </div>
@@ -1180,9 +1180,9 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                 <div className="bg-muted/50 px-4 py-2.5 border-b border-border">
                                     <div className="flex items-center justify-between mb-2">
                                         <div className="flex items-center gap-2">
-                                            <DocumentTextIcon className="h-4 w-4 text-amber-500" />
+                                            <DocumentTextIcon className="h-4 w-4 text-warning" />
                                             <span className="text-xs font-bold text-foreground">Vendor Quote — {MANUFACTURER}</span>
-                                            <span className="text-[8px] font-mono text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-200 dark:border-amber-500/20 flex items-center gap-1">
+                                            <span className="text-[8px] font-mono text-warning bg-warning/15 dark:bg-warning/10 px-1.5 py-0.5 rounded border border-warning/20 flex items-center gap-1">
                                                 <DocumentTextIcon className="h-2.5 w-2.5" /> Healthcare Office
                                             </span>
                                         </div>
@@ -1240,7 +1240,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                                     <React.Fragment key={`${item.line}-${item.partNumber}`}>
                                                         <tr
                                                             onClick={() => setExpandedCatalogItem(isExpanded ? null : item.line)}
-                                                            className={`border-b border-border/50 cursor-pointer hover:bg-muted/30 transition-colors ${isHidden ? 'opacity-0' : 'animate-in fade-in slide-in-from-left-2 duration-300'} ${item.status !== 'auto' ? 'bg-amber-50/50 dark:bg-amber-500/5' : ''}`}
+                                                            className={`border-b border-border/50 cursor-pointer hover:bg-muted/30 transition-colors ${isHidden ? 'opacity-0' : 'animate-in fade-in slide-in-from-left-2 duration-300'} ${item.status !== 'auto' ? 'bg-warning/10' : ''}`}
                                                         >
                                                             <td className="py-1.5 px-1 text-center">
                                                                 {isExpanded
@@ -1254,7 +1254,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                                             <td className="py-1.5 px-2 font-mono text-foreground text-[9px] max-w-[100px] truncate">{item.optionCode ?? <span className="text-muted-foreground">—</span>}</td>
                                                             <td className="py-1.5 px-2 text-[9px] max-w-[120px] truncate">
                                                                 {item.optionDescription.includes('Undecided') ? (
-                                                                    <span className="font-bold text-amber-600 dark:text-amber-400">{item.optionDescription}</span>
+                                                                    <span className="font-bold text-warning">{item.optionDescription}</span>
                                                                 ) : (
                                                                     <span className="text-foreground">{item.optionDescription}</span>
                                                                 )}
@@ -1292,7 +1292,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                                                                     <div className="text-muted-foreground">% Dealer <span className="font-mono text-foreground">{item.pctDealer.toFixed(5)}</span></div>
                                                                                     <div className="text-muted-foreground">Extended Dealer <span className="font-mono text-foreground">{item.extendedDealer.toFixed(2)}</span></div>
                                                                                     <div className="text-muted-foreground">Margin $ <span className="font-mono font-bold text-foreground">${item.marginDollar.toLocaleString()}</span></div>
-                                                                                    <div className="col-span-2 text-muted-foreground">% Margin <span className="font-mono font-bold text-green-600 dark:text-green-400">{item.pctMargin.toFixed(5)}</span></div>
+                                                                                    <div className="col-span-2 text-muted-foreground">% Margin <span className="font-mono font-bold text-success">{item.pctMargin.toFixed(5)}</span></div>
                                                                                 </div>
                                                                             </div>
                                                                             {/* Right: Option Breakdown */}
@@ -1304,7 +1304,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                                                                             <div key={oi} className="flex items-center gap-1.5">
                                                                                                 <span className="font-mono text-muted-foreground bg-muted px-1 py-0.5 rounded text-[9px]">{ob.code}</span>
                                                                                                 <span className="text-muted-foreground">→</span>
-                                                                                                <span className={ob.description.includes('Undecided') ? 'text-amber-600 dark:text-amber-400 font-bold' : 'text-foreground'}>{ob.description}</span>
+                                                                                                <span className={ob.description.includes('Undecided') ? 'text-warning font-bold' : 'text-foreground'}>{ob.description}</span>
                                                                                             </div>
                                                                                         ))}
                                                                                     </div>
@@ -1364,9 +1364,9 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                         <div className="bg-muted/50 px-4 py-2.5 border-b border-border">
                             <div className="flex items-center justify-between mb-2">
                                 <div className="flex items-center gap-2">
-                                    <DocumentTextIcon className="h-4 w-4 text-amber-500" />
+                                    <DocumentTextIcon className="h-4 w-4 text-warning" />
                                     <span className="text-xs font-bold text-foreground">Vendor Quote — {MANUFACTURER}</span>
-                                    <span className="text-[8px] font-mono text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-200 dark:border-amber-500/20 flex items-center gap-1">
+                                    <span className="text-[8px] font-mono text-warning bg-warning/15 dark:bg-warning/10 px-1.5 py-0.5 rounded border border-warning/20 flex items-center gap-1">
                                         <DocumentTextIcon className="h-2.5 w-2.5" /> Healthcare Office
                                     </span>
                                 </div>
@@ -1422,13 +1422,13 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                                     onClick={() => !isResolved && setExpandedCatalogItem(isExpanded ? null : item.line)}
                                                     className={`border-b border-border/50 transition-colors ${
                                                         isResolved
-                                                            ? 'bg-green-50/50 dark:bg-green-500/5 cursor-default'
-                                                            : 'bg-amber-50/50 dark:bg-amber-500/5 cursor-pointer hover:bg-amber-100/50 dark:hover:bg-amber-500/10'
+                                                            ? 'bg-success/10 dark:bg-success/100/5 cursor-default'
+                                                            : 'bg-warning/10 cursor-pointer hover:bg-warning/15 dark:hover:bg-warning/10'
                                                     }`}
                                                 >
                                                     <td className="py-1.5 px-1 text-center">
                                                         {isResolved
-                                                            ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500" />
+                                                            ? <CheckCircleIcon className="h-3.5 w-3.5 text-success" />
                                                             : isExpanded
                                                                 ? <ChevronUpIcon className="h-3 w-3 text-muted-foreground" />
                                                                 : <ChevronDownIcon className="h-3 w-3 text-muted-foreground" />}
@@ -1440,7 +1440,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                                     <td className="py-1.5 px-2 font-mono text-foreground text-[9px] max-w-[100px] truncate">{item.optionCode ?? <span className="text-muted-foreground">—</span>}</td>
                                                     <td className="py-1.5 px-2 text-[9px] max-w-[120px] truncate">
                                                         {item.optionDescription.includes('Undecided') ? (
-                                                            <span className="font-bold text-amber-600 dark:text-amber-400">{item.optionDescription}</span>
+                                                            <span className="font-bold text-warning">{item.optionDescription}</span>
                                                         ) : (
                                                             <span className="text-foreground">{item.optionDescription}</span>
                                                         )}
@@ -1516,18 +1516,18 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                                                 {/* Expert Hub content */}
                                                                 {er && (
                                                                     <div className="space-y-3">
-                                                                        <p className="text-[10px] text-amber-600 dark:text-amber-400">Current: <span className="font-bold">{er.currentOption}</span></p>
-                                                                        <div className="p-3 rounded-lg bg-blue-50 dark:bg-blue-500/5 border border-blue-200 dark:border-blue-500/20">
+                                                                        <p className="text-[10px] text-warning">Current: <span className="font-bold">{er.currentOption}</span></p>
+                                                                        <div className="p-3 rounded-lg bg-info/10 dark:bg-info/100/5 border border-info/20">
                                                                             <div className="flex items-center gap-2 mb-2">
-                                                                                <div className="w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center text-[9px] font-bold shrink-0">MC</div>
+                                                                                <div className="w-7 h-7 rounded-full bg-info/100 text-white flex items-center justify-center text-[9px] font-bold shrink-0">MC</div>
                                                                                 <div>
                                                                                     <p className="text-[10px] font-bold text-foreground">{er.expertName}</p>
                                                                                     <p className="text-[9px] text-muted-foreground">{er.expertRole}</p>
                                                                                 </div>
                                                                             </div>
-                                                                            <p className="text-[10px] text-blue-800 dark:text-blue-200 mb-2">{er.recommendation}</p>
+                                                                            <p className="text-[10px] text-info dark:text-info mb-2">{er.recommendation}</p>
                                                                             <div className="flex items-center gap-3 text-[10px] p-2 rounded bg-card border border-border">
-                                                                                <div><span className="text-muted-foreground">Resolved Code:</span> <span className="font-bold font-mono text-blue-600 dark:text-blue-400">{er.resolvedCode}</span></div>
+                                                                                <div><span className="text-muted-foreground">Resolved Code:</span> <span className="font-bold font-mono text-info">{er.resolvedCode}</span></div>
                                                                                 <div><span className="text-muted-foreground">→</span> <span className="font-bold text-foreground">{er.resolvedDescription}</span></div>
                                                                             </div>
                                                                         </div>
@@ -1536,14 +1536,14 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                                                                 <input value={editValue} onChange={e => setEditValue(e.target.value)} placeholder={er.resolvedCode}
                                                                                     className="flex-1 px-2 py-1.5 text-[10px] rounded border border-border bg-card text-foreground focus:outline-none focus:ring-1 focus:ring-blue-400" />
                                                                                 <button onClick={() => { setReviewResolved(p => ({ ...p, [er.id]: 'edited' })); setEditingItem(null); }}
-                                                                                    className="px-2 py-1.5 rounded bg-blue-500 text-white text-[10px] font-bold"><CheckIcon className="h-3 w-3" /></button>
+                                                                                    className="px-2 py-1.5 rounded bg-info/100 text-white text-[10px] font-bold"><CheckIcon className="h-3 w-3" /></button>
                                                                                 <button onClick={() => setEditingItem(null)}
                                                                                     className="px-2 py-1.5 rounded border border-border text-[10px]"><XMarkIcon className="h-3 w-3" /></button>
                                                                             </div>
                                                                         ) : (
                                                                             <div className="flex items-center gap-2">
                                                                                 <button onClick={() => setReviewResolved(p => ({ ...p, [er.id]: 'accepted' }))}
-                                                                                    className="px-3 py-1.5 rounded-lg bg-blue-500 hover:bg-blue-600 text-white text-[10px] font-bold transition-colors">Accept Expert Recommendation</button>
+                                                                                    className="px-3 py-1.5 rounded-lg bg-info/100 hover:bg-info text-white text-[10px] font-bold transition-colors">Accept Expert Recommendation</button>
                                                                                 <button onClick={() => { setEditingItem(er.id); setEditValue(''); }}
                                                                                     className="px-3 py-1.5 rounded-lg border border-border hover:bg-muted/50 text-foreground text-[10px] font-medium transition-colors flex items-center gap-1">
                                                                                     <PencilSquareIcon className="h-3 w-3" /> Edit & Override
@@ -1570,7 +1570,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                     <span className="text-[10px] text-muted-foreground">{AI_SUGGESTED_ITEMS.length} AI Suggested</span>
                                 </div>
                                 <div className="flex items-center gap-1.5">
-                                    <div className="w-2 h-2 rounded-full bg-blue-500" />
+                                    <div className="w-2 h-2 rounded-full bg-info/100" />
                                     <span className="text-[10px] text-muted-foreground">{EXPERT_HUB_ITEMS.length} Expert Hub</span>
                                 </div>
                             </div>
@@ -1595,7 +1595,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                     {/* Toast notification — fixed floating */}
                     {sendToast && (
                         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[210] animate-in fade-in slide-in-from-top-2 duration-300">
-                            <div className="px-4 py-2.5 rounded-xl bg-green-600 text-white text-xs font-bold shadow-lg shadow-green-500/30 flex items-center gap-2">
+                            <div className="px-4 py-2.5 rounded-xl bg-success text-white text-xs font-bold shadow-lg shadow-green-500/30 flex items-center gap-2">
                                 <CheckCircleIcon className="h-4 w-4 shrink-0" />
                                 {SPEC_ID}.pmx sent to Sales Coordinator Marks (SC) — pricing handoff complete
                             </div>
@@ -1653,9 +1653,9 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                         <div className="bg-muted/50 px-4 py-2.5 border-b border-border">
                             <div className="flex items-center justify-between mb-2">
                                 <div className="flex items-center gap-2">
-                                    <DocumentTextIcon className="h-4 w-4 text-amber-500" />
+                                    <DocumentTextIcon className="h-4 w-4 text-warning" />
                                     <span className="text-xs font-bold text-foreground">Vendor Quote — {MANUFACTURER}</span>
-                                    <span className="text-[8px] font-mono text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-200 dark:border-amber-500/20 flex items-center gap-1">
+                                    <span className="text-[8px] font-mono text-warning bg-warning/15 dark:bg-warning/10 px-1.5 py-0.5 rounded border border-warning/20 flex items-center gap-1">
                                         <DocumentTextIcon className="h-2.5 w-2.5" /> Healthcare Office
                                     </span>
                                 </div>
@@ -1741,12 +1741,12 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                                     <td className="py-1.5 px-2 text-right font-medium text-foreground">${item.unitPrice.toLocaleString()}</td>
                                                     <td className="py-1.5 px-2 text-center">
                                                         <span className="flex items-center justify-center gap-1 flex-wrap">
-                                                            <span className="text-[7px] font-bold px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/20">VENDOR PDF</span>
+                                                            <span className="text-[7px] font-bold px-1 py-0.5 rounded bg-warning/15 dark:bg-warning/10 text-warning border border-warning/20">VENDOR PDF</span>
                                                             {isRealItem && item.status === 'ai-suggested' && (
                                                                 <span className="text-[7px] font-bold px-1 py-0.5 rounded bg-brand-100 dark:bg-brand-500/10 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-500/20">AI</span>
                                                             )}
                                                             {isRealItem && item.status === 'expert-hub' && (
-                                                                <span className="text-[7px] font-bold px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20">EXPERT HUB</span>
+                                                                <span className="text-[7px] font-bold px-1 py-0.5 rounded bg-info/15 dark:bg-info/10 text-info border border-info/20">EXPERT HUB</span>
                                                             )}
                                                         </span>
                                                     </td>
@@ -1776,7 +1776,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                                                             <div className="text-muted-foreground">% Dealer <span className="font-mono text-foreground">{item.pctDealer.toFixed(5)}</span></div>
                                                                             <div className="text-muted-foreground">Extended Dealer <span className="font-mono text-foreground">{item.extendedDealer.toFixed(2)}</span></div>
                                                                             <div className="text-muted-foreground">Margin $ <span className="font-mono font-bold text-foreground">${item.marginDollar.toLocaleString()}</span></div>
-                                                                            <div className="col-span-2 text-muted-foreground">% Margin <span className="font-mono font-bold text-green-600 dark:text-green-400">{item.pctMargin.toFixed(5)}</span></div>
+                                                                            <div className="col-span-2 text-muted-foreground">% Margin <span className="font-mono font-bold text-success">{item.pctMargin.toFixed(5)}</span></div>
                                                                         </div>
                                                                     </div>
                                                                     {/* Right: Source Chain */}
@@ -1790,12 +1790,12 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                                                             </div>
                                                                         )}
                                                                         <div className="flex items-center gap-1.5 mt-1">
-                                                                            <span className="text-[7px] font-bold px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/20">VENDOR PDF</span>
+                                                                            <span className="text-[7px] font-bold px-1.5 py-0.5 rounded bg-warning/15 dark:bg-warning/10 text-warning border border-warning/20">VENDOR PDF</span>
                                                                             {isRealItem && item.status === 'ai-suggested' && (
                                                                                 <span className="text-[7px] font-bold px-1.5 py-0.5 rounded bg-brand-100 dark:bg-brand-500/10 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-500/20">AI SUGGESTED</span>
                                                                             )}
                                                                             {isRealItem && item.status === 'expert-hub' && (
-                                                                                <span className="text-[7px] font-bold px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20">EXPERT HUB</span>
+                                                                                <span className="text-[7px] font-bold px-1.5 py-0.5 rounded bg-info/15 dark:bg-info/10 text-info border border-info/20">EXPERT HUB</span>
                                                                             )}
                                                                         </div>
                                                                     </div>
@@ -1814,7 +1814,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                         <div className="px-4 py-2.5 border-t border-border bg-muted/30 flex items-center justify-between">
                             <div className="flex items-center gap-3">
                                 <div className="flex items-center gap-1.5">
-                                    <div className="w-2 h-2 rounded-full bg-green-500" />
+                                    <div className="w-2 h-2 rounded-full bg-success/100" />
                                     <span className="text-[10px] text-muted-foreground">{MAPPED_ITEMS_COUNT} Auto-Mapped</span>
                                 </div>
                                 <div className="flex items-center gap-1.5">
@@ -1822,7 +1822,7 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                     <span className="text-[10px] text-muted-foreground">{AI_SUGGESTED_ITEMS.length} AI Suggested</span>
                                 </div>
                                 <div className="flex items-center gap-1.5">
-                                    <div className="w-2 h-2 rounded-full bg-blue-500" />
+                                    <div className="w-2 h-2 rounded-full bg-info/100" />
                                     <span className="text-[10px] text-muted-foreground">{EXPERT_HUB_ITEMS.length} Expert Hub</span>
                                 </div>
                             </div>
@@ -1861,10 +1861,10 @@ export default function DuplerPdfProcessor({ onNavigate }: DuplerPdfProcessorPro
                                 <div className="p-4 space-y-3">
                                     <div className="grid grid-cols-4 gap-2">
                                         {[
-                                            { n: MAPPED_ITEMS_COUNT, label: 'Auto-Mapped', color: 'text-green-600 dark:text-green-400' },
+                                            { n: MAPPED_ITEMS_COUNT, label: 'Auto-Mapped', color: 'text-success' },
                                             { n: AI_SUGGESTED_ITEMS.length, label: 'AI Suggested', color: 'text-brand-600 dark:text-brand-400' },
-                                            { n: EXPERT_HUB_ITEMS.length, label: 'Expert Resolved', color: 'text-blue-600 dark:text-blue-400' },
-                                            { n: `$${UPCHARGE_TOTAL.toLocaleString()}`, label: 'Upcharges', color: 'text-amber-600 dark:text-amber-400' },
+                                            { n: EXPERT_HUB_ITEMS.length, label: 'Expert Resolved', color: 'text-info' },
+                                            { n: `$${UPCHARGE_TOTAL.toLocaleString()}`, label: 'Upcharges', color: 'text-warning' },
                                         ].map(s => (
                                             <div key={s.label} className="text-center p-2 rounded-lg bg-muted/30 border border-border">
                                                 <div className={`text-base font-bold ${s.color}`}>{s.n}</div>
@@ -2262,7 +2262,7 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
     const sourceBadge = (source: 'auto' | 'ai-suggested' | 'expert-hub') => {
         if (source === 'auto') return <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-purple-100 dark:bg-ai/10 text-purple-700 dark:text-purple-400 border border-purple-200 dark:border-purple-500/20">MFR CATALOG</span>;
         if (source === 'ai-suggested') return <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-brand-100 dark:bg-brand-500/10 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-500/20">AI SUGGESTED</span>;
-        return <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20">EXPERT HUB</span>;
+        return <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-info/15 dark:bg-info/10 text-info border border-info/20">EXPERT HUB</span>;
     };
 
     return (
@@ -2289,7 +2289,7 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                 </p>
 
                                 <div className="flex items-center gap-2 flex-wrap mt-3 mb-2">
-                                    <span className="text-[8px] font-bold px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-500/20 flex items-center gap-1 ring-2 ring-green-300 dark:ring-green-500/30 shadow-sm shadow-green-200 dark:shadow-green-500/10">
+                                    <span className="text-[8px] font-bold px-2 py-1 rounded-md bg-success/15 dark:bg-success/10 text-success border border-success/30 dark:border-success/30 flex items-center gap-1 ring-2 ring-green-300 dark:ring-green-500/30 shadow-sm shadow-green-200 dark:shadow-green-500/10">
                                         <CheckCircleIcon className="h-3 w-3" /> VALIDATED SPEC
                                     </span>
                                     <span className="text-muted-foreground text-[10px]">→</span>
@@ -2299,7 +2299,7 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                 </div>
 
                                 <div className="flex items-center gap-2 mt-1">
-                                    <span className="text-[8px] px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-bold border border-green-200 dark:border-green-500/20">DESIGNER VALIDATED</span>
+                                    <span className="text-[8px] px-1.5 py-0.5 rounded bg-success/15 dark:bg-success/10 text-success font-bold border border-success/30 dark:border-success/30">DESIGNER VALIDATED</span>
                                 </div>
 
                                 <p className="text-[10px] text-brand-600 dark:text-brand-400 mt-2 flex items-center gap-1 group-hover:underline">Click to review <ArrowRightIcon className="h-3 w-3" /></p>
@@ -2327,7 +2327,7 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                         {/* Visual Connection Bar */}
                         <div className="flex flex-col gap-3 p-3 rounded-xl bg-card border border-border">
                             <div className="flex items-center gap-2 flex-wrap">
-                                <span className="text-[8px] font-bold px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-500/20 flex items-center gap-1 ring-2 ring-green-300 dark:ring-green-500/30 shadow-sm shadow-green-200 dark:shadow-green-500/10">
+                                <span className="text-[8px] font-bold px-2 py-1 rounded-md bg-success/15 dark:bg-success/10 text-success border border-success/30 dark:border-success/30 flex items-center gap-1 ring-2 ring-green-300 dark:ring-green-500/30 shadow-sm shadow-green-200 dark:shadow-green-500/10">
                                     <CheckCircleIcon className="h-3 w-3" /> VALIDATED SPEC
                                 </span>
                                 <span className="text-muted-foreground text-[10px]">→</span>
@@ -2344,17 +2344,17 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                 <div className="flex items-center gap-2">
                                     <DocumentTextIcon className="h-4 w-4 text-ai" />
                                     <span className="text-xs font-bold text-foreground">{SPEC_ID}.pmx</span>
-                                    <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-500/20">VALIDATED</span>
+                                    <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-success/15 dark:bg-success/10 text-success border border-success/30 dark:border-success/30">VALIDATED</span>
                                 </div>
                                 <span className="text-[10px] text-muted-foreground">Received from Designer Alden (Designer)</span>
                             </div>
                             <div className="p-4 space-y-3">
                                 <div className="grid grid-cols-4 gap-2">
                                     {[
-                                        { n: MAPPED_ITEMS_COUNT, label: 'Auto-Mapped', color: 'text-green-600 dark:text-green-400' },
+                                        { n: MAPPED_ITEMS_COUNT, label: 'Auto-Mapped', color: 'text-success' },
                                         { n: AI_SUGGESTED_ITEMS.length, label: 'AI Suggested', color: 'text-brand-600 dark:text-brand-400' },
-                                        { n: EXPERT_HUB_ITEMS.length, label: 'Expert Resolved', color: 'text-blue-600 dark:text-blue-400' },
-                                        { n: `$${UPCHARGE_TOTAL.toLocaleString()}`, label: 'Upcharges', color: 'text-amber-600 dark:text-amber-400' },
+                                        { n: EXPERT_HUB_ITEMS.length, label: 'Expert Resolved', color: 'text-info' },
+                                        { n: `$${UPCHARGE_TOTAL.toLocaleString()}`, label: 'Upcharges', color: 'text-warning' },
                                     ].map(s => (
                                         <div key={s.label} className="text-center p-2 rounded-lg bg-muted/30 border border-border">
                                             <div className={`text-base font-bold ${s.color}`}>{s.n}</div>
@@ -2380,7 +2380,7 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                 <div className="flex gap-1.5">
                                     <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-purple-100 dark:bg-ai/10 text-purple-700 dark:text-purple-400 border border-purple-200 dark:border-purple-500/20">MFR CATALOG</span>
                                     <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-brand-100 dark:bg-brand-500/10 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-500/20">AI SUGGESTED</span>
-                                    <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20">EXPERT HUB</span>
+                                    <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-info/15 dark:bg-info/10 text-info border border-info/20">EXPERT HUB</span>
                                 </div>
                             </div>
                             <table className="w-full text-[10px]">
@@ -2397,21 +2397,21 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                 </thead>
                                 <tbody>
                                     {scPagedItems.map(item => (
-                                        <tr key={item.line} className={`border-b border-border/50 ${item.flagged ? 'bg-blue-50/30 dark:bg-blue-500/[0.03]' : ''}`}>
+                                        <tr key={item.line} className={`border-b border-border/50 ${item.flagged ? 'bg-info/10/30 dark:bg-info/100/[0.03]' : ''}`}>
                                             <td className="py-1.5 px-3 text-muted-foreground">{item.line}</td>
                                             <td className="py-1.5 px-2 text-foreground">
                                                 <span className="flex items-center gap-1.5">
                                                     {item.product}
                                                     {item.flagged && (
                                                         <span className="group relative">
-                                                            <CheckCircleIcon className="h-3 w-3 text-green-500 shrink-0" />
+                                                            <CheckCircleIcon className="h-3 w-3 text-success shrink-0" />
                                                             <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 hidden group-hover:block whitespace-nowrap px-2 py-1 rounded bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-[8px] font-medium z-20 shadow-lg max-w-xs">
                                                                 {item.flagNote || 'Expert confirmed'}
                                                             </span>
                                                         </span>
                                                     )}
                                                     {item.flagged && (
-                                                        <span className="text-[7px] font-bold px-1 py-0.5 rounded bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-500/20 shrink-0">EXPERT CONFIRMED</span>
+                                                        <span className="text-[7px] font-bold px-1 py-0.5 rounded bg-success/15 dark:bg-success/10 text-success border border-success/30 dark:border-success/30 shrink-0">EXPERT CONFIRMED</span>
                                                     )}
                                                 </span>
                                             </td>
@@ -2465,30 +2465,30 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                             <div className="flex items-center gap-2 mb-3">
                                 <AIAgentAvatar />
                                 <span className="text-xs font-bold text-foreground">UpchargeDetector — Cost Adjustments Found</span>
-                                <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/20">${UPCHARGE_TOTAL.toLocaleString()}</span>
+                                <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-warning/15 dark:bg-warning/10 text-warning border border-warning/20">${UPCHARGE_TOTAL.toLocaleString()}</span>
                             </div>
                             <div className="space-y-2">
                                 {UPCHARGE_ITEMS.map(uc => {
                                     const acked = upchargesAcked[uc.itemLine];
                                     return (
                                         <div key={uc.id} className={`p-3 rounded-xl border-2 transition-all duration-300 ${
-                                            acked ? 'border-green-300 dark:border-green-500/30 bg-green-50/50 dark:bg-green-500/5' : 'border-amber-200 dark:border-amber-500/20 bg-amber-50/30 dark:bg-amber-500/5'
+                                            acked ? 'border-success/30 bg-success/10 dark:bg-success/100/5' : 'border-warning/20 bg-warning/10'
                                         }`}>
                                             <div className="flex items-center justify-between mb-1">
                                                 <span className="text-sm font-bold text-foreground">{uc.product}</span>
-                                                <span className="text-sm font-bold text-amber-600 dark:text-amber-400">+${uc.total.toLocaleString()}</span>
+                                                <span className="text-sm font-bold text-warning">+${uc.total.toLocaleString()}</span>
                                             </div>
                                             <p className="text-[11px] text-foreground mb-1">{uc.finishOrOption}</p>
                                             <p className="text-[10px] text-muted-foreground mb-2">{uc.note}</p>
                                             <div className="flex items-center justify-between">
                                                 <span className="text-[10px] text-muted-foreground">{uc.qty} × ${uc.perUnit} = ${uc.total.toLocaleString()}</span>
                                                 {acked ? (
-                                                    <span className="text-[10px] font-bold text-green-600 dark:text-green-400 flex items-center gap-1">
+                                                    <span className="text-[10px] font-bold text-success flex items-center gap-1">
                                                         <CheckCircleIcon className="h-3.5 w-3.5" /> Approved
                                                     </span>
                                                 ) : (
                                                     <button onClick={() => setUpchargesAcked(p => ({ ...p, [uc.itemLine]: true }))}
-                                                        className="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-white text-[11px] font-bold transition-colors">
+                                                        className="px-3 py-1.5 rounded-lg bg-warning hover:bg-warning text-white text-[11px] font-bold transition-colors">
                                                         Approve Upcharge
                                                     </button>
                                                 )}
@@ -2498,9 +2498,9 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                 })}
                             </div>
                             {allUpchargesAcked && (
-                                <div className="mt-2 p-2 rounded-lg bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 flex items-center gap-2">
-                                    <CheckCircleIcon className="h-3.5 w-3.5 text-green-600 dark:text-green-400 shrink-0" />
-                                    <span className="text-[10px] font-bold text-green-700 dark:text-green-300">All upcharges reviewed — ${UPCHARGE_TOTAL.toLocaleString()} approved</span>
+                                <div className="mt-2 p-2 rounded-lg bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 flex items-center gap-2">
+                                    <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
+                                    <span className="text-[10px] font-bold text-success dark:text-success">All upcharges reviewed — ${UPCHARGE_TOTAL.toLocaleString()} approved</span>
                                 </div>
                             )}
                         </div>
@@ -2510,7 +2510,7 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                             <div className="flex items-center gap-2 mb-3">
                                 <AIAgentAvatar />
                                 <span className="text-xs font-bold text-foreground">DiscountAdvisor — Suggested Pricing</span>
-                                <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20">AI ASSISTED</span>
+                                <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-info/15 dark:bg-info/10 text-info border border-info/20">AI ASSISTED</span>
                             </div>
                             <div className="space-y-3">
                                 {DISCOUNT_TIERS.map(dt => {
@@ -2521,20 +2521,20 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
 
                                     return (
                                     <div key={dt.id} className={`p-4 rounded-xl border-2 transition-all duration-300 ${
-                                        applied === 'ai' || applied === 'manager-approved' ? 'border-green-300 dark:border-green-500/30 bg-green-50/50 dark:bg-green-500/5' :
+                                        applied === 'ai' || applied === 'manager-approved' ? 'border-success/30 bg-success/10 dark:bg-success/100/5' :
                                         applied === 'adjusted' ? 'border-indigo-300 dark:border-indigo-500/30 bg-indigo-50/50 dark:bg-indigo-500/5' :
-                                        applied === 'escalated' ? 'border-amber-300 dark:border-amber-500/30 bg-amber-50/50 dark:bg-amber-500/5' :
-                                        'border-blue-200 dark:border-blue-500/20 bg-card'
+                                        applied === 'escalated' ? 'border-warning/30 bg-warning/10' :
+                                        'border-info/20 bg-card'
                                     }`}>
                                         <div className="flex items-center justify-between mb-2">
                                             <div className="flex items-center gap-2">
                                                 <span className="text-sm font-bold text-foreground">{dt.manufacturer}</span>
-                                                <span className="text-[9px] px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-700 dark:text-blue-300 font-bold">{dt.discountType}</span>
+                                                <span className="text-[9px] px-1.5 py-0.5 rounded bg-info/20 text-info dark:text-info font-bold">{dt.discountType}</span>
                                                 {applied === 'adjusted' && <span className="text-[8px] px-1.5 py-0.5 rounded bg-indigo-100 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 font-bold border border-indigo-200 dark:border-indigo-500/20">SC ADJUSTED</span>}
-                                                {applied === 'escalated' && <span className="text-[8px] px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 font-bold border border-amber-200 dark:border-amber-500/20 animate-pulse">PENDING APPROVAL</span>}
-                                                {applied === 'manager-approved' && <span className="text-[8px] px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-bold border border-green-200 dark:border-green-500/20">MGR APPROVED</span>}
+                                                {applied === 'escalated' && <span className="text-[8px] px-1.5 py-0.5 rounded bg-warning/15 dark:bg-warning/10 text-warning font-bold border border-warning/20 animate-pulse">PENDING APPROVAL</span>}
+                                                {applied === 'manager-approved' && <span className="text-[8px] px-1.5 py-0.5 rounded bg-success/15 dark:bg-success/10 text-success font-bold border border-success/30 dark:border-success/30">MGR APPROVED</span>}
                                             </div>
-                                            <span className={`text-lg font-bold ${applied === 'adjusted' ? 'text-indigo-600 dark:text-indigo-400' : 'text-blue-600 dark:text-blue-400'}`}>
+                                            <span className={`text-lg font-bold ${applied === 'adjusted' ? 'text-indigo-600 dark:text-indigo-400' : 'text-info'}`}>
                                                 {effectiveRate !== dt.rate ? <><span className="line-through text-muted-foreground text-sm mr-1">{dt.rate}%</span>{effectiveRate}%</> : `${dt.rate}%`}
                                             </span>
                                         </div>
@@ -2547,10 +2547,10 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
 
                                         {/* AI Justification — highlighted */}
                                         {!applied && (
-                                            <div className="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 mb-3">
+                                            <div className="p-2.5 rounded-lg bg-info/10 dark:bg-info/10 border border-info/20 mb-3">
                                                 <div className="flex items-start gap-2">
                                                     <AIAgentAvatar className="mt-0.5" />
-                                                    <p className="text-[11px] text-blue-800 dark:text-blue-200 leading-relaxed">
+                                                    <p className="text-[11px] text-info dark:text-info leading-relaxed">
                                                         <span className="font-bold">AI Justification:</span> {dt.aiJustification}
                                                     </p>
                                                 </div>
@@ -2573,7 +2573,7 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                                     </div>
                                                 </div>
                                                 <div className="flex items-center justify-between text-[10px] text-muted-foreground">
-                                                    <span>AI suggested: <span className="font-bold text-blue-600 dark:text-blue-400">{dt.rate}%</span></span>
+                                                    <span>AI suggested: <span className="font-bold text-info">{dt.rate}%</span></span>
                                                     <span>Net: <span className="font-bold text-foreground">${netTotal.toLocaleString()}</span> (savings ${Math.round(dt.listTotal * effectiveRate / 100).toLocaleString()})</span>
                                                 </div>
                                                 <div>
@@ -2599,7 +2599,7 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                                 <div className="relative">
                                                     <div className="flex items-center gap-2 flex-wrap">
                                                         <button onClick={() => setDiscountsApplied(p => ({ ...p, [dt.id]: 'ai' }))}
-                                                            className="px-3 py-1.5 rounded-lg bg-blue-500 hover:bg-blue-600 text-white text-[11px] font-bold transition-colors">
+                                                            className="px-3 py-1.5 rounded-lg bg-info/100 hover:bg-info text-white text-[11px] font-bold transition-colors">
                                                             Apply {dt.rate}% Discount
                                                         </button>
                                                         <button onClick={() => setAdjustingTier(dt.id)}
@@ -2617,16 +2617,16 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                                             }}
                                                             className={`px-3 py-1.5 rounded-lg border text-[11px] font-medium transition-colors flex items-center gap-1 ${
                                                                 showApprovalPopover === dt.id
-                                                                    ? 'border-amber-400 bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 ring-1 ring-amber-400/50'
-                                                                    : 'border-amber-300 dark:border-amber-500/30 hover:bg-amber-50 dark:hover:bg-amber-500/10 text-amber-700 dark:text-amber-400'
+                                                                    ? 'border-warning bg-warning/10 text-warning ring-1 ring-amber-400/50'
+                                                                    : 'border-warning/30 hover:bg-warning/10 dark:hover:bg-warning/10 text-warning'
                                                             }`}>
                                                             <ExclamationTriangleIcon className="h-3 w-3" /> Request Approval
                                                         </button>
                                                     </div>
                                                     {/* Approval Popover */}
                                                     {showApprovalPopover === dt.id && (
-                                                        <div className="mt-3 bg-card border border-amber-200 dark:border-amber-500/30 rounded-xl shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 overflow-hidden">
-                                                            <div className="px-4 py-2.5 border-b border-border bg-amber-50/50 dark:bg-amber-500/5">
+                                                        <div className="mt-3 bg-card border border-warning/30 rounded-xl shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 overflow-hidden">
+                                                            <div className="px-4 py-2.5 border-b border-border bg-warning/10">
                                                                 <p className="text-xs font-bold text-foreground">Request Discount Approval</p>
                                                                 <p className="text-[9px] text-muted-foreground">{dt.discountType} — {dt.rate}% on ${dt.listTotal.toLocaleString()}</p>
                                                             </div>
@@ -2634,13 +2634,13 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                                                 {/* Manager */}
                                                                 <div>
                                                                     <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider mb-1.5">Send to Manager</p>
-                                                                    <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-amber-50 dark:bg-amber-500/10 ring-1 ring-amber-300 dark:ring-amber-500/30">
+                                                                    <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-warning/10 ring-1 ring-amber-300 dark:ring-amber-500/30">
                                                                         <img src={MANAGER_PHOTO} alt="Mike Torres" className="w-8 h-8 rounded-full object-cover ring-2 ring-amber-400 shrink-0" />
                                                                         <div className="flex-1 min-w-0">
                                                                             <p className="text-[11px] font-bold text-foreground">Mike Torres</p>
                                                                             <p className="text-[9px] text-muted-foreground">Sales Manager — Workspace Solutions</p>
                                                                         </div>
-                                                                        <CheckCircleIcon className="h-4 w-4 text-amber-500 shrink-0" />
+                                                                        <CheckCircleIcon className="h-4 w-4 text-warning shrink-0" />
                                                                     </div>
                                                                 </div>
                                                                 {/* Priority */}
@@ -2649,11 +2649,11 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                                                     <div className="flex items-center gap-2">
                                                                         <button onClick={() => setApprovalPriority('normal')}
                                                                             className={`flex-1 py-1.5 rounded-lg text-[10px] font-bold text-center transition-colors ${
-                                                                                approvalPriority === 'normal' ? 'bg-blue-500 text-white' : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                                                                                approvalPriority === 'normal' ? 'bg-info/100 text-white' : 'bg-muted text-muted-foreground hover:bg-muted/80'
                                                                             }`}>Normal</button>
                                                                         <button onClick={() => setApprovalPriority('urgent')}
                                                                             className={`flex-1 py-1.5 rounded-lg text-[10px] font-bold text-center transition-colors ${
-                                                                                approvalPriority === 'urgent' ? 'bg-red-500 text-white' : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                                                                                approvalPriority === 'urgent' ? 'bg-destructive text-white' : 'bg-muted text-muted-foreground hover:bg-muted/80'
                                                                             }`}>Urgent</button>
                                                                     </div>
                                                                 </div>
@@ -2677,7 +2677,7 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                                                     setApprovalPriority('normal');
                                                                     setDiscountsApplied(p => ({ ...p, [dt.id]: 'escalated' }));
                                                                 }}
-                                                                    className="flex-1 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-white text-[11px] font-bold transition-colors flex items-center justify-center gap-1">
+                                                                    className="flex-1 py-2 rounded-lg bg-warning hover:bg-warning text-white text-[11px] font-bold transition-colors flex items-center justify-center gap-1">
                                                                     <PaperAirplaneIcon className="h-3 w-3" /> Send Request
                                                                 </button>
                                                                 <button onClick={() => { setShowApprovalPopover(null); setApprovalNote(''); setApprovalPriority('normal'); }}
@@ -2691,48 +2691,48 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                             )
                                         ) : applied === 'escalated' ? (
                                             /* Pending approval — amber with pulse */
-                                            <div className="p-3 rounded-lg bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/20 animate-in fade-in duration-300">
+                                            <div className="p-3 rounded-lg bg-warning/10 border border-warning/20 animate-in fade-in duration-300">
                                                 <div className="flex items-center gap-3">
                                                     <div className="relative shrink-0">
                                                         <img src={MANAGER_PHOTO} alt="Mike Torres" className="w-8 h-8 rounded-full object-cover ring-2 ring-amber-400" />
-                                                        <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-amber-400 flex items-center justify-center ring-2 ring-background">
+                                                        <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-warning flex items-center justify-center ring-2 ring-background">
                                                             <ArrowPathIcon className="h-2 w-2 text-white animate-spin" />
                                                         </div>
                                                     </div>
                                                     <div className="flex-1 min-w-0">
-                                                        <p className="text-[11px] font-bold text-amber-800 dark:text-amber-200">Sent to Mike Torres (Sales Manager)</p>
-                                                        <p className="text-[9px] text-amber-600 dark:text-amber-400">Awaiting approval...</p>
+                                                        <p className="text-[11px] font-bold text-warning dark:text-warning">Sent to Mike Torres (Sales Manager)</p>
+                                                        <p className="text-[9px] text-warning">Awaiting approval...</p>
                                                     </div>
                                                     {approvalPriority === 'urgent' && (
-                                                        <span className="text-[8px] px-1.5 py-0.5 rounded bg-red-100 dark:bg-red-500/10 text-red-700 dark:text-red-400 font-bold border border-red-200 dark:border-red-500/20">URGENT</span>
+                                                        <span className="text-[8px] px-1.5 py-0.5 rounded bg-destructive/15 dark:bg-destructive/10 text-destructive font-bold border border-destructive/30">URGENT</span>
                                                     )}
                                                 </div>
                                                 {discountNotes[dt.id] && (
-                                                    <p className="text-[9px] text-amber-600 dark:text-amber-400 italic mt-1.5 pl-11">"{discountNotes[dt.id]}"</p>
+                                                    <p className="text-[9px] text-warning italic mt-1.5 pl-11">"{discountNotes[dt.id]}"</p>
                                                 )}
                                             </div>
                                         ) : applied === 'manager-approved' ? (
                                             /* Manager approved — green with photo */
-                                            <div className="p-3 rounded-lg bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 animate-in fade-in duration-300">
+                                            <div className="p-3 rounded-lg bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 animate-in fade-in duration-300">
                                                 <div className="flex items-center gap-3">
                                                     <div className="relative shrink-0">
                                                         <img src={MANAGER_PHOTO} alt="Mike Torres" className="w-8 h-8 rounded-full object-cover ring-2 ring-green-400" />
-                                                        <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-green-500 flex items-center justify-center ring-2 ring-background">
+                                                        <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-success/100 flex items-center justify-center ring-2 ring-background">
                                                             <CheckIcon className="h-2 w-2 text-white" />
                                                         </div>
                                                     </div>
                                                     <div className="flex-1 min-w-0">
-                                                        <p className="text-[11px] font-bold text-green-800 dark:text-green-200">Approved by Mike Torres (Sales Manager)</p>
-                                                        <p className="text-[9px] text-green-600 dark:text-green-400">Discount {effectiveRate}% authorized · Applied to spec</p>
+                                                        <p className="text-[11px] font-bold text-success dark:text-success">Approved by Mike Torres (Sales Manager)</p>
+                                                        <p className="text-[9px] text-success">Discount {effectiveRate}% authorized · Applied to spec</p>
                                                     </div>
                                                 </div>
                                                 {discountNotes[dt.id] && (
-                                                    <p className="text-[9px] text-green-600 dark:text-green-400 italic mt-1.5 pl-11">"{discountNotes[dt.id]}"</p>
+                                                    <p className="text-[9px] text-success italic mt-1.5 pl-11">"{discountNotes[dt.id]}"</p>
                                                 )}
                                             </div>
                                         ) : (
                                             <div className="space-y-1.5">
-                                                <div className="flex items-center gap-2 text-[10px] text-green-600 dark:text-green-400">
+                                                <div className="flex items-center gap-2 text-[10px] text-success">
                                                     <CheckCircleIcon className="h-4 w-4" />
                                                     <span className="font-bold">
                                                         {applied === 'ai' ? 'AI Discount Applied' :
@@ -2752,18 +2752,18 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
 
                         {/* Running total */}
                         {allDiscountsApplied && (
-                            <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 animate-in fade-in duration-300 space-y-2">
+                            <div className="p-3 rounded-xl bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 animate-in fade-in duration-300 space-y-2">
                                 <div className="flex items-center justify-between">
-                                    <span className="text-xs font-bold text-green-800 dark:text-green-200">Discounted Total</span>
-                                    <span className="text-lg font-bold text-green-700 dark:text-green-300">${Math.round(discountedTotal).toLocaleString()}</span>
+                                    <span className="text-xs font-bold text-success dark:text-success">Discounted Total</span>
+                                    <span className="text-lg font-bold text-success dark:text-success">${Math.round(discountedTotal).toLocaleString()}</span>
                                 </div>
-                                <p className="text-[10px] text-green-600 dark:text-green-400">
+                                <p className="text-[10px] text-success">
                                     Savings: ${(PROJECT_TOTAL - Math.round(discountedTotal)).toLocaleString()} ({Math.round((1 - discountedTotal / PROJECT_TOTAL) * 100)}% average discount)
                                 </p>
                                 {/* Breakdown badges */}
-                                <div className="flex items-center gap-2 flex-wrap pt-1 border-t border-green-200 dark:border-green-500/20">
+                                <div className="flex items-center gap-2 flex-wrap pt-1 border-t border-success/30 dark:border-success/30">
                                     {Object.values(discountsApplied).filter(v => v === 'ai').length > 0 && (
-                                        <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20">
+                                        <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-info/15 dark:bg-info/10 text-info border border-info/20">
                                             {Object.values(discountsApplied).filter(v => v === 'ai').length} AI APPLIED
                                         </span>
                                     )}
@@ -2773,12 +2773,12 @@ export function DuplerScReview({ onNavigate }: { onNavigate: (page: string) => v
                                         </span>
                                     )}
                                     {Object.values(discountsApplied).filter(v => v === 'escalated').length > 0 && (
-                                        <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/20">
+                                        <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-warning/15 dark:bg-warning/10 text-warning border border-warning/20">
                                             {Object.values(discountsApplied).filter(v => v === 'escalated').length} PENDING APPROVAL
                                         </span>
                                     )}
                                     {Object.values(discountsApplied).filter(v => v === 'manager-approved').length > 0 && (
-                                        <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-500/20">
+                                        <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-success/15 dark:bg-success/10 text-success border border-success/30 dark:border-success/30">
                                             {Object.values(discountsApplied).filter(v => v === 'manager-approved').length} MGR APPROVED
                                         </span>
                                     )}
@@ -2996,19 +2996,19 @@ Checksum        = sha256:b7d3e1...f92a
                             </div>
 
                             <div className="grid grid-cols-2 gap-2">
-                                <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${scSyncProgress >= 20 ? 'bg-green-50 dark:bg-green-500/5 border-green-300 dark:border-green-500/30' : 'bg-muted/30 border-border'}`}>
+                                <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${scSyncProgress >= 20 ? 'bg-success/10 dark:bg-success/100/5 border-success/30' : 'bg-muted/30 border-border'}`}>
                                     <p className="text-[9px] text-muted-foreground">SPEC System</p>
                                     <p className="text-xs font-bold text-foreground">{scSyncProgress >= 20 ? 'Synced' : 'Pending...'}</p>
                                 </div>
-                                <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${scSyncProgress >= 45 ? 'bg-green-50 dark:bg-green-500/5 border-green-300 dark:border-green-500/30' : 'bg-muted/30 border-border'}`}>
+                                <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${scSyncProgress >= 45 ? 'bg-success/10 dark:bg-success/100/5 border-success/30' : 'bg-muted/30 border-border'}`}>
                                     <p className="text-[9px] text-muted-foreground">CET Catalog</p>
                                     <p className="text-xs font-bold text-foreground">{scSyncProgress >= 45 ? 'Updated' : 'Pending...'}</p>
                                 </div>
-                                <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${scSyncProgress >= 65 ? 'bg-green-50 dark:bg-green-500/5 border-green-300 dark:border-green-500/30' : 'bg-muted/30 border-border'}`}>
+                                <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${scSyncProgress >= 65 ? 'bg-success/10 dark:bg-success/100/5 border-success/30' : 'bg-muted/30 border-border'}`}>
                                     <p className="text-[9px] text-muted-foreground">Dealer Pricing</p>
                                     <p className="text-xs font-bold text-foreground">{scSyncProgress >= 65 ? 'Verified' : 'Pending...'}</p>
                                 </div>
-                                <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${scSyncProgress >= 85 ? 'bg-green-50 dark:bg-green-500/5 border-green-300 dark:border-green-500/30' : 'bg-muted/30 border-border'}`}>
+                                <div className={`px-3 py-2 rounded-lg border transition-all duration-300 ${scSyncProgress >= 85 ? 'bg-success/10 dark:bg-success/100/5 border-success/30' : 'bg-muted/30 border-border'}`}>
                                     <p className="text-[9px] text-muted-foreground">Traceability</p>
                                     <p className="text-xs font-bold text-foreground">{scSyncProgress >= 85 ? 'Complete' : 'Pending...'}</p>
                                 </div>
@@ -3019,13 +3019,13 @@ Checksum        = sha256:b7d3e1...f92a
                     {/* Sync Done — Success + Send CTA */}
                     {scSyncPhase === 'done' && !specApproved && (
                         <div className="space-y-3 animate-in fade-in slide-in-from-bottom-3 duration-500">
-                            <div className="p-4 rounded-xl bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-500/10 dark:to-emerald-500/10 border-2 border-green-400 dark:border-green-500/40 shadow-lg shadow-green-200/30 dark:shadow-green-500/10 space-y-3">
+                            <div className="p-4 rounded-xl bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-500/10 dark:to-emerald-500/10 border-2 border-success dark:border-success/30 shadow-lg shadow-green-200/30 dark:shadow-green-500/10 space-y-3">
                                 <div className="flex items-start gap-3">
-                                    <div className="p-2.5 rounded-xl bg-green-100 dark:bg-green-500/20 shrink-0">
-                                        <CheckCircleIcon className="h-6 w-6 text-green-600 dark:text-green-400" />
+                                    <div className="p-2.5 rounded-xl bg-success/15 shrink-0">
+                                        <CheckCircleIcon className="h-6 w-6 text-success" />
                                     </div>
                                     <div className="flex-1">
-                                        <p className="text-sm font-bold text-green-800 dark:text-green-300">All Systems Synchronized</p>
+                                        <p className="text-sm font-bold text-success">All Systems Synchronized</p>
                                         <p className="text-[11px] text-muted-foreground mt-1">
                                             Priced specification has been propagated to SPEC, CET, and project catalog.
                                             All {CATALOG_ITEMS_TOTAL} items are aligned with dealer pricing and full traceability.
@@ -3033,9 +3033,9 @@ Checksum        = sha256:b7d3e1...f92a
                                     </div>
                                 </div>
                                 <div className="flex flex-wrap items-center gap-2 ml-12">
-                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-green-200 dark:bg-green-500/20 text-green-800 dark:text-green-300 font-bold">SYSTEMS SYNCED</span>
+                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/20 dark:bg-success/20 text-success font-bold">SYSTEMS SYNCED</span>
                                     <span className="text-[9px] px-2 py-0.5 rounded-full bg-purple-100 dark:bg-ai/10 text-purple-700 dark:text-purple-400 font-bold">SC PRICED</span>
-                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 font-bold">TRACEABILITY OK</span>
+                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-info/15 dark:bg-info/10 text-info font-bold">TRACEABILITY OK</span>
                                 </div>
                             </div>
 
@@ -3109,9 +3109,9 @@ Checksum        = sha256:b7d3e1...f92a
 
                     {/* Send Toast */}
                     {scSendToast && (
-                        <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300">
-                            <CheckCircleIcon className="h-4 w-4 text-green-600 dark:text-green-400 shrink-0" />
-                            <p className="text-xs font-bold text-green-800 dark:text-green-200">
+                        <div className="p-3 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30 flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300">
+                            <CheckCircleIcon className="h-4 w-4 text-success shrink-0" />
+                            <p className="text-xs font-bold text-success dark:text-success">
                                 {SPEC_ID}_priced.sif approved & sent to Designer Alden, Mercy Health
                             </p>
                         </div>
@@ -3119,7 +3119,7 @@ Checksum        = sha256:b7d3e1...f92a
 
                     {/* Flow Complete */}
                     {specApproved && !scSendToast && (
-                        <div className="w-full py-3 rounded-xl bg-green-500 text-white font-bold text-sm text-center flex items-center justify-center gap-2">
+                        <div className="w-full py-3 rounded-xl bg-success/100 text-white font-bold text-sm text-center flex items-center justify-center gap-2">
                             <CheckCircleIcon className="h-4 w-4" />
                             Flow 1 Complete — Priced SIF sent for approval
                         </div>
@@ -3177,7 +3177,7 @@ Checksum        = sha256:b7d3e1...f92a
 
                         <div className="border-t border-border p-3 bg-card flex items-center justify-between shrink-0">
                             <span className="flex items-center gap-1.5 text-[10px] text-muted-foreground font-medium font-mono">
-                                <CheckCircleIcon className="w-3.5 h-3.5 text-green-500" /> Catalog Verified
+                                <CheckCircleIcon className="w-3.5 h-3.5 text-success" /> Catalog Verified
                             </span>
                             <span className="text-[10px] text-muted-foreground font-mono">
                                 Source: <strong className="text-ai dark:text-purple-400">{MANUFACTURER}</strong>

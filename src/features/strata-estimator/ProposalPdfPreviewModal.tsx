@@ -78,7 +78,7 @@ export default function ProposalPdfPreviewModal({
             aria-labelledby="proposal-pdf-title"
         >
             <div
-                className="w-full max-w-2xl max-h-[85vh] bg-card dark:bg-zinc-900 rounded-2xl shadow-2xl border border-border overflow-hidden animate-in zoom-in-95 duration-300 flex flex-col"
+                className="w-full max-w-2xl max-h-[85vh] bg-card rounded-2xl shadow-2xl border border-border overflow-hidden animate-in zoom-in-95 duration-300 flex flex-col"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Paper header */}
@@ -143,10 +143,10 @@ export default function ProposalPdfPreviewModal({
                                 </dd>
                             </div>
                             <div className="flex items-baseline justify-between gap-3 text-xs">
-                                <dt className="text-green-700 dark:text-green-400">
+                                <dt className="text-success">
                                     JPS contract ({discountPct}% off)
                                 </dt>
-                                <dd className="font-semibold text-green-700 dark:text-green-400 tabular-nums">
+                                <dd className="font-semibold text-success tabular-nums">
                                     {formatMoney(-discountAmount, { signed: true })}
                                 </dd>
                             </div>
@@ -159,18 +159,18 @@ export default function ProposalPdfPreviewModal({
                                 </dd>
                             </div>
                             <div className="flex items-baseline justify-between gap-3 text-xs">
-                                <dt className="text-blue-700 dark:text-blue-400">
+                                <dt className="text-info">
                                     Labor (delivery + installation)
                                 </dt>
-                                <dd className="font-semibold text-blue-700 dark:text-blue-400 tabular-nums">
+                                <dd className="font-semibold text-info tabular-nums">
                                     {formatMoney(labor, { signed: true })}
                                 </dd>
                             </div>
                             <div className="flex items-baseline justify-between gap-3 text-xs">
-                                <dt className="text-blue-700 dark:text-blue-400">
+                                <dt className="text-info">
                                     Freight
                                 </dt>
-                                <dd className="font-semibold text-blue-700 dark:text-blue-400 tabular-nums">
+                                <dd className="font-semibold text-info tabular-nums">
                                     {formatMoney(freight, { signed: true })}
                                 </dd>
                             </div>
@@ -233,7 +233,7 @@ export default function ProposalPdfPreviewModal({
                                     key={line}
                                     className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/40 text-[11px]"
                                 >
-                                    <CheckCircle2 className="w-3 h-3 text-green-600 dark:text-green-400 shrink-0" />
+                                    <CheckCircle2 className="w-3 h-3 text-success shrink-0" />
                                     <span className="text-foreground truncate">{line}</span>
                                 </li>
                             ))}

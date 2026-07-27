@@ -66,7 +66,7 @@ export default function ERPPODashboardArtifact({ data }: { data: any }) {
                             {filteredPOs.length} Available POs
                         </span>
                         <div className="h-4 w-px bg-zinc-200 dark:bg-zinc-700 mx-2 self-center"></div>
-                        <span className="text-sm font-semibold text-green-600 dark:text-green-500 self-center">
+                        <span className="text-sm font-semibold text-success dark:text-success self-center">
                             {formatCurrency(filteredPOs.reduce((acc, curr) => acc + curr.value, 0))} Total Value
                         </span>
                     </div>
@@ -81,8 +81,8 @@ export default function ERPPODashboardArtifact({ data }: { data: any }) {
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-3 mb-1">
                                     <h4 className="font-semibold text-foreground truncate">{po.number}</h4>
-                                    <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium border ${po.status === 'Approved' ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800' :
-                                        po.status === 'In Progress' ? 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800' :
+                                    <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium border ${po.status === 'Approved' ? 'bg-success/10 text-success border-success/30 dark:bg-success/15 dark:text-success dark:border-success/40' :
+                                        po.status === 'In Progress' ? 'bg-info/10 text-info border-info/30 dark:bg-info/15 dark:text-info dark:border-info/40' :
                                             'bg-zinc-100 text-muted-foreground border-zinc-200 dark:bg-zinc-800 dark:text-muted-foreground dark:border-zinc-700'
                                         }`}>
                                         {po.status}
@@ -130,17 +130,17 @@ export default function ERPPODashboardArtifact({ data }: { data: any }) {
                     <div className="space-y-4">
                         <div className="p-3 bg-muted dark:bg-zinc-800/50 rounded-lg flex items-center justify-between">
                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                <ReceiptPercentIcon className="w-4 h-4 text-blue-500" />
+                                <ReceiptPercentIcon className="w-4 h-4 text-info" />
                                 Total Orders
                             </div>
                             <span className="font-bold text-foreground">12</span>
                         </div>
                         <div className="p-3 bg-muted dark:bg-zinc-800/50 rounded-lg flex items-center justify-between">
                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                <CurrencyDollarIcon className="w-4 h-4 text-green-500" />
+                                <CurrencyDollarIcon className="w-4 h-4 text-success" />
                                 Total Value
                             </div>
-                            <span className="font-bold text-green-600 dark:text-green-500">$3.2M</span>
+                            <span className="font-bold text-success dark:text-success">$3.2M</span>
                         </div>
                         <div className="p-3 bg-muted dark:bg-zinc-800/50 rounded-lg flex items-center justify-between">
                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -152,7 +152,7 @@ export default function ERPPODashboardArtifact({ data }: { data: any }) {
                     </div>
 
                     <div className="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800 text-xs text-muted-foreground flex items-center gap-1.5">
-                        <ArrowRightIcon className="w-3 h-3 text-amber-500" />
+                        <ArrowRightIcon className="w-3 h-3 text-warning" />
                         Avg. Order Value <span className="font-semibold text-foreground">$269.9K</span>
                     </div>
                 </div>

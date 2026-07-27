@@ -138,7 +138,7 @@ export default function ApprovalChainModal({
                         leaveFrom="opacity-100 scale-100"
                         leaveTo="opacity-0 scale-95"
                     >
-                        <DialogPanel className="w-full max-w-lg bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-2xl overflow-hidden">
+                        <DialogPanel className="w-full max-w-lg bg-card rounded-2xl border border-border shadow-2xl overflow-hidden">
 
                             {/* Header */}
                             <div className="flex items-start gap-4 px-6 py-5 border-b border-border">
@@ -191,7 +191,7 @@ export default function ApprovalChainModal({
                                             key={person.name}
                                             className={clsx(
                                                 'flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300',
-                                                approved && 'bg-green-500/5 dark:bg-green-500/10',
+                                                approved && 'bg-success/100/5 dark:bg-success/10',
                                                 !approved && 'bg-muted/40'
                                             )}
                                         >
@@ -216,7 +216,7 @@ export default function ApprovalChainModal({
                                                 className={clsx(
                                                     'shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300',
                                                     approved
-                                                        ? 'bg-green-500 text-white scale-100'
+                                                        ? 'bg-success/100 text-white scale-100'
                                                         : 'bg-muted text-muted-foreground scale-95'
                                                 )}
                                             >
@@ -237,7 +237,7 @@ export default function ApprovalChainModal({
                             <div className="px-6 py-4 border-t border-border bg-muted/20">
                                 {done ? (
                                     <div className="flex items-center gap-2 text-sm text-foreground">
-                                        <CheckCircle2 className="w-4 h-4 text-green-500" />
+                                        <CheckCircle2 className="w-4 h-4 text-success" />
                                         <span className="font-semibold">All internal sign-offs collected.</span>
                                         <span className="text-muted-foreground">
                                             Publishing quote through CORE…

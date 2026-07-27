@@ -285,28 +285,28 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
             id: 'discrepancy', label: 'Discrepancies',
             count: mockNotifications.filter(n => n.type === 'discrepancy' && n.unread).length,
             icon: ExclamationTriangleIcon,
-            colorTheme: { activeBg: 'bg-red-500/15', activeText: 'text-red-500', activeBorder: 'border-red-500/20', badgeBg: 'bg-red-500/20', badgeText: 'text-red-500' },
+            colorTheme: { activeBg: 'bg-destructive/15', activeText: 'text-destructive', activeBorder: 'border-destructive/30', badgeBg: 'bg-destructive/20', badgeText: 'text-destructive' },
             filter: (n) => n.type === 'discrepancy'
         },
         {
             id: 'quotes', label: 'Quotes & POs',
             count: mockNotifications.filter(n => (n.type === 'quote_update' || n.type === 'po_created' || n.type === 'ack_received' || n.type === 'approval') && n.unread).length,
             icon: DocumentTextIcon,
-            colorTheme: { activeBg: 'bg-blue-500/15', activeText: 'text-blue-500', activeBorder: 'border-blue-500/20', badgeBg: 'bg-blue-500/20', badgeText: 'text-blue-500' },
+            colorTheme: { activeBg: 'bg-info/15', activeText: 'text-info', activeBorder: 'border-info/30', badgeBg: 'bg-info/20', badgeText: 'text-info' },
             filter: (n) => n.type === 'quote_update' || n.type === 'po_created' || n.type === 'ack_received' || n.type === 'approval'
         },
         {
             id: 'pricing', label: 'Pricing',
             count: mockNotifications.filter(n => (n.type === 'payment' || n.type === 'invoice') && n.unread).length,
             icon: CreditCardIcon,
-            colorTheme: { activeBg: 'bg-amber-500/15', activeText: 'text-amber-500', activeBorder: 'border-amber-500/20', badgeBg: 'bg-amber-500/20', badgeText: 'text-amber-500' },
+            colorTheme: { activeBg: 'bg-warning/15', activeText: 'text-warning', activeBorder: 'border-warning/30', badgeBg: 'bg-warning/20', badgeText: 'text-warning' },
             filter: (n) => n.type === 'payment' || n.type === 'invoice'
         },
         {
             id: 'shipping', label: 'Shipping',
             count: mockNotifications.filter(n => (n.type === 'shipment' || n.type === 'backorder') && n.unread).length,
             icon: TruckIcon,
-            colorTheme: { activeBg: 'bg-green-500/15', activeText: 'text-green-500', activeBorder: 'border-green-500/20', badgeBg: 'bg-green-500/20', badgeText: 'text-green-500' },
+            colorTheme: { activeBg: 'bg-success/15', activeText: 'text-success', activeBorder: 'border-success/30', badgeBg: 'bg-success/20', badgeText: 'text-success' },
             filter: (n) => n.type === 'shipment' || n.type === 'backorder'
         },
     ];
@@ -350,13 +350,13 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
     // Flow 1 tabs for step 1.10 — single tab since only 1 notification
     const flow1Tabs: NotificationTab[] = [
         { id: 'all', label: 'All', count: FLOW1_NOTIFICATIONS.length, icon: Squares2X2Icon, colorTheme: { activeBg: 'bg-gray-200 dark:bg-white/10', activeText: 'text-foreground', activeBorder: 'border-gray-300 dark:border-white/10', badgeBg: 'bg-muted0/20 dark:bg-white/20', badgeText: 'text-foreground' }, filter: () => true },
-        { id: 'quotes', label: 'Quotes & POs', count: FLOW1_NOTIFICATIONS.length, icon: DocumentTextIcon, colorTheme: { activeBg: 'bg-blue-500/15', activeText: 'text-blue-500', activeBorder: 'border-blue-500/20', badgeBg: 'bg-blue-500/20', badgeText: 'text-blue-500' }, filter: (n) => n.type === 'po_created' || n.type === 'quote_update' },
+        { id: 'quotes', label: 'Quotes & POs', count: FLOW1_NOTIFICATIONS.length, icon: DocumentTextIcon, colorTheme: { activeBg: 'bg-info/15', activeText: 'text-info', activeBorder: 'border-info/30', badgeBg: 'bg-info/20', badgeText: 'text-info' }, filter: (n) => n.type === 'po_created' || n.type === 'quote_update' },
     ];
 
     // Flow 2 tabs for step 2.6
     const flow2Tabs: NotificationTab[] = [
         { id: 'all', label: 'All', count: FLOW2_NOTIFICATIONS.length, icon: Squares2X2Icon, colorTheme: { activeBg: 'bg-gray-200 dark:bg-white/10', activeText: 'text-foreground', activeBorder: 'border-gray-300 dark:border-white/10', badgeBg: 'bg-muted0/20 dark:bg-white/20', badgeText: 'text-foreground' }, filter: () => true },
-        { id: 'acks', label: 'Acknowledgements', count: FLOW2_NOTIFICATIONS.filter(n => n.type === 'ack_received').length, icon: DocumentTextIcon, colorTheme: { activeBg: 'bg-blue-500/15', activeText: 'text-blue-500', activeBorder: 'border-blue-500/20', badgeBg: 'bg-blue-500/20', badgeText: 'text-blue-500' }, filter: (n) => n.type === 'ack_received' },
+        { id: 'acks', label: 'Acknowledgements', count: FLOW2_NOTIFICATIONS.filter(n => n.type === 'ack_received').length, icon: DocumentTextIcon, colorTheme: { activeBg: 'bg-info/15', activeText: 'text-info', activeBorder: 'border-info/30', badgeBg: 'bg-info/20', badgeText: 'text-info' }, filter: (n) => n.type === 'ack_received' },
         { id: 'system', label: 'System', count: FLOW2_NOTIFICATIONS.filter(n => n.type === 'system').length, icon: SparklesIcon, colorTheme: { activeBg: 'bg-success/15', activeText: 'text-success', activeBorder: 'border-emerald-500/20', badgeBg: 'bg-success/20', badgeText: 'text-success' }, filter: (n) => n.type === 'system' },
     ];
 
@@ -434,7 +434,7 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                             <span className="absolute inset-0 rounded-full ring-2 ring-green-500 animate-pulse" />
                         )}
                         {totalCount > 0 && (
-                            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-400 dark:bg-red-500 ring-2 ring-background" />
+                            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-destructive dark:bg-destructive ring-2 ring-background" />
                         )}
                     </PopoverButton>
 
@@ -515,8 +515,8 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                                         <p className="text-xs font-medium text-muted-foreground">
                                             {filteredNotifications.length} actions
                                         </p>
-                                        <p className="text-xs font-bold text-red-500 flex items-center gap-1.5">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                                        <p className="text-xs font-bold text-destructive flex items-center gap-1.5">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-destructive animate-pulse" />
                                             {urgentCount} urgent
                                         </p>
                                     </div>
@@ -601,7 +601,7 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                         <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-3">
                                 <h3 className="text-lg font-bold text-foreground">Action Center</h3>
-                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-400 font-bold">Flow 1</span>
+                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-success/15 text-success font-bold">Flow 1</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <button className="p-1 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground transition-colors">
@@ -634,7 +634,7 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                         <p className="text-xs font-medium text-muted-foreground">
                             1 action
                         </p>
-                        <p className="text-xs font-bold text-green-500 flex items-center gap-1.5">
+                        <p className="text-xs font-bold text-success flex items-center gap-1.5">
                             <CheckCircleIcon className="w-3.5 h-3.5" />
                             PO generated
                         </p>
@@ -879,7 +879,7 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                         <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-3">
                                 <h3 className="text-lg font-bold text-foreground">Action Center</h3>
-                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400 font-bold">Flow 2</span>
+                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-info/15 text-info font-bold">Flow 2</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <button className="p-1 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground transition-colors">
@@ -917,7 +917,7 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                                             onActionClick={isCRMSync ? () => nextStep() : undefined}
                                         />
                                         {isDelivered && !isCRMSync && (
-                                            <span className="absolute top-3 right-3 text-[9px] font-bold text-green-600 dark:text-green-400 flex items-center gap-1 bg-green-50 dark:bg-green-500/10 px-2 py-0.5 rounded-full">
+                                            <span className="absolute top-3 right-3 text-[9px] font-bold text-success flex items-center gap-1 bg-success/10 px-2 py-0.5 rounded-full">
                                                 <CheckCircleIcon className="w-3 h-3" /> Delivered
                                             </span>
                                         )}
@@ -943,8 +943,8 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                                 CRM sync ready
                             </p>
                         ) : (
-                            <p className="text-xs font-bold text-red-500 flex items-center gap-1.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                            <p className="text-xs font-bold text-destructive flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-destructive animate-pulse" />
                                 {FLOW2_NOTIFICATIONS.filter(n => n.priority === 'high').length} urgent
                             </p>
                         )}

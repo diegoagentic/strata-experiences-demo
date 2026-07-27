@@ -72,7 +72,7 @@ export default function DashboardReport({ isOpen, onClose }: DashboardReportProp
                                                                     <td className="py-1.5 text-zinc-900">{m.label}</td>
                                                                     <td className="py-1.5 text-right font-bold tabular-nums">{m.value}</td>
                                                                     <td className="py-1.5 text-right tabular-nums text-zinc-600">{target}</td>
-                                                                    <td className={`py-1.5 text-right tabular-nums ${m.deltaUp ? 'text-green-600' : 'text-red-600'}`}>{m.delta ?? '—'}</td>
+                                                                    <td className={`py-1.5 text-right tabular-nums ${m.deltaUp ? 'text-success' : 'text-destructive'}`}>{m.delta ?? '—'}</td>
                                                                     <td className="py-1.5 text-right font-semibold">{STATUS_LABEL[m.status]}</td>
                                                                 </tr>
                                                             )

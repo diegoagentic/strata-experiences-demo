@@ -168,32 +168,32 @@ export default function ClientPolicyManager() {
                 <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg shadow-zinc-200/50 dark:shadow-black/20 sticky top-6">
 
                     {/* Header Results */}
-                    <div className="bg-green-50 dark:bg-green-900/10 p-6 border-b border-green-100 dark:border-green-900/20">
+                    <div className="bg-success/10 dark:bg-success/10 p-6 border-b border-success/20 dark:border-success/40">
                         <div className="flex items-center justify-between mb-4">
-                            <h3 className="font-semibold text-green-900 dark:text-green-400 flex items-center gap-2">
+                            <h3 className="font-semibold text-success dark:text-success flex items-center gap-2">
                                 <CalculatorIcon className="w-5 h-5" />
                                 Interactive Pricing
                             </h3>
-                            <span className="text-xs font-medium bg-green-200/50 dark:bg-green-500/20 text-green-800 dark:text-green-300 px-2 py-1 rounded-full">
+                            <span className="text-xs font-medium bg-success/20/50 dark:bg-success/20 text-success px-2 py-1 rounded-full">
                                 {results.count} Active Rules
                             </span>
                         </div>
 
                         <div className="mb-1">
-                            <span className="text-sm text-green-700 dark:text-green-500">Net Simulation Total</span>
-                            <div className="text-4xl font-bold text-green-700 dark:text-green-400 tracking-tight">
+                            <span className="text-sm text-success dark:text-success">Net Simulation Total</span>
+                            <div className="text-4xl font-bold text-success tracking-tight">
                                 {formatCurrency(results.net)}
                             </div>
                         </div>
 
                         <div className="flex justify-between items-end mt-4 text-sm">
                             <div>
-                                <div className="text-green-600/70 dark:text-green-400/60 pb-0.5">Total Savings</div>
-                                <div className="font-semibold text-green-700 dark:text-green-500">{formatCurrency(results.savings)}</div>
+                                <div className="text-success/70 dark:text-success/60 pb-0.5">Total Savings</div>
+                                <div className="font-semibold text-success dark:text-success">{formatCurrency(results.savings)}</div>
                             </div>
                             <div className="text-right">
-                                <div className="text-green-600/70 dark:text-green-400/60 pb-0.5">Discount Rate</div>
-                                <div className="font-semibold text-green-700 dark:text-green-500">{discountRate}%</div>
+                                <div className="text-success/70 dark:text-success/60 pb-0.5">Discount Rate</div>
+                                <div className="font-semibold text-success dark:text-success">{discountRate}%</div>
                             </div>
                         </div>
                     </div>
@@ -211,10 +211,10 @@ export default function ClientPolicyManager() {
                         </button>
 
                         {/* 1. Contract Pricing */}
-                        <div className="flex items-center justify-between p-4 bg-blue-50/50 dark:bg-blue-900/10 rounded-xl border border-blue-100 dark:border-blue-900/20">
+                        <div className="flex items-center justify-between p-4 bg-info/10 dark:bg-info/10 rounded-xl border border-info/20 dark:border-info/40">
                             <div>
-                                <div className="font-medium text-blue-900 dark:text-blue-300">Contract Pricing</div>
-                                <div className="text-xs text-blue-700/70 dark:text-blue-400/70">Master Agreement (45% Base)</div>
+                                <div className="font-medium text-info dark:text-info">Contract Pricing</div>
+                                <div className="text-xs text-info/70 dark:text-info/70">Master Agreement (45% Base)</div>
                             </div>
                             <Switch
                                 checked={useContractPricing}
@@ -226,15 +226,15 @@ export default function ClientPolicyManager() {
                         </div>
 
                         {/* 2. Special Authorization */}
-                        <div className="flex items-center justify-between p-4 bg-amber-50/50 dark:bg-amber-900/10 rounded-xl border border-amber-100 dark:border-amber-900/20">
+                        <div className="flex items-center justify-between p-4 bg-warning/10 rounded-xl border border-warning/20 dark:border-warning/40">
                             <div>
-                                <div className="font-medium text-amber-900 dark:text-amber-300">Special Authorization</div>
-                                <div className="text-xs text-amber-700/70 dark:text-amber-400/70">Project Specific Stack (+5%)</div>
+                                <div className="font-medium text-warning dark:text-warning">Special Authorization</div>
+                                <div className="text-xs text-warning/70 dark:text-warning/70">Project Specific Stack (+5%)</div>
                             </div>
                             <Switch
                                 checked={useSpecialAuth}
                                 onChange={setUseSpecialAuth}
-                                className={`${useSpecialAuth ? 'bg-amber-500' : 'bg-zinc-200 dark:bg-zinc-700'} relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2`}
+                                className={`${useSpecialAuth ? 'bg-warning' : 'bg-zinc-200 dark:bg-zinc-700'} relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2`}
                             >
                                 <span className={`${useSpecialAuth ? 'translate-x-6' : 'translate-x-1'} inline-block h-4 w-4 transform rounded-full bg-white transition-transform`} />
                             </Switch>

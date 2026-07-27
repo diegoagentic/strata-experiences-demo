@@ -696,7 +696,7 @@ export default function CLCCalendarScene() {
                         {isResyncing ? (
                             <RefreshCw className="h-3 w-3 animate-spin text-foreground" />
                         ) : (
-                            <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                            <span className="h-1.5 w-1.5 rounded-full bg-success/100" />
                         )}
                         {syncLabel}
                     </span>
@@ -761,11 +761,11 @@ export default function CLCCalendarScene() {
                 )}
                 {viewMode === 'calendar' && (
                     <>
-                        <div className="mb-3 flex items-center gap-3 px-3 py-2 rounded-lg border border-blue-200 bg-blue-50/40 dark:border-blue-500/30 dark:bg-blue-500/10">
-                            <span className="text-xs font-semibold text-blue-800 dark:text-blue-200">
+                        <div className="mb-3 flex items-center gap-3 px-3 py-2 rounded-lg border border-info/30 bg-info/10/40 dark:border-info/30 dark:bg-info/10">
+                            <span className="text-xs font-semibold text-info dark:text-info">
                                 Outlook Calendar · Director of Operations · Mailbox view
                             </span>
-                            <div className="ml-auto flex items-center gap-3 text-[11px] text-blue-900/80 dark:text-blue-200/80">
+                            <div className="ml-auto flex items-center gap-3 text-[11px] text-info/80 dark:text-info/80">
                                 {(['ny','nj','pa'] as Region[]).map(r => (
                                     <span key={r} className="inline-flex items-center gap-1">
                                         <span className={`inline-block text-[9px] font-bold px-1.5 py-0.5 rounded ${REGION_BADGE[r]}`}>

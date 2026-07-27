@@ -225,15 +225,15 @@ const WATERFALL_ROWS: Array<{ label: string; value: string; type: 'base' | 'disc
 const waterfallStyles: Record<string, string> = {
     base: 'p-3 bg-card border-b border-border',
     discount: 'px-3 py-1.5 bg-muted/30 border-b border-border',
-    subtotal: 'p-3 bg-green-50 dark:bg-green-500/5 border-b border-border',
-    addon: 'p-3 bg-blue-50 dark:bg-blue-500/5 border-b border-border',
+    subtotal: 'p-3 bg-success/10 dark:bg-success/100/5 border-b border-border',
+    addon: 'p-3 bg-info/10 dark:bg-info/100/5 border-b border-border',
     total: 'p-4 bg-brand-50 dark:bg-brand-500/5 border-2 border-brand-400 dark:border-brand-500/40',
 };
 const waterfallTextStyles: Record<string, string> = {
     base: 'text-foreground',
-    discount: 'text-green-700 dark:text-green-400',
-    subtotal: 'text-green-700 dark:text-green-400',
-    addon: 'text-blue-700 dark:text-blue-400',
+    discount: 'text-success',
+    subtotal: 'text-success',
+    addon: 'text-info',
     total: 'text-foreground',
 };
 
@@ -569,7 +569,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
             <div className="space-y-1.5">
                 {agts.map(agent => (
                     <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'}`}>
-                        {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
+                        {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
                         <span className={agent.done ? 'text-foreground' : 'text-indigo-600 dark:text-indigo-400'}>{agent.name}</span>
                         <span className="text-muted-foreground">{agent.detail}</span>
                     </div>
@@ -627,11 +627,11 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                     {/* Scope alert — shows during processing + revealed */}
                     {(phase === 'processing' || phase === 'breathing' || phase === 'revealed') && showScopeAlert && (
                         <div className="animate-in fade-in slide-in-from-top-2 duration-300">
-                            <div className="p-3 rounded-lg bg-amber-50 dark:bg-amber-500/5 border border-amber-300 dark:border-amber-500/30 flex items-start gap-2">
-                                <ExclamationTriangleIcon className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
+                            <div className="p-3 rounded-lg bg-warning/10 border border-warning/30 flex items-start gap-2">
+                                <ExclamationTriangleIcon className="h-4 w-4 text-warning shrink-0 mt-0.5" />
                                 <div>
-                                    <span className="text-[11px] font-bold text-amber-800 dark:text-amber-400">Scope Limit Alert</span>
-                                    <p className="text-[10px] text-amber-700 dark:text-amber-400/80 mt-0.5">
+                                    <span className="text-[11px] font-bold text-warning dark:text-warning">Scope Limit Alert</span>
+                                    <p className="text-[10px] text-warning/80 mt-0.5">
                                         119 KD Task Chairs exceed the 50-chair Delivery Pricer limit. Expert override will be required.
                                     </p>
                                 </div>
@@ -655,7 +655,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                     {agents.map(agent => (
                                         <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'}`}>
                                             {agent.done ?
-                                                <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> :
+                                                <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> :
                                                 <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />
                                             }
                                             <span className={agent.done ? 'text-foreground' : 'text-indigo-600 dark:text-indigo-400'}>{agent.name}</span>
@@ -687,25 +687,25 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
 
                             {/* Dual engine progress */}
                             <div className="grid grid-cols-2 gap-3">
-                                <div className="p-3 rounded-xl bg-card border border-blue-200 dark:border-blue-500/20">
+                                <div className="p-3 rounded-xl bg-card border border-info/20">
                                     <div className="flex items-center gap-2 mb-2">
-                                        <TruckIcon className="h-3.5 w-3.5 text-blue-500" />
-                                        <span className="text-[10px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider">Delivery</span>
+                                        <TruckIcon className="h-3.5 w-3.5 text-info" />
+                                        <span className="text-[10px] font-bold text-info uppercase tracking-wider">Delivery</span>
                                     </div>
-                                    <div className="h-1.5 rounded-full bg-blue-100 dark:bg-blue-500/10 overflow-hidden mb-1.5">
-                                        <div className="h-full rounded-full bg-blue-500 transition-all duration-300" style={{ width: `${deliveryProgress}%` }} />
+                                    <div className="h-1.5 rounded-full bg-info/15 dark:bg-info/10 overflow-hidden mb-1.5">
+                                        <div className="h-full rounded-full bg-info/100 transition-all duration-300" style={{ width: `${deliveryProgress}%` }} />
                                     </div>
-                                    {deliveryProgress >= 100 && <div className="text-[10px] font-bold text-blue-700 dark:text-blue-400">${DELIVERY_TOTAL_COST.toLocaleString()}</div>}
+                                    {deliveryProgress >= 100 && <div className="text-[10px] font-bold text-info">${DELIVERY_TOTAL_COST.toLocaleString()}</div>}
                                 </div>
-                                <div className="p-3 rounded-xl bg-card border border-green-200 dark:border-green-500/20">
+                                <div className="p-3 rounded-xl bg-card border border-success/30 dark:border-success/30">
                                     <div className="flex items-center gap-2 mb-2">
-                                        <WrenchScrewdriverIcon className="h-3.5 w-3.5 text-green-500" />
-                                        <span className="text-[10px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">Installation</span>
+                                        <WrenchScrewdriverIcon className="h-3.5 w-3.5 text-success" />
+                                        <span className="text-[10px] font-bold text-success uppercase tracking-wider">Installation</span>
                                     </div>
-                                    <div className="h-1.5 rounded-full bg-green-100 dark:bg-green-500/10 overflow-hidden mb-1.5">
-                                        <div className="h-full rounded-full bg-green-500 transition-all duration-300" style={{ width: `${installProgress}%` }} />
+                                    <div className="h-1.5 rounded-full bg-success/15 dark:bg-success/10 overflow-hidden mb-1.5">
+                                        <div className="h-full rounded-full bg-success/100 transition-all duration-300" style={{ width: `${installProgress}%` }} />
                                     </div>
-                                    {installProgress >= 100 && <div className="text-[10px] font-bold text-green-700 dark:text-green-400">${INSTALL_TOTAL_COST.toLocaleString()}</div>}
+                                    {installProgress >= 100 && <div className="text-[10px] font-bold text-success">${INSTALL_TOTAL_COST.toLocaleString()}</div>}
                                 </div>
                             </div>
                         </div>
@@ -716,20 +716,20 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                         <div className="animate-in fade-in duration-500 space-y-3">
                             {/* Cost totals */}
                             <div className="grid grid-cols-3 gap-3">
-                                <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-500/5 border border-blue-200 dark:border-blue-500/20">
+                                <div className="p-3 rounded-xl bg-info/10 dark:bg-info/100/5 border border-info/20">
                                     <div className="flex items-center gap-1.5 mb-1">
-                                        <TruckIcon className="h-3.5 w-3.5 text-blue-500" />
+                                        <TruckIcon className="h-3.5 w-3.5 text-info" />
                                         <span className="text-[9px] text-muted-foreground uppercase">Delivery</span>
                                     </div>
-                                    <div className="text-lg font-bold text-blue-700 dark:text-blue-400">${DELIVERY_TOTAL_COST.toLocaleString()}</div>
+                                    <div className="text-lg font-bold text-info">${DELIVERY_TOTAL_COST.toLocaleString()}</div>
                                     <div className="text-[9px] text-muted-foreground">{DELIVERY_BASE_MIN} min + Section G</div>
                                 </div>
-                                <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
+                                <div className="p-3 rounded-xl bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30">
                                     <div className="flex items-center gap-1.5 mb-1">
-                                        <WrenchScrewdriverIcon className="h-3.5 w-3.5 text-green-500" />
+                                        <WrenchScrewdriverIcon className="h-3.5 w-3.5 text-success" />
                                         <span className="text-[9px] text-muted-foreground uppercase">Installation</span>
                                     </div>
-                                    <div className="text-lg font-bold text-green-700 dark:text-green-400">${INSTALL_TOTAL_COST.toLocaleString()}</div>
+                                    <div className="text-lg font-bold text-success">${INSTALL_TOTAL_COST.toLocaleString()}</div>
                                     <div className="text-[9px] text-muted-foreground">{INSTALL_TOTAL_HRS.toFixed(1)} hrs × $57/hr</div>
                                 </div>
                                 <div className="p-3 rounded-xl bg-card border-2 border-foreground/20">
@@ -755,8 +755,8 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                         };
                                         const isExpanded = expandedRules.has(rule.icon);
                                         const colorMap: Record<string, string> = {
-                                            green: 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
-                                            amber: 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
+                                            green: 'bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
+                                            amber: 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
                                         };
                                         return (
                                             <div key={rule.icon} className="rounded-lg border border-border overflow-hidden">
@@ -778,7 +778,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                                         <div className="space-y-1 pt-1 border-t border-border">
                                                             {rule.items.map((item, i) => (
                                                                 <div key={i} className="flex items-start gap-2 py-0.5">
-                                                                    <CheckCircleIcon className="h-3 w-3 text-green-500 shrink-0 mt-0.5" />
+                                                                    <CheckCircleIcon className="h-3 w-3 text-success shrink-0 mt-0.5" />
                                                                     <span className="text-[10px] text-foreground">{item}</span>
                                                                 </div>
                                                             ))}
@@ -796,19 +796,19 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                 <div className="p-4 rounded-xl bg-card border border-border">
                                     <div className="flex items-center justify-between mb-3">
                                         <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Expert Review — Flagged Items</div>
-                                        <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold ${expertOnlyAdjusted ? 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30' : 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30'}`}>
+                                        <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold ${expertOnlyAdjusted ? 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30' : 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30'}`}>
                                             {Object.values(adjustments).filter(Boolean).length}/{EXPERT_ADJUSTMENTS.filter(a => !a.requiresDesigner).length} REVIEWED
                                         </span>
                                     </div>
                                     <div className="space-y-2">
                                         {EXPERT_ADJUSTMENTS.map(adj => (
-                                            <div key={adj.id} className={`p-3 rounded-lg border transition-all duration-300 ${adjustments[adj.id] ? 'bg-green-50/50 dark:bg-green-500/5 border-green-200 dark:border-green-500/20' : adj.requiresDesigner ? 'bg-sky-50/30 dark:bg-sky-500/5 border-sky-200 dark:border-sky-500/20' : 'bg-amber-50/30 dark:bg-amber-500/5 border-amber-200 dark:border-amber-500/20'}`}>
+                                            <div key={adj.id} className={`p-3 rounded-lg border transition-all duration-300 ${adjustments[adj.id] ? 'bg-success/10 dark:bg-success/100/5 border-success/30 dark:border-success/30' : adj.requiresDesigner ? 'bg-sky-50/30 dark:bg-sky-500/5 border-sky-200 dark:border-sky-500/20' : 'bg-warning/10 border-warning/20'}`}>
                                                 <div className="flex items-start justify-between mb-2">
                                                     <div>
                                                         <div className="text-[11px] font-bold text-foreground">{adj.item}</div>
                                                         <div className="text-[10px] text-muted-foreground">{adj.issue}</div>
                                                     </div>
-                                                    <span className="text-[10px] font-bold text-amber-700 dark:text-amber-400 shrink-0">{adj.impact}</span>
+                                                    <span className="text-[10px] font-bold text-warning shrink-0">{adj.impact}</span>
                                                 </div>
                                                 {adj.requiresDesigner ? (
                                                     /* Designer escalation — shown as pending, resolved in w2.2 */
@@ -823,10 +823,10 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                                     /* Standard expert adjustment — apply AI or edit manually */
                                                     editingItemId === adj.id ? (
                                                         /* Manual edit form */
-                                                        <div className="p-2.5 rounded-md bg-amber-50/50 dark:bg-amber-500/5 border border-amber-200/50 dark:border-amber-500/20 space-y-2 animate-in fade-in duration-200">
+                                                        <div className="p-2.5 rounded-md bg-warning/10 border border-warning/30 dark:border-warning/30 space-y-2 animate-in fade-in duration-200">
                                                             <div className="flex items-center gap-1.5">
-                                                                <PencilSquareIcon className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
-                                                                <span className="text-[9px] font-bold text-amber-700 dark:text-amber-400">Manual Override</span>
+                                                                <PencilSquareIcon className="h-3.5 w-3.5 text-warning shrink-0" />
+                                                                <span className="text-[9px] font-bold text-warning">Manual Override</span>
                                                             </div>
                                                             <div className="grid grid-cols-2 gap-2">
                                                                 <div>
@@ -846,7 +846,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                                                 <button onClick={() => setEditingItemId(null)} className="px-2.5 py-1 rounded-md text-[9px] font-bold text-muted-foreground hover:text-foreground transition-colors">Cancel</button>
                                                                 <button
                                                                     onClick={() => { setManualEdits(prev => ({ ...prev, [adj.id]: { rate: manualRate, hrs: manualHrs, note: manualNote } })); setAdjustments(prev => ({ ...prev, [adj.id]: true })); setEditingItemId(null); }}
-                                                                    className="px-2.5 py-1 rounded-md text-[9px] font-bold bg-amber-600 text-white hover:bg-amber-700 transition-colors flex items-center gap-1"
+                                                                    className="px-2.5 py-1 rounded-md text-[9px] font-bold bg-warning text-white hover:bg-warning transition-colors flex items-center gap-1"
                                                                 >
                                                                     <CheckIcon className="h-3 w-3" />
                                                                     Apply Override
@@ -872,7 +872,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                                             </div>
                                                             <button
                                                                 onClick={() => { setEditingItemId(adj.id); setManualRate(''); setManualHrs(''); setManualNote(''); }}
-                                                                className="w-full py-1.5 rounded-md text-[9px] font-bold border border-dashed border-amber-300 dark:border-amber-500/30 text-amber-700 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-500/5 transition-colors flex items-center justify-center gap-1.5"
+                                                                className="w-full py-1.5 rounded-md text-[9px] font-bold border border-dashed border-warning/30 text-warning hover:bg-warning/10 dark:hover:bg-warning/10 transition-colors flex items-center justify-center gap-1.5"
                                                             >
                                                                 <PencilSquareIcon className="h-3 w-3" />
                                                                 Edit Manually
@@ -880,7 +880,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                                         </div>
                                                     )
                                                 ) : (
-                                                    <div className="flex items-center gap-2 text-[10px] text-green-700 dark:text-green-400">
+                                                    <div className="flex items-center gap-2 text-[10px] text-success">
                                                         <CheckCircleIcon className="h-3.5 w-3.5 shrink-0" />
                                                         {manualEdits[adj.id] ? (
                                                             <div>
@@ -951,7 +951,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                     {agents.map(agent => (
                                         <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'}`}>
                                             {agent.done ?
-                                                <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> :
+                                                <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> :
                                                 <ArrowPathIcon className="h-3.5 w-3.5 text-sky-500 animate-spin shrink-0" />
                                             }
                                             <span className={agent.done ? 'text-foreground' : 'text-sky-600 dark:text-sky-400'}>{agent.name}</span>
@@ -990,25 +990,25 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                     {Object.values(moduleValidated).filter(Boolean).length}/{VERIFICATION_MODULES.length} modules validated
                                 </span>
                                 {allModulesValidated && (
-                                    <span className="text-[9px] px-2 py-0.5 rounded-full font-bold bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30">ALL VALIDATED</span>
+                                    <span className="text-[9px] px-2 py-0.5 rounded-full font-bold bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30">ALL VALIDATED</span>
                                 )}
                             </div>
 
                             {/* Module 1: Expert Estimation Summary */}
                             {(!searchFilter || 'expert estimation summary delivery installation combined'.includes(searchFilter.toLowerCase())) && (
-                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['estimation'] ? 'bg-green-50/30 dark:bg-green-500/5 border-green-200 dark:border-green-500/20' : 'bg-card border-border'}`}>
+                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['estimation'] ? 'bg-success/10/30 dark:bg-success/100/5 border-success/30 dark:border-success/30' : 'bg-card border-border'}`}>
                                     <div className="flex items-center justify-between mb-3">
                                         <div className="flex items-center gap-2">
                                             <button
                                                 onClick={() => setModuleValidated(prev => ({ ...prev, estimation: !prev.estimation }))}
-                                                className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${moduleValidated['estimation'] ? 'bg-green-500 border-green-500 text-white' : 'border-muted-foreground/40 hover:border-sky-400'}`}
+                                                className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${moduleValidated['estimation'] ? 'bg-success/100 border-success text-white' : 'border-muted-foreground/40 hover:border-sky-400'}`}
                                             >
                                                 {moduleValidated['estimation'] && <CheckIcon className="h-3 w-3" />}
                                             </button>
                                             <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Expert Estimation Summary</span>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${moduleValidated['estimation'] ? 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20' : 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20'}`}>
+                                            <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${moduleValidated['estimation'] ? 'bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20' : 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20'}`}>
                                                 {moduleValidated['estimation'] ? 'VALIDATED' : 'PENDING'}
                                             </span>
                                             <button
@@ -1041,9 +1041,9 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                         </div>
                                     )}
                                     <div className="grid grid-cols-3 gap-3">
-                                        <div className="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-500/5 border border-blue-200 dark:border-blue-500/20">
+                                        <div className="p-2.5 rounded-lg bg-info/10 dark:bg-info/100/5 border border-info/20">
                                             <div className="text-[9px] text-muted-foreground uppercase">Delivery</div>
-                                            <div className="text-sm font-black text-blue-700 dark:text-blue-400">${DELIVERY_TOTAL_COST.toLocaleString()}</div>
+                                            <div className="text-sm font-black text-info">${DELIVERY_TOTAL_COST.toLocaleString()}</div>
                                             <div className="text-[9px] text-muted-foreground">{DELIVERY_BASE_MIN} min + Section G</div>
                                         </div>
                                         <div className="p-2.5 rounded-lg bg-purple-50 dark:bg-ai/5 border border-purple-200 dark:border-purple-500/20">
@@ -1051,9 +1051,9 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                             <div className="text-sm font-black text-purple-700 dark:text-purple-400">${REVIEWED_INSTALL_COST.toLocaleString()}</div>
                                             <div className="text-[9px] text-muted-foreground">{INSTALL_TOTAL_HRS.toFixed(1)} hrs × $57/hr</div>
                                         </div>
-                                        <div className="p-2.5 rounded-lg bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
+                                        <div className="p-2.5 rounded-lg bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30">
                                             <div className="text-[9px] text-muted-foreground uppercase">Combined</div>
-                                            <div className="text-sm font-black text-green-700 dark:text-green-400">${REVIEWED_COMBINED.toLocaleString()}</div>
+                                            <div className="text-sm font-black text-success">${REVIEWED_COMBINED.toLocaleString()}</div>
                                             <div className="text-[9px] text-muted-foreground">24 items · {FLAGGED_COUNT} flagged</div>
                                         </div>
                                     </div>
@@ -1061,9 +1061,9 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                         <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider">Expert Adjustments Applied</div>
                                         {EXPERT_ADJUSTMENTS.filter(a => !a.requiresDesigner).map(adj => (
                                             <div key={adj.id} className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-muted/30 border border-border">
-                                                <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                                                <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
                                                 <span className="text-[10px] text-foreground flex-1">{adj.item}</span>
-                                                <span className="text-[9px] font-bold text-green-700 dark:text-green-400">{adj.impact}</span>
+                                                <span className="text-[9px] font-bold text-success">{adj.impact}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -1072,19 +1072,19 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
 
                             {/* Module 2: Project Scope */}
                             {(!searchFilter || 'project scope healthcare hospital items rate card site conditions'.includes(searchFilter.toLowerCase())) && (
-                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['scope'] ? 'bg-green-50/30 dark:bg-green-500/5 border-green-200 dark:border-green-500/20' : 'bg-card border-border'}`}>
+                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['scope'] ? 'bg-success/10/30 dark:bg-success/100/5 border-success/30 dark:border-success/30' : 'bg-card border-border'}`}>
                                     <div className="flex items-center justify-between mb-3">
                                         <div className="flex items-center gap-2">
                                             <button
                                                 onClick={() => setModuleValidated(prev => ({ ...prev, scope: !prev.scope }))}
-                                                className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${moduleValidated['scope'] ? 'bg-green-500 border-green-500 text-white' : 'border-muted-foreground/40 hover:border-sky-400'}`}
+                                                className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${moduleValidated['scope'] ? 'bg-success/100 border-success text-white' : 'border-muted-foreground/40 hover:border-sky-400'}`}
                                             >
                                                 {moduleValidated['scope'] && <CheckIcon className="h-3 w-3" />}
                                             </button>
                                             <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Project Scope</span>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${moduleValidated['scope'] ? 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20' : 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20'}`}>
+                                            <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${moduleValidated['scope'] ? 'bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20' : 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20'}`}>
                                                 {moduleValidated['scope'] ? 'VALIDATED' : 'PENDING'}
                                             </span>
                                             <button
@@ -1130,19 +1130,19 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
 
                             {/* Module 3: Escalated Item */}
                             {(!searchFilter || 'escalated item ofs serpentine custom assembly lounge'.includes(searchFilter.toLowerCase())) && (
-                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['escalated'] ? 'bg-green-50/30 dark:bg-green-500/5 border-green-200 dark:border-green-500/20' : 'bg-amber-50 dark:bg-amber-500/5 border-amber-200 dark:border-amber-500/20'}`}>
+                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['escalated'] ? 'bg-success/10/30 dark:bg-success/100/5 border-success/30 dark:border-success/30' : 'bg-warning/10 border-warning/20'}`}>
                                     <div className="flex items-center justify-between mb-3">
                                         <div className="flex items-center gap-2">
                                             <button
                                                 onClick={() => setModuleValidated(prev => ({ ...prev, escalated: !prev.escalated }))}
-                                                className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${moduleValidated['escalated'] ? 'bg-green-500 border-green-500 text-white' : 'border-amber-400 hover:border-sky-400'}`}
+                                                className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${moduleValidated['escalated'] ? 'bg-success/100 border-success text-white' : 'border-warning hover:border-sky-400'}`}
                                             >
                                                 {moduleValidated['escalated'] && <CheckIcon className="h-3 w-3" />}
                                             </button>
                                             <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Escalated Item — Requires Your Verification</span>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${moduleValidated['escalated'] ? 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20' : 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20'}`}>
+                                            <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${moduleValidated['escalated'] ? 'bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20' : 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20'}`}>
                                                 {moduleValidated['escalated'] ? 'VALIDATED' : 'PENDING'}
                                             </span>
                                             <button
@@ -1179,11 +1179,11 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                         </div>
                                         <div className="space-y-1.5">
                                             <div className="text-[9px] text-muted-foreground uppercase">Issue</div>
-                                            <div className="text-[11px] font-bold text-amber-700 dark:text-amber-400">No standard ganged lounge rate</div>
+                                            <div className="text-[11px] font-bold text-warning">No standard ganged lounge rate</div>
                                         </div>
                                         <div className="space-y-1.5">
                                             <div className="text-[9px] text-muted-foreground uppercase">Confidence</div>
-                                            <div className="text-[11px] font-bold text-amber-700 dark:text-amber-400">58% — LOW</div>
+                                            <div className="text-[11px] font-bold text-warning">58% — LOW</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1191,19 +1191,19 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
 
                             {/* Module 4: Assembly Verification */}
                             {(!searchFilter || 'assembly verification modular brackets hardware'.includes(searchFilter.toLowerCase())) && (
-                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['verification'] ? 'bg-green-50/30 dark:bg-green-500/5 border-green-200 dark:border-green-500/20' : 'bg-card border-border'}`}>
+                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['verification'] ? 'bg-success/10/30 dark:bg-success/100/5 border-success/30 dark:border-success/30' : 'bg-card border-border'}`}>
                                     <div className="flex items-center justify-between mb-3">
                                         <div className="flex items-center gap-2">
                                             <button
                                                 onClick={() => setModuleValidated(prev => ({ ...prev, verification: !prev.verification }))}
-                                                className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${moduleValidated['verification'] ? 'bg-green-500 border-green-500 text-white' : 'border-muted-foreground/40 hover:border-sky-400'}`}
+                                                className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${moduleValidated['verification'] ? 'bg-success/100 border-success text-white' : 'border-muted-foreground/40 hover:border-sky-400'}`}
                                             >
                                                 {moduleValidated['verification'] && <CheckIcon className="h-3 w-3" />}
                                             </button>
                                             <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Assembly Verification</span>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${moduleValidated['verification'] ? 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20' : 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20'}`}>
+                                            <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${moduleValidated['verification'] ? 'bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20' : 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20'}`}>
                                                 {moduleValidated['verification'] ? 'VALIDATED' : 'PENDING'}
                                             </span>
                                             <button
@@ -1229,13 +1229,13 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                             <div className="text-[10px] text-foreground">{moduleComments['verification']}</div>
                                         </div>
                                     )}
-                                    <div className="p-3 rounded-lg bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
+                                    <div className="p-3 rounded-lg bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30">
                                         <div className="flex items-start gap-3">
                                             <img src={DESIGNER_PHOTO} alt="" className="w-8 h-8 rounded-full ring-2 ring-green-400" />
                                             <div className="flex-1">
                                                 <div className="flex items-center gap-2">
                                                     <span className="text-[11px] font-bold text-foreground">Verification Complete</span>
-                                                    <span className="text-[8px] px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-500/15 text-green-700 dark:text-green-300 font-bold ring-1 ring-inset ring-green-600/20">VERIFIED</span>
+                                                    <span className="text-[8px] px-1.5 py-0.5 rounded bg-success/15 dark:bg-success/15 text-success dark:text-success font-bold ring-1 ring-inset ring-green-600/20">VERIFIED</span>
                                                 </div>
                                                 <div className="text-[10px] text-foreground mt-1.5 space-y-1">
                                                     <p>Confirmed modular assembly approach — 12 seats × 1.0 hr + 2.0 hrs alignment/leveling.</p>
@@ -1249,19 +1249,19 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
 
                             {/* Module 5: Applied Rate */}
                             {(!searchFilter || 'applied rate modular assembly hours cost'.includes(searchFilter.toLowerCase())) && (
-                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['rate'] ? 'bg-green-50/30 dark:bg-green-500/5 border-green-200 dark:border-green-500/20' : 'bg-card border-border'}`}>
+                                <div className={`p-4 rounded-xl border transition-all ${moduleValidated['rate'] ? 'bg-success/10/30 dark:bg-success/100/5 border-success/30 dark:border-success/30' : 'bg-card border-border'}`}>
                                     <div className="flex items-center justify-between mb-3">
                                         <div className="flex items-center gap-2">
                                             <button
                                                 onClick={() => setModuleValidated(prev => ({ ...prev, rate: !prev.rate }))}
-                                                className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${moduleValidated['rate'] ? 'bg-green-500 border-green-500 text-white' : 'border-muted-foreground/40 hover:border-sky-400'}`}
+                                                className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${moduleValidated['rate'] ? 'bg-success/100 border-success text-white' : 'border-muted-foreground/40 hover:border-sky-400'}`}
                                             >
                                                 {moduleValidated['rate'] && <CheckIcon className="h-3 w-3" />}
                                             </button>
                                             <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Applied Rate</span>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${moduleValidated['rate'] ? 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20' : 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20'}`}>
+                                            <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${moduleValidated['rate'] ? 'bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20' : 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20'}`}>
                                                 {moduleValidated['rate'] ? 'VALIDATED' : 'PENDING'}
                                             </span>
                                             <button
@@ -1289,7 +1289,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                     )}
                                     <div className="flex items-center justify-between">
                                         <div className="text-[10px] text-foreground">Modular assembly: 12.0 hrs + 2.0 hrs alignment = <span className="font-bold">14.0 hrs × $57/hr</span></div>
-                                        <span className="text-[11px] font-bold text-green-700 dark:text-green-400">$798.00</span>
+                                        <span className="text-[11px] font-bold text-success">$798.00</span>
                                     </div>
                                 </div>
                             )}
@@ -1337,7 +1337,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                         <div key={mod.id} className="space-y-2">
                                             <div className="flex items-center justify-between">
                                                 <div className="text-[11px] font-bold text-foreground uppercase tracking-wider">{mod.label}</div>
-                                                <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${moduleValidated[mod.id] ? 'bg-green-100 text-green-700 ring-1 ring-inset ring-green-600/20' : 'bg-amber-100 text-amber-700 ring-1 ring-inset ring-amber-600/20'}`}>
+                                                <span className={`text-[8px] px-1.5 py-0.5 rounded font-bold ${moduleValidated[mod.id] ? 'bg-success/15 text-success ring-1 ring-inset ring-green-600/20' : 'bg-warning/15 text-warning ring-1 ring-inset ring-amber-600/20'}`}>
                                                     {moduleValidated[mod.id] ? 'VALIDATED' : 'PENDING'}
                                                 </span>
                                             </div>
@@ -1380,9 +1380,9 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                             </div>
                             <div className="grid grid-cols-5 gap-1.5">
                                 {VERIFICATION_MODULES.map(mod => (
-                                    <div key={mod.id} className="flex items-center gap-1 px-2 py-1 rounded bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
-                                        <CheckCircleIcon className="h-3 w-3 text-green-500 shrink-0" />
-                                        <span className="text-[8px] font-bold text-green-700 dark:text-green-400 truncate">{mod.label.split(' — ')[0]}</span>
+                                    <div key={mod.id} className="flex items-center gap-1 px-2 py-1 rounded bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30">
+                                        <CheckCircleIcon className="h-3 w-3 text-success shrink-0" />
+                                        <span className="text-[8px] font-bold text-success truncate">{mod.label.split(' — ')[0]}</span>
                                     </div>
                                 ))}
                             </div>
@@ -1391,28 +1391,28 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                         {/* Cost totals — expandable cards */}
                         <div className="grid grid-cols-3 gap-3">
                             {/* Delivery card */}
-                            <div className="rounded-xl bg-blue-50 dark:bg-blue-500/5 border border-blue-200 dark:border-blue-500/20 overflow-hidden">
-                                <button onClick={() => toggleCostCard('delivery')} className="w-full p-3 text-left hover:bg-blue-100/50 dark:hover:bg-blue-500/10 transition-colors">
+                            <div className="rounded-xl bg-info/10 dark:bg-info/100/5 border border-info/20 overflow-hidden">
+                                <button onClick={() => toggleCostCard('delivery')} className="w-full p-3 text-left hover:bg-info/15/50 dark:hover:bg-info/10 transition-colors">
                                     <div className="flex items-center justify-between mb-1">
                                         <div className="flex items-center gap-1.5">
-                                            <TruckIcon className="h-3.5 w-3.5 text-blue-500" />
+                                            <TruckIcon className="h-3.5 w-3.5 text-info" />
                                             <span className="text-[9px] text-muted-foreground uppercase font-bold">Delivery</span>
                                         </div>
                                         <ChevronDownIcon className={`h-3 w-3 text-muted-foreground transition-transform duration-200 ${expandedCostCards.has('delivery') ? 'rotate-180' : ''}`} />
                                     </div>
-                                    <div className="text-lg font-bold text-blue-700 dark:text-blue-400">${DELIVERY_TOTAL_COST.toLocaleString()}</div>
+                                    <div className="text-lg font-bold text-info">${DELIVERY_TOTAL_COST.toLocaleString()}</div>
                                     <div className="text-[9px] text-muted-foreground">{DELIVERY_BASE_MIN.toLocaleString()} min + Section G</div>
                                 </button>
                                 {expandedCostCards.has('delivery') && (
                                     <div className="px-3 pb-3 space-y-1 animate-in fade-in slide-in-from-top-1 duration-200">
-                                        <div className="h-px bg-blue-200 dark:bg-blue-500/20 mb-1.5" />
+                                        <div className="h-px bg-info/20 dark:bg-info/20 mb-1.5" />
                                         {DELIVERY_BREAKDOWN.map(row => (
                                             <div key={row.category} className="flex items-start gap-1.5">
-                                                <CheckCircleIcon className="h-2.5 w-2.5 text-blue-400 shrink-0 mt-0.5" />
+                                                <CheckCircleIcon className="h-2.5 w-2.5 text-info shrink-0 mt-0.5" />
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex items-center justify-between">
                                                         <span className="text-[8px] font-bold text-foreground truncate">{row.category}</span>
-                                                        <span className="text-[8px] font-bold text-blue-600 dark:text-blue-400 shrink-0 ml-1">{row.minutes}</span>
+                                                        <span className="text-[8px] font-bold text-info shrink-0 ml-1">{row.minutes}</span>
                                                     </div>
                                                     <div className="text-[7px] text-muted-foreground">{row.items} — {row.detail}</div>
                                                 </div>
@@ -1423,28 +1423,28 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                             </div>
 
                             {/* Installation card */}
-                            <div className="rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 overflow-hidden">
-                                <button onClick={() => toggleCostCard('installation')} className="w-full p-3 text-left hover:bg-green-100/50 dark:hover:bg-green-500/10 transition-colors">
+                            <div className="rounded-xl bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 overflow-hidden">
+                                <button onClick={() => toggleCostCard('installation')} className="w-full p-3 text-left hover:bg-success/15/50 dark:hover:bg-success/10 transition-colors">
                                     <div className="flex items-center justify-between mb-1">
                                         <div className="flex items-center gap-1.5">
-                                            <WrenchScrewdriverIcon className="h-3.5 w-3.5 text-green-500" />
+                                            <WrenchScrewdriverIcon className="h-3.5 w-3.5 text-success" />
                                             <span className="text-[9px] text-muted-foreground uppercase font-bold">Installation</span>
                                         </div>
                                         <ChevronDownIcon className={`h-3 w-3 text-muted-foreground transition-transform duration-200 ${expandedCostCards.has('installation') ? 'rotate-180' : ''}`} />
                                     </div>
-                                    <div className="text-lg font-bold text-green-700 dark:text-green-400">${REVIEWED_INSTALL_COST.toLocaleString()}</div>
+                                    <div className="text-lg font-bold text-success">${REVIEWED_INSTALL_COST.toLocaleString()}</div>
                                     <div className="text-[9px] text-muted-foreground">{INSTALL_TOTAL_HRS.toFixed(1)} hrs × $57/hr</div>
                                 </button>
                                 {expandedCostCards.has('installation') && (
                                     <div className="px-3 pb-3 space-y-1 animate-in fade-in slide-in-from-top-1 duration-200">
-                                        <div className="h-px bg-green-200 dark:bg-green-500/20 mb-1.5" />
+                                        <div className="h-px bg-success/20 dark:bg-success/20 mb-1.5" />
                                         {INSTALLATION_BREAKDOWN.map(row => (
                                             <div key={row.category} className="flex items-start gap-1.5">
-                                                <CheckCircleIcon className="h-2.5 w-2.5 text-green-400 shrink-0 mt-0.5" />
+                                                <CheckCircleIcon className="h-2.5 w-2.5 text-success shrink-0 mt-0.5" />
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex items-center justify-between">
                                                         <span className="text-[8px] font-bold text-foreground truncate">{row.category}</span>
-                                                        <span className="text-[8px] font-bold text-green-600 dark:text-green-400 shrink-0 ml-1">{row.hours}</span>
+                                                        <span className="text-[8px] font-bold text-success shrink-0 ml-1">{row.hours}</span>
                                                     </div>
                                                     <div className="text-[7px] text-muted-foreground">{row.items} — {row.detail}</div>
                                                 </div>
@@ -1491,18 +1491,18 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                         <div className="p-4 rounded-xl bg-card border border-border">
                             <div className="flex items-center justify-between mb-3">
                                 <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">All Adjustments Applied</div>
-                                <span className="text-[9px] px-1.5 py-0.5 rounded font-bold bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30">
+                                <span className="text-[9px] px-1.5 py-0.5 rounded font-bold bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30">
                                     {EXPERT_ADJUSTMENTS.length}/{EXPERT_ADJUSTMENTS.length} COMPLETE
                                 </span>
                             </div>
                             <div className="space-y-2">
                                 {EXPERT_ADJUSTMENTS.map(adj => (
-                                    <div key={adj.id} className="p-3 rounded-lg border bg-green-50/50 dark:bg-green-500/5 border-green-200 dark:border-green-500/20">
+                                    <div key={adj.id} className="p-3 rounded-lg border bg-success/10 dark:bg-success/100/5 border-success/30 dark:border-success/30">
                                         <div className="flex items-start justify-between mb-1">
                                             <div className="text-[11px] font-bold text-foreground">{adj.item}</div>
-                                            <span className="text-[10px] font-bold text-green-700 dark:text-green-400 shrink-0">{adj.impact}</span>
+                                            <span className="text-[10px] font-bold text-success shrink-0">{adj.impact}</span>
                                         </div>
-                                        <div className="flex items-center gap-2 text-[10px] text-green-700 dark:text-green-400">
+                                        <div className="flex items-center gap-2 text-[10px] text-success">
                                             <CheckCircleIcon className="h-3.5 w-3.5 shrink-0" />
                                             <span className="font-bold">Applied — {adj.aiSuggestion.split('.')[0]}</span>
                                             {adj.requiresDesigner && <span className="text-[8px] px-1.5 py-0.5 rounded bg-sky-50 dark:bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-200 dark:border-sky-500/20 ring-1 ring-inset ring-sky-600/20 font-bold">DESIGNER VERIFIED</span>}
@@ -1543,26 +1543,26 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                         <div className="animate-in fade-in duration-500 space-y-3">
                             <div className="grid grid-cols-2 gap-3">
                                 {/* Labor Estimate — expandable */}
-                                <div className="rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 overflow-hidden">
-                                    <button onClick={() => toggleCostCard('labor')} className="w-full p-4 text-left hover:bg-green-100/50 dark:hover:bg-green-500/10 transition-colors">
+                                <div className="rounded-xl bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 overflow-hidden">
+                                    <button onClick={() => toggleCostCard('labor')} className="w-full p-4 text-left hover:bg-success/15/50 dark:hover:bg-success/10 transition-colors">
                                         <div className="flex items-center justify-between mb-1">
                                             <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold">Labor Estimate</span>
                                             <ChevronDownIcon className={`h-3 w-3 text-muted-foreground transition-transform duration-200 ${expandedCostCards.has('labor') ? 'rotate-180' : ''}`} />
                                         </div>
-                                        <div className="text-xl font-bold text-green-700 dark:text-green-400">$15,378</div>
+                                        <div className="text-xl font-bold text-success">$15,378</div>
                                         <div className="text-[10px] text-muted-foreground mt-1">Install ${REVIEWED_INSTALL_COST.toLocaleString()} + Delivery ${DELIVERY_TOTAL_COST.toLocaleString()}</div>
-                                        <div className="mt-2"><span className="text-[9px] px-2 py-0.5 rounded-full bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30 font-bold">DAVID PARK &#10003;</span></div>
+                                        <div className="mt-2"><span className="text-[9px] px-2 py-0.5 rounded-full bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30 font-bold">DAVID PARK &#10003;</span></div>
                                     </button>
                                     {expandedCostCards.has('labor') && (
                                         <div className="px-4 pb-3 space-y-1.5 animate-in fade-in slide-in-from-top-1 duration-200">
-                                            <div className="h-px bg-green-200 dark:bg-green-500/20 mb-1" />
+                                            <div className="h-px bg-success/20 dark:bg-success/20 mb-1" />
                                             {LABOR_ESTIMATE_BREAKDOWN.map(row => (
                                                 <div key={row.label} className="flex items-start gap-1.5">
-                                                    <CheckCircleIcon className="h-3 w-3 text-green-400 shrink-0 mt-0.5" />
+                                                    <CheckCircleIcon className="h-3 w-3 text-success shrink-0 mt-0.5" />
                                                     <div className="flex-1 min-w-0">
                                                         <div className="flex items-center justify-between">
                                                             <span className="text-[9px] font-bold text-foreground">{row.label}</span>
-                                                            <span className="text-[9px] font-bold text-green-600 dark:text-green-400 shrink-0 ml-1">{row.value}</span>
+                                                            <span className="text-[9px] font-bold text-success shrink-0 ml-1">{row.value}</span>
                                                         </div>
                                                         <div className="text-[8px] text-muted-foreground">{row.detail}</div>
                                                     </div>
@@ -1573,26 +1573,26 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                 </div>
 
                                 {/* Product Quote — expandable */}
-                                <div className="rounded-xl bg-blue-50 dark:bg-blue-500/5 border border-blue-200 dark:border-blue-500/20 overflow-hidden">
-                                    <button onClick={() => toggleCostCard('product')} className="w-full p-4 text-left hover:bg-blue-100/50 dark:hover:bg-blue-500/10 transition-colors">
+                                <div className="rounded-xl bg-info/10 dark:bg-info/100/5 border border-info/20 overflow-hidden">
+                                    <button onClick={() => toggleCostCard('product')} className="w-full p-4 text-left hover:bg-info/15/50 dark:hover:bg-info/10 transition-colors">
                                         <div className="flex items-center justify-between mb-1">
                                             <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold">Product Quote</span>
                                             <ChevronDownIcon className={`h-3 w-3 text-muted-foreground transition-transform duration-200 ${expandedCostCards.has('product') ? 'rotate-180' : ''}`} />
                                         </div>
-                                        <div className="text-xl font-bold text-blue-700 dark:text-blue-400">$287,450</div>
-                                        <div className="mt-1"><span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300 ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30 font-bold">MILLERKNOLL LIST</span></div>
+                                        <div className="text-xl font-bold text-info">$287,450</div>
+                                        <div className="mt-1"><span className="text-[9px] px-2 py-0.5 rounded-full bg-info/10 text-info dark:bg-info/15 dark:text-info ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30 font-bold">MILLERKNOLL LIST</span></div>
                                         <div className="text-[10px] text-muted-foreground mt-1">24 line items</div>
                                     </button>
                                     {expandedCostCards.has('product') && (
                                         <div className="px-4 pb-3 space-y-1.5 animate-in fade-in slide-in-from-top-1 duration-200">
-                                            <div className="h-px bg-blue-200 dark:bg-blue-500/20 mb-1" />
+                                            <div className="h-px bg-info/20 dark:bg-info/20 mb-1" />
                                             {PRODUCT_QUOTE_BREAKDOWN.map(row => (
                                                 <div key={row.label} className="flex items-start gap-1.5">
-                                                    <CubeIcon className="h-3 w-3 text-blue-400 shrink-0 mt-0.5" />
+                                                    <CubeIcon className="h-3 w-3 text-info shrink-0 mt-0.5" />
                                                     <div className="flex-1 min-w-0">
                                                         <div className="flex items-center justify-between">
                                                             <span className="text-[9px] font-bold text-foreground">{row.label}</span>
-                                                            <span className="text-[9px] font-bold text-blue-600 dark:text-blue-400 shrink-0 ml-1">{row.value}</span>
+                                                            <span className="text-[9px] font-bold text-info shrink-0 ml-1">{row.value}</span>
                                                         </div>
                                                         <div className="text-[8px] text-muted-foreground">{row.detail}</div>
                                                     </div>
@@ -1695,9 +1695,9 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                         {INTAKE_REPORT.mismatches.map(m => (
                                             <div key={m.item} className="flex items-center justify-between py-0.5">
                                                 <div className="flex items-center gap-1.5">
-                                                    <CheckCircleIcon className="h-3 w-3 text-green-500 shrink-0" />
+                                                    <CheckCircleIcon className="h-3 w-3 text-success shrink-0" />
                                                     <span className="text-[8px] font-bold text-foreground">{m.item}</span>
-                                                    <span className="text-[7px] px-1 py-0.5 rounded bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300 font-bold ring-1 ring-inset ring-amber-600/20">{m.badge}</span>
+                                                    <span className="text-[7px] px-1 py-0.5 rounded bg-warning/10 text-warning dark:text-warning font-bold ring-1 ring-inset ring-amber-600/20">{m.badge}</span>
                                                 </div>
                                                 <span className="text-[8px] text-muted-foreground">{m.resolution}</span>
                                             </div>
@@ -1712,8 +1712,8 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                     <div key={row.label} className={`flex items-center justify-between ${waterfallStyles[row.type]}`}>
                                         {row.type === 'discount' ? (
                                             <div className="flex items-center gap-2">
-                                                <ArrowDownIcon className="h-3 w-3 text-green-500" />
-                                                <span className="text-[10px] font-bold text-green-700 dark:text-green-400">{row.label}</span>
+                                                <ArrowDownIcon className="h-3 w-3 text-success" />
+                                                <span className="text-[10px] font-bold text-success">{row.label}</span>
                                             </div>
                                         ) : (
                                             <span className={`text-[11px] ${row.type === 'total' ? 'text-xs font-bold uppercase tracking-wider' : 'font-medium'} ${waterfallTextStyles[row.type]}`}>{row.label}</span>
@@ -1729,7 +1729,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                                         className="w-24 text-right text-sm font-bold bg-card border border-brand-400 rounded px-1.5 py-0.5 focus:outline-none focus:ring-1 focus:ring-brand-400"
                                                     />
                                                 ) : (
-                                                    <span className={`${row.type === 'total' ? 'text-xl font-black' : 'text-sm font-bold'} ${waterfallTextStyles[row.type]} ${fieldOverrides[row.label] ? 'text-amber-600 dark:text-amber-400' : ''}`}>
+                                                    <span className={`${row.type === 'total' ? 'text-xl font-black' : 'text-sm font-bold'} ${waterfallTextStyles[row.type]} ${fieldOverrides[row.label] ? 'text-warning' : ''}`}>
                                                         {fieldOverrides[row.label] || row.value}
                                                     </span>
                                                 )
@@ -1771,18 +1771,18 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                             <div className="grid grid-cols-2 gap-2">
                                 <div className="p-2.5 rounded-lg bg-card border border-border">
                                     <div className="flex items-center gap-1.5 mb-1">
-                                        <ClockIcon className="h-3 w-3 text-green-500" />
+                                        <ClockIcon className="h-3 w-3 text-success" />
                                         <span className="text-[9px] font-bold text-foreground">Standard items</span>
                                     </div>
-                                    <div className="text-sm font-bold text-green-700 dark:text-green-400">8–10 weeks</div>
+                                    <div className="text-sm font-bold text-success">8–10 weeks</div>
                                     <div className="text-[8px] text-muted-foreground">22 standard MillerKnoll items</div>
                                 </div>
                                 <div className="p-2.5 rounded-lg bg-card border border-border">
                                     <div className="flex items-center gap-1.5 mb-1">
-                                        <ClockIcon className="h-3 w-3 text-amber-500" />
+                                        <ClockIcon className="h-3 w-3 text-warning" />
                                         <span className="text-[9px] font-bold text-foreground">Custom OFS Serpentine</span>
                                     </div>
-                                    <div className="text-sm font-bold text-amber-600 dark:text-amber-400">12 weeks</div>
+                                    <div className="text-sm font-bold text-warning">12 weeks</div>
                                     <div className="text-[8px] text-muted-foreground">Custom 12-seat — designer verified</div>
                                 </div>
                             </div>
@@ -1792,7 +1792,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                 <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider mb-2">Review Trail</div>
                                 <div className="space-y-1">
                                     <div className="flex items-center gap-2 text-[9px]">
-                                        <CheckCircleIcon className="h-3 w-3 text-green-500 shrink-0" />
+                                        <CheckCircleIcon className="h-3 w-3 text-success shrink-0" />
                                         <span><span className="font-bold">Regional Sales Manager Reyes</span> (Expert) — 24 items reviewed, 5 adjustments, OFS escalated</span>
                                     </div>
                                     <div className="flex items-center gap-2 text-[9px]">
@@ -1915,15 +1915,15 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                     {/* §3 — Mismatches Resolved */}
                                     <div>
                                         <div className="text-[10px] font-bold text-foreground uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                                            <ExclamationTriangleIcon className="h-3.5 w-3.5 text-amber-500" />3. Mismatches Resolved (Flow 1)
+                                            <ExclamationTriangleIcon className="h-3.5 w-3.5 text-warning" />3. Mismatches Resolved (Flow 1)
                                         </div>
                                         <div className="space-y-1">
                                             {INTAKE_REPORT.mismatches.map(m => (
                                                 <div key={m.item} className="flex items-center justify-between py-0.5">
                                                     <div className="flex items-center gap-1.5">
-                                                        <CheckCircleIcon className="h-3 w-3 text-green-500 shrink-0" />
+                                                        <CheckCircleIcon className="h-3 w-3 text-success shrink-0" />
                                                         <span className="text-[9px] font-bold text-foreground">{m.item}</span>
-                                                        <span className="text-[7px] px-1 py-0.5 rounded bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300 font-bold ring-1 ring-inset ring-amber-600/20">{m.badge}</span>
+                                                        <span className="text-[7px] px-1 py-0.5 rounded bg-warning/10 text-warning dark:text-warning font-bold ring-1 ring-inset ring-amber-600/20">{m.badge}</span>
                                                     </div>
                                                     <span className="text-[8px] text-muted-foreground">{m.resolution}</span>
                                                 </div>
@@ -1943,7 +1943,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                                     <div className="flex items-center justify-between mb-0.5">
                                                         <span className="text-[9px] font-bold text-foreground">{adj.item}</span>
                                                         <div className="flex items-center gap-1.5">
-                                                            <span className="text-[8px] font-bold text-green-600 dark:text-green-400">{adj.impact}</span>
+                                                            <span className="text-[8px] font-bold text-success">{adj.impact}</span>
                                                             {adj.requiresDesigner && <span className="text-[7px] px-1 py-0.5 rounded bg-sky-50 dark:bg-sky-500/10 text-sky-600 dark:text-sky-400 font-bold">DESIGNER</span>}
                                                         </div>
                                                     </div>
@@ -1957,16 +1957,16 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                     {/* §5 — Labor Cost Breakdown */}
                                     <div>
                                         <div className="text-[10px] font-bold text-foreground uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                                            <CalculatorIcon className="h-3.5 w-3.5 text-blue-500" />5. Labor Cost Breakdown
+                                            <CalculatorIcon className="h-3.5 w-3.5 text-info" />5. Labor Cost Breakdown
                                         </div>
                                         <div className="grid grid-cols-3 gap-2 mb-2">
-                                            <div className="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-500/5 border border-blue-200 dark:border-blue-500/20 text-center">
+                                            <div className="p-2.5 rounded-lg bg-info/10 dark:bg-info/100/5 border border-info/20 text-center">
                                                 <div className="text-[8px] text-muted-foreground uppercase">Delivery</div>
-                                                <div className="text-sm font-bold text-blue-700 dark:text-blue-400">${DELIVERY_TOTAL_COST.toLocaleString()}</div>
+                                                <div className="text-sm font-bold text-info">${DELIVERY_TOTAL_COST.toLocaleString()}</div>
                                             </div>
-                                            <div className="p-2.5 rounded-lg bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 text-center">
+                                            <div className="p-2.5 rounded-lg bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 text-center">
                                                 <div className="text-[8px] text-muted-foreground uppercase">Installation</div>
-                                                <div className="text-sm font-bold text-green-700 dark:text-green-400">${REVIEWED_INSTALL_COST.toLocaleString()}</div>
+                                                <div className="text-sm font-bold text-success">${REVIEWED_INSTALL_COST.toLocaleString()}</div>
                                             </div>
                                             <div className="p-2.5 rounded-lg bg-card border border-border text-center">
                                                 <div className="text-[8px] text-muted-foreground uppercase">Combined</div>
@@ -1976,7 +1976,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                         {/* Detailed breakdowns */}
                                         <div className="grid grid-cols-2 gap-3">
                                             <div>
-                                                <div className="text-[8px] font-bold text-blue-600 dark:text-blue-400 uppercase mb-1">Delivery Detail</div>
+                                                <div className="text-[8px] font-bold text-info uppercase mb-1">Delivery Detail</div>
                                                 {DELIVERY_BREAKDOWN.map(d => (
                                                     <div key={d.category} className="flex items-center justify-between py-0.5 border-b border-border/50 last:border-0">
                                                         <span className="text-[8px] text-muted-foreground">{d.category}</span>
@@ -1985,7 +1985,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                                 ))}
                                             </div>
                                             <div>
-                                                <div className="text-[8px] font-bold text-green-600 dark:text-green-400 uppercase mb-1">Installation Detail</div>
+                                                <div className="text-[8px] font-bold text-success uppercase mb-1">Installation Detail</div>
                                                 {INSTALLATION_BREAKDOWN.map(d => (
                                                     <div key={d.category} className="flex items-center justify-between py-0.5 border-b border-border/50 last:border-0">
                                                         <span className="text-[8px] text-muted-foreground">{d.category}</span>
@@ -2021,13 +2021,13 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                                 <div key={row.label} className={`flex items-center justify-between ${waterfallStyles[row.type]}`}>
                                                     {row.type === 'discount' ? (
                                                         <div className="flex items-center gap-2">
-                                                            <ArrowDownIcon className="h-3 w-3 text-green-500" />
-                                                            <span className="text-[10px] font-bold text-green-700 dark:text-green-400">{row.label}</span>
+                                                            <ArrowDownIcon className="h-3 w-3 text-success" />
+                                                            <span className="text-[10px] font-bold text-success">{row.label}</span>
                                                         </div>
                                                     ) : (
                                                         <span className={`text-[11px] ${row.type === 'total' ? 'text-xs font-bold uppercase' : 'font-medium'} ${waterfallTextStyles[row.type]}`}>{row.label}</span>
                                                     )}
-                                                    {row.value && <span className={`${row.type === 'total' ? 'text-lg font-black' : 'text-sm font-bold'} ${waterfallTextStyles[row.type]} ${fieldOverrides[row.label] ? 'text-amber-600 dark:text-amber-400' : ''}`}>{fieldOverrides[row.label] || row.value}</span>}
+                                                    {row.value && <span className={`${row.type === 'total' ? 'text-lg font-black' : 'text-sm font-bold'} ${waterfallTextStyles[row.type]} ${fieldOverrides[row.label] ? 'text-warning' : ''}`}>{fieldOverrides[row.label] || row.value}</span>}
                                                 </div>
                                             ))}
                                         </div>
@@ -2063,17 +2063,17 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                     {/* §8 — Delivery Timeline */}
                                     <div>
                                         <div className="text-[10px] font-bold text-foreground uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                                            <ClockIcon className="h-3.5 w-3.5 text-green-500" />8. Delivery Timeline
+                                            <ClockIcon className="h-3.5 w-3.5 text-success" />8. Delivery Timeline
                                         </div>
                                         <div className="grid grid-cols-2 gap-2">
-                                            <div className="p-2.5 rounded-lg bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
+                                            <div className="p-2.5 rounded-lg bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30">
                                                 <div className="text-[9px] font-bold text-foreground mb-0.5">Standard items</div>
-                                                <div className="text-sm font-bold text-green-700 dark:text-green-400">8–10 weeks</div>
+                                                <div className="text-sm font-bold text-success">8–10 weeks</div>
                                                 <div className="text-[8px] text-muted-foreground">22 standard MillerKnoll items</div>
                                             </div>
-                                            <div className="p-2.5 rounded-lg bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/20">
+                                            <div className="p-2.5 rounded-lg bg-warning/10 border border-warning/20">
                                                 <div className="text-[9px] font-bold text-foreground mb-0.5">Custom OFS Serpentine</div>
-                                                <div className="text-sm font-bold text-amber-600 dark:text-amber-400">12 weeks</div>
+                                                <div className="text-sm font-bold text-warning">12 weeks</div>
                                                 <div className="text-[8px] text-muted-foreground">Custom 12-seat — designer verified</div>
                                             </div>
                                         </div>
@@ -2087,7 +2087,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                         </div>
                                         <div className="space-y-1.5">
                                             <div className="flex items-center gap-2 text-[9px]">
-                                                <CheckCircleIcon className="h-3 w-3 text-green-500 shrink-0" />
+                                                <CheckCircleIcon className="h-3 w-3 text-success shrink-0" />
                                                 <span><span className="font-bold">Regional Sales Manager Reyes</span> (Expert) — 24 items reviewed, 5 adjustments, OFS escalated</span>
                                             </div>
                                             <div className="flex items-center gap-2 text-[9px]">
@@ -2106,7 +2106,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                                         <div className="h-px bg-border" />
                                         <div>
                                             <div className="text-[10px] font-bold text-foreground uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                                <PencilSquareIcon className="h-3.5 w-3.5 text-amber-500" />Expert Notes
+                                                <PencilSquareIcon className="h-3.5 w-3.5 text-warning" />Expert Notes
                                             </div>
                                             <div className="text-[10px] text-muted-foreground italic px-3 py-2 rounded-lg bg-muted/30 border border-border">{expertNotes}</div>
                                         </div>
@@ -2174,7 +2174,7 @@ export default function WrgLaborEstimation({ onNavigate }: { onNavigate: (page: 
                     {sendingToDealer && (
                         <div className="fixed bottom-6 right-6 z-50 animate-in fade-in slide-in-from-bottom-4 duration-300">
                             <div className="px-4 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 shadow-xl flex items-center gap-2">
-                                <CheckCircleIcon className="h-4 w-4 text-green-400 dark:text-green-600" />
+                                <CheckCircleIcon className="h-4 w-4 text-success dark:text-success" />
                                 <span className="text-xs font-bold">Proposal sent to {selectedDealer} for review</span>
                             </div>
                         </div>
@@ -2390,8 +2390,8 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                                         <span className="text-[9px] text-muted-foreground">$202,138 total</span>
                                     </div>
                                     <div className="flex items-center gap-1.5">
-                                        <CheckCircleIcon className="h-3 w-3 text-green-500" />
-                                        <span className="text-[9px] text-green-600 dark:text-green-400 font-bold">Expert + Designer verified</span>
+                                        <CheckCircleIcon className="h-3 w-3 text-success" />
+                                        <span className="text-[9px] text-success font-bold">Expert + Designer verified</span>
                                     </div>
                                 </div>
                             </div>
@@ -2411,7 +2411,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                         </div>
                         <div className="p-2.5 rounded-lg bg-card border border-border text-center">
                             <div className="text-[8px] text-muted-foreground uppercase">Labor + Freight</div>
-                            <div className="text-sm font-bold text-green-700 dark:text-green-400">$23,919</div>
+                            <div className="text-sm font-bold text-success">$23,919</div>
                             <div className="text-[8px] text-muted-foreground">$17,685 + $6,234</div>
                         </div>
                         <div className="p-2.5 rounded-lg bg-brand-50 dark:bg-brand-500/5 border-2 border-brand-400 dark:border-brand-500/40 text-center">
@@ -2426,9 +2426,9 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                         <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider mb-2">Attachments</div>
                         <div className="space-y-1.5">
                             {[
-                                { icon: <DocumentTextIcon className="h-3.5 w-3.5" />, name: 'Proposal_JPS_HCW_2026.pdf', size: '2.4 MB', color: 'text-red-500' },
-                                { icon: <ClipboardDocumentListIcon className="h-3.5 w-3.5" />, name: 'Labor_Estimation_Report.xlsx', size: '856 KB', color: 'text-green-600' },
-                                { icon: <DocumentTextIcon className="h-3.5 w-3.5" />, name: 'MillerKnoll_Quote_287450.pdf', size: '1.8 MB', color: 'text-red-500' },
+                                { icon: <DocumentTextIcon className="h-3.5 w-3.5" />, name: 'Proposal_JPS_HCW_2026.pdf', size: '2.4 MB', color: 'text-destructive' },
+                                { icon: <ClipboardDocumentListIcon className="h-3.5 w-3.5" />, name: 'Labor_Estimation_Report.xlsx', size: '856 KB', color: 'text-success' },
+                                { icon: <DocumentTextIcon className="h-3.5 w-3.5" />, name: 'MillerKnoll_Quote_287450.pdf', size: '1.8 MB', color: 'text-destructive' },
                             ].map(att => (
                                 <div key={att.name} className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-muted/50 transition-colors">
                                     <span className={att.color}>{att.icon}</span>
@@ -2454,8 +2454,8 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                     <div className="grid grid-cols-4 gap-2">
                         {[
                             { label: 'Product Net', val: '$178,219', sub: 'MillerKnoll -38%', color: 'text-foreground' },
-                            { label: 'Labor', val: '$17,685', sub: '15% margin', color: 'text-green-700 dark:text-green-400' },
-                            { label: 'Freight', val: '$6,234', sub: 'DFW metro', color: 'text-blue-700 dark:text-blue-400' },
+                            { label: 'Labor', val: '$17,685', sub: '15% margin', color: 'text-success' },
+                            { label: 'Freight', val: '$6,234', sub: 'DFW metro', color: 'text-info' },
                         ].map(c => (
                             <div key={c.label} className="p-3 rounded-lg bg-card border border-border text-center">
                                 <div className="text-[9px] text-muted-foreground uppercase">{c.label}</div>
@@ -2513,9 +2513,9 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                                 {INTAKE_REPORT.mismatches.map(m => (
                                     <div key={m.item} className="flex items-center justify-between py-0.5">
                                         <div className="flex items-center gap-1.5">
-                                            <CheckCircleIcon className="h-2.5 w-2.5 text-green-500 shrink-0" />
+                                            <CheckCircleIcon className="h-2.5 w-2.5 text-success shrink-0" />
                                             <span className="text-[8px] font-bold text-foreground">{m.item}</span>
-                                            <span className="text-[7px] px-1 py-0.5 rounded bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300 font-bold ring-1 ring-inset ring-amber-600/20">{m.badge}</span>
+                                            <span className="text-[7px] px-1 py-0.5 rounded bg-warning/10 text-warning dark:text-warning font-bold ring-1 ring-inset ring-amber-600/20">{m.badge}</span>
                                         </div>
                                         <span className="text-[8px] text-muted-foreground">{m.resolution}</span>
                                     </div>
@@ -2533,9 +2533,9 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                             <div className="text-[10px] text-muted-foreground">24 items · {FLAGGED_COUNT} flagged</div>
                         </div>
                         {/* Expert+Designer Review */}
-                        <div className="p-3 rounded-lg bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 text-center">
+                        <div className="p-3 rounded-lg bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 text-center">
                             <div className="text-[9px] text-muted-foreground uppercase mb-1">Expert + Designer Review</div>
-                            <div className="text-lg font-bold text-green-700 dark:text-green-400">${REVIEWED_COMBINED.toLocaleString()}</div>
+                            <div className="text-lg font-bold text-success">${REVIEWED_COMBINED.toLocaleString()}</div>
                             <div className="text-[10px] text-muted-foreground">24 approved · {FLAGGED_COUNT} adjusted</div>
                         </div>
                         {/* Delivery Timeline */}
@@ -2543,17 +2543,17 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                             <div className="text-[9px] font-bold text-muted-foreground mb-1.5 uppercase tracking-wider">Delivery Timeline</div>
                             <div className="space-y-1.5">
                                 <div className="flex items-center gap-1.5">
-                                    <ClockIcon className="h-3 w-3 text-green-500 shrink-0" />
+                                    <ClockIcon className="h-3 w-3 text-success shrink-0" />
                                     <span className="text-[9px] text-foreground">Standard: <span className="font-bold">8-10 wk</span></span>
                                     <div className="flex-1 h-1.5 rounded-full bg-muted overflow-hidden">
-                                        <div className="h-full rounded-full bg-green-500" style={{ width: '70%' }} />
+                                        <div className="h-full rounded-full bg-success/100" style={{ width: '70%' }} />
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-1.5">
-                                    <ClockIcon className="h-3 w-3 text-amber-500 shrink-0" />
+                                    <ClockIcon className="h-3 w-3 text-warning shrink-0" />
                                     <span className="text-[9px] text-foreground">Custom OFS: <span className="font-bold">12 wk</span></span>
                                     <div className="flex-1 h-1.5 rounded-full bg-muted overflow-hidden">
-                                        <div className="h-full rounded-full bg-amber-500" style={{ width: '85%' }} />
+                                        <div className="h-full rounded-full bg-warning" style={{ width: '85%' }} />
                                     </div>
                                 </div>
                             </div>
@@ -2563,7 +2563,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                             <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider mb-1.5">Review Activity</div>
                             <div className="space-y-1">
                                 <div className="flex items-center gap-1.5 text-[9px]">
-                                    <CheckCircleIcon className="h-3 w-3 text-green-500 shrink-0" />
+                                    <CheckCircleIcon className="h-3 w-3 text-success shrink-0" />
                                     <span className="text-foreground"><span className="font-bold">Regional Sales Manager Reyes</span> — 24 items, {FLAGGED_COUNT} adjusted</span>
                                 </div>
                                 <div className="flex items-center gap-1.5 text-[9px]">
@@ -2591,9 +2591,9 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                             cube: <CubeIcon className="h-3.5 w-3.5" />,
                         };
                         const chipColors: Record<string, string> = {
-                            green: 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
-                            blue: 'bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300 ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
-                            amber: 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
+                            green: 'bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
+                            blue: 'bg-info/10 text-info dark:bg-info/15 dark:text-info ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
+                            amber: 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
                             purple: 'bg-purple-50 text-purple-700 dark:bg-ai/15 dark:text-purple-300 ring-1 ring-inset ring-purple-600/20 dark:ring-purple-400/30',
                         };
                         return (
@@ -2620,7 +2620,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                                 <div className="space-y-0.5">
                                     {criteria.items.map((item, i) => (
                                         <div key={i} className="flex items-start gap-1.5 py-0.5">
-                                            <CheckCircleIcon className="h-2.5 w-2.5 text-green-500 shrink-0 mt-0.5" />
+                                            <CheckCircleIcon className="h-2.5 w-2.5 text-success shrink-0 mt-0.5" />
                                             <span className="text-[9px] text-muted-foreground leading-tight">{item}</span>
                                         </div>
                                     ))}
@@ -2677,9 +2677,9 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                         </div>
                     )}
                     {clarificationConfirmed && (
-                        <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
-                            <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
-                            <span className="text-[10px] font-bold text-green-700 dark:text-green-400">Expert clarification confirmed — all items resolved</span>
+                        <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30">
+                            <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
+                            <span className="text-[10px] font-bold text-success">Expert clarification confirmed — all items resolved</span>
                         </div>
                     )}
 
@@ -2707,9 +2707,9 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
             {reviewPhase === 'approved' && (
                 <div className="animate-in fade-in duration-500 space-y-3">
                     {/* Approval confirmed header */}
-                    <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
+                    <div className="p-3 rounded-xl bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30">
                         <div className="flex items-center gap-2">
-                            <CheckCircleIcon className="h-5 w-5 text-green-500 shrink-0" />
+                            <CheckCircleIcon className="h-5 w-5 text-success shrink-0" />
                             <div>
                                 <div className="text-[11px] font-bold text-foreground">Approval Chain Complete</div>
                                 <div className="text-[9px] text-muted-foreground">Regional Sales Manager Reyes, Designer Alden, Account Manager Kai, Jordan Park — all approved</div>
@@ -2723,8 +2723,8 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                         <div className="grid grid-cols-4 gap-2">
                             {[
                                 { label: 'Product Net', val: '$178,219', color: 'text-foreground' },
-                                { label: 'Labor', val: '$17,685', color: 'text-green-700 dark:text-green-400' },
-                                { label: 'Freight', val: '$6,234', color: 'text-blue-700 dark:text-blue-400' },
+                                { label: 'Labor', val: '$17,685', color: 'text-success' },
+                                { label: 'Freight', val: '$6,234', color: 'text-info' },
                             ].map(c => (
                                 <div key={c.label} className="text-center">
                                     <div className="text-[8px] text-muted-foreground uppercase">{c.label}</div>
@@ -2787,7 +2787,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                         <div className="space-y-1.5">
                             {releaseAgents.map(agent => (
                                 <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'}`}>
-                                    {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
+                                    {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
                                     <span className={agent.done ? 'text-foreground' : 'text-indigo-600 dark:text-indigo-400'}>{agent.name}</span>
                                     <span className="text-muted-foreground">{agent.detail}</span>
                                 </div>
@@ -2801,9 +2801,9 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
             {reviewPhase === 'done' && (
                 <div className="animate-in fade-in scale-in-95 duration-500 space-y-3">
                     {/* Header */}
-                    <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
+                    <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30">
                         <div className="flex items-center gap-3">
-                            <CheckCircleIcon className="h-6 w-6 text-green-500 shrink-0" />
+                            <CheckCircleIcon className="h-6 w-6 text-success shrink-0" />
                             <div>
                                 <div className="text-xs font-bold text-foreground">Proposal Released to JPS Health Network</div>
                                 <div className="text-[10px] text-muted-foreground mt-0.5">Quote #WRG-2024-0847 · $202,138 · {new Date().toLocaleDateString()}</div>
@@ -2875,15 +2875,15 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                     {/* Completion items */}
                     <div className="space-y-1.5">
                         <div className="flex items-center gap-2 p-2.5 rounded-lg bg-card border border-border">
-                            <CheckCircleIcon className="h-3.5 w-3.5 text-green-500" />
+                            <CheckCircleIcon className="h-3.5 w-3.5 text-success" />
                             <span className="text-[10px] text-foreground">Quote $202,138 written to CORE — audit trail attached</span>
                         </div>
                         <div className="flex items-center gap-2 p-2.5 rounded-lg bg-card border border-border">
-                            <CheckCircleIcon className="h-3.5 w-3.5 text-green-500" />
+                            <CheckCircleIcon className="h-3.5 w-3.5 text-success" />
                             <span className="text-[10px] text-foreground">PDF proposal sent to JPS Health Network</span>
                         </div>
                         <div className="flex items-center gap-2 p-2.5 rounded-lg bg-card border border-border">
-                            <CheckCircleIcon className="h-3.5 w-3.5 text-green-500" />
+                            <CheckCircleIcon className="h-3.5 w-3.5 text-success" />
                             <span className="text-[10px] text-foreground">Stakeholders notified — Regional Sales Manager Reyes, Designer Alden, Account Manager Kai</span>
                         </div>
                     </div>
@@ -2967,15 +2967,15 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                             {/* §3 — Mismatches Resolved */}
                             <div>
                                 <div className="text-[10px] font-bold text-foreground uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                                    <ExclamationTriangleIcon className="h-3.5 w-3.5 text-amber-500" />3. Mismatches Resolved (Flow 1)
+                                    <ExclamationTriangleIcon className="h-3.5 w-3.5 text-warning" />3. Mismatches Resolved (Flow 1)
                                 </div>
                                 <div className="space-y-1">
                                     {INTAKE_REPORT.mismatches.map(m => (
                                         <div key={m.item} className="flex items-center justify-between py-0.5">
                                             <div className="flex items-center gap-1.5">
-                                                <CheckCircleIcon className="h-3 w-3 text-green-500 shrink-0" />
+                                                <CheckCircleIcon className="h-3 w-3 text-success shrink-0" />
                                                 <span className="text-[9px] font-bold text-foreground">{m.item}</span>
-                                                <span className="text-[7px] px-1 py-0.5 rounded bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300 font-bold ring-1 ring-inset ring-amber-600/20">{m.badge}</span>
+                                                <span className="text-[7px] px-1 py-0.5 rounded bg-warning/10 text-warning dark:text-warning font-bold ring-1 ring-inset ring-amber-600/20">{m.badge}</span>
                                             </div>
                                             <span className="text-[8px] text-muted-foreground">{m.resolution}</span>
                                         </div>
@@ -2995,7 +2995,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                                             <div className="flex items-center justify-between mb-0.5">
                                                 <span className="text-[9px] font-bold text-foreground">{adj.item}</span>
                                                 <div className="flex items-center gap-1.5">
-                                                    <span className="text-[8px] font-bold text-green-600 dark:text-green-400">{adj.impact}</span>
+                                                    <span className="text-[8px] font-bold text-success">{adj.impact}</span>
                                                     {adj.requiresDesigner && <span className="text-[7px] px-1 py-0.5 rounded bg-sky-50 dark:bg-sky-500/10 text-sky-600 dark:text-sky-400 font-bold">DESIGNER</span>}
                                                 </div>
                                             </div>
@@ -3009,16 +3009,16 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                             {/* §5 — Labor Cost Breakdown */}
                             <div>
                                 <div className="text-[10px] font-bold text-foreground uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                                    <CalculatorIcon className="h-3.5 w-3.5 text-blue-500" />5. Labor Cost Breakdown
+                                    <CalculatorIcon className="h-3.5 w-3.5 text-info" />5. Labor Cost Breakdown
                                 </div>
                                 <div className="grid grid-cols-3 gap-2 mb-2">
-                                    <div className="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-500/5 border border-blue-200 dark:border-blue-500/20 text-center">
+                                    <div className="p-2.5 rounded-lg bg-info/10 dark:bg-info/100/5 border border-info/20 text-center">
                                         <div className="text-[8px] text-muted-foreground uppercase">Delivery</div>
-                                        <div className="text-sm font-bold text-blue-700 dark:text-blue-400">${DELIVERY_TOTAL_COST.toLocaleString()}</div>
+                                        <div className="text-sm font-bold text-info">${DELIVERY_TOTAL_COST.toLocaleString()}</div>
                                     </div>
-                                    <div className="p-2.5 rounded-lg bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 text-center">
+                                    <div className="p-2.5 rounded-lg bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 text-center">
                                         <div className="text-[8px] text-muted-foreground uppercase">Installation</div>
-                                        <div className="text-sm font-bold text-green-700 dark:text-green-400">${REVIEWED_INSTALL_COST.toLocaleString()}</div>
+                                        <div className="text-sm font-bold text-success">${REVIEWED_INSTALL_COST.toLocaleString()}</div>
                                     </div>
                                     <div className="p-2.5 rounded-lg bg-card border border-border text-center">
                                         <div className="text-[8px] text-muted-foreground uppercase">Combined</div>
@@ -3027,7 +3027,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                                 </div>
                                 <div className="grid grid-cols-2 gap-3">
                                     <div>
-                                        <div className="text-[8px] font-bold text-blue-600 dark:text-blue-400 uppercase mb-1">Delivery Detail</div>
+                                        <div className="text-[8px] font-bold text-info uppercase mb-1">Delivery Detail</div>
                                         {DELIVERY_BREAKDOWN.map(d => (
                                             <div key={d.category} className="flex items-center justify-between py-0.5 border-b border-border/50 last:border-0">
                                                 <span className="text-[8px] text-muted-foreground">{d.category}</span>
@@ -3036,7 +3036,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                                         ))}
                                     </div>
                                     <div>
-                                        <div className="text-[8px] font-bold text-green-600 dark:text-green-400 uppercase mb-1">Installation Detail</div>
+                                        <div className="text-[8px] font-bold text-success uppercase mb-1">Installation Detail</div>
                                         {INSTALLATION_BREAKDOWN.map(d => (
                                             <div key={d.category} className="flex items-center justify-between py-0.5 border-b border-border/50 last:border-0">
                                                 <span className="text-[8px] text-muted-foreground">{d.category}</span>
@@ -3070,8 +3070,8 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                                         <div key={row.label} className={`flex items-center justify-between ${waterfallStyles[row.type]}`}>
                                             {row.type === 'discount' ? (
                                                 <div className="flex items-center gap-2">
-                                                    <ArrowDownIcon className="h-3 w-3 text-green-500" />
-                                                    <span className="text-[10px] font-bold text-green-700 dark:text-green-400">{row.label}</span>
+                                                    <ArrowDownIcon className="h-3 w-3 text-success" />
+                                                    <span className="text-[10px] font-bold text-success">{row.label}</span>
                                                 </div>
                                             ) : (
                                                 <span className={`text-[11px] ${row.type === 'total' ? 'text-xs font-bold uppercase' : 'font-medium'} ${waterfallTextStyles[row.type]}`}>{row.label}</span>
@@ -3112,17 +3112,17 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                             {/* §8 — Delivery Timeline */}
                             <div>
                                 <div className="text-[10px] font-bold text-foreground uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                                    <ClockIcon className="h-3.5 w-3.5 text-green-500" />8. Delivery Timeline
+                                    <ClockIcon className="h-3.5 w-3.5 text-success" />8. Delivery Timeline
                                 </div>
                                 <div className="grid grid-cols-2 gap-2">
-                                    <div className="p-2.5 rounded-lg bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
+                                    <div className="p-2.5 rounded-lg bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30">
                                         <div className="text-[9px] font-bold text-foreground mb-0.5">Standard items</div>
-                                        <div className="text-sm font-bold text-green-700 dark:text-green-400">8–10 weeks</div>
+                                        <div className="text-sm font-bold text-success">8–10 weeks</div>
                                         <div className="text-[8px] text-muted-foreground">22 standard MillerKnoll items</div>
                                     </div>
-                                    <div className="p-2.5 rounded-lg bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/20">
+                                    <div className="p-2.5 rounded-lg bg-warning/10 border border-warning/20">
                                         <div className="text-[9px] font-bold text-foreground mb-0.5">Custom OFS Serpentine</div>
-                                        <div className="text-sm font-bold text-amber-600 dark:text-amber-400">12 weeks</div>
+                                        <div className="text-sm font-bold text-warning">12 weeks</div>
                                         <div className="text-[8px] text-muted-foreground">Custom 12-seat — designer verified</div>
                                     </div>
                                 </div>
@@ -3136,7 +3136,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
                                 </div>
                                 <div className="space-y-1.5">
                                     <div className="flex items-center gap-2 text-[9px]">
-                                        <CheckCircleIcon className="h-3 w-3 text-green-500 shrink-0" />
+                                        <CheckCircleIcon className="h-3 w-3 text-success shrink-0" />
                                         <span><span className="font-bold">Regional Sales Manager Reyes</span> (Expert) — 24 items reviewed, 5 adjustments, OFS escalated</span>
                                     </div>
                                     <div className="flex items-center gap-2 text-[9px]">
@@ -3196,7 +3196,7 @@ export function WrgEstimatorReview({ onNavigate }: { onNavigate: (page: string) 
             {showToast && (
                 <div className="fixed bottom-20 right-6 z-[60] animate-in fade-in slide-in-from-bottom-4 duration-300">
                     <div className="px-4 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 shadow-xl flex items-center gap-2">
-                        <CheckCircleIcon className="h-4 w-4 text-green-400 dark:text-green-600" />
+                        <CheckCircleIcon className="h-4 w-4 text-success dark:text-success" />
                         <span className="text-xs font-bold">Proposal released — JPS Health Network notified</span>
                     </div>
                 </div>

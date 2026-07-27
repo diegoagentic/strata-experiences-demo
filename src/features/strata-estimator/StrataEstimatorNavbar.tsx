@@ -143,21 +143,21 @@ export default function StrataEstimatorNavbar({
                         className={clsx(
                             'group hidden md:flex items-center h-7 px-1.5 rounded-full overflow-hidden transition-all duration-300 cursor-default',
                             syncStatus === 'synced'
-                                ? 'hover:bg-green-500/10'
-                                : 'hover:bg-blue-500/10'
+                                ? 'hover:bg-success/10'
+                                : 'hover:bg-info/10'
                         )}
                     >
                         {syncStatus === 'synced' ? (
-                            <CheckCircle2 className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                            <CheckCircle2 className="h-3.5 w-3.5 text-success shrink-0" />
                         ) : (
-                            <RefreshCw className="h-3.5 w-3.5 text-blue-500 animate-spin shrink-0" />
+                            <RefreshCw className="h-3.5 w-3.5 text-info animate-spin shrink-0" />
                         )}
                         <span
                             className={clsx(
                                 'ml-1.5 text-[10px] font-semibold uppercase tracking-wider whitespace-nowrap max-w-0 opacity-0 group-hover:max-w-xs group-hover:opacity-100 transition-all duration-300 ease-in-out',
                                 syncStatus === 'synced'
-                                    ? 'text-green-600 dark:text-green-400'
-                                    : 'text-blue-600 dark:text-blue-400'
+                                    ? 'text-success'
+                                    : 'text-info'
                             )}
                         >
                             {syncStatus === 'synced' ? 'Recovery Active' : 'Auto-Saving'}

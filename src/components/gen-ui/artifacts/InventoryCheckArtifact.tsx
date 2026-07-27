@@ -13,9 +13,9 @@ export default function InventoryCheckArtifact({ data }: { data: any }) {
     return (
         <div className="bg-card rounded-xl border border-border shadow-sm overflow-hidden">
             {/* Header */}
-            <div className="bg-blue-50 dark:bg-blue-900/20 px-4 py-3 border-b border-blue-100 dark:border-blue-800 flex items-center gap-2">
-                <GlobeAltIcon className="w-4 h-4 text-blue-600 dark:text-blue-500" />
-                <h4 className="font-semibold text-blue-900 dark:text-blue-100 text-sm">Global Inventory Check</h4>
+            <div className="bg-info/10 dark:bg-info/15 px-4 py-3 border-b border-info/20 dark:border-info/40 flex items-center gap-2">
+                <GlobeAltIcon className="w-4 h-4 text-info dark:text-info" />
+                <h4 className="font-semibold text-info dark:text-info text-sm">Global Inventory Check</h4>
             </div>
 
             <div className="p-4 space-y-4">
@@ -30,7 +30,7 @@ export default function InventoryCheckArtifact({ data }: { data: any }) {
                         </div>
                     </div>
                     <div className="text-right">
-                        <div className="text-lg font-bold text-green-600 dark:text-green-400">247 Total</div>
+                        <div className="text-lg font-bold text-success">247 Total</div>
                         <div className="text-xs text-muted-foreground">Global Available</div>
                     </div>
                 </div>
@@ -42,8 +42,8 @@ export default function InventoryCheckArtifact({ data }: { data: any }) {
                             <div>
                                 <p className="text-sm font-semibold text-foreground flex items-center gap-1.5">
                                     {wh.name}
-                                    {wh.status === 'Low Stock' && <span className="flex w-2 h-2 rounded-full bg-amber-500"></span>}
-                                    {wh.status === 'In Stock' && <span className="flex w-2 h-2 rounded-full bg-green-500"></span>}
+                                    {wh.status === 'Low Stock' && <span className="flex w-2 h-2 rounded-full bg-warning"></span>}
+                                    {wh.status === 'In Stock' && <span className="flex w-2 h-2 rounded-full bg-success/100"></span>}
                                 </p>
                                 <p className="text-xs text-muted-foreground mt-0.5">{wh.location} • Lead time: {wh.leadTime}</p>
                             </div>

@@ -24,9 +24,9 @@ export default function ThreeWayMatchView({ orderId, lines, onAutoFix, onResolve
     const partialCount = lines.filter(l => l.status === 'partial').length;
 
     const statusIcon = (status: MatchLine['status']) => {
-        if (status === 'match') return <CheckCircleIcon className="w-4 h-4 text-green-600 dark:text-green-400" />;
-        if (status === 'mismatch') return <XCircleIcon className="w-4 h-4 text-red-600 dark:text-red-400" />;
-        return <ExclamationTriangleIcon className="w-4 h-4 text-amber-600 dark:text-amber-400" />;
+        if (status === 'match') return <CheckCircleIcon className="w-4 h-4 text-success" />;
+        if (status === 'mismatch') return <XCircleIcon className="w-4 h-4 text-destructive" />;
+        return <ExclamationTriangleIcon className="w-4 h-4 text-warning" />;
     };
 
     return (
@@ -40,18 +40,18 @@ export default function ThreeWayMatchView({ orderId, lines, onAutoFix, onResolve
                         <p className="text-xs text-muted-foreground mt-0.5">PO vs Acknowledgement reconciliation</p>
                     </div>
                     <div className="flex items-center gap-3">
-                        <span className="flex items-center gap-1.5 text-[10px] font-medium text-green-600 dark:text-green-400">
+                        <span className="flex items-center gap-1.5 text-[10px] font-medium text-success">
                             <CheckCircleIcon className="w-3.5 h-3.5" />
                             {matchCount} Match
                         </span>
                         {mismatchCount > 0 && (
-                            <span className="flex items-center gap-1.5 text-[10px] font-medium text-red-600 dark:text-red-400">
+                            <span className="flex items-center gap-1.5 text-[10px] font-medium text-destructive">
                                 <XCircleIcon className="w-3.5 h-3.5" />
                                 {mismatchCount} Mismatch
                             </span>
                         )}
                         {partialCount > 0 && (
-                            <span className="flex items-center gap-1.5 text-[10px] font-medium text-amber-600 dark:text-amber-400">
+                            <span className="flex items-center gap-1.5 text-[10px] font-medium text-warning">
                                 <ExclamationTriangleIcon className="w-3.5 h-3.5" />
                                 {partialCount} Partial
                             </span>
@@ -89,7 +89,7 @@ export default function ThreeWayMatchView({ orderId, lines, onAutoFix, onResolve
                         {line.delta && (
                             <span className={clsx(
                                 "text-[10px] font-medium",
-                                line.status === 'mismatch' ? 'text-red-600 dark:text-red-400' : 'text-amber-600 dark:text-amber-400'
+                                line.status === 'mismatch' ? 'text-destructive' : 'text-warning'
                             )}>
                                 {line.delta}
                             </span>
@@ -106,7 +106,7 @@ export default function ThreeWayMatchView({ orderId, lines, onAutoFix, onResolve
                         {matchCount}/{lines.length} lines matched
                     </span>
                     {mismatchCount > 0 && (
-                        <span className="text-amber-600 dark:text-amber-400 font-medium">
+                        <span className="text-warning font-medium">
                             {mismatchCount} exception{mismatchCount !== 1 ? 's' : ''} require dealer notification
                         </span>
                     )}

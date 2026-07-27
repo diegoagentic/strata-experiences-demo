@@ -137,11 +137,11 @@ export default function QuoteSetupModal({ isOpen, onClose, catalogName }: QuoteS
                                                 <>
                                                     <Popover.Button className={clsx(
                                                         "flex items-center gap-1.5 text-xs font-medium px-2 py-1 rounded-lg transition-colors outline-none",
-                                                        open || activeRules.length > 0 ? "bg-blue-500/20 text-blue-300 border border-blue-500/30" : "bg-zinc-800 text-muted-foreground hover:text-white border border-transparent"
+                                                        open || activeRules.length > 0 ? "bg-info/20 text-blue-300 border border-info/30" : "bg-zinc-800 text-muted-foreground hover:text-white border border-transparent"
                                                     )}>
                                                         <ScaleIcon className="w-3.5 h-3.5" />
                                                         Business Rules
-                                                        {activeRules.length > 0 && <span className="bg-blue-500 text-white text-[9px] px-1 rounded-full">{activeRules.length}</span>}
+                                                        {activeRules.length > 0 && <span className="bg-info/100 text-white text-[9px] px-1 rounded-full">{activeRules.length}</span>}
                                                     </Popover.Button>
 
                                                     <Transition
@@ -165,7 +165,7 @@ export default function QuoteSetupModal({ isOpen, onClose, catalogName }: QuoteS
                                                                     return (
                                                                         <div key={rule.id} className="flex items-start justify-between gap-3 group">
                                                                             <div className="flex items-start gap-2.5">
-                                                                                <div className={clsx("mt-0.5 p-1 rounded-md", active ? "bg-blue-500/20 text-blue-400" : "bg-zinc-700/50 text-muted-foreground")}>
+                                                                                <div className={clsx("mt-0.5 p-1 rounded-md", active ? "bg-info/20 text-info" : "bg-zinc-700/50 text-muted-foreground")}>
                                                                                     <Icon className="w-3.5 h-3.5" />
                                                                                 </div>
                                                                                 <div>
@@ -244,7 +244,7 @@ export default function QuoteSetupModal({ isOpen, onClose, catalogName }: QuoteS
                                 {/* Forecasting Widget */}
                                 <div>
                                     <div className="flex items-center gap-2 mb-3">
-                                        <CalculatorIcon className="w-4 h-4 text-green-400" />
+                                        <CalculatorIcon className="w-4 h-4 text-success" />
                                         <div className="text-sm font-medium text-green-100">Forecast</div>
                                     </div>
                                     <div className="grid grid-cols-2 gap-4">
@@ -260,7 +260,7 @@ export default function QuoteSetupModal({ isOpen, onClose, catalogName }: QuoteS
                                                 <CurrencyDollarIcon className="w-3.5 h-3.5" />
                                                 Proj. Margin
                                             </div>
-                                            <div className="text-xl font-semibold text-green-400">{volumeDiscount ? '22%' : '26%'}</div>
+                                            <div className="text-xl font-semibold text-success">{volumeDiscount ? '22%' : '26%'}</div>
                                         </div>
                                     </div>
                                 </div>

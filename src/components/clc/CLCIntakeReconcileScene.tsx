@@ -166,7 +166,7 @@ export default function CLCIntakeReconcileScene() {
                         const decision = decisions[q.id]
                         return (
                             <div key={q.id}>
-                                <div className={`grid grid-cols-[40px_1fr_1.4fr_1.4fr_140px_180px] gap-2 px-4 py-3 items-center text-sm ${q.status === 'match' ? '' : 'bg-amber-50/30 dark:bg-amber-500/5'}`}>
+                                <div className={`grid grid-cols-[40px_1fr_1.4fr_1.4fr_140px_180px] gap-2 px-4 py-3 items-center text-sm ${q.status === 'match' ? '' : 'bg-warning/10'}`}>
                                     <button
                                         onClick={() => setExpandedRow(isOpen ? null : q.id)}
                                         className="p-1 hover:bg-muted rounded transition-colors"
@@ -209,7 +209,7 @@ export default function CLCIntakeReconcileScene() {
                                                 {q.iqValue ?? <em className="text-muted-foreground">— field is blank in IQ —</em>}
                                             </div>
                                         </div>
-                                        <div className={`rounded-lg border p-3 ${q.status === 'match' ? 'border-border bg-card' : 'border-blue-200 bg-blue-50/40 dark:border-blue-500/30 dark:bg-blue-500/10'}`}>
+                                        <div className={`rounded-lg border p-3 ${q.status === 'match' ? 'border-border bg-card' : 'border-info/30 bg-info/10/40 dark:border-info/30 dark:bg-info/10'}`}>
                                             <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1">Survey answer</div>
                                             <div className="text-sm text-foreground leading-relaxed">
                                                 {q.customerAnswer}
@@ -272,9 +272,9 @@ function ChipPanelList({ items, empty }: { items: string[]; empty: string }) {
 
 function CountTile({ label, count, color }: { label: string; count: number; color: 'green' | 'red' | 'amber' | 'muted' }) {
     const colorClass = {
-        green: 'border-green-200 bg-green-50/60 text-green-700 dark:border-green-500/30 dark:bg-green-500/10 dark:text-green-300',
-        red:   'border-red-200 bg-red-50/60 text-red-700 dark:border-red-500/30 dark:bg-red-500/10 dark:text-red-300',
-        amber: 'border-amber-200 bg-amber-50/60 text-amber-700 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-300',
+        green: 'border-success/30 bg-success/10/60 text-success dark:border-success/30 dark:bg-success/10 dark:text-success',
+        red:   'border-destructive/30 bg-destructive/10/60 text-destructive dark:border-destructive/30 dark:bg-destructive/10 dark:text-destructive',
+        amber: 'border-warning/30 bg-warning/10/60 text-warning dark:border-warning/30 dark:bg-warning/10 dark:text-warning',
         muted: 'border-zinc-200 bg-zinc-50 text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800/40 dark:text-zinc-300',
     }[color]
     return (
@@ -287,9 +287,9 @@ function CountTile({ label, count, color }: { label: string; count: number; colo
 
 function StatusChip({ status }: { status: IntakeQuestion['status'] }) {
     const meta = {
-        'match':         { label: 'Match',        classes: 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300' },
-        'mismatch':      { label: 'Mismatch',     classes: 'bg-red-50 text-red-700 dark:bg-red-500/15 dark:text-red-300' },
-        'iq-blank':      { label: 'IQ blank',     classes: 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300' },
+        'match':         { label: 'Match',        classes: 'bg-success/10 text-success dark:bg-success/15 dark:text-success' },
+        'mismatch':      { label: 'Mismatch',     classes: 'bg-destructive/10 text-destructive dark:bg-destructive/15 dark:text-destructive' },
+        'iq-blank':      { label: 'IQ blank',     classes: 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning' },
         'survey-blank':  { label: 'Survey blank', classes: 'bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300' },
     }[status]
     return (
@@ -307,7 +307,7 @@ function DecisionPills({ decision, onDecide }: { decision: Decision; onDecide: (
                 title="Approve · queue this update to IQ"
                 className={`inline-flex items-center gap-1 px-2 py-1 text-[11px] font-semibold rounded-md transition-colors ${
                     decision === 'approved'
-                        ? 'bg-green-600 text-white'
+                        ? 'bg-success text-white'
                         : 'bg-transparent text-muted-foreground ring-1 ring-border hover:bg-muted hover:text-foreground'
                 }`}
             >
@@ -319,7 +319,7 @@ function DecisionPills({ decision, onDecide }: { decision: Decision; onDecide: (
                 title="Reject · keep the IQ value, ignore the survey answer"
                 className={`inline-flex items-center gap-1 px-2 py-1 text-[11px] font-semibold rounded-md transition-colors ${
                     decision === 'rejected'
-                        ? 'bg-red-600 text-white'
+                        ? 'bg-destructive text-white'
                         : 'bg-transparent text-muted-foreground ring-1 ring-border hover:bg-muted hover:text-foreground'
                 }`}
             >

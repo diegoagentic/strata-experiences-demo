@@ -245,7 +245,7 @@ export default function OrderSimulationArtifact({ onBack, onGeneratePO }: OrderS
                                             <div className="text-right">
                                                 <div className="font-bold text-muted-foreground mb-1">AMOUNT DUE</div>
                                                 <div className="text-xl font-medium text-zinc-800">${totals.total.toLocaleString()}</div>
-                                                <div className="mt-1 font-bold text-green-600 bg-green-50 px-2 py-1 rounded inline-block">PAID NET-30</div>
+                                                <div className="mt-1 font-bold text-success bg-success/10 px-2 py-1 rounded inline-block">PAID NET-30</div>
                                             </div>
                                         </div>
                                         <div className="pt-2">
@@ -282,14 +282,14 @@ export default function OrderSimulationArtifact({ onBack, onGeneratePO }: OrderS
                     {/* Right Column: Pricing & Margins Panel */}
                     <div className={`flex flex-col rounded-xl border p-6 lg:p-8 shadow-sm transition-colors duration-500 ${activeRole === 'manufacturer' ? 'bg-slate-50 border-slate-200 dark:bg-slate-900/20 dark:border-slate-800' :
                         activeRole === 'dealer' ? 'bg-white border-zinc-200 dark:bg-zinc-900/50 dark:border-zinc-800' :
-                            'bg-blue-50 border-blue-100 dark:bg-blue-900/10 dark:border-blue-900/30'
+                            'bg-info/10 border-info/20 dark:bg-info/10 dark:border-info/40'
                         }`}>
                         {/* Role Specific Badge */}
                         <div className="flex justify-between items-start mb-6">
                             <div>
                                 <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${activeRole === 'manufacturer' ? 'bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300' :
-                                    activeRole === 'dealer' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' :
-                                        'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
+                                    activeRole === 'dealer' ? 'bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning' :
+                                        'bg-info/15 text-info dark:bg-info/20 dark:text-info'
                                     }`}>
                                     {activeRole === 'manufacturer' ? 'Production Metrics' : activeRole === 'dealer' ? 'Margin Analysis' : 'Customer Cost Center'}
                                 </span>
@@ -297,9 +297,9 @@ export default function OrderSimulationArtifact({ onBack, onGeneratePO }: OrderS
                             </div>
                             <div className="text-right shrink-0">
                                 {activeRole === 'dealer' && (
-                                    <div className="bg-green-100 dark:bg-green-900/20 px-4 py-3 rounded-xl border border-green-200 dark:border-green-900/30">
-                                        <p className="text-xs text-green-700 dark:text-green-400 font-bold uppercase">Estimated Margin</p>
-                                        <p className="text-2xl font-bold text-green-700 dark:text-green-400">
+                                    <div className="bg-success/15 dark:bg-success/15 px-4 py-3 rounded-xl border border-success/30 dark:border-success/40">
+                                        <p className="text-xs text-success font-bold uppercase">Estimated Margin</p>
+                                        <p className="text-2xl font-bold text-success">
                                             ${totals.margin.toLocaleString()}
                                         </p>
                                     </div>
@@ -353,7 +353,7 @@ export default function OrderSimulationArtifact({ onBack, onGeneratePO }: OrderS
                                 {activeRole === 'manufacturer' && (
                                     <div className="flex justify-between text-sm text-muted-foreground border-t border-border/50 pt-2">
                                         <span>Platform Fee</span>
-                                        <span className="text-amber-600 dark:text-amber-500">${orderData.manufacturerFee.toLocaleString()}</span>
+                                        <span className="text-warning dark:text-warning">${orderData.manufacturerFee.toLocaleString()}</span>
                                     </div>
                                 )}
 
@@ -384,7 +384,7 @@ export default function OrderSimulationArtifact({ onBack, onGeneratePO }: OrderS
             )}
             {onGeneratePO && isGenerated && (
                 <div className="p-4 border-t border-border flex justify-end bg-muted dark:bg-zinc-800/50">
-                    <div className="px-6 py-2.5 bg-green-100 dark:bg-green-900/10 text-green-700 dark:text-green-400 font-bold rounded-xl flex items-center gap-2 border border-green-200 dark:border-green-800/50">
+                    <div className="px-6 py-2.5 bg-success/15 dark:bg-success/10 text-success font-bold rounded-xl flex items-center gap-2 border border-success/30 dark:border-success/40/50">
                         <CheckCircleIcon className="w-5 h-5" />
                         PO Generation Started
                     </div>

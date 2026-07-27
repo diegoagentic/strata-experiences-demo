@@ -28,7 +28,7 @@ export default function DesignerTaskNotification({
     onOpen,
 }: DesignerTaskNotificationProps) {
     return (
-        <div className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm overflow-hidden animate-in fade-in slide-in-from-top-4 duration-500">
+        <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden animate-in fade-in slide-in-from-top-4 duration-500">
             <div className="p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary ring-1 ring-primary/20 rounded-r-2xl">
                 <div className="flex items-start gap-4">
 
@@ -65,7 +65,7 @@ export default function DesignerTaskNotification({
 
                         {/* Status chip row */}
                         <div className="flex items-center gap-2 flex-wrap mt-3 mb-2">
-                            <span className="text-[8px] font-bold px-2 py-1 rounded-md bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/30 flex items-center gap-1 ring-2 ring-amber-500/20 shadow-sm shadow-amber-500/10">
+                            <span className="text-[8px] font-bold px-2 py-1 rounded-md bg-warning/10 text-warning border border-warning/30 flex items-center gap-1 ring-2 ring-amber-500/20 shadow-sm shadow-amber-500/10">
                                 <CheckCircle className="h-3 w-3" />
                                 CUSTOM ITEM FLAGGED
                             </span>
@@ -80,7 +80,7 @@ export default function DesignerTaskNotification({
 
                         {/* Secondary chip */}
                         <div className="flex items-center gap-2 mt-1">
-                            <span className="text-[8px] px-1.5 py-0.5 rounded bg-green-500/10 text-green-700 dark:text-green-400 font-bold border border-green-500/30">
+                            <span className="text-[8px] px-1.5 py-0.5 rounded bg-success/10 text-success font-bold border border-success/30">
                                 ROUTED BY EXPERT
                             </span>
                         </div>

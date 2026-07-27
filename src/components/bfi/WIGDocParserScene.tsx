@@ -4,7 +4,7 @@
  *          3 states: incoming (Word doc artifact) → parsing (BingoGrid animation) → results.
  *          Role: Lena. ProblemPanel + QuickActions for Bingo #36. 1-click confirm.
  *
- * DS TOKENS: bg-card · bg-success/5 · bg-amber-50 · border-border
+ * DS TOKENS: bg-card · bg-success/5 · bg-warning/10 · border-border
  */
 
 import { useState, useRef, useEffect, useCallback } from 'react'
@@ -66,7 +66,7 @@ function BingoGrid({ visibleCount }: { visibleCount: number }) {
                         key={num}
                         className={`h-7 rounded border flex items-center justify-center text-[10px] font-bold animate-in fade-in duration-150 ${
                             isMissing
-                                ? 'bg-amber-500/20 border-amber-500/40 text-amber-600 dark:text-amber-400 animate-pulse'
+                                ? 'bg-warning/20 border-warning/40 text-warning animate-pulse'
                                 : 'bg-success/15 border-success/30 text-success'
                         }`}
                     >
@@ -194,7 +194,7 @@ Missing noted: carton 36 via FedEx per MK`}</pre>
                     </div>
                     <BingoGrid visibleCount={visibleCount} />
                     {visibleCount === 36 && (
-                        <div className="flex items-center gap-1.5 text-xs font-medium text-amber-600 dark:text-amber-400 animate-in fade-in slide-in-from-top-1 duration-200">
+                        <div className="flex items-center gap-1.5 text-xs font-medium text-warning animate-in fade-in slide-in-from-top-1 duration-200">
                             <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
                             Bingo #36 not confirmed · Side Chair ×1 · FedEx subpath detected
                         </div>
@@ -207,17 +207,17 @@ Missing noted: carton 36 via FedEx per MK`}</pre>
                         <div
                             key={line.label}
                             className={`flex items-center justify-between gap-3 px-3.5 py-2 border-b border-border last:border-b-0 animate-in fade-in duration-200 ${
-                                !line.ok ? 'bg-amber-50/50 dark:bg-amber-500/5' : ''
+                                !line.ok ? 'bg-warning/10' : ''
                             }`}
                         >
                             <div className="flex items-center gap-2">
                                 {line.ok
                                     ? <CheckCircle2 className="h-3 w-3 text-success shrink-0" />
-                                    : <AlertTriangle className="h-3 w-3 text-amber-500 shrink-0" />
+                                    : <AlertTriangle className="h-3 w-3 text-warning shrink-0" />
                                 }
                                 <span className="font-mono text-[11px] text-foreground">{line.label}</span>
                             </div>
-                            <span className={`text-[11px] font-medium shrink-0 ${line.ok ? 'text-muted-foreground' : 'text-amber-600 dark:text-amber-400'}`}>
+                            <span className={`text-[11px] font-medium shrink-0 ${line.ok ? 'text-muted-foreground' : 'text-warning'}`}>
                                 {line.coreL}
                             </span>
                         </div>
@@ -253,7 +253,7 @@ Missing noted: carton 36 via FedEx per MK`}</pre>
                     <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wide">Bingo Sheet · GD2891 · 36 cartons</span>
                     <div className="flex items-center gap-2.5">
                         <span className="text-[11px] text-success font-medium">35 ✓</span>
-                        <span className="text-[11px] text-amber-600 dark:text-amber-400 font-medium">1 ⚠️</span>
+                        <span className="text-[11px] text-warning font-medium">1 ⚠️</span>
                     </div>
                 </div>
                 <BingoGrid visibleCount={36} />
@@ -274,13 +274,13 @@ Missing noted: carton 36 via FedEx per MK`}</pre>
                 </div>
                 {LINE_ITEMS.map((item) => (
                     <div key={item.line} className={`grid grid-cols-4 gap-2 px-3.5 py-2.5 border-b border-border last:border-b-0 items-center ${
-                        item.gap ? 'bg-amber-50/50 dark:bg-amber-500/5' : ''
+                        item.gap ? 'bg-warning/10' : ''
                     }`}>
                         <div className="text-[11px] font-bold text-muted-foreground">{item.line}</div>
                         <div className="text-xs text-foreground">{item.product}</div>
                         <div className="text-xs text-foreground text-right tabular-nums">{item.ordered}</div>
                         <div className={`text-xs font-medium text-right tabular-nums flex items-center justify-end gap-1 ${
-                            item.gap ? 'text-amber-600 dark:text-amber-400' : 'text-success'
+                            item.gap ? 'text-warning' : 'text-success'
                         }`}>
                             {item.gap && <AlertTriangle className="h-3 w-3 shrink-0" />}
                             {item.received}
@@ -291,13 +291,13 @@ Missing noted: carton 36 via FedEx per MK`}</pre>
             </div>
 
             {/* ProblemPanel — Bingo #36 */}
-            <div className="border border-amber-200 dark:border-amber-500/30 rounded-xl overflow-hidden bg-amber-50 dark:bg-amber-500/5">
+            <div className="border border-warning/30 rounded-xl overflow-hidden bg-warning/10">
                 <button
                     onClick={() => setProblemExpanded(v => !v)}
-                    className="w-full flex items-center justify-between px-3.5 py-2.5 hover:bg-amber-100/50 dark:hover:bg-amber-500/10 transition-colors"
+                    className="w-full flex items-center justify-between px-3.5 py-2.5 hover:bg-warning/15 dark:hover:bg-warning/10 transition-colors"
                 >
                     <div className="flex items-center gap-2">
-                        <AlertTriangle className="h-3.5 w-3.5 text-amber-500 shrink-0" />
+                        <AlertTriangle className="h-3.5 w-3.5 text-warning shrink-0" />
                         <span className="text-[11px] font-bold text-foreground">Bingo #36 · Side Chair ×1 · Action Required</span>
                     </div>
                     {problemExpanded
@@ -307,7 +307,7 @@ Missing noted: carton 36 via FedEx per MK`}</pre>
                 </button>
 
                 {problemExpanded && (
-                    <div className="px-3.5 pb-3.5 space-y-3 border-t border-amber-200 dark:border-amber-500/20">
+                    <div className="px-3.5 pb-3.5 space-y-3 border-t border-warning/20">
                         <div className="pt-2.5 text-[11px] text-foreground">
                             Status:{' '}
                             <span className="font-medium">FedEx small parcel subpath · not received at WIG dock</span>
@@ -342,7 +342,7 @@ Missing noted: carton 36 via FedEx per MK`}</pre>
                             )}
                         </div>
 
-                        <div className="text-[10px] text-muted-foreground border-t border-amber-200 dark:border-amber-500/20 pt-2.5">
+                        <div className="text-[10px] text-muted-foreground border-t border-warning/20 pt-2.5">
                             Before Strata: Lauren tracked this via email threads — no status, no record, no ETA
                         </div>
                     </div>

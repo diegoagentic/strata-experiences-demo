@@ -79,7 +79,7 @@ export default function TrackingModal({ isOpen, onClose, title, trackingId, type
                                 <div className="flex justify-between items-start mb-6">
                                     <div>
                                         <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-foreground flex items-center gap-2">
-                                            {type === 'movement' ? <TruckIcon className="w-5 h-5 text-blue-500" /> : <WrenchScrewdriverIcon className="w-5 h-5 text-amber-500" />}
+                                            {type === 'movement' ? <TruckIcon className="w-5 h-5 text-info" /> : <WrenchScrewdriverIcon className="w-5 h-5 text-warning" />}
                                             Tracking Progress
                                         </Dialog.Title>
                                         <div className="mt-1 flex items-center gap-2 text-sm text-muted-foreground">
@@ -117,8 +117,8 @@ export default function TrackingModal({ isOpen, onClose, title, trackingId, type
                                                 Based on current traffic and workflow velocity, the team is expected to arrive <span className="font-semibold">15 minutes early</span>.
                                             </p>
                                             <div className="flex items-center gap-4 mt-2">
-                                                <div className="flex items-center gap-1 text-xs font-medium text-green-600 dark:text-green-400">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                                                <div className="flex items-center gap-1 text-xs font-medium text-success">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-success/100" />
                                                     98% Probability
                                                 </div>
                                                 <div className="flex items-center gap-1 text-xs font-medium text-indigo-600 dark:text-indigo-400">
@@ -140,12 +140,12 @@ export default function TrackingModal({ isOpen, onClose, title, trackingId, type
                                                 {/* Dot/Icon */}
                                                 <div className={cn(
                                                     "absolute left-0 sm:left-4 -ml-px h-8 w-8 rounded-full flex items-center justify-center border-2 z-10 bg-card",
-                                                    step.status === 'completed' ? "border-green-500 text-green-500" :
-                                                        step.status === 'current' ? "border-blue-500 text-blue-500 animate-pulse" :
+                                                    step.status === 'completed' ? "border-success text-success" :
+                                                        step.status === 'current' ? "border-info text-info animate-pulse" :
                                                             "border-border text-zinc-300 dark:text-muted-foreground"
                                                 )}>
                                                     {step.status === 'completed' ? <CheckCircleIcon className="w-5 h-5" /> :
-                                                        step.status === 'current' ? <div className="w-2.5 h-2.5 rounded-full bg-blue-500" /> :
+                                                        step.status === 'current' ? <div className="w-2.5 h-2.5 rounded-full bg-info/100" /> :
                                                             <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-600" />}
                                                 </div>
 
@@ -155,7 +155,7 @@ export default function TrackingModal({ isOpen, onClose, title, trackingId, type
                                                             <h4 className={cn(
                                                                 "text-base font-semibold",
                                                                 step.status === 'completed' ? "text-foreground" :
-                                                                    step.status === 'current' ? "text-blue-600 dark:text-blue-400" :
+                                                                    step.status === 'current' ? "text-info" :
                                                                         "text-muted-foreground"
                                                             )}>
                                                                 {step.title}
@@ -195,8 +195,8 @@ export default function TrackingModal({ isOpen, onClose, title, trackingId, type
                                                                 <div key={idx} className="bg-muted/50 rounded-lg p-3 border border-border flex items-start gap-3">
                                                                     <div className="shrink-0 mt-0.5">
                                                                         {ev.type === 'photo' && <CameraIcon className="w-4 h-4 text-indigo-500" />}
-                                                                        {ev.type === 'signature' && <DocumentTextIcon className="w-4 h-4 text-blue-500" />}
-                                                                        {ev.type === 'note' && <DocumentTextIcon className="w-4 h-4 text-amber-500" />}
+                                                                        {ev.type === 'signature' && <DocumentTextIcon className="w-4 h-4 text-info" />}
+                                                                        {ev.type === 'note' && <DocumentTextIcon className="w-4 h-4 text-warning" />}
                                                                     </div>
                                                                     <div className="flex-1 min-w-0">
                                                                         <p className="text-xs font-medium text-foreground mb-1">{ev.label}</p>
@@ -233,7 +233,7 @@ export default function TrackingModal({ isOpen, onClose, title, trackingId, type
                                                                         </button>
                                                                         <button
                                                                             onClick={() => setActiveCommentStep(null)}
-                                                                            className="text-xs px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                                                                            className="text-xs px-3 py-1 bg-info text-white rounded-md hover:bg-info"
                                                                         >
                                                                             Post
                                                                         </button>
@@ -242,7 +242,7 @@ export default function TrackingModal({ isOpen, onClose, title, trackingId, type
                                                             ) : (
                                                                 <button
                                                                     onClick={() => setActiveCommentStep(step.id)}
-                                                                    className="flex items-center gap-2 text-xs text-blue-600 dark:text-blue-400 font-medium hover:underline"
+                                                                    className="flex items-center gap-2 text-xs text-info font-medium hover:underline"
                                                                 >
                                                                     <ChatBubbleLeftRightIcon className="w-4 h-4" />
                                                                     Add Comment

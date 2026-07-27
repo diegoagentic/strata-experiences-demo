@@ -123,7 +123,7 @@ function FilterField({
 
             {/* Dropdown */}
             {!readOnly && isOpen && (
-                <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-card dark:bg-zinc-800 rounded-xl border border-border shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-1 duration-150">
+                <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-card rounded-xl border border-border shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-1 duration-150">
                     <div className="px-3 py-2 border-b border-border">
                         <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider">
                             {filtered.length} preset{filtered.length === 1 ? '' : 's'}
@@ -187,7 +187,7 @@ export default function EstimatorDossierCard({
     }
 
     return (
-        <div className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm px-5 py-3 relative">
+        <div className="bg-card rounded-2xl border border-border shadow-sm px-5 py-3 relative">
             <div className="flex items-center gap-4 flex-wrap lg:flex-nowrap">
 
                 {/* Title */}

@@ -68,7 +68,7 @@ export default function InventoryForecastWidget() {
                             <div className="flex items-center gap-1.5 mt-0.5">
                                 <span className="text-[10px] text-muted-foreground font-mono bg-muted px-1 rounded">{item.id}</span>
                                 {item.velocity === 'high' && (
-                                    <span className="text-[9px] font-bold text-amber-600 bg-amber-50 dark:text-amber-400 dark:bg-amber-900/20 px-1 rounded flex items-center gap-0.5">
+                                    <span className="text-[9px] font-bold text-warning bg-warning/10 dark:text-warning dark:bg-warning/15 px-1 rounded flex items-center gap-0.5">
                                         <ArrowTrendingUpIcon className="w-2.5 h-2.5" /> FAST MOVER
                                     </span>
                                 )}
@@ -81,8 +81,8 @@ export default function InventoryForecastWidget() {
                         </div>
 
                         <div className="text-right flex justify-end">
-                            <div className={`px-2 py-1 rounded-md text-[10px] font-bold border flex flex-col items-end w-fit ${item.health === 'critical' ? 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-900/30' :
-                                item.health === 'warning' ? 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-900/30' :
+                            <div className={`px-2 py-1 rounded-md text-[10px] font-bold border flex flex-col items-end w-fit ${item.health === 'critical' ? 'bg-destructive/10 text-destructive border-destructive/30 dark:bg-destructive/15 dark:text-destructive dark:border-destructive/40' :
+                                item.health === 'warning' ? 'bg-warning/10 text-warning border-warning/30 dark:bg-warning/15 dark:text-warning dark:border-warning/40' :
                                     'bg-muted/50 text-muted-foreground border-border'
                                 }`}>
                                 <span className="uppercase tracking-wide">{item.health}</span>

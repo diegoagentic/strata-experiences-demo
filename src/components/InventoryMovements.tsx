@@ -38,7 +38,7 @@ function cn(...inputs: (string | undefined | null | false)[]) {
 }
 
 // Chart Colors
-const COLORS = ['#84cc16', '#3b82f6', 'bg-amber-500', '#ef4444']; // Lime, Blue, Amber, Red
+const COLORS = ['#84cc16', '#3b82f6', 'bg-warning', '#ef4444']; // Lime, Blue, Amber, Red
 
 export interface MovementRequest {
     id: string;
@@ -206,20 +206,20 @@ export default function InventoryMovements() {
     // Helper for Status Look & Feel
     const getStatusStyle = (status: string) => {
         switch (status) {
-            case 'Ordered': return 'bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-700/50';
-            case 'Assigned': return 'bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-700/50';
+            case 'Ordered': return 'bg-warning/15 text-warning border-warning/30 dark:bg-warning/20 dark:text-warning dark:border-warning/30';
+            case 'Assigned': return 'bg-warning/15 text-warning border-warning/30 dark:bg-warning/20 dark:text-warning dark:border-warning/30';
             case 'Scheduled': return 'bg-indigo-100 text-indigo-700 border-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-400 dark:border-indigo-700/50';
-            case 'In-Progress': return 'bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-700/50';
-            case 'Completed': return 'bg-green-100 text-green-700 border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-700/50';
+            case 'In-Progress': return 'bg-info/15 text-info border-info/30 dark:bg-info/20 dark:text-info dark:border-info/30';
+            case 'Completed': return 'bg-success/15 text-success border-success/30 dark:bg-success/20 dark:text-success dark:border-success/30';
             default: return 'bg-zinc-100 text-muted-foreground border-zinc-200';
         }
     };
 
     const getPriorityStyle = (priority: string) => {
         switch (priority) {
-            case 'High': return 'bg-red-50 text-red-600 border-red-100 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800/30';
-            case 'Medium': return 'bg-amber-50 text-amber-600 border-amber-100 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-800/30';
-            case 'Low': return 'bg-green-50 text-green-600 border-green-100 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800/30';
+            case 'High': return 'bg-destructive/10 text-destructive border-destructive/20 dark:bg-destructive/15 dark:text-destructive dark:border-destructive/40/30';
+            case 'Medium': return 'bg-warning/10 text-warning border-warning/20 dark:bg-warning/15 dark:text-warning dark:border-warning/40/30';
+            case 'Low': return 'bg-success/10 text-success border-success/20 dark:bg-success/15 dark:text-success dark:border-success/40/30';
             default: return 'bg-muted text-muted-foreground';
         }
     };
@@ -238,9 +238,9 @@ export default function InventoryMovements() {
     return (
         <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
             {/* Legend */}
-            <div className="bg-blue-50/50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-800 rounded-lg p-3 flex items-start gap-3">
-                <ExclamationCircleIcon className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
-                <p className="text-sm text-blue-700 dark:text-blue-300">
+            <div className="bg-info/10 dark:bg-info/10 border border-info/20 dark:border-info/40 rounded-lg p-3 flex items-start gap-3">
+                <ExclamationCircleIcon className="w-5 h-5 text-info mt-0.5 shrink-0" />
+                <p className="text-sm text-info dark:text-info">
                     Click on any movement card to view detailed analytics, cost breakdown, and SLA tracking for Product Owners.
                 </p>
             </div>
@@ -297,7 +297,7 @@ export default function InventoryMovements() {
                                         {move.assignedTeam && (
                                             <div className="flex items-center gap-2 text-sm">
                                                 <span className="text-muted-foreground">Assigned Team:</span>
-                                                <span className="font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-2 py-0.5 rounded">{move.assignedTeam}</span>
+                                                <span className="font-medium text-info bg-info/10 dark:bg-info/15 px-2 py-0.5 rounded">{move.assignedTeam}</span>
                                             </div>
                                         )}
                                     </div>
@@ -335,7 +335,7 @@ export default function InventoryMovements() {
                                     {/* Cost Breakdown */}
                                     <div className="bg-card p-4 rounded-xl border border-border shadow-sm">
                                         <div className="flex items-center gap-2 mb-4">
-                                            <div className="p-1.5 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-lg">
+                                            <div className="p-1.5 bg-success/15 text-success rounded-lg">
                                                 <CurrencyDollarIcon className="w-4 h-4" />
                                             </div>
                                             <h4 className="text-sm font-semibold text-foreground">Est. Cost Breakdown</h4>
@@ -375,7 +375,7 @@ export default function InventoryMovements() {
                                     {/* SLA Performance */}
                                     <div className="bg-card p-4 rounded-xl border border-border shadow-sm">
                                         <div className="flex items-center gap-2 mb-4">
-                                            <div className="p-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg">
+                                            <div className="p-1.5 bg-info/15 text-info rounded-lg">
                                                 <ClockIcon className="w-4 h-4" />
                                             </div>
                                             <h4 className="text-sm font-semibold text-foreground">SLA Performance (Hrs)</h4>

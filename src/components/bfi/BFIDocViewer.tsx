@@ -96,7 +96,7 @@ export default function BFIDocViewer({
                         </span>
                     )}
                     {sampleLabel && (
-                        <span className="text-[8px] font-bold px-1.5 py-0.5 rounded border bg-warning/10 text-amber-600 dark:text-amber-400 border-warning/30 font-mono shrink-0">
+                        <span className="text-[8px] font-bold px-1.5 py-0.5 rounded border bg-warning/10 text-warning border-warning/30 font-mono shrink-0">
                             Sample · {sampleLabel}
                         </span>
                     )}
@@ -240,7 +240,7 @@ export default function BFIDocViewer({
                         <FileText className="h-4 w-4 text-muted-foreground shrink-0" />
                         <span className="text-sm text-zinc-200 font-medium flex-1 truncate">{label}</span>
                         {sampleLabel && (
-                            <span className="text-[9px] font-bold px-2 py-0.5 rounded border bg-amber-500/10 text-amber-400 border-amber-500/30 font-mono shrink-0">
+                            <span className="text-[9px] font-bold px-2 py-0.5 rounded border bg-warning/10 text-warning border-warning/30 font-mono shrink-0">
                                 Sample · {sampleLabel}
                             </span>
                         )}

@@ -34,9 +34,9 @@ export default function MappingField({ field }: { field: MappingFieldProps }) {
 
     // Status color logic (unused variable removed or kept if needed for complex logic, but simplifying here)
     const getConfidenceColor = (score: number) => {
-        if (score >= 90) return 'text-green-600';
-        if (score >= 70) return 'text-amber-600';
-        return 'text-red-600';
+        if (score >= 90) return 'text-success';
+        if (score >= 70) return 'text-warning';
+        return 'text-destructive';
     };
 
     const handleApply = (e: React.MouseEvent) => {
@@ -50,20 +50,20 @@ export default function MappingField({ field }: { field: MappingFieldProps }) {
     };
 
     return (
-        <div className={`bg-card border ${isMatched ? 'border-green-200 dark:border-green-900' : 'border-border'} rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow`}>
+        <div className={`bg-card border ${isMatched ? 'border-success/30 dark:border-green-900' : 'border-border'} rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow`}>
             {/* Header / Summary */}
             <div
                 onClick={() => setIsOpen(!isOpen)}
                 className="flex items-center justify-between p-3 cursor-pointer bg-muted/50 dark:bg-zinc-800/30 hover:bg-muted/50 transition-colors"
             >
                 <div className="flex items-center gap-3">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isMatched ? 'bg-green-100 dark:bg-green-900/30 text-green-600' : 'bg-amber-100 dark:bg-amber-900/30 text-amber-600'}`}>
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isMatched ? 'bg-success/15 text-success' : 'bg-warning/15 text-warning'}`}>
                         {isMatched ? <CheckCircleIcon className="w-5 h-5" /> : <ExclamationTriangleIcon className="w-5 h-5" />}
                     </div>
                     <div>
                         <h4 className="font-semibold text-sm text-foreground flex items-center gap-2">
                             {field.label}
-                            {!isMatched && <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">Review Needed</span>}
+                            {!isMatched && <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning">Review Needed</span>}
                         </h4>
                         <p className="text-xs text-muted-foreground flex items-center gap-1.5 mt-0.5">
                             <span className="font-mono bg-muted px-1.5 rounded">{field.originalField}</span>
@@ -75,7 +75,7 @@ export default function MappingField({ field }: { field: MappingFieldProps }) {
                 <div className="flex items-center gap-3">
                     {isMatched && (
                         <div className="text-right mr-2">
-                            <div className="text-xs font-semibold text-green-600 flex items-center gap-1">
+                            <div className="text-xs font-semibold text-success flex items-center gap-1">
                                 <CheckCircleIcon className="w-3 h-3" /> Validated
                             </div>
                         </div>
@@ -143,7 +143,7 @@ export default function MappingField({ field }: { field: MappingFieldProps }) {
                         <button
                             onClick={handleApply}
                             disabled={isMatched}
-                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 shadow-sm ml-auto ${isMatched ? 'bg-green-100 text-green-700 cursor-default' : 'bg-primary text-primary-foreground hover:bg-primary/90'}`}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 shadow-sm ml-auto ${isMatched ? 'bg-success/15 text-success cursor-default' : 'bg-primary text-primary-foreground hover:bg-primary/90'}`}
                         >
                             {isMatched ? (
                                 <>Validated <CheckCircleIcon className="w-3 h-3" /></>

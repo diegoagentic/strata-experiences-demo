@@ -3,7 +3,7 @@
  *
  * Lifted from UI-Manufacturer with full Strata DS token-remap:
  * blue → info · green → success · amber → warning · indigo/purple → ai
- * bg-blue-600 + text-white → bg-primary + text-primary-foreground (LAW 3)
+ * bg-info + text-white → bg-primary + text-primary-foreground (LAW 3)
  * zinc → muted / muted-foreground · dark pair classes stripped.
  *
  * Modal normalization per docs/inbound-outbound-platform-features.md:

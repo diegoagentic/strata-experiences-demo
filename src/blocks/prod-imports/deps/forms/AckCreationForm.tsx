@@ -79,8 +79,8 @@ export default function AckCreationForm({ initialData, onSubmit, onCancel }: Ack
     if (submitted) {
         return (
             <div className="h-[90vh] flex flex-col items-center justify-center bg-muted/30 animate-in fade-in duration-500">
-                <div className="p-6 bg-green-100 dark:bg-green-900/30 rounded-full mb-6">
-                    <CheckCircleIcon className="w-12 h-12 text-green-600 dark:text-green-400" />
+                <div className="p-6 bg-success/15 rounded-full mb-6">
+                    <CheckCircleIcon className="w-12 h-12 text-success" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-2">Acknowledgement Created</h3>
                 <p className="text-muted-foreground mb-1">{formData.ackNumber || 'ACK-NEW'} for PO {formData.poNumber || 'N/A'}</p>

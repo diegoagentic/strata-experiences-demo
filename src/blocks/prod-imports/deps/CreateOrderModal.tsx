@@ -20,10 +20,10 @@ const creationOptions = [
         icon: ArrowUpOnSquareIcon,
         actionLabel: 'Upload Files',
         estimatedTime: '3-5 minutes',
-        color: 'text-green-600',
-        bgColor: 'bg-green-100',
-        darkColor: 'dark:text-green-400',
-        darkBgColor: 'dark:bg-green-900/30'
+        color: 'text-success',
+        bgColor: 'bg-success/15',
+        darkColor: 'dark:text-success',
+        darkBgColor: 'dark:bg-success/20'
     },
     {
         id: 'manual',

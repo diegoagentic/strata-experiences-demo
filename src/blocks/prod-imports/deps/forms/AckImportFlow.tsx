@@ -140,7 +140,7 @@ export default function AckImportFlow({ onImportComplete, onCancel }: AckImportF
                                 Support for vendor acknowledgement PDFs and SIF (Standard Industry Format) files. We'll automatically extract line items and match against existing POs.
                             </p>
                             <div className="flex items-center gap-3 mb-6">
-                                <span className="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-medium">PDF</span>
+                                <span className="px-3 py-1 rounded-full bg-info/15 text-info text-xs font-medium">PDF</span>
                                 <span className="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 text-xs font-medium">SIF</span>
                                 <span className="px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-medium">EDI 855</span>
                             </div>
@@ -182,7 +182,7 @@ export default function AckImportFlow({ onImportComplete, onCancel }: AckImportF
                         <div className="bg-card rounded-xl border border-border shadow-sm overflow-hidden mb-6">
                             <div className="p-4 border-b border-border flex items-center justify-between bg-muted/30">
                                 <div className="flex items-center gap-3">
-                                    <div className="p-2 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-lg">
+                                    <div className="p-2 bg-success/15 text-success rounded-lg">
                                         <DocumentTextIcon className="w-5 h-5" />
                                     </div>
                                     <div>
@@ -192,12 +192,12 @@ export default function AckImportFlow({ onImportComplete, onCancel }: AckImportF
                                 </div>
                                 <div className="flex items-center gap-2">
                                     {exceptionCount > 0 && (
-                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-medium">
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-warning/15 text-warning text-xs font-medium">
                                             <ExclamationTriangleIcon className="w-4 h-4" />
                                             {exceptionCount} Exception{exceptionCount > 1 ? 's' : ''}
                                         </span>
                                     )}
-                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium">
+                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-success/15 text-success text-xs font-medium">
                                         <CheckCircleIcon className="w-4 h-4" />
                                         {confirmedCount} Confirmed
                                     </span>
@@ -245,11 +245,11 @@ export default function AckImportFlow({ onImportComplete, onCancel }: AckImportF
                                             <div className="w-24 text-right font-medium text-foreground">${item.total.toFixed(2)}</div>
                                             <div className="w-28 flex justify-center">
                                                 {item.status === 'Confirmed' ? (
-                                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium">
+                                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-success/15 text-success text-xs font-medium">
                                                         <CheckCircleIcon className="w-3.5 h-3.5" /> Confirmed
                                                     </span>
                                                 ) : (
-                                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-medium">
+                                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-warning/15 text-warning text-xs font-medium">
                                                         <ExclamationTriangleIcon className="w-3.5 h-3.5" /> Exception
                                                     </span>
                                                 )}

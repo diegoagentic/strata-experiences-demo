@@ -53,17 +53,17 @@ export default function VerificationLogCard({
 }: VerificationLogCardProps) {
     return (
         <div
-            className="rounded-2xl bg-green-500/5 dark:bg-green-500/10 border border-green-500/30 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-400"
+            className="rounded-2xl bg-success/100/5 dark:bg-success/10 border border-success/30 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-400"
             role="status"
         >
-            <div className="flex items-center gap-3 px-5 py-3 border-b border-green-500/20">
+            <div className="flex items-center gap-3 px-5 py-3 border-b border-success/30">
                 <img
                     src={verifiedByPhoto}
                     alt={verifiedByName}
                     className="w-8 h-8 rounded-full object-cover ring-2 ring-green-500/40 shrink-0"
                 />
                 <div className="flex-1 min-w-0">
-                    <p className="text-[10px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider leading-none">
+                    <p className="text-[10px] font-bold text-success uppercase tracking-wider leading-none">
                         Verified by {verifiedByName}
                     </p>
                     <p className="text-xs text-foreground font-semibold leading-tight">
@@ -83,7 +83,7 @@ export default function VerificationLogCard({
                         className="flex items-start gap-2 text-xs"
                     >
                         <Check
-                            className="w-3.5 h-3.5 text-green-600 dark:text-green-400 shrink-0 mt-0.5"
+                            className="w-3.5 h-3.5 text-success shrink-0 mt-0.5"
                             strokeWidth={3}
                         />
                         <span className="text-foreground font-semibold">

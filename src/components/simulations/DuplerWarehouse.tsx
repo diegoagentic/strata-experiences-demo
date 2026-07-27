@@ -561,7 +561,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                 {agents.map(agent => (
                     <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'}`}>
                         {agent.done ?
-                            <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> :
+                            <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> :
                             <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />
                         }
                         <span className={agent.done ? 'text-foreground' : 'text-indigo-600 dark:text-indigo-400'}>{agent.name}</span>
@@ -592,20 +592,20 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
 
     const renderBreathing = (message: string) => (
         <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <div className="w-2 h-2 rounded-full bg-success/100 animate-pulse" />
             <span className="text-xs font-semibold text-muted-foreground">{message}</span>
         </div>
     );
 
     const renderRevealed = (icon: React.ReactNode, summary: React.ReactNode, systems: string[]) => (
-        <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-500">
+        <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30 animate-in fade-in duration-500">
             <div className="flex items-start gap-2 mb-3">
                 <AIAgentAvatar />
-                <p className="text-xs text-green-800 dark:text-green-200">{summary}</p>
+                <p className="text-xs text-success dark:text-success">{summary}</p>
             </div>
             <div className="flex flex-wrap gap-2">
                 {systems.map(s => (
-                    <span key={s} className="flex items-center gap-1 text-[9px] text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-500/10 px-2 py-0.5 rounded-full">
+                    <span key={s} className="flex items-center gap-1 text-[9px] text-success bg-success/15 dark:bg-success/10 px-2 py-0.5 rounded-full">
                         <CheckCircleIcon className="h-3 w-3" />{s}
                     </span>
                 ))}
@@ -618,19 +618,19 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
             {systems.map((sys, i) => (
                 <span key={sys.label} className="contents">
                     <span className={`text-[8px] font-bold px-2 py-1 rounded-md border flex items-center gap-1 ${
-                        sys.color === 'blue' ? 'bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-200 dark:border-blue-500/20 ring-2 ring-blue-300 dark:ring-blue-500/30 shadow-sm shadow-blue-200 dark:shadow-blue-500/10' :
+                        sys.color === 'blue' ? 'bg-info/15 dark:bg-info/10 text-info border-info/20 ring-2 ring-blue-300 dark:ring-blue-500/30 shadow-sm shadow-blue-200 dark:shadow-blue-500/10' :
                         sys.color === 'teal' ? 'bg-teal-100 dark:bg-teal-500/10 text-teal-700 dark:text-teal-400 border-teal-200 dark:border-teal-500/20' :
-                        sys.color === 'amber' ? 'bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/20' :
+                        sys.color === 'amber' ? 'bg-warning/15 dark:bg-warning/10 text-warning border-warning/20' :
                         sys.color === 'purple' ? 'bg-purple-100 dark:bg-ai/10 text-purple-700 dark:text-purple-400 border-purple-200 dark:border-purple-500/20' :
-                        sys.color === 'red' ? 'bg-red-100 dark:bg-red-500/10 text-red-700 dark:text-red-400 border-red-200 dark:border-red-500/20' :
-                        'bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 border-green-200 dark:border-green-500/20'
+                        sys.color === 'red' ? 'bg-destructive/15 dark:bg-destructive/10 text-destructive border-destructive/30' :
+                        'bg-success/15 dark:bg-success/10 text-success border-success/30 dark:border-success/30'
                     }`}>
                         <LinkIcon className="h-3 w-3" />{sys.label}
                     </span>
                     {i < systems.length - 1 && <span className="text-muted-foreground text-[10px]">↔</span>}
                 </span>
             ))}
-            <span className="text-[8px] px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-semibold">{status}</span>
+            <span className="text-[8px] px-1.5 py-0.5 rounded bg-success/15 dark:bg-success/10 text-success font-semibold">{status}</span>
         </div>
     );
 
@@ -679,44 +679,44 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                         <div key={wh.name}>
                                             <div className="flex items-center justify-between mb-1.5">
                                                 <div className="flex items-center gap-2">
-                                                    <span className={`w-2 h-2 rounded-full ${wh.alert ? 'bg-red-500' : 'bg-green-500'}`} />
+                                                    <span className={`w-2 h-2 rounded-full ${wh.alert ? 'bg-destructive' : 'bg-success/100'}`} />
                                                     <span className="text-[11px] font-bold text-foreground">{wh.name}</span>
                                                 </div>
                                                 <div className="flex items-center gap-3 text-[10px] text-muted-foreground">
                                                     <span>{wh.items} items</span>
                                                     <span className="font-semibold text-foreground">{wh.current}%</span>
                                                     {wh.forecast !== wh.current && (
-                                                        <span className="text-red-600 dark:text-red-400 font-semibold">→ {wh.forecast}%</span>
+                                                        <span className="text-destructive font-semibold">→ {wh.forecast}%</span>
                                                     )}
                                                 </div>
                                             </div>
                                             <div className="h-3 rounded-full bg-muted overflow-hidden relative">
-                                                <div className={`h-full rounded-full ${wh.current >= 70 ? 'bg-amber-500' : 'bg-green-500'} transition-all duration-700 ease-out`} style={{ width: `${wh.current}%` }} />
+                                                <div className={`h-full rounded-full ${wh.current >= 70 ? 'bg-warning' : 'bg-success/100'} transition-all duration-700 ease-out`} style={{ width: `${wh.current}%` }} />
                                                 {wh.forecast !== wh.current && (
-                                                    <div className="absolute top-0 h-full rounded-full bg-red-300/40 dark:bg-red-500/20 transition-all duration-700" style={{ width: `${wh.forecast}%` }} />
+                                                    <div className="absolute top-0 h-full rounded-full bg-red-300/40 dark:bg-destructive/20 transition-all duration-700" style={{ width: `${wh.forecast}%` }} />
                                                 )}
                                             </div>
-                                            {wh.alert && <p className="text-[10px] text-red-600 dark:text-red-400 mt-1 flex items-center gap-1"><ExclamationTriangleIcon className="h-3 w-3" />{wh.alertText}</p>}
+                                            {wh.alert && <p className="text-[10px] text-destructive mt-1 flex items-center gap-1"><ExclamationTriangleIcon className="h-3 w-3" />{wh.alertText}</p>}
                                         </div>
                                     ))}
                                 </div>
                             </div>
 
                             {/* Wall of Shame — Consignment Aging */}
-                            <div className="rounded-xl border-2 border-red-200 dark:border-red-500/20 overflow-hidden">
-                                <div className="bg-red-50 dark:bg-red-500/5 px-4 py-2 border-b border-red-200 dark:border-red-500/20 flex items-center justify-between">
+                            <div className="rounded-xl border-2 border-destructive/30 overflow-hidden">
+                                <div className="bg-destructive/10 dark:bg-destructive/5 px-4 py-2 border-b border-destructive/30 flex items-center justify-between">
                                     <div className="flex items-center gap-2">
-                                        <ExclamationTriangleIcon className="h-4 w-4 text-red-600 dark:text-red-400" />
-                                        <span className="text-xs font-bold text-red-800 dark:text-red-200">Consignment Aging — "Wall of Shame"</span>
+                                        <ExclamationTriangleIcon className="h-4 w-4 text-destructive" />
+                                        <span className="text-xs font-bold text-destructive dark:text-destructive">Consignment Aging — "Wall of Shame"</span>
                                     </div>
-                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-red-500/20 text-red-700 dark:text-red-400 font-bold">{CONSIGNMENT_AGING.length} ITEMS</span>
+                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-destructive/20 text-destructive font-bold">{CONSIGNMENT_AGING.length} ITEMS</span>
                                 </div>
                                 <div className="divide-y divide-red-100 dark:divide-red-500/10">
                                     {CONSIGNMENT_AGING.map((ca, i) => (
                                         <div key={i} className="px-4 py-3 flex items-start justify-between gap-3">
                                             <div className="flex-1">
                                                 <div className="flex items-center gap-2 mb-0.5">
-                                                    <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded ${ca.status === 'overdue' ? 'bg-red-500/20 text-red-700 dark:text-red-400' : 'bg-amber-500/20 text-amber-700 dark:text-amber-400'}`}>{ca.status === 'overdue' ? 'Overdue' : 'At Risk'}</span>
+                                                    <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded ${ca.status === 'overdue' ? 'bg-destructive/20 text-destructive' : 'bg-warning/20 text-warning'}`}>{ca.status === 'overdue' ? 'Overdue' : 'At Risk'}</span>
                                                     <span className="text-[11px] font-bold text-foreground">{ca.item}</span>
                                                 </div>
                                                 <div className="text-[10px] text-muted-foreground">{ca.client} — {ca.daysOnSite} days on site</div>
@@ -729,24 +729,24 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                             </div>
 
                             {/* Allocation Dashboard */}
-                            <div className="rounded-xl border-2 border-amber-200 dark:border-amber-500/20 overflow-hidden">
-                                <div className="bg-amber-50 dark:bg-amber-500/5 px-4 py-2 border-b border-amber-200 dark:border-amber-500/20 flex items-center justify-between">
+                            <div className="rounded-xl border-2 border-warning/20 overflow-hidden">
+                                <div className="bg-warning/10 px-4 py-2 border-b border-warning/20 flex items-center justify-between">
                                     <div className="flex items-center gap-2">
-                                        <ExclamationCircleIcon className="h-4 w-4 text-amber-600 dark:text-amber-400" />
-                                        <span className="text-xs font-bold text-amber-800 dark:text-amber-200">Allocation Conflicts</span>
+                                        <ExclamationCircleIcon className="h-4 w-4 text-warning" />
+                                        <span className="text-xs font-bold text-warning dark:text-warning">Allocation Conflicts</span>
                                     </div>
-                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-400 font-bold">{ALLOCATION_CONFLICTS.length} CONFLICTS</span>
+                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-warning/20 text-warning font-bold">{ALLOCATION_CONFLICTS.length} CONFLICTS</span>
                                 </div>
                                 <div className="divide-y divide-amber-100 dark:divide-amber-500/10">
                                     {ALLOCATION_CONFLICTS.map((ac, i) => (
                                         <div key={i} className="px-4 py-3">
                                             <div className="flex items-center justify-between mb-2">
                                                 <span className="text-[11px] font-bold text-foreground">{ac.item}</span>
-                                                <span className="text-[10px] font-bold text-red-600 dark:text-red-400">{ac.needed} needed, {ac.available} available (gap: {ac.gap})</span>
+                                                <span className="text-[10px] font-bold text-destructive">{ac.needed} needed, {ac.available} available (gap: {ac.gap})</span>
                                             </div>
                                             <div className="flex items-center gap-2 flex-wrap">
                                                 {ac.projects.map((p, j) => (
-                                                    <span key={j} className="text-[9px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 font-semibold">{p}</span>
+                                                    <span key={j} className="text-[9px] px-2 py-0.5 rounded-full bg-info/10 text-info font-semibold">{p}</span>
                                                 ))}
                                             </div>
                                         </div>
@@ -755,22 +755,22 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                             </div>
 
                             {/* Relocation Recommendations */}
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30">
                                 <div className="flex items-center gap-2 mb-3">
                                     <AIAgentAvatar />
-                                    <span className="text-xs font-bold text-green-800 dark:text-green-200">AI Relocation Recommendations</span>
-                                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-green-500/20 text-green-700 dark:text-green-400 font-semibold ml-auto">$3,600/mo savings</span>
+                                    <span className="text-xs font-bold text-success dark:text-success">AI Relocation Recommendations</span>
+                                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-success/20 text-success font-semibold ml-auto">$3,600/mo savings</span>
                                 </div>
                                 <div className="space-y-2">
                                     {RELOCATION_RECS.map((rec, i) => (
-                                        <div key={i} className="flex items-center gap-3 p-2 rounded-lg bg-white/50 dark:bg-green-500/5 border border-green-200/50 dark:border-green-500/10 text-[10px]">
-                                            <ArrowRightIcon className="h-3 w-3 text-green-600 dark:text-green-400 shrink-0" />
+                                        <div key={i} className="flex items-center gap-3 p-2 rounded-lg bg-white/50 dark:bg-success/100/5 border border-success/30/50 dark:border-success/30 text-[10px]">
+                                            <ArrowRightIcon className="h-3 w-3 text-success shrink-0" />
                                             <div className="flex-1">
                                                 <span className="font-semibold text-foreground">{rec.items} items</span>
                                                 <span className="text-muted-foreground"> — {rec.from} → {rec.to}</span>
                                                 <span className="text-muted-foreground"> ({rec.type})</span>
                                             </div>
-                                            <span className="text-green-700 dark:text-green-400 font-bold">{rec.savings}</span>
+                                            <span className="text-success font-bold">{rec.savings}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -814,9 +814,9 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                             {/* Status badges */}
                             <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 border border-border flex-wrap">
                                 {[
-                                    { color: 'bg-green-500', label: '28 Matched' },
-                                    { color: 'bg-amber-500', label: '1 Missing' },
-                                    { color: 'bg-red-500', label: '1 Wrong' },
+                                    { color: 'bg-success/100', label: '28 Matched' },
+                                    { color: 'bg-warning', label: '1 Missing' },
+                                    { color: 'bg-destructive', label: '1 Wrong' },
                                     { color: 'bg-success', label: '26 Pristine' },
                                     { color: 'bg-yellow-500', label: '3 Inspect' },
                                 ].map(b => (
@@ -831,19 +831,19 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                             <div className="rounded-xl border border-border overflow-hidden">
                                 <div className="bg-muted/50 px-4 py-2 border-b border-border flex items-center justify-between">
                                     <span className="text-xs font-bold text-foreground">Matched Items</span>
-                                    <span className="text-[10px] text-green-600 dark:text-green-400 font-semibold">28 items verified</span>
+                                    <span className="text-[10px] text-success font-semibold">28 items verified</span>
                                 </div>
                                 <div className="divide-y divide-border">
                                     {MATCHED_RECEIVING.map(item => (
                                         <div key={item.line} className="px-4 py-2 flex items-center gap-4 text-[11px]">
-                                            <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                                            <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
                                             <span className="font-mono text-foreground w-24">{item.sku}</span>
                                             <span className="text-foreground flex-1 truncate">{item.description}</span>
                                             <span className="text-muted-foreground w-16 text-right">×{item.receivedQty}/{item.poQty}</span>
                                             <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
-                                                item.condition === 'pristine' ? 'bg-green-500/10 text-green-600 dark:text-green-400' :
-                                                item.condition === 'inspect' ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400' :
-                                                'bg-red-500/10 text-red-600 dark:text-red-400'
+                                                item.condition === 'pristine' ? 'bg-success/10 text-success' :
+                                                item.condition === 'inspect' ? 'bg-warning/10 text-warning' :
+                                                'bg-destructive/10 text-destructive'
                                             }`}>{item.condition}</span>
                                         </div>
                                     ))}
@@ -869,17 +869,17 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                     return (
                                         <div key={item.line} className={`p-4 rounded-xl border-2 transition-colors duration-300 ${
                                             resolved
-                                                ? 'border-green-300 dark:border-green-500/30 bg-green-50/50 dark:bg-green-500/5'
+                                                ? 'border-success/30 bg-success/10 dark:bg-success/100/5'
                                                 : item.status === 'missing'
-                                                    ? 'border-amber-300 dark:border-amber-500/30 bg-amber-50/50 dark:bg-amber-500/5'
-                                                    : 'border-red-300 dark:border-red-500/30 bg-red-50/50 dark:bg-red-500/5'
+                                                    ? 'border-warning/30 bg-warning/10'
+                                                    : 'border-destructive/30 bg-destructive/10'
                                         }`}>
                                             <div className="flex items-start justify-between gap-3">
                                                 <div className="flex-1">
                                                     <div className="flex items-center gap-2 mb-1">
                                                         <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded ${
-                                                            resolved ? 'bg-green-500/20 text-green-700 dark:text-green-400'
-                                                            : item.status === 'missing' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-400' : 'bg-red-500/20 text-red-700 dark:text-red-400'
+                                                            resolved ? 'bg-success/20 text-success'
+                                                            : item.status === 'missing' ? 'bg-warning/20 text-warning' : 'bg-destructive/20 text-destructive'
                                                         }`}>{resolved ? 'Resolved' : item.status === 'missing' ? 'Missing' : 'Wrong Item'}</span>
                                                         <span className="text-[10px] text-muted-foreground">Line #{item.line}</span>
                                                     </div>
@@ -894,12 +894,12 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                                     )}
                                                 </div>
                                                 {resolved ? (
-                                                    <div className="flex items-center gap-1.5 text-[10px] text-green-600 dark:text-green-400 shrink-0">
+                                                    <div className="flex items-center gap-1.5 text-[10px] text-success shrink-0">
                                                         <CheckCircleIcon className="h-3.5 w-3.5" /><span className="font-semibold">{resolved}</span>
                                                     </div>
                                                 ) : (
                                                     <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded shrink-0 ${
-                                                        item.status === 'missing' ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400' : 'bg-red-500/10 text-red-600 dark:text-red-400'
+                                                        item.status === 'missing' ? 'bg-warning/10 text-warning' : 'bg-destructive/10 text-destructive'
                                                     }`}>ACTION NEEDED</span>
                                                 )}
                                             </div>
@@ -912,8 +912,8 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                                             onClick={() => setExceptionActions(prev => ({ ...prev, [item.line]: action.label }))}
                                                             className={`flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1.5 rounded-lg border transition-all ${
                                                                 item.status === 'missing'
-                                                                    ? 'border-amber-300 dark:border-amber-500/30 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-500/10'
-                                                                    : 'border-red-300 dark:border-red-500/30 text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-500/10'
+                                                                    ? 'border-warning/30 text-warning dark:text-warning hover:bg-warning/15 dark:hover:bg-warning/10'
+                                                                    : 'border-destructive/30 text-destructive dark:text-destructive hover:bg-destructive/15 dark:hover:bg-destructive/10'
                                                             }`}
                                                         >
                                                             {action.icon}{action.label}
@@ -981,7 +981,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                     <span className="text-xs font-bold text-foreground">Price Verification Results</span>
                                     <div className="flex items-center gap-3">
                                         <span className="text-[10px] text-muted-foreground font-medium">{PO_PRICE_CHECKS.length} items across PO-2026-0389</span>
-                                        <span className="text-[10px] text-amber-600 dark:text-amber-400 font-semibold">2 flagged</span>
+                                        <span className="text-[10px] text-warning font-semibold">2 flagged</span>
                                     </div>
                                 </div>
                                 <div className="overflow-x-auto">
@@ -998,13 +998,13 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                         </thead>
                                         <tbody className="divide-y divide-border">
                                             {pricePageItems.map((pc, i) => (
-                                                <tr key={pricePage * PO_PRICE_PAGE_SIZE + i} className={pc.flag ? 'bg-amber-50/50 dark:bg-amber-500/5' : ''}>
+                                                <tr key={pricePage * PO_PRICE_PAGE_SIZE + i} className={pc.flag ? 'bg-warning/10' : ''}>
                                                     <td className="px-4 py-2 text-foreground font-medium">{pc.item}</td>
                                                     <td className="px-3 py-2 text-muted-foreground">{pc.mfr}</td>
                                                     <td className="px-3 py-2 text-right text-foreground">${pc.poPrice.toLocaleString()}</td>
                                                     <td className="px-3 py-2 text-right text-foreground">${pc.currentPrice.toLocaleString()}</td>
-                                                    <td className={`px-3 py-2 text-right font-semibold ${pc.change !== '0%' ? 'text-red-600 dark:text-red-400' : 'text-green-600 dark:text-green-400'}`}>{pc.change}</td>
-                                                    <td className={`px-3 py-2 text-right font-semibold ${pc.flag ? 'text-amber-600 dark:text-amber-400' : 'text-foreground'}`}>
+                                                    <td className={`px-3 py-2 text-right font-semibold ${pc.change !== '0%' ? 'text-destructive' : 'text-success'}`}>{pc.change}</td>
+                                                    <td className={`px-3 py-2 text-right font-semibold ${pc.flag ? 'text-warning' : 'text-foreground'}`}>
                                                         {pc.margin}
                                                         {pc.flag && <ExclamationTriangleIcon className="h-3 w-3 inline ml-1" />}
                                                     </td>
@@ -1066,11 +1066,11 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                 </div>
                                 <div className={`p-3 rounded-xl border text-center transition-colors duration-300 ${
                                     allMarginResolved
-                                        ? 'bg-green-50/50 dark:bg-green-500/5 border-green-200 dark:border-green-500/20'
-                                        : 'bg-amber-50/50 dark:bg-amber-500/5 border-amber-200 dark:border-amber-500/20'
+                                        ? 'bg-success/10 dark:bg-success/100/5 border-success/30 dark:border-success/30'
+                                        : 'bg-warning/10 border-warning/20'
                                 }`}>
-                                    <div className={`text-[10px] mb-1 ${allMarginResolved ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'}`}>Margin Alerts</div>
-                                    <div className={`text-sm font-bold ${allMarginResolved ? 'text-green-700 dark:text-green-300' : 'text-amber-700 dark:text-amber-300'}`}>
+                                    <div className={`text-[10px] mb-1 ${allMarginResolved ? 'text-success' : 'text-warning'}`}>Margin Alerts</div>
+                                    <div className={`text-sm font-bold ${allMarginResolved ? 'text-success dark:text-success' : 'text-warning dark:text-warning'}`}>
                                         {allMarginResolved ? `${MARGIN_ALERTS.length} Resolved` : `${Object.keys(marginActions).length}/${MARGIN_ALERTS.length}`}
                                     </div>
                                 </div>
@@ -1080,7 +1080,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                             <div className="space-y-3">
                                 <div className="flex items-center justify-between">
                                     <span className="text-xs font-bold text-foreground flex items-center gap-2">
-                                        <ExclamationTriangleIcon className="h-4 w-4 text-amber-500" /> Margin Alerts — Below 25% Threshold
+                                        <ExclamationTriangleIcon className="h-4 w-4 text-warning" /> Margin Alerts — Below 25% Threshold
                                     </span>
                                     <span className="text-[10px] text-muted-foreground">{Object.keys(marginActions).length}/{MARGIN_ALERTS.length} resolved</span>
                                 </div>
@@ -1089,25 +1089,25 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                     return (
                                         <div key={alert.id} className={`p-4 rounded-xl border-2 transition-colors duration-300 ${
                                             resolved
-                                                ? 'border-green-300 dark:border-green-500/30 bg-green-50/50 dark:bg-green-500/5'
-                                                : 'border-amber-300 dark:border-amber-500/30 bg-amber-50/50 dark:bg-amber-500/5'
+                                                ? 'border-success/30 bg-success/10 dark:bg-success/100/5'
+                                                : 'border-warning/30 bg-warning/10'
                                         }`}>
                                             <div className="flex items-start justify-between gap-3">
                                                 <div className="flex-1">
                                                     <div className="flex items-center gap-2 mb-1">
                                                         <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded ${
-                                                            resolved ? 'bg-green-500/20 text-green-700 dark:text-green-400' : 'bg-amber-500/20 text-amber-700 dark:text-amber-400'
+                                                            resolved ? 'bg-success/20 text-success' : 'bg-warning/20 text-warning'
                                                         }`}>{resolved ? 'Resolved' : 'LOW MARGIN'}</span>
                                                         <span className="text-[10px] text-muted-foreground">{alert.mfr}</span>
                                                         <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
-                                                            resolved ? 'bg-green-500/10 text-green-600 dark:text-green-400' : 'bg-red-500/10 text-red-600 dark:text-red-400'
+                                                            resolved ? 'bg-success/10 text-success' : 'bg-destructive/10 text-destructive'
                                                         }`}>{alert.margin} (min {alert.threshold})</span>
                                                     </div>
                                                     <div className="text-[11px] font-semibold text-foreground mt-1">{alert.item}</div>
                                                     <div className="text-[10px] text-muted-foreground mt-1 grid grid-cols-3 gap-3">
                                                         <span>PO: <span className="text-foreground font-medium">${alert.poPrice.toLocaleString()}</span></span>
                                                         <span>Current: <span className="text-foreground font-medium">${alert.currentPrice.toLocaleString()}</span></span>
-                                                        <span>Change: <span className="text-red-600 dark:text-red-400 font-semibold">{alert.change}</span></span>
+                                                        <span>Change: <span className="text-destructive font-semibold">{alert.change}</span></span>
                                                     </div>
                                                     <p className="text-[10px] text-muted-foreground mt-2 italic">{alert.reason}</p>
                                                     <p className="text-[10px] text-muted-foreground mt-1.5 flex items-start gap-1">
@@ -1115,7 +1115,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                                     </p>
                                                 </div>
                                                 {resolved && (
-                                                    <div className="flex items-center gap-1.5 text-[10px] text-green-600 dark:text-green-400 shrink-0">
+                                                    <div className="flex items-center gap-1.5 text-[10px] text-success shrink-0">
                                                         <CheckCircleIcon className="h-3.5 w-3.5" /><span className="font-semibold">{resolved}</span>
                                                     </div>
                                                 )}
@@ -1131,7 +1131,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                                     </button>
                                                     <button
                                                         onClick={() => setMarginActions(prev => ({ ...prev, [alert.id]: 'Margin Override Approved' }))}
-                                                        className="flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1.5 rounded-lg border border-amber-300 dark:border-amber-500/30 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-500/10 transition-all"
+                                                        className="flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1.5 rounded-lg border border-warning/30 text-warning dark:text-warning hover:bg-warning/15 dark:hover:bg-warning/10 transition-all"
                                                     >
                                                         <ShieldCheckIcon className="h-3 w-3" />Override Margin
                                                     </button>
@@ -1189,7 +1189,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                         <div className="flex items-center gap-2">
                                             <span className="text-xs font-bold text-foreground">Multi-Warehouse Sync</span>
                                             <span className="text-[9px] px-2 py-0.5 rounded-full bg-brand-500 text-zinc-900 font-bold">Auto</span>
-                                            <span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold">5 LOCATIONS</span>
+                                            <span className="text-[9px] px-2 py-0.5 rounded-full bg-info/10 text-info font-bold">5 LOCATIONS</span>
                                         </div>
                                         <div className="mt-1.5">
                                             <SystemChips systems={[{ label: 'WMS SYNC', color: 'blue' }, { label: 'DOCK SCHEDULER', color: 'teal' }, { label: 'ROUTE ENGINE', color: 'purple' }]} />
@@ -1217,14 +1217,14 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                             <div className="rounded-xl border border-border overflow-hidden">
                                 <div className="bg-muted/50 px-4 py-2 border-b border-border flex items-center justify-between">
                                     <span className="text-xs font-bold text-foreground">Location Sync Status</span>
-                                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 font-semibold">All Synced</span>
+                                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-success/10 text-success font-semibold">All Synced</span>
                                 </div>
                                 <div className="divide-y divide-border">
                                     {LOCATION_STATUS.map((loc, i) => (
                                         <div key={i} className="px-4 py-3 flex items-center justify-between">
                                             <div className="flex items-center gap-3">
                                                 {loc.type === 'Warehouse' ? (
-                                                    <CubeIcon className="h-4 w-4 text-blue-500 shrink-0" />
+                                                    <CubeIcon className="h-4 w-4 text-info shrink-0" />
                                                 ) : (
                                                     <MapIcon className="h-4 w-4 text-success shrink-0" />
                                                 )}
@@ -1233,11 +1233,11 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                                     <div className="text-[10px] text-muted-foreground">
                                                         {loc.items} items
                                                         {'inTransit' in loc && loc.inTransit && !syncCardsAnimated && <> · {loc.inTransit} in transit</>}
-                                                        {'inTransit' in loc && loc.inTransit && syncCardsAnimated && <> · <span className="text-green-600 dark:text-green-400 font-semibold">Delivered</span></>}
+                                                        {'inTransit' in loc && loc.inTransit && syncCardsAnimated && <> · <span className="text-success font-semibold">Delivered</span></>}
                                                         {'pendingQC' in loc && loc.pendingQC && !syncCardsAnimated && <> · {loc.pendingQC} pending QC</>}
-                                                        {'pendingQC' in loc && loc.pendingQC && syncCardsAnimated && <> · <span className="text-green-600 dark:text-green-400 font-semibold">QC Cleared</span></>}
+                                                        {'pendingQC' in loc && loc.pendingQC && syncCardsAnimated && <> · <span className="text-success font-semibold">QC Cleared</span></>}
                                                         {'receiving' in loc && loc.receiving && !syncCardsAnimated && <> · Receiving</>}
-                                                        {'receiving' in loc && loc.receiving && syncCardsAnimated && <> · <span className="text-green-600 dark:text-green-400 font-semibold">Received</span></>}
+                                                        {'receiving' in loc && loc.receiving && syncCardsAnimated && <> · <span className="text-success font-semibold">Received</span></>}
                                                     </div>
                                                 </div>
                                             </div>
@@ -1245,14 +1245,14 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                                 {'utilization' in loc && loc.utilization && (
                                                     <div className="flex items-center gap-2">
                                                         <div className="w-16 h-1.5 rounded-full bg-muted overflow-hidden">
-                                                            <div className={`h-full rounded-full ${(loc.utilization ?? 0) >= 70 ? 'bg-amber-500' : 'bg-green-500'}`} style={{ width: `${loc.utilization}%` }} />
+                                                            <div className={`h-full rounded-full ${(loc.utilization ?? 0) >= 70 ? 'bg-warning' : 'bg-success/100'}`} style={{ width: `${loc.utilization}%` }} />
                                                         </div>
                                                         <span className="text-[10px] font-semibold text-foreground w-8 text-right">{loc.utilization}%</span>
                                                     </div>
                                                 )}
                                                 <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${
-                                                    loc.status === 'Active' ? 'bg-green-500/10 text-green-600 dark:text-green-400' :
-                                                    loc.status === 'Receiving' ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400' :
+                                                    loc.status === 'Active' ? 'bg-success/10 text-success' :
+                                                    loc.status === 'Receiving' ? 'bg-info/10 text-info' :
                                                     'bg-muted0/10 text-muted-foreground'
                                                 }`}>{loc.status}</span>
                                             </div>
@@ -1262,30 +1262,30 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                             </div>
 
                             {/* Route optimization */}
-                            <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 flex items-center gap-3">
-                                <TruckIcon className="h-4 w-4 text-green-600 dark:text-green-400 shrink-0" />
-                                <span className="text-[11px] text-green-800 dark:text-green-200 flex-1">Route Optimization: 2 Allsteel deliveries consolidated</span>
-                                <span className="text-[11px] font-bold text-green-700 dark:text-green-400">-$1,200</span>
+                            <div className="p-3 rounded-xl bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 flex items-center gap-3">
+                                <TruckIcon className="h-4 w-4 text-success shrink-0" />
+                                <span className="text-[11px] text-success dark:text-success flex-1">Route Optimization: 2 Allsteel deliveries consolidated</span>
+                                <span className="text-[11px] font-bold text-success">-$1,200</span>
                             </div>
 
                             {/* Pending transit — narrative bridge to d2.5 */}
-                            <div className="p-3 rounded-xl bg-blue-50/50 dark:bg-blue-500/5 border border-blue-200 dark:border-blue-500/20">
+                            <div className="p-3 rounded-xl bg-info/10 border border-info/20">
                                 <div className="flex items-center gap-2 mb-2">
-                                    <TruckIcon className="h-3.5 w-3.5 text-blue-500" />
-                                    <span className="text-[10px] font-bold text-blue-700 dark:text-blue-300">Pending Transit Intelligence</span>
-                                    <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20 ml-auto">SYNC DETECTED</span>
+                                    <TruckIcon className="h-3.5 w-3.5 text-info" />
+                                    <span className="text-[10px] font-bold text-info dark:text-info">Pending Transit Intelligence</span>
+                                    <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-info/10 text-info border border-info/20 ml-auto">SYNC DETECTED</span>
                                 </div>
                                 <div className="grid grid-cols-3 gap-2 text-[10px]">
                                     <div className="flex items-center gap-1.5 text-muted-foreground">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                                        <span className="w-1.5 h-1.5 rounded-full bg-success/100" />
                                         <span>3 shipments on-time</span>
                                     </div>
-                                    <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                                    <div className="flex items-center gap-1.5 text-warning">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-warning" />
                                         <span>1 potential delay</span>
                                     </div>
-                                    <div className="flex items-center gap-1.5 text-red-600 dark:text-red-400">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                                    <div className="flex items-center gap-1.5 text-destructive">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-destructive" />
                                         <span>1 billing discrepancy</span>
                                     </div>
                                 </div>
@@ -1311,7 +1311,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                         'In-Transit Intelligence',
                         <div className="space-y-2">
                             <div className="flex items-center gap-2 flex-wrap">
-                                <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20">FROM WAREHOUSE SYNC</span>
+                                <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-info/10 text-info border border-info/20">FROM WAREHOUSE SYNC</span>
                                 <span className="text-[10px] text-muted-foreground">5 shipments identified during sync</span>
                             </div>
                             <SystemChips systems={[{ label: 'CARRIER API', color: 'blue' }, { label: 'PREDICTIVE ENGINE', color: 'purple' }, { label: 'FREIGHT AUDITOR', color: 'red' }]} />
@@ -1320,7 +1320,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                         handleTransitStart,
                         '5 SHIPMENTS'
                     )}
-                    {transitPhase === 'processing' && renderAgentPipeline(transitAgents, transitProgress, 'Transit Intelligence Pipeline — Analyzing shipments...', 'bg-blue-500')}
+                    {transitPhase === 'processing' && renderAgentPipeline(transitAgents, transitProgress, 'Transit Intelligence Pipeline — Analyzing shipments...', 'bg-info/100')}
                     {transitPhase === 'breathing' && renderBreathing('Analysis complete — compiling transit report...')}
                     {(transitPhase === 'revealed' || transitPhase === 'results') && (
                         <div className="animate-in fade-in duration-500 space-y-4">
@@ -1331,7 +1331,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                             )}
                             <div className="p-2 rounded-lg bg-muted/30 border border-border/50 flex items-center justify-between">
                                 <SystemChips systems={[{ label: 'CARRIER API', color: 'blue' }, { label: 'PREDICTIVE ENGINE', color: 'purple' }, { label: 'FREIGHT AUDITOR', color: 'red' }]} />
-                                <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20">FROM WAREHOUSE SYNC</span>
+                                <span className="text-[8px] font-bold px-1.5 py-0.5 rounded bg-info/10 text-info border border-info/20">FROM WAREHOUSE SYNC</span>
                             </div>
 
                             {/* Section A: Shipment Tracker */}
@@ -1342,7 +1342,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                 </div>
                                 <div className="divide-y divide-border">
                                     {SHIPMENTS.map(sh => (
-                                        <div key={sh.id} className={`px-4 py-2.5 flex items-center justify-between text-[11px] ${sh.status === 'delayed' ? 'bg-red-50/50 dark:bg-red-500/5' : ''}`}>
+                                        <div key={sh.id} className={`px-4 py-2.5 flex items-center justify-between text-[11px] ${sh.status === 'delayed' ? 'bg-destructive/10' : ''}`}>
                                             <div className="flex items-center gap-3">
                                                 <span className="font-mono text-muted-foreground w-14">{sh.id}</span>
                                                 <div>
@@ -1354,9 +1354,9 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                                 <span className="text-muted-foreground">{sh.itemCount} items</span>
                                                 <span className="text-[10px] text-muted-foreground">{sh.eta}</span>
                                                 <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
-                                                    sh.status === 'arriving-today' ? 'bg-green-500/10 text-green-600 dark:text-green-400' :
-                                                    sh.status === 'on-time' ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400' :
-                                                    'bg-red-500/10 text-red-600 dark:text-red-400'
+                                                    sh.status === 'arriving-today' ? 'bg-success/10 text-success' :
+                                                    sh.status === 'on-time' ? 'bg-info/10 text-info' :
+                                                    'bg-destructive/10 text-destructive'
                                                 }`}>
                                                     {sh.status === 'arriving-today' ? 'Today' : sh.status === 'on-time' ? 'On Time' : 'Delayed'}
                                                 </span>
@@ -1368,14 +1368,14 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
 
                             {/* Section B: Predictive Alert */}
                             {PREDICTIVE_ALERTS.map(alert => (
-                                <div key={alert.shipmentId} className={`p-4 rounded-xl border-2 transition-all duration-300 ${alertAction ? 'border-green-300 dark:border-green-500/30 bg-green-50/50 dark:bg-green-500/5' : 'border-amber-300 dark:border-amber-500/30 bg-amber-50/50 dark:bg-amber-500/5'}`}>
+                                <div key={alert.shipmentId} className={`p-4 rounded-xl border-2 transition-all duration-300 ${alertAction ? 'border-success/30 bg-success/10 dark:bg-success/100/5' : 'border-warning/30 bg-warning/10'}`}>
                                     <div className="flex items-center gap-2 mb-2">
-                                        <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded ${alertAction ? 'bg-green-500/20 text-green-700 dark:text-green-400' : 'bg-amber-500/20 text-amber-700 dark:text-amber-400'}`}>{alertAction ? 'Resolved' : 'Predictive Alert'}</span>
+                                        <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded ${alertAction ? 'bg-success/20 text-success' : 'bg-warning/20 text-warning'}`}>{alertAction ? 'Resolved' : 'Predictive Alert'}</span>
                                         <span className="text-[10px] font-mono text-muted-foreground">{alert.shipmentId}</span>
                                         <span className="text-[10px] px-2 py-0.5 rounded-full bg-ai/10 text-ai dark:text-purple-400 font-semibold ml-auto">{alert.confidence}% confidence</span>
                                     </div>
                                     <p className="text-[11px] text-foreground">
-                                        <span className="font-bold">{alert.manufacturer}</span> — {alert.prediction === 'weather-delay' ? 'Weather delay' : 'Delay'} predicted <span className="font-semibold text-amber-700 dark:text-amber-400">+{alert.delayDays} days</span>.
+                                        <span className="font-bold">{alert.manufacturer}</span> — {alert.prediction === 'weather-delay' ? 'Weather delay' : 'Delay'} predicted <span className="font-semibold text-warning">+{alert.delayDays} days</span>.
                                     </p>
                                     <p className="text-[10px] text-muted-foreground mt-1">Impact: {alert.impact}.</p>
                                     <p className="text-[10px] text-muted-foreground mt-1 flex items-start gap-1">
@@ -1383,8 +1383,8 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                     </p>
                                     {alertAction ? (
                                         <div className="flex items-center gap-1.5 mt-3">
-                                            <CheckCircleIcon className="h-3.5 w-3.5 text-green-500" />
-                                            <span className="text-[10px] font-semibold text-green-600 dark:text-green-400">{alertAction}</span>
+                                            <CheckCircleIcon className="h-3.5 w-3.5 text-success" />
+                                            <span className="text-[10px] font-semibold text-success">{alertAction}</span>
                                         </div>
                                     ) : (
                                         <div className="flex items-center gap-2 mt-3 pt-3 border-t border-border/50">
@@ -1392,7 +1392,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                             <button onClick={() => setAlertAction('Client notified — revised ETA sent')} className="flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1.5 rounded-lg border border-brand-300 dark:border-brand-500/30 text-zinc-900 dark:text-brand-300 bg-brand-400/80 hover:bg-brand-400 transition-all">
                                                 <BellAlertIcon className="h-3 w-3" />Notify Client
                                             </button>
-                                            <button onClick={() => setAlertAction('Staging rerouted to Columbus Main')} className="flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1.5 rounded-lg border border-amber-300 dark:border-amber-500/30 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-500/10 transition-all">
+                                            <button onClick={() => setAlertAction('Staging rerouted to Columbus Main')} className="flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1.5 rounded-lg border border-warning/30 text-warning dark:text-warning hover:bg-warning/15 dark:hover:bg-warning/10 transition-all">
                                                 <ArrowPathIcon className="h-3 w-3" />Reroute Staging
                                             </button>
                                             <button onClick={() => setAlertAction('Expedited shipping requested to carrier')} className="flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1.5 rounded-lg border border-border text-muted-foreground hover:bg-muted transition-all">
@@ -1405,15 +1405,15 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
 
                             {/* Section C: Freight Audit */}
                             {FREIGHT_AUDIT.map(fa => (
-                                <div key={fa.shipmentId} className={`p-4 rounded-xl border-2 transition-all duration-300 ${freightAction ? 'border-green-300 dark:border-green-500/30 bg-green-50/50 dark:bg-green-500/5' : 'border-red-300 dark:border-red-500/30 bg-red-50/50 dark:bg-red-500/5'}`}>
+                                <div key={fa.shipmentId} className={`p-4 rounded-xl border-2 transition-all duration-300 ${freightAction ? 'border-success/30 bg-success/10 dark:bg-success/100/5' : 'border-destructive/30 bg-destructive/10'}`}>
                                     <div className="flex items-center gap-2 mb-2">
-                                        <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded ${freightAction ? 'bg-green-500/20 text-green-700 dark:text-green-400' : 'bg-red-500/20 text-red-700 dark:text-red-400'}`}>{freightAction ? 'Resolved' : 'Freight Discrepancy'}</span>
+                                        <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded ${freightAction ? 'bg-success/20 text-success' : 'bg-destructive/20 text-destructive'}`}>{freightAction ? 'Resolved' : 'Freight Discrepancy'}</span>
                                         <span className="text-[10px] font-mono text-muted-foreground">{fa.shipmentId}</span>
                                     </div>
                                     <div className="grid grid-cols-3 gap-3 text-[11px] mb-2">
                                         <div><span className="text-muted-foreground">Quoted:</span> <span className="font-semibold text-foreground">${fa.quotedCost.toLocaleString()}</span></div>
-                                        <div><span className="text-muted-foreground">Billed:</span> <span className="font-semibold text-red-600 dark:text-red-400">${fa.billedCost.toLocaleString()}</span></div>
-                                        <div><span className="text-muted-foreground">Overcharge:</span> <span className="font-bold text-red-700 dark:text-red-400">${fa.overcharge}</span></div>
+                                        <div><span className="text-muted-foreground">Billed:</span> <span className="font-semibold text-destructive">${fa.billedCost.toLocaleString()}</span></div>
+                                        <div><span className="text-muted-foreground">Overcharge:</span> <span className="font-bold text-destructive">${fa.overcharge}</span></div>
                                     </div>
                                     <p className="text-[10px] text-muted-foreground">{fa.carrier} — {fa.reason}</p>
                                     <p className="text-[10px] text-muted-foreground mt-1 flex items-start gap-1">
@@ -1421,16 +1421,16 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                     </p>
                                     {freightAction ? (
                                         <div className="flex items-center gap-1.5 mt-3">
-                                            <CheckCircleIcon className="h-3.5 w-3.5 text-green-500" />
-                                            <span className="text-[10px] font-semibold text-green-600 dark:text-green-400">{freightAction}</span>
+                                            <CheckCircleIcon className="h-3.5 w-3.5 text-success" />
+                                            <span className="text-[10px] font-semibold text-success">{freightAction}</span>
                                         </div>
                                     ) : (
                                         <div className="flex items-center gap-2 mt-3 pt-3 border-t border-border/50">
                                             <span className="text-[9px] text-muted-foreground mr-1">Actions:</span>
-                                            <button onClick={() => setFreightAction(`Claim filed — $${fa.overcharge} recovery initiated`)} className="flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1.5 rounded-lg border border-red-300 dark:border-red-500/30 text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-500/10 transition-all">
+                                            <button onClick={() => setFreightAction(`Claim filed — $${fa.overcharge} recovery initiated`)} className="flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1.5 rounded-lg border border-destructive/30 text-destructive dark:text-destructive hover:bg-destructive/15 dark:hover:bg-destructive/10 transition-all">
                                                 <ExclamationCircleIcon className="h-3 w-3" />File Freight Claim
                                             </button>
-                                            <button onClick={() => setFreightAction('Dispute sent to SAIA — awaiting response')} className="flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1.5 rounded-lg border border-amber-300 dark:border-amber-500/30 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-500/10 transition-all">
+                                            <button onClick={() => setFreightAction('Dispute sent to SAIA — awaiting response')} className="flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1.5 rounded-lg border border-warning/30 text-warning dark:text-warning hover:bg-warning/15 dark:hover:bg-warning/10 transition-all">
                                                 <ExclamationTriangleIcon className="h-3 w-3" />Dispute with Carrier
                                             </button>
                                             <button onClick={() => setFreightAction('Charge accepted — no further action')} className="flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1.5 rounded-lg border border-border text-muted-foreground hover:bg-muted transition-all">
@@ -1443,14 +1443,14 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
 
                             {/* Section D: Split-Shipment Reconciliation */}
                             {SPLIT_SHIPMENT.map(ss => (
-                                <div key={ss.poId} className="p-4 rounded-xl bg-blue-50 dark:bg-blue-500/5 border border-blue-200 dark:border-blue-500/20">
+                                <div key={ss.poId} className="p-4 rounded-xl bg-info/10 dark:bg-info/100/5 border border-info/20">
                                     <div className="flex items-center gap-2 mb-2">
-                                        <span className="text-[9px] font-bold uppercase px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-700 dark:text-blue-400">Split Shipment</span>
+                                        <span className="text-[9px] font-bold uppercase px-1.5 py-0.5 rounded bg-info/20 text-info">Split Shipment</span>
                                         <span className="text-[10px] font-mono text-muted-foreground">{ss.poId}</span>
                                     </div>
                                     <div className="flex items-center gap-3 mb-2">
-                                        <div className="flex-1 h-2 rounded-full bg-blue-100 dark:bg-blue-500/10 overflow-hidden">
-                                            <div className="h-full rounded-full bg-blue-500 transition-all" style={{ width: `${(ss.received / ss.totalItems) * 100}%` }} />
+                                        <div className="flex-1 h-2 rounded-full bg-info/15 dark:bg-info/10 overflow-hidden">
+                                            <div className="h-full rounded-full bg-info/100 transition-all" style={{ width: `${(ss.received / ss.totalItems) * 100}%` }} />
                                         </div>
                                         <span className="text-[10px] font-bold text-foreground">{ss.received}/{ss.totalItems}</span>
                                     </div>
@@ -1465,15 +1465,15 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
 
                             {/* Trigger notification for d2.6 — appears when both actions resolved */}
                             {alertAction && freightAction ? (
-                                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 p-4 rounded-xl bg-amber-50/50 dark:bg-amber-500/5 border-2 border-amber-300 dark:border-amber-500/30 shadow-lg">
+                                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 p-4 rounded-xl bg-warning/10 border-2 border-warning/30 shadow-lg">
                                     <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-amber-500/20 shrink-0">
-                                            <ExclamationCircleIcon className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                                        <div className="p-2 rounded-lg bg-warning/20 shrink-0">
+                                            <ExclamationCircleIcon className="h-4 w-4 text-warning" />
                                         </div>
                                         <div className="flex-1">
                                             <div className="flex items-center gap-2 mb-1">
                                                 <span className="text-xs font-bold text-foreground">Vendor Claims Detected</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-red-500/10 text-red-600 dark:text-red-400 font-bold">3 ACTIVE CLAIMS</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-destructive/10 text-destructive font-bold">3 ACTIVE CLAIMS</span>
                                             </div>
                                             <p className="text-[10px] text-muted-foreground">
                                                 Freight audit triggered CLM-2026-055. Combined with 2 existing claims (CLM-2026-052 wrong finish, CLM-2026-048 backorder), total pending credits: <span className="font-semibold text-foreground">$2,770</span>.
@@ -1546,19 +1546,19 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                         ];
                                     return (
                                         <div key={claim.id} className={`p-4 rounded-xl border-2 transition-colors duration-300 ${
-                                            resolved ? 'border-green-300 dark:border-green-500/30 bg-green-50/50 dark:bg-green-500/5'
-                                            : claim.type === 'wrong-finish' ? 'border-red-300 dark:border-red-500/30 bg-red-50/50 dark:bg-red-500/5'
-                                            : claim.type === 'packaging-damage' ? 'border-amber-300 dark:border-amber-500/30 bg-amber-50/50 dark:bg-amber-500/5'
-                                            : 'border-blue-300 dark:border-blue-500/30 bg-blue-50/50 dark:bg-blue-500/5'
+                                            resolved ? 'border-success/30 bg-success/10 dark:bg-success/100/5'
+                                            : claim.type === 'wrong-finish' ? 'border-destructive/30 bg-destructive/10'
+                                            : claim.type === 'packaging-damage' ? 'border-warning/30 bg-warning/10'
+                                            : 'border-info/30 bg-info/10'
                                         }`}>
                                             <div className="flex items-start justify-between gap-3">
                                                 <div className="flex-1">
                                                     <div className="flex items-center gap-2 mb-1">
                                                         <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded ${
-                                                            resolved ? 'bg-green-500/20 text-green-700 dark:text-green-400'
-                                                            : claim.type === 'wrong-finish' ? 'bg-red-500/20 text-red-700 dark:text-red-400'
-                                                            : claim.type === 'packaging-damage' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-400'
-                                                            : 'bg-blue-500/20 text-blue-700 dark:text-blue-400'
+                                                            resolved ? 'bg-success/20 text-success'
+                                                            : claim.type === 'wrong-finish' ? 'bg-destructive/20 text-destructive'
+                                                            : claim.type === 'packaging-damage' ? 'bg-warning/20 text-warning'
+                                                            : 'bg-info/20 text-info'
                                                         }`}>{resolved ? 'Resolved' : claim.action}</span>
                                                         <span className="text-[10px] font-mono text-muted-foreground">{claim.id}</span>
                                                     </div>
@@ -1571,7 +1571,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                                 <div className="text-right shrink-0">
                                                     <span className="text-sm font-bold text-foreground">{claim.credit}</span>
                                                     {resolved && (
-                                                        <div className="flex items-center gap-1 mt-1 text-[10px] text-green-600 dark:text-green-400">
+                                                        <div className="flex items-center gap-1 mt-1 text-[10px] text-success">
                                                             <CheckCircleIcon className="h-3 w-3" /><span className="font-semibold">{resolved}</span>
                                                         </div>
                                                     )}
@@ -1586,7 +1586,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                                             onClick={() => setClaimActions(prev => ({ ...prev, [claim.id]: a.key }))}
                                                             className={`flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1.5 rounded-lg border transition-all ${
                                                                 a.style === 'brand' ? 'border-brand-300 dark:border-brand-500/30 text-zinc-900 dark:text-brand-300 bg-brand-400/80 hover:bg-brand-400'
-                                                                : a.style === 'amber' ? 'border-amber-300 dark:border-amber-500/30 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-500/10'
+                                                                : a.style === 'amber' ? 'border-warning/30 text-warning dark:text-warning hover:bg-warning/15 dark:hover:bg-warning/10'
                                                                 : 'border-border text-muted-foreground hover:bg-muted'
                                                             }`}
                                                         >
@@ -1613,7 +1613,7 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                     {WARRANTY_ALERTS.map((wa, i) => {
                                         const resolved = warrantyActions[i];
                                         return (
-                                            <div key={i} className={`px-4 py-3 transition-colors duration-300 ${resolved ? 'bg-green-50/30 dark:bg-green-500/[0.03]' : ''}`}>
+                                            <div key={i} className={`px-4 py-3 transition-colors duration-300 ${resolved ? 'bg-success/10/30 dark:bg-success/100/[0.03]' : ''}`}>
                                                 <div className="flex items-center justify-between text-[11px]">
                                                     <div>
                                                         <span className="font-semibold text-foreground">{wa.item}</span>
@@ -1621,15 +1621,15 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                                     </div>
                                                     <div className="flex items-center gap-3">
                                                         <span className="text-muted-foreground">{wa.value}</span>
-                                                        <span className={`text-[10px] font-semibold ${wa.daysLeft <= 15 ? 'text-red-600 dark:text-red-400' : wa.daysLeft <= 30 ? 'text-amber-600 dark:text-amber-400' : 'text-muted-foreground'}`}>
+                                                        <span className={`text-[10px] font-semibold ${wa.daysLeft <= 15 ? 'text-destructive' : wa.daysLeft <= 30 ? 'text-warning' : 'text-muted-foreground'}`}>
                                                             {wa.daysLeft}d left
                                                         </span>
                                                         {resolved ? (
-                                                            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-green-500/10 text-green-600 dark:text-green-400">{resolved}</span>
+                                                            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-success/10 text-success">{resolved}</span>
                                                         ) : (
                                                             <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
-                                                                wa.action === 'Extend' ? 'bg-red-500/10 text-red-600 dark:text-red-400' :
-                                                                wa.action === 'Review' ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400' :
+                                                                wa.action === 'Extend' ? 'bg-destructive/10 text-destructive' :
+                                                                wa.action === 'Review' ? 'bg-warning/10 text-warning' :
                                                                 'bg-muted0/10 text-muted-foreground'
                                                             }`}>{wa.action}</span>
                                                         )}
@@ -1639,13 +1639,13 @@ export default function DuplerWarehouse({ onNavigate }: DuplerWarehouseProps) {
                                                     <div className="flex items-center gap-2 mt-2">
                                                         {wa.action === 'Extend' && (
                                                             <>
-                                                                <button onClick={() => setWarrantyActions(p => ({ ...p, [i]: 'Extended' }))} className="text-[9px] font-semibold px-2 py-1 rounded-md border border-red-300 dark:border-red-500/30 text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-500/10 transition-all">Extend Warranty</button>
+                                                                <button onClick={() => setWarrantyActions(p => ({ ...p, [i]: 'Extended' }))} className="text-[9px] font-semibold px-2 py-1 rounded-md border border-destructive/30 text-destructive dark:text-destructive hover:bg-destructive/15 dark:hover:bg-destructive/10 transition-all">Extend Warranty</button>
                                                                 <button onClick={() => setWarrantyActions(p => ({ ...p, [i]: 'Claim Filed' }))} className="text-[9px] font-semibold px-2 py-1 rounded-md border border-border text-muted-foreground hover:bg-muted transition-all">File Claim Now</button>
                                                             </>
                                                         )}
                                                         {wa.action === 'Review' && (
                                                             <>
-                                                                <button onClick={() => setWarrantyActions(p => ({ ...p, [i]: 'Inspection Set' }))} className="text-[9px] font-semibold px-2 py-1 rounded-md border border-amber-300 dark:border-amber-500/30 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-500/10 transition-all">Schedule Inspection</button>
+                                                                <button onClick={() => setWarrantyActions(p => ({ ...p, [i]: 'Inspection Set' }))} className="text-[9px] font-semibold px-2 py-1 rounded-md border border-warning/30 text-warning dark:text-warning hover:bg-warning/15 dark:hover:bg-warning/10 transition-all">Schedule Inspection</button>
                                                                 <button onClick={() => setWarrantyActions(p => ({ ...p, [i]: 'Extended' }))} className="text-[9px] font-semibold px-2 py-1 rounded-md border border-border text-muted-foreground hover:bg-muted transition-all">Extend Warranty</button>
                                                             </>
                                                         )}

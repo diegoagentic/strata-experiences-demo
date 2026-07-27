@@ -32,8 +32,8 @@ const STATUS_LABEL: Record<InstallJob['status'], string> = {
 }
 
 const STATUS_TONE: Record<InstallJob['status'], string> = {
-    pending:    'bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300',
-    scheduled:  'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300',
+    pending:    'bg-info/10 text-info dark:bg-info/15 dark:text-info',
+    scheduled:  'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning',
     'in-flight': 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300',
     complete:   'bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300',
 }
@@ -92,7 +92,7 @@ export default function CLCJobListView({ jobs, queuedJobIds, highlightedJobId, o
                             onClick={() => onJobClick?.(job.id)}
                             className={`grid ${gridCols} gap-2 px-3 py-2.5 items-center text-sm hover:bg-muted/30 transition-colors ${
                                 job.justArrived ? 'bg-ai/10 animate-pulse' :
-                                isHighlighted   ? 'bg-red-50/40 dark:bg-red-500/5' :
+                                isHighlighted   ? 'bg-destructive/10' :
                                 isQueued        ? 'bg-yellow-50/40 dark:bg-yellow-500/5' : ''
                             } ${job.skipped ? 'opacity-50 grayscale' : ''} ${onJobClick ? 'cursor-pointer' : ''}`}
                             role={onJobClick ? 'button' : undefined}

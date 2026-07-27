@@ -365,7 +365,7 @@ export default function CLCAssetConsolidationModal({ isOpen, onClose, initialSta
                                     <p className="text-sm font-semibold text-foreground mb-1">{previewAsset?.name}</p>
                                     <p className="text-xs">PDF preview (mock) · in production this renders the actual document inline.</p>
                                     {previewAsset?.aiFlagged && (
-                                        <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 dark:border-amber-500/30 dark:bg-amber-500/10 p-3 text-left">
+                                        <div className="mt-4 rounded-lg border border-warning/30 bg-warning/10 dark:border-warning/30 dark:bg-warning/10 p-3 text-left">
                                             <div className="flex items-center gap-1.5 mb-1">
                                                 <Sparkles className="h-3.5 w-3.5 text-zinc-800 dark:text-zinc-200" />
                                                 <span className="text-[10px] font-bold uppercase tracking-wider text-foreground">Strata AI flag</span>
@@ -446,13 +446,13 @@ function StageStepper({ current, onJump }: { current: Stage; onJump: (s: Stage) 
                             onClick={() => onJump(s.id)}
                             className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold transition-colors ${
                                 isActive ? 'bg-primary text-primary-foreground' :
-                                isPast   ? 'bg-green-100 text-green-800 dark:bg-green-500/20 dark:text-green-200 hover:bg-green-200' :
+                                isPast   ? 'bg-success/15 text-success dark:bg-success/20 dark:text-success hover:bg-success/20' :
                                            'bg-muted text-muted-foreground hover:bg-muted/80'
                             }`}
                         >
                             <span className={`inline-flex items-center justify-center h-4 w-4 rounded-full text-[10px] font-bold ${
                                 isActive ? 'bg-primary-foreground text-primary' :
-                                isPast   ? 'bg-green-700 text-white' :
+                                isPast   ? 'bg-success text-white' :
                                            'bg-zinc-300 text-zinc-600 dark:bg-zinc-600 dark:text-zinc-300'
                             }`}>
                                 {isPast ? <Check className="h-2.5 w-2.5" /> : (i + 1)}
@@ -492,7 +492,7 @@ function FilterLeft({
                 <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider px-1 mb-1.5 flex items-center gap-1.5">
                     <span>Included · {totalIncluded} IQ job{totalIncluded !== 1 ? 's' : ''}</span>
                     {includedDelta !== 0 && (
-                        <span className="text-amber-700 dark:text-amber-300 normal-case font-semibold">
+                        <span className="text-warning dark:text-warning normal-case font-semibold">
                             (was {originalIncludedCount} · {includedDelta > 0 ? '+' : ''}{includedDelta} by operator)
                         </span>
                     )}
@@ -517,7 +517,7 @@ function FilterLeft({
                 <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider px-1 mb-1.5 flex items-center gap-1.5">
                     <span>Excluded · {totalExcluded} IQ job{totalExcluded !== 1 ? 's' : ''}</span>
                     {excludedDelta !== 0 && (
-                        <span className="text-amber-700 dark:text-amber-300 normal-case font-semibold">
+                        <span className="text-warning dark:text-warning normal-case font-semibold">
                             (was {originalExcludedCount} · {excludedDelta > 0 ? '+' : ''}{excludedDelta} by operator)
                         </span>
                     )}
@@ -559,9 +559,9 @@ function FilterRow({
     // Row tone · default Strata decisions use the list bg (success/5 or
     // muted/30). Overrides get an amber accent stripe + light amber tint so
     // they're unmistakable across both lists · mirrors the flag pattern in
-    // ReviewLeft (border-l-[3px] border-amber-500).
+    // ReviewLeft (border-l-[3px] border-warning).
     const rowTone = overridden
-        ? 'bg-amber-50/60 dark:bg-amber-500/10 border-l-[3px] border-amber-500'
+        ? 'bg-warning/10 border-l-[3px] border-warning'
         : ''
     return (
         <div className={`p-3 flex items-start gap-3 ${rowTone} ${!effectiveIncluded && !overridden ? 'opacity-80' : ''}`}>
@@ -569,9 +569,9 @@ function FilterRow({
                 Operator include / Operator exclude */}
             <span className={`inline-flex items-center text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 mt-0.5 ${
                 overridden && effectiveIncluded
-                    ? 'bg-amber-100 text-amber-800 dark:bg-amber-500/20 dark:text-amber-200'
+                    ? 'bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning'
                     : overridden && !effectiveIncluded
-                        ? 'bg-amber-100 text-amber-800 dark:bg-amber-500/20 dark:text-amber-200'
+                        ? 'bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning'
                         : effectiveIncluded
                             ? 'bg-success/15 text-success'
                             : 'bg-muted text-muted-foreground'
@@ -669,10 +669,10 @@ function FilterRight({ includedCount, excludedCount, assetCount, overrideCount, 
                 </div>
 
                 {hasOverrides && (
-                    <div className="rounded-xl border border-amber-500/40 bg-amber-50/40 dark:bg-amber-500/5 p-2.5 flex items-start gap-2">
-                        <RotateCcw className="h-3.5 w-3.5 text-amber-700 dark:text-amber-300 shrink-0 mt-0.5" />
+                    <div className="rounded-xl border border-warning/40 bg-warning/10 p-2.5 flex items-start gap-2">
+                        <RotateCcw className="h-3.5 w-3.5 text-warning dark:text-warning shrink-0 mt-0.5" />
                         <p className="text-[11px] text-foreground leading-snug">
-                            <strong className="text-amber-700 dark:text-amber-300">{overrideCount} operator override{overrideCount !== 1 ? 's' : ''}</strong>
+                            <strong className="text-warning dark:text-warning">{overrideCount} operator override{overrideCount !== 1 ? 's' : ''}</strong>
                             {' · '}publishing with the operator's selection, not Strata's default.
                         </p>
                     </div>
@@ -725,7 +725,7 @@ function FilterCheckRow({ label, ok }: { label: string; ok: boolean }) {
             {ok ? (
                 <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
             ) : (
-                <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0" />
+                <AlertTriangle className="h-4 w-4 text-warning shrink-0" />
             )}
             <span className="text-foreground">{label}</span>
         </div>
@@ -781,7 +781,7 @@ function ReviewLeft({
                             : isFlagged && isAck
                                 ? 'bg-emerald-50/60 dark:bg-emerald-500/10 border-l-[3px] border-emerald-500'
                                 : isFlagged
-                                    ? 'bg-amber-50/60 dark:bg-amber-500/10 border-l-[3px] border-amber-500'
+                                    ? 'bg-warning/10 border-l-[3px] border-warning'
                                     : ''
                         return (
                             <div key={a.id} className={rowTone}>
@@ -792,8 +792,8 @@ function ReviewLeft({
                                 >
                                     {/* Leading status icon · semantic per row state */}
                                     {isFlagged && !isAck && !isRemoved ? (
-                                        <div className="h-5 w-5 rounded-full bg-amber-100 dark:bg-amber-500/30 flex items-center justify-center shrink-0">
-                                            <AlertTriangle className="h-3 w-3 text-amber-700 dark:text-amber-300" />
+                                        <div className="h-5 w-5 rounded-full bg-warning/15 dark:bg-warning/30 flex items-center justify-center shrink-0">
+                                            <AlertTriangle className="h-3 w-3 text-warning dark:text-warning" />
                                         </div>
                                     ) : isFlagged && isAck ? (
                                         <div className="h-5 w-5 rounded-full bg-emerald-100 dark:bg-emerald-500/30 flex items-center justify-center shrink-0">
@@ -815,7 +815,7 @@ function ReviewLeft({
                                                 {ASSET_TYPE_META[a.type].label}
                                             </span>
                                             {isFlagged && !isAck && !isRemoved && (
-                                                <span className="inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-amber-100 text-amber-800 dark:bg-amber-500/20 dark:text-amber-200 uppercase tracking-wider">
+                                                <span className="inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning uppercase tracking-wider">
                                                     <Sparkles className="h-2.5 w-2.5" />
                                                     Strata · review
                                                 </span>
@@ -962,16 +962,16 @@ function ReviewRight({
 
                 {flaggedAsset && (
                     <div className={`rounded-xl border p-3 space-y-2 ${
-                        flagStatus === 'awaiting'     ? 'border-amber-500/40 bg-amber-50/40 dark:bg-amber-500/5' :
+                        flagStatus === 'awaiting'     ? 'border-warning/40 bg-warning/10' :
                         flagStatus === 'acknowledged' ? 'border-emerald-500/40 bg-emerald-50/40 dark:bg-emerald-500/5' :
                                                         'border-border bg-muted/30'
                     }`}>
                         <div className="flex items-center gap-1.5">
-                            {flagStatus === 'awaiting' && <Sparkles className="h-3.5 w-3.5 text-amber-700 dark:text-amber-300" />}
+                            {flagStatus === 'awaiting' && <Sparkles className="h-3.5 w-3.5 text-warning dark:text-warning" />}
                             {flagStatus === 'acknowledged' && <CheckCircle2 className="h-3.5 w-3.5 text-emerald-700 dark:text-emerald-300" />}
                             {flagStatus === 'removed' && <XCircle className="h-3.5 w-3.5 text-muted-foreground" />}
                             <span className={`text-[10px] font-bold uppercase tracking-wider ${
-                                flagStatus === 'awaiting' ? 'text-amber-700 dark:text-amber-300' :
+                                flagStatus === 'awaiting' ? 'text-warning dark:text-warning' :
                                 flagStatus === 'acknowledged' ? 'text-emerald-700 dark:text-emerald-300' :
                                 'text-muted-foreground'
                             }`}>
@@ -1020,7 +1020,7 @@ function ReadinessRow({ label, status }: { label: string; status: 'ok' | 'warn' 
                 <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
             )}
             {status === 'warn' && (
-                <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0" />
+                <AlertTriangle className="h-4 w-4 text-warning shrink-0" />
             )}
             {status === 'muted' && (
                 <XCircle className="h-4 w-4 text-muted-foreground shrink-0" />

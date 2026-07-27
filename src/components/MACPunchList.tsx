@@ -568,17 +568,17 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
     };
 
     const statusIcon = (status: ValidationStatus, resolved: boolean) => {
-        if (resolved) return <CheckCircleIcon className="w-5 h-5 text-green-500" />;
-        if (status === 'present') return <CheckCircleIcon className="w-5 h-5 text-green-500" />;
-        if (status === 'needs_clarification') return <ExclamationTriangleIcon className="w-5 h-5 text-amber-500" />;
-        return <XMarkIcon className="w-5 h-5 text-red-500" />;
+        if (resolved) return <CheckCircleIcon className="w-5 h-5 text-success" />;
+        if (status === 'present') return <CheckCircleIcon className="w-5 h-5 text-success" />;
+        if (status === 'needs_clarification') return <ExclamationTriangleIcon className="w-5 h-5 text-warning" />;
+        return <XMarkIcon className="w-5 h-5 text-destructive" />;
     };
 
     const statusBg = (status: ValidationStatus, resolved: boolean) => {
-        if (resolved) return 'bg-green-50 dark:bg-green-500/5 border-green-200 dark:border-green-500/20';
-        if (status === 'present') return 'bg-green-50 dark:bg-green-500/5 border-green-200 dark:border-green-500/20';
-        if (status === 'needs_clarification') return 'bg-amber-50 dark:bg-amber-500/5 border-amber-200 dark:border-amber-500/20';
-        return 'bg-red-50 dark:bg-red-500/5 border-red-200 dark:border-red-500/20';
+        if (resolved) return 'bg-success/10 dark:bg-success/100/5 border-success/30 dark:border-success/30';
+        if (status === 'present') return 'bg-success/10 dark:bg-success/100/5 border-success/30 dark:border-success/30';
+        if (status === 'needs_clarification') return 'bg-warning/10 border-warning/20';
+        return 'bg-destructive/10 dark:bg-destructive/5 border-destructive/30';
     };
 
     const effectiveRuleStatus = (rule: BusinessRule): 'pass' | 'warning' | 'fail' => {
@@ -587,15 +587,15 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
     };
 
     const ruleStatusIcon = (status: 'pass' | 'warning' | 'fail') => {
-        if (status === 'pass') return <CheckCircleIcon className="w-5 h-5 text-green-500" />;
-        if (status === 'warning') return <ExclamationTriangleIcon className="w-5 h-5 text-amber-500" />;
-        return <XMarkIcon className="w-5 h-5 text-red-500" />;
+        if (status === 'pass') return <CheckCircleIcon className="w-5 h-5 text-success" />;
+        if (status === 'warning') return <ExclamationTriangleIcon className="w-5 h-5 text-warning" />;
+        return <XMarkIcon className="w-5 h-5 text-destructive" />;
     };
 
     const ruleStatusBg = (status: 'pass' | 'warning' | 'fail') => {
-        if (status === 'pass') return 'bg-green-50 dark:bg-green-500/5 border-green-200 dark:border-green-500/20';
-        if (status === 'warning') return 'bg-amber-50 dark:bg-amber-500/5 border-amber-200 dark:border-amber-500/20';
-        return 'bg-red-50 dark:bg-red-500/5 border-red-200 dark:border-red-500/20';
+        if (status === 'pass') return 'bg-success/10 dark:bg-success/100/5 border-success/30 dark:border-success/30';
+        if (status === 'warning') return 'bg-warning/10 border-warning/20';
+        return 'bg-destructive/10 dark:bg-destructive/5 border-destructive/30';
     };
 
     // ─── Render ───────────────────────────────────────────────────────────────
@@ -660,7 +660,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                     {/* Email Card */}
                                     <div className="p-4 bg-card border border-border rounded-xl animate-in fade-in slide-in-from-bottom-4 duration-500">
                                         <div className="flex items-center gap-2 mb-3">
-                                            <EnvelopeIcon className="w-5 h-5 text-blue-500" />
+                                            <EnvelopeIcon className="w-5 h-5 text-info" />
                                             <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Incoming Email</span>
                                         </div>
                                         <div className="space-y-2 text-xs">
@@ -687,9 +687,9 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                             {EXTRACTION_FIELDS.map((field, i) => (
                                                 i < extractedCount && (
                                                     <div key={i} className="flex items-center gap-3 px-3 py-2 rounded-lg bg-muted dark:bg-zinc-800/50 border border-border animate-in fade-in slide-in-from-left-4 duration-300">
-                                                        {field.status === 'ok' ? <CheckCircleIcon className="w-4 h-4 text-green-500 shrink-0" /> : field.status === 'warning' ? <ExclamationTriangleIcon className="w-4 h-4 text-amber-500 shrink-0" /> : <XMarkIcon className="w-4 h-4 text-red-500 shrink-0" />}
+                                                        {field.status === 'ok' ? <CheckCircleIcon className="w-4 h-4 text-success shrink-0" /> : field.status === 'warning' ? <ExclamationTriangleIcon className="w-4 h-4 text-warning shrink-0" /> : <XMarkIcon className="w-4 h-4 text-destructive shrink-0" />}
                                                         <span className="text-xs font-medium text-muted-foreground w-36 shrink-0">{field.label}</span>
-                                                        <span className={`text-xs font-semibold ${field.status === 'ok' ? 'text-foreground' : field.status === 'warning' ? 'text-amber-600 dark:text-amber-400' : 'text-red-600 dark:text-red-400'}`}>{field.value}</span>
+                                                        <span className={`text-xs font-semibold ${field.status === 'ok' ? 'text-foreground' : field.status === 'warning' ? 'text-warning' : 'text-destructive'}`}>{field.value}</span>
                                                     </div>
                                                 )
                                             ))}
@@ -759,7 +759,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                             <div className="flex-1 min-w-0">
                                                                 <div className="flex items-center gap-2">
                                                                     <span className="text-sm font-semibold text-foreground">{item.label}</span>
-                                                                    {resolved && <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 font-bold">Resolved</span>}
+                                                                    {resolved && <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-success/15 text-success dark:bg-success/20 dark:text-success font-bold">Resolved</span>}
                                                                 </div>
                                                                 <p className="text-xs text-muted-foreground mt-0.5">{item.detail}</p>
                                                             </div>
@@ -791,14 +791,14 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                                                 setUploadingLabel(true);
                                                                                 setTimeout(pauseAware(() => { setUploadingLabel(false); setLabelUploaded(true); }), 2000);
                                                                             }}
-                                                                            className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-md transition-colors flex items-center gap-1.5"
+                                                                            className="px-3 py-1.5 bg-info hover:bg-info/90 text-white text-xs font-bold rounded-md transition-colors flex items-center gap-1.5"
                                                                         >
                                                                             <ArrowUpTrayIcon className="w-3.5 h-3.5" />
                                                                             Upload Label
                                                                         </button>
                                                                         <button
                                                                             onClick={() => handleResolveItem(item.id)}
-                                                                            className="px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded-md transition-colors"
+                                                                            className="px-3 py-1.5 bg-success hover:bg-success/90 text-white text-xs font-bold rounded-md transition-colors"
                                                                         >
                                                                             Accept As-Is
                                                                         </button>
@@ -838,16 +838,16 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                                 {/* QR Done */}
                                                                 {qrDone && (
                                                                     <div className="mt-3 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                                                                        <div className="p-3 bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 rounded-lg">
+                                                                        <div className="p-3 bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 rounded-lg">
                                                                             <div className="flex items-center gap-2 mb-1">
-                                                                                <CheckCircleIcon className="w-4 h-4 text-green-500" />
-                                                                                <span className="text-xs font-bold text-green-700 dark:text-green-400">QR Decoded: CC-AZ-2025 — SKU verified</span>
+                                                                                <CheckCircleIcon className="w-4 h-4 text-success" />
+                                                                                <span className="text-xs font-bold text-success">QR Decoded: CC-AZ-2025 — SKU verified</span>
                                                                             </div>
-                                                                            <p className="text-[11px] text-green-600 dark:text-green-400/80 ml-6">Product label matches order reference. Model year variant confirmed.</p>
+                                                                            <p className="text-[11px] text-success/80 ml-6">Product label matches order reference. Model year variant confirmed.</p>
                                                                         </div>
                                                                         <button
                                                                             onClick={() => handleResolveItem(item.id)}
-                                                                            className="mt-2 px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded-md transition-colors"
+                                                                            className="mt-2 px-3 py-1.5 bg-success hover:bg-success/90 text-white text-xs font-bold rounded-md transition-colors"
                                                                         >
                                                                             Accept
                                                                         </button>
@@ -857,13 +857,13 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                                 {/* Upload Label Animation */}
                                                                 {uploadingLabel && (
                                                                     <div className="mt-3 animate-in fade-in duration-300">
-                                                                        <div className="relative w-full max-w-[280px] h-[180px] rounded-lg overflow-hidden border-2 border-blue-300 dark:border-blue-500/40 bg-muted">
+                                                                        <div className="relative w-full max-w-[280px] h-[180px] rounded-lg overflow-hidden border-2 border-info/40 dark:border-info/30 bg-muted">
                                                                             <img src="https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=300&h=200&fit=crop" alt="Furniture product label" className="w-full h-full object-cover opacity-60" />
                                                                             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/30 backdrop-blur-[1px]">
                                                                                 <ArrowUpTrayIcon className="w-8 h-8 text-white mb-2 animate-bounce" />
                                                                                 <span className="text-[11px] text-white font-medium">Uploading label image...</span>
                                                                                 <div className="mt-2 w-32 h-1.5 bg-white/20 rounded-full overflow-hidden">
-                                                                                    <div className="h-full bg-blue-400 rounded-full animate-[upload_2s_ease-in-out_forwards]" style={{ animation: 'upload 2s ease-in-out forwards' }} />
+                                                                                    <div className="h-full bg-info rounded-full animate-[upload_2s_ease-in-out_forwards]" style={{ animation: 'upload 2s ease-in-out forwards' }} />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -874,25 +874,25 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                                 {labelUploaded && (
                                                                     <div className="mt-3 animate-in fade-in slide-in-from-bottom-2 duration-300">
                                                                         <div className="flex items-start gap-3">
-                                                                            <div className="relative w-[100px] h-[100px] rounded-lg overflow-hidden border border-green-300 dark:border-green-500/30 shrink-0">
+                                                                            <div className="relative w-[100px] h-[100px] rounded-lg overflow-hidden border border-success/30 shrink-0">
                                                                                 <img src="https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=100&h=100&fit=crop" alt="Uploaded label" className="w-full h-full object-cover" />
-                                                                                <div className="absolute top-1 right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                                                                                <div className="absolute top-1 right-1 w-5 h-5 bg-success/100 rounded-full flex items-center justify-center">
                                                                                     <CheckCircleIcon className="w-3.5 h-3.5 text-white" />
                                                                                 </div>
                                                                             </div>
                                                                             <div className="flex-1">
-                                                                                <div className="p-2.5 bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 rounded-lg">
+                                                                                <div className="p-2.5 bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 rounded-lg">
                                                                                     <div className="flex items-center gap-2 mb-1">
-                                                                                        <CheckCircleIcon className="w-4 h-4 text-green-500" />
-                                                                                        <span className="text-xs font-bold text-green-700 dark:text-green-400">Label uploaded — CC-AZ-2025 identified</span>
+                                                                                        <CheckCircleIcon className="w-4 h-4 text-success" />
+                                                                                        <span className="text-xs font-bold text-success">Label uploaded — CC-AZ-2025 identified</span>
                                                                                     </div>
-                                                                                    <p className="text-[11px] text-green-600 dark:text-green-400/80 ml-6">Product label image attached to request. SKU cross-referenced with order.</p>
+                                                                                    <p className="text-[11px] text-success/80 ml-6">Product label image attached to request. SKU cross-referenced with order.</p>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <button
                                                                             onClick={() => handleResolveItem(item.id)}
-                                                                            className="mt-2 px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded-md transition-colors"
+                                                                            className="mt-2 px-3 py-1.5 bg-success hover:bg-success/90 text-white text-xs font-bold rounded-md transition-colors"
                                                                         >
                                                                             Accept
                                                                         </button>
@@ -938,7 +938,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                                                 i < uploadedPhotos && (
                                                                                     <div key={i} className="relative w-[80px] h-[80px] rounded-lg overflow-hidden border border-border animate-in fade-in zoom-in-95 duration-300">
                                                                                         <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
-                                                                                        <div className="absolute top-1 right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                                                                                        <div className="absolute top-1 right-1 w-5 h-5 bg-success/100 rounded-full flex items-center justify-center">
                                                                                             <CheckCircleIcon className="w-3.5 h-3.5 text-white" />
                                                                                         </div>
                                                                                     </div>
@@ -955,13 +955,13 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                                         </div>
                                                                         {uploadDone && (
                                                                             <div className="animate-in fade-in duration-300">
-                                                                                <div className="p-2.5 bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 rounded-lg flex items-center gap-2">
-                                                                                    <CheckCircleIcon className="w-4 h-4 text-green-500 shrink-0" />
-                                                                                    <span className="text-xs font-bold text-green-700 dark:text-green-400">3 evidence photos uploaded</span>
+                                                                                <div className="p-2.5 bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 rounded-lg flex items-center gap-2">
+                                                                                    <CheckCircleIcon className="w-4 h-4 text-success shrink-0" />
+                                                                                    <span className="text-xs font-bold text-success">3 evidence photos uploaded</span>
                                                                                 </div>
                                                                                 <button
                                                                                     onClick={() => handleResolveItem(item.id)}
-                                                                                    className="mt-2 px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded-md transition-colors"
+                                                                                    className="mt-2 px-3 py-1.5 bg-success hover:bg-success/90 text-white text-xs font-bold rounded-md transition-colors"
                                                                                 >
                                                                                     Accept
                                                                                 </button>
@@ -981,7 +981,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                                 </div>
                                                                 <button
                                                                     onClick={() => handleResolveItem(item.id)}
-                                                                    className="px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded-md transition-colors"
+                                                                    className="px-3 py-1.5 bg-success hover:bg-success/90 text-white text-xs font-bold rounded-md transition-colors"
                                                                 >
                                                                     Accept
                                                                 </button>
@@ -1032,11 +1032,11 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                 {currentStep?.id === '3.2' && !isContinua && (
                     <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden flex flex-col">
                         {/* AI Context Header */}
-                        <div className="px-4 py-3 bg-green-50 dark:bg-green-500/10 border-b border-green-200 dark:border-green-500/20 flex items-center gap-2">
-                            <CheckCircleIcon className="w-5 h-5 text-green-600 dark:text-green-400" />
+                        <div className="px-4 py-3 bg-success/10 border-b border-success/30 dark:border-success/30 flex items-center gap-2">
+                            <CheckCircleIcon className="w-5 h-5 text-success" />
                             <div>
-                                <span className="font-bold text-sm text-green-900 dark:text-green-300">IntakeValidationAgent</span>
-                                <span className="text-xs text-green-600 dark:text-green-400 ml-2">Validation complete — REQ-PL-2026-047</span>
+                                <span className="font-bold text-sm text-success dark:text-success">IntakeValidationAgent</span>
+                                <span className="text-xs text-success ml-2">Validation complete — REQ-PL-2026-047</span>
                             </div>
                         </div>
 
@@ -1067,12 +1067,12 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                 <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-3">AI Validation Checklist — All Items Verified</p>
                                 <div className="space-y-2">
                                     {VALIDATION_ITEMS.map((item) => (
-                                        <div key={item.id} className="w-full p-3 rounded-lg border border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-500/5 flex items-center gap-3">
-                                            <CheckCircleIcon className="w-5 h-5 text-green-500 shrink-0" />
+                                        <div key={item.id} className="w-full p-3 rounded-lg border border-success/30 dark:border-success/40 bg-success/10 dark:bg-success/100/5 flex items-center gap-3">
+                                            <CheckCircleIcon className="w-5 h-5 text-success shrink-0" />
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center gap-2">
                                                     <span className="text-sm font-semibold text-foreground">{item.label}</span>
-                                                    <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 font-bold">Verified</span>
+                                                    <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-success/15 text-success dark:bg-success/20 dark:text-success font-bold">Verified</span>
                                                 </div>
                                                 <p className="text-xs text-muted-foreground mt-0.5">{item.detail}</p>
                                             </div>
@@ -1083,11 +1083,11 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                             </div>
 
                             {/* Summary */}
-                            <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-800 flex items-center gap-3">
-                                <CheckCircleIcon className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0" />
+                            <div className="p-3 rounded-xl bg-success/10 border border-success/30 dark:border-success/40 flex items-center gap-3">
+                                <CheckCircleIcon className="w-5 h-5 text-success shrink-0" />
                                 <div>
-                                    <p className="text-xs font-bold text-green-700 dark:text-green-400">All Documentation Verified — Request Ready for Labor Quote</p>
-                                    <p className="text-[10px] text-green-600 dark:text-green-500">5/5 items validated · Label resolved via QR scan · Box photo uploaded</p>
+                                    <p className="text-xs font-bold text-success">All Documentation Verified — Request Ready for Labor Quote</p>
+                                    <p className="text-[10px] text-success dark:text-success">5/5 items validated · Label resolved via QR scan · Box photo uploaded</p>
                                 </div>
                             </div>
 
@@ -1130,7 +1130,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                             <div className="p-4 bg-card border border-border rounded-xl">
                                 <div className="flex items-center justify-between mb-3">
                                     <div className="flex items-center gap-2">
-                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-info/15 text-info dark:bg-info/20 dark:text-info">
                                             Labor Reimbursement Requested: Yes
                                         </span>
                                     </div>
@@ -1143,7 +1143,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                     </div>
                                     <div className="bg-muted dark:bg-zinc-800 rounded-lg p-2.5">
                                         <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-0.5">Certification</p>
-                                        <p className="text-xs font-bold text-green-600 dark:text-green-400">Verified — Since 2019</p>
+                                        <p className="text-xs font-bold text-success">Verified — Since 2019</p>
                                     </div>
                                 </div>
                             </div>
@@ -1189,9 +1189,9 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                     <div className="flex items-center gap-2">
                                                         <span className="text-sm font-semibold text-foreground">{rule.label}</span>
                                                         {isValidated ? (
-                                                            <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 font-bold">Validated</span>
+                                                            <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-success/15 text-success dark:bg-success/20 dark:text-success font-bold">Validated</span>
                                                         ) : rule.status === 'warning' && (
-                                                            <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 font-bold">Warning</span>
+                                                            <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning font-bold">Warning</span>
                                                         )}
                                                     </div>
                                                     <p className="text-xs text-muted-foreground mt-0.5">
@@ -1209,7 +1209,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                             </div>
                                             {/* Inline Edit Form + AI Suggestions */}
                                             {editingRule === rule.id && (
-                                                <div className="mt-3 pt-3 border-t border-amber-200 dark:border-amber-500/20 animate-in slide-in-from-top-2 fade-in duration-200">
+                                                <div className="mt-3 pt-3 border-t border-warning/20 animate-in slide-in-from-top-2 fade-in duration-200">
                                                     <div className="flex items-center gap-2">
                                                         <label className="text-xs font-medium text-muted-foreground">
                                                             {rule.id === 'repair-threshold' ? 'Adjusted Amount ($)' : 'Adjusted Hours'}
@@ -1306,7 +1306,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                     {claimLogs.map((log, i) => (
                                         <div key={i} className="flex items-start gap-2 animate-in slide-in-from-left-4 fade-in duration-300">
                                             <span className="text-muted-foreground font-mono text-[10px] mt-0.5 select-none shrink-0">[{String(i + 1).padStart(2, '0')}]</span>
-                                            <span className={`text-[11px] font-mono ${i === claimLogs.length - 1 ? 'text-green-400 animate-pulse' : 'text-muted-foreground'}`}>
+                                            <span className={`text-[11px] font-mono ${i === claimLogs.length - 1 ? 'text-success animate-pulse' : 'text-muted-foreground'}`}>
                                                 {log}
                                             </span>
                                         </div>
@@ -1331,21 +1331,21 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                                         <div className="p-3 bg-card border border-border rounded-lg">
                                             <div className="flex items-center gap-2 mb-2">
-                                                <PhotoIcon className="w-4 h-4 text-blue-500" />
+                                                <PhotoIcon className="w-4 h-4 text-info" />
                                                 <p className="text-xs font-bold text-foreground">Photos Forwarded</p>
                                             </div>
                                             <p className="text-xs text-muted-foreground">2 evidence photos + 1 label photo uploaded with SHA256 verification</p>
                                         </div>
                                         <div className="p-3 bg-card border border-border rounded-lg">
                                             <div className="flex items-center gap-2 mb-2">
-                                                <DocumentTextIcon className="w-4 h-4 text-amber-500" />
+                                                <DocumentTextIcon className="w-4 h-4 text-warning" />
                                                 <p className="text-xs font-bold text-foreground">Issue Description</p>
                                             </div>
                                             <p className="text-xs text-muted-foreground">Freight handling damage — upholstery tear on 2x Conference Room Chairs (Azure)</p>
                                         </div>
                                         <div className="p-3 bg-card border border-border rounded-lg">
                                             <div className="flex items-center gap-2 mb-2">
-                                                <MapPinIcon className="w-4 h-4 text-green-500" />
+                                                <MapPinIcon className="w-4 h-4 text-success" />
                                                 <p className="text-xs font-bold text-foreground">Ship-To Address</p>
                                             </div>
                                             <p className="text-xs text-muted-foreground">742 Evergreen Terrace, Suite 200, Springfield, IL 62704</p>
@@ -1356,12 +1356,12 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
 
                             {/* Acknowledgement Card */}
                             {claimPhase === 'acknowledged' && (
-                                <div className="p-4 bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 rounded-xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                <div className="p-4 bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 rounded-xl animate-in fade-in slide-in-from-bottom-4 duration-500">
                                     <div className="flex items-start gap-3">
-                                        <CheckCircleIcon className="w-6 h-6 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
+                                        <CheckCircleIcon className="w-6 h-6 text-success shrink-0 mt-0.5" />
                                         <div>
-                                            <p className="text-sm font-bold text-green-800 dark:text-green-300">Claim Acknowledged</p>
-                                            <p className="text-sm text-green-700 dark:text-green-400 mt-1">
+                                            <p className="text-sm font-bold text-success">Claim Acknowledged</p>
+                                            <p className="text-sm text-success mt-1">
                                                 Replacement unit in production — <span className="font-bold">estimated delivery 8 business days</span>. Claim reference: CLM-2026-114.
                                             </p>
                                         </div>
@@ -1383,13 +1383,13 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                         ].map((node, i, arr) => (
                                             <React.Fragment key={i}>
                                                 <div className="flex flex-col items-center gap-1.5 flex-1">
-                                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${node.done ? 'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400' : node.active ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 ring-2 ring-blue-500/30' : 'bg-zinc-100 text-muted-foreground dark:bg-zinc-800 dark:text-muted-foreground'}`}>
-                                                        {node.done ? <CheckCircleIcon className="w-4 h-4" /> : node.active ? <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" /> : <div className="w-2 h-2 rounded-full bg-zinc-400" />}
+                                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${node.done ? 'bg-success/15 text-success dark:bg-success/20 dark:text-success' : node.active ? 'bg-info/15 text-info dark:bg-info/20 dark:text-info ring-2 ring-blue-500/30' : 'bg-zinc-100 text-muted-foreground dark:bg-zinc-800 dark:text-muted-foreground'}`}>
+                                                        {node.done ? <CheckCircleIcon className="w-4 h-4" /> : node.active ? <div className="w-2 h-2 rounded-full bg-info animate-pulse" /> : <div className="w-2 h-2 rounded-full bg-zinc-400" />}
                                                     </div>
-                                                    <span className={`text-[10px] font-medium text-center ${node.done ? 'text-green-600 dark:text-green-400' : node.active ? 'text-blue-600 dark:text-blue-400' : 'text-muted-foreground'}`}>{node.label}</span>
+                                                    <span className={`text-[10px] font-medium text-center ${node.done ? 'text-success' : node.active ? 'text-info' : 'text-muted-foreground'}`}>{node.label}</span>
                                                 </div>
                                                 {i < arr.length - 1 && (
-                                                    <div className={`h-0.5 flex-1 -mt-5 ${node.done ? 'bg-green-300 dark:bg-green-600/50' : 'bg-zinc-200 dark:bg-zinc-700'}`} />
+                                                    <div className={`h-0.5 flex-1 -mt-5 ${node.done ? 'bg-green-300 dark:bg-success/50' : 'bg-zinc-200 dark:bg-zinc-700'}`} />
                                                 )}
                                             </React.Fragment>
                                         ))}
@@ -1461,13 +1461,13 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                         return (
                                                             <div key={item.id} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted dark:bg-zinc-800/50">
                                                                 {resolved || item.status === 'present'
-                                                                    ? <CheckCircleIcon className="w-4 h-4 text-green-500 shrink-0" />
+                                                                    ? <CheckCircleIcon className="w-4 h-4 text-success shrink-0" />
                                                                     : item.status === 'needs_clarification'
-                                                                        ? <ExclamationTriangleIcon className="w-4 h-4 text-amber-500 shrink-0" />
-                                                                        : <XMarkIcon className="w-4 h-4 text-red-500 shrink-0" />
+                                                                        ? <ExclamationTriangleIcon className="w-4 h-4 text-warning shrink-0" />
+                                                                        : <XMarkIcon className="w-4 h-4 text-destructive shrink-0" />
                                                                 }
                                                                 <span className="text-xs font-medium text-foreground flex-1">{item.label}</span>
-                                                                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${resolved || item.status === 'present' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : item.status === 'needs_clarification' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'}`}>
+                                                                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${resolved || item.status === 'present' ? 'bg-success/15 text-success dark:bg-success/20 dark:text-success' : item.status === 'needs_clarification' ? 'bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning' : 'bg-destructive/15 text-destructive dark:bg-destructive/20 dark:text-destructive'}`}>
                                                                     {resolved ? 'Resolved' : item.status === 'present' ? 'Present' : item.status === 'needs_clarification' ? 'Clarified' : 'Missing'}
                                                                 </span>
                                                             </div>
@@ -1498,7 +1498,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                     </div>
                                                     <div className="flex items-center justify-between pt-2 border-t border-border">
                                                         <span className="text-xs font-bold text-foreground">Status</span>
-                                                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">Approved</span>
+                                                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-success/15 text-success dark:bg-success/20 dark:text-success">Approved</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1529,7 +1529,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                     </div>
                                                     <div className="flex items-center justify-between pt-2 border-t border-border">
                                                         <span className="text-xs font-bold text-foreground">Status</span>
-                                                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">Acknowledged — 8 days ETA</span>
+                                                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-success/15 text-success dark:bg-success/20 dark:text-success">Acknowledged — 8 days ETA</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1537,16 +1537,16 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
 
                                         {/* Request to Dealer Section */}
                                         {showDealerRequest && !dealerRequestSent && (
-                                            <div className="mx-5 mb-3 p-3 border border-amber-300 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/5 rounded-xl space-y-2.5 animate-in slide-in-from-bottom-2 fade-in duration-300">
+                                            <div className="mx-5 mb-3 p-3 border border-warning/30 bg-warning/10 rounded-xl space-y-2.5 animate-in slide-in-from-bottom-2 fade-in duration-300">
                                                 <div className="flex items-center gap-2">
-                                                    <ChatBubbleLeftRightIcon className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                                                    <p className="text-[10px] font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">Request Additional Info from Dealer</p>
+                                                    <ChatBubbleLeftRightIcon className="w-4 h-4 text-warning" />
+                                                    <p className="text-[10px] font-bold text-warning uppercase tracking-wider">Request Additional Info from Dealer</p>
                                                 </div>
                                                 <textarea
                                                     value={dealerMessage}
                                                     onChange={(e) => setDealerMessage(e.target.value)}
                                                     placeholder="Describe what additional information or evidence you need from the dealer..."
-                                                    className="w-full px-3 py-2 text-xs border border-border rounded-lg bg-card text-foreground placeholder:text-muted-foreground focus:ring-1 focus:ring-amber-500 focus:border-amber-500 focus:outline-none resize-none"
+                                                    className="w-full px-3 py-2 text-xs border border-border rounded-lg bg-card text-foreground placeholder:text-muted-foreground focus:ring-1 focus:ring-warning focus:border-warning focus:outline-none resize-none"
                                                     rows={3}
                                                 />
                                                 <div className="flex items-center justify-between">
@@ -1576,7 +1576,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                         <button
                                                             onClick={() => setDealerRequestSent(true)}
                                                             disabled={!dealerMessage.trim()}
-                                                            className="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 disabled:opacity-40 disabled:cursor-not-allowed text-white text-[10px] font-bold rounded-lg transition-colors"
+                                                            className="px-3 py-1.5 bg-warning hover:bg-warning disabled:opacity-40 disabled:cursor-not-allowed text-white text-[10px] font-bold rounded-lg transition-colors"
                                                         >
                                                             Send Request
                                                         </button>
@@ -1589,7 +1589,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                                 <img src={url} alt={`Attachment ${i + 1}`} className="w-full h-full object-cover" />
                                                                 <button
                                                                     onClick={() => setDealerPhotos(prev => prev.filter((_, idx) => idx !== i))}
-                                                                    className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center"
+                                                                    className="absolute -top-1 -right-1 w-4 h-4 bg-destructive rounded-full flex items-center justify-center"
                                                                 >
                                                                     <XMarkIcon className="w-2.5 h-2.5 text-white" />
                                                                 </button>
@@ -1602,12 +1602,12 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
 
                                         {/* Sent Confirmation */}
                                         {dealerRequestSent && (
-                                            <div className="mx-5 mb-3 p-3 bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 rounded-xl animate-in fade-in slide-in-from-bottom-2 duration-300">
+                                            <div className="mx-5 mb-3 p-3 bg-success/10 border border-success/30 dark:border-success/30 rounded-xl animate-in fade-in slide-in-from-bottom-2 duration-300">
                                                 <div className="flex items-center gap-2">
-                                                    <CheckCircleIcon className="w-4 h-4 text-green-500" />
-                                                    <p className="text-xs font-bold text-green-700 dark:text-green-400">Request sent to dealer</p>
+                                                    <CheckCircleIcon className="w-4 h-4 text-success" />
+                                                    <p className="text-xs font-bold text-success">Request sent to dealer</p>
                                                 </div>
-                                                <p className="text-[11px] text-green-600/80 dark:text-green-400/70 mt-1 ml-6">The dealer will be notified and can respond with additional evidence or clarifications.</p>
+                                                <p className="text-[11px] text-success/80 dark:text-success/70 mt-1 ml-6">The dealer will be notified and can respond with additional evidence or clarifications.</p>
                                             </div>
                                         )}
 
@@ -1616,7 +1616,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                             {!showDealerRequest && !dealerRequestSent && (
                                                 <button
                                                     onClick={() => setShowDealerRequest(true)}
-                                                    className="flex items-center gap-1.5 px-3 py-2 border border-amber-300 dark:border-amber-500/30 text-amber-600 dark:text-amber-400 text-xs font-bold rounded-lg hover:bg-amber-50 dark:hover:bg-amber-500/10 transition-colors"
+                                                    className="flex items-center gap-1.5 px-3 py-2 border border-warning/30 text-warning text-xs font-bold rounded-lg hover:bg-warning/10 dark:hover:bg-warning/10 transition-colors"
                                                 >
                                                     <ChatBubbleLeftRightIcon className="w-4 h-4" />
                                                     Request to Dealer
@@ -1672,7 +1672,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                 <div className="space-y-1.5">
                                     {instAgents.map(agent => (
                                         <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"}`}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
                                             <span className={`font-medium ${agent.done ? "text-foreground" : "text-indigo-600 dark:text-indigo-400"}`}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
@@ -1684,24 +1684,24 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                         {/* Breathing */}
                         {instPhase === 'breathing' && (
                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/100 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">Processing complete — syncing external systems...</span>
                             </div>
                         )}
 
                         {/* Confirmed */}
                         {(instPhase === 'revealed' || instPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">InstallationAgent:</span> Schedule generated for floors 4-6. <span className="font-semibold text-amber-700 dark:text-amber-400">Conflict resolved</span> — floor 5 re-sequenced after floor 6 due to HM delay.</p>
+                                        <p className="text-xs text-success dark:text-success"><span className="font-bold">InstallationAgent:</span> Schedule generated for floors 4-6. <span className="font-semibold text-warning">Conflict resolved</span> — floor 5 re-sequenced after floor 6 due to HM delay.</p>
                                         <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">External Systems · Synced</span>
+                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                             {['Install Scheduler', 'GC Notifier', 'Fleet Tracker', 'Checklist Engine'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/15 dark:bg-success/10 text-success text-[10px] font-medium border border-success/30/50 dark:border-success/30">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -1721,17 +1721,17 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                             <h3 className="text-sm font-bold text-foreground">Installation Schedule — Phase 2 (Floors 4-6)</h3>
                                             <p className="text-[11px] text-muted-foreground mt-0.5">8 installers · 2 AV techs · 550 items · Conflict resolved</p>
                                         </div>
-                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 font-bold">1 Re-sequenced</span>
+                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-warning/15 dark:bg-warning/10 text-warning font-bold">1 Re-sequenced</span>
                                     </div>
 
                                     {/* Floor Schedule Cards */}
                                     <div className="p-4 space-y-3">
                                         {FLOOR_SCHEDULE.map(f => (
-                                            <div key={f.floor} className={`p-3 rounded-xl border ${f.conflict ? "border-amber-200 dark:border-amber-500/20 bg-amber-50/50 dark:bg-amber-500/5" : "border-border bg-muted/20"}`}>
+                                            <div key={f.floor} className={`p-3 rounded-xl border ${f.conflict ? "border-warning/20 bg-warning/10" : "border-border bg-muted/20"}`}>
                                                 <div className="flex items-center justify-between mb-2">
                                                     <div className="flex items-center gap-2">
                                                         <span className="text-xs font-bold text-foreground">{f.floor}</span>
-                                                        <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold ${f.conflict ? "bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400" : f.status === 'Rescheduled First' ? "bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400" : "bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400"}`}>{f.status}</span>
+                                                        <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold ${f.conflict ? "bg-warning/15 text-warning dark:bg-warning/10 dark:text-warning" : f.status === 'Rescheduled First' ? "bg-info/15 text-info dark:bg-info/10 dark:text-info" : "bg-success/15 text-success dark:bg-success/10 dark:text-success"}`}>{f.status}</span>
                                                     </div>
                                                     <span className="text-[10px] text-muted-foreground">{f.dates}</span>
                                                 </div>
@@ -1740,7 +1740,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                     <span className="flex items-center gap-1"><CubeIcon className="h-3 w-3" />{f.items} items</span>
                                                 </div>
                                                 {f.conflict && f.reason && (
-                                                    <p className="text-[10px] text-amber-600 dark:text-amber-400 mt-2 flex items-center gap-1"><ExclamationTriangleIcon className="h-3 w-3" />{f.reason}</p>
+                                                    <p className="text-[10px] text-warning mt-2 flex items-center gap-1"><ExclamationTriangleIcon className="h-3 w-3" />{f.reason}</p>
                                                 )}
                                             </div>
                                         ))}
@@ -1769,13 +1769,13 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                         {/* Email notification */}
                         {fmIntakePhase === 'email' && (
                             <div className="animate-in fade-in slide-in-from-top-4 duration-500">
-                                <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-500/10 border-2 border-blue-300 dark:border-blue-500/30 shadow-lg">
+                                <div className="p-4 rounded-xl bg-info/10 dark:bg-info/10 border-2 border-info/30 shadow-lg">
                                     <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-blue-500 text-white"><EnvelopeIcon className="h-4 w-4" /></div>
+                                        <div className="p-2 rounded-lg bg-info/100 text-white"><EnvelopeIcon className="h-4 w-4" /></div>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
                                                 <span className="text-xs font-bold text-foreground">New Service Request — Email Received</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-red-500 text-white font-bold">SAFETY</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-destructive text-white font-bold">SAFETY</span>
                                             </div>
                                             <p className="text-[11px] text-muted-foreground mt-1">From: <span className="font-semibold text-foreground">Facilities Coord Cardo</span> (Facilities Coordinator)</p>
                                             <div className="mt-3 p-3 rounded-lg bg-card border border-border text-[11px] text-foreground/80 space-y-1">
@@ -1783,7 +1783,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                 <p>Hi, the Aeron chair in my office has a broken gas cylinder — it keeps sinking and I can't work safely. Also the desk lamp stopped working. Can someone look at this ASAP?</p>
                                                 <p className="text-muted-foreground italic">2 photos attached</p>
                                             </div>
-                                            <p className="text-[10px] text-blue-600 dark:text-blue-400 mt-2 flex items-center gap-1"><SparklesIcon className="h-3 w-3" /> IntakeAgent analyzing email...</p>
+                                            <p className="text-[10px] text-info mt-2 flex items-center gap-1"><SparklesIcon className="h-3 w-3" /> IntakeAgent analyzing email...</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1811,9 +1811,9 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                         </p>
                                         {FM_INTAKE_FIELDS.slice(0, fmIntakePhase === 'extracting' ? fmIntakeFieldCount : FM_INTAKE_FIELDS.length).map((field, i) => (
                                             <div key={i} className="flex items-center gap-2 text-[11px] animate-in fade-in slide-in-from-left-2 duration-300">
-                                                {field.status === 'ok' ? <CheckCircleIcon className="h-4 w-4 text-green-500 shrink-0" /> : <ExclamationTriangleIcon className="h-4 w-4 text-amber-500 shrink-0" />}
+                                                {field.status === 'ok' ? <CheckCircleIcon className="h-4 w-4 text-success shrink-0" /> : <ExclamationTriangleIcon className="h-4 w-4 text-warning shrink-0" />}
                                                 <span className="font-semibold text-foreground w-20">{field.label}</span>
-                                                <span className={field.status === 'warning' ? "text-amber-600 dark:text-amber-400 font-medium" : "text-muted-foreground"}>{field.value}</span>
+                                                <span className={field.status === 'warning' ? "text-warning font-medium" : "text-muted-foreground"}>{field.value}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -1821,12 +1821,12 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                     {/* Classification */}
                                     {(fmIntakePhase === 'classified' || fmIntakePhase === 'submitted') && (
                                         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                            <div className="p-3 rounded-lg bg-red-50 dark:bg-red-500/5 border border-red-200 dark:border-red-500/20">
+                                            <div className="p-3 rounded-lg bg-destructive/10 dark:bg-destructive/5 border border-destructive/30">
                                                 <div className="flex items-center gap-2 mb-1">
-                                                    <ExclamationTriangleIcon className="h-4 w-4 text-red-500" />
-                                                    <span className="text-xs font-bold text-red-700 dark:text-red-400">Priority: HIGH — Safety Flag</span>
+                                                    <ExclamationTriangleIcon className="h-4 w-4 text-destructive" />
+                                                    <span className="text-xs font-bold text-destructive">Priority: HIGH — Safety Flag</span>
                                                 </div>
-                                                <p className="text-[10px] text-red-600 dark:text-red-300">Broken gas cylinder presents ergonomic/safety risk. Immediate triage recommended.</p>
+                                                <p className="text-[10px] text-destructive dark:text-destructive">Broken gas cylinder presents ergonomic/safety risk. Immediate triage recommended.</p>
                                             </div>
                                             {fmIntakePhase === 'classified' && (
                                                 <button onClick={() => setFmIntakePhase('submitted')} className="mt-3 w-full px-4 py-2.5 text-sm font-bold rounded-xl bg-brand-300 text-zinc-900 hover:bg-brand-400 transition-colors flex items-center justify-center gap-2">
@@ -1834,9 +1834,9 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                 </button>
                                             )}
                                             {fmIntakePhase === 'submitted' && (
-                                                <div className="mt-3 p-3 rounded-lg bg-green-50 dark:bg-green-500/5 border border-green-300 dark:border-green-500/20 flex items-center gap-2 animate-in fade-in duration-300">
-                                                    <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                                                    <span className="text-xs font-bold text-green-700 dark:text-green-300">REQ-FM-2026-018 submitted — routing to TriageAgent...</span>
+                                                <div className="mt-3 p-3 rounded-lg bg-success/10 dark:bg-success/100/5 border border-success/40 dark:border-success/30 flex items-center gap-2 animate-in fade-in duration-300">
+                                                    <CheckCircleIcon className="h-5 w-5 text-success" />
+                                                    <span className="text-xs font-bold text-success dark:text-success">REQ-FM-2026-018 submitted — routing to TriageAgent...</span>
                                                 </div>
                                             )}
                                         </div>
@@ -1859,7 +1859,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
                                                 <span className="text-xs font-bold text-foreground">AI Triage — Cross-Referencing 4 Databases</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-red-500 text-white font-bold">SAFETY</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-destructive text-white font-bold">SAFETY</span>
                                             </div>
                                             <p className="text-[11px] text-muted-foreground mt-1">TriageAgent: Analyzing <span className="font-semibold text-foreground">REQ-FM-2026-018</span> — checking warranty, inventory, contracts, scheduling.</p>
                                             <p className="text-[10px] text-brand-600 dark:text-brand-400 mt-2 flex items-center gap-1">Click to run triage <ArrowRightIcon className="h-3 w-3" /></p>
@@ -1882,7 +1882,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                 <div className="space-y-1.5">
                                     {fmTriageAgents.map(agent => (
                                         <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"}`}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
                                             <span className={`font-medium ${agent.done ? "text-foreground" : "text-indigo-600 dark:text-indigo-400"}`}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
@@ -1894,24 +1894,24 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                         {/* Breathing */}
                         {fmTriagePhase === 'breathing' && (
                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/100 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">Triage complete — compiling resolution plan...</span>
                             </div>
                         )}
 
                         {/* Confirmed */}
                         {(fmTriagePhase === 'revealed' || fmTriagePhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">TriageAgent:</span> 4 databases cross-referenced. <span className="font-semibold">Resolution plan ready</span> — warranty active, consignment available, installer dispatched.</p>
+                                        <p className="text-xs text-success dark:text-success"><span className="font-bold">TriageAgent:</span> 4 databases cross-referenced. <span className="font-semibold">Resolution plan ready</span> — warranty active, consignment available, installer dispatched.</p>
                                         <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">Systems Queried · Complete</span>
+                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">Systems Queried · Complete</span>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                             {['Warranty DB', 'Inventory', 'Contracts', 'Scheduling'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/15 dark:bg-success/10 text-success text-[10px] font-medium border border-success/30/50 dark:border-success/30">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -1930,18 +1930,18 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                             <h3 className="text-sm font-bold text-foreground">Resolution Plan — REQ-FM-2026-018</h3>
                                             <p className="text-[11px] text-muted-foreground mt-0.5">3 recommended actions · Total cost: $0 · ETA: 26 hours</p>
                                         </div>
-                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-bold">$0 Cost</span>
+                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-success/15 dark:bg-success/10 text-success font-bold">$0 Cost</span>
                                     </div>
                                     <div className="p-4 space-y-3">
                                         {FM_TRIAGE_RESULTS.map((r, i) => (
                                             <div key={i} className={`p-3 rounded-xl border ${r.badge === 'RECOMMENDED' ? "border-brand-300 dark:border-brand-500/30 bg-brand-50/50 dark:bg-brand-500/5" : "border-border bg-muted/20"}`}>
                                                 <div className="flex items-center justify-between mb-1">
                                                     <span className="text-xs font-bold text-foreground">{r.title}</span>
-                                                    <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold ${r.badge === 'RECOMMENDED' ? "bg-brand-200 text-brand-800 dark:bg-brand-500/10 dark:text-brand-400" : r.badge === 'AUTO-FILED' ? "bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400" : "bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400"}`}>{r.badge}</span>
+                                                    <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold ${r.badge === 'RECOMMENDED' ? "bg-brand-200 text-brand-800 dark:bg-brand-500/10 dark:text-brand-400" : r.badge === 'AUTO-FILED' ? "bg-success/15 text-success dark:bg-success/10 dark:text-success" : "bg-info/15 text-info dark:bg-info/10 dark:text-info"}`}>{r.badge}</span>
                                                 </div>
                                                 <p className="text-[10px] text-muted-foreground">{r.detail}</p>
                                                 <div className="flex items-center justify-between mt-2 text-[10px]">
-                                                    <span className="font-semibold text-green-600 dark:text-green-400">Cost: {r.cost}</span>
+                                                    <span className="font-semibold text-success">Cost: {r.cost}</span>
                                                     <button className="inline-flex items-center gap-1 px-2 py-1 rounded-lg border border-border bg-card hover:bg-muted/50 text-muted-foreground hover:text-foreground transition-colors text-[10px] font-medium">
                                                         <ChatBubbleLeftRightIcon className="h-3 w-3" />
                                                         Comment
@@ -1977,7 +1977,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
                                                 <span className="text-xs font-bold text-foreground">Installer Report — Service Complete</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-green-500 text-white font-bold">RESOLVED</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/100 text-white font-bold">RESOLVED</span>
                                             </div>
                                             <p className="text-[11px] text-muted-foreground mt-1">ResolutionAgent: ProInstall completed Aeron swap — processing <span className="font-semibold text-foreground">installer report, inventory sync, notifications</span>.</p>
                                             <p className="text-[10px] text-brand-600 dark:text-brand-400 mt-2 flex items-center gap-1">Click to process resolution <ArrowRightIcon className="h-3 w-3" /></p>
@@ -2000,7 +2000,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                 <div className="space-y-1.5">
                                     {fmResAgents.map(agent => (
                                         <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"}`}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
                                             <span className={`font-medium ${agent.done ? "text-foreground" : "text-indigo-600 dark:text-indigo-400"}`}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
@@ -2012,24 +2012,24 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                         {/* Breathing */}
                         {fmResPhase === 'breathing' && (
                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/100 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">Resolution verified — notifying stakeholders...</span>
                             </div>
                         )}
 
                         {/* Confirmed */}
                         {(fmResPhase === 'revealed' || fmResPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">ResolutionAgent:</span> Service request <span className="font-semibold">REQ-FM-2026-018 RESOLVED</span>. Aeron replaced, Carlos relocated back to 3-214, all stakeholders notified.</p>
+                                        <p className="text-xs text-success dark:text-success"><span className="font-bold">ResolutionAgent:</span> Service request <span className="font-semibold">REQ-FM-2026-018 RESOLVED</span>. Aeron replaced, Carlos relocated back to 3-214, all stakeholders notified.</p>
                                         <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">All Systems · Updated</span>
+                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">All Systems · Updated</span>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                             {['Inventory', 'Warranty Claims', 'Service Desk', 'Notifications'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/15 dark:bg-success/10 text-success text-[10px] font-medium border border-success/30/50 dark:border-success/30">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -2049,7 +2049,7 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                             <h3 className="text-sm font-bold text-foreground">Installer Report — ProInstall LLC</h3>
                                             <p className="text-[11px] text-muted-foreground mt-0.5">Technician: James Mercer · Duration: 1.5 hrs · QC: Passed</p>
                                         </div>
-                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-bold">COMPLETE</span>
+                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-success/15 dark:bg-success/10 text-success font-bold">COMPLETE</span>
                                     </div>
                                     <div className="p-4 space-y-3">
                                         {[
@@ -2060,9 +2060,9 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                             { task: 'Desk lamp replaced (maintenance stock)', status: 'Done' },
                                         ].map((item, i) => (
                                             <div key={i} className="flex items-center gap-2 text-[11px]">
-                                                <CheckCircleIcon className="h-4 w-4 text-green-500 shrink-0" />
+                                                <CheckCircleIcon className="h-4 w-4 text-success shrink-0" />
                                                 <span className="text-foreground flex-1">{item.task}</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-bold">{item.status}</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/15 dark:bg-success/10 text-success font-bold">{item.status}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -2072,13 +2072,13 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                 <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm">
                                     <div className="p-4 border-b border-border/50 flex items-center justify-between">
                                         <div className="flex items-center gap-2">
-                                            <TruckIcon className="h-4 w-4 text-blue-500" />
+                                            <TruckIcon className="h-4 w-4 text-info" />
                                             <div>
                                                 <h3 className="text-sm font-bold text-foreground">Relocation Tracking</h3>
                                                 <p className="text-[11px] text-muted-foreground mt-0.5">Office 3-214 → 3-216 → 3-214 · REQ-FM-2026-018</p>
                                             </div>
                                         </div>
-                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 font-bold">TRACKED</span>
+                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-info/15 dark:bg-info/10 text-info font-bold">TRACKED</span>
                                     </div>
                                     <div className="p-4">
                                         {/* Timeline */}
@@ -2109,9 +2109,9 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                     <div key={i} className="relative flex items-start">
                                                         {/* Dot */}
                                                         <div className={`absolute -left-6 h-5 w-5 rounded-full flex items-center justify-center border-2 z-10 bg-card ${
-                                                            step.status === 'completed' ? 'border-green-500 text-green-500' : 'border-blue-500 text-blue-500 animate-pulse'
+                                                            step.status === 'completed' ? 'border-success text-success' : 'border-info text-info animate-pulse'
                                                         }`}>
-                                                            {step.status === 'completed' ? <CheckCircleIcon className="w-3.5 h-3.5" /> : <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />}
+                                                            {step.status === 'completed' ? <CheckCircleIcon className="w-3.5 h-3.5" /> : <div className="w-1.5 h-1.5 rounded-full bg-info/100" />}
                                                         </div>
 
                                                         <div className="flex-1 ml-2">
@@ -2133,8 +2133,8 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                                     {step.evidence.map((ev, j) => (
                                                                         <div key={j} className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-muted/50 border border-border text-[9px] font-medium text-muted-foreground">
                                                                             {ev.type === 'photo' && <CameraIcon className="w-3 h-3 text-indigo-500" />}
-                                                                            {ev.type === 'signature' && <PencilIcon className="w-3 h-3 text-blue-500" />}
-                                                                            {ev.type === 'note' && <DocumentTextIcon className="w-3 h-3 text-amber-500" />}
+                                                                            {ev.type === 'signature' && <PencilIcon className="w-3 h-3 text-info" />}
+                                                                            {ev.type === 'note' && <DocumentTextIcon className="w-3 h-3 text-warning" />}
                                                                             {ev.label}
                                                                         </div>
                                                                     ))}
@@ -2165,19 +2165,19 @@ export default function MACPunchList({ previewMode = false }: MACPunchListProps 
                                                     </div>
                                                     <p className="text-[10px] text-muted-foreground mt-0.5">{n.message}</p>
                                                 </div>
-                                                <CheckCircleIcon className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                                                <CheckCircleIcon className="h-4 w-4 text-success shrink-0 mt-0.5" />
                                             </div>
                                         ))}
                                     </div>
                                 </div>
 
                                 {/* Summary */}
-                                <div className="bg-green-50 dark:bg-green-500/5 border border-green-300 dark:border-green-500/30 rounded-xl p-4">
+                                <div className="bg-success/10 dark:bg-success/100/5 border border-success/30 rounded-xl p-4">
                                     <div className="flex items-center gap-3">
-                                        <CheckCircleIcon className="h-5 w-5 text-green-600 dark:text-green-400 shrink-0" />
+                                        <CheckCircleIcon className="h-5 w-5 text-success shrink-0" />
                                         <div>
-                                            <p className="text-xs font-bold text-green-800 dark:text-green-200">RESOLVED — $0 Total Cost · 26 Hours</p>
-                                            <p className="text-[10px] text-green-700 dark:text-green-300 mt-0.5">Warranty claim filed · Consignment swap ($0) · Office relocation + return · All stakeholders notified</p>
+                                            <p className="text-xs font-bold text-success dark:text-success">RESOLVED — $0 Total Cost · 26 Hours</p>
+                                            <p className="text-[10px] text-success dark:text-success mt-0.5">Warranty claim filed · Consignment swap ($0) · Office relocation + return · All stakeholders notified</p>
                                         </div>
                                     </div>
                                 </div>

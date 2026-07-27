@@ -137,7 +137,7 @@ export default function VisionEngineModal({
                         leaveFrom="opacity-100 scale-100"
                         leaveTo="opacity-0 scale-95"
                     >
-                        <DialogPanel className="w-full max-w-2xl bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-2xl overflow-hidden">
+                        <DialogPanel className="w-full max-w-2xl bg-card rounded-2xl border border-border shadow-2xl overflow-hidden">
 
                             {/* Header */}
                             <div className="flex items-start gap-4 px-6 py-5 border-b border-border">

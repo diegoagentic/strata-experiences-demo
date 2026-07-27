@@ -83,9 +83,9 @@ export default function CLCCapacityWarningPanel({ stepId }: Props) {
 
     const statusBadge = (status: RegionCapacity['status']) => {
         switch (status) {
-            case 'red':   return 'bg-red-50 text-red-700 border-red-200 dark:bg-red-500/15 dark:text-red-300 dark:border-red-500/30'
+            case 'red':   return 'bg-destructive/10 text-destructive border-destructive/30 dark:bg-destructive/15 dark:text-destructive dark:border-destructive/30'
             case 'amber': return 'bg-yellow-50 text-yellow-700 border-yellow-200 dark:bg-yellow-500/15 dark:text-yellow-300 dark:border-yellow-500/30'
-            case 'green': return 'bg-green-50 text-green-700 border-green-200 dark:bg-green-500/15 dark:text-green-300 dark:border-green-500/30'
+            case 'green': return 'bg-success/10 text-success border-success/30 dark:bg-success/15 dark:text-success dark:border-success/30'
         }
     }
     const statusLabel = (status: RegionCapacity['status']) => {
@@ -143,16 +143,16 @@ export default function CLCCapacityWarningPanel({ stepId }: Props) {
                                                         <div className="h-12 flex items-end mb-1">
                                                             <div
                                                                 className={`w-full rounded-t ${
-                                                                    isOverLoad ? 'bg-red-500' :
+                                                                    isOverLoad ? 'bg-destructive' :
                                                                     load === region.inHouseCrews ? 'bg-yellow-500' :
-                                                                    load > 0 ? 'bg-green-500/70' :
+                                                                    load > 0 ? 'bg-success/100/70' :
                                                                     'bg-muted'
                                                                 }`}
                                                                 style={{ height: `${Math.min(100, (load / Math.max(region.inHouseCrews + 2, 3)) * 100)}%` }}
                                                             />
                                                         </div>
                                                         <div className="text-[9px] text-muted-foreground">{week.label}</div>
-                                                        <div className={`text-[10px] font-bold ${isOverLoad ? 'text-red-700 dark:text-red-300' : 'text-foreground'}`}>{load}/{region.inHouseCrews}</div>
+                                                        <div className={`text-[10px] font-bold ${isOverLoad ? 'text-destructive dark:text-destructive' : 'text-foreground'}`}>{load}/{region.inHouseCrews}</div>
                                                     </div>
                                                 )
                                             })}
@@ -161,7 +161,7 @@ export default function CLCCapacityWarningPanel({ stepId }: Props) {
 
                                     {/* Third-party suggestion (only on red regions) */}
                                     {isOver && (
-                                        <div className="rounded-lg border border-red-200 bg-red-50/40 dark:border-red-500/30 dark:bg-red-500/10 p-3">
+                                        <div className="rounded-lg border border-destructive/30 bg-destructive/10/40 dark:border-destructive/30 dark:bg-destructive/10 p-3">
                                             <div className="flex items-center gap-1.5 mb-1.5">
                                                 <Sparkles className="h-3.5 w-3.5 text-zinc-800 dark:text-zinc-200" />
                                                 <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Strata AI suggests</span>

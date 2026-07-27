@@ -190,7 +190,7 @@ export default function OrderCreationForm({ initialData, onSubmit, onCancel, isT
                     {/* Logistics */}
                     <section className="bg-card rounded-xl border border-border p-6 shadow-sm">
                         <div className="flex items-center gap-2 mb-6">
-                            <TruckIcon className="w-5 h-5 text-amber-500" />
+                            <TruckIcon className="w-5 h-5 text-warning" />
                             <h3 className="text-lg font-semibold text-foreground">Logistics & Delivery</h3>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

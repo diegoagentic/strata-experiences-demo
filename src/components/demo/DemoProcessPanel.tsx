@@ -706,11 +706,11 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
             progressColor: 'bg-indigo-500',
         },
         'continua-1.3': {
-            icon: <Sparkles className="text-amber-600 dark:text-amber-400 animate-pulse" size={18} />,
+            icon: <Sparkles className="text-warning animate-pulse" size={18} />,
             title: 'UAL HQ — Price Verification Engine',
             titleDone: 'Prices Verified — $110K Savings',
             accentColor: 'amber',
-            progressColor: 'bg-amber-500',
+            progressColor: 'bg-warning',
         },
         'continua-3.5': {
             icon: <Cpu className="text-teal-600 dark:text-teal-400" size={18} />,
@@ -727,40 +727,40 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
             progressColor: 'bg-success',
         },
         '1.3': {
-            icon: <Sparkles className="text-green-600 dark:text-green-400" size={18} />,
+            icon: <Sparkles className="text-success" size={18} />,
             title: 'Normalization Pipeline',
             titleDone: 'Normalization Complete',
             accentColor: 'green',
-            progressColor: 'bg-green-500',
+            progressColor: 'bg-success/100',
         },
         '1.4': {
-            icon: <Sparkles className="text-amber-600 dark:text-amber-400 animate-pulse" size={18} />,
+            icon: <Sparkles className="text-warning animate-pulse" size={18} />,
             title: 'QuoteBuilder Agent',
             titleDone: 'Quote Draft Ready',
             accentColor: 'amber',
-            progressColor: 'bg-amber-500',
+            progressColor: 'bg-warning',
         },
         '2.2': {
-            icon: <Cpu className="text-blue-600 dark:text-blue-400" size={18} />,
+            icon: <Cpu className="text-info" size={18} />,
             title: 'ERP Normalization',
             titleDone: 'Normalization Complete',
             accentColor: 'blue',
-            progressColor: 'bg-blue-500',
+            progressColor: 'bg-info/100',
         },
         '2.3': {
-            icon: <Cpu className="text-red-600 dark:text-red-400" size={18} />,
+            icon: <Cpu className="text-destructive" size={18} />,
             title: 'Delta Engine Processing',
             titleDone: 'Comparison Complete — 2 Exceptions',
             accentColor: 'red',
-            progressColor: 'bg-red-500',
+            progressColor: 'bg-destructive',
         },
         // OPS profile entries
         'ops-1.1': {
-            icon: <CheckCircle2 className="text-blue-600 dark:text-blue-400" size={18} />,
+            icon: <CheckCircle2 className="text-info" size={18} />,
             title: 'Receiving Verification',
             titleDone: 'Shipment Verified',
             accentColor: 'blue',
-            progressColor: 'bg-blue-500',
+            progressColor: 'bg-info/100',
         },
         'ops-1.3': {
             icon: <Sparkles className="text-teal-600 dark:text-teal-400 animate-pulse" size={18} />,
@@ -777,11 +777,11 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
             progressColor: 'bg-ai',
         },
         'ops-2.4': {
-            icon: <CheckCircle2 className="text-green-600 dark:text-green-400" size={18} />,
+            icon: <CheckCircle2 className="text-success" size={18} />,
             title: 'Invoice Reconciliation',
             titleDone: 'Invoice Reconciled',
             accentColor: 'green',
-            progressColor: 'bg-green-500',
+            progressColor: 'bg-success/100',
         },
     };
 
@@ -843,7 +843,7 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
                                 <Cpu size={10} />
                                 eManage ONE → PO Original
                             </span>
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-bold text-blue-600 dark:text-blue-400">
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-info/10 border border-info/30 text-[10px] font-bold text-info">
                                 <FileText size={10} />
                                 MillerKnoll → EDI/855 ACK
                             </span>
@@ -865,7 +865,7 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
                             <span className="text-[8px] font-bold text-success dark:text-success uppercase tracking-wider">External Systems · Synced</span>
                         </div>
                         <div className="flex flex-wrap gap-1.5">
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-bold text-blue-600 dark:text-blue-400">
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-info/10 border border-info/30 text-[10px] font-bold text-info">
                                 <FileText size={10} />
                                 MillerKnoll → Vendor Email (PDF + CSV)
                             </span>
@@ -941,7 +941,7 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
                                 {procPhases.map((phase, i) => (
                                     <div key={i} className={`flex items-center gap-2 text-[11px] transition-all duration-300 ${phase.visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'}`}>
                                         {phase.done ? (
-                                            <CheckCircle2 size={14} className="text-green-500 shrink-0" />
+                                            <CheckCircle2 size={14} className="text-success shrink-0" />
                                         ) : phase.visible ? (
                                             <div className="w-3.5 h-3.5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin shrink-0" />
                                         ) : null}
@@ -955,13 +955,13 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
                         {/* Summary verde */}
                         {summaryVisible && (
                             <div className="space-y-3 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                <div className="rounded-xl p-4 bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30">
-                                    <p className="text-xs text-green-800 dark:text-green-200">
+                                <div className="rounded-xl p-4 bg-success/10 dark:bg-success/100/5 border-2 border-success/30">
+                                    <p className="text-xs text-success dark:text-success">
                                         <span className="font-bold">ProcurementAgent:</span> PO package generated — 3 consolidated POs, $3.2M, 12 manufacturers. Expert decision applied.
                                     </p>
                                     <div className="flex flex-wrap items-center gap-1.5 mt-2.5">
                                         {['MillerKnoll Portal', 'DIRTT Configurator', 'AV Partners API', 'Contract Pricing DB'].map(sys => (
-                                            <span key={sys} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[9px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                            <span key={sys} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-success/15 dark:bg-success/10 text-success text-[9px] font-medium border border-success/30/50 dark:border-success/30">
                                                 <CheckCircle2 size={10} />{sys}
                                             </span>
                                         ))}
@@ -980,23 +980,23 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
                             {/* Left: PDF Mockup */}
                             <div className="rounded-xl border border-gray-200 dark:border-zinc-700 bg-card overflow-hidden">
                                 <div className="px-3 py-1.5 bg-gray-100 dark:bg-zinc-800 border-b border-gray-200 dark:border-zinc-700 flex items-center gap-2">
-                                    <FileText size={12} className="text-red-500" />
+                                    <FileText size={12} className="text-destructive" />
                                     <span className="text-[10px] font-bold text-muted-foreground">Apex_RFQ_2025.pdf</span>
                                 </div>
                                 <div className="p-3 space-y-2 text-[10px] font-mono text-muted-foreground">
-                                    <div className="bg-amber-100/50 dark:bg-amber-500/10 border-l-2 border-amber-400 px-2 py-1 rounded-r">
+                                    <div className="bg-warning/15 dark:bg-warning/10 border-l-2 border-warning px-2 py-1 rounded-r">
                                         <span className="text-zinc-800 dark:text-zinc-200">Qty: 200 | Executive Task Chairs</span>
                                     </div>
                                     <div className="px-2 py-1 opacity-40">APEX CONSTRUCTION INC.</div>
-                                    <div className="bg-amber-100/50 dark:bg-amber-500/10 border-l-2 border-amber-400 px-2 py-1 rounded-r">
+                                    <div className="bg-warning/15 dark:bg-warning/10 border-l-2 border-warning px-2 py-1 rounded-r">
                                         <span className="text-zinc-800 dark:text-zinc-200">Model: CC-AZ-2024 (Azure)</span>
                                     </div>
                                     <div className="px-2 py-1 opacity-40">Ship-To: Austin, TX 78701</div>
-                                    <div className="bg-amber-100/50 dark:bg-amber-500/10 border-l-2 border-amber-400 px-2 py-1 rounded-r">
+                                    <div className="bg-warning/15 dark:bg-warning/10 border-l-2 border-warning px-2 py-1 rounded-r">
                                         <span className="text-zinc-800 dark:text-zinc-200">Delivery: 4 zones (A-D)</span>
                                     </div>
                                     <div className="px-2 py-1 opacity-40">Terms: Net 30</div>
-                                    <div className="bg-amber-100/50 dark:bg-amber-500/10 border-l-2 border-amber-400 px-2 py-1 rounded-r">
+                                    <div className="bg-warning/15 dark:bg-warning/10 border-l-2 border-warning px-2 py-1 rounded-r">
                                         <span className="text-zinc-800 dark:text-zinc-200">Ergonomic: Lumbar, Adj. Arms</span>
                                     </div>
                                 </div>
@@ -1046,7 +1046,7 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
                                         </div>
                                         <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shrink-0 ${
                                             item.badge === 'Needs Review'
-                                                ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20'
+                                                ? 'bg-warning/10 text-warning border border-warning/30'
                                                 : 'bg-gray-200 dark:bg-zinc-700 text-muted-foreground'
                                         }`}>{item.badge}</span>
                                     </div>
@@ -1072,11 +1072,11 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
                             </div>
                             <div className="flex items-center gap-1 overflow-x-auto pb-1 scrollbar-micro">
                                 {[
-                                    { icon: '📧', label: 'Email RFQ', sub: 'Detected', color: 'border-blue-500/30 bg-blue-500/5' },
+                                    { icon: '📧', label: 'Email RFQ', sub: 'Detected', color: 'border-info/30 bg-info/100/5' },
                                     { icon: '📄', label: 'OCR Extract', sub: '2 files', color: 'border-purple-500/30 bg-ai/5' },
                                     { icon: '🔍', label: 'Data Parse', sub: '200 items', color: 'border-indigo-500/30 bg-indigo-500/5' },
                                     { icon: '🔗', label: 'Normalize', sub: 'Mapped', color: 'border-cyan-500/30 bg-cyan-500/5' },
-                                    { icon: '⚡', label: 'Validate', sub: '82%', color: 'border-amber-500/30 bg-amber-500/5' },
+                                    { icon: '⚡', label: 'Validate', sub: '82%', color: 'border-warning/30 bg-warning/10' },
                                 ].map((step, i, arr) => (
                                     <React.Fragment key={i}>
                                         <div className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg border ${step.color} min-w-[72px] shrink-0`}>
@@ -1130,8 +1130,8 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
                                 <div className="w-6 h-6 rounded-full bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center">
                                     <Bot size={12} className="text-indigo-600 dark:text-indigo-400" />
                                 </div>
-                                <div className="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center">
-                                    <Users size={12} className="text-amber-600 dark:text-amber-400" />
+                                <div className="w-6 h-6 rounded-full bg-warning/20 border border-warning/40 flex items-center justify-center">
+                                    <Users size={12} className="text-warning" />
                                 </div>
                             </div>
                             <span className="text-[11px] text-muted-foreground">AI Agent + Expert will draft the quote</span>
@@ -1153,8 +1153,8 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
                         {/* Branching Result */}
                         <div className="rounded-lg border border-gray-200 dark:border-zinc-700 bg-card p-4">
                             <div className="flex items-center gap-2 mb-1.5">
-                                <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-                                <span className="text-[11px] font-medium text-amber-600 dark:text-amber-400 uppercase tracking-wider">Needs Attention</span>
+                                <div className="w-2.5 h-2.5 rounded-full bg-warning" />
+                                <span className="text-[11px] font-medium text-warning uppercase tracking-wider">Needs Attention</span>
                             </div>
                             <p className="text-[12px] text-muted-foreground">Multi-zone freight routing requires manual approval</p>
                         </div>
@@ -1165,8 +1165,8 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
                                 <div className="w-6 h-6 rounded-full bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center">
                                     <Bot size={12} className="text-indigo-600 dark:text-indigo-400" />
                                 </div>
-                                <div className="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center">
-                                    <Users size={12} className="text-amber-600 dark:text-amber-400" />
+                                <div className="w-6 h-6 rounded-full bg-warning/20 border border-warning/40 flex items-center justify-center">
+                                    <Users size={12} className="text-warning" />
                                 </div>
                             </div>
                             <span className="text-[11px] text-muted-foreground">Expert + AI Agent will resolve discrepancies</span>
@@ -1188,7 +1188,7 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
                         {/* Entity Link */}
                         <div className="flex items-center justify-between text-xs px-3 py-2 rounded-lg bg-card border border-gray-200 dark:border-zinc-700">
                             <span className="text-muted-foreground dark:text-muted-foreground">Entity Link:</span>
-                            <span className="text-blue-600 dark:text-blue-400 font-medium">PO #ORD-2055 ↔ Acknowledgement #ACK-2055</span>
+                            <span className="text-info font-medium">PO #ORD-2055 ↔ Acknowledgement #ACK-2055</span>
                         </div>
 
                         {/* Schema Mapping Table */}
@@ -1207,7 +1207,7 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
                                         <tr key={i}>
                                             <td className="px-4 py-2 font-mono text-muted-foreground dark:text-muted-foreground">{row.raw}</td>
                                             <td className="px-2 text-muted-foreground">→</td>
-                                            <td className="px-4 py-2 font-mono text-blue-600 dark:text-blue-400">{row.normalized}</td>
+                                            <td className="px-4 py-2 font-mono text-info">{row.normalized}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -1257,28 +1257,28 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
                                         <td className="px-4 py-2 text-muted-foreground dark:text-zinc-300">Task Chair</td>
                                         <td className="px-4 py-2 font-mono text-muted-foreground">ERG-5100</td>
                                         <td className="px-4 py-2 font-mono text-muted-foreground">ERG-5100</td>
-                                        <td className="px-4 py-2"><span className="flex items-center gap-1 text-green-600 dark:text-green-400"><CheckCircle2 size={12} /> Match</span></td>
+                                        <td className="px-4 py-2"><span className="flex items-center gap-1 text-success"><CheckCircle2 size={12} /> Match</span></td>
                                     </tr>
-                                    <tr className="bg-amber-500/5">
+                                    <tr className="bg-warning/10">
                                         <td className="px-4 py-2 text-muted-foreground">2</td>
-                                        <td className="px-4 py-2 text-amber-700 dark:text-amber-300 font-medium">Desk</td>
+                                        <td className="px-4 py-2 text-warning dark:text-warning font-medium">Desk</td>
                                         <td className="px-4 py-2 font-mono text-muted-foreground">DSK-B</td>
-                                        <td className="px-4 py-2 font-mono text-amber-600 dark:text-amber-400">DSK-C</td>
-                                        <td className="px-4 py-2"><span className="text-amber-600 dark:text-amber-400 font-medium">Substitution</span></td>
+                                        <td className="px-4 py-2 font-mono text-warning">DSK-C</td>
+                                        <td className="px-4 py-2"><span className="text-warning font-medium">Substitution</span></td>
                                     </tr>
                                     <tr>
                                         <td className="px-4 py-2 text-muted-foreground">3</td>
                                         <td className="px-4 py-2 text-muted-foreground dark:text-zinc-300">Armrest</td>
                                         <td className="px-4 py-2 font-mono text-muted-foreground">ARM-4D10</td>
                                         <td className="px-4 py-2 font-mono text-muted-foreground">ARM-4D10</td>
-                                        <td className="px-4 py-2"><span className="flex items-center gap-1 text-green-600 dark:text-green-400"><CheckCircle2 size={12} /> Match</span></td>
+                                        <td className="px-4 py-2"><span className="flex items-center gap-1 text-success"><CheckCircle2 size={12} /> Match</span></td>
                                     </tr>
-                                    <tr className="bg-red-500/5">
+                                    <tr className="bg-destructive/5">
                                         <td className="px-4 py-2 text-muted-foreground">4</td>
-                                        <td className="px-4 py-2 text-red-700 dark:text-red-300 font-medium">Freight</td>
+                                        <td className="px-4 py-2 text-destructive dark:text-destructive font-medium">Freight</td>
                                         <td className="px-4 py-2 font-mono text-muted-foreground">$45</td>
-                                        <td className="px-4 py-2 font-mono text-red-600 dark:text-red-400">$150</td>
-                                        <td className="px-4 py-2"><span className="text-red-600 dark:text-red-400 font-medium">+233%</span></td>
+                                        <td className="px-4 py-2 font-mono text-destructive">$150</td>
+                                        <td className="px-4 py-2"><span className="text-destructive font-medium">+233%</span></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1286,7 +1286,7 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
 
                         {/* Delta Summary */}
                         <div className="flex items-center justify-between px-3 py-2.5 rounded-lg bg-card border border-gray-200 dark:border-zinc-700">
-                            <span className="text-[11px] text-muted-foreground">4 lines compared: <span className="text-green-600 dark:text-green-400 font-medium">2 matches</span>, <span className="text-red-600 dark:text-red-400 font-medium">2 exceptions</span></span>
+                            <span className="text-[11px] text-muted-foreground">4 lines compared: <span className="text-success font-medium">2 matches</span>, <span className="text-destructive font-medium">2 exceptions</span></span>
                             <ConfidenceScoreBadge score={50} label="Match Rate" />
                         </div>
 
@@ -1395,7 +1395,7 @@ export default function DemoProcessPanel({ onNavigate }: DemoProcessPanelProps) 
                                         <tr key={i}>
                                             <td className="px-4 py-2 font-mono text-ai dark:text-purple-400">{row.quote}</td>
                                             <td className="px-4 py-2 text-muted-foreground">{row.item}</td>
-                                            <td className="px-4 py-2 font-medium text-amber-600 dark:text-amber-400">{row.delta}</td>
+                                            <td className="px-4 py-2 font-medium text-warning">{row.delta}</td>
                                         </tr>
                                     ))}
                                 </tbody>

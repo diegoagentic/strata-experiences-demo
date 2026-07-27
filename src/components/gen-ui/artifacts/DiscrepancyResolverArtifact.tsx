@@ -110,9 +110,9 @@ export default function DiscrepancyResolverArtifact({ issues, onResolve, onClose
     // Helper to render type icon
     const getTypeIcon = (type: string) => {
         switch (type) {
-            case 'header': return <DocumentTextIcon className="w-5 h-5 text-blue-500" />;
+            case 'header': return <DocumentTextIcon className="w-5 h-5 text-info" />;
             case 'rule': return <ScaleIcon className="w-5 h-5 text-indigo-500" />;
-            case 'line_item': return <BoltIcon className="w-5 h-5 text-amber-500" />;
+            case 'line_item': return <BoltIcon className="w-5 h-5 text-warning" />;
             default: return <BoltIcon className="w-5 h-5" />;
         }
     };
@@ -142,13 +142,13 @@ export default function DiscrepancyResolverArtifact({ issues, onResolve, onClose
                         {title || 'Review Discrepancy'}
                     </h2>
                     <p className="text-sm text-muted-foreground mt-1">
-                        Issue {progressIndex} of {initialTotal} • <span className={isSubstitution ? "text-indigo-600 font-medium" : "text-amber-600 font-medium"}>Resolution Required</span>
+                        Issue {progressIndex} of {initialTotal} • <span className={isSubstitution ? "text-indigo-600 font-medium" : "text-warning font-medium"}>Resolution Required</span>
                     </p>
                 </div>
                 <div className="flex items-center gap-2">
                     <div className="w-32 h-2 bg-muted rounded-full overflow-hidden">
                         <div
-                            className={`h-full transition-all duration-300 ${isSubstitution ? 'bg-indigo-500' : 'bg-amber-500'}`}
+                            className={`h-full transition-all duration-300 ${isSubstitution ? 'bg-indigo-500' : 'bg-warning'}`}
                             style={{ width: `${(progressIndex / initialTotal) * 100}%` }}
                         ></div>
                     </div>
@@ -189,7 +189,7 @@ export default function DiscrepancyResolverArtifact({ issues, onResolve, onClose
                                     </div>
                                 </div>
                                 <div className="mt-4">
-                                    <div className="text-xs text-amber-600 bg-amber-50 dark:bg-amber-900/10 p-2 rounded inline-block">
+                                    <div className="text-xs text-warning bg-warning/10 dark:bg-warning/10 p-2 rounded inline-block">
                                         {getTypeLabel(currentIssue.type)}
                                     </div>
                                 </div>
@@ -228,7 +228,7 @@ export default function DiscrepancyResolverArtifact({ issues, onResolve, onClose
                                                 <select
                                                     value={selectedValue}
                                                     onChange={e => setSelectedValue(e.target.value)}
-                                                    className="w-full text-sm bg-card p-2.5 rounded-lg border border-amber-300 dark:border-amber-700 text-amber-900 dark:text-amber-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                                                    className="w-full text-sm bg-card p-2.5 rounded-lg border border-warning/40 dark:border-amber-700 text-warning dark:text-warning shadow-sm focus:outline-none focus:ring-2 focus:ring-warning"
                                                 >
                                                     {currentIssue.metadata.options.map((opt: any) => (
                                                         <option key={opt.sku} value={opt.sku}>
@@ -236,7 +236,7 @@ export default function DiscrepancyResolverArtifact({ issues, onResolve, onClose
                                                         </option>
                                                     ))}
                                                 </select>
-                                                <div className="text-[10px] font-bold text-amber-600 uppercase tracking-widest inline-flex items-center gap-1 bg-amber-50 dark:bg-amber-900/10 px-2 py-1 rounded">
+                                                <div className="text-[10px] font-bold text-warning uppercase tracking-widest inline-flex items-center gap-1 bg-warning/10 dark:bg-warning/10 px-2 py-1 rounded">
                                                     Action Needed: Select an alternative SKU
                                                 </div>
                                             </div>
@@ -244,10 +244,10 @@ export default function DiscrepancyResolverArtifact({ issues, onResolve, onClose
                                             <>
                                                 <div className="font-mono text-sm bg-card p-2 rounded border border-indigo-100 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 shadow-sm flex items-center gap-2 mt-1">
                                                     {String(currentIssue.suggestion.value)}
-                                                    <CheckCircleIcon className="w-4 h-4 text-green-500 ml-auto" />
+                                                    <CheckCircleIcon className="w-4 h-4 text-success ml-auto" />
                                                 </div>
                                                 {currentIssue.suggestion.subText && (
-                                                    <div className="text-xs text-green-600 font-medium mt-1">{currentIssue.suggestion.subText}</div>
+                                                    <div className="text-xs text-success font-medium mt-1">{currentIssue.suggestion.subText}</div>
                                                 )}
                                             </>
                                         )}
@@ -270,7 +270,7 @@ export default function DiscrepancyResolverArtifact({ issues, onResolve, onClose
                         <button
                             onClick={handleBatchFix}
                             disabled={isAutoFixing}
-                            className={`mr-2 px-3 py-2 text-xs font-bold uppercase tracking-wide disabled:opacity-50 whitespace-nowrap flex items-center gap-1 rounded-lg transition-colors ${isSubstitution ? 'text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/30' : 'text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/30'}`}
+                            className={`mr-2 px-3 py-2 text-xs font-bold uppercase tracking-wide disabled:opacity-50 whitespace-nowrap flex items-center gap-1 rounded-lg transition-colors ${isSubstitution ? 'text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/30' : 'text-warning hover:bg-warning/10 dark:hover:bg-warning/15'}`}
                         >
                             <SparklesIcon className="w-4 h-4" />
                             Auto-Fix ({issues.length})
@@ -290,7 +290,7 @@ export default function DiscrepancyResolverArtifact({ issues, onResolve, onClose
                     <button
                         onClick={() => handleAction('accept')}
                         disabled={isAutoFixing}
-                        className={`flex-1 sm:flex-none px-6 py-2 rounded-lg text-white font-bold transition-colors shadow-sm flex items-center justify-center gap-2 whitespace-nowrap ${isSubstitution ? 'bg-indigo-600 hover:bg-indigo-700 shadow-indigo-200 dark:shadow-indigo-900/20' : 'bg-amber-600 hover:bg-amber-700 shadow-amber-200 dark:shadow-amber-900/20'}`}
+                        className={`flex-1 sm:flex-none px-6 py-2 rounded-lg text-white font-bold transition-colors shadow-sm flex items-center justify-center gap-2 whitespace-nowrap ${isSubstitution ? 'bg-indigo-600 hover:bg-indigo-700 shadow-indigo-200 dark:shadow-indigo-900/20' : 'bg-warning hover:bg-warning/90 shadow-amber-200 dark:shadow-amber-900/20'}`}
                     >
                         <CheckCircleIcon className="w-4 h-4" />
                         Accept & Next

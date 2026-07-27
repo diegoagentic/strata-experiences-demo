@@ -328,7 +328,7 @@ function JobCard({ job, highlighted, queued, draggable, onDragStart, onDragEnd, 
                 job.justArrived ? 'border-ai/40 ring-2 ring-ai/30' :
                 suggestDrag    ? 'border-ai ring-2 ring-ai/50 ring-offset-1 ring-offset-card animate-pulse' :
                 aiFlagged      ? 'border-warning/50' :
-                highlighted    ? 'border-red-300 ring-1 ring-red-200 dark:border-red-500/50 dark:ring-red-500/20' :
+                highlighted    ? 'border-destructive/40 ring-1 ring-red-200 dark:border-destructive/30 dark:ring-red-500/20' :
                 queued         ? 'border-yellow-300 dark:border-yellow-500/50' :
                                  'border-border hover:border-foreground/30'
             } ${job.skipped ? 'opacity-50 grayscale' : ''}`}

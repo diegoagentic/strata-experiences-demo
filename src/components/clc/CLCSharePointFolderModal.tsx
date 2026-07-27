@@ -95,7 +95,7 @@ export default function CLCSharePointFolderModal({
                                 <p className="text-xs text-foreground leading-snug flex-1 min-w-0">
                                     <strong className="text-foreground">Live</strong> · published {publishedDate} · {assets.length} asset{assets.length !== 1 ? 's' : ''} · {(totalSizeKb / 1024).toFixed(1)} MB
                                     {flaggedCount > 0 && (
-                                        <span className="text-amber-700 dark:text-amber-300"> · {flaggedCount} flagged · operator verified</span>
+                                        <span className="text-warning dark:text-warning"> · {flaggedCount} flagged · operator verified</span>
                                     )}
                                 </p>
                                 <span className="inline-flex items-center gap-1 text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
@@ -121,7 +121,7 @@ export default function CLCSharePointFolderModal({
                                             return (
                                                 <div key={type}>
                                                     <div className="flex items-center gap-1.5 mb-1.5">
-                                                        <Folder className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+                                                        <Folder className="h-3.5 w-3.5 text-info" />
                                                         <span className="text-xs font-mono font-bold text-foreground">{folderName}/</span>
                                                         <span className="text-[10px] text-muted-foreground">{grouped[type].length} file{grouped[type].length !== 1 ? 's' : ''}</span>
                                                     </div>
@@ -135,7 +135,7 @@ export default function CLCSharePointFolderModal({
                                                                 <FileText className="h-3 w-3 text-muted-foreground shrink-0" />
                                                                 <span className="font-mono text-[11px] text-foreground truncate flex-1">{a.name}</span>
                                                                 {a.aiFlagged && (
-                                                                    <span className="inline-flex items-center gap-0.5 text-[9px] font-bold px-1 py-0.5 rounded bg-amber-100 text-amber-800 dark:bg-amber-500/20 dark:text-amber-200 uppercase tracking-wider">
+                                                                    <span className="inline-flex items-center gap-0.5 text-[9px] font-bold px-1 py-0.5 rounded bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning uppercase tracking-wider">
                                                                         <Sparkles className="h-2.5 w-2.5" />
                                                                         Flag
                                                                     </span>
@@ -195,7 +195,7 @@ export default function CLCSharePointFolderModal({
                                     <p className="text-sm font-semibold text-foreground mb-1">{previewAsset?.name}</p>
                                     <p className="text-xs">PDF preview (mock) · in production this renders the actual document inline from SharePoint.</p>
                                     {previewAsset?.aiFlagged && (
-                                        <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 dark:border-amber-500/30 dark:bg-amber-500/10 p-3 text-left">
+                                        <div className="mt-4 rounded-lg border border-warning/30 bg-warning/10 dark:border-warning/30 dark:bg-warning/10 p-3 text-left">
                                             <div className="flex items-center gap-1.5 mb-1">
                                                 <Sparkles className="h-3.5 w-3.5 text-zinc-800 dark:text-zinc-200" />
                                                 <span className="text-[10px] font-bold uppercase tracking-wider text-foreground">Strata AI flag</span>

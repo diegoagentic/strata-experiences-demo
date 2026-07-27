@@ -154,7 +154,7 @@ export default function PMExecutionHandoff({
                     'rounded-2xl border overflow-hidden transition-all duration-500',
                     phase === 'email-received'
                         ? 'bg-indigo-500/5 dark:bg-indigo-500/10 border-indigo-500/30 animate-in fade-in slide-in-from-top-2'
-                        : 'bg-card dark:bg-zinc-800 border-border'
+                        : 'bg-card border-border'
                 )}
             >
                 <div className="flex items-start gap-3 px-5 py-4">
@@ -205,7 +205,7 @@ export default function PMExecutionHandoff({
                 phase === 'queued') && (
                 <div
                     className={clsx(
-                        'bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm overflow-hidden transition-all duration-500',
+                        'bg-card rounded-2xl border border-border shadow-sm overflow-hidden transition-all duration-500',
                         phase === 'planning'
                             ? 'animate-in fade-in slide-in-from-bottom-2'
                             : ''
@@ -241,7 +241,7 @@ export default function PMExecutionHandoff({
                                         'flex flex-col h-full rounded-xl border p-3 transition-all',
                                         row.aiHighlight
                                             ? 'bg-primary/5 dark:bg-primary/10 border-primary/30 ring-1 ring-primary/20'
-                                            : 'bg-card dark:bg-zinc-800 border-border'
+                                            : 'bg-card border-border'
                                     )}
                                 >
                                     <div className="flex items-center gap-2">
@@ -316,11 +316,11 @@ export default function PMExecutionHandoff({
 
             {/* ═══ QUEUED SUCCESS STATE ═════════════════════════════════════ */}
             {phase === 'queued' && (
-                <div className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm overflow-hidden animate-in fade-in zoom-in-95 duration-500">
+                <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden animate-in fade-in zoom-in-95 duration-500">
                     <div className="px-6 py-6 text-center">
-                        <div className="mx-auto w-16 h-16 rounded-full bg-green-500/10 border-2 border-green-500 flex items-center justify-center">
+                        <div className="mx-auto w-16 h-16 rounded-full bg-success/10 border-2 border-success flex items-center justify-center">
                             <Check
-                                className="w-8 h-8 text-green-600 dark:text-green-400"
+                                className="w-8 h-8 text-success"
                                 strokeWidth={3}
                             />
                         </div>
@@ -352,7 +352,7 @@ export default function PMExecutionHandoff({
                                     className="rounded-xl bg-muted/40 px-3 py-2.5 flex items-center gap-2"
                                 >
                                     {step.state === 'done' ? (
-                                        <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 shrink-0" />
+                                        <CheckCircle2 className="w-4 h-4 text-success shrink-0" />
                                     ) : (
                                         <Clock className="w-4 h-4 text-muted-foreground shrink-0" />
                                     )}

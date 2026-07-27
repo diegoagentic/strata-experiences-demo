@@ -36,7 +36,7 @@ const MessageBubble = ({ message }: { message: StreamMessage }) => {
                         }}
                         target={isInternal ? undefined : '_blank'}
                         rel={isInternal ? undefined : 'noopener noreferrer'}
-                        className={`font-semibold hover:underline px-1 rounded ${isUser ? 'text-zinc-900 bg-white/20' : 'text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/20'
+                        className={`font-semibold hover:underline px-1 rounded ${isUser ? 'text-zinc-900 bg-white/20' : 'text-info bg-info/10 dark:bg-info/15'
                             }`}
                     >
                         {text}
@@ -127,7 +127,7 @@ export default function StreamFeed() {
                         <button
                             onClick={clearStream}
                             title="New conversation"
-                            className="flex items-center gap-1 text-[10px] text-muted-foreground hover:text-red-500 dark:hover:text-red-400 transition-colors px-2 py-1 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/10"
+                            className="flex items-center gap-1 text-[10px] text-muted-foreground hover:text-destructive dark:hover:text-destructive transition-colors px-2 py-1 rounded-lg hover:bg-destructive/10 dark:hover:bg-destructive/15"
                         >
                             <ArrowPathIcon className="w-3.5 h-3.5" />
                             New
@@ -148,8 +148,8 @@ export default function StreamFeed() {
             <div className="flex-1 overflow-y-auto px-4 py-4 scrollbar-micro">
                 {showTriggers ? (
                     <div className="space-y-2">
-                        <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl mb-4">
-                            <p className="text-xs text-blue-700 dark:text-blue-300">
+                        <div className="p-3 bg-info/10 dark:bg-info/15 rounded-xl mb-4">
+                            <p className="text-xs text-info dark:text-info">
                                 Select a scenario below to simulate the generative workflow.
                             </p>
                         </div>
@@ -158,16 +158,16 @@ export default function StreamFeed() {
                                 key={trigger.id}
                                 onClick={() => handleTriggerClick(trigger.prompt)}
                                 className={`w-full text-left p-3 rounded-xl transition-all flex items-center justify-between group border ${highlightedTrigger === trigger.id
-                                    ? "bg-green-100 dark:bg-green-900/30 border-green-500 animate-[pulse_1.5s_ease-in-out_infinite] relative z-50 shadow-lg glow"
+                                    ? "bg-success/15 border-success animate-[pulse_1.5s_ease-in-out_infinite] relative z-50 shadow-lg glow"
                                     : "border-transparent hover:bg-muted hover:border-zinc-200 dark:hover:border-zinc-700"
                                     }`}
                             >
                                 <div>
                                     <div className="flex items-center gap-2 mb-0.5">
-                                        <span className={`w-2 h-2 rounded-full ${trigger.category === 'correction' ? 'bg-red-400' :
-                                            trigger.category === 'sourcing' ? 'bg-amber-400' :
+                                        <span className={`w-2 h-2 rounded-full ${trigger.category === 'correction' ? 'bg-destructive' :
+                                            trigger.category === 'sourcing' ? 'bg-warning' :
                                                 trigger.category === 'layout' ? 'bg-indigo-400' :
-                                                    trigger.category === 'support' ? 'bg-blue-400' : 'bg-green-400'
+                                                    trigger.category === 'support' ? 'bg-info' : 'bg-success'
                                             }`} />
                                         <span className="font-semibold text-sm text-foreground">{trigger.label}</span>
                                     </div>

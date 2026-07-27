@@ -107,16 +107,16 @@ export default function SifExportModal({
                         leaveFrom="opacity-100 scale-100"
                         leaveTo="opacity-0 scale-95"
                     >
-                        <DialogPanel className="w-full max-w-lg bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-2xl overflow-hidden">
+                        <DialogPanel className="w-full max-w-lg bg-card rounded-2xl border border-border shadow-2xl overflow-hidden">
 
                             {/* Header */}
                             <div className="flex items-start gap-4 px-6 py-5 border-b border-border">
                                 <div className={clsx(
                                     'p-3 rounded-xl shrink-0',
-                                    isDone ? 'bg-green-500/10' : 'bg-primary/10'
+                                    isDone ? 'bg-success/10' : 'bg-primary/10'
                                 )}>
                                     {isDone ? (
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
+                                        <CheckCircle2 className="w-5 h-5 text-success" />
                                     ) : (
                                         <FileCode2 className="w-5 h-5 text-foreground dark:text-primary" />
                                     )}
@@ -153,7 +153,7 @@ export default function SifExportModal({
                                     <div
                                         className={clsx(
                                             'h-full transition-all duration-500 ease-out',
-                                            isDone ? 'bg-green-500' : 'bg-primary'
+                                            isDone ? 'bg-success/100' : 'bg-primary'
                                         )}
                                         style={{ width: `${progress}%` }}
                                     />
@@ -175,7 +175,7 @@ export default function SifExportModal({
                                         >
                                             <div className="shrink-0 mt-0.5">
                                                 {isComplete ? (
-                                                    <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400" />
+                                                    <CheckCircle2 className="w-4 h-4 text-success" />
                                                 ) : isActive ? (
                                                     <Loader2 className="w-4 h-4 text-primary animate-spin" />
                                                 ) : (
@@ -204,7 +204,7 @@ export default function SifExportModal({
                             {isDone && (
                                 <div className="px-6 py-4 border-t border-border bg-muted/20 space-y-3 animate-in fade-in duration-300">
                                     {/* File card */}
-                                    <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-card dark:bg-zinc-900 border border-border">
+                                    <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-card border border-border">
                                         <div className="shrink-0 w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                                             <FileCode2 className="w-5 h-5 text-foreground dark:text-primary" />
                                         </div>
@@ -217,8 +217,8 @@ export default function SifExportModal({
                                             </p>
                                         </div>
                                         <div className="flex items-center gap-1 shrink-0">
-                                            <ShieldCheck className="w-3 h-3 text-green-600 dark:text-green-400" />
-                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">
+                                            <ShieldCheck className="w-3 h-3 text-success" />
+                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">
                                                 Verified
                                             </span>
                                         </div>

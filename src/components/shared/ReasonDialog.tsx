@@ -196,7 +196,7 @@ export default function ReasonDialog({
                 <div className="fixed inset-0 overflow-y-auto">
                     <div className="flex min-h-full items-center justify-center p-4">
                         <TransitionChild as={Fragment} enter="ease-out duration-200" enterFrom="opacity-0 scale-95 translate-y-2" enterTo="opacity-100 scale-100 translate-y-0" leave="ease-in duration-150" leaveFrom="opacity-100 scale-100" leaveTo="opacity-0 scale-95">
-                            <DialogPanel className="w-full max-w-xl bg-card dark:bg-zinc-900 border border-border rounded-2xl shadow-2xl">
+                            <DialogPanel className="w-full max-w-xl bg-card border border-border rounded-2xl shadow-2xl">
                                 <div className="px-5 py-4 border-b border-border flex items-start justify-between gap-3">
                                     <div className="flex items-start gap-3">
                                         <div className={`h-10 w-10 rounded-xl ${toneCfg.headerIconBg} ${toneCfg.headerIconColor} flex items-center justify-center shrink-0`}>

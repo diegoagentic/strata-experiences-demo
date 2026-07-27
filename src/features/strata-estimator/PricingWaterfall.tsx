@@ -59,17 +59,17 @@ const ROW_STEP_MS = 700
 
 const ROW_STYLES: Record<RowType, string> = {
     base:     'bg-muted/40',
-    discount: 'bg-green-500/5 dark:bg-green-500/10 border border-green-500/20',
-    subtotal: 'bg-green-500/10 dark:bg-green-500/15 border border-green-500/30',
-    addon:    'bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/20',
+    discount: 'bg-success/100/5 dark:bg-success/10 border border-success/30',
+    subtotal: 'bg-success/10 dark:bg-success/15 border border-success/30',
+    addon:    'bg-info/100/5 dark:bg-info/10 border border-info/30',
     total:    'bg-primary/5 dark:bg-primary/10 border-2 border-primary/40',
 }
 
 const TEXT_STYLES: Record<RowType, string> = {
     base:     'text-foreground',
-    discount: 'text-green-700 dark:text-green-400',
-    subtotal: 'text-green-700 dark:text-green-400',
-    addon:    'text-blue-700 dark:text-blue-400',
+    discount: 'text-success',
+    subtotal: 'text-success',
+    addon:    'text-info',
     total:    'text-foreground',
 }
 
@@ -225,7 +225,7 @@ export default function PricingWaterfall({
                         leaveFrom="opacity-100 scale-100"
                         leaveTo="opacity-0 scale-95"
                     >
-                        <DialogPanel className="w-full max-w-xl bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-2xl overflow-hidden">
+                        <DialogPanel className="w-full max-w-xl bg-card rounded-2xl border border-border shadow-2xl overflow-hidden">
 
                             {/* Header */}
                             <div className="flex items-start gap-4 px-6 py-5 border-b border-border">
@@ -380,7 +380,7 @@ export default function PricingWaterfall({
                                     disabled={!done}
                                 >
                                     <div className="relative flex-1 min-w-0">
-                                        <ListboxButton className="w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-card dark:bg-zinc-900 border border-border hover:border-primary/60 transition-colors text-left focus:outline-none focus:ring-1 focus:ring-primary">
+                                        <ListboxButton className="w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-card border border-border hover:border-primary/60 transition-colors text-left focus:outline-none focus:ring-1 focus:ring-primary">
                                             {selectedDealer && (
                                                 <>
                                                     <img
@@ -409,7 +409,7 @@ export default function PricingWaterfall({
                                             leaveFrom="opacity-100"
                                             leaveTo="opacity-0"
                                         >
-                                            <ListboxOptions className="absolute bottom-full left-0 right-0 mb-2 z-20 overflow-hidden rounded-xl bg-card dark:bg-zinc-800 border border-border shadow-xl py-1 focus:outline-none">
+                                            <ListboxOptions className="absolute bottom-full left-0 right-0 mb-2 z-20 overflow-hidden rounded-xl bg-card border border-border shadow-xl py-1 focus:outline-none">
                                                 {dealers.map((dealer) => (
                                                     <ListboxOption
                                                         key={dealer.id}

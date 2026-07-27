@@ -82,7 +82,7 @@ export default function OrderTrackerScene({ onConfirm }: OrderTrackerSceneProps)
                         <div className="text-xs font-bold text-foreground">DOE-2847 · NYC Dept. of Education</div>
                         <div className="text-[11px] text-muted-foreground mt-0.5">PO 18082-27619 · Delivery May 14, 2026 · $236,100</div>
                     </div>
-                    <div className="text-[11px] font-bold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 rounded-lg px-2 py-0.5">
+                    <div className="text-[11px] font-bold text-warning bg-warning/10 border border-warning/20 rounded-lg px-2 py-0.5">
                         Receiving pending
                     </div>
                 </div>
@@ -109,7 +109,7 @@ export default function OrderTrackerScene({ onConfirm }: OrderTrackerSceneProps)
                             <div className="shrink-0">
                                 {row.icon === 'check'
                                     ? <CheckCircle2 className="h-4 w-4 text-success" />
-                                    : <Clock className="h-4 w-4 text-amber-500" />
+                                    : <Clock className="h-4 w-4 text-warning" />
                                 }
                             </div>
                             <div className="flex-1 min-w-0">
@@ -124,7 +124,7 @@ export default function OrderTrackerScene({ onConfirm }: OrderTrackerSceneProps)
 
             {/* WIG pending note + reminder CTA */}
             {wigPending && !reminderSet && (
-                <div className="flex items-center justify-between gap-3 border border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/5 rounded-xl px-3.5 py-2.5 animate-in fade-in duration-300">
+                <div className="flex items-center justify-between gap-3 border border-warning/30 bg-warning/10 rounded-xl px-3.5 py-2.5 animate-in fade-in duration-300">
                     <div className="text-[11px] text-foreground">
                         <span className="font-bold">WIG in transit</span> · Lauren sets a reminder for receiving confirmation
                     </div>

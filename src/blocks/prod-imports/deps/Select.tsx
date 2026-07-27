@@ -53,7 +53,7 @@ export default function Select<T extends string>({ value, onChange, options, cla
                                             {option}
                                         </span>
                                         {selected ? (
-                                            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-zinc-900 dark:text-primary">
+                                            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-primary">
                                                 <CheckIcon className="h-5 w-5" aria-hidden="true" />
                                             </span>
                                         ) : null}

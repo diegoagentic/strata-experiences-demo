@@ -80,46 +80,46 @@ const STEP_CARD_PREVIEW: Record<string, {
         accentClass: 'border-emerald-500/20 bg-success/5',
     },
     '1.3': {
-        icon: <BrainCircuit size={12} className="text-green-600 dark:text-green-400" />,
+        icon: <BrainCircuit size={12} className="text-success" />,
         title: 'Normalization Pipeline',
         subtitle: '4 agents — Parser + Normalizer',
         detail: 'Mapping 200 line items to catalog schema. Generating confidence scores.',
-        accentClass: 'border-green-500/20 bg-green-500/5',
+        accentClass: 'border-success/30 bg-success/100/5',
     },
     '1.4': {
-        icon: <FileText size={12} className="text-amber-600 dark:text-amber-400" />,
+        icon: <FileText size={12} className="text-warning" />,
         title: 'QuoteBuilder Agent',
         subtitle: '4 agents — Building quote draft',
         detail: 'Applying pricing rules and discounts. Multi-zone freight routing required.',
-        accentClass: 'border-amber-500/20 bg-amber-500/5',
+        accentClass: 'border-warning/30 bg-warning/10',
     },
     '2.2': {
-        icon: <Cpu size={12} className="text-blue-600 dark:text-blue-400" />,
+        icon: <Cpu size={12} className="text-info" />,
         title: 'ERP Normalization',
         subtitle: '8 agents — EDI/855 from eManage ONE',
         detail: 'Mapping raw EDI fields to standard schema. Linking PO ↔ Acknowledgement entities.',
-        accentClass: 'border-blue-500/20 bg-blue-500/5',
+        accentClass: 'border-info/30 bg-info/100/5',
     },
     '2.3': {
-        icon: <Cpu size={12} className="text-red-600 dark:text-red-400" />,
+        icon: <Cpu size={12} className="text-destructive" />,
         title: 'Delta Engine',
         subtitle: '8 agents — PO vs Acknowledgement comparison',
         detail: 'Line-by-line comparison in progress. Checking for substitutions and price deltas.',
-        accentClass: 'border-red-500/20 bg-red-500/5',
+        accentClass: 'border-destructive/30 bg-destructive/5',
     },
     '3.2': {
-        icon: <Cpu size={12} className="text-blue-600 dark:text-blue-400" />,
+        icon: <Cpu size={12} className="text-info" />,
         title: 'ERP Normalization',
         subtitle: '8 agents — EDI/855 from eManage ONE',
         detail: 'Mapping raw EDI fields to standard schema. Linking PO ↔ Acknowledgement entities.',
-        accentClass: 'border-blue-500/20 bg-blue-500/5',
+        accentClass: 'border-info/30 bg-info/100/5',
     },
     '3.3': {
-        icon: <Cpu size={12} className="text-red-600 dark:text-red-400" />,
+        icon: <Cpu size={12} className="text-destructive" />,
         title: 'Delta Engine',
         subtitle: '8 agents — PO vs Acknowledgement comparison',
         detail: 'Line-by-line comparison in progress. Checking for substitutions and price deltas.',
-        accentClass: 'border-red-500/20 bg-red-500/5',
+        accentClass: 'border-destructive/30 bg-destructive/5',
     },
 };
 
@@ -342,9 +342,9 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                 <div className="bg-zinc-900 backdrop-blur-md rounded-2xl p-4 border border-zinc-800 shadow-sm flex flex-col xl:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-8 overflow-x-auto w-full scrollbar-hide px-2 scroll-smooth">
                         {[
-                            { icon: <Clock size={18} />, value: '12', label: 'Awaiting Review', color: 'text-amber-600 dark:text-amber-400 bg-amber-500/10' },
-                            { icon: <Bot size={18} />, value: '4', label: 'Active Agents', color: 'text-blue-600 dark:text-blue-400 bg-blue-500/10' },
-                            { icon: <CheckCircle2 size={18} />, value: '28', label: 'Completed Today', color: 'text-green-600 dark:text-green-400 bg-green-500/10' },
+                            { icon: <Clock size={18} />, value: '12', label: 'Awaiting Review', color: 'text-warning bg-warning/10' },
+                            { icon: <Bot size={18} />, value: '4', label: 'Active Agents', color: 'text-info bg-info/10' },
+                            { icon: <CheckCircle2 size={18} />, value: '28', label: 'Completed Today', color: 'text-success bg-success/10' },
                             { icon: <Zap size={18} />, value: '$892K', label: 'Queue Value', color: 'text-indigo-600 dark:text-indigo-400 bg-indigo-500/10' },
                         ].map((kpi, i) => (
                             <div key={i} className="flex items-center gap-3 min-w-fit">
@@ -456,8 +456,8 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                         >
                                             <div className={`flex flex-col ${previewMode ? 'gap-2' : 'gap-3'}`}>
                                                 <div className="flex items-start justify-between">
-                                                    <span className={`text-[10px] font-medium uppercase px-2 py-0.5 rounded-full ring-1 ring-inset ${card.priority === 'critical' ? 'bg-red-500/10 text-red-600 dark:text-red-400 ring-red-500/30' :
-                                                        card.priority === 'high' ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 ring-amber-500/30' :
+                                                    <span className={`text-[10px] font-medium uppercase px-2 py-0.5 rounded-full ring-1 ring-inset ${card.priority === 'critical' ? 'bg-destructive/10 text-destructive ring-red-500/30' :
+                                                        card.priority === 'high' ? 'bg-warning/10 text-warning ring-amber-500/30' :
                                                             'bg-gray-200 dark:bg-zinc-700 text-muted-foreground ring-gray-300 dark:ring-zinc-600'
                                                         }`}>
                                                         {card.priority}
@@ -483,7 +483,7 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                                     </div>
                                                     <div className="flex-1" />
                                                     <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground font-medium">
-                                                        <CheckCircle2 size={12} className="text-green-600 dark:text-green-400" />
+                                                        <CheckCircle2 size={12} className="text-success" />
                                                         <span>4 items ready</span>
                                                     </div>
                                                 </div>
@@ -629,7 +629,7 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                 <div className="space-y-1.5">
                                     {priceAgents.map(agent => (
                                         <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"}`}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />}
                                             <span className={`font-medium ${agent.done ? "text-foreground" : "text-indigo-600 dark:text-indigo-400"}`}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
@@ -641,24 +641,24 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                         {/* Breathing */}
                         {pricePhase === 'breathing' && (
                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/100 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">Processing complete — syncing external systems...</span>
                             </div>
                         )}
 
                         {/* Confirmed */}
                         {(pricePhase === 'revealed' || pricePhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">PriceVerificationAgent:</span> Scan complete — <span className="font-semibold">14 items with outdated cost basis</span>. 6 flagged below 25% margin. 3 consignment items approaching 90-day review.</p>
+                                        <p className="text-xs text-success dark:text-success"><span className="font-bold">PriceVerificationAgent:</span> Scan complete — <span className="font-semibold">14 items with outdated cost basis</span>. 6 flagged below 25% margin. 3 consignment items approaching 90-day review.</p>
                                         <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">External Systems · Synced</span>
+                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                             {['Price List API', 'Cost Engine', 'Margin Calculator', 'Consignment DB', 'Report Service'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/15 dark:bg-success/10 text-success dark:text-success text-[10px] font-medium border border-success/30/50 dark:border-success/30">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -679,7 +679,7 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                             <p className="text-[11px] text-muted-foreground mt-0.5">200+ price lists scanned · 14 discrepancies · Avg margin 34%</p>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 font-bold">6 Below 25%</span>
+                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-warning/15 dark:bg-warning/10 text-warning font-bold">6 Below 25%</span>
                                             <span className="text-[10px] px-2.5 py-1 rounded-full bg-indigo-100 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 font-bold">Avg 34%</span>
                                         </div>
                                     </div>
@@ -699,14 +699,14 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                             </thead>
                                             <tbody>
                                                 {PRICE_DISCREPANCIES.map((row, i) => (
-                                                    <tr key={i} className={`border-b border-border/50 ${row.flag ? "bg-red-50/50 dark:bg-red-500/5" : "hover:bg-muted/30"}`}>
+                                                    <tr key={i} className={`border-b border-border/50 ${row.flag ? "bg-destructive/10" : "hover:bg-muted/30"}`}>
                                                         <td className="px-4 py-2.5 text-[11px] font-medium text-foreground">{row.item}</td>
                                                         <td className="px-4 py-2.5 text-[11px] text-muted-foreground">{row.manufacturer}</td>
                                                         <td className="px-4 py-2.5 text-[11px] text-right text-muted-foreground">${row.oldCost}</td>
                                                         <td className="px-4 py-2.5 text-[11px] text-right font-bold text-foreground">${row.newCost}</td>
-                                                        <td className="px-4 py-2.5 text-[11px] text-right text-red-600 dark:text-red-400 font-medium">{row.change}</td>
+                                                        <td className="px-4 py-2.5 text-[11px] text-right text-destructive font-medium">{row.change}</td>
                                                         <td className="px-4 py-2.5 text-right">
-                                                            <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${row.flag ? "bg-red-100 dark:bg-red-500/10 text-red-700 dark:text-red-400" : "bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400"}`}>{row.margin}</span>
+                                                            <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${row.flag ? "bg-destructive/15 dark:bg-destructive/10 text-destructive" : "bg-success/15 dark:bg-success/10 text-success"}`}>{row.margin}</span>
                                                         </td>
                                                     </tr>
                                                 ))}
@@ -715,17 +715,17 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                     </div>
 
                                     {/* Consignment Alerts */}
-                                    <div className="mx-4 my-4 p-4 rounded-xl bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/20">
-                                        <h4 className="text-xs font-bold text-amber-800 dark:text-amber-300 mb-2 flex items-center gap-1.5"><ExclamationTriangleIcon className="h-4 w-4" />Consignment Review — 90-Day Window</h4>
+                                    <div className="mx-4 my-4 p-4 rounded-xl bg-warning/10 border border-warning/20">
+                                        <h4 className="text-xs font-bold text-warning mb-2 flex items-center gap-1.5"><ExclamationTriangleIcon className="h-4 w-4" />Consignment Review — 90-Day Window</h4>
                                         <div className="space-y-2">
                                             {CONSIGNMENT_ALERTS.map((ca, i) => (
-                                                <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-amber-100 dark:border-amber-500/10">
+                                                <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-warning/20 dark:border-warning/30">
                                                     <div>
                                                         <p className="text-[11px] font-medium text-foreground">{ca.item}</p>
                                                         <p className="text-[10px] text-muted-foreground">{ca.manufacturer} · Qty: {ca.qty}</p>
                                                     </div>
                                                     <div className="flex items-center gap-2">
-                                                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${ca.daysLeft <= 14 ? "bg-red-100 dark:bg-red-500/10 text-red-700 dark:text-red-400" : "bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400"}`}>{ca.daysLeft}d left</span>
+                                                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${ca.daysLeft <= 14 ? "bg-destructive/15 dark:bg-destructive/10 text-destructive" : "bg-warning/15 dark:bg-warning/10 text-warning"}`}>{ca.daysLeft}d left</span>
                                                         <span className="text-[10px] font-bold text-foreground">{ca.value}</span>
                                                     </div>
                                                 </div>
@@ -752,11 +752,11 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                             <button onClick={() => setReconPhase('processing')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
                                 <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
                                     <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-amber-600 text-white"><CurrencyDollarIcon className="h-4 w-4" /></div>
+                                        <div className="p-2 rounded-lg bg-warning text-white"><CurrencyDollarIcon className="h-4 w-4" /></div>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
                                                 <span className="text-xs font-bold text-foreground">Financial Reconciliation — UAL Project</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-amber-600 text-white font-bold">4 aging</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-warning text-white font-bold">4 aging</span>
                                             </div>
                                             <p className="text-[11px] text-muted-foreground mt-1">FinancialAgent: Reconciling <span className="font-semibold text-foreground">47 POs → 42 invoices → 38 payments</span>. 4 invoices aging &gt;30 days — AI-categorized with actions.</p>
                                             <p className="text-[10px] text-brand-600 dark:text-brand-400 mt-2 flex items-center gap-1">Click to review reconciliation <ArrowRightIcon className="h-3 w-3" /></p>
@@ -774,13 +774,13 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                     <span className="text-xs font-bold text-foreground">FinancialAgent Reconciling...</span>
                                 </div>
                                 <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                    <div className="h-full rounded-full bg-amber-500 transition-all duration-[3500ms] ease-linear" style={{ width: `${reconProgress}%` }} />
+                                    <div className="h-full rounded-full bg-warning transition-all duration-[3500ms] ease-linear" style={{ width: `${reconProgress}%` }} />
                                 </div>
                                 <div className="space-y-1.5">
                                     {reconAgents.map(agent => (
                                         <div key={agent.name} className={`flex items-center gap-2 text-[10px] transition-all duration-300 ${agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"}`}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-amber-500 animate-spin shrink-0" />}
-                                            <span className={`font-medium ${agent.done ? "text-foreground" : "text-amber-600 dark:text-amber-400"}`}>{agent.name}</span>
+                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-warning animate-spin shrink-0" />}
+                                            <span className={`font-medium ${agent.done ? "text-foreground" : "text-warning"}`}>{agent.name}</span>
                                             <span className="text-muted-foreground">{agent.detail}</span>
                                         </div>
                                     ))}
@@ -791,24 +791,24 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                         {/* Breathing */}
                         {reconPhase === 'breathing' && (
                             <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/100 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">Processing complete — syncing external systems...</span>
                             </div>
                         )}
 
                         {/* Confirmed */}
                         {(reconPhase === 'revealed' || reconPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30 animate-in fade-in duration-300">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30 animate-in fade-in duration-300">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar size="sm" />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-green-800 dark:text-green-200"><span className="font-bold">FinancialAgent:</span> Reconciliation complete — <span className="font-semibold">47 POs, 42 invoices, 38 payments</span>. 4 aging invoices categorized. Margin: 33.2% vs 34% quoted.</p>
+                                        <p className="text-xs text-success dark:text-success"><span className="font-bold">FinancialAgent:</span> Reconciliation complete — <span className="font-semibold">47 POs, 42 invoices, 38 payments</span>. 4 aging invoices categorized. Margin: 33.2% vs 34% quoted.</p>
                                         <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">External Systems · Synced</span>
+                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                                             {['ERP System', 'Payment Gateway', 'Aging Engine', 'Margin Calculator', 'Report Service'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-500/10 text-green-800 dark:text-green-300 text-[10px] font-medium border border-green-200/50 dark:border-green-500/20">
+                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/15 dark:bg-success/10 text-success text-[10px] font-medium border border-success/30/50 dark:border-success/30">
                                                     <CheckCircleIcon className="h-3 w-3" />{sys}
                                                 </span>
                                             ))}
@@ -829,17 +829,17 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                             <p className="text-[11px] text-muted-foreground mt-0.5">47 POs · 42 invoices · 38 payments received</p>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 font-bold">4 Aging</span>
-                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-bold">33.2% Margin</span>
+                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-warning/15 dark:bg-warning/10 text-warning font-bold">4 Aging</span>
+                                            <span className="text-[10px] px-2.5 py-1 rounded-full bg-success/15 dark:bg-success/10 text-success font-bold">33.2% Margin</span>
                                         </div>
                                     </div>
 
                                     {/* Reconciliation Summary */}
                                     <div className="p-4 grid grid-cols-3 gap-3">
                                         {[
-                                            { label: 'Purchase Orders', value: '47', sub: 'All tracked', color: 'text-blue-600 dark:text-blue-400' },
+                                            { label: 'Purchase Orders', value: '47', sub: 'All tracked', color: 'text-info' },
                                             { label: 'Invoices', value: '42', sub: '5 pending', color: 'text-indigo-600 dark:text-indigo-400' },
-                                            { label: 'Payments', value: '38', sub: '$2.45M received', color: 'text-green-600 dark:text-green-400' },
+                                            { label: 'Payments', value: '38', sub: '$2.45M received', color: 'text-success' },
                                         ].map(m => (
                                             <div key={m.label} className="text-center p-3 rounded-xl bg-muted/30 border border-border">
                                                 <p className={`text-lg font-bold ${m.color}`}>{m.value}</p>
@@ -850,21 +850,21 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                     </div>
 
                                     {/* Aging Invoices */}
-                                    <div className="mx-4 mb-4 p-4 rounded-xl bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/20">
-                                        <h4 className="text-xs font-bold text-amber-800 dark:text-amber-300 mb-3 flex items-center gap-1.5"><ExclamationTriangleIcon className="h-4 w-4" />Aging Invoices — &gt;30 Days</h4>
+                                    <div className="mx-4 mb-4 p-4 rounded-xl bg-warning/10 border border-warning/20">
+                                        <h4 className="text-xs font-bold text-warning mb-3 flex items-center gap-1.5"><ExclamationTriangleIcon className="h-4 w-4" />Aging Invoices — &gt;30 Days</h4>
                                         <div className="space-y-2">
                                             {AGING_INVOICES.map(inv => (
-                                                <div key={inv.id} className="flex items-center justify-between p-2.5 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-amber-100 dark:border-amber-500/10">
+                                                <div key={inv.id} className="flex items-center justify-between p-2.5 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-warning/20 dark:border-warning/30">
                                                     <div className="flex-1 min-w-0">
                                                         <div className="flex items-center gap-2">
                                                             <span className="text-[10px] font-mono font-bold text-foreground">{inv.id}</span>
                                                             <span className="text-[10px] text-muted-foreground">{inv.vendor}</span>
                                                         </div>
                                                         <p className="text-[10px] text-muted-foreground mt-0.5">{inv.reason}</p>
-                                                        <p className="text-[9px] text-amber-600 dark:text-amber-400 mt-0.5 font-medium">Action: {inv.action}</p>
+                                                        <p className="text-[9px] text-warning mt-0.5 font-medium">Action: {inv.action}</p>
                                                     </div>
                                                     <div className="flex items-center gap-2 shrink-0 ml-2">
-                                                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-500/10 text-red-700 dark:text-red-400 font-bold">{inv.days}d</span>
+                                                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-destructive/15 dark:bg-destructive/10 text-destructive font-bold">{inv.days}d</span>
                                                         <span className="text-[11px] font-bold text-foreground">{inv.amount}</span>
                                                     </div>
                                                 </div>
@@ -880,7 +880,7 @@ export default function DealerMonitorKanban({ previewMode = false }: DealerMonit
                                                 <p className="text-[10px] text-muted-foreground mt-0.5">Realized 33.2% vs quoted 34% — variance from Q1 price increases on 6 items</p>
                                             </div>
                                             <div className="text-right">
-                                                <p className="text-lg font-bold text-amber-600 dark:text-amber-400">33.2%</p>
+                                                <p className="text-lg font-bold text-warning">33.2%</p>
                                                 <p className="text-[9px] text-muted-foreground">quoted 34%</p>
                                             </div>
                                         </div>
@@ -962,11 +962,11 @@ function PreviewToolbar({
 }: PreviewToolbarProps) {
     // Mock avatar pool · decorative only, matches the "+2" chip pattern from prod.
     const avatars = [
-        { initials: 'DU', bg: 'bg-blue-500' },
-        { initials: 'SJ', bg: 'bg-amber-500' },
+        { initials: 'DU', bg: 'bg-info/100' },
+        { initials: 'SJ', bg: 'bg-warning' },
         { initials: 'MW', bg: 'bg-teal-500' },
         { initials: 'PS', bg: 'bg-indigo-500' },
-        { initials: 'DO', bg: 'bg-red-500' },
+        { initials: 'DO', bg: 'bg-destructive' },
         { initials: 'EM', bg: 'bg-emerald-500' },
     ];
     const tabs: Array<{ id: string; title: string; count: number }> = [
@@ -1107,9 +1107,9 @@ function PreviewListView({ cards, stages }: PreviewListViewProps) {
                 {cards.map(card => {
                     const bucket = CARD_PREVIEW_COLUMN[card.id] ?? card.column;
                     const priorityClass =
-                        card.priority === 'critical' ? 'bg-red-500/10 text-red-600 dark:text-red-400 ring-red-500/30' :
-                        card.priority === 'high'     ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 ring-amber-500/30' :
-                        card.priority === 'medium'   ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400 ring-blue-500/30' :
+                        card.priority === 'critical' ? 'bg-destructive/10 text-destructive ring-red-500/30' :
+                        card.priority === 'high'     ? 'bg-warning/10 text-warning ring-amber-500/30' :
+                        card.priority === 'medium'   ? 'bg-info/10 text-info ring-blue-500/30' :
                                                        'bg-muted text-muted-foreground ring-border';
                     return (
                         <li

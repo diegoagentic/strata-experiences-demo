@@ -16,13 +16,13 @@ export default function OrderCorrectionArtifact({ data }: { data: any }) {
 
     if (applied) {
         return (
-            <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800 flex items-start gap-3 animate-in fade-in zoom-in duration-300">
-                <div className="p-1 bg-green-100 dark:bg-green-900/40 rounded-full text-green-600 dark:text-green-400">
+            <div className="p-4 bg-success/10 dark:bg-success/15 rounded-lg border border-success/30 dark:border-success/40 flex items-start gap-3 animate-in fade-in zoom-in duration-300">
+                <div className="p-1 bg-success/15 dark:bg-success/20 rounded-full text-success">
                     <CheckCircleIcon className="w-5 h-5" />
                 </div>
                 <div>
-                    <h4 className="font-semibold text-green-900 dark:text-green-100 text-sm">Correction Applied</h4>
-                    <p className="text-xs text-green-800 dark:text-green-200 mt-1">Order #{data.orderId} updated to "{data.suggestion}".</p>
+                    <h4 className="font-semibold text-success dark:text-success text-sm">Correction Applied</h4>
+                    <p className="text-xs text-success dark:text-success mt-1">Order #{data.orderId} updated to "{data.suggestion}".</p>
                 </div>
             </div>
         );
@@ -31,9 +31,9 @@ export default function OrderCorrectionArtifact({ data }: { data: any }) {
     return (
         <div className="bg-card rounded-xl border border-border shadow-sm overflow-hidden">
             {/* Header */}
-            <div className="bg-amber-50 dark:bg-amber-900/20 px-4 py-3 border-b border-amber-100 dark:border-amber-800 flex items-center gap-2">
-                <ExclamationTriangleIcon className="w-4 h-4 text-amber-600 dark:text-amber-500" />
-                <h4 className="font-semibold text-amber-900 dark:text-amber-100 text-sm">Potential Error Detected</h4>
+            <div className="bg-warning/10 dark:bg-warning/15 px-4 py-3 border-b border-warning/20 dark:border-warning/40 flex items-center gap-2">
+                <ExclamationTriangleIcon className="w-4 h-4 text-warning dark:text-warning" />
+                <h4 className="font-semibold text-warning dark:text-warning text-sm">Potential Error Detected</h4>
             </div>
 
             <div className="p-4 space-y-4">
@@ -54,8 +54,8 @@ export default function OrderCorrectionArtifact({ data }: { data: any }) {
                     <ArrowRightIcon className="w-4 h-4 text-zinc-300" />
 
                     <div className="space-y-1">
-                        <p className="text-xs text-green-600 dark:text-green-400 uppercase tracking-wider font-semibold">Correction</p>
-                        <div className="font-bold text-green-700 dark:text-green-400">{data.suggestion}</div>
+                        <p className="text-xs text-success uppercase tracking-wider font-semibold">Correction</p>
+                        <div className="font-bold text-success">{data.suggestion}</div>
                         <div className="text-xs text-muted-foreground">Hard Floor (C7)</div>
                     </div>
                 </div>

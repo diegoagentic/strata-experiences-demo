@@ -242,31 +242,31 @@ export default function SmartRuleBuilderModal({ isOpen, onClose, onSaveRule, cur
                                                             -{formatCurrency(forecastedDiscount)}
                                                         </div>
                                                     </div>
-                                                    <div className={cn("px-2 py-1 rounded text-xs font-semibold", willApply ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" : "bg-zinc-200 text-muted-foreground dark:bg-zinc-700 dark:text-muted-foreground")}>
+                                                    <div className={cn("px-2 py-1 rounded text-xs font-semibold", willApply ? "bg-success/15 text-success dark:bg-success/20 dark:text-success" : "bg-zinc-200 text-muted-foreground dark:bg-zinc-700 dark:text-muted-foreground")}>
                                                         {willApply ? 'Condition Met' : 'Condition Not Met'}
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div className="bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/30 p-4 rounded-xl flex flex-col justify-between">
+                                            <div className="bg-warning/10 dark:bg-warning/10 border border-warning/20 dark:border-warning/40 p-4 rounded-xl flex flex-col justify-between">
                                                 <div>
-                                                    <div className="flex items-center gap-2 text-amber-700 dark:text-amber-400 font-semibold mb-2">
+                                                    <div className="flex items-center gap-2 text-warning font-semibold mb-2">
                                                         <ExclamationTriangleIcon className="w-5 h-5" />
                                                         Conflict Analysis
                                                     </div>
-                                                    <p className="text-sm text-amber-800 dark:text-amber-200/80 mt-2">
+                                                    <p className="text-sm text-warning dark:text-warning/80 mt-2">
                                                         This rule potentially stacks with <span className="font-semibold">Volume Tier 2</span> if total net exceeds $100,000, creating an aggressive discount compounding.
                                                     </p>
                                                 </div>
 
-                                                <div className="mt-4 pt-4 border-t border-amber-200/50 dark:border-amber-900/30 flex items-center justify-between">
-                                                    <div className="text-sm font-medium text-amber-900 dark:text-amber-300">
+                                                <div className="mt-4 pt-4 border-t border-warning/30 dark:border-warning/40 flex items-center justify-between">
+                                                    <div className="text-sm font-medium text-warning dark:text-warning">
                                                         Deactivate Volume Tier 2
                                                     </div>
                                                     <Switch
                                                         checked={disableConflict}
                                                         onChange={setDisableConflict}
-                                                        className={`${disableConflict ? 'bg-amber-500' : 'bg-amber-200 dark:bg-amber-900/40'} relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2`}
+                                                        className={`${disableConflict ? 'bg-warning' : 'bg-warning/20 dark:bg-amber-900/40'} relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2`}
                                                     >
                                                         <span className={`${disableConflict ? 'translate-x-6' : 'translate-x-1'} inline-block h-4 w-4 transform rounded-full bg-white transition-transform`} />
                                                     </Switch>
@@ -340,7 +340,7 @@ export default function SmartRuleBuilderModal({ isOpen, onClose, onSaveRule, cur
 
                                 {step === 'success' && (
                                     <div className="flex flex-col items-center justify-center py-16 text-center animate-in zoom-in-95 duration-300">
-                                        <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center text-green-600 dark:text-green-400 mb-6">
+                                        <div className="w-16 h-16 bg-success/15 rounded-full flex items-center justify-center text-success mb-6">
                                             <CheckCircleIcon className="w-8 h-8" />
                                         </div>
                                         <h3 className="text-xl font-bold text-foreground mb-2">Rule Added!</h3>

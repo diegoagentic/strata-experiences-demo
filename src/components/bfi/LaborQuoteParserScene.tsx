@@ -75,10 +75,10 @@ export default function LaborQuoteParserScene({ onApprove, onRoleChange }: Labor
                         <div className="font-bold text-foreground">Pending Approvals · Michael B.</div>
                         <div className="text-muted-foreground mt-0.5">1 item waiting for your review</div>
                     </div>
-                    <span className="h-5 w-5 rounded-full bg-amber-500 text-white text-[10px] font-bold flex items-center justify-center shrink-0">1</span>
+                    <span className="h-5 w-5 rounded-full bg-warning text-white text-[10px] font-bold flex items-center justify-center shrink-0">1</span>
                 </div>
 
-                <div className="border border-amber-200 dark:border-amber-500/30 rounded-xl bg-amber-50 dark:bg-amber-500/5 overflow-hidden">
+                <div className="border border-warning/30 rounded-xl bg-warning/10 overflow-hidden">
                     <div className="px-3.5 py-3 space-y-2.5">
                         <div className="flex items-start justify-between gap-2">
                             <div>
@@ -86,7 +86,7 @@ export default function LaborQuoteParserScene({ onApprove, onRoleChange }: Labor
                                 <div className="text-[11px] text-muted-foreground mt-0.5">NYC Dept. of Education · WIG free-text → parsed</div>
                                 <div className="text-[11px] text-muted-foreground">Sent by Lauren G. · 8:12 AM</div>
                             </div>
-                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/20 shrink-0">
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-warning/20 text-warning border border-warning/30 shrink-0">
                                 Needs review
                             </span>
                         </div>
@@ -131,7 +131,7 @@ export default function LaborQuoteParserScene({ onApprove, onRoleChange }: Labor
                             ${grandTotal.toLocaleString()} pushed to CORE · Lauren notified automatically
                         </div>
                         {carpEdited && (
-                            <div className="mt-1 text-[10px] text-amber-600 dark:text-amber-400">
+                            <div className="mt-1 text-[10px] text-warning">
                                 Carpenters adjusted {carpHours}h → CORE updated
                             </div>
                         )}
@@ -196,7 +196,7 @@ export default function LaborQuoteParserScene({ onApprove, onRoleChange }: Labor
                 </div>
 
                 {/* Carpenters — editable */}
-                <div className={`border-b border-border transition-colors ${carpEdited ? 'bg-amber-50 dark:bg-amber-500/5' : ''}`}>
+                <div className={`border-b border-border transition-colors ${carpEdited ? 'bg-warning/10' : ''}`}>
                     {editingCarps ? (
                         <div className="px-3.5 py-2.5 space-y-2">
                             <div className="flex items-center gap-2">
@@ -230,7 +230,7 @@ export default function LaborQuoteParserScene({ onApprove, onRoleChange }: Labor
                             <div className="flex items-center gap-1.5">
                                 <span className="text-xs font-medium text-foreground">Carpenters</span>
                                 {carpEdited && (
-                                    <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400">Edited</span>
+                                    <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-warning/20 text-warning">Edited</span>
                                 )}
                             </div>
                             <div className="text-xs text-right tabular-nums text-foreground">{carpHours}h</div>

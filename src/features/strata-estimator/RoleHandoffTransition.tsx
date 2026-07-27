@@ -92,7 +92,7 @@ export default function RoleHandoffTransition({
         >
             <div
                 className={[
-                    'w-full max-w-md mx-4 p-6 rounded-2xl bg-card dark:bg-zinc-800 border border-border shadow-2xl transition-all duration-300',
+                    'w-full max-w-md mx-4 p-6 rounded-2xl bg-card border border-border shadow-2xl transition-all duration-300',
                     leaving
                         ? 'opacity-0 scale-95 translate-y-2'
                         : 'opacity-100 scale-100 translate-y-0 animate-in zoom-in-95',

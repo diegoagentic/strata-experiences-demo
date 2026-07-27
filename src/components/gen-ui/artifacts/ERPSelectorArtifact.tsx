@@ -15,7 +15,7 @@ export default function ERPSelectorArtifact() {
         <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm w-full">
             <div className="p-4 border-b border-zinc-100 dark:border-zinc-800 bg-muted/50 dark:bg-zinc-800/50">
                 <h3 className="font-semibold text-foreground flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span className="w-2 h-2 rounded-full bg-success/100 animate-pulse"></span>
                     NetSuite Connector: Open Orders
                 </h3>
             </div>

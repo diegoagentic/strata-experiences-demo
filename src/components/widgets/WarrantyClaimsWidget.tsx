@@ -46,9 +46,9 @@ export default function WarrantyClaimsWidget() {
                 {claims.map((claim) => (
                     <div key={claim.id} className="relative pl-4 border-l-2 border-zinc-100 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors group">
                         {/* Status Icon Indicator */}
-                        <div className={`absolute -left-[9px] top-1 w-4 h-4 rounded-full border-2 bg-card flex items-center justify-center ${claim.status === 'approved' ? 'border-green-500 text-green-500' :
-                            claim.status === 'action_required' ? 'border-red-500 text-red-500' :
-                                'border-amber-500 text-amber-500'
+                        <div className={`absolute -left-[9px] top-1 w-4 h-4 rounded-full border-2 bg-card flex items-center justify-center ${claim.status === 'approved' ? 'border-success text-success' :
+                            claim.status === 'action_required' ? 'border-destructive text-destructive' :
+                                'border-warning text-warning'
                             }`}>
                             {claim.status === 'approved' && <CheckCircleIcon className="w-2.5 h-2.5" />}
                             {claim.status === 'action_required' && <ExclamationCircleIcon className="w-2.5 h-2.5" />}
@@ -64,9 +64,9 @@ export default function WarrantyClaimsWidget() {
                                     {claim.product}
                                 </p>
                             </div>
-                            <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border capitalize ${claim.status === 'approved' ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800' :
-                                claim.status === 'action_required' ? 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800' :
-                                    'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-800'
+                            <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border capitalize ${claim.status === 'approved' ? 'bg-success/10 text-success border-success/30 dark:bg-success/15 dark:text-success dark:border-success/40' :
+                                claim.status === 'action_required' ? 'bg-destructive/10 text-destructive border-destructive/30 dark:bg-destructive/15 dark:text-destructive dark:border-destructive/40' :
+                                    'bg-warning/10 text-warning border-warning/30 dark:bg-warning/15 dark:text-warning dark:border-warning/40'
                                 }`}>
                                 {claim.status.replace('_', ' ')}
                             </span>

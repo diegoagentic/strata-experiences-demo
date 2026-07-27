@@ -10,11 +10,11 @@ const EXISTING_SYSTEMS = [
 
 const AI_AGENTS = [
     { name: 'Extraction', color: 'bg-success' },
-    { name: 'Normalizer', color: 'bg-green-500' },
-    { name: 'Validator', color: 'bg-blue-500' },
+    { name: 'Normalizer', color: 'bg-success/100' },
+    { name: 'Validator', color: 'bg-info/100' },
     { name: 'QuoteBuilder', color: 'bg-ai' },
-    { name: 'DeltaEngine', color: 'bg-red-500' },
-    { name: 'ApprovalAgent', color: 'bg-amber-500' },
+    { name: 'DeltaEngine', color: 'bg-destructive' },
+    { name: 'ApprovalAgent', color: 'bg-warning' },
     { name: 'ERPConnector', color: 'bg-cyan-500' },
     { name: 'ServiceRecord', color: 'bg-pink-500' },
     { name: 'ProjectCreation', color: 'bg-indigo-500' },
@@ -31,7 +31,7 @@ const COPILOT_MOCKUPS = [
     {
         platform: 'Outlook',
         icon: '📧',
-        color: 'bg-blue-600',
+        color: 'bg-info',
         title: 'Copilot for Outlook',
         message: 'I found 3 vendor quotes attached. Extract and normalize to SIF?',
         actions: ['Extract All', 'Preview First'],
@@ -47,7 +47,7 @@ const COPILOT_MOCKUPS = [
     {
         platform: 'Excel',
         icon: '📊',
-        color: 'bg-green-600',
+        color: 'bg-success',
         title: 'Copilot for Excel',
         message: 'Weekly backlog auto-generated from SIF. 5 suppliers, $113K total.',
         actions: ['Download Report', 'View Trends'],
@@ -146,10 +146,10 @@ export default function StrataArchitectureSlide({ open, onClose }: StrataArchite
                             <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-2 text-center">Enhanced Outcomes</p>
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                                 {OUTCOMES.map(out => (
-                                    <div key={out.label} className="p-2.5 rounded-xl border border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-900/10 text-center">
+                                    <div key={out.label} className="p-2.5 rounded-xl border border-success/30 dark:border-success/40 bg-success/10 dark:bg-success/10 text-center">
                                         <span className="text-xl">{out.icon}</span>
                                         <p className="text-[11px] font-bold text-foreground mt-0.5">{out.label}</p>
-                                        <p className="text-[9px] text-green-600 dark:text-green-400 font-medium">{out.detail}</p>
+                                        <p className="text-[9px] text-success font-medium">{out.detail}</p>
                                     </div>
                                 ))}
                             </div>

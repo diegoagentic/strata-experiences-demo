@@ -70,7 +70,7 @@ export default function WorkOrderDispatchScene() {
                 </div>
 
                 {/* Storage warning */}
-                <div className="flex items-center gap-1.5 text-[11px] text-amber-600 dark:text-amber-400 font-medium">
+                <div className="flex items-center gap-1.5 text-[11px] text-warning font-medium">
                     <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
                     8 storage days remaining — urgent coordination
                 </div>

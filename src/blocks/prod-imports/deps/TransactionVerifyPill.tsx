@@ -34,7 +34,7 @@ export default function TransactionVerifyPill({ orderId, compact }: TransactionV
         if (compact) {
             return (
                 <CheckCircle2
-                    className="h-3.5 w-3.5 text-green-600 dark:text-green-400 shrink-0"
+                    className="h-3.5 w-3.5 text-success shrink-0"
                     aria-label="Verified in Orderbahn"
                 />
             )
@@ -42,7 +42,7 @@ export default function TransactionVerifyPill({ orderId, compact }: TransactionV
         return (
             <span
                 title="Verified in Orderbahn"
-                className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-md bg-green-50 text-green-700 dark:bg-green-500/10 dark:text-green-300 whitespace-nowrap"
+                className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-md bg-success/10 text-success dark:bg-success/10 dark:text-success whitespace-nowrap"
             >
                 <CheckCircle2 className="h-3.5 w-3.5" />
                 Verified

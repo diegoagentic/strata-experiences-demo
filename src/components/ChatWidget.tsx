@@ -45,7 +45,7 @@ const DiscrepancyResolutionFlow = () => {
     if (status === 'initial') {
         return (
             <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400 font-medium">
+                <div className="flex items-center gap-2 text-warning font-medium">
                     <ExclamationTriangleIcon className="w-5 h-5" />
                     Found 3 discrepancies in recent shipments.
                 </div>
@@ -55,7 +55,7 @@ const DiscrepancyResolutionFlow = () => {
                     <li>Order #ORD-2048: Missing carrier update</li>
                 </ul>
                 <div className="flex gap-2 mt-2">
-                    <button className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-zinc-900 dark:text-primary hover:bg-primary/20 text-xs font-medium rounded-lg transition-colors">
+                    <button className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary hover:bg-primary/20 text-xs font-medium rounded-lg transition-colors">
                         <ArrowPathIcon className="w-3.5 h-3.5" /> Sync & Report
                     </button>
                     <button
@@ -106,7 +106,7 @@ const DiscrepancyResolutionFlow = () => {
     if (status === 'pending') {
         return (
             <div className="flex flex-col gap-3 animate-in fade-in">
-                <div className="flex items-center gap-2 text-zinc-900 dark:text-primary">
+                <div className="flex items-center gap-2 text-primary">
                     <ArrowPathIcon className="w-4 h-4 animate-spin" />
                     <span>Requesting approval from Logistics Manager...</span>
                 </div>
@@ -117,13 +117,13 @@ const DiscrepancyResolutionFlow = () => {
     if (status === 'approved') {
         return (
             <div className="flex flex-col gap-3 animate-in fade-in">
-                <div className="flex items-center gap-2 text-green-600 dark:text-green-400 font-medium">
+                <div className="flex items-center gap-2 text-success font-medium">
                     <CheckCircleIcon className="w-5 h-5" />
                     Changes approved. PO updated.
                 </div>
                 <div className="p-3 bg-card rounded-lg border border-gray-200 dark:border-white/10 shadow-sm flex items-center justify-between group cursor-pointer hover:border-primary transition-colors">
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400">
+                        <div className="w-10 h-10 rounded-lg bg-destructive/15 flex items-center justify-center text-destructive">
                             <DocumentChartBarIcon className="w-6 h-6" />
                         </div>
                         <div>
@@ -131,7 +131,7 @@ const DiscrepancyResolutionFlow = () => {
                             <p className="text-xs text-muted-foreground">Updated just now</p>
                         </div>
                     </div>
-                    <button className="text-xs font-medium text-zinc-900 dark:text-primary hover:underline">Download</button>
+                    <button className="text-xs font-medium text-primary hover:underline">Download</button>
                 </div>
             </div>
         )
@@ -159,7 +159,7 @@ const PendingOrders = () => {
 
     if (activeOrders.length === 0) {
         return (
-            <div className="flex items-center gap-2 text-green-600 bg-green-50 p-3 rounded-lg border border-green-200">
+            <div className="flex items-center gap-2 text-success bg-success/10 p-3 rounded-lg border border-success/30">
                 <CheckCircleIcon className="h-5 w-5" />
                 <span className="font-medium">All pending orders processed!</span>
             </div>
@@ -178,7 +178,7 @@ const PendingOrders = () => {
                         className="w-full flex items-center justify-between p-3 hover:bg-gray-50 transition-colors"
                     >
                         <div className="flex items-center gap-3">
-                            <span className={`px-2 py-0.5 rounded text-[10px] uppercase font-bold ${order.status === 'urgent' ? 'bg-red-100 text-red-700' : 'bg-gray-100 text-foreground'
+                            <span className={`px-2 py-0.5 rounded text-[10px] uppercase font-bold ${order.status === 'urgent' ? 'bg-destructive/15 text-destructive' : 'bg-gray-100 text-foreground'
                                 }`}>
                                 {order.status}
                             </span>
@@ -195,13 +195,13 @@ const PendingOrders = () => {
                             <p className="text-sm text-foreground mb-3">{order.details}</p>
                             <div className="flex gap-2 justify-end">
                                 <button
-                                    className="flex items-center gap-1 px-2 py-1 text-xs border border-red-200 text-red-600 rounded hover:bg-red-50"
+                                    className="flex items-center gap-1 px-2 py-1 text-xs border border-destructive/30 text-destructive rounded hover:bg-destructive/10"
                                     onClick={() => handleAction(order.id, 'reject')}
                                 >
                                     <XCircleIcon className="h-3 w-3" /> Request Changes
                                 </button>
                                 <button
-                                    className="flex items-center gap-1 px-2 py-1 text-xs bg-green-600 text-white rounded hover:bg-green-700"
+                                    className="flex items-center gap-1 px-2 py-1 text-xs bg-success text-white rounded hover:bg-success"
                                     onClick={() => handleAction(order.id, 'approve')}
                                 >
                                     <CheckCircleIcon className="h-3 w-3" /> Approve
@@ -362,7 +362,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                 content: (
                     <div className="flex flex-col gap-2">
                         <span className="flex items-center gap-2">
-                            <SparklesIcon className="w-4 h-4 animate-pulse text-zinc-900 dark:text-primary" />
+                            <SparklesIcon className="w-4 h-4 animate-pulse text-primary" />
                             Analyzing recent activity for "TechDealer Solutions"...
                         </span>
                     </div>
@@ -383,7 +383,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                             Analysis Complete. Found 3 orders under $1M.
                         </div>
                         <ul className="list-disc pl-5 text-sm space-y-1 text-muted-foreground dark:text-gray-300">
-                            <li>Order #ORD-2054: $850k - <span className="text-amber-500 font-medium">Missing Logistics Provider</span></li>
+                            <li>Order #ORD-2054: $850k - <span className="text-warning font-medium">Missing Logistics Provider</span></li>
                             <li>Order #ORD-2051: $420k - In Transit</li>
                             <li>Order #ORD-2048: $120k - Delivered</li>
                         </ul>
@@ -413,17 +413,17 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                 role: 'assistant',
                 content: (
                     <div className="space-y-2">
-                        <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
+                        <div className="flex items-center gap-2 text-success">
                             <ArrowPathIcon className="w-4 h-4" />
                             <span>Syncing 3 records to Central DB... Done.</span>
                         </div>
-                        <div className="flex items-center gap-2 text-zinc-900 dark:text-primary">
+                        <div className="flex items-center gap-2 text-primary">
                             <DocumentChartBarIcon className="w-4 h-4" />
                             <span>Generating Reconciliation Report... Done.</span>
                         </div>
                         <div className="mt-3 p-3 bg-card rounded-lg border border-gray-200 dark:border-white/10 shadow-sm flex items-center justify-between group cursor-pointer hover:border-primary transition-colors">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400">
+                                <div className="w-10 h-10 rounded-lg bg-destructive/15 flex items-center justify-center text-destructive">
                                     <DocumentChartBarIcon className="w-6 h-6" />
                                 </div>
                                 <div>
@@ -431,7 +431,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                                     <p className="text-xs text-muted-foreground">1.2 MB • Generated just now</p>
                                 </div>
                             </div>
-                            <button className="text-xs font-medium text-zinc-900 dark:text-primary hover:underline">Download</button>
+                            <button className="text-xs font-medium text-primary hover:underline">Download</button>
                         </div>
                     </div>
                 ),
@@ -459,11 +459,11 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                 role: 'assistant',
                 content: (
                     <div className="space-y-2">
-                        <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
+                        <div className="flex items-center gap-2 text-success">
                             <SparklesIcon className="w-4 h-4" />
                             <span>Logistics Provider "FastTrack" assigned.</span>
                         </div>
-                        <div className="flex items-center gap-2 text-zinc-900 dark:text-primary">
+                        <div className="flex items-center gap-2 text-primary">
                             <PaperAirplaneIcon className="w-4 h-4" />
                             <span>Dispatch signal sent to warehouse. Order is now processing.</span>
                         </div>
@@ -480,7 +480,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
             <div className="p-3 border-b border-border flex items-center justify-between bg-white/80 dark:bg-zinc-800/80 backdrop-blur-sm">
                 <div className="flex items-center gap-3">
                     <Bars3Icon className="w-5 h-5 text-muted-foreground hover:text-muted-foreground dark:text-muted-foreground dark:hover:text-muted-foreground transition-colors cursor-grab active:cursor-grabbing mr-2" />
-                    <div className="flex items-center gap-2 text-zinc-900 dark:text-primary">
+                    <div className="flex items-center gap-2 text-primary">
                         <SparklesIcon className="w-5 h-5" />
                         <h3 className="font-semibold text-lg font-brand text-foreground">AI Copilot</h3>
                         <span className="inline-flex items-center rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground border border-border">
@@ -531,28 +531,28 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                     <div className="flex items-center gap-1">
                         <button
                             onClick={() => handleSendMessage("Show pending orders")}
-                            className="flex flex-col items-center justify-center gap-1 group p-1.5 hover:bg-amber-50 dark:hover:bg-amber-900/10 rounded-lg transition-colors min-w-[50px]"
+                            className="flex flex-col items-center justify-center gap-1 group p-1.5 hover:bg-warning/10 dark:hover:bg-warning/15 rounded-lg transition-colors min-w-[50px]"
                             title="Show Pending"
                         >
-                            <div className="text-amber-500 group-hover:text-amber-600 dark:text-amber-400 dark:group-hover:text-amber-300 transition-colors">
+                            <div className="text-warning group-hover:text-warning dark:group-hover:text-warning transition-colors">
                                 <ExclamationCircleIcon className="w-4 h-4" />
                             </div>
-                            <span className="text-[9px] font-bold text-amber-600 dark:text-amber-400 group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors">3 Pending</span>
+                            <span className="text-[9px] font-bold text-warning group-hover:text-warning dark:group-hover:text-warning transition-colors">3 Pending</span>
                         </button>
                         <button
                             onClick={() => handleSendMessage("Show pending orders")}
-                            className="flex flex-col items-center justify-center gap-1 group p-1.5 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg transition-colors min-w-[50px]"
+                            className="flex flex-col items-center justify-center gap-1 group p-1.5 hover:bg-destructive/10 dark:hover:bg-destructive/15 rounded-lg transition-colors min-w-[50px]"
                             title="Show Urgent"
                         >
-                            <div className="text-red-500 group-hover:text-red-600 dark:text-red-400 dark:group-hover:text-red-300 transition-colors">
+                            <div className="text-destructive group-hover:text-destructive dark:group-hover:text-destructive transition-colors">
                                 <ExclamationTriangleIcon className="w-4 h-4" />
                             </div>
-                            <span className="text-[9px] font-bold text-red-600 dark:text-red-400 group-hover:text-red-700 dark:group-hover:text-red-300 transition-colors">1 Urgent</span>
+                            <span className="text-[9px] font-bold text-destructive group-hover:text-destructive dark:group-hover:text-destructive transition-colors">1 Urgent</span>
                         </button>
                         <div className="w-px h-6 bg-border mx-1"></div>
                         <button
                             onClick={() => setShowActivity(!showActivity)}
-                            className={`p-1.5 rounded-lg transition-colors border ${showActivity ? 'bg-primary/10 border-primary text-zinc-900 dark:text-primary' : 'bg-transparent border-transparent text-muted-foreground hover:bg-gray-100 dark:hover:bg-white/5 hover:text-foreground dark:hover:text-white'}`}
+                            className={`p-1.5 rounded-lg transition-colors border ${showActivity ? 'bg-primary/10 border-primary text-primary' : 'bg-transparent border-transparent text-muted-foreground hover:bg-gray-100 dark:hover:bg-white/5 hover:text-foreground dark:hover:text-white'}`}
                             title="Toggle Recent Activity"
                         >
                             <ClockIcon className="w-5 h-5" />
@@ -571,10 +571,10 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                     </div>
                     <div className="flex-1 overflow-y-auto p-3 space-y-3 min-w-[240px]">
                         {appActivities.map((activity, i) => {
-                            let iconColorClass = "bg-primary/10 text-zinc-900 dark:text-primary" // Default
-                            if (activity.app === 'Inventory') iconColorClass = "bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400"
+                            let iconColorClass = "bg-primary/10 text-primary" // Default
+                            if (activity.app === 'Inventory') iconColorClass = "bg-info/10 text-info dark:bg-info/15 dark:text-info"
                             if (activity.app === 'Analytics') iconColorClass = "bg-indigo-50 text-indigo-600 dark:bg-indigo-900/20 dark:text-indigo-400"
-                            if (activity.app === 'CRM') iconColorClass = "bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400"
+                            if (activity.app === 'CRM') iconColorClass = "bg-success/10 text-success dark:bg-success/15 dark:text-success"
 
                             return (
                                 <div key={activity.id} className="relative pl-0 pb-2 border-b border-border last:border-0 hover:bg-white dark:hover:bg-white/5 p-2 rounded-md transition-colors group">
@@ -616,14 +616,14 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                                 {/* Action Buttons for specific messages */}
                                 {msg.role === 'assistant' && msg.id === 'step-2' && (
                                     <div className="mt-4 flex gap-2">
-                                        <button onClick={handleSyncAndReport} className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-zinc-900 dark:text-primary hover:bg-primary/20 text-xs font-medium rounded-lg transition-colors">
+                                        <button onClick={handleSyncAndReport} className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary hover:bg-primary/20 text-xs font-medium rounded-lg transition-colors">
                                             <ArrowPathIcon className="w-3.5 h-3.5" /> Sync & Report
                                         </button>
                                     </div>
                                 )}
                                 {msg.role === 'assistant' && msg.id === 'summary-step-2' && (
                                     <div className="mt-4 flex gap-2">
-                                        <button onClick={handleAssignAndDispatch} className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-zinc-900 dark:text-primary hover:bg-primary/20 text-xs font-medium rounded-lg transition-colors">
+                                        <button onClick={handleAssignAndDispatch} className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary hover:bg-primary/20 text-xs font-medium rounded-lg transition-colors">
                                             <PaperAirplaneIcon className="w-3.5 h-3.5" /> Assign & Execute
                                         </button>
                                     </div>

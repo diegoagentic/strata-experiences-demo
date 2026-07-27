@@ -76,12 +76,12 @@ export default function CPRRelayScene({ onSend, onRoleChange }: CPRRelayScenePro
                             <div className="text-xs font-medium text-foreground">{adj.category}</div>
                             <div className="text-[11px] text-muted-foreground">{adj.change}</div>
                         </div>
-                        <div className="text-xs font-bold text-amber-600 dark:text-amber-400 tabular-nums">{adj.impact}</div>
+                        <div className="text-xs font-bold text-warning tabular-nums">{adj.impact}</div>
                     </div>
                 ))}
                 <div className="flex items-center justify-between px-3.5 py-2.5 border-t border-border bg-muted/20">
                     <span className="text-[11px] font-bold text-muted-foreground">Total adjustment</span>
-                    <span className="text-xs font-bold text-amber-600 dark:text-amber-400 tabular-nums">−$2,340</span>
+                    <span className="text-xs font-bold text-warning tabular-nums">−$2,340</span>
                 </div>
             </div>
 

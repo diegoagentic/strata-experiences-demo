@@ -5,7 +5,7 @@
  *          and pre-fills the POD request to Andy (HM contact).
  *          Lauren sends with one click.
  *
- * DS TOKENS: bg-card · bg-amber-50 · border-amber-* · text-amber-600
+ * DS TOKENS: bg-card · bg-warning/10 · border-amber-* · text-warning
  */
 
 import { useState, useRef, useEffect, useCallback } from 'react'
@@ -69,18 +69,18 @@ export default function FedExGapScene({ onSend }: FedExGapSceneProps) {
             </div>
 
             {/* Gap items */}
-            <div className="border border-amber-200 dark:border-amber-500/30 rounded-xl overflow-hidden bg-amber-50 dark:bg-amber-500/5">
-                <div className="flex items-center gap-2 px-3.5 py-2 border-b border-amber-200 dark:border-amber-500/30">
-                    <AlertTriangle className="h-3.5 w-3.5 text-amber-500 shrink-0" />
-                    <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wide">3 items without WIG confirmation · DCAS-1182</span>
+            <div className="border border-warning/30 rounded-xl overflow-hidden bg-warning/10">
+                <div className="flex items-center gap-2 px-3.5 py-2 border-b border-warning/30">
+                    <AlertTriangle className="h-3.5 w-3.5 text-warning shrink-0" />
+                    <span className="text-[10px] font-bold text-warning uppercase tracking-wide">3 items without WIG confirmation · DCAS-1182</span>
                 </div>
                 {GAP_ITEMS.map((item) => (
-                    <div key={item.tracking} className="flex items-center justify-between gap-2 px-3.5 py-2.5 border-b border-amber-200/50 dark:border-amber-500/20 last:border-b-0">
+                    <div key={item.tracking} className="flex items-center justify-between gap-2 px-3.5 py-2.5 border-b border-warning/30 dark:border-warning/30 last:border-b-0">
                         <div>
                             <div className="text-xs font-bold text-foreground">{item.tracking}</div>
                             <div className="text-[11px] text-muted-foreground">{item.product} · {item.weight}</div>
                         </div>
-                        <div className="text-[11px] font-medium text-amber-600 dark:text-amber-400">{item.status}</div>
+                        <div className="text-[11px] font-medium text-warning">{item.status}</div>
                     </div>
                 ))}
             </div>
@@ -133,8 +133,8 @@ export default function FedExGapScene({ onSend }: FedExGapSceneProps) {
                     <div className="border border-border rounded-xl p-3.5 bg-card space-y-2.5">
                         <div className="flex items-center justify-between">
                             <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wide">Tracking · response pending</div>
-                            <div className="flex items-center gap-1.5 text-[11px] text-amber-600 dark:text-amber-400 font-medium">
-                                <span className="h-2 w-2 rounded-full bg-amber-500 animate-pulse shrink-0" />
+                            <div className="flex items-center gap-1.5 text-[11px] text-warning font-medium">
+                                <span className="h-2 w-2 rounded-full bg-warning animate-pulse shrink-0" />
                                 Awaiting HM
                             </div>
                         </div>
@@ -143,7 +143,7 @@ export default function FedExGapScene({ onSend }: FedExGapSceneProps) {
                                 <div key={item.tracking} className="flex items-center justify-between">
                                     <span className="font-mono text-foreground">{item.tracking}</span>
                                     <span className="text-muted-foreground">{item.product}</span>
-                                    <span className="text-amber-600 dark:text-amber-400 text-[10px] font-medium">POD requested</span>
+                                    <span className="text-warning text-[10px] font-medium">POD requested</span>
                                 </div>
                             ))}
                         </div>

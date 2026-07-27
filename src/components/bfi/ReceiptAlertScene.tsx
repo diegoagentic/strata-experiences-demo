@@ -96,14 +96,14 @@ export default function ReceiptAlertScene({ onAcknowledge }: ReceiptAlertScenePr
                     <div className="text-sm font-bold text-foreground">100% received · DOH-0671</div>
                     <div className="text-xs text-muted-foreground mt-0.5">NYC Dept. of Health · 36 cartons confirmed at WIG · May 6, 2026</div>
                     <div className="text-xs text-muted-foreground mt-2 leading-relaxed">
-                        Strata detected full receipt in CORE. Storage window: <span className="font-medium text-amber-600 dark:text-amber-400">8 days remaining</span>. Work order can now be generated.
+                        Strata detected full receipt in CORE. Storage window: <span className="font-medium text-warning">8 days remaining</span>. Work order can now be generated.
                     </div>
                 </div>
             </div>
 
             {/* Storage urgency */}
-            <div className="border border-amber-200 dark:border-amber-500/30 rounded-xl p-3 flex items-center gap-2.5 bg-amber-50 dark:bg-amber-500/5">
-                <AlertTriangle className="h-4 w-4 text-amber-500 shrink-0" />
+            <div className="border border-warning/30 rounded-xl p-3 flex items-center gap-2.5 bg-warning/10">
+                <AlertTriangle className="h-4 w-4 text-warning shrink-0" />
                 <div className="text-xs">
                     <div className="font-bold text-foreground">Storage alert · 22 of 30 days used</div>
                     <div className="text-muted-foreground mt-0.5">8 days remaining before billable storage — urgent work order coordination required</div>

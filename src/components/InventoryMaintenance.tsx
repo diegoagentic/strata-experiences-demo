@@ -157,25 +157,25 @@ export default function InventoryMaintenance() {
 
     const getStatusStyle = (status: string) => {
         switch (status) {
-            case 'Scheduled': return 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400';
-            case 'In-Progress': return 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400';
-            case 'Completed': return 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/30 dark:text-green-400';
-            case 'Overdue': return 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/30 dark:text-red-400';
+            case 'Scheduled': return 'bg-info/10 text-info border-info/30 dark:bg-info/20 dark:text-info';
+            case 'In-Progress': return 'bg-warning/10 text-warning border-warning/30 dark:bg-warning/20 dark:text-warning';
+            case 'Completed': return 'bg-success/10 text-success border-success/30 dark:bg-success/20 dark:text-success';
+            case 'Overdue': return 'bg-destructive/10 text-destructive border-destructive/30 dark:bg-destructive/20 dark:text-destructive';
             default: return 'bg-muted text-muted-foreground border-zinc-200';
         }
     };
 
     const getPriorityIcon = (priority: string) => {
-        if (priority === 'High' || priority === 'Critical') return <ExclamationTriangleIcon className="w-4 h-4 text-red-500" />;
+        if (priority === 'High' || priority === 'Critical') return <ExclamationTriangleIcon className="w-4 h-4 text-destructive" />;
         return <WrenchScrewdriverIcon className="w-4 h-4 text-muted-foreground" />;
     };
 
     return (
         <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
             {/* Legend/Info (Optional) */}
-            <div className="bg-amber-50/50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-800 rounded-lg p-3 flex items-start gap-3">
-                <WrenchScrewdriverIcon className="w-5 h-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
-                <p className="text-sm text-amber-700 dark:text-amber-300">
+            <div className="bg-warning/10 border border-warning/20 dark:border-warning/40 rounded-lg p-3 flex items-start gap-3">
+                <WrenchScrewdriverIcon className="w-5 h-5 text-warning mt-0.5 shrink-0" />
+                <p className="text-sm text-warning dark:text-warning">
                     Track asset repairs and maintenance costs. Expand any card to view the full service history and audit trail.
                 </p>
             </div>
@@ -216,7 +216,7 @@ export default function InventoryMaintenance() {
                                     <div className="flex items-center gap-2">
                                         <WrenchScrewdriverIcon className="w-4 h-4" />
                                         <span>{task.provider}</span>
-                                        {task.assignedTeam && <span className="text-xs text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-1.5 py-0.5 rounded ml-1">Assigned: {task.assignedTeam}</span>}
+                                        {task.assignedTeam && <span className="text-xs text-info bg-info/10 dark:bg-info/15 px-1.5 py-0.5 rounded ml-1">Assigned: {task.assignedTeam}</span>}
                                     </div>
                                     {task.costEstimate && (
                                         <div className="font-medium text-foreground">
@@ -273,7 +273,7 @@ export default function InventoryMaintenance() {
                                                         <span className="text-xs text-muted-foreground">{event.type} • {event.technician}</span>
                                                     </div>
                                                     <div className="text-right">
-                                                        <span className="font-mono text-xs font-medium text-foreground bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 px-1.5 py-0.5 rounded">
+                                                        <span className="font-mono text-xs font-medium text-foreground bg-success/10 dark:bg-success/15 text-success px-1.5 py-0.5 rounded">
                                                             {event.cost}
                                                         </span>
                                                     </div>

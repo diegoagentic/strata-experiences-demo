@@ -213,8 +213,8 @@ function formatElapsed(ts: number): string {
 
 const HIGHLIGHT_STYLES: Record<NonNullable<DataRow['highlight']>, string> = {
     primary: 'text-foreground dark:text-primary font-bold',
-    amber:   'text-amber-700 dark:text-amber-400 font-semibold',
-    green:   'text-green-700 dark:text-green-400 font-semibold',
+    amber:   'text-warning font-semibold',
+    green:   'text-success font-semibold',
 }
 
 type ModuleView = 'pending' | 'expanded' | 'modify' | 'approved'
@@ -332,7 +332,7 @@ export default function DesignerVerificationOverlay({
                 // z-[60] so the panel overlays the Estimator navbar (z-50) +
                 // Demo trigger button (z-50). Stays below DemoGuide (z-[100])
                 // and DemoSidebar (z-[300]) so those still cover it when open.
-                'fixed inset-y-0 right-0 w-[28rem] bg-card dark:bg-zinc-900 border-l border-border shadow-2xl flex flex-col z-[60] transition-all duration-300 ease-out',
+                'fixed inset-y-0 right-0 w-[28rem] bg-card border-l border-border shadow-2xl flex flex-col z-[60] transition-all duration-300 ease-out',
                 leaving ? 'translate-x-full opacity-0' : 'translate-x-0 opacity-100'
             )}
         >
@@ -371,7 +371,7 @@ export default function DesignerVerificationOverlay({
 
                 {/* Provenance */}
                 {escalationContext && (
-                    <div className="mt-4 p-3 rounded-xl bg-card dark:bg-zinc-800 border border-border">
+                    <div className="mt-4 p-3 rounded-xl bg-card border border-border">
                         <div className="flex items-center gap-2.5">
                             <img
                                 src={escalationContext.fromPhoto}
@@ -427,10 +427,10 @@ export default function DesignerVerificationOverlay({
                             className={clsx(
                                 'rounded-xl border overflow-hidden transition-all duration-300',
                                 isApproved
-                                    ? 'bg-green-500/5 dark:bg-green-500/10 border-green-500/30'
+                                    ? 'bg-success/100/5 dark:bg-success/10 border-success/30'
                                     : isChecked
-                                        ? 'bg-card dark:bg-zinc-800 border-primary/30'
-                                        : 'bg-card dark:bg-zinc-800 border-border'
+                                        ? 'bg-card border-primary/30'
+                                        : 'bg-card border-border'
                             )}
                         >
                             {/* Module header — always visible */}
@@ -447,7 +447,7 @@ export default function DesignerVerificationOverlay({
                                     className={clsx(
                                         'w-7 h-7 rounded-lg flex items-center justify-center shrink-0',
                                         isApproved
-                                            ? 'bg-green-500/15 text-green-700 dark:text-green-400'
+                                            ? 'bg-success/15 text-success'
                                             : 'bg-primary/10 text-foreground dark:text-primary'
                                     )}
                                 >
@@ -463,7 +463,7 @@ export default function DesignerVerificationOverlay({
                                             {module.title}
                                         </p>
                                         {module.required && (
-                                            <span className="shrink-0 text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/30">
+                                            <span className="shrink-0 text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-warning/10 text-warning border border-warning/30">
                                                 Required
                                             </span>
                                         )}

@@ -175,21 +175,21 @@ export default function DemoSidebar() {
         connectorDone: 'bg-success/40',
         connectorPending: 'bg-zinc-800',
         activeBorder: 'border-l-white/70',
-        dealerBadge: 'border-blue-800/50 bg-blue-900/30 text-blue-400',
+        dealerBadge: 'border-blue-800/50 bg-blue-900/30 text-info',
         fmBadge: 'border-teal-800/50 bg-teal-900/30 text-teal-400',
-        fuBadge: 'border-amber-800/50 bg-amber-900/30 text-amber-400',
+        fuBadge: 'border-amber-800/50 bg-amber-900/30 text-warning',
         expertBadge: 'border-purple-800/50 bg-purple-900/30 text-purple-400',
         scBadge: 'border-indigo-800/50 bg-indigo-900/30 text-indigo-400',
         estimatorBadge: 'border-teal-800/50 bg-teal-900/30 text-teal-400',
         designerBadge: 'border-sky-800/50 bg-sky-900/30 text-sky-400',
         endUserBadge: 'border-rose-800/50 bg-rose-900/30 text-rose-400',
         employeeBadge: 'border-emerald-800/50 bg-emerald-900/30 text-success',
-        opsMgrBadge: 'border-blue-800/50 bg-blue-900/30 text-blue-400',
+        opsMgrBadge: 'border-blue-800/50 bg-blue-900/30 text-info',
         apCoordBadge: 'border-violet-800/50 bg-violet-900/30 text-ai',
-        cfoBadge: 'border-amber-800/50 bg-amber-900/30 text-amber-400',
+        cfoBadge: 'border-amber-800/50 bg-amber-900/30 text-warning',
         accountLeadBadge: 'border-teal-800/50 bg-teal-900/30 text-teal-400',
         projectMgrBadge: 'border-violet-800/50 bg-violet-900/30 text-ai',
-        financeArBadge: 'border-amber-800/50 bg-amber-900/30 text-amber-400',
+        financeArBadge: 'border-amber-800/50 bg-amber-900/30 text-warning',
         collapsedBg: 'bg-zinc-950',
         collapsedText: 'text-muted-foreground',
         collapsedBorder: 'border-zinc-800/50',
@@ -224,21 +224,21 @@ export default function DemoSidebar() {
         connectorDone: 'bg-success/40',
         connectorPending: 'bg-zinc-200',
         activeBorder: 'border-l-zinc-900',
-        dealerBadge: 'border-blue-200 bg-blue-50 text-blue-700',
+        dealerBadge: 'border-info/30 bg-info/10 text-info',
         fmBadge: 'border-teal-200 bg-teal-50 text-teal-700',
-        fuBadge: 'border-amber-200 bg-amber-50 text-amber-700',
+        fuBadge: 'border-warning/30 bg-warning/10 text-warning',
         expertBadge: 'border-purple-200 bg-purple-50 text-purple-700',
         scBadge: 'border-indigo-200 bg-indigo-50 text-indigo-700',
         estimatorBadge: 'border-teal-200 bg-teal-50 text-teal-700',
         designerBadge: 'border-sky-200 bg-sky-50 text-sky-700',
         endUserBadge: 'border-rose-200 bg-rose-50 text-rose-700',
         employeeBadge: 'border-emerald-200 bg-emerald-50 text-emerald-700',
-        opsMgrBadge: 'border-blue-200 bg-blue-50 text-blue-700',
+        opsMgrBadge: 'border-info/30 bg-info/10 text-info',
         apCoordBadge: 'border-violet-200 bg-violet-50 text-violet-700',
-        cfoBadge: 'border-amber-200 bg-amber-50 text-amber-700',
+        cfoBadge: 'border-warning/30 bg-warning/10 text-warning',
         accountLeadBadge: 'border-teal-200 bg-teal-50 text-teal-700',
         projectMgrBadge: 'border-violet-200 bg-violet-50 text-violet-700',
-        financeArBadge: 'border-amber-200 bg-amber-50 text-amber-700',
+        financeArBadge: 'border-warning/30 bg-warning/10 text-warning',
         collapsedBg: 'bg-white',
         collapsedText: 'text-muted-foreground',
         collapsedBorder: 'border-zinc-200',
@@ -366,8 +366,8 @@ export default function DemoSidebar() {
                                             <span
                                                 className={`text-[9px] px-1 py-0.5 rounded flex items-center gap-0.5 font-bold uppercase tracking-wider ${
                                                     isActive
-                                                        ? 'bg-amber-500/30 text-amber-200'
-                                                        : 'bg-amber-500/10 text-amber-700 dark:text-amber-400'
+                                                        ? 'bg-warning/30 text-warning'
+                                                        : 'bg-warning/10 text-warning'
                                                 }`}
                                                 title="Hero moment — the demo's emotional peak"
                                             >
@@ -398,7 +398,7 @@ export default function DemoSidebar() {
 
             {/* Paused Indicator */}
             {isPaused && (
-                <div className={`mx-4 mb-2 flex items-center justify-center gap-2 py-2 rounded-lg border ${isDarkSidebar ? 'bg-amber-500/10 border-amber-500/20 text-amber-400' : 'bg-amber-50 border-amber-200 text-amber-600'} animate-pulse`}>
+                <div className={`mx-4 mb-2 flex items-center justify-center gap-2 py-2 rounded-lg border ${isDarkSidebar ? 'bg-warning/10 border-warning/30 text-warning' : 'bg-warning/10 border-warning/30 text-warning'} animate-pulse`}>
                     <Pause size={14} />
                     <span className="text-xs font-bold uppercase tracking-wider">Paused</span>
                 </div>
@@ -418,7 +418,7 @@ export default function DemoSidebar() {
                     <button
                         onClick={togglePause}
                         className={`flex items-center justify-center w-10 rounded-lg text-sm font-semibold transition-colors ${isPaused
-                            ? (isDarkSidebar ? 'bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' : 'bg-amber-100 text-amber-600 hover:bg-amber-200')
+                            ? (isDarkSidebar ? 'bg-warning/20 text-warning hover:bg-warning/30' : 'bg-warning/15 text-warning hover:bg-warning/20')
                             : `${c.bgBtn} ${c.textBtn} ${c.bgBtnHover}`
                         }`}
                         title={isPaused ? 'Resume' : 'Pause'}

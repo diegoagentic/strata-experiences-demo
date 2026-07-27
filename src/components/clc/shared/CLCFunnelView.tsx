@@ -55,13 +55,13 @@ function jobStage(job: InstallJob): FunnelStage {
 // poorly on white. Use higher-saturation light/dark tone pairs (same
 // pattern as the REGION_BADGE used elsewhere).
 const REGION_AVATAR_BG: Record<Region, string> = {
-    ny: 'bg-blue-100 dark:bg-blue-500/30',
-    nj: 'bg-amber-100 dark:bg-amber-500/30',
+    ny: 'bg-info/15 dark:bg-info/100/30',
+    nj: 'bg-warning/15 dark:bg-warning/30',
     pa: 'bg-emerald-100 dark:bg-emerald-500/30',
 }
 const REGION_AVATAR_TEXT: Record<Region, string> = {
-    ny: 'text-blue-800 dark:text-blue-200',
-    nj: 'text-amber-800 dark:text-amber-200',
+    ny: 'text-info dark:text-info',
+    nj: 'text-warning dark:text-warning',
     pa: 'text-emerald-800 dark:text-emerald-200',
 }
 

@@ -571,11 +571,11 @@ export default function SmartAddAssetModal({ isOpen, onClose, onConfirm }: Smart
             {csvState === 'summary' && (
                 <div className="h-full flex flex-col">
                     <div className="flex-1 space-y-6 pt-4">
-                        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-4 flex items-start gap-3">
-                            <CheckCircleIcon className="w-5 h-5 text-green-600 dark:text-green-400 mt-0.5" />
+                        <div className="bg-success/10 dark:bg-success/15 border border-success/30 dark:border-success/40 rounded-xl p-4 flex items-start gap-3">
+                            <CheckCircleIcon className="w-5 h-5 text-success mt-0.5" />
                             <div>
-                                <h4 className="text-sm font-semibold text-green-800 dark:text-green-300">Validation Successful</h4>
-                                <p className="text-xs text-green-600 dark:text-green-400 mt-1">Found 7 rows. 6 valid assets ready to create.</p>
+                                <h4 className="text-sm font-semibold text-success">Validation Successful</h4>
+                                <p className="text-xs text-success mt-1">Found 7 rows. 6 valid assets ready to create.</p>
                             </div>
                         </div>
 
@@ -584,13 +584,13 @@ export default function SmartAddAssetModal({ isOpen, onClose, onConfirm }: Smart
                                 <span className="block text-2xl font-bold text-indigo-600">7</span>
                                 <span className="text-xs font-medium text-indigo-400">Total Rows</span>
                             </div>
-                            <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl text-center">
-                                <span className="block text-2xl font-bold text-green-600">6</span>
-                                <span className="text-xs font-medium text-green-400">Valid</span>
+                            <div className="bg-success/10 dark:bg-success/15 p-4 rounded-xl text-center">
+                                <span className="block text-2xl font-bold text-success">6</span>
+                                <span className="text-xs font-medium text-success">Valid</span>
                             </div>
-                            <div className="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-xl text-center">
-                                <span className="block text-2xl font-bold text-amber-600">1</span>
-                                <span className="text-xs font-medium text-amber-400">Duplicate</span>
+                            <div className="bg-warning/10 dark:bg-warning/15 p-4 rounded-xl text-center">
+                                <span className="block text-2xl font-bold text-warning">1</span>
+                                <span className="text-xs font-medium text-warning">Duplicate</span>
                             </div>
                             <div className="bg-rose-50 dark:bg-rose-900/20 p-4 rounded-xl text-center">
                                 <span className="block text-2xl font-bold text-rose-600">0</span>
@@ -607,7 +607,7 @@ export default function SmartAddAssetModal({ isOpen, onClose, onConfirm }: Smart
                                 {['Executive Leather Chair', 'Adjustable LED Floor Lamp', 'Tempered Glass Partition'].map((item, i) => (
                                     <div key={i} className="flex items-center justify-between text-sm py-1 border-b border-dashed border-border last:border-0">
                                         <span className="font-medium">{item}</span>
-                                        <span className="px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs">Valid</span>
+                                        <span className="px-2 py-0.5 bg-success/15 text-success rounded text-xs">Valid</span>
                                     </div>
                                 ))}
                             </div>

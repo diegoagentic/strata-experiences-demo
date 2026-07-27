@@ -27,9 +27,9 @@ type Resolution = 'pending' | 'accepted' | 'overridden' | 'flagged';
 // ─── Color Styles (DS pattern) ───────────────────────────────────────────────
 
 const colorStyles: Record<string, string> = {
-    green: 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
-    amber: 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
-    blue: 'bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300 ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
+    green: 'bg-success/10 text-success dark:bg-success/15 dark:text-success ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30',
+    amber: 'bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
+    blue: 'bg-info/10 text-info dark:bg-info/15 dark:text-info ring-1 ring-inset ring-blue-600/20 dark:ring-blue-400/30',
 };
 
 const resolutionStyles: Record<Resolution, string> = {
@@ -178,14 +178,14 @@ export default function WrgDesigner({ onNavigate }: { onNavigate?: (page: string
                         {/* What the expert already resolved */}
                         <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider mb-1.5">Resolved by Expert</div>
                         <div className="space-y-1.5 mb-3">
-                            <div className="flex items-center gap-2 p-2 rounded-lg bg-green-50/50 dark:bg-green-500/5 border border-green-200/50 dark:border-green-500/15">
-                                <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                            <div className="flex items-center gap-2 p-2 rounded-lg bg-success/10 dark:bg-success/100/5 border border-success/30/50 dark:border-success/30">
+                                <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
                                 <span className="text-[10px] text-foreground font-medium">Plastic Stacking Chair</span>
                                 <span className={`text-[8px] px-1 py-0.5 rounded font-bold ${colorStyles.green}`}>QTY — AI RESOLVED</span>
                                 <span className="text-[10px] text-muted-foreground ml-auto">Spec: 19 → Sel: 20</span>
                             </div>
-                            <div className="flex items-center gap-2 p-2 rounded-lg bg-green-50/50 dark:bg-green-500/5 border border-green-200/50 dark:border-green-500/15">
-                                <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                            <div className="flex items-center gap-2 p-2 rounded-lg bg-success/10 dark:bg-success/100/5 border border-success/30/50 dark:border-success/30">
+                                <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
                                 <span className="text-[10px] text-foreground font-medium">Nemschoff NC-2240 Recliner</span>
                                 <span className={`text-[8px] px-1 py-0.5 rounded font-bold ${colorStyles.green}`}>DISCONTINUED — MANUAL</span>
                                 <span className="text-[10px] text-muted-foreground ml-auto">→ NC-2250 (+$85/unit)</span>
@@ -193,9 +193,9 @@ export default function WrgDesigner({ onNavigate }: { onNavigate?: (page: string
                         </div>
 
                         {/* What was sent to designer */}
-                        <div className="text-[9px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider mb-1.5">Requires Your Review</div>
-                        <div className="flex items-center gap-2 p-2 rounded-lg bg-amber-50/50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/20">
-                            <ExclamationTriangleIcon className="h-3.5 w-3.5 text-amber-500 shrink-0" />
+                        <div className="text-[9px] font-bold text-warning uppercase tracking-wider mb-1.5">Requires Your Review</div>
+                        <div className="flex items-center gap-2 p-2 rounded-lg bg-warning/10 border border-warning/20">
+                            <ExclamationTriangleIcon className="h-3.5 w-3.5 text-warning shrink-0" />
                             <span className="text-[10px] text-foreground font-medium">OFS Coact Serpentine Lounge</span>
                             <span className={`text-[8px] px-1 py-0.5 rounded font-bold ${colorStyles.amber}`}>CUSTOM CONFIG</span>
                             <span className="text-[10px] text-muted-foreground ml-auto">12-week lead time</span>
@@ -223,7 +223,7 @@ export default function WrgDesigner({ onNavigate }: { onNavigate?: (page: string
                     {/* Resolution card */}
                     <div className={`p-4 rounded-xl border transition-all duration-300 ${
                         resolution === 'pending'
-                            ? 'bg-amber-50/50 dark:bg-amber-500/5 border-amber-300 dark:border-amber-500/30'
+                            ? 'bg-warning/10 border-warning/30'
                             : 'bg-card border-border'
                     }`}>
                         <div className="flex items-start justify-between mb-2">
@@ -242,7 +242,7 @@ export default function WrgDesigner({ onNavigate }: { onNavigate?: (page: string
                         {/* Detail */}
                         <div className="p-2.5 rounded-lg bg-muted/30 border border-border mb-3">
                             <div className="flex items-start gap-2">
-                                <ExclamationTriangleIcon className="h-3.5 w-3.5 text-amber-500 shrink-0 mt-0.5" />
+                                <ExclamationTriangleIcon className="h-3.5 w-3.5 text-warning shrink-0 mt-0.5" />
                                 <div className="text-[10px] text-foreground leading-relaxed">
                                     <div className="font-medium mb-1">Custom configuration — 12-week lead time</div>
                                     <div className="text-muted-foreground">
@@ -251,7 +251,7 @@ export default function WrgDesigner({ onNavigate }: { onNavigate?: (page: string
                                     </div>
                                     <div className="flex items-center gap-4 mt-2 pt-2 border-t border-border">
                                         <span className="text-muted-foreground">Qty: <span className="font-mono font-bold text-foreground">2</span></span>
-                                        <span className="text-muted-foreground">Lead: <span className="font-mono font-bold text-amber-600 dark:text-amber-400">12 weeks</span></span>
+                                        <span className="text-muted-foreground">Lead: <span className="font-mono font-bold text-warning">12 weeks</span></span>
                                         <span className="text-muted-foreground">Config: <span className="font-mono font-bold text-foreground">Custom</span></span>
                                     </div>
                                 </div>
@@ -263,19 +263,19 @@ export default function WrgDesigner({ onNavigate }: { onNavigate?: (page: string
                             <div className="flex gap-2">
                                 <button
                                     onClick={() => handleResolve('accepted')}
-                                    className="flex-1 py-2 rounded-lg text-[10px] font-bold border border-green-300 dark:border-green-500/30 bg-green-50 dark:bg-green-500/5 text-green-700 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-500/10 transition-all"
+                                    className="flex-1 py-2 rounded-lg text-[10px] font-bold border border-success/30 bg-success/10 dark:bg-success/100/5 text-success hover:bg-success/15 dark:hover:bg-success/10 transition-all"
                                 >
                                     Accept Config
                                 </button>
                                 <button
                                     onClick={() => setEditingOverride(true)}
-                                    className="flex-1 py-2 rounded-lg text-[10px] font-bold border border-blue-300 dark:border-blue-500/30 bg-blue-50 dark:bg-blue-500/5 text-blue-700 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-500/10 transition-all"
+                                    className="flex-1 py-2 rounded-lg text-[10px] font-bold border border-info/30 bg-info/10 dark:bg-info/100/5 text-info hover:bg-info/15 dark:hover:bg-info/10 transition-all"
                                 >
                                     Override
                                 </button>
                                 <button
                                     onClick={() => handleResolve('flagged')}
-                                    className="flex-1 py-2 rounded-lg text-[10px] font-bold border border-amber-300 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/5 text-amber-700 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-amber-500/10 transition-all"
+                                    className="flex-1 py-2 rounded-lg text-[10px] font-bold border border-warning/30 bg-warning/10 text-warning hover:bg-warning/15 dark:hover:bg-warning/10 transition-all"
                                 >
                                     Flag
                                 </button>
@@ -292,7 +292,7 @@ export default function WrgDesigner({ onNavigate }: { onNavigate?: (page: string
                                 <div
                                     contentEditable
                                     suppressContentEditableWarning
-                                    className="w-full p-3 rounded-lg text-[11px] text-foreground bg-blue-50/50 dark:bg-blue-500/5 border border-blue-300 dark:border-blue-500/30 leading-relaxed focus:outline-none focus:ring-2 focus:ring-brand-400 min-h-[60px]"
+                                    className="w-full p-3 rounded-lg text-[11px] text-foreground bg-info/10 border border-info/30 leading-relaxed focus:outline-none focus:ring-2 focus:ring-brand-400 min-h-[60px]"
                                 >
                                     Accept custom configuration with 12-week lead. Add timeline note: delivery window shifts to Week 38. Notify client of adjusted schedule.
                                 </div>
@@ -305,7 +305,7 @@ export default function WrgDesigner({ onNavigate }: { onNavigate?: (page: string
                                     </button>
                                     <button
                                         onClick={() => handleResolve('overridden')}
-                                        className="flex-1 py-2 rounded-lg text-[10px] font-bold bg-blue-600 text-white hover:bg-blue-700 transition-colors flex items-center justify-center gap-1.5"
+                                        className="flex-1 py-2 rounded-lg text-[10px] font-bold bg-info text-white hover:bg-info transition-colors flex items-center justify-center gap-1.5"
                                     >
                                         <CheckCircleIcon className="h-3 w-3" />
                                         Apply Override
@@ -317,7 +317,7 @@ export default function WrgDesigner({ onNavigate }: { onNavigate?: (page: string
                         {/* Resolved indicator */}
                         {resolution !== 'pending' && (
                             <div className="flex items-center gap-2 text-[10px] text-muted-foreground">
-                                <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                                <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
                                 <span>Resolution recorded — {resolution === 'accepted' ? 'configuration accepted, lead time confirmed' : resolution === 'overridden' ? 'correction applied' : 'flagged for review'}</span>
                             </div>
                         )}
@@ -325,10 +325,10 @@ export default function WrgDesigner({ onNavigate }: { onNavigate?: (page: string
 
                     {/* Action toast */}
                     {actionToast && (
-                        <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                        <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border border-success/30 dark:border-success/30 animate-in fade-in slide-in-from-bottom-2 duration-300">
                             <div className="flex items-center gap-2">
-                                <CheckCircleIcon className="h-4 w-4 text-green-600 dark:text-green-400 shrink-0" />
-                                <span className="text-[11px] font-bold text-green-700 dark:text-green-400">{actionToast}</span>
+                                <CheckCircleIcon className="h-4 w-4 text-success shrink-0" />
+                                <span className="text-[11px] font-bold text-success">{actionToast}</span>
                             </div>
                         </div>
                     )}

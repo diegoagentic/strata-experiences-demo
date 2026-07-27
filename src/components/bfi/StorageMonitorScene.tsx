@@ -3,7 +3,7 @@
  * PURPOSE: Flow 2 · Scene 7 — 30-day storage countdown per WIG order.
  *          Alerts at day 20. Lauren sets alerts for approaching orders.
  *
- * DS TOKENS: bg-card · bg-amber-50 · border-border · text-success
+ * DS TOKENS: bg-card · bg-warning/10 · border-border · text-success
  */
 
 import { useState, useRef, useEffect, useCallback } from 'react'
@@ -85,7 +85,7 @@ export default function StorageMonitorScene({ onConfirm }: StorageMonitorScenePr
                             key={order.id}
                             className={`border rounded-xl p-3.5 transition-colors ${
                                 isUrgent
-                                    ? 'border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/5'
+                                    ? 'border-warning/30 bg-warning/10'
                                     : isDOE
                                     ? 'border-warning/40 bg-warning/5 cursor-pointer hover:bg-warning/10'
                                     : 'border-border bg-card'
@@ -102,7 +102,7 @@ export default function StorageMonitorScene({ onConfirm }: StorageMonitorScenePr
                                         <span className="text-[10px] font-medium text-success bg-success/10 border border-success/20 rounded px-1.5 py-0.5">Dispatched</span>
                                     )}
                                     {isUrgent && !order.dispatched && (
-                                        <AlertTriangle className="h-3.5 w-3.5 text-amber-500" />
+                                        <AlertTriangle className="h-3.5 w-3.5 text-warning" />
                                     )}
                                     {!isUrgent && !order.dispatched && (
                                         <Clock className="h-3.5 w-3.5 text-muted-foreground" />
@@ -114,7 +114,7 @@ export default function StorageMonitorScene({ onConfirm }: StorageMonitorScenePr
                             <div className="h-1.5 bg-border rounded-full overflow-hidden mb-1.5">
                                 <div
                                     className={`h-full rounded-full transition-all duration-700 ${
-                                        isUrgent ? 'bg-amber-500' : isWarning ? 'bg-amber-400' : 'bg-success'
+                                        isUrgent ? 'bg-warning' : isWarning ? 'bg-warning' : 'bg-success'
                                     }`}
                                     style={{ width: `${pct}%` }}
                                 />
@@ -124,7 +124,7 @@ export default function StorageMonitorScene({ onConfirm }: StorageMonitorScenePr
                                 <span className="text-muted-foreground">{order.daysIn} of {order.total} days used</span>
                                 <div className="flex items-center gap-2">
                                     <span className="text-muted-foreground">expires {order.expiresLabel}</span>
-                                    <span className={`font-medium ${isUrgent ? 'text-amber-600 dark:text-amber-400' : 'text-muted-foreground'}`}>
+                                    <span className={`font-medium ${isUrgent ? 'text-warning' : 'text-muted-foreground'}`}>
                                         {order.remaining} days left
                                     </span>
                                 </div>

@@ -59,7 +59,7 @@ export default function HandoffBanner({
             role="status"
             aria-live="polite"
         >
-            <div className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm overflow-hidden">
+            <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
                 <div className="p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary ring-1 ring-primary/20 rounded-r-2xl">
                     <div className="flex items-start gap-4">
 
@@ -96,7 +96,7 @@ export default function HandoffBanner({
 
                             {/* Direction chip row — from → to */}
                             <div className="flex items-center gap-2 flex-wrap mt-3">
-                                <span className="text-[8px] font-bold px-2 py-1 rounded-md bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/30 flex items-center gap-1 ring-2 ring-amber-500/20 shadow-sm shadow-amber-500/10 uppercase tracking-wider">
+                                <span className="text-[8px] font-bold px-2 py-1 rounded-md bg-warning/10 text-warning border border-warning/30 flex items-center gap-1 ring-2 ring-amber-500/20 shadow-sm shadow-amber-500/10 uppercase tracking-wider">
                                     <Send className="h-3 w-3" />
                                     {fromUser.role}
                                 </span>
@@ -114,7 +114,7 @@ export default function HandoffBanner({
 
                             {/* Secondary chip */}
                             <div className="flex items-center gap-2 mt-2">
-                                <span className="text-[8px] px-1.5 py-0.5 rounded bg-green-500/10 text-green-700 dark:text-green-400 font-bold border border-green-500/30 uppercase tracking-wider">
+                                <span className="text-[8px] px-1.5 py-0.5 rounded bg-success/10 text-success font-bold border border-success/30 uppercase tracking-wider">
                                     Routed by strata
                                 </span>
                             </div>

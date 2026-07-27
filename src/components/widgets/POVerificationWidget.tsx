@@ -57,8 +57,8 @@ export default function POVerificationWidget() {
                                     <span>{item.ackId}</span>
                                 </div>
                             </div>
-                            <div className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide border flex items-center gap-1 ${item.status === 'discrepancy' ? 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-900/30' :
-                                item.status === 'matched' ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-900/30' :
+                            <div className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide border flex items-center gap-1 ${item.status === 'discrepancy' ? 'bg-destructive/10 text-destructive border-destructive/30 dark:bg-destructive/15 dark:text-destructive dark:border-destructive/40' :
+                                item.status === 'matched' ? 'bg-success/10 text-success border-success/30 dark:bg-success/15 dark:text-success dark:border-success/40' :
                                     'bg-muted text-muted-foreground border-border'
                                 }`}>
                                 {item.status === 'discrepancy' && <ExclamationTriangleIcon className="w-3 h-3" />}
@@ -69,17 +69,17 @@ export default function POVerificationWidget() {
                         </div>
 
                         {item.status === 'discrepancy' && (
-                            <div className="bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 rounded-lg p-2 mt-2">
+                            <div className="bg-destructive/10 dark:bg-destructive/10 border border-destructive/20 dark:border-destructive/40 rounded-lg p-2 mt-2">
                                 <div className="flex items-start gap-2">
-                                    <ExclamationTriangleIcon className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
+                                    <ExclamationTriangleIcon className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
                                     <div>
-                                        <p className="text-xs font-semibold text-red-900 dark:text-red-200">
+                                        <p className="text-xs font-semibold text-destructive dark:text-destructive">
                                             AI Detected {item.mismatches} Mismatches
                                         </p>
-                                        <p className="text-[10px] text-red-700 dark:text-red-300 mt-0.5 leading-relaxed">
+                                        <p className="text-[10px] text-destructive dark:text-destructive mt-0.5 leading-relaxed">
                                             {item.details}
                                         </p>
-                                        <button className="mt-2 text-[10px] font-bold text-white bg-red-600 hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-600 px-2 py-1 rounded transition-colors">
+                                        <button className="mt-2 text-[10px] font-bold text-white bg-destructive hover:bg-destructive/90 dark:bg-destructive dark:hover:bg-destructive px-2 py-1 rounded transition-colors">
                                             Review & Fix
                                         </button>
                                     </div>
@@ -88,7 +88,7 @@ export default function POVerificationWidget() {
                         )}
 
                         {item.status === 'matched' && (
-                            <p className="text-[10px] text-green-600 dark:text-green-400 flex items-center gap-1 mt-2">
+                            <p className="text-[10px] text-success flex items-center gap-1 mt-2">
                                 <CheckCircleIcon className="w-3 h-3" /> Verified by AI {item.date}
                             </p>
                         )}

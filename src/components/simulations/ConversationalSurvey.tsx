@@ -222,7 +222,7 @@ export default function ConversationalSurvey() {
                                             <AIAgentAvatar name={agent.name} size="xs" />
                                             <span className="flex-1 font-semibold text-muted-foreground">{agent.detail}</span>
                                             {agent.done
-                                                ? <CheckCircleIcon className="w-4 h-4 text-green-500 shrink-0" />
+                                                ? <CheckCircleIcon className="w-4 h-4 text-success shrink-0" />
                                                 : agent.visible && <ArrowPathIcon className="w-4 h-4 text-indigo-400 animate-spin shrink-0" />
                                             }
                                         </div>
@@ -234,21 +234,21 @@ export default function ConversationalSurvey() {
                         {/* BREATHING */}
                         {survDemoPhase === 'breathing' && (
                             <div className="bg-card border border-border/60 rounded-2xl p-5 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-success/100 animate-pulse" />
                                 <span className="text-xs font-semibold text-muted-foreground">Processing complete — syncing external systems...</span>
                             </div>
                         )}
 
                         {/* CONFIRMED */}
                         {(survDemoPhase === 'revealed' || survDemoPhase === 'results') && (
-                            <div className="bg-green-500/5 border border-green-500/30 rounded-2xl p-4 flex items-center gap-3 animate-in fade-in duration-300">
-                                <CheckCircleIcon className="w-6 h-6 text-green-500 shrink-0" />
+                            <div className="bg-success/100/5 border border-success/30 rounded-2xl p-4 flex items-center gap-3 animate-in fade-in duration-300">
+                                <CheckCircleIcon className="w-6 h-6 text-success shrink-0" />
                                 <div className="flex-1">
-                                    <span className="text-[10px] font-black uppercase tracking-widest text-green-600">External Systems · Synced</span>
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-success">External Systems · Synced</span>
                                 </div>
                                 <div className="flex gap-1.5 flex-wrap justify-end">
                                     {['Survey Engine', 'NLP Pipeline', 'Sentiment DB', 'Report Builder'].map(s => (
-                                        <span key={s} className="px-2 py-0.5 rounded-full bg-green-500/10 text-[9px] font-bold text-green-600 border border-green-500/20">{s}</span>
+                                        <span key={s} className="px-2 py-0.5 rounded-full bg-success/10 text-[9px] font-bold text-success border border-success/30">{s}</span>
                                     ))}
                                 </div>
                             </div>
@@ -265,7 +265,7 @@ export default function ConversationalSurvey() {
                                             <div className="text-lg font-black text-foreground">Floor 4 — 60-Day Assessment</div>
                                         </div>
                                         <div className="text-right">
-                                            <div className="text-3xl font-black text-green-500">92%</div>
+                                            <div className="text-3xl font-black text-success">92%</div>
                                             <div className="text-[10px] font-bold text-muted-foreground">Overall Satisfaction</div>
                                         </div>
                                     </div>
@@ -293,11 +293,11 @@ export default function ConversationalSurvey() {
                                             <div key={i} className="flex items-center gap-3">
                                                 <span className="text-xs font-bold text-foreground w-28 shrink-0">{cat.label}</span>
                                                 <div className="flex-1 bg-muted/30 rounded-full h-3 overflow-hidden">
-                                                    <div className={`h-full rounded-full transition-all duration-700 ${cat.score >= 4.2 ? 'bg-green-500' : cat.score >= 4.0 ? 'bg-yellow-500' : 'bg-orange-500'}`}
+                                                    <div className={`h-full rounded-full transition-all duration-700 ${cat.score >= 4.2 ? 'bg-success/100' : cat.score >= 4.0 ? 'bg-yellow-500' : 'bg-orange-500'}`}
                                                         style={{ width: `${(cat.score / 5) * 100}%` }} />
                                                 </div>
                                                 <div className="flex items-center gap-1.5 w-16 justify-end">
-                                                    {cat.score >= 4.2 ? <Smile className="w-3.5 h-3.5 text-green-500" /> : cat.score >= 4.0 ? <Meh className="w-3.5 h-3.5 text-yellow-500" /> : <Meh className="w-3.5 h-3.5 text-orange-500" />}
+                                                    {cat.score >= 4.2 ? <Smile className="w-3.5 h-3.5 text-success" /> : cat.score >= 4.0 ? <Meh className="w-3.5 h-3.5 text-yellow-500" /> : <Meh className="w-3.5 h-3.5 text-orange-500" />}
                                                     <span className="text-sm font-black">{cat.score}</span>
                                                 </div>
                                             </div>
@@ -306,26 +306,26 @@ export default function ConversationalSurvey() {
                                 </div>
 
                                 {/* Key insight */}
-                                <div className="bg-amber-500/5 border border-amber-400/30 rounded-2xl p-4">
+                                <div className="bg-warning/10 border border-warning/30 rounded-2xl p-4">
                                     <div className="flex items-start gap-3">
-                                        <Sparkles className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+                                        <Sparkles className="w-5 h-5 text-warning shrink-0 mt-0.5" />
                                         <div>
-                                            <div className="text-[10px] font-black uppercase tracking-widest text-amber-600 mb-1">AI Recommendation</div>
+                                            <div className="text-[10px] font-black uppercase tracking-widest text-warning mb-1">AI Recommendation</div>
                                             <div className="text-sm font-semibold text-foreground">Conference AV scored lowest (3.8/5) — employees report audio quality issues in rooms 401-404. Recommend microphone recalibration and acoustic panel review.</div>
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* FM Actions Panel */}
-                                <div className="bg-blue-50 dark:bg-blue-500/5 border border-blue-200 dark:border-blue-500/20 rounded-2xl p-4 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
+                                <div className="bg-info/10 dark:bg-info/100/5 border border-info/20 rounded-2xl p-4 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
                                     <div className="flex items-center gap-2 mb-3">
                                         <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 text-white flex items-center justify-center text-[8px] font-bold">CR</div>
-                                        <span className="text-[10px] font-bold text-blue-700 dark:text-blue-300">Facilities Coord Cardo — Facilities Actions</span>
+                                        <span className="text-[10px] font-bold text-info dark:text-info">Facilities Coord Cardo — Facilities Actions</span>
                                     </div>
                                     <div className="space-y-1.5 text-[10px] text-foreground/80">
-                                        <div className="flex items-center gap-1.5"><span className="text-green-500">✓</span> Maintenance ticket: AV recalibration rooms 401-404</div>
-                                        <div className="flex items-center gap-1.5"><span className="text-green-500">✓</span> Ergonomics report forwarded to HR</div>
-                                        <div className="flex items-center gap-1.5"><span className="text-green-500">✓</span> Acoustic panel review scheduled</div>
+                                        <div className="flex items-center gap-1.5"><span className="text-success">✓</span> Maintenance ticket: AV recalibration rooms 401-404</div>
+                                        <div className="flex items-center gap-1.5"><span className="text-success">✓</span> Ergonomics report forwarded to HR</div>
+                                        <div className="flex items-center gap-1.5"><span className="text-success">✓</span> Acoustic panel review scheduled</div>
                                     </div>
                                 </div>
 

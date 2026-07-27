@@ -33,11 +33,11 @@ const TONE_CLASSES: Record<ChipTone, { active: string; pulse: string }> = {
         pulse:  'ring-2 ring-yellow-400/60 animate-pulse',
     },
     success: {
-        active: 'bg-green-50 text-green-700 border-green-200 hover:bg-green-100 dark:bg-green-500/15 dark:text-green-300 dark:border-green-500/30',
+        active: 'bg-success/10 text-success border-success/30 hover:bg-success/15 dark:bg-success/15 dark:text-success dark:border-success/30',
         pulse:  'ring-2 ring-green-400/60 animate-pulse',
     },
     info: {
-        active: 'bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100 dark:bg-blue-500/15 dark:text-blue-300 dark:border-blue-500/30',
+        active: 'bg-info/10 text-info border-info/30 hover:bg-info/15 dark:bg-info/15 dark:text-info dark:border-info/30',
         pulse:  'ring-2 ring-blue-400/60 animate-pulse',
     },
 }

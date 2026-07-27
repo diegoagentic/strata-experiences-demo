@@ -468,7 +468,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                         <AIAgentAvatar />
                         <span className="text-[11px] font-semibold text-foreground">{agent.name}</span>
                         <span className="text-[10px] text-muted-foreground">— {agent.detail}</span>
-                        {agent.done && <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 ml-auto shrink-0" />}
+                        {agent.done && <CheckCircleIcon className="h-3.5 w-3.5 text-success ml-auto shrink-0" />}
                     </div>
                 ))}
             </div>
@@ -480,19 +480,19 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
             {systems.map((sys, i) => (
                 <span key={sys.label} className="contents">
                     <span className={`text-[8px] font-bold px-2 py-1 rounded-md border flex items-center gap-1 ${
-                        sys.color === 'blue' ? 'bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-200 dark:border-blue-500/20 ring-2 ring-blue-300 dark:ring-blue-500/30 shadow-sm shadow-blue-200 dark:shadow-blue-500/10' :
+                        sys.color === 'blue' ? 'bg-info/15 dark:bg-info/10 text-info border-info/20 ring-2 ring-blue-300 dark:ring-blue-500/30 shadow-sm shadow-blue-200 dark:shadow-blue-500/10' :
                         sys.color === 'teal' ? 'bg-teal-100 dark:bg-teal-500/10 text-teal-700 dark:text-teal-400 border-teal-200 dark:border-teal-500/20' :
-                        sys.color === 'amber' ? 'bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/20' :
+                        sys.color === 'amber' ? 'bg-warning/15 dark:bg-warning/10 text-warning border-warning/20' :
                         sys.color === 'purple' ? 'bg-purple-100 dark:bg-ai/10 text-purple-700 dark:text-purple-400 border-purple-200 dark:border-purple-500/20' :
-                        sys.color === 'red' ? 'bg-red-100 dark:bg-red-500/10 text-red-700 dark:text-red-400 border-red-200 dark:border-red-500/20' :
-                        'bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 border-green-200 dark:border-green-500/20'
+                        sys.color === 'red' ? 'bg-destructive/15 dark:bg-destructive/10 text-destructive border-destructive/30' :
+                        'bg-success/15 dark:bg-success/10 text-success border-success/30 dark:border-success/30'
                     }`}>
                         <LinkIcon className="h-3 w-3" />{sys.label}
                     </span>
                     {i < systems.length - 1 && <span className="text-muted-foreground text-[10px]">↔</span>}
                 </span>
             ))}
-            <span className="text-[8px] px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 font-semibold">{status}</span>
+            <span className="text-[8px] px-1.5 py-0.5 rounded bg-success/15 dark:bg-success/10 text-success font-semibold">{status}</span>
         </div>
     );
 
@@ -520,7 +520,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                 <div key={kpi.label} className="p-3 rounded-lg bg-muted/50 border border-border">
                     <div className="text-[10px] text-muted-foreground">{kpi.label}</div>
                     <div className="text-sm font-bold text-foreground mt-0.5">{kpi.value}</div>
-                    <div className={`text-[10px] font-semibold mt-0.5 ${kpi.trendUp ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'}`}>
+                    <div className={`text-[10px] font-semibold mt-0.5 ${kpi.trendUp ? 'text-success' : 'text-warning'}`}>
                         {kpi.trend}
                     </div>
                 </div>
@@ -551,17 +551,17 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                     {syncPhase === 'processing' && renderAgentPipeline(syncAgents, syncProgress, 'Inventory Sync — 3 warehouses + 9 POs...')}
                     {syncPhase === 'breathing' && (
                         <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                            <div className="w-2 h-2 rounded-full bg-success/100 animate-pulse" />
                             <span className="text-xs font-semibold text-muted-foreground">Sync complete — computing inventory health...</span>
                         </div>
                     )}
                     {(syncPhase === 'revealed' || syncPhase === 'results') && (
                         <div className="animate-in fade-in duration-500 space-y-4">
                             {/* AI Summary */}
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar />
-                                    <p className="text-xs text-green-800 dark:text-green-200">
+                                    <p className="text-xs text-success dark:text-success">
                                         <span className="font-bold">DataBridge + StockAnalyzer:</span> <span className="font-semibold">5 systems</span> connected — <span className="font-semibold">1,840 items</span> synced.
                                         Health score: <span className="font-semibold">78/100</span>. Fill rate: <span className="font-semibold">89%</span>.
                                     </p>
@@ -571,15 +571,15 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                             <div className="rounded-xl border border-border overflow-hidden">
                                 <div className="bg-muted/50 px-4 py-2 border-b border-border flex items-center justify-between">
                                     <span className="text-xs font-bold text-foreground">Cross-System Data Bridge</span>
-                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 font-bold">ALL CONNECTED</span>
+                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/10 text-success font-bold">ALL CONNECTED</span>
                                 </div>
                                 <div className="p-4">
                                     <div className="flex items-center justify-center gap-2 flex-wrap">
                                         {[
                                             { name: 'CET', color: 'bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-200 dark:border-teal-500/20' },
-                                            { name: 'SPEC', color: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-500/20' },
+                                            { name: 'SPEC', color: 'bg-info/10 text-info border-info/20' },
                                             { name: 'Compass', color: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-500/20' },
-                                            { name: 'Warehouse', color: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-200 dark:border-amber-500/20' },
+                                            { name: 'Warehouse', color: 'bg-warning/10 text-warning border-warning/20' },
                                             { name: 'Carrier', color: 'bg-ai/10 text-ai dark:text-purple-400 border-purple-200 dark:border-purple-500/20' },
                                         ].map((sys, i, arr) => (
                                             <div key={sys.name} className="flex items-center gap-2">
@@ -634,10 +634,10 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                     {reconPhase === 'continuity' && (
                         <div className="animate-in fade-in duration-500 space-y-4">
                             {/* d3.1 end state: AI Summary */}
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar />
-                                    <p className="text-xs text-green-800 dark:text-green-200">
+                                    <p className="text-xs text-success dark:text-success">
                                         <span className="font-bold">DataBridge + StockAnalyzer:</span> <span className="font-semibold">5 systems</span> connected — <span className="font-semibold">1,840 items</span> synced.
                                         Health score: <span className="font-semibold">78/100</span>. Fill rate: <span className="font-semibold">89%</span>.
                                     </p>
@@ -647,15 +647,15 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                             <div className="rounded-xl border border-border overflow-hidden">
                                 <div className="bg-muted/50 px-4 py-2 border-b border-border flex items-center justify-between">
                                     <span className="text-xs font-bold text-foreground">Cross-System Data Bridge</span>
-                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 font-bold">ALL CONNECTED</span>
+                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/10 text-success font-bold">ALL CONNECTED</span>
                                 </div>
                                 <div className="p-4">
                                     <div className="flex items-center justify-center gap-2 flex-wrap">
                                         {[
                                             { name: 'CET', color: 'bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-200 dark:border-teal-500/20' },
-                                            { name: 'SPEC', color: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-500/20' },
+                                            { name: 'SPEC', color: 'bg-info/10 text-info border-info/20' },
                                             { name: 'Compass', color: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-500/20' },
-                                            { name: 'Warehouse', color: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-200 dark:border-amber-500/20' },
+                                            { name: 'Warehouse', color: 'bg-warning/10 text-warning border-warning/20' },
                                             { name: 'Carrier', color: 'bg-ai/10 text-ai dark:text-purple-400 border-purple-200 dark:border-purple-500/20' },
                                         ].map((sys, i, arr) => (
                                             <div key={sys.name} className="flex items-center gap-2">
@@ -669,9 +669,9 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                             {/* KPIs */}
                             {renderKPIGrid(INVENTORY_KPIS)}
                             {/* Transition info + CTA */}
-                            <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-500/5 border border-amber-300 dark:border-amber-500/30 flex items-center gap-3">
-                                <ExclamationTriangleIcon className="h-4 w-4 text-amber-500 shrink-0" />
-                                <p className="text-[11px] text-amber-800 dark:text-amber-300 flex-1">
+                            <div className="p-3 rounded-xl bg-warning/10 border border-warning/30 flex items-center gap-3">
+                                <ExclamationTriangleIcon className="h-4 w-4 text-warning shrink-0" />
+                                <p className="text-[11px] text-warning flex-1">
                                     <span className="font-bold">3 warehouse updates</span> detected — need to verify and propagate across all connected systems before reporting.
                                 </p>
                             </div>
@@ -688,10 +688,10 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                     {reconPhase === 'revealed' && (
                         <div className="animate-in fade-in duration-500 space-y-4">
                             {/* AI Summary */}
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar />
-                                    <p className="text-xs text-green-800 dark:text-green-200">
+                                    <p className="text-xs text-success dark:text-success">
                                         <span className="font-bold">UpdateVerifier:</span> <span className="font-semibold">3 updates</span> from warehouse operations confirmed —
                                         all corrections already applied in Flow 2. Ready to synchronize across <span className="font-semibold">5 systems</span>.
                                     </p>
@@ -714,13 +714,13 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                 <div className="space-y-3">
                                     <div className="flex items-center justify-between">
                                         <span className="text-xs font-bold text-foreground">Updates from Warehouse Ops</span>
-                                        <span className="text-[9px] px-2 py-0.5 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 font-bold">3/3 RESOLVED</span>
+                                        <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/10 text-success font-bold">3/3 RESOLVED</span>
                                     </div>
                                     {RESOLVED_UPDATES.map(upd => (
-                                        <div key={upd.id} className="p-3 rounded-xl border border-green-200 dark:border-green-500/20 bg-green-50/50 dark:bg-green-500/5">
+                                        <div key={upd.id} className="p-3 rounded-xl border border-success/30 dark:border-success/30 bg-success/10 dark:bg-success/100/5">
                                             <div className="flex items-center gap-2 mb-1">
-                                                <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
-                                                <span className="text-[9px] font-bold uppercase px-1.5 py-0.5 rounded bg-green-500/20 text-green-700 dark:text-green-400">{upd.label}</span>
+                                                <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
+                                                <span className="text-[9px] font-bold uppercase px-1.5 py-0.5 rounded bg-success/20 text-success">{upd.label}</span>
                                                 <span className="text-[10px] font-semibold text-foreground">{upd.item}</span>
                                             </div>
                                             <p className="text-[10px] text-foreground ml-5">{upd.detail}</p>
@@ -755,7 +755,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                             <span className="text-[10px] font-bold text-foreground">{dataSyncProgress}%</span>
                                         </div>
                                         <div className="h-1.5 rounded-full bg-muted overflow-hidden">
-                                            <div className={`h-full rounded-full transition-all duration-300 ${dataSyncPhase === 'done' ? 'bg-green-500' : 'bg-brand-400'}`} style={{ width: `${dataSyncProgress}%` }} />
+                                            <div className={`h-full rounded-full transition-all duration-300 ${dataSyncPhase === 'done' ? 'bg-success/100' : 'bg-brand-400'}`} style={{ width: `${dataSyncProgress}%` }} />
                                         </div>
                                         <div className="space-y-1.5">
                                             {[
@@ -765,7 +765,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                                 { label: 'All 5 systems in sync', detail: 'CET · SPEC · Compass · WMS · Carrier' },
                                             ].map((check, i) => i < dataSyncChecks && (
                                                 <div key={check.label} className="flex items-center gap-2 animate-in fade-in slide-in-from-left-2 duration-300">
-                                                    <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                                                    <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
                                                     <span className="text-[11px] font-semibold text-foreground">{check.label}</span>
                                                     <span className="text-[10px] text-muted-foreground">— {check.detail}</span>
                                                 </div>
@@ -775,10 +775,10 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
 
                                     {dataSyncPhase === 'done' && (
                                         <div className="space-y-3 animate-in fade-in duration-300">
-                                            <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30">
+                                            <div className="p-3 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30">
                                                 <div className="flex items-center gap-2">
-                                                    <CheckCircleIcon className="h-4 w-4 text-green-600 dark:text-green-400" />
-                                                    <span className="text-xs font-bold text-green-800 dark:text-green-200">DATA SYNCHRONIZED — 1,840/1,840 verified</span>
+                                                    <CheckCircleIcon className="h-4 w-4 text-success" />
+                                                    <span className="text-xs font-bold text-success dark:text-success">DATA SYNCHRONIZED — 1,840/1,840 verified</span>
                                                 </div>
                                             </div>
 
@@ -905,10 +905,10 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                     {assemblyPhase === 'continuity' && (
                         <div className="animate-in fade-in duration-500 space-y-4">
                             {/* d3.2 end state: Sync complete banner */}
-                            <div className="p-3 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30">
+                            <div className="p-3 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30">
                                 <div className="flex items-center gap-2">
-                                    <CheckCircleIcon className="h-4 w-4 text-green-600 dark:text-green-400" />
-                                    <span className="text-xs font-bold text-green-800 dark:text-green-200">DATA SYNCHRONIZED — 1,840/1,840 verified</span>
+                                    <CheckCircleIcon className="h-4 w-4 text-success" />
+                                    <span className="text-xs font-bold text-success dark:text-success">DATA SYNCHRONIZED — 1,840/1,840 verified</span>
                                 </div>
                             </div>
 
@@ -916,9 +916,9 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                             <div className="space-y-2">
                                 <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Updates Propagated Across 5 Systems</span>
                                 {RESOLVED_UPDATES.map(upd => (
-                                    <div key={upd.id} className="p-2.5 rounded-xl border border-green-200 dark:border-green-500/20 bg-green-50/50 dark:bg-green-500/5 flex items-center gap-2">
-                                        <CheckCircleIcon className="h-3.5 w-3.5 text-green-500 shrink-0" />
-                                        <span className="text-[9px] font-bold uppercase px-1.5 py-0.5 rounded bg-green-500/20 text-green-700 dark:text-green-400">{upd.label}</span>
+                                    <div key={upd.id} className="p-2.5 rounded-xl border border-success/30 dark:border-success/30 bg-success/10 dark:bg-success/100/5 flex items-center gap-2">
+                                        <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
+                                        <span className="text-[9px] font-bold uppercase px-1.5 py-0.5 rounded bg-success/20 text-success">{upd.label}</span>
                                         <span className="text-[10px] font-semibold text-foreground">{upd.item}</span>
                                         <span className="text-[9px] text-muted-foreground ml-auto">— {upd.detail}</span>
                                     </div>
@@ -950,17 +950,17 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                     {assemblyPhase === 'processing' && renderAgentPipeline(reportAgents, reportProgress, 'Report Assembly — 4 sections...')}
                     {assemblyPhase === 'breathing' && (
                         <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                            <div className="w-2 h-2 rounded-full bg-success/100 animate-pulse" />
                             <span className="text-xs font-semibold text-muted-foreground">Assembly complete — formatting report...</span>
                         </div>
                     )}
                     {(assemblyPhase === 'revealed' || assemblyPhase === 'results') && (
                         <div className="animate-in fade-in duration-500 space-y-4">
                             {/* AI Summary */}
-                            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-500/5 border-2 border-green-300 dark:border-green-500/30">
+                            <div className="p-4 rounded-xl bg-success/10 dark:bg-success/100/5 border-2 border-success/30">
                                 <div className="flex items-start gap-2">
                                     <AIAgentAvatar />
-                                    <p className="text-xs text-green-800 dark:text-green-200">
+                                    <p className="text-xs text-success dark:text-success">
                                         <span className="font-bold">HealthReporter:</span> Report built from synchronized data (<span className="font-semibold">3 updates propagated</span>) —
                                         <span className="font-semibold"> 4 sections</span> covering stock availability, warehouse capacity, backorder status, and <span className="font-semibold">3 AI recommendations</span>.
                                     </p>
@@ -980,7 +980,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                                 <span className="text-xs font-bold text-foreground">{section.title}</span>
                                                 <p className="text-[10px] text-muted-foreground">{section.subtitle}</p>
                                             </div>
-                                            <CheckCircleIcon className="h-4 w-4 text-green-500" />
+                                            <CheckCircleIcon className="h-4 w-4 text-success" />
                                         </div>
                                     </div>
                                 ))}
@@ -991,8 +991,8 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                 <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Proactive Alerts Queued</span>
                                 {[
                                     { channel: 'Teams', icon: '💬', recipient: '@Randy', message: 'Acuity Chairs below safety stock — reorder recommended', color: 'bg-indigo-50 dark:bg-indigo-500/5 border-indigo-200 dark:border-indigo-500/20' },
-                                    { channel: 'Email', icon: '📧', recipient: 'mercy-health-team@dupler.com', message: 'Mercy Health Phase 2 — 68% inventory staged, on track', color: 'bg-blue-50 dark:bg-blue-500/5 border-blue-200 dark:border-blue-500/20' },
-                                    { channel: 'SMS', icon: '📱', recipient: 'Sales Coordinator Marks', message: 'URGENT: Park Table backorder — ETA Apr 7', color: 'bg-red-50 dark:bg-red-500/5 border-red-200 dark:border-red-500/20' },
+                                    { channel: 'Email', icon: '📧', recipient: 'mercy-health-team@dupler.com', message: 'Mercy Health Phase 2 — 68% inventory staged, on track', color: 'bg-info/10 dark:bg-info/100/5 border-info/20' },
+                                    { channel: 'SMS', icon: '📱', recipient: 'Sales Coordinator Marks', message: 'URGENT: Park Table backorder — ETA Apr 7', color: 'bg-destructive/10 dark:bg-destructive/5 border-destructive/30' },
                                 ].map(notif => (
                                     <div key={notif.channel} className={`p-3 rounded-xl border ${notif.color} flex items-start gap-3`}>
                                         <span className="text-lg">{notif.icon}</span>
@@ -1016,7 +1016,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                             onClick={() => setShowReportPreview(true)}
                                             className="flex-1 py-2.5 rounded-xl text-xs font-bold bg-muted hover:bg-zinc-200 dark:hover:bg-zinc-700 text-foreground border border-border transition-all flex items-center justify-center gap-2"
                                         >
-                                            <DocumentChartBarIcon className="h-4 w-4 text-red-500" /> Preview
+                                            <DocumentChartBarIcon className="h-4 w-4 text-destructive" /> Preview
                                         </button>
 
                                         {/* Download */}
@@ -1031,7 +1031,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                             disabled={reportDownloaded}
                                             className={`flex-1 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all ${
                                                 reportDownloaded
-                                                    ? 'bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 border border-green-300 dark:border-green-500/30'
+                                                    ? 'bg-success/15 dark:bg-success/10 text-success border border-success/30'
                                                     : 'bg-muted hover:bg-zinc-200 dark:hover:bg-zinc-700 text-foreground border border-border'
                                             }`}
                                         >
@@ -1045,7 +1045,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                             disabled={reportSent}
                                             className={`flex-1 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all ${
                                                 reportSent
-                                                    ? 'bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 border border-green-300 dark:border-green-500/30'
+                                                    ? 'bg-success/15 dark:bg-success/10 text-success border border-success/30'
                                                     : 'bg-brand-400 hover:bg-brand-500 text-zinc-900 shadow-lg shadow-brand-500/20 animate-pulse'
                                             }`}
                                         >
@@ -1196,15 +1196,15 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                                             <div key={wh.name} className="p-3 rounded-lg bg-card border border-border">
                                                                 <div className="flex items-center justify-between mb-1">
                                                                     <span className="text-[11px] font-bold text-foreground">{wh.name}</span>
-                                                                    {wh.alert && <span className="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-700 dark:text-amber-400 font-bold">ALERT</span>}
+                                                                    {wh.alert && <span className="text-[9px] px-1.5 py-0.5 rounded bg-warning/20 text-warning font-bold">ALERT</span>}
                                                                 </div>
                                                                 <div className="flex items-center gap-2">
                                                                     <div className="flex-1 h-2 rounded-full bg-muted overflow-hidden">
-                                                                        <div className={`h-full rounded-full transition-all ${wh.current > 80 ? 'bg-red-500' : wh.current > 60 ? 'bg-amber-500' : 'bg-green-500'}`} style={{ width: `${wh.current}%` }} />
+                                                                        <div className={`h-full rounded-full transition-all ${wh.current > 80 ? 'bg-destructive' : wh.current > 60 ? 'bg-warning' : 'bg-success/100'}`} style={{ width: `${wh.current}%` }} />
                                                                     </div>
                                                                     <span className="text-[10px] font-semibold text-foreground">{wh.current}%</span>
                                                                     {wh.forecast !== wh.current && (
-                                                                        <span className="text-[10px] text-amber-600 dark:text-amber-400">→ {wh.forecast}%</span>
+                                                                        <span className="text-[10px] text-warning">→ {wh.forecast}%</span>
                                                                     )}
                                                                 </div>
                                                             </div>
@@ -1215,7 +1215,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                                     <div className="space-y-2">
                                                         <div className="flex items-center justify-between text-[11px]">
                                                             <span className="text-foreground font-semibold">42 items backordered across 5 categories</span>
-                                                            <span className="text-[10px] text-amber-600 dark:text-amber-400 font-bold">3 critical (ETA &gt; 2 weeks)</span>
+                                                            <span className="text-[10px] text-warning font-bold">3 critical (ETA &gt; 2 weeks)</span>
                                                         </div>
                                                         {[
                                                             { cat: 'Storage', count: 200, pct: '47%', critical: true },
@@ -1227,7 +1227,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                                                 <span className="text-[10px] font-semibold text-foreground">{bo.cat}</span>
                                                                 <div className="flex items-center gap-2">
                                                                     <span className="text-[10px] text-muted-foreground">{bo.count} items ({bo.pct})</span>
-                                                                    {bo.critical && <ExclamationTriangleIcon className="h-3 w-3 text-amber-500" />}
+                                                                    {bo.critical && <ExclamationTriangleIcon className="h-3 w-3 text-warning" />}
                                                                 </div>
                                                             </div>
                                                         ))}
@@ -1278,7 +1278,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                         disabled={downloaded}
                                         className={`flex-1 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all ${
                                             downloaded
-                                                ? 'bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 border border-green-300 dark:border-green-500/30'
+                                                ? 'bg-success/15 dark:bg-success/10 text-success border border-success/30'
                                                 : 'bg-muted hover:bg-muted/80 text-foreground border border-border hover:border-zinc-400 dark:hover:border-zinc-500'
                                         }`}
                                     >
@@ -1292,7 +1292,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                         disabled={exported}
                                         className={`flex-1 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all ${
                                             exported
-                                                ? 'bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 border border-green-300 dark:border-green-500/30'
+                                                ? 'bg-success/15 dark:bg-success/10 text-success border border-success/30'
                                                 : 'bg-brand-400 hover:bg-brand-500 text-zinc-900 shadow-lg shadow-brand-500/20'
                                         }`}
                                     >
@@ -1378,12 +1378,12 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                             {/* Toast Notification */}
                             {sendToast && (
                                 <div className="fixed bottom-6 right-6 z-[100] animate-in fade-in slide-in-from-bottom-4 duration-300">
-                                    <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-green-600 dark:bg-green-500 text-white shadow-2xl shadow-green-500/30">
+                                    <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-success dark:bg-success/100 text-white shadow-2xl shadow-green-500/30">
                                         <CheckCircleIcon className="h-5 w-5 shrink-0" />
                                         <div>
                                             <p className="text-xs font-bold">{sendToast}</p>
                                         </div>
-                                        <button onClick={() => setSendToast(null)} className="p-1 rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition-colors ml-2">
+                                        <button onClick={() => setSendToast(null)} className="p-1 rounded-lg hover:bg-success dark:hover:bg-success transition-colors ml-2">
                                             <XMarkIcon className="h-3.5 w-3.5" />
                                         </button>
                                     </div>
@@ -1440,13 +1440,13 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                                 ].map(ms => (
                                                     <div key={ms.milestone} className="flex items-center gap-3 text-[11px]">
                                                         <div className={`w-3 h-3 rounded-full shrink-0 ${
-                                                            ms.status === 'done' ? 'bg-green-500' :
+                                                            ms.status === 'done' ? 'bg-success/100' :
                                                             ms.status === 'active' ? 'bg-brand-400 animate-pulse' :
                                                             'bg-muted border border-border'
                                                         }`} />
                                                         <span className={`flex-1 ${ms.status === 'done' ? 'text-muted-foreground line-through' : 'text-foreground font-semibold'}`}>{ms.milestone}</span>
                                                         <span className="text-[10px] text-muted-foreground">{ms.date}</span>
-                                                        {ms.status === 'done' && <CheckCircleIcon className="h-3.5 w-3.5 text-green-500" />}
+                                                        {ms.status === 'done' && <CheckCircleIcon className="h-3.5 w-3.5 text-success" />}
                                                     </div>
                                                 ))}
                                             </div>
@@ -1486,8 +1486,8 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                         {/* Header */}
                         <div className="px-5 py-3 border-b border-border bg-muted dark:bg-zinc-800/50 flex items-center justify-between shrink-0">
                             <div className="flex items-center gap-3">
-                                <div className="p-1.5 rounded-lg bg-red-500/10">
-                                    <DocumentChartBarIcon className="h-4 w-4 text-red-500" />
+                                <div className="p-1.5 rounded-lg bg-destructive/10">
+                                    <DocumentChartBarIcon className="h-4 w-4 text-destructive" />
                                 </div>
                                 <div>
                                     <p className="text-xs font-bold text-foreground">Inventory_Report_MercyHealth_Mar2026.pdf</p>
@@ -1542,7 +1542,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                         <div key={wh.name} className="flex items-center gap-3">
                                             <span className="text-[10px] text-muted-foreground w-28 shrink-0">{wh.name}</span>
                                             <div className="flex-1 h-2 rounded-full bg-zinc-100 dark:bg-zinc-700 overflow-hidden">
-                                                <div className={`h-full rounded-full ${wh.current > 60 ? 'bg-amber-500' : 'bg-green-500'}`} style={{ width: `${wh.current}%` }} />
+                                                <div className={`h-full rounded-full ${wh.current > 60 ? 'bg-warning' : 'bg-success/100'}`} style={{ width: `${wh.current}%` }} />
                                             </div>
                                             <span className="text-[10px] font-semibold text-muted-foreground w-8 text-right">{wh.current}%</span>
                                             <span className="text-[9px] text-muted-foreground">→ {wh.forecast}%</span>
@@ -1560,9 +1560,9 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                     ].map(c => (
                                         <div key={c.cat} className="flex items-center justify-between text-[10px] py-1 border-b border-zinc-50 dark:border-zinc-800">
                                             <span className="text-muted-foreground w-20">{c.cat}</span>
-                                            <span className="text-green-600 dark:text-green-400">{c.available} avail</span>
-                                            <span className="text-amber-600 dark:text-amber-400">{c.reserved} resv</span>
-                                            <span className="text-red-600 dark:text-red-400">{c.backordered} bo</span>
+                                            <span className="text-success">{c.available} avail</span>
+                                            <span className="text-warning">{c.reserved} resv</span>
+                                            <span className="text-destructive">{c.backordered} bo</span>
                                         </div>
                                     ))}
                                 </div>
@@ -1579,7 +1579,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                             <span className="text-[9px] font-bold text-muted-foreground">{insight.confidence}%</span>
                                         </div>
                                         <p className="text-[9px] text-muted-foreground">{insight.detail}</p>
-                                        <p className="text-[9px] font-semibold text-green-600 dark:text-green-400 mt-1">{insight.impact}</p>
+                                        <p className="text-[9px] font-semibold text-success mt-1">{insight.impact}</p>
                                     </div>
                                 ))}
                                 <p className="text-[8px] text-zinc-300 dark:text-muted-foreground text-right">Page 3 of 4</p>
@@ -1610,13 +1610,13 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                     ].map(ms => (
                                         <div key={ms.milestone} className="flex items-center gap-3 text-[10px]">
                                             <div className={`w-3 h-3 rounded-full shrink-0 ${
-                                                ms.status === 'done' ? 'bg-green-500' :
+                                                ms.status === 'done' ? 'bg-success/100' :
                                                 ms.status === 'active' ? 'bg-brand-400 animate-pulse' :
                                                 'bg-muted border border-border'
                                             }`} />
                                             <span className={`flex-1 ${ms.status === 'done' ? 'text-muted-foreground line-through' : 'text-foreground font-semibold'}`}>{ms.milestone}</span>
                                             <span className="text-[10px] text-muted-foreground">{ms.date}</span>
-                                            {ms.status === 'done' && <CheckCircleIcon className="h-3.5 w-3.5 text-green-500" />}
+                                            {ms.status === 'done' && <CheckCircleIcon className="h-3.5 w-3.5 text-success" />}
                                         </div>
                                     ))}
                                 </div>
@@ -1642,7 +1642,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                     }}
                                     className={`px-3 py-1.5 rounded-lg text-[10px] font-bold transition-colors flex items-center gap-1.5 ${
                                         reportDownloaded
-                                            ? 'bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-500/30'
+                                            ? 'bg-success/15 dark:bg-success/10 text-success border border-success/30 dark:border-success/30'
                                             : 'bg-zinc-200 dark:bg-zinc-700 text-muted-foreground hover:bg-zinc-300 dark:hover:bg-zinc-600'
                                     }`}
                                 >
@@ -1661,7 +1661,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
             {/* ── d3.3 Action Toast ── */}
             {reportActionToast && (
                 <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[210] animate-in fade-in slide-in-from-top-2 duration-300">
-                    <div className="px-4 py-2.5 rounded-xl bg-green-600 text-white text-xs font-bold shadow-lg flex items-center gap-2">
+                    <div className="px-4 py-2.5 rounded-xl bg-success text-white text-xs font-bold shadow-lg flex items-center gap-2">
                         <CheckCircleIcon className="h-4 w-4" />
                         {reportActionToast}
                     </div>
@@ -1675,8 +1675,8 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                         {/* PDF Header */}
                         <div className="px-5 py-3 border-b border-border bg-muted dark:bg-zinc-800/50 flex items-center justify-between shrink-0">
                             <div className="flex items-center gap-3">
-                                <div className="p-1.5 rounded-lg bg-red-500/10">
-                                    <DocumentChartBarIcon className="h-4 w-4 text-red-500" />
+                                <div className="p-1.5 rounded-lg bg-destructive/10">
+                                    <DocumentChartBarIcon className="h-4 w-4 text-destructive" />
                                 </div>
                                 <div>
                                     <p className="text-xs font-bold text-foreground">Inventory_Report_MercyHealth_Mar2026.pdf</p>
@@ -1733,7 +1733,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                         <div key={wh.name} className="flex items-center gap-3">
                                             <span className="text-[10px] text-muted-foreground w-28 shrink-0">{wh.name}</span>
                                             <div className="flex-1 h-2 rounded-full bg-zinc-100 dark:bg-zinc-700 overflow-hidden">
-                                                <div className={`h-full rounded-full ${wh.current > 60 ? 'bg-amber-500' : 'bg-green-500'}`} style={{ width: `${wh.current}%` }} />
+                                                <div className={`h-full rounded-full ${wh.current > 60 ? 'bg-warning' : 'bg-success/100'}`} style={{ width: `${wh.current}%` }} />
                                             </div>
                                             <span className="text-[10px] font-semibold text-muted-foreground w-8 text-right">{wh.current}%</span>
                                             <span className="text-[9px] text-muted-foreground">→ {wh.forecast}%</span>
@@ -1752,9 +1752,9 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                     ].map(c => (
                                         <div key={c.cat} className="flex items-center justify-between text-[10px] py-1 border-b border-zinc-50 dark:border-zinc-800">
                                             <span className="text-muted-foreground w-20">{c.cat}</span>
-                                            <span className="text-green-600 dark:text-green-400">{c.available} avail</span>
-                                            <span className="text-amber-600 dark:text-amber-400">{c.reserved} resv</span>
-                                            <span className="text-red-600 dark:text-red-400">{c.backordered} bo</span>
+                                            <span className="text-success">{c.available} avail</span>
+                                            <span className="text-warning">{c.reserved} resv</span>
+                                            <span className="text-destructive">{c.backordered} bo</span>
                                         </div>
                                     ))}
                                 </div>
@@ -1771,7 +1771,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                             <span className="text-[9px] font-bold text-muted-foreground">{insight.confidence}%</span>
                                         </div>
                                         <p className="text-[9px] text-muted-foreground">{insight.detail}</p>
-                                        <p className="text-[9px] font-semibold text-green-600 dark:text-green-400 mt-1">{insight.impact}</p>
+                                        <p className="text-[9px] font-semibold text-success mt-1">{insight.impact}</p>
                                     </div>
                                 ))}
                                 <p className="text-[8px] text-zinc-300 dark:text-muted-foreground text-right">Page 3 of 4</p>
@@ -1787,7 +1787,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                     </div>
                                     <div className="p-2 rounded bg-muted dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 text-center">
                                         <p className="text-[9px] text-muted-foreground">On Schedule</p>
-                                        <p className="text-[12px] font-bold text-green-600 dark:text-green-400">Yes</p>
+                                        <p className="text-[12px] font-bold text-success">Yes</p>
                                     </div>
                                     <div className="p-2 rounded bg-muted dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 text-center">
                                         <p className="text-[9px] text-muted-foreground">Est. Completion</p>
@@ -1803,7 +1803,7 @@ export default function DuplerReporting({ onNavigate }: DuplerReportingProps) {
                                         { milestone: 'Final Walkthrough', date: 'Apr 5', done: false },
                                     ].map(ms => (
                                         <div key={ms.milestone} className="flex items-center gap-2 text-[10px]">
-                                            <div className={`w-2.5 h-2.5 rounded-full shrink-0 ${ms.done ? 'bg-green-500' : 'bg-zinc-200 dark:bg-zinc-600'}`} />
+                                            <div className={`w-2.5 h-2.5 rounded-full shrink-0 ${ms.done ? 'bg-success/100' : 'bg-zinc-200 dark:bg-zinc-600'}`} />
                                             <span className={`flex-1 ${ms.done ? 'text-muted-foreground line-through' : 'text-muted-foreground'}`}>{ms.milestone}</span>
                                             <span className="text-muted-foreground">{ms.date}</span>
                                         </div>

@@ -19,10 +19,10 @@ export default function AnalysisReportArtifact({ data }: { data: any }) {
 
             <div className="grid grid-cols-2 gap-4 mb-8">
                 {/* Context & Rules Card */}
-                <div className="bg-card p-4 rounded-xl border border-border relative overflow-hidden group hover:border-amber-200 transition-colors">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-full blur-xl -mr-8 -mt-8"></div>
+                <div className="bg-card p-4 rounded-xl border border-border relative overflow-hidden group hover:border-warning/30 transition-colors">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-warning/10 rounded-full blur-xl -mr-8 -mt-8"></div>
                     <h3 className="font-bold flex items-center gap-2 mb-3 relative z-10 text-sm">
-                        <div className="p-1.5 bg-amber-100 dark:bg-amber-900/30 text-amber-600 rounded-lg">
+                        <div className="p-1.5 bg-warning/15 text-warning rounded-lg">
                             <ShieldCheckIcon className="w-4 h-4" />
                         </div>
                         Context & Rules
@@ -30,13 +30,13 @@ export default function AnalysisReportArtifact({ data }: { data: any }) {
                     <div className="space-y-2 relative z-10">
                         <div className="flex justify-between items-center bg-muted dark:bg-zinc-800/50 p-2 rounded-lg text-xs">
                             <span className="font-medium">Header Discrepancies</span>
-                            <span className={`px-2 py-0.5 rounded-full font-bold ${issues.header > 0 ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'}`}>
+                            <span className={`px-2 py-0.5 rounded-full font-bold ${issues.header > 0 ? 'bg-destructive/15 text-destructive' : 'bg-success/15 text-success'}`}>
                                 {issues.header} Issues
                             </span>
                         </div>
                         <div className="flex justify-between items-center bg-muted dark:bg-zinc-800/50 p-2 rounded-lg text-xs">
                             <span className="font-medium">Business Alerts</span>
-                            <span className={`px-2 py-0.5 rounded-full font-bold ${issues.rules > 0 ? 'bg-amber-100 text-amber-600' : 'bg-green-100 text-green-600'}`}>
+                            <span className={`px-2 py-0.5 rounded-full font-bold ${issues.rules > 0 ? 'bg-warning/15 text-warning' : 'bg-success/15 text-success'}`}>
                                 {issues.rules} Alerts
                             </span>
                         </div>
@@ -44,10 +44,10 @@ export default function AnalysisReportArtifact({ data }: { data: any }) {
                 </div>
 
                 {/* Line Items Card */}
-                <div className="bg-card p-4 rounded-xl border border-border relative overflow-hidden group hover:border-blue-200 transition-colors">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-xl -mr-8 -mt-8"></div>
+                <div className="bg-card p-4 rounded-xl border border-border relative overflow-hidden group hover:border-info/30 transition-colors">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-info/10 rounded-full blur-xl -mr-8 -mt-8"></div>
                     <h3 className="font-bold flex items-center gap-2 mb-3 relative z-10 text-sm">
-                        <div className="p-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-lg">
+                        <div className="p-1.5 bg-info/15 text-info rounded-lg">
                             <BoltIcon className="w-4 h-4" />
                         </div>
                         Line Items
@@ -55,13 +55,13 @@ export default function AnalysisReportArtifact({ data }: { data: any }) {
                     <div className="space-y-2 relative z-10">
                         <div className="flex justify-between items-center bg-muted dark:bg-zinc-800/50 p-2 rounded-lg text-xs">
                             <span className="font-medium">Matches</span>
-                            <span className="px-2 py-0.5 bg-green-100 text-green-600 rounded-full font-bold">
+                            <span className="px-2 py-0.5 bg-success/15 text-success rounded-full font-bold">
                                 {stats.validated} Formatted
                             </span>
                         </div>
                         <div className="flex justify-between items-center bg-muted dark:bg-zinc-800/50 p-2 rounded-lg text-xs">
                             <span className="font-medium">Verify</span>
-                            <span className={`px-2 py-0.5 rounded-full font-bold ${stats.attention > 0 ? 'bg-amber-100 text-amber-600' : 'bg-green-100 text-green-600'}`}>
+                            <span className={`px-2 py-0.5 rounded-full font-bold ${stats.attention > 0 ? 'bg-warning/15 text-warning' : 'bg-success/15 text-success'}`}>
                                 {stats.attention} Review
                             </span>
                         </div>
@@ -74,7 +74,7 @@ export default function AnalysisReportArtifact({ data }: { data: any }) {
                     onClick={() => {
                         sendMessage("Resolve Issues", 'user');
                     }}
-                    className="w-full py-3 bg-amber-500 text-amber-950 font-bold rounded-xl shadow-sm hover:bg-amber-400 transition-colors"
+                    className="w-full py-3 bg-warning text-amber-950 font-bold rounded-xl shadow-sm hover:bg-warning transition-colors"
                 >
                     Resolve {totalIssues} Issues to Proceed
                 </button>

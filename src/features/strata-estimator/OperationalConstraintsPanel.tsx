@@ -67,7 +67,7 @@ export default function OperationalConstraintsPanel({
     }
 
     return (
-        <div className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm p-6">
+        <div className="bg-card rounded-2xl border border-border shadow-sm p-6">
             <div className="flex items-center gap-2 mb-5">
                 <HardHat className="w-4 h-4 text-muted-foreground" />
                 <h3 className="text-sm font-bold text-foreground uppercase tracking-wider">

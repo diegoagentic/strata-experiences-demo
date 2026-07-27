@@ -55,7 +55,7 @@ const DiscrepancyResolverWrapper = ({ data }: { data: any }) => {
     }, [issues, data, pushSystemArtifact]);
 
     if (issues.length === 0) {
-        return <div className="text-sm font-medium text-green-600 p-4 border border-green-200 bg-green-50 rounded-lg max-w-sm flex items-center gap-2"><svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg> All issues resolved successfully.</div>;
+        return <div className="text-sm font-medium text-success p-4 border border-success/30 bg-success/10 rounded-lg max-w-sm flex items-center gap-2"><svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg> All issues resolved successfully.</div>;
     }
 
     return (

@@ -188,7 +188,7 @@ export default function RequestClarificationModal({
                         leaveFrom="opacity-100 scale-100"
                         leaveTo="opacity-0 scale-95"
                     >
-                        <DialogPanel className="w-full max-w-xl bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-2xl overflow-hidden">
+                        <DialogPanel className="w-full max-w-xl bg-card rounded-2xl border border-border shadow-2xl overflow-hidden">
 
                             {/* Header */}
                             <div className="flex items-start gap-4 px-6 py-5 border-b border-border">
@@ -246,7 +246,7 @@ export default function RequestClarificationModal({
                                             onChange={setSelectedTopicId}
                                         >
                                             <div className="relative mt-1.5">
-                                                <ListboxButton className="w-full flex items-center gap-2 px-3 py-2.5 rounded-lg bg-card dark:bg-zinc-900 border border-border hover:border-primary/60 transition-colors text-left focus:outline-none focus:ring-1 focus:ring-primary">
+                                                <ListboxButton className="w-full flex items-center gap-2 px-3 py-2.5 rounded-lg bg-card border border-border hover:border-primary/60 transition-colors text-left focus:outline-none focus:ring-1 focus:ring-primary">
                                                     <div className="flex-1 min-w-0">
                                                         <p className="text-xs font-semibold text-foreground leading-tight truncate">
                                                             {selectedTopic.label}
@@ -266,7 +266,7 @@ export default function RequestClarificationModal({
                                                     leaveFrom="opacity-100"
                                                     leaveTo="opacity-0"
                                                 >
-                                                    <ListboxOptions className="absolute top-full left-0 right-0 mt-2 z-20 overflow-hidden rounded-xl bg-card dark:bg-zinc-800 border border-border shadow-xl py-1 focus:outline-none max-h-60 overflow-y-auto">
+                                                    <ListboxOptions className="absolute top-full left-0 right-0 mt-2 z-20 overflow-hidden rounded-xl bg-card border border-border shadow-xl py-1 focus:outline-none max-h-60 overflow-y-auto">
                                                         {TOPICS.map((topic) => (
                                                             <ListboxOption
                                                                 key={topic.id}
@@ -314,7 +314,7 @@ export default function RequestClarificationModal({
                                             value={message}
                                             onChange={(e) => setMessage(e.target.value)}
                                             rows={5}
-                                            className="mt-1.5 w-full resize-none rounded-lg bg-card dark:bg-zinc-900 border border-border px-3 py-2.5 text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
+                                            className="mt-1.5 w-full resize-none rounded-lg bg-card border border-border px-3 py-2.5 text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
                                             placeholder="Write the question you need David to answer…"
                                         />
                                         <p className="text-[10px] text-muted-foreground mt-1.5">
@@ -341,9 +341,9 @@ export default function RequestClarificationModal({
                             {/* Sent state */}
                             {phase === 'sent' && (
                                 <div className="px-6 py-10 flex flex-col items-center justify-center gap-3 animate-in fade-in zoom-in-95 duration-300">
-                                    <div className="w-14 h-14 rounded-full bg-green-500/10 border-2 border-green-500 flex items-center justify-center">
+                                    <div className="w-14 h-14 rounded-full bg-success/10 border-2 border-success flex items-center justify-center">
                                         <CheckCircle2
-                                            className="w-7 h-7 text-green-600 dark:text-green-400"
+                                            className="w-7 h-7 text-success"
                                             strokeWidth={2.5}
                                         />
                                     </div>

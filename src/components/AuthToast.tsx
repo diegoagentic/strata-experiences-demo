@@ -29,24 +29,24 @@ function AuthToast({ toast, onDismiss }: AuthToastProps) {
   const config = {
     success: {
       icon: CheckCircleIcon,
-      bg: 'bg-green-50 dark:bg-green-500/10',
-      border: 'border-green-200 dark:border-green-500/20',
-      iconColor: 'text-green-600 dark:text-green-400',
-      textColor: 'text-green-800 dark:text-green-200',
+      bg: 'bg-success/10',
+      border: 'border-success/30 dark:border-success/30',
+      iconColor: 'text-success',
+      textColor: 'text-success dark:text-success',
     },
     error: {
       icon: ExclamationCircleIcon,
-      bg: 'bg-red-50 dark:bg-red-500/10',
-      border: 'border-red-200 dark:border-red-500/20',
-      iconColor: 'text-red-600 dark:text-red-400',
-      textColor: 'text-red-800 dark:text-red-200',
+      bg: 'bg-destructive/10',
+      border: 'border-destructive/30',
+      iconColor: 'text-destructive',
+      textColor: 'text-destructive dark:text-destructive',
     },
     info: {
       icon: InformationCircleIcon,
-      bg: 'bg-blue-50 dark:bg-blue-500/10',
-      border: 'border-blue-200 dark:border-blue-500/20',
-      iconColor: 'text-blue-600 dark:text-blue-400',
-      textColor: 'text-blue-800 dark:text-blue-200',
+      bg: 'bg-info/10 dark:bg-info/10',
+      border: 'border-info/20',
+      iconColor: 'text-info',
+      textColor: 'text-info dark:text-info',
     },
   }[toast.type];
 

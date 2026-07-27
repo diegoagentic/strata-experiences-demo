@@ -326,13 +326,13 @@ const typeLabels: Record<PEDDocumentType, string> = {
 const statusColors: Record<string, string> = {
     'In production': 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300',
     'PO received': 'bg-zinc-100 text-muted-foreground dark:bg-zinc-800 dark:text-zinc-300',
-    'Ready to ship': 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
+    'Ready to ship': 'bg-success/15 text-success dark:bg-success/20 dark:text-success',
     'Delivered': 'bg-gray-100 text-foreground dark:bg-gray-800 dark:text-gray-300',
-    'Sent': 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
+    'Sent': 'bg-info/15 text-info dark:bg-info/20 dark:text-info',
     'Draft': 'bg-zinc-100 text-muted-foreground dark:bg-zinc-800 dark:text-zinc-300',
-    'Confirmed': 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
-    'Discrepancy': 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300',
-    'Partial': 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
+    'Confirmed': 'bg-success/15 text-success dark:bg-success/20 dark:text-success',
+    'Discrepancy': 'bg-destructive/15 text-destructive dark:bg-destructive/20 dark:text-destructive',
+    'Partial': 'bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning',
 };
 
 export default function PEDExportModal({ isOpen, onClose, data: initialData, purpose = 'export', onDuplicate }: PEDExportModalProps) {
@@ -782,9 +782,9 @@ export default function PEDExportModal({ isOpen, onClose, data: initialData, pur
 
                                         {/* === CALL BEFORE DELIVERY === */}
                                         {data.specialShippingInstructions && (
-                                            <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-300 dark:border-amber-700 rounded-lg px-4 py-2 flex items-center gap-2">
-                                                <ExclamationTriangleIcon className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
-                                                <p className="text-xs font-semibold text-amber-800 dark:text-amber-300">{data.specialShippingInstructions}</p>
+                                            <div className="bg-warning/10 dark:bg-warning/15 border border-warning/40 dark:border-amber-700 rounded-lg px-4 py-2 flex items-center gap-2">
+                                                <ExclamationTriangleIcon className="w-4 h-4 text-warning shrink-0" />
+                                                <p className="text-xs font-semibold text-warning">{data.specialShippingInstructions}</p>
                                             </div>
                                         )}
 
@@ -838,9 +838,9 @@ export default function PEDExportModal({ isOpen, onClose, data: initialData, pur
                                                 <span className="text-xs text-muted-foreground">{data.salesRepEmail} : Chestnut, Crystal</span>
                                             </div>
                                             {data.type === 'quote' && data.validUntil && (
-                                                <div className="bg-blue-50 dark:bg-blue-900/20 px-3 py-2 border-t border-blue-200 dark:border-blue-800">
-                                                    <span className="text-[9px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Expiration Date: </span>
-                                                    <span className="text-xs font-semibold text-blue-800 dark:text-blue-300">{data.validUntil}</span>
+                                                <div className="bg-info/10 dark:bg-info/15 px-3 py-2 border-t border-info/30 dark:border-info/40">
+                                                    <span className="text-[9px] font-bold uppercase tracking-wider text-info">Expiration Date: </span>
+                                                    <span className="text-xs font-semibold text-info">{data.validUntil}</span>
                                                 </div>
                                             )}
                                         </div>
@@ -991,12 +991,12 @@ export default function PEDExportModal({ isOpen, onClose, data: initialData, pur
 
                                         {/* === DISCREPANCY CHECK (Acks only) === */}
                                         {data.type === 'acknowledgment' && data.discrepancyNotes && (
-                                            <div className="py-3 px-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-200 dark:border-green-800/30">
+                                            <div className="py-3 px-4 rounded-lg bg-success/10 dark:bg-success/10 border border-success/30 dark:border-success/40/30">
                                                 <div className="flex items-center gap-2 mb-1">
-                                                    <CheckCircleIcon className="w-4 h-4 text-green-600 dark:text-green-400" />
-                                                    <p className="text-[10px] font-semibold uppercase tracking-wider text-green-700 dark:text-green-400">Discrepancy Check</p>
+                                                    <CheckCircleIcon className="w-4 h-4 text-success" />
+                                                    <p className="text-[10px] font-semibold uppercase tracking-wider text-success">Discrepancy Check</p>
                                                 </div>
-                                                <p className="text-xs text-green-700 dark:text-green-300">{data.discrepancyNotes}</p>
+                                                <p className="text-xs text-success dark:text-success">{data.discrepancyNotes}</p>
                                             </div>
                                         )}
 

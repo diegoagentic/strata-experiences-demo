@@ -61,9 +61,9 @@ export default function ProjectTrackerWidget() {
                                 </h4>
                                 <span className="text-xs text-muted-foreground font-mono">{project.id} • {project.items} Items</span>
                             </div>
-                            <div className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide border ${project.status === 'on_track' ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-900/30' :
-                                project.status === 'delayed' ? 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-900/30' :
-                                    'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-900/30'
+                            <div className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide border ${project.status === 'on_track' ? 'bg-success/10 text-success border-success/30 dark:bg-success/15 dark:text-success dark:border-success/40' :
+                                project.status === 'delayed' ? 'bg-destructive/10 text-destructive border-destructive/30 dark:bg-destructive/15 dark:text-destructive dark:border-destructive/40' :
+                                    'bg-warning/10 text-warning border-warning/30 dark:bg-warning/15 dark:text-warning dark:border-warning/40'
                                 }`}>
                                 {project.status.replace('_', ' ')}
                             </div>

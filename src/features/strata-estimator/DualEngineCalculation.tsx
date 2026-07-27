@@ -117,10 +117,10 @@ export default function DualEngineCalculation({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
 
                 {/* ═══ DELIVERY PRICER ═══════════════════════════════════ */}
-                <div className="rounded-2xl bg-card dark:bg-zinc-800 border border-border overflow-hidden">
+                <div className="rounded-2xl bg-card border border-border overflow-hidden">
                     <div className="flex items-center gap-2 px-4 py-3 bg-muted/30 border-b border-border">
-                        <div className="w-8 h-8 rounded-lg bg-blue-500/15 flex items-center justify-center">
-                            <Truck className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                        <div className="w-8 h-8 rounded-lg bg-info/15 flex items-center justify-center">
+                            <Truck className="w-4 h-4 text-info" />
                         </div>
                         <div className="flex-1 min-w-0">
                             <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider leading-none">
@@ -130,7 +130,7 @@ export default function DualEngineCalculation({
                                 Sections A-E + F multipliers + G charges
                             </p>
                         </div>
-                        <span className="shrink-0 flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 px-2 py-1 rounded-full bg-amber-500/10 border border-amber-500/30">
+                        <span className="shrink-0 flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-warning px-2 py-1 rounded-full bg-warning/10 border border-warning/30">
                             <Lock className="w-2.5 h-2.5" />
                             Private Excel
                         </span>
@@ -145,7 +145,7 @@ export default function DualEngineCalculation({
                                     <div
                                         key={line.label}
                                         className={clsx(
-                                            'flex items-center justify-between gap-2 text-[11px] px-2.5 py-1.5 rounded-md bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/15 transition-all duration-300',
+                                            'flex items-center justify-between gap-2 text-[11px] px-2.5 py-1.5 rounded-md bg-info/100/5 dark:bg-info/10 border border-info/30 transition-all duration-300',
                                             visible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1'
                                         )}
                                     >
@@ -157,7 +157,7 @@ export default function DualEngineCalculation({
                                                 {line.section} · {line.display}
                                             </p>
                                         </div>
-                                        <span className="shrink-0 text-blue-700 dark:text-blue-400 font-semibold tabular-nums">
+                                        <span className="shrink-0 text-info font-semibold tabular-nums">
                                             {formatMoney(line.qtyMin * 0.95)}
                                         </span>
                                     </div>
@@ -185,7 +185,7 @@ export default function DualEngineCalculation({
                                 engineReveal > 0.85 ? 'opacity-100' : 'opacity-0'
                             )}
                         >
-                            <p className="text-[9px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider">
+                            <p className="text-[9px] font-bold text-info uppercase tracking-wider">
                                 Section F · Multipliers
                             </p>
                             {SECTION_F.map((m) => (
@@ -194,7 +194,7 @@ export default function DualEngineCalculation({
                                     className="flex items-baseline justify-between gap-2 text-[10px] pl-2"
                                 >
                                     <span className="text-muted-foreground">· {m.label}</span>
-                                    <span className="text-blue-700 dark:text-blue-400 font-semibold">
+                                    <span className="text-info font-semibold">
                                         +{m.pct}%
                                     </span>
                                 </div>
@@ -208,7 +208,7 @@ export default function DualEngineCalculation({
                                 engineReveal > 0.9 ? 'opacity-100' : 'opacity-0'
                             )}
                         >
-                            <p className="text-[9px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider">
+                            <p className="text-[9px] font-bold text-info uppercase tracking-wider">
                                 Section G · Transport charges
                             </p>
                             {SECTION_G.map((c) => (
@@ -217,7 +217,7 @@ export default function DualEngineCalculation({
                                     className="flex items-baseline justify-between gap-2 text-[10px] pl-2"
                                 >
                                     <span className="text-muted-foreground">· {c.label}</span>
-                                    <span className="text-blue-700 dark:text-blue-400 font-semibold tabular-nums">
+                                    <span className="text-info font-semibold tabular-nums">
                                         +${c.amount}
                                     </span>
                                 </div>
@@ -227,14 +227,14 @@ export default function DualEngineCalculation({
                         {/* Engine total */}
                         <div
                             className={clsx(
-                                'flex items-baseline justify-between gap-2 pt-2 border-t-2 border-blue-500/30 transition-opacity duration-300',
+                                'flex items-baseline justify-between gap-2 pt-2 border-t-2 border-info/30 transition-opacity duration-300',
                                 engineReveal > 0.95 ? 'opacity-100' : 'opacity-0'
                             )}
                         >
                             <span className="text-[10px] font-bold uppercase tracking-wider text-foreground">
                                 Delivery total
                             </span>
-                            <span className="text-lg font-black text-blue-700 dark:text-blue-400 tabular-nums">
+                            <span className="text-lg font-black text-info tabular-nums">
                                 {formatMoney(DELIVERY_TOTAL * engineReveal)}
                             </span>
                         </div>
@@ -242,10 +242,10 @@ export default function DualEngineCalculation({
                 </div>
 
                 {/* ═══ LABOR WORKSHEET ════════════════════════════════════ */}
-                <div className="rounded-2xl bg-card dark:bg-zinc-800 border border-border overflow-hidden">
+                <div className="rounded-2xl bg-card border border-border overflow-hidden">
                     <div className="flex items-center gap-2 px-4 py-3 bg-muted/30 border-b border-border flex-wrap">
-                        <div className="w-8 h-8 rounded-lg bg-green-500/15 flex items-center justify-center">
-                            <Hammer className="w-4 h-4 text-green-600 dark:text-green-400" />
+                        <div className="w-8 h-8 rounded-lg bg-success/15 flex items-center justify-center">
+                            <Hammer className="w-4 h-4 text-success" />
                         </div>
                         <div className="flex-1 min-w-0">
                             <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider leading-none">
@@ -255,7 +255,7 @@ export default function DualEngineCalculation({
                                 Line items × man-hours × $57/hr
                             </p>
                         </div>
-                        <span className="shrink-0 flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 px-2 py-1 rounded-full bg-amber-500/10 border border-amber-500/30">
+                        <span className="shrink-0 flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-warning px-2 py-1 rounded-full bg-warning/10 border border-warning/30">
                             <Lock className="w-2.5 h-2.5" />
                             Private Excel
                         </span>
@@ -292,7 +292,7 @@ export default function DualEngineCalculation({
                                     <div
                                         key={line.label}
                                         className={clsx(
-                                            'flex items-center justify-between gap-2 text-[11px] px-2.5 py-1.5 rounded-md bg-green-500/5 dark:bg-green-500/10 border border-green-500/15 transition-all duration-300',
+                                            'flex items-center justify-between gap-2 text-[11px] px-2.5 py-1.5 rounded-md bg-success/100/5 dark:bg-success/10 border border-success/30 transition-all duration-300',
                                             visible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1'
                                         )}
                                     >
@@ -304,7 +304,7 @@ export default function DualEngineCalculation({
                                                 {line.hours.toFixed(2)} hrs × ${LABOR_RATE}/hr
                                             </p>
                                         </div>
-                                        <span className="shrink-0 text-green-700 dark:text-green-400 font-semibold tabular-nums">
+                                        <span className="shrink-0 text-success font-semibold tabular-nums">
                                             {formatMoney(line.hours * LABOR_RATE)}
                                         </span>
                                     </div>
@@ -323,7 +323,7 @@ export default function DualEngineCalculation({
                                 <DollarSign className="w-3 h-3" />
                                 Rate applied · JPS MSA
                             </span>
-                            <span className="font-semibold text-green-700 dark:text-green-400 tabular-nums">
+                            <span className="font-semibold text-success tabular-nums">
                                 ${LABOR_RATE}/hr fixed
                             </span>
                         </div>
@@ -347,14 +347,14 @@ export default function DualEngineCalculation({
                         {/* Engine total */}
                         <div
                             className={clsx(
-                                'flex items-baseline justify-between gap-2 pt-2 border-t-2 border-green-500/30 transition-opacity duration-300',
+                                'flex items-baseline justify-between gap-2 pt-2 border-t-2 border-success/30 transition-opacity duration-300',
                                 engineReveal > 0.95 ? 'opacity-100' : 'opacity-0'
                             )}
                         >
                             <span className="text-[10px] font-bold uppercase tracking-wider text-foreground">
                                 Labor total
                             </span>
-                            <span className="text-lg font-black text-green-700 dark:text-green-400 tabular-nums">
+                            <span className="text-lg font-black text-success tabular-nums">
                                 {formatMoney(LABOR_TOTAL * engineReveal)}
                             </span>
                         </div>
@@ -416,8 +416,8 @@ export default function DualEngineCalculation({
                             </span>
                         </div>
                         {/* v8 Paso E · Gap A · Bid scenario gateway call-out */}
-                        <div className="px-5 py-2.5 border-t border-primary/20 bg-amber-500/5 dark:bg-amber-500/10 flex items-center gap-2 text-[10px] text-muted-foreground">
-                            <span className="shrink-0 flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/30">
+                        <div className="px-5 py-2.5 border-t border-primary/20 bg-warning/10 dark:bg-warning/10 flex items-center gap-2 text-[10px] text-muted-foreground">
+                            <span className="shrink-0 flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-warning px-1.5 py-0.5 rounded bg-warning/10 border border-warning/30">
                                 Legacy
                             </span>
                             <span>
@@ -432,7 +432,7 @@ export default function DualEngineCalculation({
 
             {/* v8 Paso E · Gap E · Totals by area or floor (BPMN stage 14) */}
             {showCombined && (
-                <div className="rounded-2xl bg-card dark:bg-zinc-800 border border-border overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-500">
+                <div className="rounded-2xl bg-card border border-border overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-500">
                     <div className="flex items-center gap-2 px-5 py-3 bg-muted/30 border-b border-border">
                         <div className="shrink-0 w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                             <MapPin className="w-4 h-4 text-foreground dark:text-primary" />
@@ -454,7 +454,7 @@ export default function DualEngineCalculation({
                         {AREA_TOTALS.map((area) => (
                             <div
                                 key={area.name}
-                                className="bg-card dark:bg-zinc-800 px-4 py-3"
+                                className="bg-card px-4 py-3"
                             >
                                 <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider leading-none">
                                     {area.name}

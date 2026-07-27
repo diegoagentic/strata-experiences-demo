@@ -1257,7 +1257,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                                                 : 'opacity-0 -translate-y-2 pointer-events-none'
                                         )}
                                     >
-                                        <div className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm overflow-hidden">
+                                        <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
                                             <div className="flex items-start gap-4 px-5 py-4 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary ring-1 ring-primary/20 rounded-r-2xl">
                                                 {/* Sender avatar with send badge */}
                                                 <div className="relative shrink-0">
@@ -1287,7 +1287,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                                                     </p>
                                                     {/* Direction chips · Sara → David */}
                                                     <div className="flex items-center gap-2 flex-wrap mt-2">
-                                                        <span className="text-[8px] font-bold px-2 py-1 rounded-md bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/30 uppercase tracking-wider">
+                                                        <span className="text-[8px] font-bold px-2 py-1 rounded-md bg-warning/10 text-warning border border-warning/30 uppercase tracking-wider">
                                                             {ROLE_PROFILES.Dealer.role}
                                                         </span>
                                                         <ArrowRight className="w-3 h-3 text-muted-foreground shrink-0" aria-hidden />
@@ -1384,7 +1384,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                                     modal closes; the reply is accepted by the
                                     scripted flow and the card auto-dismisses. */}
                                 {stepId === 'w2.1' && davidReplyVisible && (
-                                    <div className="bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-sm overflow-hidden animate-in fade-in slide-in-from-top-4 duration-500">
+                                    <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden animate-in fade-in slide-in-from-top-4 duration-500">
                                         <div className="p-5 bg-indigo-500/5 dark:bg-indigo-500/10 border-l-4 border-indigo-500 ring-1 ring-indigo-500/20 rounded-r-2xl">
                                             <div className="flex items-start gap-4">
                                                 <div className="relative shrink-0">
@@ -1412,7 +1412,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                                                         </span>{' '}
                                                         · Reply to your OFS Serpentine clarification
                                                     </p>
-                                                    <div className="mt-3 p-3 rounded-lg bg-card dark:bg-zinc-900 border border-border">
+                                                    <div className="mt-3 p-3 rounded-lg bg-card border border-border">
                                                         <p className="text-[11px] text-foreground leading-snug italic">
                                                             "Hi Sara — 14 h install is correct for
                                                             standard modular assembly. Added a +2 h
@@ -1437,7 +1437,7 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
                                                         className={clsx(
                                                             'flex items-center gap-2 px-4 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-200',
                                                             davidReplyAccepted
-                                                                ? 'bg-green-500 text-white scale-95'
+                                                                ? 'bg-success/100 text-white scale-95'
                                                                 : 'bg-primary text-primary-foreground ring-2 ring-primary/40'
                                                         )}
                                                     >
@@ -1810,8 +1810,8 @@ export default function StrataEstimatorShell({ onExit: _onExit }: StrataEstimato
             {/* SIF download confirmation toast */}
             {sifDownloadToast && (
                 <div className="fixed bottom-6 right-6 z-[200] w-80 max-w-[calc(100vw-3rem)] animate-in slide-in-from-bottom-4 fade-in duration-300">
-                    <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-green-500/10 dark:bg-green-500/15 border border-green-500/30 shadow-lg backdrop-blur-sm">
-                        <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-success/10 dark:bg-success/15 border border-success/30 shadow-lg backdrop-blur-sm">
+                        <CheckCircle2 className="w-5 h-5 text-success shrink-0 mt-0.5" />
                         <div className="flex-1 min-w-0">
                             <p className="text-sm font-bold text-foreground">
                                 SIF file downloaded

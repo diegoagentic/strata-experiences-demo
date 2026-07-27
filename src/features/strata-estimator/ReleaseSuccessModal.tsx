@@ -103,20 +103,20 @@ export default function ReleaseSuccessModal({
                         leaveFrom="opacity-100 scale-100"
                         leaveTo="opacity-0 scale-95"
                     >
-                        <DialogPanel className="w-full max-w-xl bg-card dark:bg-zinc-800 rounded-2xl border border-border shadow-2xl overflow-hidden">
+                        <DialogPanel className="w-full max-w-xl bg-card rounded-2xl border border-border shadow-2xl overflow-hidden">
 
                             {/* Hero: SVG check + ring pulse */}
                             <div className="relative px-6 pt-10 pb-6 text-center overflow-hidden">
                                 {/* Single ring pulse (sober, no confetti) */}
                                 <div className="absolute inset-x-0 top-10 flex justify-center pointer-events-none">
                                     <div
-                                        className="w-24 h-24 rounded-full bg-green-500/10 animate-ping"
+                                        className="w-24 h-24 rounded-full bg-success/10 animate-ping"
                                         style={{ animationIterationCount: 1, animationDuration: '1.2s' }}
                                     />
                                 </div>
 
                                 {/* SVG checkmark — stroke-dashoffset animation */}
-                                <div className="relative mx-auto w-20 h-20 rounded-full bg-green-500/10 border-2 border-green-500 flex items-center justify-center">
+                                <div className="relative mx-auto w-20 h-20 rounded-full bg-success/10 border-2 border-success flex items-center justify-center">
                                     <svg
                                         viewBox="0 0 52 52"
                                         className="w-10 h-10"

@@ -181,7 +181,7 @@ export default function OrderFromQuoteFlow({ onOrderCreate, onEditDetails, onCan
                                                     {quote.formattedValue}
                                                 </td>
                                                 <td className="px-6 py-4 text-center">
-                                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-900">
+                                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success/15 text-success dark:bg-success/20 dark:text-success border border-success/30 dark:border-green-900">
                                                         {quote.status}
                                                     </span>
                                                 </td>
@@ -232,7 +232,7 @@ export default function OrderFromQuoteFlow({ onOrderCreate, onEditDetails, onCan
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                                 <div className="p-4 bg-card rounded-xl border border-border shadow-sm">
                                     <div className="flex items-center gap-3 mb-2">
-                                        <div className="p-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 rounded-lg">
+                                        <div className="p-2 bg-info/10 dark:bg-info/15 text-info rounded-lg">
                                             <BuildingOfficeIcon className="w-5 h-5" />
                                         </div>
                                         <span className="text-xs font-semibold text-muted-foreground uppercase">Customer</span>
@@ -252,7 +252,7 @@ export default function OrderFromQuoteFlow({ onOrderCreate, onEditDetails, onCan
                                 </div>
                                 <div className="p-4 bg-card rounded-xl border border-border shadow-sm">
                                     <div className="flex items-center gap-3 mb-2">
-                                        <div className="p-2 bg-amber-50 dark:bg-amber-900/20 text-amber-600 rounded-lg">
+                                        <div className="p-2 bg-warning/10 dark:bg-warning/15 text-warning rounded-lg">
                                             <CalendarIcon className="w-5 h-5" />
                                         </div>
                                         <span className="text-xs font-semibold text-muted-foreground uppercase">Requested Date</span>
@@ -269,7 +269,7 @@ export default function OrderFromQuoteFlow({ onOrderCreate, onEditDetails, onCan
                                         <DocumentTextIcon className="w-5 h-5 text-muted-foreground" />
                                         Order Items
                                     </h3>
-                                    <span className="text-xs font-medium text-green-600 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-full border border-green-100 dark:border-green-800">
+                                    <span className="text-xs font-medium text-success bg-success/10 dark:bg-success/15 px-2 py-1 rounded-full border border-success/20 dark:border-success/40">
                                         All items in stock
                                     </span>
                                     '</div>

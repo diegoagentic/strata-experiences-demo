@@ -2132,7 +2132,7 @@ function QuoteReviewPanel({ onValidate }: { onValidate?: () => void }) {
                     <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
                             <p className="text-[11px] font-bold text-foreground">1 price correction applied</p>
-                            <span className="text-[8px] font-bold text-amber-700 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-1.5 py-0.5 rounded uppercase tracking-wider">Source: Quote Tool</span>
+                            <span className="text-[8px] font-bold text-warning bg-warning/10 border border-warning/30 px-1.5 py-0.5 rounded uppercase tracking-wider">Source: Quote Tool</span>
                         </div>
                         <p className="text-[10px] text-muted-foreground mt-0.5">HMI-FU-300 · $8,100 → $7,560 · per CoNY contract ANT122</p>
                     </div>
@@ -2145,7 +2145,7 @@ function QuoteReviewPanel({ onValidate }: { onValidate?: () => void }) {
                         className="w-full flex items-center gap-2 px-4 py-2.5 bg-muted/40 hover:bg-muted/60 transition-colors"
                     >
                         <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wide">Quote Comparison · Requested vs Response</p>
-                        <span className="text-[8px] font-bold text-amber-700 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-1.5 py-0.5 rounded uppercase tracking-wider">Source: Quote Tool</span>
+                        <span className="text-[8px] font-bold text-warning bg-warning/10 border border-warning/30 px-1.5 py-0.5 rounded uppercase tracking-wider">Source: Quote Tool</span>
                         <span
                             title="Quote Tool OCR'd the Quote Comparison Download · all 3 lines cleared. Exception path ready."
                             className="inline-flex items-center gap-1 text-[8px] font-bold text-success bg-success/10 border border-success/20 px-1.5 py-0.5 rounded uppercase tracking-wider"

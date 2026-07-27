@@ -188,7 +188,7 @@ export default function WalterNotifScene({ onConfirm }: WalterNotifSceneProps) {
                         className="w-full flex items-center justify-between px-3 py-2.5 hover:bg-muted/40 transition-colors"
                     >
                         <div className="flex items-center gap-2">
-                            <AlertTriangle className="h-3 w-3 text-amber-500 shrink-0" aria-hidden="true" />
+                            <AlertTriangle className="h-3 w-3 text-warning shrink-0" aria-hidden="true" />
                             <span className="text-[10px] font-bold text-foreground">Carton #34 · Short-ship claim filed</span>
                         </div>
                         {claimExpanded
@@ -202,7 +202,7 @@ export default function WalterNotifScene({ onConfirm }: WalterNotifSceneProps) {
                                 <div>Item: Line 24 · Chair Frame Assembly ×1</div>
                                 <div>Claim: Omni #OM-2026-0412 · filed May 11</div>
                                 <div>POD request sent to Andy (Herman Miller) · May 11 · 8:06 AM</div>
-                                <div className="text-amber-600 dark:text-amber-400 font-medium">Status: awaiting response · excluded from this delivery</div>
+                                <div className="text-warning font-medium">Status: awaiting response · excluded from this delivery</div>
                             </div>
                         </div>
                     )}

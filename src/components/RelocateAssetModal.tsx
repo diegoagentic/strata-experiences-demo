@@ -70,7 +70,7 @@ export default function RelocateAssetModal({ isOpen, onClose, selectedCount, onC
                 {/* Header */}
                 <div className="flex items-center justify-between p-6 border-b border-border">
                     <div className="flex items-center gap-3">
-                        <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-blue-600 dark:text-blue-400">
+                        <div className="p-2 bg-info/10 dark:bg-info/15 rounded-lg text-info">
                             <TruckIcon className="w-5 h-5" />
                         </div>
                         <div>
