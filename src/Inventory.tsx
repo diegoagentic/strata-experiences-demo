@@ -9,6 +9,7 @@ import QuickMovementsModal from './components/QuickMovementsModal';
 import { useTenant } from './TenantContext';
 import { useDemo } from './context/DemoContext';
 import { useDemoProfile } from './context/useDemoProfile';
+import StatusBadge, { type StatusTone } from './components/shared/StatusBadge';
 import { CONTINUA_STEP_TIMING } from './config/profiles/continua-demo';
 import { AIAgentAvatar } from './components/simulations/DemoAvatars';
 import Breadcrumbs from './components/Breadcrumbs';
@@ -802,17 +803,18 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
         console.log('Status Updated:', data);
     };
 
-    // Helper for Status Badge
-    const getStatusBadge = (status: string) => {
+    // F42.c · Helper for Status Badge · mapping status → StatusTone para
+    // consumir <StatusBadge> shared en vez del className legacy trio.
+    const getStatusTone = (status: string): StatusTone => {
         switch (status) {
-            case 'Available': return 'bg-success/10 text-success dark:bg-success/30 dark:text-success';
-            case 'Under Maintenance': return 'bg-warning/10 text-warning dark:bg-warning/30 dark:text-warning';
-            case 'In Use': return 'bg-info/10 text-info dark:bg-info/30 dark:text-info';
-            case 'Reserved': return 'bg-ai/10 text-ai dark:bg-ai/30 dark:text-ai';
-            case 'In Consignment': return 'bg-warning/10 text-warning dark:bg-warning/30 dark:text-warning';
-            case 'Sold': return 'bg-zinc-100 text-muted-foreground dark:bg-card dark:text-muted-foreground line-through opacity-75';
-            case 'Write-off': return 'bg-destructive/10 text-destructive dark:bg-destructive/30 dark:text-destructive';
-            default: return 'bg-zinc-100 text-muted-foreground dark:bg-card dark:text-muted-foreground';
+            case 'Available': return 'success';
+            case 'Under Maintenance': return 'warning';
+            case 'In Use': return 'info';
+            case 'Reserved': return 'ai';
+            case 'In Consignment': return 'warning';
+            case 'Sold': return 'neutral';
+            case 'Write-off': return 'danger';
+            default: return 'neutral';
         }
     };
 
@@ -822,7 +824,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
             : 'text-warning bg-warning/10';
     };
 
-    const getCategoryIcon = (category: string, className: string = "w-12 h-12 mb-2 text-zinc-300 dark:text-muted-foreground") => {
+    const getCategoryIcon = (category: string, className: string = "w-12 h-12 mb-2 text-muted-foreground") => {
         switch (category) {
             case 'Lighting': return <LightBulbIcon className={className} />;
             case 'Furniture': return <TableCellsIcon className={className} />; // TableCells as generic furniture/desk
@@ -892,7 +894,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                             {/* Period Selector inside expanded metrics */}
                             <div className="flex items-center gap-1 bg-muted/50 rounded-lg p-0.5 border border-border/50">
                                 {(['Day', 'Week', 'Month', 'Quarter'] as InvTimePeriod[]).map((period) => (
-                                    <button key={period} onClick={() => setInvTimePeriod(period)} className={`px-3 py-1 text-[10px] font-medium rounded-md transition-all ${period === invTimePeriod ? 'bg-card dark:bg-primary text-foreground dark:text-primary-foreground shadow-sm border border-border dark:border-transparent' : 'text-muted-foreground hover:text-foreground hover:bg-zinc-200/50 dark:hover:bg-zinc-700'}`}>
+                                    <button key={period} onClick={() => setInvTimePeriod(period)} className={`px-3 py-1 text-[10px] font-medium rounded-md transition-all ${period === invTimePeriod ? 'bg-card dark:bg-primary text-foreground dark:text-primary-foreground shadow-sm border border-border dark:border-transparent' : 'text-muted-foreground hover:text-foreground hover:bg-muted'}`}>
                                         {period}
                                     </button>
                                 ))}
@@ -949,7 +951,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                         </div>
                     </div>
                 ) : (
-                    <div className="bg-white/60 dark:bg-zinc-800 backdrop-blur-md rounded-2xl p-4 border border-border shadow-sm flex flex-col xl:flex-row items-center justify-between gap-4 animate-in fade-in slide-in-from-top-4 duration-300">
+                    <div className="bg-card/60 backdrop-blur-md rounded-2xl p-4 border border-border shadow-sm flex flex-col xl:flex-row items-center justify-between gap-4 animate-in fade-in slide-in-from-top-4 duration-300">
                         {/* Period Selector inside collapsed ticker */}
                         <div className="flex items-center gap-0.5 bg-muted/50 rounded-lg p-0.5 shrink-0">
                             {(['Day', 'Week', 'Month', 'Quarter'] as InvTimePeriod[]).map((period) => (
@@ -1003,7 +1005,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                             </button>
                         </div>
 
-                        <div className="w-px h-12 bg-zinc-200 dark:bg-zinc-700 hidden xl:block mx-2"></div>
+                        <div className="w-px h-12 bg-border hidden xl:block mx-2"></div>
 
                         {/* Quick Actions (Product Owner Context) */}
                         <div className="flex items-center gap-1 overflow-x-auto min-w-max pl-4 border-l border-border xl:border-none xl:pl-0">
@@ -1019,7 +1021,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                             ))}
                         </div>
 
-                        <div className="w-px h-12 bg-zinc-200 dark:bg-zinc-700 hidden xl:block mx-2"></div>
+                        <div className="w-px h-12 bg-border hidden xl:block mx-2"></div>
 
                         <button
                             onClick={() => setShowMetrics(true)}
@@ -1129,7 +1131,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                         <h4 className="text-xs font-bold text-destructive mb-2 flex items-center gap-1.5"><ExclamationTriangleIcon className="h-4 w-4" />QC Flags — Auto-Reported to Manufacturer</h4>
                                         <div className="space-y-2">
                                             {QC_FLAGS.map((qc, i) => (
-                                                <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-destructive/30 dark:border-destructive/10">
+                                                <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-card/60 border border-destructive/30 dark:border-destructive/10">
                                                     <div>
                                                         <p className="text-[11px] font-medium text-foreground">{qc.item}</p>
                                                         <p className="text-[10px] text-muted-foreground">{qc.sku} · {qc.defect}</p>
@@ -1257,7 +1259,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                         <h4 className="text-xs font-bold text-ai mb-3 flex items-center gap-1.5"><LightBulbIcon className="h-4 w-4" />AI Relocation Recommendations</h4>
                                         <div className="space-y-2">
                                             {RELOCATION_RECS.map((rec, i) => (
-                                                <div key={i} className="flex items-center justify-between p-2.5 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-ai/30 dark:border-ai/10">
+                                                <div key={i} className="flex items-center justify-between p-2.5 rounded-lg bg-card/60 border border-ai/30 dark:border-ai/10">
                                                     <div className="flex-1 min-w-0">
                                                         <p className="text-[11px] font-medium text-foreground">{rec.items} items · {rec.type}</p>
                                                         <p className="text-[10px] text-muted-foreground mt-0.5">{rec.from} → {rec.to}</p>
@@ -1409,7 +1411,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                                         <span className={cn("text-[9px] px-2 py-0.5 rounded-full font-bold",
                                                             loc.status === 'Active' ? "bg-success/10 text-success" :
                                                             loc.status === 'Receiving' ? "bg-info/10 dark:bg-info/10 text-info" :
-                                                            "bg-zinc-200 dark:bg-zinc-700 text-muted-foreground"
+                                                            "bg-muted text-muted-foreground"
                                                         )}>{loc.status}</span>
                                                     )}
                                                 </div>
@@ -1732,7 +1734,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
 
                             {/* List View */}
                             {viewMode === 'list' && (
-                                <div className="bg-card dark:bg-zinc-800 rounded-xl border border-border shadow-sm overflow-hidden">
+                                <div className="bg-card rounded-xl border border-border shadow-sm overflow-hidden">
                                     <div className="overflow-x-auto">
                                         <table className="w-full text-left text-sm">
                                             <thead className="bg-muted dark:bg-card/50 border-b border-border">
@@ -1740,7 +1742,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                                     <th className="p-4 w-12">
                                                         <input
                                                             type="checkbox"
-                                                            className="rounded border-zinc-300 text-primary focus:ring-primary"
+                                                            className="rounded border-border text-primary focus:ring-primary"
                                                             checked={filteredData.length > 0 && selectedIds.size === filteredData.length}
                                                             onChange={toggleAll}
                                                         />
@@ -1760,7 +1762,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                                         <td className="p-4">
                                                             <input
                                                                 type="checkbox"
-                                                                className="rounded border-zinc-300 text-primary focus:ring-primary"
+                                                                className="rounded border-border text-primary focus:ring-primary"
                                                                 checked={selectedIds.has(item.id)}
                                                                 onChange={() => toggleSelection(item.id)}
                                                             />
@@ -1802,9 +1804,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                                             </div>
                                                         </td>
                                                         <td className="p-4">
-                                                            <span className={cn("px-2.5 py-1 rounded-full text-xs font-medium border", getStatusBadge(item.status), "border-transparent")}>
-                                                                {item.status}
-                                                            </span>
+                                                            <StatusBadge label={item.status} tone={getStatusTone(item.status)} size="md" uppercase={false} />
                                                         </td>
                                                         <td className="p-4 font-medium">${item.value.toFixed(2)}</td>
                                                         <td className="p-4">
@@ -1833,12 +1833,12 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                             key={item.id}
                                             onClick={() => toggleSelection(item.id)}
                                             className={cn(
-                                                "group bg-card dark:bg-zinc-800 rounded-2xl border shadow-sm hover:shadow-lg transition-all cursor-pointer relative overflow-hidden flex flex-col h-[340px]",
+                                                "group bg-card rounded-2xl border shadow-sm hover:shadow-lg transition-all cursor-pointer relative overflow-hidden flex flex-col h-[340px]",
                                                 selectedIds.has(item.id) ? "border-primary ring-1 ring-primary" : "border-border hover:border-primary/50"
                                             )}
                                         >
                                             {/* Image Section */}
-                                            <div className="h-44 w-full relative bg-zinc-100 dark:bg-zinc-900">
+                                            <div className="h-44 w-full relative bg-muted">
                                                 {item.image ? (
                                                     <>
                                                         <img
@@ -1851,13 +1851,13 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                                                 e.currentTarget.nextElementSibling?.classList.add('flex');
                                                             }}
                                                         />
-                                                        <div className="w-full h-full bg-zinc-100 dark:bg-zinc-900 hidden flex-col items-center justify-center text-zinc-300 dark:text-muted-foreground">
+                                                        <div className="w-full h-full bg-muted hidden flex-col items-center justify-center text-muted-foreground">
                                                             {getCategoryIcon(item.category)}
                                                             <span className="text-xs font-medium">{item.category}</span>
                                                         </div>
                                                     </>
                                                 ) : (
-                                                    <div className="w-full h-full flex flex-col items-center justify-center text-zinc-300 dark:text-muted-foreground">
+                                                    <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground">
                                                         {getCategoryIcon(item.category)}
                                                         <span className="text-xs font-medium">{item.category}</span>
                                                     </div>
@@ -1872,7 +1872,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                                         type="checkbox"
                                                         checked={selectedIds.has(item.id)}
                                                         readOnly
-                                                        className="rounded border-zinc-300 text-primary focus:ring-primary shadow-sm w-5 h-5 cursor-pointer"
+                                                        className="rounded border-border text-primary focus:ring-primary shadow-sm w-5 h-5 cursor-pointer"
                                                         onClick={(e) => e.stopPropagation()}
                                                         onChange={() => toggleSelection(item.id)}
                                                     />
@@ -1885,14 +1885,9 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                                     </button>
                                                 </div>
 
-                                                {/* Status Badge (On Image) */}
+                                                {/* Status Badge (On Image) · F42.c · shared StatusBadge */}
                                                 <div className="absolute bottom-3 right-3 z-10">
-                                                    <span className={cn(
-                                                        "px-2.5 py-1 rounded-lg text-[10px] font-bold shadow-sm backdrop-blur-md border border-white/10",
-                                                        getStatusBadge(item.status)
-                                                    )}>
-                                                        {item.status}
-                                                    </span>
+                                                    <StatusBadge label={item.status} tone={getStatusTone(item.status)} size="sm" uppercase={false} className="shadow-sm backdrop-blur-md" />
                                                 </div>
                                             </div>
 
@@ -1910,7 +1905,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                                     </div>
                                                 </div>
 
-                                                <div className="pt-3 border-t border-zinc-100 dark:border-zinc-700 flex justify-between items-end">
+                                                <div className="pt-3 border-t border-border flex justify-between items-end">
                                                     <div>
                                                         <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-medium mb-0.5">Value</p>
                                                         <p className="text-sm font-bold text-foreground">${item.value.toLocaleString()}</p>
