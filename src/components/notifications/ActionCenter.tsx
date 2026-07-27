@@ -380,12 +380,15 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
         };
     }, []);
 
-    // F41.a Task B · Workspaces step notification · gated por currentStep.id.
-    // El registry mantiene 3 entries (w1.2 · w2.1 · w2.4 desktop). w1.4 mobile
+    // F41.a Task B · Workspaces step notification · gated ÚNICAMENTE por
+    // currentStep.id (sin gate isDemoActive · pattern análogo a Dupler d1.1
+    // que se dispara por scrapePhase sin depender del tour). Esto garantiza
+    // que en modo normal (sin Start Demo) el user vea la notif al aterrizar
+    // en w1.2/w2.1/w2.4. El registry mantiene 3 entries desktop. w1.4 mobile
     // sigue con toast local · bell hidden en workspaces-submit app.
-    const workspacesStepConfig = isDemoActive
-        ? WORKSPACES_STEP_NOTIFICATIONS[currentStep?.id ?? '']
-        : undefined;
+    // F41.a hotfix · Diego reportó que la notif no aparecía en modo normal
+    // porque isDemoActive era false al llegar al step sin Start Demo.
+    const workspacesStepConfig = WORKSPACES_STEP_NOTIFICATIONS[currentStep?.id ?? ''];
     const [workspacesDismissed, setWorkspacesDismissed] = useState<Set<string>>(new Set());
     const isWorkspacesActive = !!workspacesStepConfig && !workspacesDismissed.has(workspacesStepConfig.id);
 
