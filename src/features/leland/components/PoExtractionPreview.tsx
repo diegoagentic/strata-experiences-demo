@@ -20,7 +20,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { FileText, Sparkles, ChevronRight, CheckCircle2 } from 'lucide-react';
-import { ProgressBar, Callout } from 'strata-design-system';
+import { ProgressBar, Callout, PaperMockup } from 'strata-design-system';
 import StatusBadge from '../../../components/shared/StatusBadge';
 import StepCompletionCta from './StepCompletionCta';
 import { usePauseAware } from '../../../context/usePauseAware';
@@ -192,7 +192,7 @@ function PdfPreviewCard({ activeKey }: { activeKey: FieldKey | null }) {
         isActive(key) ? 'ring-2 ring-ai/70 bg-ai/10 transition-all' : 'transition-all';
 
     return (
-        <div className="bg-white dark:bg-zinc-100 text-zinc-900 rounded-lg p-3 text-[10px] font-mono leading-relaxed shadow-sm">
+        <PaperMockup size="preview" className="rounded-lg p-3 text-[10px] leading-relaxed shadow-sm">
             {/* PDF header: vendor logo + remit-to */}
             <div className="flex justify-between mb-2 border-b border-zinc-200 pb-2">
                 <div className="text-muted-foreground font-bold text-[11px]">{po.dealer}</div>
@@ -259,6 +259,6 @@ function PdfPreviewCard({ activeKey }: { activeKey: FieldKey | null }) {
                     <span className="font-bold">${po.total.toLocaleString()}</span>
                 </div>
             </div>
-        </div>
+        </PaperMockup>
     );
 }

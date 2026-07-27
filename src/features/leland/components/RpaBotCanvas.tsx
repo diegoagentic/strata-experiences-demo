@@ -16,6 +16,7 @@
 
 import { useEffect, useState } from 'react';
 import { CheckCircle2, Loader2, Cpu, MousePointer2, Database } from 'lucide-react';
+import { LegacyErpSurface } from 'strata-design-system';
 import StatusBadge from '../../../components/shared/StatusBadge';
 import StepCompletionCta from './StepCompletionCta';
 import { usePauseAware } from '../../../context/usePauseAware';
@@ -99,8 +100,11 @@ export default function RpaBotCanvas({ autoplay = true }: RpaBotCanvasProps) {
                 </div>
             </div>
 
-            {/* Mock order system form */}
-            <div className="bg-white dark:bg-zinc-100 text-zinc-900 rounded-xl border-2 border-border shadow-sm overflow-hidden">
+            {/* Mock order system form · F37 · uses <LegacyErpSurface> DS
+                primitive. Interior fields (PreFilledCell · FormField) below
+                keep raw bg-white/border-zinc-* by design · they compose the
+                legacy ERP look together with this wrapper. */}
+            <LegacyErpSurface size="md">
                 {/* Form chrome — looks like a generic ERP */}
                 <div className="px-4 py-2 border-b border-zinc-200 bg-muted flex items-center gap-2">
                     <Database className="h-3.5 w-3.5 text-muted-foreground" />
@@ -155,7 +159,7 @@ export default function RpaBotCanvas({ autoplay = true }: RpaBotCanvasProps) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </LegacyErpSurface>
 
             {/* SO# reveal */}
             {soNumber && (

@@ -84,6 +84,9 @@ export { Callout,
 export { PaperMockup,
     type PaperMockupProps, type PaperMockupSize,
 } from './paper-mockup';
+export { LegacyErpSurface,
+    type LegacyErpSurfaceProps, type LegacyErpSurfaceSize,
+} from './legacy-erp-surface';
 export { ProgressBar,
     type ProgressBarProps, type ProgressTone, type ProgressHeight,
 } from './progress-bar';
