@@ -9,6 +9,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { Sparkles, ChevronRight, Bell, CheckCircle2, X, Flag, AlertCircle, Calendar, ChevronDown } from 'lucide-react'
 import { useDemo } from '../../context/DemoContext'
 import DataSourcesBar, { SOURCES } from '../mbi/DataSourcesBar'
+import StatusBadge from '../shared/StatusBadge'
 
 // F41.a Task B · 'notified' state removed · el banner migró al ActionCenter
 // (bell popover auto-open en w2.1 vía WORKSPACES_STEP_NOTIFICATIONS).
@@ -223,9 +224,9 @@ export default function APReviewQueueScene({ onReview }: { onReview?: () => void
             {/* Confidence legend — always visible */}
             <div className="flex items-center gap-1.5 flex-wrap px-1">
                 <span className="text-[9px] text-muted-foreground font-medium">Confidence:</span>
-                <span className="text-[9px] bg-success/10 text-success border border-success/20 px-1.5 py-0.5 rounded-full font-medium">≥ 90% safe</span>
-                <span className="text-[9px] bg-warning/10 text-warning border border-warning/20 px-1.5 py-0.5 rounded-full font-medium">75–89% review</span>
-                <span className="text-[9px] bg-muted text-muted-foreground border border-border px-1.5 py-0.5 rounded-full font-medium">&lt; 75% manual</span>
+                <StatusBadge label="≥ 90% safe" tone="success" size="xs" uppercase={false} />
+                <StatusBadge label="75–89% review" tone="warning" size="xs" uppercase={false} />
+                <StatusBadge label="< 75% manual" tone="neutral" size="xs" uppercase={false} />
             </div>
 
             {/* Filter bar */}

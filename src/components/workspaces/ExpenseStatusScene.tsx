@@ -21,6 +21,7 @@ import { CheckCircle2, Clock, Circle, Sparkles, ChevronDown, ChevronLeft, Chevro
 import DataSourcesBar, { SOURCES } from '../mbi/DataSourcesBar'
 import MobileDeviceFrame from '../simulations/MobileDeviceFrame'
 import { useDemo } from '../../context/DemoContext'
+import StatusBadge, { type StatusTone } from '../shared/StatusBadge'
 
 type SceneState    = 'watching' | 'notified' | 'updated' | 'fixing' | 'resubmitted'
 type ScenarioMode  = 'approved' | 'rejected'
@@ -125,15 +126,16 @@ export default function ExpenseStatusScene({ onBack }: { onBack?: () => void }) 
             : scene === 'updated'               ? TIMELINE_UPDATED
             : TIMELINE_BASE
 
-    // Badge label + class derived from mode + scene
-    const badgeClass =
+    // F41.b · Badge derived from mode + scene · usa StatusBadge shared (mapping
+    // semantic → StatusTone) en vez del ternario pill trio inline.
+    const badgeTone: StatusTone =
         scenarioMode === 'rejected'
-            ? scene === 'resubmitted'           ? 'bg-ai/10 text-ai border-ai/20'
-              : scene === 'fixing'              ? 'bg-destructive/10 text-destructive border-destructive/20'
-              : scene === 'updated'             ? 'bg-destructive/10 text-destructive border-destructive/20'
-              : 'bg-warning/10 text-warning border-warning/20'
-            : scene === 'updated'               ? 'bg-success/10 text-success border-success/20'
-            : 'bg-warning/10 text-warning border-warning/20'
+            ? scene === 'resubmitted' ? 'ai'
+              : scene === 'fixing'    ? 'danger'
+              : scene === 'updated'   ? 'danger'
+              : 'warning'
+            : scene === 'updated'     ? 'success'
+            : 'warning'
 
     const badgeLabel =
         scenarioMode === 'rejected'
@@ -290,7 +292,8 @@ export default function ExpenseStatusScene({ onBack }: { onBack?: () => void }) 
                                 <p className="text-xs font-semibold text-destructive">Fuel · $95.00</p>
                                 <p className="text-[10px] text-destructive/70">Receipt unclear — reattach required</p>
                             </div>
-                            <span className="text-[9px] bg-destructive/10 text-destructive border border-destructive/20 px-1.5 py-0.5 rounded-full font-bold shrink-0">Action needed</span>
+                            <StatusBadge label="Action needed" tone="danger" size="xs" uppercase={false} />
+
                         </div>
 
                         {/* Re-attach camera — 3 states: idle → capturing → captured */}
@@ -417,9 +420,7 @@ export default function ExpenseStatusScene({ onBack }: { onBack?: () => void }) 
                             <p className="text-sm font-bold text-foreground">Mileage · Tolls / Cab / Parking</p>
                             <p className="text-[11px] text-muted-foreground">$95.00 · May 5 · 1 receipt</p>
                         </div>
-                        <span className={`text-[10px] border px-2 py-0.5 rounded-full font-medium shrink-0 transition-all duration-500 ${badgeClass}`}>
-                            {badgeLabel}
-                        </span>
+                        <StatusBadge label={badgeLabel} tone={badgeTone} size="sm" uppercase={false} className="shrink-0 transition-all duration-500" />
                     </div>
 
                     {/* Timeline */}

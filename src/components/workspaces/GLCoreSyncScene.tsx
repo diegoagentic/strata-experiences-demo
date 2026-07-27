@@ -13,6 +13,7 @@ import {
 import { useDemo } from '../../context/DemoContext'
 import { ReceiptImage } from './ExpenseSubmitScene'
 import DataSourcesBar, { SOURCES } from '../mbi/DataSourcesBar'
+import StatusBadge from '../shared/StatusBadge'
 
 type SceneState   = 'reviewing' | 'posting' | 'posted' | 'rejecting' | 'rejected'
 type PostingStep  = 'validating' | 'creating' | 'notifying'
@@ -331,9 +332,7 @@ export default function GLCoreSyncScene({ onPost, onBack }: { onPost?: () => voi
                             Approved by Operations Manager Solano · May 6 · <span className="text-success font-medium">on time ✓</span>
                         </p>
                     </div>
-                    <span className="text-[10px] bg-success/10 text-success border border-success/20 px-2 py-0.5 rounded-full font-medium shrink-0">
-                        1 receipt verified ✓
-                    </span>
+                    <StatusBadge label="1 receipt verified ✓" tone="success" size="sm" uppercase={false} className="shrink-0" />
                 </div>
 
                 {/* GL assignment */}

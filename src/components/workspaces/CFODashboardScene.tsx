@@ -15,6 +15,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { Download, AlertTriangle, ChevronRight, ChevronDown, Bell, Sparkles, ArrowRight, FileText, X, Loader2, CheckCircle2, Calendar, RefreshCw } from 'lucide-react'
 import DataSourcesBar, { SOURCES } from '../mbi/DataSourcesBar'
 import { useDemo } from '../../context/DemoContext'
+import StatusBadge from '../shared/StatusBadge'
 
 type ScenePhase    = 'inbox' | 'notified' | 'company' | 'role-switch' | 'division'
 type Period        = 'may' | 'april'
@@ -891,13 +892,12 @@ function GLSummaryReport({ onBack }: { onBack: () => void }) {
                                         </svg>
                                     </td>
                                     <td className="px-4 py-2.5 text-right">
-                                        <span className={`inline-block text-[10px] font-medium px-2 py-0.5 rounded-full border ${
-                                            row.status === 'posted'
-                                                ? 'bg-success/10 text-success border-success/20'
-                                                : 'bg-warning/10 text-warning border-warning/20'
-                                        }`}>
-                                            {row.status === 'posted' ? 'Posted' : 'Pending'}
-                                        </span>
+                                        <StatusBadge
+                                            label={row.status === 'posted' ? 'Posted' : 'Pending'}
+                                            tone={row.status === 'posted' ? 'success' : 'warning'}
+                                            size="sm"
+                                            uppercase={false}
+                                        />
                                     </td>
                                 </tr>
                             ))}
@@ -932,7 +932,7 @@ function GLSummaryReport({ onBack }: { onBack: () => void }) {
                                 <p className="text-[10px] text-muted-foreground">{item.detail}</p>
                             </div>
                             <span className="text-[11px] font-medium text-foreground whitespace-nowrap">{item.amount}</span>
-                            <span className="inline-block text-[10px] font-medium px-2 py-0.5 rounded-full border bg-warning/10 text-warning border-warning/20 shrink-0">Pending</span>
+                            <StatusBadge label="Pending" tone="warning" size="sm" uppercase={false} className="shrink-0" />
                             <button className="text-[10px] text-foreground border border-border rounded-lg px-2.5 py-1 hover:bg-muted transition-colors shrink-0 font-medium">Post</button>
                         </div>
                     ))}
@@ -1094,13 +1094,12 @@ function ApprovalTrendsReport({ onBack }: { onBack: () => void }) {
                                     <td className="px-4 py-2.5 text-[11px] text-muted-foreground whitespace-nowrap">{row.category}</td>
                                     <td className="px-4 py-2.5 text-[11px] font-bold text-foreground text-right whitespace-nowrap">{row.amount}</td>
                                     <td className="px-4 py-2.5 text-right">
-                                        <span className={`inline-block text-[10px] font-medium px-2 py-0.5 rounded-full border ${
-                                            row.status === 'approved'
-                                                ? 'bg-success/10 text-success border-success/20'
-                                                : 'bg-warning/10 text-warning border-warning/20'
-                                        }`}>
-                                            {row.status === 'approved' ? 'Approved' : 'Pending'}
-                                        </span>
+                                        <StatusBadge
+                                            label={row.status === 'approved' ? 'Approved' : 'Pending'}
+                                            tone={row.status === 'approved' ? 'success' : 'warning'}
+                                            size="sm"
+                                            uppercase={false}
+                                        />
                                     </td>
                                 </tr>
                             ))}

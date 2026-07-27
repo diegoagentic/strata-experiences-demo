@@ -18,6 +18,7 @@ import {
 import { useDemo } from '../../context/DemoContext'
 import DataSourcesBar, { SOURCES } from '../mbi/DataSourcesBar'
 import MobileDeviceFrame from '../simulations/MobileDeviceFrame'
+import StatusBadge from '../shared/StatusBadge'
 import receiptPhoto from '../../assets/receipt-photo.jpg'
 
 type OCRState    = 'idle' | 'scanning' | 'filling' | 'done'
@@ -357,7 +358,7 @@ export default function ExpenseSubmitScene({ onSubmit, initialScreen }: { onSubm
                             <p className="text-xs font-semibold text-foreground">{DEFAULT_MANAGER.name}</p>
                             <p className="text-[10px] text-muted-foreground">{DEFAULT_MANAGER.dept}</p>
                         </div>
-                        <span className="text-[10px] bg-ai/10 text-ai border border-ai/20 px-2 py-0.5 rounded-full font-medium">Notified âœ“</span>
+                        <StatusBadge label="Notified ✓" tone="ai" size="sm" uppercase={false} />
                     </div>
 
                     <div className="bg-card border border-border rounded-2xl px-4 py-4">
@@ -627,7 +628,7 @@ export default function ExpenseSubmitScene({ onSubmit, initialScreen }: { onSubm
                             <div>
                                 <div className="flex flex-wrap gap-1 items-center">
                                     {selectedCategories.map(cat => (
-                                        <span key={cat} className="text-[10px] px-2 py-0.5 rounded-full bg-ai/10 text-ai border border-ai/20 font-medium">{cat}</span>
+                                        <StatusBadge key={cat} label={cat} tone="ai" size="sm" uppercase={false} />
                                     ))}
                                     <button
                                         onClick={() => setCategoryOpen(v => !v)}
