@@ -7,6 +7,7 @@ import FilterTabs from './FilterTabs';
 import NotificationItem from './NotificationItem';
 import type { Notification, NotificationTab } from './types';
 import { useDemo } from '../../context/DemoContext';
+import { useDemoProfile } from '../../context/useDemoProfile';
 import { usePauseAware } from '../../context/usePauseAware';
 
 // Flow 2 notifications for Step 2.6
@@ -194,6 +195,156 @@ const DUPLER_D11_NOTIFICATION: Notification = {
     ],
 };
 
+// F42.a Task A · Continua (Project & Inventory Intelligence) notifications.
+// Reemplaza 11 banners custom inline en Inventory.tsx · Transactions.tsx ·
+// Dashboard.tsx por notifs registradas en el Action Center · pattern análogo
+// a Dupler d1.1 y Workspaces post-F41.a hotfix (sin gate isDemoActive · dispara
+// por currentStep.id). Content extraído literal de los banners originales.
+// Steps duplicados (3.2 ack · 1.5 txn) preservan sus banners inline por ahora ·
+// F42.b/c/d puede migrarlos si Diego lo pide.
+const CONTINUA_STEP_NOTIFICATIONS: Record<string, Notification> = {
+    '1.1': {
+        id: 'continua-1.1-inventory-health',
+        type: 'system',
+        priority: 'high',
+        title: 'Inventory Health Analysis · Capacity Alert',
+        message: '2,400 items across 3 warehouses — Chicago warehouse forecast to reach 85% capacity in 2 weeks.',
+        meta: 'InventoryIntelAgent · detected during nightly scan',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'Review analysis', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '1.2': {
+        id: 'continua-1.2-reuse',
+        type: 'system',
+        priority: 'medium',
+        title: 'Reuse Assessment — Floor 7 Teardown',
+        message: '340 items from floor 7 pre-renovation teardown — classifying reuse, recycle, EOL.',
+        meta: 'SustainabilityAgent · 340 items ready for assessment',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'Start assessment', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '1.4': {
+        id: 'continua-1.4-location-sync',
+        type: 'system',
+        priority: 'medium',
+        title: 'Multi-Location Sync · 5 locations',
+        message: 'Synchronizing 3 warehouses + 2 job sites — tracking in-transit items, pending QC, optimizing delivery routes.',
+        meta: 'LocationSyncAgent · continuous sync',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'Start sync', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '1.5': {
+        id: 'continua-1.5-consignment',
+        type: 'system',
+        priority: 'high',
+        title: 'Consignment Review — 90-Day Window',
+        message: '12 items approaching 90-day return window. 8 high-value chairs ($24K) need decision this week.',
+        meta: 'ConsignmentAgent · decisions needed this week',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'Review decisions', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '2.4': {
+        id: 'continua-2.4-relocation',
+        type: 'announcement',
+        priority: 'medium',
+        title: 'Quick Action — Office Relocation',
+        message: "Carlos's chair is being replaced. Relocate his workstation assets from Office 3-214 → Office 3-216 (vacant).",
+        meta: 'Facilities · temporary relocation',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'Start relocation', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '3.2': {
+        id: 'continua-3.2-procurement',
+        type: 'approval',
+        priority: 'high',
+        title: 'PO Package Generation — Corporate HQ Project',
+        message: '1,500 line items across 12 manufacturers · 4 price sources · 5 business rules · 3 consolidated POs ($3.2M).',
+        meta: 'ProcurementAgent · Corporate HQ Phase 2',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'Review procurement', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '3.3': {
+        id: 'continua-3.3-conversion',
+        type: 'approval',
+        priority: 'medium',
+        title: 'Quick Action — PO to ACK Conversion',
+        message: 'Review conversion checklist: contract compliance, quantities, delivery schedule, price verification before converting PO package ($3.2M) to Acknowledgement.',
+        meta: 'ConversionAgent · ready for review',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'Start conversion review', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '3.4': {
+        id: 'continua-3.4-approval-chain',
+        type: 'approval',
+        priority: 'high',
+        title: 'Approval Chain — PO to ACK Conversion',
+        message: 'Sequential 3-level approval required: AI Compliance Agent, Expert Regional Sales Manager, Dealer Account Manager Kai. Total $3.2M conversion.',
+        meta: 'ApprovalEngine · 3-level chain',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'Start approval chain', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '3.5': {
+        id: 'continua-3.5-receiving',
+        type: 'system',
+        priority: 'medium',
+        title: 'Shipment Receiving Initiated · 3 shipments',
+        message: 'Processing 3 incoming shipments at Chicago warehouse — QR scan, PO matching, QC inspection.',
+        meta: 'ReceivingAgent · Chicago warehouse',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'Start receiving', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '4.1': {
+        id: 'continua-4.1-sustainability',
+        type: 'announcement',
+        priority: 'medium',
+        title: 'Sustainability Impact Report · UAL Project',
+        message: '194 tons diverted from landfill · 78% carbon reduction · 2,000 items refurbished.',
+        meta: 'SustainabilityMetricsAgent · UAL Project',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'View metrics', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+};
+
 // F41.a Task B · Workspaces expense management notifications (desktop steps).
 // Reemplaza 3 banners custom "STRATA · ACTION REQUIRED" inline en las scenes
 // (ApprovalQueueScene · APReviewQueueScene · CFODashboardScene) por notifs
@@ -253,6 +404,7 @@ interface ActionCenterProps {
 
 export default function ActionCenter({ defaultOpen = false }: ActionCenterProps = {}) {
     const { isDemoActive, isSidebarCollapsed, currentStep, nextStep } = useDemo();
+    const { activeProfile } = useDemoProfile();
     const { pauseAwareTimeout } = usePauseAware();
     const sidebarExpanded = isDemoActive && !isSidebarCollapsed;
     const [activeTab, setActiveTab] = useState('all');
@@ -392,11 +544,23 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
     const [workspacesDismissed, setWorkspacesDismissed] = useState<Set<string>>(new Set());
     const isWorkspacesActive = !!workspacesStepConfig && !workspacesDismissed.has(workspacesStepConfig.id);
 
+    // F42.a Task A · Continua notification · mismo pattern que Workspaces
+    // (sin gate isDemoActive · dispara por currentStep.id). Solo activo cuando
+    // el profile activo es continua (guard adicional para evitar cross-firing
+    // en otros profiles que pueden compartir step ids como '1.1' o '3.2').
+    const isContinuaProfile = activeProfile?.id === 'continua';
+    const continuaStepConfig = isContinuaProfile
+        ? CONTINUA_STEP_NOTIFICATIONS[currentStep?.id ?? '']
+        : undefined;
+    const [continuaDismissed, setContinuaDismissed] = useState<Set<string>>(new Set());
+    const isContinuaActive = !!continuaStepConfig && !continuaDismissed.has(continuaStepConfig.id);
+
     const filteredNotifications = useMemo(() => {
         const currentTab = tabs.find(t => t.id === activeTab);
+        const continuaEntry = isContinuaActive ? [continuaStepConfig!] : [];
         const workspacesEntry = isWorkspacesActive ? [workspacesStepConfig!] : [];
         const duplerEntry = shouldShowDuplerD11 ? [DUPLER_D11_NOTIFICATION] : [];
-        const base = [...workspacesEntry, ...duplerEntry, ...mockNotifications];
+        const base = [...continuaEntry, ...workspacesEntry, ...duplerEntry, ...mockNotifications];
         return base
             .filter(n => currentTab?.filter(n))
             .filter(n =>
@@ -404,10 +568,16 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                 n.message.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 n.meta.toLowerCase().includes(searchQuery.toLowerCase())
             );
-    }, [activeTab, searchQuery, shouldShowDuplerD11, isWorkspacesActive, workspacesStepConfig]);
+    }, [activeTab, searchQuery, shouldShowDuplerD11, isWorkspacesActive, workspacesStepConfig, isContinuaActive, continuaStepConfig]);
 
-    const urgentCount = (shouldShowDuplerD11 ? 1 : 0) + (isWorkspacesActive && workspacesStepConfig?.priority === 'high' ? 1 : 0) + mockNotifications.filter(n => n.priority === 'high').length;
-    const totalCount = (shouldShowDuplerD11 ? 1 : 0) + (isWorkspacesActive ? 1 : 0) + mockNotifications.filter(n => n.unread).length;
+    const urgentCount = (shouldShowDuplerD11 ? 1 : 0)
+        + (isWorkspacesActive && workspacesStepConfig?.priority === 'high' ? 1 : 0)
+        + (isContinuaActive && continuaStepConfig?.priority === 'high' ? 1 : 0)
+        + mockNotifications.filter(n => n.priority === 'high').length;
+    const totalCount = (shouldShowDuplerD11 ? 1 : 0)
+        + (isWorkspacesActive ? 1 : 0)
+        + (isContinuaActive ? 1 : 0)
+        + mockNotifications.filter(n => n.unread).length;
 
     // Flow 1 tabs for step 1.10 — single tab since only 1 notification
     const flow1Tabs: NotificationTab[] = [
@@ -493,6 +663,22 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
         }, 500);
         return () => clearTimeout(t);
     }, [isWorkspacesActive, workspacesStepConfig?.id]);
+
+    // F42.a Task A · Auto-open pattern análogo para Continua · 500ms delay ·
+    // guard popoverOpenRef · tracking del step id (una sola auto-open por step).
+    const continuaAutoOpenedRef = useRef<string | null>(null);
+    useEffect(() => {
+        if (!isContinuaActive || !continuaStepConfig) {
+            continuaAutoOpenedRef.current = null;
+            return;
+        }
+        if (continuaAutoOpenedRef.current === continuaStepConfig.id) return;
+        continuaAutoOpenedRef.current = continuaStepConfig.id;
+        const t = setTimeout(() => {
+            if (!popoverOpenRef.current) bellRef.current?.click();
+        }, 500);
+        return () => clearTimeout(t);
+    }, [isContinuaActive, continuaStepConfig?.id]);
 
     return (
         <>
@@ -588,6 +774,24 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                                                                 nextStep();
                                                             }
                                                             setWorkspacesDismissed(prev => new Set(prev).add(notification.id));
+                                                            setTimeout(() => {
+                                                                if (popoverOpenRef.current) bellRef.current?.click();
+                                                            }, 50);
+                                                        }
+                                                        // F42.a Task A · Continua notif CTAs (los 9 registrados).
+                                                        // Review/Start CTAs disparan el phase transition local (el scene
+                                                        // avanza a 'processing') via CustomEvent · el ActionCenter no
+                                                        // conoce el phase local del scene. Cada scene escucha su evento
+                                                        // correspondiente y actualiza su phase state machine. Dismiss
+                                                        // solo esconde la notif · deja al user en el step actual.
+                                                        if (notification.id.startsWith('continua-')) {
+                                                            const isReviewCta = action !== 'Dismiss';
+                                                            if (isReviewCta) {
+                                                                window.dispatchEvent(new CustomEvent('continua:advance-phase', {
+                                                                    detail: { notificationId: notification.id },
+                                                                }));
+                                                            }
+                                                            setContinuaDismissed(prev => new Set(prev).add(notification.id));
                                                             setTimeout(() => {
                                                                 if (popoverOpenRef.current) bellRef.current?.click();
                                                             }, 50);

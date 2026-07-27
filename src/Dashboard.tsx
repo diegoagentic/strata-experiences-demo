@@ -526,6 +526,19 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
         return () => clearTimeout(t)
     }, [sustPhase])
 
+    // F42.a Task A · Listener del ActionCenter · advance phase cuando el user
+    // click "View metrics" en el bell popover (continua-4.1-sustainability).
+    useEffect(() => {
+        const advance = (e: Event) => {
+            const detail = (e as CustomEvent).detail as { notificationId?: string };
+            if (detail?.notificationId === 'continua-4.1-sustainability') {
+                setSustPhase('processing')
+            }
+        };
+        window.addEventListener('continua:advance-phase', advance);
+        return () => window.removeEventListener('continua:advance-phase', advance);
+    }, [])
+
     // Step 3.4: End User mobile report state
     const [punchComment, setPunchComment] = useState('')
     const [punchCommentSent, setPunchCommentSent] = useState(false)
@@ -2648,10 +2661,11 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                 {/* ═══ Continua Step 4.1 — Sustainability Dashboard (auto 10s) ═══ */}
                 {isContinua && stepId === '4.1' && sustPhase !== 'idle' && (
                     <div data-demo-target="sustainability-dashboard" className="space-y-4 mb-6">
-                        {/* Notification */}
-                        {sustPhase === 'notification' && (
+                        {/* F42.a · Notification "Sustainability Impact Report" migrado al ActionCenter
+                            (continua-4.1-sustainability). */}
+                        {false && (
                             <button onClick={() => setSustPhase('processing')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
-                                <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
+                                <div className="p-4 rounded-xl">
                                     <div className="flex items-start gap-3">
                                         <div className="p-2 rounded-lg bg-green-600 text-white"><ChartBarIcon className="h-4 w-4" /></div>
                                         <div className="flex-1 min-w-0">

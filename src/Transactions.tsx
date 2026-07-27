@@ -710,6 +710,21 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
     const [conversionMode, setConversionMode] = useState<'quote-to-order' | 'order-to-ack' | 'rfq-to-quote'>('quote-to-order');
     const [isReconciliationOpen, setIsReconciliationOpen] = useState(false);
 
+    // F42.a Task A · Listener del ActionCenter · advance phase cuando el user
+    // click el CTA en el bell popover para las 4 notifs Continua de Transactions.
+    useEffect(() => {
+        const advance = (e: Event) => {
+            const detail = (e as CustomEvent).detail as { notificationId?: string };
+            const id = detail?.notificationId ?? '';
+            if (id === 'continua-3.2-procurement') setProcPhase('expert-question');
+            else if (id === 'continua-3.3-conversion') setConvPhase('review');
+            else if (id === 'continua-3.4-approval-chain') setApprovalPhase('chain');
+            else if (id === 'continua-1.5-consignment') setCsgnPhase('processing');
+        };
+        window.addEventListener('continua:advance-phase', advance);
+        return () => window.removeEventListener('continua:advance-phase', advance);
+    }, []);
+
     const openPEDPreview = (type: PEDDocumentType, id?: string) => {
         setPedData(getMockPEDData(type, id));
         setIsPEDOpen(true);
@@ -1877,10 +1892,11 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                 {/* ═══ CONTINUA STEP 2.2 — Procurement: Notification + Expert Question (inline) ═══ */}
                                 {isContinua && stepId === '3.2' && (procPhase === 'notification' || procPhase === 'expert-question') && (
                                     <div className="space-y-4 mb-6">
-                                        {/* Notification */}
-                                        {procPhase === 'notification' && (
+                                        {/* F42.a · Notification "PO Package Generation" migrado al ActionCenter
+                                            (continua-3.2-procurement). Advance a 'expert-question' al click Review. */}
+                                        {false && (
                                             <button onClick={() => setProcPhase('expert-question')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
-                                                <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
+                                                <div className="p-4 rounded-xl">
                                                     <div className="flex items-start gap-3">
                                                         <div className="h-9 w-9 rounded-lg bg-brand-500 flex items-center justify-center shrink-0">
                                                             <ClipboardDocumentListIcon className="h-5 w-5 text-zinc-900" />
@@ -2020,7 +2036,9 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                 {/* ═══ CONTINUA STEP 3.2 — ACK Tracking (chained from PO Generation) ═══ */}
                                 {isContinua && stepId === '3.2' && ackPhase !== 'idle' && (
                                     <div data-demo-target="ack-tracking-dashboard" className="space-y-4 mb-6">
-                                        {/* Notification banner */}
+                                        {/* F42.a · Notification banner "TrackingAgent — ACK Validation" preserved inline
+                                            (secondary banner en step 3.2 · el primario ProcurementAgent ya en ActionCenter).
+                                            Candidate para F42.b si Diego pide migrar los 2 secundarios (3.2 ack · 1.5 txn). */}
                                         {ackPhase === 'notification' && (
                                             <button onClick={() => setAckPhase('tab-switch')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
                                                 <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
@@ -2103,10 +2121,11 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                 {/* ═══ CONTINUA STEP 3.3 — PO to ACK Conversion ═══ */}
                                 {isContinua && stepId === '3.3' && convPhase !== 'idle' && (
                                     <div data-demo-target="po-ack-conversion" className="space-y-4 mb-6">
-                                        {/* Notification */}
-                                        {convPhase === 'notification' && (
+                                        {/* F42.a · Notification "PO to ACK Conversion" migrado al ActionCenter
+                                            (continua-3.3-conversion). Advance a 'review' al click Start conversion. */}
+                                        {false && (
                                             <button onClick={() => setConvPhase('review')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
-                                                <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
+                                                <div className="p-4 rounded-xl">
                                                     <div className="flex items-start gap-3">
                                                         <div className="p-2 rounded-lg bg-indigo-600 text-white">
                                                             <ArrowsRightLeftIcon className="h-4 w-4" />
@@ -2274,10 +2293,11 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                 {/* ═══ CONTINUA STEP 3.4 — Approval Chain ═══ */}
                                 {isContinua && stepId === '3.4' && approvalPhase !== 'idle' && (
                                     <div data-demo-target="approval-chain-progress" className="space-y-4 mb-6">
-                                        {/* Notification */}
-                                        {approvalPhase === 'notification' && (
+                                        {/* F42.a · Notification "Approval Chain" migrado al ActionCenter
+                                            (continua-3.4-approval-chain). Advance a 'chain' al click Start approval chain. */}
+                                        {false && (
                                             <button onClick={() => setApprovalPhase('chain')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
-                                                <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
+                                                <div className="p-4 rounded-xl">
                                                     <div className="flex items-start gap-3">
                                                         <div className="p-2 rounded-lg bg-indigo-600 text-white">
                                                             <ShieldCheckIcon className="h-4 w-4" />
@@ -2395,7 +2415,9 @@ export default function Transactions({ onLogout, onNavigateToDetail, onNavigateT
                                 {/* ═══ Continua Step 1.5 — Consignment & Vendor Returns (interactive) ═══ */}
                                 {isContinua && stepId === '1.5' && csgnPhase !== 'idle' && (
                                     <div data-demo-target="consignment-decisions" className="space-y-4 mb-6">
-                                        {/* Notification */}
+                                        {/* F42.a · Notification "Consignment Review" (Transactions step 1.5 · txn variant)
+                                            preserved inline · el banner de Inventory step 1.5 ya migró al ActionCenter
+                                            (continua-1.5-consignment). Candidate para F42.b duplicate migration. */}
                                         {csgnPhase === 'notification' && (
                                             <button onClick={() => setCsgnPhase('processing')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
                                                 <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">

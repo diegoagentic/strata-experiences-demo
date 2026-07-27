@@ -616,6 +616,24 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
         return () => clearTimeout(t);
     }, [fmRelocPhase]);
 
+    // F42.a Task A · Listener del ActionCenter · advance phase cuando el user
+    // click "Review analysis" / "Start assessment" / etc en el bell popover.
+    // El notificationId matchea el scene por prefix del step id.
+    useEffect(() => {
+        const advance = (e: Event) => {
+            const detail = (e as CustomEvent).detail as { notificationId?: string };
+            const id = detail?.notificationId ?? '';
+            if (id === 'continua-1.1-inventory-health') setHlthPhase('processing');
+            else if (id === 'continua-1.2-reuse') setReusePhase('processing');
+            else if (id === 'continua-1.4-location-sync') setSyncPhase('processing');
+            else if (id === 'continua-1.5-consignment') setConsignPhase('processing');
+            else if (id === 'continua-2.4-relocation') setFmRelocPhase('modal-open');
+            else if (id === 'continua-3.5-receiving') setRcvPhase('processing');
+        };
+        window.addEventListener('continua:advance-phase', advance);
+        return () => window.removeEventListener('continua:advance-phase', advance);
+    }, []);
+
     // State
     const [inventoryData, setInventoryData] = useState<InventoryItem[]>(MOCK_INVENTORY);
     const [invTimePeriod, setInvTimePeriod] = useState<InvTimePeriod>('Month');
@@ -845,9 +863,9 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                     className={cn(
                                         "px-3 py-1.5 text-sm font-medium rounded-md transition-all flex items-center gap-2 outline-none whitespace-nowrap",
                                         activeTab === tab.id
-                                            ? "bg-brand-300 dark:bg-brand-500 text-zinc-900 shadow-sm"
+                                            ? "bg-primary text-primary-foreground shadow-sm"
 
-                                            : "hover:text-zinc-900 hover:bg-brand-300 dark:hover:bg-brand-600/50 dark:hover:text-white"
+                                            : "hover:bg-primary hover:text-primary-foreground"
                                     )}
                                 >
                                     {tab.label}
@@ -874,7 +892,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                             {/* Period Selector inside expanded metrics */}
                             <div className="flex items-center gap-1 bg-muted/50 rounded-lg p-0.5 border border-border/50">
                                 {(['Day', 'Week', 'Month', 'Quarter'] as InvTimePeriod[]).map((period) => (
-                                    <button key={period} onClick={() => setInvTimePeriod(period)} className={`px-3 py-1 text-[10px] font-medium rounded-md transition-all ${period === invTimePeriod ? 'bg-white dark:bg-brand-400 text-foreground dark:text-zinc-900 shadow-sm border border-border dark:border-transparent' : 'text-muted-foreground hover:text-foreground hover:bg-zinc-200/50 dark:hover:bg-zinc-700'}`}>
+                                    <button key={period} onClick={() => setInvTimePeriod(period)} className={`px-3 py-1 text-[10px] font-medium rounded-md transition-all ${period === invTimePeriod ? 'bg-card dark:bg-primary text-foreground dark:text-primary-foreground shadow-sm border border-border dark:border-transparent' : 'text-muted-foreground hover:text-foreground hover:bg-zinc-200/50 dark:hover:bg-zinc-700'}`}>
                                         {period}
                                     </button>
                                 ))}
@@ -922,7 +940,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                 <button
                                     key={i}
                                     onClick={action.onClick}
-                                    className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full text-sm font-medium text-foreground hover:bg-brand-300 dark:hover:bg-brand-600/50 hover:border-brand-400 dark:hover:border-zinc-700 hover:text-zinc-900 transition-all shadow-sm"
+                                    className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full text-sm font-medium text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all shadow-sm"
                                 >
                                     {action.icon}
                                     {action.label}
@@ -935,7 +953,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                         {/* Period Selector inside collapsed ticker */}
                         <div className="flex items-center gap-0.5 bg-muted/50 rounded-lg p-0.5 shrink-0">
                             {(['Day', 'Week', 'Month', 'Quarter'] as InvTimePeriod[]).map((period) => (
-                                <button key={period} onClick={() => setInvTimePeriod(period)} className={`px-2 py-0.5 text-[9px] font-medium rounded transition-all ${period === invTimePeriod ? 'bg-white dark:bg-brand-400 text-foreground dark:text-zinc-900 shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}>
+                                <button key={period} onClick={() => setInvTimePeriod(period)} className={`px-2 py-0.5 text-[9px] font-medium rounded transition-all ${period === invTimePeriod ? 'bg-card dark:bg-primary text-foreground dark:text-primary-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}>
                                     {period}
                                 </button>
                             ))}
@@ -944,7 +962,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                         <div className="flex items-center gap-2 flex-1 min-w-0">
                             <button
                                 onClick={() => scroll(scrollContainerRef, 'left')}
-                                className="p-1.5 rounded-full hover:bg-brand-50 dark:hover:bg-brand-500/15 text-muted-foreground hover:text-foreground transition-colors shrink-0"
+                                className="p-1.5 rounded-full hover:bg-primary/10 text-muted-foreground hover:text-foreground transition-colors shrink-0"
                             >
                                 <ChevronLeftIcon className="w-4 h-4" />
                             </button>
@@ -979,7 +997,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
 
                             <button
                                 onClick={() => scroll(scrollContainerRef, 'right')}
-                                className="p-1.5 rounded-full hover:bg-brand-50 dark:hover:bg-brand-500/15 text-muted-foreground hover:text-foreground transition-colors shrink-0"
+                                className="p-1.5 rounded-full hover:bg-primary/10 text-muted-foreground hover:text-foreground transition-colors shrink-0"
                             >
                                 <ChevronRightIcon className="w-4 h-4" />
                             </button>
@@ -995,7 +1013,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                 { icon: <ClipboardDocumentCheckIcon className="w-5 h-5" />, label: "Start Audit" },
                                 { icon: <PlusIcon className="w-5 h-5" />, label: "Add Stock", onClick: () => setIsAddAssetModalOpen(true) },
                             ].map((action, i) => (
-                                <button key={i} onClick={action.onClick} className="p-2 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-500/15 text-muted-foreground hover:text-foreground transition-colors relative group" title={action.label}>
+                                <button key={i} onClick={action.onClick} className="p-2 rounded-lg hover:bg-primary/10 text-muted-foreground hover:text-foreground transition-colors relative group" title={action.label}>
                                     {action.icon}
                                 </button>
                             ))}
@@ -1005,12 +1023,12 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
 
                         <button
                             onClick={() => setShowMetrics(true)}
-                            className="flex flex-col items-center justify-center gap-1 group p-2 hover:bg-brand-300 dark:hover:bg-brand-600/50 rounded-lg transition-colors"
+                            className="flex flex-col items-center justify-center gap-1 group p-2 hover:bg-primary rounded-lg transition-colors"
                         >
-                            <div className="text-muted-foreground group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">
+                            <div className="text-muted-foreground group-hover:text-primary-foreground transition-colors">
                                 <ChevronDownIcon className="w-4 h-4" />
                             </div>
-                            <span className="text-[10px] font-medium text-muted-foreground group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">Details</span>
+                            <span className="text-[10px] font-medium text-muted-foreground group-hover:text-primary-foreground transition-colors">Details</span>
                         </button>
                     </div >
                 )
@@ -1020,24 +1038,8 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                 {/* ═══ Continua Step 1.4 — Warehouse Receiving & QC ═══ */}
                 {isContinua && stepId === '3.5' && rcvPhase !== 'idle' && (
                     <div className="space-y-4 mb-6">
-                        {/* Notification */}
-                        {rcvPhase === 'notification' && (
-                            <button onClick={() => setRcvPhase('processing')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
-                                <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
-                                    <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-brand-500 text-white"><TruckIcon className="h-4 w-4" /></div>
-                                        <div className="flex-1 min-w-0">
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-xs font-bold text-foreground">Shipment Receiving Initiated</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-brand-500 text-white font-bold">3 shipments</span>
-                                            </div>
-                                            <p className="text-[11px] text-muted-foreground mt-1">ReceivingAgent: Processing <span className="font-semibold text-foreground">3 incoming shipments</span> at Chicago warehouse — QR scan, PO matching, QC inspection.</p>
-                                            <p className="text-[10px] text-brand-600 dark:text-brand-400 mt-2 flex items-center gap-1">Click to start receiving <ArrowRightIcon className="h-3 w-3" /></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </button>
-                        )}
+                        {/* F42.a · Notification "Shipment Receiving Initiated" migrado al ActionCenter
+                            (continua-3.5-receiving). */}
 
                         {/* Processing */}
                         {rcvPhase === 'processing' && (
@@ -1047,7 +1049,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                     <span className="text-xs font-bold text-foreground">ReceivingAgent Processing Shipments...</span>
                                 </div>
                                 <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                    <div className="h-full rounded-full bg-brand-400 transition-all duration-[3500ms] ease-linear" style={{ width: `${rcvProgress}%` }} />
+                                    <div className="h-full rounded-full bg-primary transition-all duration-[3500ms] ease-linear" style={{ width: `${rcvProgress}%` }} />
                                 </div>
                                 <div className="space-y-1.5">
                                     {rcvAgents.map(agent => (
@@ -1147,7 +1149,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                             <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground"><MapPinIcon className="h-3.5 w-3.5" /><span className="font-medium text-foreground">Zone B, Rack 14</span></div>
                                             <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground"><ChartBarIcon className="h-3.5 w-3.5" />Utilization: <span className="font-medium text-foreground">72%</span></div>
                                         </div>
-                                        <button onClick={nextStep} className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-brand-300 hover:bg-brand-400 dark:bg-brand-400 dark:hover:bg-brand-300 text-zinc-900 text-[11px] font-bold shadow-sm transition-all hover:scale-[1.02]">
+                                        <button onClick={nextStep} className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm text-[11px] font-bold shadow-sm transition-all hover:scale-[1.02]">
                                             <ClipboardDocumentCheckIcon className="h-3.5 w-3.5" />Confirm Receiving<ArrowRightIcon className="h-3 w-3" />
                                         </button>
                                     </div>
@@ -1160,24 +1162,9 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                 {/* ═══ Continua Step 3.1 — Inventory Health & Forecasting ═══ */}
                 {isContinua && stepId === '1.1' && hlthPhase !== 'idle' && (
                     <div data-demo-target="inventory-health-forecast" className="space-y-4 mb-6">
-                        {/* Notification */}
-                        {hlthPhase === 'notification' && (
-                            <button onClick={() => setHlthPhase('processing')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
-                                <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
-                                    <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-brand-500 text-white"><ChartBarIcon className="h-4 w-4" /></div>
-                                        <div className="flex-1 min-w-0">
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-xs font-bold text-foreground">Inventory Health Analysis</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-amber-500 text-white font-bold">Capacity Alert</span>
-                                            </div>
-                                            <p className="text-[11px] text-muted-foreground mt-1">InventoryIntelAgent: <span className="font-semibold text-foreground">2,400 items</span> across 3 warehouses — Chicago warehouse forecast to reach <span className="font-semibold text-amber-600 dark:text-amber-400">85% capacity</span> in 2 weeks.</p>
-                                            <p className="text-[10px] text-brand-600 dark:text-brand-400 mt-2 flex items-center gap-1">Click to review analysis <ArrowRightIcon className="h-3 w-3" /></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </button>
-                        )}
+                        {/* F42.a · Notification "Inventory Health Analysis" migrado al ActionCenter
+                            (WORKSPACES_STEP_NOTIFICATIONS · continua-1.1-inventory-health).
+                            El listener de continua:advance-phase avanza a processing al click Review. */}
 
                         {/* Processing */}
                         {hlthPhase === 'processing' && (
@@ -1187,7 +1174,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                     <span className="text-xs font-bold text-foreground">InventoryIntelAgent Analyzing Warehouses...</span>
                                 </div>
                                 <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                    <div className="h-full rounded-full bg-brand-400 transition-all duration-[3500ms] ease-linear" style={{ width: `${hlthProgress}%` }} />
+                                    <div className="h-full rounded-full bg-primary transition-all duration-[3500ms] ease-linear" style={{ width: `${hlthProgress}%` }} />
                                 </div>
                                 <div className="space-y-1.5">
                                     {hlthAgents.map(agent => (
@@ -1254,7 +1241,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                                 </div>
                                                 {/* Gauge bar */}
                                                 <div className="h-2 rounded-full bg-muted overflow-hidden mb-1.5">
-                                                    <div className={cn("h-full rounded-full transition-all duration-700", wh.current > 70 ? "bg-amber-500" : wh.current > 50 ? "bg-brand-400" : "bg-green-500")} style={{ width: `${wh.current}%` }} />
+                                                    <div className={cn("h-full rounded-full transition-all duration-700", wh.current > 70 ? "bg-amber-500" : wh.current > 50 ? "bg-primary" : "bg-green-500")} style={{ width: `${wh.current}%` }} />
                                                 </div>
                                                 <div className="flex items-center justify-between">
                                                     <span className={cn("text-xs font-bold", wh.current > 70 ? "text-amber-600 dark:text-amber-400" : "text-foreground")}>{wh.current}%</span>
@@ -1288,7 +1275,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                     {/* CTA */}
                                     <div className="px-4 py-3 border-t border-border/50 flex items-center justify-between bg-muted/20">
                                         <p className="text-[10px] text-muted-foreground">Relocating 120 items optimizes capacity and reduces storage costs.</p>
-                                        <button onClick={nextStep} className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-brand-300 hover:bg-brand-400 dark:bg-brand-400 dark:hover:bg-brand-300 text-zinc-900 text-[11px] font-bold shadow-sm transition-all hover:scale-[1.02]">
+                                        <button onClick={nextStep} className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm text-[11px] font-bold shadow-sm transition-all hover:scale-[1.02]">
                                             <CheckCircleIcon className="h-3.5 w-3.5" />Apply Recommendations<ArrowRightIcon className="h-3 w-3" />
                                         </button>
                                     </div>
@@ -1301,24 +1288,8 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                 {/* ═══ Continua Step 1.4 — Multi-Location Sync (auto 8s) ═══ */}
                 {isContinua && stepId === '1.4' && syncPhase !== 'idle' && (
                     <div data-demo-target="multi-location-sync" className="space-y-4 mb-6">
-                        {/* Notification */}
-                        {syncPhase === 'notification' && (
-                            <button onClick={() => setSyncPhase('processing')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
-                                <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
-                                    <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-blue-600 text-white"><MapPinIcon className="h-4 w-4" /></div>
-                                        <div className="flex-1 min-w-0">
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-xs font-bold text-foreground">Multi-Location Sync</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-600 text-white font-bold">5 locations</span>
-                                            </div>
-                                            <p className="text-[11px] text-muted-foreground mt-1">LocationSyncAgent: Synchronizing <span className="font-semibold text-foreground">3 warehouses + 2 job sites</span> — tracking in-transit items, pending QC, optimizing delivery routes.</p>
-                                            <p className="text-[10px] text-brand-600 dark:text-brand-400 mt-2 flex items-center gap-1">Click to start sync <ArrowRightIcon className="h-3 w-3" /></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </button>
-                        )}
+                        {/* F42.a · Notification "Multi-Location Sync" migrado al ActionCenter
+                            (continua-1.4-location-sync). */}
 
                         {/* Processing */}
                         {syncPhase === 'processing' && (
@@ -1475,24 +1446,8 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                 {/* ═══ FM Step 2.4 — Quick Action Office Relocation ═══ */}
                 {isContinua && stepId === '2.4' && fmRelocPhase !== 'idle' && (
                     <div className="space-y-4 mb-6">
-                        {/* Notification Banner */}
-                        {fmRelocPhase === 'notification' && (
-                            <button onClick={() => setFmRelocPhase('modal-open')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
-                                <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-500/10 border-2 border-blue-300 dark:border-blue-500/30 shadow-lg hover:shadow-blue-500/20 transition-shadow cursor-pointer">
-                                    <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-blue-500 text-white"><ArrowPathRoundedSquareIcon className="h-4 w-4" /></div>
-                                        <div className="flex-1 min-w-0">
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-xs font-bold text-foreground">Quick Action — Office Relocation</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-500 text-white font-bold">TEMPORARY</span>
-                                            </div>
-                                            <p className="text-[11px] text-muted-foreground mt-1">While Carlos's chair is being replaced, relocate his workstation assets from <span className="font-semibold text-foreground">Office 3-214 → Office 3-216</span> (vacant).</p>
-                                            <p className="text-[10px] text-blue-600 dark:text-blue-400 mt-2 flex items-center gap-1">Click to start relocation <ArrowRightIcon className="h-3 w-3" /></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </button>
-                        )}
+                        {/* F42.a · Notification "Quick Action — Office Relocation" migrado al ActionCenter
+                            (continua-2.4-relocation). Advance a modal-open al click Start relocation. */}
 
                         {/* Committed confirmation */}
                         {fmRelocPhase === 'committed' && (
@@ -1514,24 +1469,8 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                 {/* ═══ Continua Step 1.2 — Reuse Assessment & Cataloging (interactive) ═══ */}
                 {isContinua && stepId === '1.2' && reusePhase !== 'idle' && (
                     <div className="space-y-4 mb-6">
-                        {/* Notification */}
-                        {reusePhase === 'notification' && (
-                            <button onClick={() => setReusePhase('processing')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
-                                <div className="p-4 rounded-xl bg-emerald-50 dark:bg-success/10 border-2 border-emerald-300 dark:border-emerald-500/30 shadow-lg shadow-emerald-500/10 hover:shadow-emerald-500/20 transition-shadow cursor-pointer">
-                                    <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-success text-white"><ArchiveBoxIcon className="h-4 w-4" /></div>
-                                        <div className="flex-1 min-w-0">
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-xs font-bold text-foreground">Reuse Assessment — Floor 7 Teardown</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-success text-white font-bold">340 items</span>
-                                            </div>
-                                            <p className="text-[11px] text-muted-foreground mt-1">SustainabilityAgent: Evaluating <span className="font-semibold text-foreground">340 items</span> from floor 7 pre-renovation teardown — classifying reuse, recycle, EOL.</p>
-                                            <p className="text-[10px] text-success dark:text-success mt-2 flex items-center gap-1">Click to start assessment <ArrowRightIcon className="h-3 w-3" /></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </button>
-                        )}
+                        {/* F42.a · Notification "Reuse Assessment" migrado al ActionCenter
+                            (continua-1.2-reuse). */}
 
                         {/* Processing */}
                         {reusePhase === 'processing' && (
@@ -1632,24 +1571,8 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                 {/* ═══ Continua Step 1.5 — Consignment & Vendor Returns (interactive) ═══ */}
                 {isContinua && stepId === '1.5' && consignPhase !== 'idle' && (
                     <div className="space-y-4 mb-6">
-                        {/* Notification */}
-                        {consignPhase === 'notification' && (
-                            <button onClick={() => setConsignPhase('processing')} className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500">
-                                <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-500/10 border-2 border-rose-300 dark:border-rose-500/30 shadow-lg shadow-rose-500/10 hover:shadow-rose-500/20 transition-shadow cursor-pointer">
-                                    <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-rose-500 text-white"><ClockIcon className="h-4 w-4" /></div>
-                                        <div className="flex-1 min-w-0">
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-xs font-bold text-foreground">Consignment Review — 90-Day Window</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full bg-rose-500 text-white font-bold">12 ITEMS</span>
-                                            </div>
-                                            <p className="text-[11px] text-muted-foreground mt-1">ConsignmentAgent: <span className="font-semibold text-foreground">12 items</span> approaching 90-day return window. 8 high-value chairs ($24K) need decision this week.</p>
-                                            <p className="text-[10px] text-rose-600 dark:text-rose-400 mt-2 flex items-center gap-1">Click to review decisions <ArrowRightIcon className="h-3 w-3" /></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </button>
-                        )}
+                        {/* F42.a · Notification "Consignment Review" migrado al ActionCenter
+                            (continua-1.5-consignment). */}
 
                         {/* Processing */}
                         {consignPhase === 'processing' && (
@@ -2076,7 +1999,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                 onClick={() => setIsStatusModalOpen(true)}
                                 className="flex items-center gap-2 px-3 py-1.5 hover:bg-accent rounded-lg text-sm font-medium text-foreground transition-colors group"
                             >
-                                <div className="p-0.5 rounded-md transition-colors group-hover:bg-brand-300 dark:group-hover:bg-transparent">
+                                <div className="p-0.5 rounded-md transition-colors group-hover:bg-primary dark:group-hover:bg-transparent">
                                     <ArrowPathRoundedSquareIcon className="w-4 h-4 text-muted-foreground group-hover:text-muted-foreground dark:group-hover:text-primary transition-colors" />
                                 </div>
                                 Change Status
