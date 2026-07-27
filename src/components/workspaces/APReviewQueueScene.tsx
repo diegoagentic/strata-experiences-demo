@@ -10,7 +10,9 @@ import { Sparkles, ChevronRight, Bell, CheckCircle2, X, Flag, AlertCircle, Calen
 import { useDemo } from '../../context/DemoContext'
 import DataSourcesBar, { SOURCES } from '../mbi/DataSourcesBar'
 
-type SceneState  = 'list' | 'notified' | 'rejecting' | 'rejected'
+// F41.a Task B · 'notified' state removed · el banner migró al ActionCenter
+// (bell popover auto-open en w2.1 vía WORKSPACES_STEP_NOTIFICATIONS).
+type SceneState  = 'list' | 'rejecting' | 'rejected'
 type FilterKey   = 'all' | 'pending' | 'posted'
 type TimeFilter  = 'any' | 'today' | '3days' | '7days' | 'month'
 
@@ -120,19 +122,9 @@ export default function APReviewQueueScene({ onReview }: { onReview?: () => void
     const [expandedCard, setExpandedCard] = useState<string | null>(null)
     const [rejectNote, setRejectNote]     = useState('')
 
-    const pauseAware = useCallback((fn: () => void, delay: number) => {
-        const start = Date.now()
-        const tick = () => {
-            if (isPausedRef.current) { setTimeout(tick, 100); return }
-            if (Date.now() - start >= delay) fn()
-            else setTimeout(tick, 100)
-        }
-        setTimeout(tick, 0)
-    }, [])
-
-    useEffect(() => {
-        pauseAware(() => setScene('notified'), 2000)
-    }, [pauseAware])
+    // F41.a Task B · pauseAware auto-trigger a 'notified' removido.
+    // El banner "Strata · AP Queue ready" migró al ActionCenter registry
+    // WORKSPACES_STEP_NOTIFICATIONS['w2.1'] con auto-open del bell popover.
 
     const base = filter === 'pending' ? PENDING_EXPENSES : filter === 'posted' ? POSTED_EXPENSES : ALL_EXPENSES
     const filteredExpenses = base.filter(e => e.ageDays <= MAX_AGE[timeFilter])
@@ -140,10 +132,7 @@ export default function APReviewQueueScene({ onReview }: { onReview?: () => void
     return (
         <div className="space-y-4">
 
-            {/* Toast — overlays above list, slides in when notified */}
-            {scene === 'notified' && (
-                <APQueueToast onReview={onReview} onDismiss={() => setScene('list')} onFlag={() => { setRejectNote('Receipt is unclear or incomplete'); setScene('rejecting') }} />
-            )}
+            {/* F41.a Task B · APQueueToast removed · notif en ActionCenter */}
 
             {/* Rejecting overlay */}
             {scene === 'rejecting' && (
@@ -282,52 +271,8 @@ export default function APReviewQueueScene({ onReview }: { onReview?: () => void
     )
 }
 
-// ── Toast overlay ─────────────────────────────────────────────────────────────
-
-function APQueueToast({ onReview, onDismiss, onFlag }: { onReview?: () => void; onDismiss: () => void; onFlag: () => void }) {
-    return (
-        <div className="animate-in slide-in-from-top duration-500 bg-card border border-ai/40 rounded-xl px-4 py-3 shadow-sm space-y-2">
-            <div className="flex items-start gap-3">
-                <div className="relative shrink-0 mt-0.5">
-                    <div className="h-8 w-8 rounded-xl bg-ai/10 flex items-center justify-center">
-                        <Sparkles className="h-3.5 w-3.5 text-ai" />
-                    </div>
-                    <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-ai border-2 border-card animate-pulse" />
-                </div>
-                <div className="flex-1 min-w-0">
-                    <p className="text-[10px] font-bold text-ai uppercase tracking-wide mb-0.5">Strata · AP Queue ready</p>
-                    <p className="text-xs font-semibold text-foreground leading-snug">
-                        Employee Alpha · $95.00 · Mileage · Tolls / Cab / Parking — approved by Operations Manager Solano
-                    </p>
-                    <p className="text-[10px] text-muted-foreground mt-0.5">
-                        Categories mapped · ready to confirm and post
-                    </p>
-                </div>
-                <button
-                    onClick={onDismiss}
-                    className="shrink-0 text-muted-foreground hover:text-foreground transition-colors mt-0.5"
-                    aria-label="Dismiss notification"
-                >
-                    <X className="h-3.5 w-3.5" />
-                </button>
-            </div>
-            <button
-                onClick={onReview}
-                className="w-full flex items-center justify-center gap-1.5 bg-primary text-primary-foreground text-xs font-bold py-2.5 rounded-lg hover:opacity-90 transition-opacity"
-            >
-                Review GL — Employee Alpha
-                <ChevronRight className="h-3.5 w-3.5" />
-            </button>
-            <button
-                onClick={onFlag}
-                className="w-full flex items-center justify-center gap-1 text-[11px] font-medium text-destructive/70 hover:text-destructive transition-colors py-1"
-            >
-                <Flag className="h-3 w-3" />
-                Flag for revision without reviewing
-            </button>
-        </div>
-    )
-}
+// F41.a Task B · APQueueToast function removed. El banner "Strata · AP Queue
+// ready" migró al ActionCenter registry (WORKSPACES_STEP_NOTIFICATIONS['w2.1']).
 
 // ── Filter bar ────────────────────────────────────────────────────────────────
 

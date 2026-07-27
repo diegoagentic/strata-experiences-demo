@@ -56,24 +56,12 @@ export default function ApprovalQueueScene({ onReview }: { onReview?: () => void
     const isPausedRef  = useRef(isPaused)
     isPausedRef.current = isPaused
 
-    const [scene,        setScene]        = useState<SceneState>('list')
+    // F41.a Task B · SceneState + auto-trigger removidos · el banner
+    // "STRATA · ACTION REQUIRED" migró al ActionCenter (bell popover auto-open
+    // en w1.2 vía WORKSPACES_STEP_NOTIFICATIONS). El pauseAware helper también
+    // se elimina · ya no hay banner que gate.
     const [statusFilter, setStatusFilter] = useState<StatusFilter>('all')
     const [catFilter,    setCatFilter]    = useState<CatFilter>('all')
-
-    const pauseAware = useCallback((fn: () => void, delay: number) => {
-        const start = Date.now()
-        const tick = () => {
-            if (isPausedRef.current) { setTimeout(tick, 100); return }
-            if (Date.now() - start >= delay) fn()
-            else setTimeout(tick, 100)
-        }
-        setTimeout(tick, 0)
-    }, [])
-
-    // Auto-trigger notification — long pause so presenter can narrate the list
-    useEffect(() => {
-        pauseAware(() => setScene('notified'), 6000)
-    }, [pauseAware])
 
     const visibleList = ALL_EXPENSES.filter(e => {
         const statusOk = statusFilter === 'all' || e.status === statusFilter
@@ -81,17 +69,10 @@ export default function ApprovalQueueScene({ onReview }: { onReview?: () => void
         return statusOk && catOk
     })
 
-    // Single render — list always visible, toast overlays when notified
+    // F41.a Task B · single render · el banner "STRATA · ACTION REQUIRED"
+    // aparece ahora en el ActionCenter bell popover (auto-open ~500ms).
     return (
         <div className="space-y-4 animate-in fade-in duration-400">
-
-            {/* ── Notification toast — overlays list, slides from top ── */}
-            {scene === 'notified' && (
-                <NotificationToast
-                    onReview={onReview}
-                    onDismiss={() => setScene('list')}
-                />
-            )}
 
             {/* ── Manager header ── */}
             <div className="flex items-center justify-between">
@@ -200,55 +181,6 @@ export default function ApprovalQueueScene({ onReview }: { onReview?: () => void
     )
 }
 
-// ── Notification toast — slides in from top, overlays list ───────────────────
-
-function NotificationToast({ onReview, onDismiss }: {
-    onReview?: () => void
-    onDismiss: () => void
-}) {
-    return (
-        <div className="animate-in slide-in-from-top duration-500">
-            <div className="flex items-start gap-3 bg-card border border-ai/40 rounded-2xl px-4 py-3.5 shadow-lg">
-                {/* Icon with pulse dot */}
-                <div className="relative shrink-0 mt-0.5">
-                    <div className="h-9 w-9 rounded-xl bg-ai/10 flex items-center justify-center">
-                        <Sparkles className="h-4 w-4 text-ai" />
-                    </div>
-                    <span className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-ai border-2 border-card animate-pulse" />
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-1.5 mb-0.5">
-                        <span className="text-[10px] font-bold text-ai uppercase tracking-wide">Strata · Action required</span>
-                    </div>
-                    <p className="text-sm font-semibold text-foreground leading-snug">
-                        Employee Alpha submitted a $95.00 expense
-                    </p>
-                    <p className="text-[11px] text-muted-foreground mt-0.5">
-                        Mileage · Tolls / Cab / Parking · May 5 · 1 receipt attached inline
-                    </p>
-                    <button
-                        onClick={() => onReview?.()}
-                        className="inline-flex items-center gap-1 mt-2 text-[11px] font-bold text-ai hover:underline transition-colors"
-                    >
-                        Review expense
-                        <ChevronRight className="h-3 w-3" />
-                    </button>
-                </div>
-
-                {/* Dismiss */}
-                <button
-                    onClick={onDismiss}
-                    className="shrink-0 text-muted-foreground hover:text-foreground mt-0.5 transition-colors"
-                >
-                    <X className="h-3.5 w-3.5" />
-                </button>
-            </div>
-        </div>
-    )
-}
-
 // ── Expense list row ──────────────────────────────────────────────────────────
 
 function ExpenseListRow({ exp, onReview }: {
@@ -340,8 +272,11 @@ function ExpenseListRow({ exp, onReview }: {
 
     return (
         <div className="last:rounded-b-xl overflow-visible">
+            {/* F41.a Task D · rejected row · era 'bg-destructive/5 border-l-2 border-l-destructive'
+                (F38 ERROR 11-lite · doble señal color). Ahora row neutro · el StatusBadge "Rejected"
+                en la última cell + el text-destructive del rejectReason ya comunican el status. */}
             <div className={`grid grid-cols-[1fr_160px_80px_64px_110px_160px] items-center px-4 py-3 transition-colors last:rounded-b-xl ${
-                exp.status === 'rejected' ? 'bg-destructive/5 border-l-2 border-l-destructive' : exp.focus ? 'bg-muted/30 hover:bg-muted/50' : 'hover:bg-muted/20'
+                exp.focus ? 'bg-muted/30 hover:bg-muted/50' : 'hover:bg-muted/20'
             }`}>
                 <div className="min-w-0">
                     <p className="text-sm font-semibold text-foreground truncate">{exp.name}</p>

@@ -515,7 +515,8 @@ function ReportCard({ title, subtitle, preview, onClick }: {
                 {preview}
             </div>
             <div>
-                <p className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">{title}</p>
+                {/* F41.a Task C · era group-hover:text-primary (LAW 2 · lime bright · potencial). Ahora underline. */}
+                <p className="text-sm font-bold text-foreground group-hover:underline transition-colors">{title}</p>
                 <p className="text-[10px] text-muted-foreground mt-0.5">{subtitle}</p>
             </div>
             <span className="inline-flex items-center gap-1 text-[10px] text-ai font-semibold">
@@ -1039,7 +1040,9 @@ function ApprovalTrendsReport({ onBack }: { onBack: () => void }) {
                     <div className="space-y-3">
                         {TOP_APPROVERS.map(a => (
                             <div key={a.name} className="flex items-center gap-2">
-                                <div className="h-6 w-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-[9px] font-bold shrink-0">
+                                {/* F41.a Task C · era bg-primary/10 text-primary (F38 ERROR 13 · lime sobre lime ilegible).
+                                    Pattern F22 · icon pill sólido brand. */}
+                                <div className="h-6 w-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-[9px] font-bold shrink-0">
                                     {a.initials}
                                 </div>
                                 <div className="flex-1 min-w-0">
@@ -1062,7 +1065,9 @@ function ApprovalTrendsReport({ onBack }: { onBack: () => void }) {
             <div className="bg-card border border-border rounded-xl overflow-hidden">
                 <div className="flex items-center justify-between px-4 py-3 border-b border-border">
                     <p className="text-xs font-bold text-foreground">Recent approvals · Tammy Flick</p>
-                    <span className="text-[10px] text-primary font-medium cursor-pointer hover:underline">View all approvals</span>
+                    {/* F41.a Task C · era text-primary (LAW 2 · lime sobre bg-card claro ilegible).
+                        Ahora text-foreground con underline como affordance. */}
+                    <span className="text-[10px] text-foreground font-medium cursor-pointer underline hover:no-underline">View all approvals</span>
                 </div>
                 <div className="overflow-x-auto">
                     <table className="w-full">
@@ -1199,32 +1204,10 @@ export default function CFODashboardScene() {
 
         return (
             <div className="space-y-4 animate-in fade-in duration-400">
-                {/* Strata notification — slide-in on 'notified' */}
-                {phase === 'notified' && (
-                    <button
-                        onClick={goToCompany}
-                        className="w-full animate-in slide-in-from-top duration-500 bg-ai/5 border border-ai/30 rounded-xl px-4 py-3 text-left flex items-start gap-2.5 hover:border-ai/60 transition-all group shadow-sm"
-                    >
-                        <div className="relative shrink-0 mt-0.5">
-                            <div className="h-8 w-8 rounded-xl bg-ai/10 flex items-center justify-center">
-                                <Sparkles className="h-3.5 w-3.5 text-ai" />
-                            </div>
-                            <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-ai border-2 border-card animate-pulse" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                            <p className="text-[10px] font-bold text-ai uppercase tracking-wide mb-0.5">Strata · Expense cycle complete</p>
-                            <p className="text-xs font-semibold text-foreground">May 2026 · $48K posted to accounting system</p>
-                            <p className="text-[10px] text-muted-foreground mt-0.5">Accountant · 2:48 PM · All receipts verified ✓</p>
-                            <div className="flex items-center flex-wrap gap-1.5 mt-1.5">
-                                <span className="text-[10px] bg-success/10 text-success border border-success/20 px-1.5 py-0.5 rounded-full font-medium">23 expenses posted</span>
-                                <span className="text-[10px] bg-ai/10 text-ai border border-ai/20 px-1.5 py-0.5 rounded-full font-medium">1 rule improved · Parking 72%→97%</span>
-                            </div>
-                            <p className="text-xs font-semibold text-ai mt-1.5 group-hover:underline flex items-center gap-1">
-                                View May dashboard <ChevronRight className="h-3 w-3" />
-                            </p>
-                        </div>
-                    </button>
-                )}
+                {/* F41.a Task B · banner "Strata · Expense cycle complete" removed.
+                    Migró al ActionCenter registry WORKSPACES_STEP_NOTIFICATIONS['w2.4']
+                    con auto-open del bell popover. El phase 'notified' sigue activo
+                    para preservar el setMay2026Complete(true) side effect. */}
 
                 {/* Mehmet in context — reviewing April 2026 */}
                 <div className="bg-card border border-border rounded-xl overflow-hidden">

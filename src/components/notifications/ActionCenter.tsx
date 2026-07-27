@@ -194,6 +194,56 @@ const DUPLER_D11_NOTIFICATION: Notification = {
     ],
 };
 
+// F41.a Task B · Workspaces expense management notifications (desktop steps).
+// Reemplaza 3 banners custom "STRATA · ACTION REQUIRED" inline en las scenes
+// (ApprovalQueueScene · APReviewQueueScene · CFODashboardScene) por notifs
+// registradas en el Action Center · pattern análogo a Dupler d1.1 y BFI.
+// w1.4 (mobile Alpha status) queda con toast local · el bell no está
+// disponible en workspaces-submit app (App.tsx L721 · Navbar hidden).
+const WORKSPACES_STEP_NOTIFICATIONS: Record<string, Notification> = {
+    'w1.2': {
+        id: 'workspaces-w1.2-submit',
+        type: 'approval',
+        priority: 'high',
+        title: 'Employee Alpha submitted a $95.00 expense',
+        message: 'Mileage · Tolls / Cab / Parking · May 5 · 1 receipt attached inline',
+        meta: 'ExpenseAgent · flagged for review',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'Review expense', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    'w2.1': {
+        id: 'workspaces-w2.1-ap-ready',
+        type: 'approval',
+        priority: 'medium',
+        title: 'AP Queue ready · $95.00 pending post to CORE',
+        message: 'Employee Alpha · Mileage · manager Sarah approved · ready for GL sync',
+        meta: 'GLSyncAgent · auto-classified',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'Review GL', primary: true },
+            { label: 'Flag for review', primary: false },
+        ],
+    },
+    'w2.4': {
+        id: 'workspaces-w2.4-cycle',
+        type: 'announcement',
+        priority: 'medium',
+        title: 'Monthly expense cycle complete',
+        message: '23 expenses posted · 1 rule improved · Parking approval rate 72% → 97%',
+        meta: 'CFODashboardAgent · May cycle',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'View May dashboard', primary: true },
+        ],
+    },
+};
+
 interface ActionCenterProps {
     /** When true (shared-block preview) programmatically opens the popover
      *  on mount so viewers see the full panel content immediately instead
@@ -330,11 +380,20 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
         };
     }, []);
 
+    // F41.a Task B · Workspaces step notification · gated por currentStep.id.
+    // El registry mantiene 3 entries (w1.2 · w2.1 · w2.4 desktop). w1.4 mobile
+    // sigue con toast local · bell hidden en workspaces-submit app.
+    const workspacesStepConfig = isDemoActive
+        ? WORKSPACES_STEP_NOTIFICATIONS[currentStep?.id ?? '']
+        : undefined;
+    const [workspacesDismissed, setWorkspacesDismissed] = useState<Set<string>>(new Set());
+    const isWorkspacesActive = !!workspacesStepConfig && !workspacesDismissed.has(workspacesStepConfig.id);
+
     const filteredNotifications = useMemo(() => {
         const currentTab = tabs.find(t => t.id === activeTab);
-        const base = shouldShowDuplerD11
-            ? [DUPLER_D11_NOTIFICATION, ...mockNotifications]
-            : mockNotifications;
+        const workspacesEntry = isWorkspacesActive ? [workspacesStepConfig!] : [];
+        const duplerEntry = shouldShowDuplerD11 ? [DUPLER_D11_NOTIFICATION] : [];
+        const base = [...workspacesEntry, ...duplerEntry, ...mockNotifications];
         return base
             .filter(n => currentTab?.filter(n))
             .filter(n =>
@@ -342,10 +401,10 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                 n.message.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 n.meta.toLowerCase().includes(searchQuery.toLowerCase())
             );
-    }, [activeTab, searchQuery, shouldShowDuplerD11]);
+    }, [activeTab, searchQuery, shouldShowDuplerD11, isWorkspacesActive, workspacesStepConfig]);
 
-    const urgentCount = (shouldShowDuplerD11 ? 1 : 0) + mockNotifications.filter(n => n.priority === 'high').length;
-    const totalCount = (shouldShowDuplerD11 ? 1 : 0) + mockNotifications.filter(n => n.unread).length;
+    const urgentCount = (shouldShowDuplerD11 ? 1 : 0) + (isWorkspacesActive && workspacesStepConfig?.priority === 'high' ? 1 : 0) + mockNotifications.filter(n => n.priority === 'high').length;
+    const totalCount = (shouldShowDuplerD11 ? 1 : 0) + (isWorkspacesActive ? 1 : 0) + mockNotifications.filter(n => n.unread).length;
 
     // Flow 1 tabs for step 1.10 — single tab since only 1 notification
     const flow1Tabs: NotificationTab[] = [
@@ -413,6 +472,24 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
         }, 400);
         return () => clearTimeout(t);
     }, [shouldShowDuplerD11]);
+
+    // F41.a Task B · Auto-open the bell when user enters w1.2 · w2.1 · w2.4.
+    // Delay 500ms (post-F21 · misma guardia que Dupler). Reset del tracker
+    // cuando el step cambia · una notif por step. Si el user cierra sin
+    // interactuar · el registry sigue activo (unread badge visible en el bell).
+    const workspacesAutoOpenedRef = useRef<string | null>(null);
+    useEffect(() => {
+        if (!isWorkspacesActive || !workspacesStepConfig) {
+            workspacesAutoOpenedRef.current = null;
+            return;
+        }
+        if (workspacesAutoOpenedRef.current === workspacesStepConfig.id) return;
+        workspacesAutoOpenedRef.current = workspacesStepConfig.id;
+        const t = setTimeout(() => {
+            if (!popoverOpenRef.current) bellRef.current?.click();
+        }, 500);
+        return () => clearTimeout(t);
+    }, [isWorkspacesActive, workspacesStepConfig?.id]);
 
     return (
         <>
@@ -494,6 +571,20 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                                                                 window.dispatchEvent(new CustomEvent('dupler:import-vendor-data'));
                                                             }
                                                             setShouldShowDuplerD11(false);
+                                                            setTimeout(() => {
+                                                                if (popoverOpenRef.current) bellRef.current?.click();
+                                                            }, 50);
+                                                        }
+                                                        // F41.a Task B · Workspaces notif CTAs (w1.2 · w2.1 · w2.4).
+                                                        // Review CTAs avanzan al siguiente step (Sarah aprueba · Letza
+                                                        // GL · CFO cierra popover). Dismiss oculta la notif del registry
+                                                        // pero deja al user en el step actual. Post-CTA se cierra el
+                                                        // popover para no dejar al user viendo la notif ya procesada.
+                                                        if (notification.id.startsWith('workspaces-')) {
+                                                            if (action === 'Review expense' || action === 'Review GL') {
+                                                                nextStep();
+                                                            }
+                                                            setWorkspacesDismissed(prev => new Set(prev).add(notification.id));
                                                             setTimeout(() => {
                                                                 if (popoverOpenRef.current) bellRef.current?.click();
                                                             }, 50);

@@ -44,9 +44,15 @@ export default function WorkspacesPage() {
     const stepId = currentStep?.id ?? 'w1.1'
 
     // ── Mobile steps — dark viewport, phone is the only UI ───────────────────
+    // F41.a Task A · fixed inset-0 z-40 · full-cover viewport wrapper.
+    // Antes: min-h-screen dentro del main global con pt-16/pt-24 dejaba una
+    // franja gris bg-background visible arriba del bg-zinc-950. Ahora cubre
+    // 100% del viewport. overflow-y-auto para permitir scroll del phone frame
+    // si el content excede la altura. z-40 debajo del navbar pill (z-50) por
+    // si algún caso queda visible.
     if (stepId === 'w1.1' || stepId === 'w1.4') {
         return (
-            <div className="min-h-screen bg-zinc-950 dark:bg-zinc-900 flex flex-col items-center justify-center py-8 gap-6 animate-in fade-in duration-500">
+            <div className="fixed inset-0 bg-zinc-950 dark:bg-zinc-900 z-40 flex flex-col items-center justify-center overflow-y-auto py-8 gap-6 animate-in fade-in duration-500">
                 {stepId === 'w1.1' && (
                     <ExpenseSubmitScene key="w1.1" onSubmit={nextStep} />
                 )}
