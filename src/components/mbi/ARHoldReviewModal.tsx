@@ -4,6 +4,7 @@ import {
     X, PauseCircle, DollarSign, Clock, User, FileText,
     Send, MessageSquare, Check, ArrowRight, Calendar, Wrench,
 } from 'lucide-react'
+import { Callout } from 'strata-design-system'
 import type { ARRecord } from '../../config/profiles/mbi-data'
 
 interface ARHoldReviewModalProps {
@@ -105,39 +106,26 @@ function ModalContent({ record, onClose, onRelease, onComment }: {
                     </div>
                 </div>
 
-                {/* Hold reason */}
-                <div className="bg-warning/10 border border-warning/30 rounded-xl overflow-hidden">
-                    <div className="px-4 py-3 border-b border-warning/20 flex items-center gap-2">
-                        {record.holdReason === 'punch-list-open'
-                            ? <Wrench className="h-4 w-4 text-warning shrink-0" />
-                            : <PauseCircle className="h-4 w-4 text-warning shrink-0" />
-                        }
-                        <span className="text-xs font-bold text-warning uppercase tracking-wider">
-                            Collections hold · {record.holdReason === 'installation-pending' ? 'Installation pending' : 'Punch list open'}
-                        </span>
-                    </div>
-                    <div className="px-4 py-3 space-y-1">
-                        {record.holdReason === 'installation-pending' ? (
-                            <>
-                                <div className="text-sm font-semibold text-warning">
-                                    Scheduled installation: {installDate}
-                                </div>
-                                <div className="text-[11px] text-warning/80">
-                                    Collections are blocked until the installation is complete and signed off. Strata will auto-release once the project milestone is marked done.
-                                </div>
-                            </>
-                        ) : (
-                            <>
-                                <div className="text-sm font-semibold text-warning">
-                                    {record.punchListOpen} punch list item{record.punchListOpen !== 1 ? 's' : ''} still open
-                                </div>
-                                <div className="text-[11px] text-warning/80">
-                                    All punch list items must be resolved and approved before collections begin. Strata will auto-release once the punch list is fully closed.
-                                </div>
-                            </>
-                        )}
-                    </div>
-                </div>
+                {/* Hold reason · F33.c M5 · reemplazado custom banner por
+                    Callout primitive del DS. Era 32 líneas de layout manual
+                    (bg + border + icon + eyebrow + title + body). */}
+                <Callout
+                    tone="warning"
+                    variant="soft"
+                    eyebrow={`Collections hold · ${record.holdReason === 'installation-pending' ? 'Installation pending' : 'Punch list open'}`}
+                    icon={record.holdReason === 'punch-list-open'
+                        ? <Wrench className="h-4 w-4" />
+                        : <PauseCircle className="h-4 w-4" />
+                    }
+                    title={record.holdReason === 'installation-pending'
+                        ? `Scheduled installation: ${installDate}`
+                        : `${record.punchListOpen} punch list item${record.punchListOpen !== 1 ? 's' : ''} still open`
+                    }
+                    body={record.holdReason === 'installation-pending'
+                        ? 'Collections are blocked until the installation is complete and signed off. Strata will auto-release once the project milestone is marked done.'
+                        : 'All punch list items must be resolved and approved before collections begin. Strata will auto-release once the punch list is fully closed.'
+                    }
+                />
 
                 {/* Decision */}
                 <div>
