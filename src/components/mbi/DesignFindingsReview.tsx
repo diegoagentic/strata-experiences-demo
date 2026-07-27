@@ -79,7 +79,7 @@ export default function DesignFindingsReview() {
         <div className="space-y-4">
             {/* Finding hero card (Expected vs Actual grammar) */}
             <div className={`
-                border-2 border-l-4 rounded-2xl p-4 transition-all
+                border border-border rounded-2xl p-4 transition-all
                 ${status === 'accepted' ? 'border-success/40 bg-success/5 dark:bg-success/10 border-l-success' : ''}
                 ${status === 'overridden' ? 'border-info/40 bg-info/5 dark:bg-info/10 border-l-info' : ''}
                 ${status === 'rejected' ? 'border-border bg-muted/30 dark:bg-zinc-800 border-l-muted-foreground/40' : ''}

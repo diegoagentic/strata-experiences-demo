@@ -111,11 +111,15 @@ const FLOWS: FlowCard[] = [
     },
 ]
 
+// F38 · registry raíz · pattern F22/F23.f/F29.d aplicado al tone 'primary':
+// icon pill sólido `bg-primary text-primary-foreground` (era lime sobre lime
+// tenue · LAW 3 violation) · badge idem. Otros tones (ai/success/info) tienen
+// suficiente contraste con la variante tinted porque son colores oscuros.
 const TINT_MAP = {
-    ai: { bg: 'bg-ai/10 dark:bg-ai/15', border: 'border-ai/30', icon: 'text-ai bg-ai/15', badge: 'bg-ai/15 text-ai' },
-    primary: { bg: 'bg-primary/10 dark:bg-primary/15', border: 'border-primary/30', icon: 'text-primary bg-primary/10', badge: 'bg-primary/15 text-primary' },
-    success: { bg: 'bg-success/10 dark:bg-success/15', border: 'border-success/30', icon: 'text-success bg-success/15', badge: 'bg-success/15 text-success' },
-    info: { bg: 'bg-info/10 dark:bg-info/15', border: 'border-info/30', icon: 'text-info bg-info/15', badge: 'bg-info/15 text-info' },
+    ai:      { bg: 'bg-ai/10 dark:bg-ai/15',           border: 'border-ai/30',      icon: 'text-ai bg-ai/15',                                     badge: 'bg-ai/15 text-ai' },
+    primary: { bg: 'bg-primary/10 dark:bg-primary/15', border: 'border-primary/30', icon: 'text-primary-foreground bg-primary',                   badge: 'bg-primary text-primary-foreground' },
+    success: { bg: 'bg-success/10 dark:bg-success/15', border: 'border-success/30', icon: 'text-success bg-success/15',                           badge: 'bg-success/15 text-success' },
+    info:    { bg: 'bg-info/10 dark:bg-info/15',       border: 'border-info/30',    icon: 'text-info bg-info/15',                                 badge: 'bg-info/15 text-info' },
 }
 
 export default function MBIOverviewPage() {
@@ -136,7 +140,7 @@ export default function MBIOverviewPage() {
         >
             {/* Pitch banner */}
             <div className="bg-gradient-to-br from-primary/5 to-ai/5 dark:from-primary/10 dark:to-ai/10 border border-primary/30 rounded-2xl p-5 flex items-start gap-4">
-                <div className="h-12 w-12 rounded-xl bg-primary/15 text-primary flex items-center justify-center shrink-0">
+                <div className="h-12 w-12 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shrink-0">
                     <Sparkles className="h-6 w-6" />
                 </div>
                 <div className="flex-1 min-w-0">

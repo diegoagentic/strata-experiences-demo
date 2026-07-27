@@ -112,7 +112,7 @@ export default function ParsingStep(_props: ParsingStepProps) {
                         const running = !preflightDone && i === preflightPhase
                         return (
                             <li key={check.id} className={`
-                                flex items-start gap-3 px-4 py-2.5 border-l-4 transition-colors
+                                flex items-start gap-3 px-4 py-2.5 transition-colors
                                 ${done ? 'border-l-success bg-success/5 dark:bg-success/10' : ''}
                                 ${running ? 'border-l-ai bg-ai/5 dark:bg-ai/10' : ''}
                                 ${!done && !running ? 'border-l-transparent opacity-50' : ''}
@@ -213,7 +213,7 @@ ${sif.lineItems.map(i => `    <item sku="${i.sku}" qty="${i.quantity}" desc="${i
                             <li
                                 key={check.id}
                                 className={`
-                                    flex items-start gap-3 px-3 py-2.5 rounded-lg border border-l-4
+                                    flex items-start gap-3 px-3 py-2.5 rounded-lg border
                                     ${done ? 'bg-success/10 dark:bg-success/15 border-success/30 border-l-success' : ''}
                                     ${running ? 'bg-ai/10 dark:bg-ai/15 border-ai/30 border-l-ai' : ''}
                                     ${!done && !running ? 'bg-muted/50 dark:bg-zinc-800 border-border border-l-muted-foreground/30 opacity-60' : ''}

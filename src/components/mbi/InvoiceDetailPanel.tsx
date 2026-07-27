@@ -44,7 +44,7 @@ export function InvoiceDocPreview({ invoice }: InvoiceDetailPanelProps) {
             <div className="px-4 py-3 border-b border-border">
                 <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2 min-w-0">
-                        <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                        <div className="h-7 w-7 rounded-lg bg-primary text-primary-foreground flex items-center justify-center shrink-0">
                             <FileText className="h-3.5 w-3.5" />
                         </div>
                         <div className="min-w-0">
@@ -62,7 +62,7 @@ export function InvoiceDocPreview({ invoice }: InvoiceDetailPanelProps) {
                         )}
                         <button
                             onClick={() => setPdfOpen(true)}
-                            className="inline-flex items-center gap-1 text-[9px] font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors uppercase tracking-wider"
+                            className="inline-flex items-center gap-1 text-[9px] font-bold px-2 py-0.5 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors uppercase tracking-wider"
                             title="View full PDF"
                         >
                             <FileDown className="h-3 w-3" />

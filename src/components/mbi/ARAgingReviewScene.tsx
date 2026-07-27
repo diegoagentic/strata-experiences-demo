@@ -131,7 +131,7 @@ export default function ARAgingReviewScene({ onContinue }: ARAgingReviewScenePro
                         onClick={() => setArFilter(chip.key)}
                         className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border ${
                             arFilter === chip.key
-                                ? 'bg-primary text-zinc-900 border-primary/50'
+                                ? 'bg-primary text-primary-foreground border-primary/50'
                                 : 'bg-card border-border text-muted-foreground hover:text-foreground hover:border-zinc-300 dark:hover:border-zinc-600'
                         }`}
                     >

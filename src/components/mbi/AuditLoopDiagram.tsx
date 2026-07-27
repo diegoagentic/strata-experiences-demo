@@ -35,7 +35,7 @@ export default function AuditLoopDiagram() {
         <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-border flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                    <div className="h-7 w-7 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
                         <TrendingDown className="h-3.5 w-3.5" />
                     </div>
                     <div>
@@ -86,7 +86,7 @@ export default function AuditLoopDiagram() {
                         <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1">After · 1 AI check + 1 human</div>
                         {AFTER_LOOPS.map((loop, i) => (
                             <div key={i} className={`border rounded-lg px-3 py-2 flex items-center gap-2 ${loop.isAI ? 'bg-ai/5 border-ai/30' : 'bg-primary/5 border-primary/30'}`}>
-                                <div className={`h-6 w-6 rounded-full flex items-center justify-center shrink-0 ${loop.isAI ? 'bg-ai/10 text-ai' : 'bg-primary/10 text-primary'}`}>
+                                <div className={`h-6 w-6 rounded-full flex items-center justify-center shrink-0 ${loop.isAI ? 'bg-ai/10 text-ai' : 'bg-primary text-primary-foreground'}`}>
                                     {loop.isAI ? <Sparkles className="h-3 w-3" /> : <Eye className="h-3 w-3" />}
                                 </div>
                                 <div className="flex-1 min-w-0">

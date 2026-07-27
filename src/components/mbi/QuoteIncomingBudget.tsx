@@ -36,7 +36,7 @@ export default function QuoteIncomingBudget() {
                         <div className="text-xs font-bold text-foreground">PC quote queue · 4 projects</div>
                         <div className="text-[10px] text-muted-foreground">Signed budgets ready for CORE proposal conversion</div>
                     </div>
-                    <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-primary/15 text-primary uppercase tracking-wider">Marcia's view</span>
+                    <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-primary text-primary-foreground uppercase tracking-wider">Marcia's view</span>
                 </div>
                 <div className="divide-y divide-border">
                     {PC_QUEUE.map(item => (
@@ -50,7 +50,7 @@ export default function QuoteIncomingBudget() {
                             </div>
                             <div className={`tabular-nums font-bold shrink-0 ${item.status === 'active' ? 'text-foreground' : 'text-muted-foreground'}`}>{item.amount}</div>
                             <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full shrink-0 ${
-                                item.status === 'active' ? 'bg-primary/15 text-primary' :
+                                item.status === 'active' ? 'bg-primary text-primary-foreground' :
                                 item.status === 'done' ? 'bg-success/15 text-success' :
                                 'bg-muted text-muted-foreground'
                             }`}>{item.statusLabel}</span>

@@ -371,7 +371,7 @@ function DiscrepancyCard({
     const innerPanel = 'bg-muted/70 dark:bg-zinc-900/40 border border-border rounded-lg p-2.5 min-w-0'
 
     return (
-        <div className={`border border-l-4 rounded-xl p-3 ${theme.border} ${theme.bg} ${theme.leftBar}`}>
+        <div className={`border rounded-xl p-3 ${theme.border} ${theme.bg} ${theme.leftBar}`}>
             {/* Header */}
             <div className="flex items-start gap-2.5 mb-2">
                 <div className={`h-8 w-8 rounded-lg flex items-center justify-center shrink-0 ${theme.iconBg}`}>

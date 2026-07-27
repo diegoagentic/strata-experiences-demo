@@ -38,7 +38,7 @@ function ProjectNumberGenerator() {
     return (
         <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-border flex items-center gap-2">
-                <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                <div className="h-7 w-7 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
                     <Hash className="h-3.5 w-3.5" />
                 </div>
                 <div>
@@ -153,7 +153,7 @@ function VersionHistoryTimeline() {
                                 </div>
                                 {i < versions.length - 1 && <div className="w-0.5 flex-1 bg-border mt-1" style={{ minHeight: 20 }} />}
                             </div>
-                            <div className={`flex-1 border border-l-4 rounded-lg px-3 py-2 ${v.current ? 'bg-success/5 border-success/20 border-l-success' : 'bg-muted/50 dark:bg-zinc-800 border-border border-l-muted-foreground/30'}`}>
+                            <div className={`flex-1 border rounded-lg px-3 py-2 ${v.current ? 'bg-success/5 border-success/20 border-l-success' : 'bg-muted/50 dark:bg-zinc-800 border-border border-l-muted-foreground/30'}`}>
                                 <div className="flex items-center gap-2 flex-wrap">
                                     <span className="text-xs font-bold text-foreground">{v.author}</span>
                                     {v.current && (

@@ -48,7 +48,7 @@ export default function FreightTariffPanel() {
             {/* Summary header */}
             <div className="bg-card border border-border rounded-2xl p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                    <div className="h-9 w-9 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
                         <Truck className="h-4 w-4" />
                     </div>
                     <div>

@@ -33,25 +33,13 @@ interface InvoiceQueueTableProps {
 
 const COLUMN_ORDER: InvoiceStatus[] = ['pending', 'in-progress', 'done']
 
-const COLUMN_META: Record<InvoiceStatus, { label: string; sub: string; tone: string; chip: string }> = {
-    'pending': {
-        label: 'Pending Review',
-        sub: 'Needs your eyes',
-        tone: 'border-warning/40 bg-warning/10',
-        chip: 'bg-warning/15 text-warning',
-    },
-    'in-progress': {
-        label: 'In Progress',
-        sub: 'Agents working now',
-        tone: 'border-ai/40 bg-ai/5 dark:bg-ai/10',
-        chip: 'bg-ai/15 text-ai',
-    },
-    'done': {
-        label: 'Done',
-        sub: 'Auto-posted to CORE',
-        tone: 'border-success/40 bg-success/5 dark:bg-success/10',
-        chip: 'bg-success/15 text-success',
-    },
+// F38.b · column shell neutral (bg-card + border-border) · label uppercase con text-{semantic}
+// como ÚNICA señal color. Antes: border colored + bg tinted + chip tinted = 3 capas simultáneas
+// que replicaban el anti-pattern kanban documentado en ERROR 12.
+const COLUMN_META: Record<InvoiceStatus, { label: string; sub: string; accent: string }> = {
+    'pending':     { label: 'Pending Review', sub: 'Needs your eyes',      accent: 'text-warning' },
+    'in-progress': { label: 'In Progress',    sub: 'Agents working now',   accent: 'text-ai' },
+    'done':        { label: 'Done',           sub: 'Auto-posted to CORE',  accent: 'text-success' },
 }
 
 export default function InvoiceQueueTable({ invoices, selectedId, onSelect }: InvoiceQueueTableProps) {
@@ -59,16 +47,16 @@ export default function InvoiceQueueTable({ invoices, selectedId, onSelect }: In
     const meta = COLUMN_META['pending']
 
     return (
-        <div className={`flex flex-col rounded-xl border ${meta.tone}`}>
-            {/* Column header */}
-            <div className="px-2.5 py-2 border-b border-border/60 flex items-center justify-between">
+        <div className="flex flex-col rounded-xl border border-border bg-card">
+            {/* Column header · F38.b · label uppercase colored = única señal, sin chip/bg tinted */}
+            <div className="px-2.5 py-2 border-b border-border flex items-center justify-between">
                 <div className="min-w-0">
-                    <div className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${meta.chip}`}>
+                    <div className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider ${meta.accent}`}>
                         {meta.label}
                     </div>
                     <div className="text-[9px] text-muted-foreground mt-1 truncate">{meta.sub}</div>
                 </div>
-                <span className="text-[10px] font-bold text-foreground tabular-nums shrink-0">{pendingItems.length}</span>
+                <span className="text-[10px] font-bold text-muted-foreground tabular-nums shrink-0">{pendingItems.length}</span>
             </div>
 
             {/* Cards */}
@@ -119,9 +107,7 @@ function InvoiceCard({ invoice, selected, onClick }: { invoice: Invoice; selecte
                 w-full text-left bg-card border rounded-lg p-2 transition-all hover:shadow-sm
                 ${selected
                     ? 'border-primary ring-1 ring-primary/40'
-                    : invoice.hasException
-                        ? 'border-destructive/40 hover:border-destructive/60'
-                        : 'border-border hover:border-zinc-300 dark:hover:border-zinc-600'
+                    : 'border-border hover:border-border/70'
                 }
             `}
         >
@@ -150,20 +136,19 @@ function InvoiceCard({ invoice, selected, onClick }: { invoice: Invoice; selecte
                 {invoice.hasException && (
                     <CardFlag tone="red" icon={<AlertTriangle className="h-2 w-2" />} label="Fix" />
                 )}
-                <span className={`ml-auto text-[9px] font-bold tabular-nums ${invoice.ocrConfidence >= 95 ? 'text-success' : invoice.ocrConfidence >= 90 ? 'text-primary' : 'text-warning'}`}>
+                {/* F38.b · % confidence neutral (era text-success/text-primary/text-warning bright) */}
+                <span className="ml-auto text-[9px] font-bold tabular-nums text-muted-foreground">
                     {invoice.ocrConfidence}%
                 </span>
             </div>
 
             {due && (
-                <div className={`flex items-center gap-1 mt-1.5 px-1.5 py-1 rounded text-[9px] font-bold ${
-                    due.tone === 'urgent'
-                        ? 'bg-destructive/10 text-destructive'
-                        : 'bg-warning/10 text-warning'
-                }`}>
-                    <Clock className="h-2.5 w-2.5 shrink-0" />
+                // F38.b · due pill neutralizado · dot pequeño + text muted (era bg tinted + text saturado)
+                <div className="flex items-center gap-1.5 mt-1.5 px-1.5 py-1 rounded text-[9px] font-bold bg-muted/50 text-foreground">
+                    <span className={`h-1 w-1 rounded-full shrink-0 ${due.tone === 'urgent' ? 'bg-destructive' : 'bg-warning'}`} aria-hidden />
+                    <Clock className="h-2.5 w-2.5 shrink-0 text-muted-foreground" />
                     <span>Due {due.label} · {due.days < 0 ? 'overdue' : `${due.days}d`}</span>
-                    {invoice.paymentTerms && <span className="ml-auto opacity-60">{invoice.paymentTerms}</span>}
+                    {invoice.paymentTerms && <span className="ml-auto text-muted-foreground">{invoice.paymentTerms}</span>}
                 </div>
             )}
             {invoice.status === 'in-progress' && invoice.inProgressReason && (
@@ -172,7 +157,8 @@ function InvoiceCard({ invoice, selected, onClick }: { invoice: Invoice; selecte
                 </div>
             )}
             {invoice.status === 'pending' && invoice.exceptionReason && (
-                <div className="text-[9.5px] text-destructive mt-1 leading-tight line-clamp-2">
+                // F38.b · mensaje exception neutral · el CardFlag "Fix" arriba ya es el color signal
+                <div className="text-[9.5px] text-muted-foreground mt-1 leading-tight line-clamp-2">
                     {invoice.exceptionReason}
                 </div>
             )}
@@ -180,13 +166,16 @@ function InvoiceCard({ invoice, selected, onClick }: { invoice: Invoice; selecte
     )
 }
 
+// F38.b · CardFlag neutralizado · bg-muted + text-foreground con dot color small
+// como único signal (era bg-{semantic}/15 text-{semantic} saturado)
 function CardFlag({ tone, icon, label }: { tone: 'blue' | 'amber' | 'red'; icon: React.ReactNode; label: string }) {
-    const cls =
-        tone === 'blue' ? 'bg-info/15 text-info' :
-        tone === 'amber' ? 'bg-warning/15 text-warning' :
-        'bg-destructive/15 text-destructive'
+    const dotCls =
+        tone === 'blue' ? 'bg-info' :
+        tone === 'amber' ? 'bg-warning' :
+        'bg-destructive'
     return (
-        <span className={`text-[8.5px] font-bold px-1 py-0.5 rounded inline-flex items-center gap-0.5 ${cls}`}>
+        <span className="text-[8.5px] font-bold px-1 py-0.5 rounded inline-flex items-center gap-1 bg-muted text-foreground">
+            <span className={`h-1 w-1 rounded-full ${dotCls}`} aria-hidden />
             {icon}
             {label}
         </span>

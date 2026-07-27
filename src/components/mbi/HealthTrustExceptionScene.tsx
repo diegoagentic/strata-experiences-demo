@@ -95,7 +95,7 @@ export default function HealthTrustExceptionScene() {
 
             {/* Invoice summary card */}
             <div className={`
-                bg-card border-2 border-l-4 rounded-2xl overflow-hidden transition-all
+                bg-card border border-border rounded-2xl overflow-hidden transition-all
                 ${status === 'approved' ? 'border-success/30 border-l-success' : ''}
                 ${status === 'overridden' ? 'border-info/30 border-l-info' : ''}
                 ${status === 'escalated' ? 'border-destructive/40 border-l-destructive' : ''}
@@ -290,7 +290,7 @@ export default function HealthTrustExceptionScene() {
                     </div>
                 </div>
                 <div className="bg-card border border-border rounded-xl p-3 flex items-start gap-2.5">
-                    <div className="h-8 w-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <div className="h-8 w-8 rounded-lg bg-primary text-primary-foreground flex items-center justify-center shrink-0">
                         <FileText className="h-4 w-4" />
                     </div>
                     <div className="text-xs min-w-0">

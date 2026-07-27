@@ -35,7 +35,7 @@ export default function DesignerCapacityBoard() {
         <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-border flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                    <div className="h-7 w-7 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
                         <Users className="h-3.5 w-3.5" />
                     </div>
                     <div>
@@ -53,14 +53,14 @@ export default function DesignerCapacityBoard() {
                     const high = utilization > 70 && !overload
                     const isHybrid = designer.role.toLowerCase().includes('hybrid')
                     const accent = overload
-                        ? 'border-l-4 border-l-warning'
+                        ? ''
                         : high
-                            ? 'border-l-4 border-l-primary'
-                            : 'border-l-4 border-l-success/60'
+                            ? ''
+                            : ''
                     const avatarBg = overload
                         ? 'bg-warning/15 text-warning'
                         : high
-                            ? 'bg-primary/15 text-primary'
+                            ? 'bg-primary text-primary-foreground'
                             : 'bg-success/10 text-success'
                     const initials = designer.name.split(' ').map(n => n[0]).slice(0, 2).join('')
                     return (

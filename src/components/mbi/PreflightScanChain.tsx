@@ -104,8 +104,8 @@ export default function PreflightScanChain({
                             key={check.id}
                             className={`
                                 flex items-start gap-3 px-3 py-2 rounded-lg border transition-colors
-                                ${state === 'done' ? 'border-success/30 bg-success/10 dark:bg-success/15 border-l-4 border-l-success' : ''}
-                                ${state === 'running' ? 'border-ai/40 bg-ai/10 dark:bg-ai/15 border-l-4 border-l-ai' : ''}
+                                ${state === 'done' ? 'border-success/30 bg-success/10 dark:bg-success/15 ' : ''}
+                                ${state === 'running' ? 'border-ai/40 bg-ai/10 dark:bg-ai/15 ' : ''}
                                 ${state === 'pending' ? 'border-border bg-muted/50 dark:bg-zinc-800 opacity-60' : ''}
                             `}
                         >

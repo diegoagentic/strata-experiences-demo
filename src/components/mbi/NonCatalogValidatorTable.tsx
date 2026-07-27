@@ -50,7 +50,7 @@ export default function NonCatalogValidatorTable({ resolvedIds = new Set() }: Pr
             <div className="px-4 py-3 border-b border-border">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                        <div className="h-7 w-7 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
                             <Search className="h-3.5 w-3.5" />
                         </div>
                         <div>
@@ -85,12 +85,12 @@ export default function NonCatalogValidatorTable({ resolvedIds = new Set() }: Pr
                     const effectiveMatch = isResolved ? 'exact' : item.match
                     const deltaPct = item.priceBook > 0 ? Math.round(((item.priceQuoted - item.priceBook) / item.priceBook) * 100) : 0
                     const rowAccent = isResolved
-                        ? 'bg-success/5 dark:bg-success/10 border-l-4 border-l-success/60'
+                        ? 'bg-success/5 dark:bg-success/10 '
                         : effectiveMatch === 'mismatch'
-                            ? 'bg-warning/10 border-l-4 border-l-warning/70'
+                            ? 'bg-warning/10 '
                             : effectiveMatch === 'close'
-                                ? 'border-l-4 border-l-info/40'
-                                : 'border-l-4 border-l-transparent hover:bg-muted/20'
+                                ? ''
+                                : ' hover:bg-muted/20'
                     return (
                         <div key={item.id} className={`px-4 py-2 grid grid-cols-[1.5fr_0.8fr_0.5fr_0.8fr_0.8fr_0.6fr] gap-3 items-center text-xs transition-colors ${rowAccent}`}>
                             <div className="min-w-0">

@@ -118,7 +118,7 @@ function OverviewStub() {
     return (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <StatCard value="Phase 1" label="Pilot · Beth only" accent="text-ai" />
-            <StatCard value="9.08/10" label="Q10 spec check priority" accent="text-primary" />
+            <StatCard value="9.08/10" label="Q10 spec check priority" accent="text-foreground" />
             <StatCard value="< 5 min" label="Spec check turnaround" accent="text-success" />
             <StatCard value="3.3/10" label="Design team Q4 avg · sequenced rollout" accent="text-warning" />
         </div>

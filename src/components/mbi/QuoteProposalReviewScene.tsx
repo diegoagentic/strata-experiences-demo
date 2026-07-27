@@ -198,7 +198,7 @@ export default function QuoteProposalReviewScene() {
                                             <div className="flex items-center gap-1">
                                                 <button
                                                     onClick={() => saveEdit(v.vendor)}
-                                                    className="flex items-center gap-1 px-2 py-1 text-[10px] font-bold bg-primary text-zinc-900 rounded-lg hover:opacity-90"
+                                                    className="flex items-center gap-1 px-2 py-1 text-[10px] font-bold bg-primary text-primary-foreground rounded-lg hover:opacity-90"
                                                 >
                                                     <Check className="h-3 w-3" /> Save
                                                 </button>

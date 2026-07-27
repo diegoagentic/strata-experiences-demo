@@ -37,7 +37,7 @@ export default function MarkupSlider({ value, onChange, min = 0.20, max = 0.45 }
         <div className="bg-card border border-border rounded-2xl p-4">
             <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
-                    <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                    <div className="h-7 w-7 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
                         <Sliders className="h-3.5 w-3.5" />
                     </div>
                     <div>

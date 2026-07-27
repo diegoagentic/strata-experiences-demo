@@ -24,44 +24,36 @@ import { User, Calendar, AlertTriangle, Clock, Check, TrendingUp, Mail, Phone, E
 import type { ARRecord } from '../../config/profiles/mbi-data'
 import ARHoldReviewModal from './ARHoldReviewModal'
 
-// F33.a H3 · era raw red-*/amber-* · Diego 2026-07-27 · reemplazado
-// por tokens semánticos destructive/warning · consistente con las 2
-// entries siguientes (info/success) que ya usaban semánticos.
+// F33.a H3 · era raw red-*/amber-* · reemplazado por tokens semánticos.
+// F38 · Diego 2026-07-27 · simplificado uso de color · el pattern anterior
+// aplicaba color en 5 elementos simultáneos (bg column · border column ·
+// accent header · pillBg · leftBar de cada card) · exceso visual. Ahora
+// el color queda solo en el label uppercase del header + un dot pequeño
+// por card. Las cards individuales son neutrales (bg-card border-border) ·
+// consistentes con Leland POs · CLC calendar jobs · Officeworks Funnel.
 const STATUS_META = {
     'escalated': {
         label: 'Escalated',
         accent: 'text-destructive',
-        bg: 'bg-destructive/5',
-        border: 'border-destructive/30',
-        pillBg: 'bg-destructive/10',
-        leftBar: 'border-l-destructive',
+        dot: 'bg-destructive',
         icon: <AlertTriangle className="h-3.5 w-3.5" />,
     },
     'no-response': {
         label: 'No response',
         accent: 'text-warning',
-        bg: 'bg-warning/5',
-        border: 'border-warning/30',
-        pillBg: 'bg-warning/10',
-        leftBar: 'border-l-warning',
+        dot: 'bg-warning',
         icon: <Clock className="h-3.5 w-3.5" />,
     },
     'pending-approval': {
         label: 'Pending approval',
         accent: 'text-info',
-        bg: 'bg-info/5',
-        border: 'border-info/20',
-        pillBg: 'bg-info/10',
-        leftBar: 'border-l-info/60',
+        dot: 'bg-info',
         icon: <Clock className="h-3.5 w-3.5" />,
     },
     'committed-to-pay': {
         label: 'Committed to pay',
         accent: 'text-success',
-        bg: 'bg-success/5',
-        border: 'border-success/20',
-        pillBg: 'bg-success/10',
-        leftBar: 'border-l-success/60',
+        dot: 'bg-success',
         icon: <Check className="h-3.5 w-3.5" />,
     },
 } as const
@@ -148,8 +140,11 @@ export default function ARStatusBoard({ records, highlightedIds }: ARStatusBoard
                     const meta = STATUS_META[statusKey]
                     const items = grouped[statusKey]
                     return (
-                        <div key={statusKey} className={`border rounded-2xl overflow-hidden ${meta.border}`}>
-                            <div className={`px-3 py-2.5 ${meta.bg} border-b ${meta.border}`}>
+                        // F38 · Column shell · bg-card neutral · border-border neutral.
+                        // Antes usaba meta.bg (bg-*/5) + meta.border (border-*/30) que
+                        // sumaba con las cards internas colored.
+                        <div key={statusKey} className="border border-border rounded-2xl overflow-hidden bg-card">
+                            <div className="px-3 py-2.5 border-b border-border">
                                 <div className="flex items-center justify-between">
                                     <div className={`flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider ${meta.accent}`}>
                                         {meta.icon}
@@ -157,11 +152,13 @@ export default function ARStatusBoard({ records, highlightedIds }: ARStatusBoard
                                     </div>
                                     <div className="flex items-center gap-1.5">
                                         {statusKey === 'pending-approval' && items.filter(r => r.collectionsHold).length > 0 && (
-                                            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-warning/15 text-warning">
+                                            // F38.b · pill neutralizado · dot warning + text muted (era bg-warning/15 text-warning saturado)
+                                            <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded bg-muted text-muted-foreground">
+                                                <span className="h-1 w-1 rounded-full bg-warning" aria-hidden />
                                                 {items.filter(r => r.collectionsHold).length} on hold
                                             </span>
                                         )}
-                                        <span className={`text-[10px] font-bold tabular-nums px-1.5 py-0.5 rounded ${meta.pillBg} ${meta.accent}`}>
+                                        <span className="text-[10px] font-bold tabular-nums text-muted-foreground">
                                             {items.length}
                                         </span>
                                     </div>
@@ -175,23 +172,21 @@ export default function ARStatusBoard({ records, highlightedIds }: ARStatusBoard
                                         const isOpen = expandedId === r.id
                                         const hasDraft = highlightSet.has(r.id)
                                         return (
-                                            <div key={r.id} className={`bg-muted/50 dark:bg-zinc-800 border rounded-lg border-l-4 text-xs transition-all ${
-                                                r.collectionsHold && !resolvedHolds.has(r.id)
-                                                    ? 'border-l-warning border-warning/40'
-                                                    : hasDraft
-                                                        ? `${meta.leftBar} border-warning ring-2 ring-warning/30 shadow-md`
-                                                        : isOpen
-                                                            ? `${meta.leftBar} border-zinc-400 dark:border-zinc-500`
-                                                            : `${meta.leftBar} border-border hover:border-zinc-300 dark:hover:border-zinc-700`
+                                            // F38.b · Card fully neutral · border-border · sin border-l-4 · sin border-2 · sin ring warning.
+                                            // Color code UNICO = dot pequeño izquierdo (h-1.5 w-1.5) + status pills neutralizados
+                                            // (bg-muted + text-muted-foreground + icon warning small como signal secundaria).
+                                            <div key={r.id} className={`relative bg-card border border-border rounded-lg text-xs transition-all ${
+                                                isOpen ? 'border-border/70' : 'hover:border-border/70'
                                             }`}>
                                                 {r.collectionsHold && !resolvedHolds.has(r.id) && (
-                                                    <div className="px-2.5 py-1.5 bg-warning/10 border-b border-warning/30 flex items-center gap-1.5">
+                                                    // F38.b · pill Collections hold neutralizado (era bg-warning/10 + text-warning saturado)
+                                                    <div className="px-2.5 py-1.5 bg-muted/50 border-b border-border flex items-center gap-1.5">
                                                         <PauseCircle className="h-2.5 w-2.5 text-warning shrink-0" />
                                                         <div className="flex-1 min-w-0">
-                                                            <span className="text-[9px] font-bold uppercase tracking-wider text-warning">
+                                                            <span className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground">
                                                                 Collections hold
                                                             </span>
-                                                            <span className="text-[9px] text-warning/80 ml-1">
+                                                            <span className="text-[9px] text-muted-foreground ml-1">
                                                                 {r.holdReason === 'installation-pending'
                                                                     ? `· Installation ${r.installationDate ? new Date(r.installationDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'pending'}`
                                                                     : `· ${r.punchListOpen} punch list items open`}
@@ -199,7 +194,7 @@ export default function ARStatusBoard({ records, highlightedIds }: ARStatusBoard
                                                         </div>
                                                         <button
                                                             onClick={e => { e.stopPropagation(); setReviewRecord(r) }}
-                                                            className="shrink-0 flex items-center gap-1 px-2 py-0.5 rounded text-[9px] font-bold bg-warning/15 text-warning hover:bg-warning/20 transition-colors"
+                                                            className="shrink-0 flex items-center gap-1 px-2 py-0.5 rounded text-[9px] font-bold bg-card border border-border text-foreground hover:bg-muted transition-colors"
                                                         >
                                                             <ClipboardCheck className="h-2.5 w-2.5" />
                                                             Review hold
@@ -207,17 +202,18 @@ export default function ARStatusBoard({ records, highlightedIds }: ARStatusBoard
                                                     </div>
                                                 )}
                                                 {r.collectionsHold && resolvedHolds.has(r.id) && (
-                                                    <div className="px-2.5 py-1.5 bg-success/5 border-b border-success/20 flex items-center gap-1.5">
+                                                    <div className="px-2.5 py-1.5 bg-muted/50 border-b border-border flex items-center gap-1.5">
                                                         <Check className="h-2.5 w-2.5 text-success shrink-0" />
-                                                        <span className="text-[9px] font-bold uppercase tracking-wider text-success">
+                                                        <span className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground">
                                                             Released · sent to collections
                                                         </span>
                                                     </div>
                                                 )}
                                                 {hasDraft && !r.collectionsHold && (
-                                                    <div className="px-2.5 py-1 bg-warning/10 border-b border-warning/30 flex items-center gap-1.5">
+                                                    // F38.b · Draft ready pill neutralizado
+                                                    <div className="px-2.5 py-1 bg-muted/50 border-b border-border flex items-center gap-1.5">
                                                         <Mail className="h-2.5 w-2.5 text-warning" />
-                                                        <span className="text-[9px] font-bold uppercase tracking-wider text-warning">
+                                                        <span className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground">
                                                             Draft ready · review next
                                                         </span>
                                                     </div>
@@ -234,7 +230,13 @@ export default function ARStatusBoard({ records, highlightedIds }: ARStatusBoard
                                                     aria-expanded={isOpen}
                                                 >
                                                     <div className="flex items-center justify-between mb-0.5 gap-2">
-                                                        <span className="font-bold text-foreground truncate">{r.client}</span>
+                                                        <div className="flex items-center gap-2 min-w-0">
+                                                            {/* F38 · Dot pequeño de color · el único indicador
+                                                                de status en la card. Reemplaza el border-l-4
+                                                                colored anterior. */}
+                                                            <span className={`h-1.5 w-1.5 rounded-full shrink-0 ${meta.dot}`} aria-hidden />
+                                                            <span className="font-bold text-foreground truncate">{r.client}</span>
+                                                        </div>
                                                         <div className="flex items-center gap-1 shrink-0">
                                                             <span className="font-bold text-foreground tabular-nums">${(r.amount / 1000).toFixed(0)}K</span>
                                                             <ChevronDown className={`h-3 w-3 text-muted-foreground transition-transform ${isOpen ? 'rotate-180' : ''}`} />
@@ -352,7 +354,7 @@ function ARQuickActions({
                     key={a.label}
                     onClick={() => onAction(a.label)}
                     className={`w-full flex items-center gap-1.5 px-2 py-1.5 rounded text-[10px] font-bold transition-colors text-left ${
-                        a.tone === 'primary' ? 'bg-primary/10 text-primary hover:bg-primary/15' :
+                        a.tone === 'primary' ? 'bg-primary text-primary-foreground hover:bg-primary/90' :
                         a.tone === 'danger' ? 'bg-destructive/10 text-destructive hover:bg-destructive/15' :
                         'bg-card text-foreground hover:bg-muted border border-border'
                     }`}

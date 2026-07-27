@@ -56,7 +56,7 @@ export default function DesignProjectPick() {
             <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <div className="px-4 py-3 border-b border-border flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                        <div className="h-7 w-7 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
                             <Palette className="h-3.5 w-3.5" />
                         </div>
                         <div>
@@ -77,7 +77,7 @@ export default function DesignProjectPick() {
                                 key={p.id}
                                 onClick={() => setSelectedId(p.id)}
                                 className={`
-                                    w-full text-left px-4 py-3 flex items-center gap-3 transition-colors border-l-4
+                                    w-full text-left px-4 py-3 flex items-center gap-3 transition-colors
                                     ${active
                                         ? 'bg-primary/5 dark:bg-primary/10 border-l-primary'
                                         : 'border-l-transparent hover:bg-muted/30 dark:hover:bg-zinc-800/30'
@@ -86,7 +86,7 @@ export default function DesignProjectPick() {
                             >
                                 <div className={`
                                     h-8 w-8 rounded-lg flex items-center justify-center shrink-0
-                                    ${active ? 'bg-primary/15 text-primary' : 'bg-muted text-muted-foreground'}
+                                    ${active ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}
                                 `}>
                                     <Building2 className="h-4 w-4" />
                                 </div>

@@ -213,7 +213,7 @@ export default function DesignSpecCheckScan() {
                         <li
                             key={check.id}
                             className={`
-                                rounded-xl border border-l-4 p-3 transition-colors
+                                rounded-xl border p-3 transition-colors
                                 ${isDone && hasFindings ? 'bg-warning/10 border-warning/40 border-l-warning' : ''}
                                 ${isDone && !hasFindings ? 'bg-success/5 dark:bg-success/10 border-success/30 border-l-success' : ''}
                                 ${isRunning ? 'bg-ai/10 dark:bg-ai/15 border-ai/40 border-l-ai' : ''}
@@ -325,7 +325,7 @@ export default function DesignSpecCheckScan() {
                                         <div
                                             key={line.id}
                                             className={`
-                                                grid grid-cols-[1fr_6rem_3.5rem_3.5rem_4rem_5.5rem] gap-3 px-4 py-2.5 items-center text-xs border-l-4 transition-colors
+                                                grid grid-cols-[1fr_6rem_3.5rem_3.5rem_4rem_5.5rem] gap-3 px-4 py-2.5 items-center text-xs transition-colors
                                                 ${isCritical ? 'border-l-destructive bg-destructive/10' : 'border-l-success/50 bg-success/5 dark:bg-success/10'}
                                             `}
                                         >

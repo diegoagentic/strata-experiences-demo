@@ -89,7 +89,7 @@ export default function FlowHandoff({
             {/* 1. Recap */}
             <div className="bg-card border border-border rounded-2xl p-5">
                 <div className="flex items-start gap-3 mb-4">
-                    <div className="h-10 w-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <div className="h-10 w-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shrink-0">
                         <Sparkles className="h-5 w-5" />
                     </div>
                     <div>

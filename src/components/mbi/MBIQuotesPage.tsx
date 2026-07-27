@@ -142,7 +142,7 @@ function OverviewStub() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <StatCard value="3.5 / 29" label="PCs / staff (bottleneck)" accent="text-foreground" />
             <StatCard value="4 → 1+1" label="Audit loops (collapsed)" accent="text-success" />
-            <StatCard value="< 5 min" label="Quote validation turnaround" accent="text-primary" />
+            <StatCard value="< 5 min" label="Quote validation turnaround" accent="text-foreground" />
             <StatCard value="2h → 12m" label="Per proposal PC effort" accent="text-success" />
         </div>
     )

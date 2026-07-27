@@ -277,7 +277,7 @@ function QueueView() {
                     icon={<Clock className="h-4 w-4" />}
                     value={`${inFlightCount}`}
                     label="In flight"
-                    accent="text-primary"
+                    accent="text-foreground"
                 />
                 <StatCard
                     icon={<CheckCircle2 className="h-4 w-4" />}

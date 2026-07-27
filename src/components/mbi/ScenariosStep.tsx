@@ -70,7 +70,7 @@ export default function ScenariosStep({
                     >
                         <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center gap-2">
-                                <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                                <div className="h-7 w-7 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
                                     <DollarSign className="h-3.5 w-3.5" />
                                 </div>
                                 <div>

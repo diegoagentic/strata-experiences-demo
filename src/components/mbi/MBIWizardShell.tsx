@@ -102,7 +102,7 @@ export default function MBIWizardShell({
                                     onClick={clickable ? () => onStepClick!(entry.originalIndex) : undefined}
                                     className={`
                                         flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold border transition-all
-                                        ${isActive ? 'bg-primary/10 text-primary border-primary/40 shadow-sm' : ''}
+                                        ${isActive ? 'bg-primary text-primary-foreground border-primary/40 shadow-sm' : ''}
                                         ${isCompleted ? 'text-success border-success/30 bg-success/5' : ''}
                                         ${!isActive && !isCompleted ? 'text-muted-foreground border-border' : ''}
                                         ${clickable ? 'hover:border-primary/40 hover:text-foreground cursor-pointer' : ''}

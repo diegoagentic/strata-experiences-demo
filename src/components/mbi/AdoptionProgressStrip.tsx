@@ -21,7 +21,8 @@ import { MBI_STAKEHOLDERS } from '../../config/profiles/mbi-data'
 
 const TIERS = [
     { id: 'innovator', label: 'Innovators', pct: '2.5%', accent: 'border-success/30 bg-success/5 text-success', dotBg: 'bg-success/20 text-success' },
-    { id: 'early-adopter', label: 'Early Adopters', pct: '13.5%', accent: 'border-primary/30 bg-primary/5 text-primary', dotBg: 'bg-primary/20 text-primary' },
+    // F38 · text-primary sobre bg-primary/20 era lime-on-lime (LAW 3). Ahora text-foreground preserva la brand identity en el border/bg tinted + valor legible.
+    { id: 'early-adopter', label: 'Early Adopters', pct: '13.5%', accent: 'border-primary/30 bg-primary/5 text-foreground', dotBg: 'bg-primary/20 text-foreground' },
     { id: 'early-majority', label: 'Early Majority', pct: '34%', accent: 'border-info/30 bg-info/5 text-info', dotBg: 'bg-info/20 text-info' },
     { id: 'late-majority', label: 'Late Majority', pct: '34%', accent: 'border-warning/30 bg-warning/10 text-warning', dotBg: 'bg-warning/20 text-warning' },
     { id: 'laggard', label: 'Laggards', pct: '16%', accent: 'border-muted bg-muted/20 text-muted-foreground', dotBg: 'bg-muted text-muted-foreground' },
@@ -41,7 +42,7 @@ export default function AdoptionProgressStrip() {
         <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-border flex items-start justify-between gap-3">
                 <div className="flex items-center gap-2">
-                    <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                    <div className="h-7 w-7 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
                         <Users className="h-3.5 w-3.5" />
                     </div>
                     <div>

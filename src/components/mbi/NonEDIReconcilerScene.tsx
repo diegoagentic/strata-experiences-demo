@@ -98,7 +98,7 @@ function HealthTrustRebateCard() {
     }
 
     return (
-        <div className={`bg-card border-2 rounded-2xl overflow-hidden transition-all
+        <div className={`bg-card border border-border rounded-2xl overflow-hidden transition-all
             ${htStatus === 'approved' ? 'border-success/30' : ''}
             ${htStatus === 'overridden' ? 'border-info/30' : ''}
             ${htStatus === 'escalated' ? 'border-destructive/40' : ''}
@@ -391,7 +391,7 @@ export default function NonEDIReconcilerScene() {
                             <div
                                 key={row.id}
                                 className={`
-                                    grid grid-cols-[2.5rem_1fr_3rem_3rem_5rem_5rem_4rem_8rem] gap-2 px-4 items-center text-xs transition-colors border-l-4 min-h-[60px]
+                                    grid grid-cols-[2.5rem_1fr_3rem_3rem_5rem_5rem_4rem_8rem] gap-2 px-4 items-center text-xs transition-colors min-h-[60px]
                                     ${status === 'accepted' ? 'border-l-success/60 bg-success/5 dark:bg-success/10 py-2.5' : ''}
                                     ${status === 'overridden' ? 'border-l-info/60 bg-info/5 dark:bg-info/10 py-2.5' : ''}
                                     ${status === 'pending' && isException ? 'border-l-warning bg-warning/10 py-2.5' : ''}
@@ -494,7 +494,7 @@ export default function NonEDIReconcilerScene() {
 
                     {/* Freight added row */}
                     {freightAdded && (
-                        <div className="grid grid-cols-[2.5rem_1fr_3rem_3rem_5rem_5rem_4rem_8rem] gap-2 px-4 py-2.5 items-center text-xs border-l-4 border-l-info/60 bg-info/5 dark:bg-info/10 min-h-[60px] animate-in fade-in duration-300">
+                        <div className="grid grid-cols-[2.5rem_1fr_3rem_3rem_5rem_5rem_4rem_8rem] gap-2 px-4 py-2.5 items-center text-xs  bg-info/5 dark:bg-info/10 min-h-[60px] animate-in fade-in duration-300">
                             <div className="font-mono text-[10px] text-muted-foreground">L-06</div>
                             <div className="min-w-0">
                                 <div className="text-foreground font-medium text-[11px]">Outbound freight — added manually</div>
@@ -518,7 +518,7 @@ export default function NonEDIReconcilerScene() {
 
                     {/* + Add line row */}
                     {!freightAdded && (
-                        <div className="px-4 py-2.5 border-l-4 border-l-transparent border-t border-dashed border-border/60">
+                        <div className="px-4 py-2.5  border-t border-dashed border-border/60">
                             <button
                                 onClick={handleAddFreight}
                                 className="flex items-center gap-2 text-[11px] text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg px-2 py-1.5 transition-colors group"

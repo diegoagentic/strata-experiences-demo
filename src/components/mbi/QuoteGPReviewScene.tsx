@@ -217,7 +217,7 @@ export default function QuoteGPReviewScene() {
                     phase === 'created' ? 'bg-primary/5 dark:bg-primary/10 border-primary/30' : 'bg-ai/5 dark:bg-ai/10 border-ai/30'
                 }`}>
                     <div className="px-4 py-3 border-b border-inherit flex items-center gap-2">
-                        <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                        <div className="h-7 w-7 rounded-lg bg-primary text-primary-foreground flex items-center justify-center shrink-0">
                             {phase === 'creating'
                                 ? <Loader2 className="h-3.5 w-3.5 animate-spin" />
                                 : <FileText className="h-3.5 w-3.5" />
