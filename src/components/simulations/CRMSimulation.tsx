@@ -18,6 +18,8 @@ import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { Bot, Package, FileText, Truck, Wrench, Mail } from 'lucide-react'
 import { AIAgentAvatar } from './DemoAvatars'
+import StatusBadge, { type StatusTone } from '../shared/StatusBadge'
+import { HeroMetric, Callout, ProgressBar } from 'strata-design-system'
 
 function cn(...inputs: (string | undefined | null | false)[]) {
     return twMerge(clsx(inputs))
@@ -143,11 +145,13 @@ const projectValueByStage = [
     { stage: 'Complete', value: 332500, count: 2 },
 ]
 
+// F40 · Task H · chart colors via CSS custom properties (theme.css tokens)
+// vez de hex crudos. Recharts SVG fill acepta var(--...) directamente.
 const systemSyncData = [
-    { name: 'Dealer Exp.', value: 35, color: '#E6F993' },
-    { name: 'Expert Hub', value: 30, color: '#a3e635' },
-    { name: 'Email/RFQ', value: 20, color: '#65a30d' },
-    { name: 'Service Ctr.', value: 15, color: '#3f6212' },
+    { name: 'Dealer Exp.', value: 35, color: 'var(--color-brand-300)' },
+    { name: 'Expert Hub', value: 30, color: 'var(--color-brand-400)' },
+    { name: 'Email/RFQ', value: 20, color: 'var(--color-brand-500)' },
+    { name: 'Service Ctr.', value: 15, color: 'var(--color-brand-600)' },
 ]
 
 // ═══════════════════════════════════════════════════
@@ -217,7 +221,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
     const suggestionStyles = {
         optimization: { bg: 'bg-info/10 dark:bg-info/10', border: 'border-info/20', text: 'text-info', icon: <BoltIcon className="h-3.5 w-3.5" /> },
         risk: { bg: 'bg-warning/10', border: 'border-warning/20', text: 'text-warning', icon: <ExclamationTriangleIcon className="h-3.5 w-3.5" /> },
-        upsell: { bg: 'bg-emerald-50 dark:bg-success/10', border: 'border-emerald-200 dark:border-emerald-500/20', text: 'text-success dark:text-success', icon: <LightBulbIcon className="h-3.5 w-3.5" /> },
+        upsell: { bg: 'bg-success/10 dark:bg-success/10', border: 'border-success/30 dark:border-success/30', text: 'text-success dark:text-success', icon: <LightBulbIcon className="h-3.5 w-3.5" /> },
     }
 
     // Continua HQ project content
@@ -297,8 +301,8 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
         <div className={cn(
             "bg-card overflow-hidden",
             inline
-                ? "border-t border-brand-400/20"
-                : cn("border border-border rounded-xl", isNewProject && "animate-in fade-in slide-in-from-bottom-4 duration-500 border-brand-400/30")
+                ? "border-t border-primary/20"
+                : cn("border border-border rounded-xl", isNewProject && "animate-in fade-in slide-in-from-bottom-4 duration-500 border-primary/30")
         )}>
             {/* Header with project info + quick actions */}
             <div className="px-4 py-3 border-b border-border">
@@ -312,7 +316,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                 <h4 className="text-xs font-semibold text-foreground">
                                     {isProjectIntake ? 'Corporate HQ — 8-Floor Fit-Out' : 'Apex HQ Office Renovation'}
                                 </h4>
-                                {isNewProject && <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-brand-500 text-zinc-900 font-bold">New Project</span>}
+                                {isNewProject && <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-primary text-primary-foreground font-bold">New Project</span>}
                                 <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-warning/15 dark:bg-warning/10 text-warning font-medium">
                                     {isProjectIntake ? 'Scoping' : 'Procurement'}
                                 </span>
@@ -351,7 +355,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                             {tab.icon}
                             {tab.label}
                             {tab.key === 'insights' && (
-                                <span className="px-1 py-0.5 rounded-full bg-brand-300 dark:bg-brand-400 text-zinc-900 text-[8px] font-bold leading-none">{aiSuggestions.length}</span>
+                                <span className="px-1 py-0.5 rounded-full bg-primary text-primary-foreground text-[8px] font-bold leading-none">{aiSuggestions.length}</span>
                             )}
                         </button>
                     ))}
@@ -381,7 +385,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                         <div key={cat.label} className="flex items-center gap-2">
                                             <span className="text-[10px] text-foreground w-[160px] truncate">{cat.label}</span>
                                             <div className="flex-1 h-1.5 rounded-full bg-muted overflow-hidden">
-                                                <div className="h-full rounded-full bg-success dark:bg-emerald-400" style={{ width: `${cat.pct}%` }} />
+                                                <div className="h-full rounded-full bg-success dark:bg-success" style={{ width: `${cat.pct}%` }} />
                                             </div>
                                             <span className="text-[9px] text-muted-foreground tabular-nums w-10 text-right">{cat.qty.toLocaleString()}</span>
                                         </div>
@@ -394,7 +398,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                 <div className="space-y-2">
                                     <div className="flex items-center gap-2">
                                         <h5 className="text-[11px] font-semibold text-foreground">Suggested Team</h5>
-                                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-medium">AI Recommended</span>
+                                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-ai/10 text-ai font-medium">AI Recommended</span>
                                     </div>
                                     <div className="space-y-1.5">
                                         {CONTINUA_TEAM.map(member => {
@@ -405,7 +409,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                                     className={cn(
                                                         "flex items-center gap-2 px-2 py-1.5 rounded-lg border transition-all",
                                                         isSelected
-                                                            ? "border-brand-400/40 bg-brand-50/30 dark:bg-brand-500/5"
+                                                            ? "border-primary/40 bg-primary/30 dark:bg-primary/50/5"
                                                             : "border-border"
                                                     )}
                                                 >
@@ -415,10 +419,10 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                                         )}
                                                         className={cn(
                                                             "h-4 w-4 rounded border flex items-center justify-center shrink-0 transition-colors",
-                                                            isSelected ? "bg-brand-400 border-brand-400" : "border-border"
+                                                            isSelected ? "bg-primary border-primary" : "border-border"
                                                         )}
                                                     >
-                                                        {isSelected && <CheckCircleIcon className="h-3 w-3 text-zinc-900" />}
+                                                        {isSelected && <CheckCircleIcon className="h-3 w-3 text-primary-foreground" />}
                                                     </button>
                                                     <div className="flex-1 min-w-0">
                                                         <p className="text-[10px] font-medium text-foreground truncate">{member.name}</p>
@@ -438,7 +442,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                             )
                                         })}
                                     </div>
-                                    <button className="w-full flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg border border-dashed border-border text-[10px] font-medium text-muted-foreground hover:text-foreground hover:border-brand-400/40 hover:bg-muted/30 transition-all">
+                                    <button className="w-full flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg border border-dashed border-border text-[10px] font-medium text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-muted/30 transition-all">
                                         <PlusIcon className="h-3 w-3" />
                                         Add Team Member
                                     </button>
@@ -470,7 +474,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                     <div className="space-y-3 animate-in fade-in duration-200">
                         <div className="flex items-center justify-between">
                             <p className="text-[10px] text-muted-foreground">4 delivery zones · 200 total items · Estimated completion: Apr 25</p>
-                            <button className="flex items-center gap-1 px-2 py-1 rounded-lg text-[10px] font-medium text-zinc-900 bg-brand-300 hover:bg-brand-400 dark:bg-brand-400 dark:hover:bg-brand-300 transition-colors">
+                            <button className="flex items-center gap-1 px-2 py-1 rounded-lg text-[10px] font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm transition-colors">
                                 <CalendarDaysIcon className="h-3 w-3" />
                                 Schedule All
                             </button>
@@ -479,7 +483,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                             {PROJECT_DETAIL_SECTIONS.deliveryZones.map((z, i) => (
                                 <div key={i} className="px-3 py-2.5 rounded-lg border border-border bg-muted/20 hover:bg-muted/40 transition-colors">
                                     <div className="flex items-center gap-3">
-                                        <div className="h-7 w-7 rounded-lg bg-zinc-100 dark:bg-zinc-700 flex items-center justify-center text-[10px] font-bold text-muted-foreground shrink-0">{String.fromCharCode(65 + i)}</div>
+                                        <div className="h-7 w-7 rounded-lg bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground shrink-0">{String.fromCharCode(65 + i)}</div>
                                         <div className="flex-1 min-w-0">
                                             <p className="text-[11px] font-medium text-foreground">{z.zone}</p>
                                             <p className="text-[9px] text-muted-foreground">{z.items} items · {z.value}</p>
@@ -504,7 +508,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                         <span>Top items: {['Workstations', 'Exec Chairs', 'Lounge Sofas', 'Conf. Tables'][i]}</span>
                                         <span>·</span>
                                         <span>Supplier: {['Herman Miller', 'Steelcase', 'Haworth', 'Knoll'][i]}</span>
-                                        <span className="ml-auto text-[9px] text-indigo-600 dark:text-indigo-400 font-medium cursor-pointer hover:underline">View items →</span>
+                                        <span className="ml-auto text-[9px] text-ai font-medium cursor-pointer hover:underline">View items →</span>
                                     </div>
                                 </div>
                             ))}
@@ -512,7 +516,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                         {/* Zone summary bar */}
                         <div className="flex items-center gap-1 h-2 rounded-full overflow-hidden bg-muted">
                             {PROJECT_DETAIL_SECTIONS.deliveryZones.map((z, i) => (
-                                <div key={i} className={cn("h-full rounded-full", ['bg-success', 'bg-success', 'bg-emerald-400', 'bg-emerald-300'][i])} style={{ width: `${(z.items / 200) * 100}%` }} title={`Zone ${String.fromCharCode(65 + i)}: ${z.items} items`} />
+                                <div key={i} className={cn("h-full rounded-full", ['bg-success', 'bg-success', 'bg-success', 'bg-success'][i])} style={{ width: `${(z.items / 200) * 100}%` }} title={`Zone ${String.fromCharCode(65 + i)}: ${z.items} items`} />
                             ))}
                         </div>
                     </div>
@@ -521,7 +525,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                 {activeTab === 'insights' && (
                     <div className="space-y-3 animate-in fade-in duration-200">
                         {/* AI agent header */}
-                        <div className="flex items-center gap-3 p-2.5 rounded-lg bg-brand-50 dark:bg-brand-500/5 border border-brand-200/50 dark:border-brand-500/20">
+                        <div className="flex items-center gap-3 p-2.5 rounded-lg bg-primary/5 dark:bg-primary/50/5 border border-primary/50 dark:border-primary/20">
                             <AIAgentAvatar size="sm" />
                             <div className="flex-1">
                                 <p className="text-[10px] font-medium text-foreground">
@@ -534,7 +538,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                     }
                                 </p>
                             </div>
-                            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-brand-500 text-zinc-900 font-bold">
+                            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-primary text-primary-foreground font-bold">
                                 {isProjectIntake ? 'Potential: +$211K savings' : 'Potential: +$7.9K savings'}
                             </span>
                         </div>
@@ -574,7 +578,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                                                 <span className="text-[9px] font-medium text-foreground tabular-nums">{s.confidence}%</span>
                                                             </div>
                                                             <div className="flex gap-1.5 ml-auto">
-                                                                <span className="text-[10px] px-3 py-1 rounded-lg bg-primary text-primary-foreground font-bold cursor-pointer hover:bg-brand-400 transition-colors">Apply</span>
+                                                                <span className="text-[10px] px-3 py-1 rounded-lg bg-primary text-primary-foreground font-bold cursor-pointer hover:bg-primary/90 transition-colors">Apply</span>
                                                                 <span className="text-[10px] px-3 py-1 rounded-lg bg-muted text-muted-foreground font-medium cursor-pointer hover:bg-muted/80 transition-colors">Dismiss</span>
                                                                 <span className="text-[10px] px-3 py-1 rounded-lg border border-border text-foreground font-medium cursor-pointer hover:bg-muted/50 transition-colors">Review Details</span>
                                                             </div>
@@ -598,7 +602,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                             ].map(a => (
                                 <button key={a.label} className={cn(
                                     "text-[10px] px-2.5 py-1 rounded-lg font-medium transition-colors",
-                                    a.primary ? 'bg-primary text-primary-foreground hover:bg-brand-400' : 'bg-muted text-muted-foreground hover:text-foreground hover:bg-muted/80'
+                                    a.primary ? 'bg-primary text-primary-foreground hover:bg-primary/90' : 'bg-muted text-muted-foreground hover:text-foreground hover:bg-muted/80'
                                 )}>
                                     {a.label}
                                 </button>
@@ -622,7 +626,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                 {isNewProject && (
                     <button
                         onClick={nextStep}
-                        className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-lg bg-brand-300 hover:bg-brand-400 dark:bg-brand-400 dark:hover:bg-brand-300 text-zinc-900 text-[11px] font-bold shadow-sm transition-all hover:scale-[1.02]"
+                        className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm text-[11px] font-bold shadow-sm transition-all hover:scale-[1.02]"
                     >
                         <UserGroupIcon className="h-3.5 w-3.5" />
                         {isProjectIntake ? 'Confirm Team & Notify Expert' : 'Review Customer Profile'}
@@ -755,17 +759,17 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                     onClick={handleNotificationClick}
                     className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500"
                 >
-                    <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
+                    <div className="p-4 rounded-xl bg-primary/5 dark:bg-primary/50/10 border-2 border-primary dark:border-primary/40 shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-shadow cursor-pointer">
                         <div className="flex items-start gap-3">
-                            <div className="h-9 w-9 rounded-lg bg-brand-500 flex items-center justify-center shrink-0">
-                                <BellAlertIcon className="h-5 w-5 text-zinc-900" />
+                            <div className="h-9 w-9 rounded-lg bg-primary/50 flex items-center justify-center shrink-0">
+                                <BellAlertIcon className="h-5 w-5 text-primary-foreground" />
                             </div>
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs font-bold text-foreground">
                                         {isProjectIntake ? 'Incoming RFP Detected' : 'New Project Auto-Created'}
                                     </span>
-                                    <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-brand-500 text-zinc-900 font-bold">Just now</span>
+                                    <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-primary text-primary-foreground font-bold">Just now</span>
                                 </div>
                                 <p className="text-[11px] text-muted-foreground mt-1">
                                     {isProjectIntake ? (
@@ -778,7 +782,7 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                                         </>
                                     )}
                                 </p>
-                                <div className="flex items-center gap-1 mt-2 text-[10px] text-brand-700 dark:text-brand-400 font-medium">
+                                <div className="flex items-center gap-1 mt-2 text-[10px] text-foreground font-medium">
                                     <span>{isProjectIntake ? 'Click to start AI processing' : 'Click to view project'}</span>
                                     <ArrowRightIcon className="h-3 w-3" />
                                 </div>
@@ -790,17 +794,17 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
 
             {/* AI Processing Phase — Continua intake pipeline */}
             {isProjectIntake && phase === 'processing' && (
-                <div className="bg-card border border-indigo-200 dark:border-indigo-500/20 rounded-xl p-4 animate-in fade-in duration-300">
+                <div className="bg-card border border-ai/30 dark:border-ai/30/20 rounded-xl p-4 animate-in fade-in duration-300">
                     <div className="flex items-start gap-3">
                         <AIAgentAvatar size="sm" />
                         <div className="flex-1">
                             <div className="flex items-center gap-2 text-xs">
                                 <span className="font-semibold text-foreground">IntakeAgent</span>
-                                <span className="text-[10px] text-indigo-600 dark:text-indigo-400 font-medium">Processing RFP...</span>
+                                <span className="text-[10px] text-ai font-medium">Processing RFP...</span>
                             </div>
                             {/* Progress bar */}
                             <div className="mt-2.5 h-1.5 bg-muted rounded-full overflow-hidden">
-                                <div className="h-full bg-indigo-500 rounded-full transition-all duration-[3000ms] ease-out" style={{ width: `${progressWidth}%` }} />
+                                <div className="h-full bg-ai/100 rounded-full transition-all duration-[3000ms] ease-out" style={{ width: `${progressWidth}%` }} />
                             </div>
                             {/* Agent pipeline */}
                             <div className="mt-3 space-y-1.5">
@@ -812,9 +816,9 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                                         {agent.done ? (
                                             <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" />
                                         ) : (
-                                            <ArrowPathIcon className="h-3.5 w-3.5 text-indigo-500 animate-spin shrink-0" />
+                                            <ArrowPathIcon className="h-3.5 w-3.5 text-ai animate-spin shrink-0" />
                                         )}
-                                        <span className={cn("font-medium", agent.done ? "text-foreground" : "text-indigo-600 dark:text-indigo-400")}>{agent.name}</span>
+                                        <span className={cn("font-medium", agent.done ? "text-foreground" : "text-ai")}>{agent.name}</span>
                                         <span className="text-muted-foreground">{agent.detail}</span>
                                     </div>
                                 ))}
@@ -906,13 +910,13 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                                             'border-b border-border last:border-0 transition-all',
                                             isApex && isNewProject
                                                 ? cn(
-                                                    'bg-brand-50/50 dark:bg-brand-500/5 animate-in fade-in slide-in-from-top-2 duration-500',
-                                                    !isApexExpanded && 'ring-2 ring-inset ring-brand-400/30',
-                                                    rowHovered && 'bg-brand-100 dark:bg-brand-500/10 cursor-pointer shadow-sm',
-                                                    rowClicked && 'bg-brand-200/60 dark:bg-brand-500/15 scale-[0.998] shadow-inner'
+                                                    'bg-primary/50 dark:bg-primary/50/5 animate-in fade-in slide-in-from-top-2 duration-500',
+                                                    !isApexExpanded && 'ring-2 ring-inset ring-primary/30',
+                                                    rowHovered && 'bg-primary/10 dark:bg-primary/50/10 cursor-pointer shadow-sm',
+                                                    rowClicked && 'bg-primary/60 dark:bg-primary/50/15 scale-[0.998] shadow-inner'
                                                 )
                                                 : 'bg-card hover:bg-muted/20',
-                                            isApexExpanded && 'border-b-0 bg-brand-50/80 dark:bg-brand-500/8'
+                                            isApexExpanded && 'border-b-0 bg-primary/80 dark:bg-primary/50/8'
                                         )}
                                         onClick={isApex && isNewProject && isProjectIntake && showDetailCard ? () => setRowExpanded(prev => !prev) : undefined}
                                         style={isApex && isNewProject && isProjectIntake && showDetailCard ? { cursor: 'pointer' } : undefined}
@@ -920,7 +924,7 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                                         <td className="px-4 py-2.5">
                                             <div className="flex items-center gap-2">
                                                 {isApex && isNewProject && (
-                                                    <span className="px-1.5 py-0.5 rounded bg-brand-500 text-zinc-900 text-[8px] font-bold uppercase shrink-0">New</span>
+                                                    <span className="px-1.5 py-0.5 rounded bg-primary text-primary-foreground text-[8px] font-bold uppercase shrink-0">New</span>
                                                 )}
                                                 <div>
                                                     <p className="font-medium text-foreground text-[11px]">{project.name}</p>
@@ -960,7 +964,7 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                                     {/* Inline expandable detail — Continua intake */}
                                     {isApexExpanded && (
                                         <tr>
-                                            <td colSpan={7} className="p-0 border-b border-brand-400/30 bg-card">
+                                            <td colSpan={7} className="p-0 border-b border-primary/30 bg-card">
                                                 <div ref={detailRef} className="animate-in fade-in slide-in-from-top-2 duration-400">
                                                     <ProjectDetailCard isNewProject={isNewProject} isProjectIntake={isProjectIntake} inline />
                                                 </div>
@@ -1021,7 +1025,7 @@ function Customer360View({ stepId }: { stepId: string }) {
                         </div>
                         <div className="ml-auto flex items-center gap-1.5">
                             {c.tags.map(tag => (
-                                <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-700 text-muted-foreground font-medium">{tag}</span>
+                                <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground font-medium">{tag}</span>
                             ))}
                         </div>
                     </div>
@@ -1178,7 +1182,7 @@ function OrderTimelineView({ stepId }: { stepId: string }) {
         ai: <Bot size={14} className="text-ai" />,
         quote: <FileText size={14} className="text-warning" />,
         po: <Package size={14} className="text-success" />,
-        ack: <Truck size={14} className="text-sky-500" />,
+        ack: <Truck size={14} className="text-info" />,
         service: <Wrench size={14} className="text-destructive" />,
     }
 
@@ -1271,8 +1275,8 @@ function OrderTimelineView({ stepId }: { stepId: string }) {
                                     'flex items-start gap-3 px-4 py-3 transition-colors duration-700',
                                     isNS && phase === 'synced' && event.expandedDetail && 'cursor-pointer',
                                     isNS && phase === 'syncing' && 'bg-warning/10',
-                                    isNS && phase === 'synced' && isExpanded && 'bg-sky-50/60 dark:bg-sky-500/10',
-                                    isNS && phase === 'synced' && !isExpanded && 'bg-sky-50/40 dark:bg-sky-500/5 hover:bg-sky-50/70 dark:hover:bg-sky-500/10',
+                                    isNS && phase === 'synced' && isExpanded && 'bg-info/10',
+                                    isNS && phase === 'synced' && !isExpanded && 'bg-info/10/40 dark:bg-info/100/5 hover:bg-info/10/70 dark:hover:bg-info/100/10',
                                     !isNS && event.status === 'active' && 'bg-warning/10/30 dark:bg-warning/10',
                                     !isNS && event.status !== 'active' && 'bg-card hover:bg-muted dark:hover:bg-zinc-700/60',
                                 )}
@@ -1299,7 +1303,7 @@ function OrderTimelineView({ stepId }: { stepId: string }) {
                                     <div className="flex items-center gap-2 flex-wrap">
                                         <span className={cn('text-[11px] font-medium transition-colors duration-700',
                                             isNS && phase === 'syncing' ? 'text-warning dark:text-warning' :
-                                            isNS && phase === 'synced' ? 'text-sky-700 dark:text-sky-300' :
+                                            isNS && phase === 'synced' ? 'text-info' :
                                             'text-foreground'
                                         )}>{event.event}</span>
                                         {isNS && phase === 'syncing' && (
@@ -1308,7 +1312,7 @@ function OrderTimelineView({ stepId }: { stepId: string }) {
                                             </span>
                                         )}
                                         {isNS && phase === 'synced' && (
-                                            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-sky-100 dark:bg-sky-500/20 text-sky-700 dark:text-sky-300 font-bold flex items-center gap-1 animate-in fade-in duration-500">
+                                            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-info/10 dark:bg-info/100/20 text-info font-bold flex items-center gap-1 animate-in fade-in duration-500">
                                                 <SparklesIcon className="w-2.5 h-2.5" /> Just synced
                                             </span>
                                         )}
@@ -1334,7 +1338,7 @@ function OrderTimelineView({ stepId }: { stepId: string }) {
                             </div>
                             {/* Expanded detail panel — only in synced phase */}
                             {isExpanded && isNS && phase === 'synced' && event.expandedDetail && (
-                                <div className="px-4 pb-3 bg-sky-50/60 dark:bg-sky-500/10 border-t border-sky-100 dark:border-sky-500/20 animate-in fade-in slide-in-from-top-1 duration-200">
+                                <div className="px-4 pb-3 bg-info/10 border-t border-info/30 animate-in fade-in slide-in-from-top-1 duration-200">
                                     <div className="ml-10 grid grid-cols-2 gap-x-6 gap-y-1.5 pt-2">
                                         {event.expandedDetail.map((d, di) => (
                                             <div key={di} className="flex flex-col">
@@ -1657,16 +1661,16 @@ function ReportsView({ stepId }: { stepId: string }) {
                     <div className="h-[180px]">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={projectValueByStage}>
-                                <XAxis dataKey="stage" tick={{ fontSize: 10, fill: '#71717a' }} axisLine={false} tickLine={false} />
-                                <YAxis tick={{ fontSize: 10, fill: '#71717a' }} axisLine={false} tickLine={false} tickFormatter={v => `$${v / 1000}K`} />
+                                <XAxis dataKey="stage" tick={{ fontSize: 10, fill: 'var(--muted-foreground)' }} axisLine={false} tickLine={false} />
+                                <YAxis tick={{ fontSize: 10, fill: 'var(--muted-foreground)' }} axisLine={false} tickLine={false} tickFormatter={v => `$${v / 1000}K`} />
                                 <Tooltip
                                     formatter={(v: number) => [`$${(v / 1000).toFixed(0)}K`, 'Value']}
-                                    contentStyle={{ fontSize: 11, borderRadius: 8, backgroundColor: '#18181b', border: '1px solid #3f3f46', color: '#f4f4f5' }}
-                                    labelStyle={{ color: '#a1a1aa', marginBottom: 2 }}
-                                    itemStyle={{ color: '#E6F993' }}
-                                    cursor={{ fill: 'rgba(255,255,255,0.05)' }}
+                                    contentStyle={{ fontSize: 11, borderRadius: 8, backgroundColor: 'var(--card)', border: '1px solid var(--border)', color: 'var(--foreground)' }}
+                                    labelStyle={{ color: 'var(--muted-foreground)', marginBottom: 2 }}
+                                    itemStyle={{ color: 'var(--primary)' }}
+                                    cursor={{ fill: 'var(--muted)' }}
                                 />
-                                <Bar dataKey="value" fill="#E6F993" radius={[4, 4, 0, 0]} />
+                                <Bar dataKey="value" fill="var(--primary)" radius={[4, 4, 0, 0]} />
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
@@ -1755,25 +1759,30 @@ function ReportsView({ stepId }: { stepId: string }) {
 // UTILITY COMPONENTS
 // ═══════════════════════════════════════════════════
 
+// F40 · Task E · thin wrappers sobre StatusBadge shared (tokens semánticos únicos).
+// Antes: styles dict inline con LAW 1 (sky/purple crudos · pre-Task G) + zinc raw.
+// Ahora: mapping stage/status → StatusTone · una sola señal de color por badge.
+const STAGE_TONE: Record<Project['stage'], StatusTone> = {
+    Planning: 'info',
+    Procurement: 'warning',
+    Delivery: 'info',
+    Installation: 'ai',
+    Complete: 'success',
+}
+
 function StageBadge({ stage }: { stage: Project['stage'] }) {
-    const styles: Record<string, string> = {
-        Planning: 'bg-info/15 text-info dark:bg-info/20 dark:text-info',
-        Procurement: 'bg-warning/15 text-warning dark:bg-warning/20 dark:text-warning',
-        Delivery: 'bg-sky-100 text-sky-700 dark:bg-sky-900/30 dark:text-sky-300',
-        Installation: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300',
-        Complete: 'bg-success/15 text-success dark:bg-success/20 dark:text-success',
-    }
-    return <span className={cn('text-[10px] px-1.5 py-0.5 rounded font-medium', styles[stage])}>{stage}</span>
+    return <StatusBadge label={stage} tone={STAGE_TONE[stage] ?? 'neutral'} size="sm" uppercase={false} />
+}
+
+const STATUS_TONE: Record<Project['status'], StatusTone> = {
+    Active: 'neutral',
+    'On Track': 'success',
+    'At Risk': 'danger',
+    Complete: 'neutral',
 }
 
 function ProjectStatusBadge({ status }: { status: Project['status'] }) {
-    const styles: Record<string, string> = {
-        Active: 'bg-primary/10 text-foreground',
-        'On Track': 'bg-success/15 text-success dark:bg-success/20 dark:text-success',
-        'At Risk': 'bg-destructive/15 text-destructive dark:bg-destructive/20 dark:text-destructive',
-        Complete: 'bg-zinc-100 text-muted-foreground dark:bg-zinc-800 dark:text-muted-foreground',
-    }
-    return <span className={cn('text-[10px] px-1.5 py-0.5 rounded font-medium', styles[status])}>{status}</span>
+    return <StatusBadge label={status} tone={STATUS_TONE[status] ?? 'neutral'} size="sm" uppercase={false} />
 }
 
 // ═══════════════════════════════════════════════════
@@ -1863,13 +1872,13 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
     }, [isNewProject])
 
     const typeIcons: Record<string, { icon: React.ReactNode; color: string }> = {
-        change_order: { icon: <ReceiptPercentIcon className="h-3.5 w-3.5" />, color: 'text-ai bg-purple-50 dark:bg-ai/10' },
+        change_order: { icon: <ReceiptPercentIcon className="h-3.5 w-3.5" />, color: 'text-ai bg-ai/10 dark:bg-ai/10' },
         claim: { icon: <ExclamationTriangleIcon className="h-3.5 w-3.5" />, color: 'text-warning bg-warning/10' },
         delivery: { icon: <Truck className="h-3.5 w-3.5" />, color: 'text-info bg-info/10 dark:bg-info/10' },
         ack: { icon: <CheckCircleIcon className="h-3.5 w-3.5" />, color: 'text-success bg-success/10' },
         po: { icon: <DocumentTextIcon className="h-3.5 w-3.5" />, color: 'text-foreground bg-muted/50' },
         quote: { icon: <FileText className="h-3.5 w-3.5" />, color: 'text-foreground bg-muted/50' },
-        project_created: { icon: <BuildingOfficeIcon className="h-3.5 w-3.5" />, color: 'text-zinc-900 bg-brand-400 dark:text-zinc-900 dark:bg-brand-400' },
+        project_created: { icon: <BuildingOfficeIcon className="h-3.5 w-3.5" />, color: 'bg-primary text-primary-foreground' },
     }
 
     const newEntry = {
@@ -1892,20 +1901,20 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
                     onClick={onGoToCRM}
                     className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500"
                 >
-                    <div className="p-4 rounded-xl bg-brand-50 dark:bg-brand-500/10 border-2 border-brand-400 dark:border-brand-500/40 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transition-shadow cursor-pointer">
+                    <div className="p-4 rounded-xl bg-primary/5 dark:bg-primary/50/10 border-2 border-primary dark:border-primary/40 shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-shadow cursor-pointer">
                         <div className="flex items-start gap-3">
-                            <div className="h-9 w-9 rounded-lg bg-brand-500 flex items-center justify-center shrink-0">
-                                <BellAlertIcon className="h-5 w-5 text-zinc-900" />
+                            <div className="h-9 w-9 rounded-lg bg-primary/50 flex items-center justify-center shrink-0">
+                                <BellAlertIcon className="h-5 w-5 text-primary-foreground" />
                             </div>
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs font-bold text-foreground">New Project Auto-Created</span>
-                                    <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-brand-500 text-zinc-900 font-bold">Just now</span>
+                                    <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-primary text-primary-foreground font-bold">Just now</span>
                                 </div>
                                 <p className="text-[11px] text-muted-foreground mt-1">
                                     <strong className="text-foreground">ProjectCreationAgent</strong> created project from Quote #QT-1025 — <strong className="text-foreground">Apex Furniture</strong>, $43,750, 200 line items across 4 delivery zones.
                                 </p>
-                                <div className="flex items-center gap-1 mt-2 text-[10px] text-brand-700 dark:text-brand-400 font-medium">
+                                <div className="flex items-center gap-1 mt-2 text-[10px] text-foreground font-medium">
                                     <span>Click to view project details</span>
                                     <ArrowRightIcon className="h-3 w-3" />
                                 </div>
@@ -1959,7 +1968,7 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
                                     'px-4 py-2.5 transition-all',
                                     !isNew && !entry.highlight && 'bg-card',
                                     isNew && 'bg-primary/5 animate-in fade-in slide-in-from-top-1 duration-700',
-                                    entry.highlight && 'bg-purple-50/30 dark:bg-ai/5',
+                                    entry.highlight && 'bg-ai/10/30 dark:bg-ai/5',
                                     isExpandable && 'cursor-pointer hover:bg-muted/30'
                                 )}
                                 onClick={() => isExpandable ? setExpandedEntry(isExpanded ? null : entry.id) : undefined}
@@ -1972,12 +1981,12 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
                                         <div className="flex items-center gap-2">
                                             <p className={cn('text-[11px] font-medium text-foreground', isNew && 'font-bold')}>{entry.title}</p>
                                             {entry.highlight && (
-                                                <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-purple-100 dark:bg-ai/20 text-ai dark:text-purple-400 font-medium">
+                                                <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-ai/10 dark:bg-ai/20 text-ai dark:text-ai font-medium">
                                                     Feeds into Invoice
                                                 </span>
                                             )}
                                             {isNew && (
-                                                <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-brand-300 dark:bg-brand-400 text-zinc-900 font-bold">
+                                                <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-primary text-primary-foreground font-bold">
                                                     New
                                                 </span>
                                             )}
@@ -1996,17 +2005,17 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
                                 </div>
 
                                 {entry.highlight && isExpanded && entry.expandedDetail && (
-                                    <div className="mt-2 pt-2 ml-10 border-t border-purple-200/50 dark:border-purple-500/20">
+                                    <div className="mt-2 pt-2 ml-10 border-t border-ai/30/50 dark:border-ai/30/20">
                                         <div className="grid grid-cols-4 gap-3">
                                             <div className="rounded-md bg-card border border-border p-2">
                                                 <p className="text-[9px] text-muted-foreground font-medium mb-0.5">ORIGINAL</p>
                                                 <p className="text-[10px] text-foreground">{entry.expandedDetail.original.rate} × {entry.expandedDetail.original.hours}hrs</p>
                                                 <p className="text-xs font-semibold text-foreground">{entry.expandedDetail.original.total}</p>
                                             </div>
-                                            <div className="rounded-md bg-card border border-purple-200 dark:border-purple-500/20 p-2">
-                                                <p className="text-[9px] text-ai dark:text-purple-400 font-medium mb-0.5">ADJUSTED</p>
+                                            <div className="rounded-md bg-card border border-ai/30 dark:border-ai/30/20 p-2">
+                                                <p className="text-[9px] text-ai dark:text-ai font-medium mb-0.5">ADJUSTED</p>
                                                 <p className="text-[10px] text-foreground">{entry.expandedDetail.adjusted.rate} × {entry.expandedDetail.adjusted.hours}hrs</p>
-                                                <p className="text-xs font-semibold text-ai dark:text-purple-400">{entry.expandedDetail.adjusted.total}</p>
+                                                <p className="text-xs font-semibold text-ai dark:text-ai">{entry.expandedDetail.adjusted.total}</p>
                                             </div>
                                             <div className="col-span-2 rounded-md bg-muted/30 border border-border p-2">
                                                 <p className="text-[9px] text-muted-foreground font-medium mb-0.5">DETAILS</p>
@@ -2023,7 +2032,7 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
                                         <div className="flex items-center gap-2 mb-2.5">
                                             <BuildingOfficeIcon className="h-4 w-4 text-muted-foreground dark:text-zinc-300" />
                                             <p className="text-xs font-bold text-foreground">Apex HQ Office Renovation</p>
-                                            <span className="text-[8px] px-1.5 py-0.5 rounded bg-brand-300 dark:bg-brand-400 text-zinc-900 font-bold">PRJ-001</span>
+                                            <span className="text-[8px] px-1.5 py-0.5 rounded bg-primary text-primary-foreground font-bold">PRJ-001</span>
                                         </div>
                                         <div className="grid grid-cols-4 gap-3">
                                             <div className="rounded-md bg-card border border-border p-2">
@@ -2050,7 +2059,7 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
                                         <div className="mt-2.5 flex items-center gap-3">
                                             <button
                                                 onClick={(e) => { e.stopPropagation(); onGoToCRM() }}
-                                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-brand-300 hover:bg-brand-400 dark:bg-brand-400 dark:hover:bg-brand-300 text-zinc-900 text-[10px] font-bold transition-colors"
+                                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm text-[10px] font-bold transition-colors"
                                             >
                                                 View Full Project <ArrowRightIcon className="h-3 w-3" />
                                             </button>
@@ -2168,7 +2177,7 @@ function InvoicingView() {
                     {[
                         { id: 'PO #ORD-2055', amount: '$43,750', items: '200 items', color: 'border-info/30 dark:border-info/40 bg-info/10 dark:bg-info/10' },
                         { id: 'ACK #ACK-2055', amount: '$43,750', items: '200 items', color: 'border-success/30 dark:border-success/40 bg-success/10 dark:bg-success/10' },
-                        { id: 'INV #INV-2055', amount: '$44,210', items: '202 items (+CO)', color: 'border-purple-200 dark:border-purple-800 bg-purple-50/50 dark:bg-purple-900/10' },
+                        { id: 'INV #INV-2055', amount: '$44,210', items: '202 items (+CO)', color: 'border-ai/30 dark:border-ai/30 bg-ai/10/50 dark:bg-ai/15' },
                     ].map((doc, i) => (
                         <div key={doc.id} className="flex items-center gap-2 flex-1">
                             <div className={cn("flex-1 p-2.5 rounded-lg border text-center", doc.color)}>
@@ -2215,7 +2224,7 @@ function InvoicingView() {
                             <p className="text-xs font-semibold text-foreground">$43,750.00</p>
                         </div>
 
-                        <div className="flex items-center justify-between py-1.5 px-2 rounded bg-purple-50/50 dark:bg-ai/5 border border-purple-100 dark:border-purple-500/10">
+                        <div className="flex items-center justify-between py-1.5 px-2 rounded bg-ai/10 border border-ai/20">
                             <div className="flex items-center gap-2">
                                 <ReceiptPercentIcon className="h-3.5 w-3.5 text-ai" />
                                 <div>
@@ -2223,7 +2232,7 @@ function InvoicingView() {
                                     <p className="text-[9px] text-muted-foreground">Labor adjustment: 6hrs→5hrs ($510→$495)</p>
                                 </div>
                             </div>
-                            <p className="text-xs font-semibold text-ai dark:text-purple-400">-$15.00</p>
+                            <p className="text-xs font-semibold text-ai dark:text-ai">-$15.00</p>
                         </div>
 
                         <div className="flex items-center justify-between py-1.5 px-2 rounded bg-muted/30">
@@ -2446,7 +2455,7 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
 
     if (isOps && stepId === '1.8') {
         return (
-            <div className="h-full flex flex-col bg-background">
+            <div className="min-h-screen flex flex-col bg-background pt-24">
                 <div className="border-b border-border bg-card px-6 py-3">
                     <div className="flex items-center justify-between">
                         <div>
@@ -2461,16 +2470,16 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                 </div>
                 <div className="flex-1 overflow-y-auto p-6 space-y-4" data-demo-target="crm-receiving-milestone">
                     {/* Agent Context */}
-                    <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 flex items-start gap-3">
+                    <div className="p-3 rounded-xl bg-ai/10 border border-ai/30 dark:border-ai/30/20 flex items-start gap-3">
                         <AIAgentAvatar className="mt-0.5" />
-                        <div className="flex-1 text-xs text-indigo-700 dark:text-indigo-300">
+                        <div className="flex-1 text-xs text-ai">
                             <span className="font-bold">ReceivingMilestoneAgent:</span> Updating CRM project timeline — delivery confirmed for Apex Furniture. All data synced from receiving system automatically.
                         </div>
                     </div>
 
                     {/* Timeline Entry */}
                     {milestoneVisible18 && (
-                        <div className="bg-card glass border border-emerald-300 dark:border-emerald-700 rounded-2xl overflow-hidden shadow-xl shadow-emerald-500/10 animate-in fade-in slide-in-from-top-4 duration-700">
+                        <div className="bg-card glass border border-success/30 dark:border-success/30 rounded-2xl overflow-hidden shadow-xl shadow-success/10 animate-in fade-in slide-in-from-top-4 duration-700">
                             <div className="p-4 border-b border-border/50 flex items-center gap-3">
                                 <div className="w-9 h-9 rounded-xl bg-success/10 flex items-center justify-center">
                                     <CheckCircleIcon className="w-5 h-5 text-success" />
@@ -2510,8 +2519,8 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                                     <span className="text-[8px] font-bold text-success dark:text-success uppercase tracking-wider">External Systems · Synced</span>
                                     <div className="flex flex-wrap gap-1.5 mt-1">
                                         <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-info/15 text-info dark:text-info font-bold">📦 Receiving System</span>
-                                        <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-bold">💰 QuickBooks</span>
-                                        <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-bold">📋 Daily Log</span>
+                                        <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-success/10 dark:bg-success/30 text-success dark:text-success font-bold">💰 QuickBooks</span>
+                                        <span className="text-[9px] px-2.5 py-0.5 rounded-full bg-ai/10 dark:bg-ai/15 text-ai font-bold">📋 Daily Log</span>
                                     </div>
                                 </div>
                             </div>
@@ -2534,7 +2543,7 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
     // OPS Step 3.3 — Budget vs. Actual Analysis
     if (isOps && stepId === '3.3') {
         return (
-            <div className="h-full flex flex-col bg-background">
+            <div className="min-h-screen flex flex-col bg-background pt-24">
                 <div className="border-b border-border bg-card px-6 py-3">
                     <div className="flex items-center justify-between">
                         <div>
@@ -2549,9 +2558,9 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                 </div>
                 <div className="flex-1 overflow-y-auto p-6 space-y-4" data-demo-target="budget-vs-actual-chart">
                     {/* Agent Context */}
-                    <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 flex items-start gap-3">
+                    <div className="p-3 rounded-xl bg-ai/10 border border-ai/30 dark:border-ai/30/20 flex items-start gap-3">
                         <AIAgentAvatar className="mt-0.5" />
-                        <div className="flex-1 text-xs text-indigo-700 dark:text-indigo-300">
+                        <div className="flex-1 text-xs text-ai">
                             <span className="font-bold">BudgetAnalysisAgent:</span> Complete variance analysis for Apex Furniture — all changes documented with approval chain. Total actual: $50,205 (+14.7% vs. base quote).
                         </div>
                     </div>
@@ -2573,7 +2582,7 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                                 <div key={i} className={`flex items-center gap-4 p-3 rounded-xl border ${
                                     item.type === 'base' ? 'border-info/30 dark:border-info/40 bg-info/10 dark:bg-info/15' :
                                     item.type === 'add' ? 'border-warning/30 dark:border-warning/40 bg-warning/10 dark:bg-warning/15' :
-                                    'border-emerald-200 dark:border-success/40 bg-emerald-50/50 dark:bg-success/15'
+                                    'border-success/30 dark:border-success/40 bg-success/10/50 dark:bg-success/15'
                                 }`}>
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2">
@@ -2581,7 +2590,7 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                                             <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold ${
                                                 item.type === 'base' ? 'bg-info/15 text-info dark:text-info' :
                                                 item.type === 'add' ? 'bg-warning/15 text-warning dark:text-warning' :
-                                                'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300'
+                                                'bg-success/10 dark:bg-success/30 text-success dark:text-success'
                                             }`}>{item.pct}</span>
                                         </div>
                                         <p className="text-[10px] text-muted-foreground mt-0.5">{item.note}</p>
@@ -2627,10 +2636,10 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                     </div>
 
                     {/* Zero surprises callout */}
-                    <div className="p-3 rounded-lg bg-emerald-50 dark:bg-success/15 border border-emerald-200 dark:border-success/40">
+                    <div className="p-3 rounded-lg bg-success/10 dark:bg-success/15 border border-success/30 dark:border-success/40">
                         <div className="flex items-center gap-2">
                             <SparklesIcon className="w-4 h-4 text-success" />
-                            <span className="text-[11px] text-emerald-700 dark:text-emerald-300 font-medium">Zero surprises — every dollar documented with approval trail</span>
+                            <span className="text-[11px] text-success dark:text-success font-medium">Zero surprises — every dollar documented with approval trail</span>
                         </div>
                     </div>
 
@@ -2638,7 +2647,7 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                     <div className="flex justify-end">
                         <button
                             onClick={() => nextStep()}
-                            className="px-5 py-2.5 rounded-xl bg-brand-300 dark:bg-brand-400 text-zinc-900 font-bold text-sm hover:opacity-90 transition-opacity flex items-center gap-2"
+                            className="px-5 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity flex items-center gap-2"
                         >
                             <CheckCircleIcon className="w-4 h-4" />
                             Download Report
@@ -2652,7 +2661,7 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
     // Dashboard page — shows Daily Log + summary
     if (crmPage === 'dashboard') {
         return (
-            <div className="h-full flex flex-col bg-background">
+            <div className="min-h-screen flex flex-col bg-background pt-24">
                 <div className="border-b border-border bg-card px-6 py-3">
                     <div className="flex items-center justify-between">
                         <div>
@@ -2681,7 +2690,7 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
     ]
 
     return (
-        <div className="h-full flex flex-col bg-background">
+        <div className="min-h-screen flex flex-col bg-background pt-24">
             {/* Header */}
             <div className="border-b border-border bg-card px-6 py-3">
                 <div className="flex items-center justify-between">
