@@ -24,23 +24,26 @@ import { User, Calendar, AlertTriangle, Clock, Check, TrendingUp, Mail, Phone, E
 import type { ARRecord } from '../../config/profiles/mbi-data'
 import ARHoldReviewModal from './ARHoldReviewModal'
 
+// F33.a H3 · era raw red-*/amber-* · Diego 2026-07-27 · reemplazado
+// por tokens semánticos destructive/warning · consistente con las 2
+// entries siguientes (info/success) que ya usaban semánticos.
 const STATUS_META = {
     'escalated': {
         label: 'Escalated',
-        accent: 'text-red-700 dark:text-red-400',
-        bg: 'bg-red-50 dark:bg-red-500/10',
-        border: 'border-red-300 dark:border-red-500/30',
-        pillBg: 'bg-red-100 dark:bg-red-500/20',
-        leftBar: 'border-l-red-500',
+        accent: 'text-destructive',
+        bg: 'bg-destructive/5',
+        border: 'border-destructive/30',
+        pillBg: 'bg-destructive/10',
+        leftBar: 'border-l-destructive',
         icon: <AlertTriangle className="h-3.5 w-3.5" />,
     },
     'no-response': {
         label: 'No response',
-        accent: 'text-amber-700 dark:text-amber-400',
-        bg: 'bg-amber-50/50 dark:bg-amber-500/5',
-        border: 'border-amber-300 dark:border-amber-500/30',
-        pillBg: 'bg-amber-100 dark:bg-amber-500/20',
-        leftBar: 'border-l-amber-500',
+        accent: 'text-warning',
+        bg: 'bg-warning/5',
+        border: 'border-warning/30',
+        pillBg: 'bg-warning/10',
+        leftBar: 'border-l-warning',
         icon: <Clock className="h-3.5 w-3.5" />,
     },
     'pending-approval': {
@@ -154,7 +157,7 @@ export default function ARStatusBoard({ records, highlightedIds }: ARStatusBoard
                                     </div>
                                     <div className="flex items-center gap-1.5">
                                         {statusKey === 'pending-approval' && items.filter(r => r.collectionsHold).length > 0 && (
-                                            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400">
+                                            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-warning/15 text-warning">
                                                 {items.filter(r => r.collectionsHold).length} on hold
                                             </span>
                                         )}
@@ -174,21 +177,21 @@ export default function ARStatusBoard({ records, highlightedIds }: ARStatusBoard
                                         return (
                                             <div key={r.id} className={`bg-muted/50 dark:bg-zinc-800 border rounded-lg border-l-4 text-xs transition-all ${
                                                 r.collectionsHold && !resolvedHolds.has(r.id)
-                                                    ? 'border-l-amber-500 border-amber-300 dark:border-amber-500/40'
+                                                    ? 'border-l-warning border-warning/40'
                                                     : hasDraft
-                                                        ? `${meta.leftBar} border-amber-400 dark:border-amber-500 ring-2 ring-amber-300/40 dark:ring-amber-500/30 shadow-md`
+                                                        ? `${meta.leftBar} border-warning ring-2 ring-warning/30 shadow-md`
                                                         : isOpen
                                                             ? `${meta.leftBar} border-zinc-400 dark:border-zinc-500`
                                                             : `${meta.leftBar} border-border hover:border-zinc-300 dark:hover:border-zinc-700`
                                             }`}>
                                                 {r.collectionsHold && !resolvedHolds.has(r.id) && (
-                                                    <div className="px-2.5 py-1.5 bg-amber-50/80 dark:bg-amber-500/10 border-b border-amber-300/40 dark:border-amber-500/30 flex items-center gap-1.5">
-                                                        <PauseCircle className="h-2.5 w-2.5 text-amber-600 dark:text-amber-400 shrink-0" />
+                                                    <div className="px-2.5 py-1.5 bg-warning/10 border-b border-warning/30 flex items-center gap-1.5">
+                                                        <PauseCircle className="h-2.5 w-2.5 text-warning shrink-0" />
                                                         <div className="flex-1 min-w-0">
-                                                            <span className="text-[9px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+                                                            <span className="text-[9px] font-bold uppercase tracking-wider text-warning">
                                                                 Collections hold
                                                             </span>
-                                                            <span className="text-[9px] text-amber-600/80 dark:text-amber-400/80 ml-1">
+                                                            <span className="text-[9px] text-warning/80 ml-1">
                                                                 {r.holdReason === 'installation-pending'
                                                                     ? `· Installation ${r.installationDate ? new Date(r.installationDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'pending'}`
                                                                     : `· ${r.punchListOpen} punch list items open`}
@@ -196,7 +199,7 @@ export default function ARStatusBoard({ records, highlightedIds }: ARStatusBoard
                                                         </div>
                                                         <button
                                                             onClick={e => { e.stopPropagation(); setReviewRecord(r) }}
-                                                            className="shrink-0 flex items-center gap-1 px-2 py-0.5 rounded text-[9px] font-bold bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 hover:bg-amber-200 dark:hover:bg-amber-500/30 transition-colors"
+                                                            className="shrink-0 flex items-center gap-1 px-2 py-0.5 rounded text-[9px] font-bold bg-warning/15 text-warning hover:bg-warning/20 transition-colors"
                                                         >
                                                             <ClipboardCheck className="h-2.5 w-2.5" />
                                                             Review hold
@@ -212,9 +215,9 @@ export default function ARStatusBoard({ records, highlightedIds }: ARStatusBoard
                                                     </div>
                                                 )}
                                                 {hasDraft && !r.collectionsHold && (
-                                                    <div className="px-2.5 py-1 bg-amber-50/80 dark:bg-amber-500/10 border-b border-amber-300/40 dark:border-amber-500/30 flex items-center gap-1.5">
-                                                        <Mail className="h-2.5 w-2.5 text-amber-600 dark:text-amber-400" />
-                                                        <span className="text-[9px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+                                                    <div className="px-2.5 py-1 bg-warning/10 border-b border-warning/30 flex items-center gap-1.5">
+                                                        <Mail className="h-2.5 w-2.5 text-warning" />
+                                                        <span className="text-[9px] font-bold uppercase tracking-wider text-warning">
                                                             Draft ready · review next
                                                         </span>
                                                     </div>
@@ -350,7 +353,7 @@ function ARQuickActions({
                     onClick={() => onAction(a.label)}
                     className={`w-full flex items-center gap-1.5 px-2 py-1.5 rounded text-[10px] font-bold transition-colors text-left ${
                         a.tone === 'primary' ? 'bg-primary/10 text-zinc-900 dark:text-primary hover:bg-primary/15' :
-                        a.tone === 'danger' ? 'bg-red-500/10 text-red-700 dark:text-red-400 hover:bg-red-500/15' :
+                        a.tone === 'danger' ? 'bg-destructive/10 text-destructive hover:bg-destructive/15' :
                         'bg-card dark:bg-zinc-800 text-foreground hover:bg-muted border border-border'
                     }`}
                 >

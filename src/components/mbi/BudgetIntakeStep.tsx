@@ -171,19 +171,19 @@ function PathCard({
             className={`
                 text-left bg-card rounded-2xl p-5 transition-all hover:shadow-md
                 ${emphasis ? 'border border-primary/40 hover:border-primary' : ''}
-                ${optional ? 'border border-dashed border-amber-400/60 dark:border-amber-500/40 hover:border-amber-400 dark:hover:border-amber-500/70' : ''}
+                ${optional ? 'border border-dashed border-warning/40 hover:border-warning' : ''}
                 ${!emphasis && !optional ? 'border border-border hover:border-muted-foreground/40' : ''}
             `}
         >
             <div className="flex items-start gap-3 mb-3">
-                <div className={`h-12 w-12 rounded-xl flex items-center justify-center shrink-0 ${emphasis ? 'bg-primary/10 text-zinc-900 dark:text-primary' : optional ? 'bg-amber-500/10 text-amber-700 dark:text-amber-400' : 'bg-muted text-foreground'}`}>
+                <div className={`h-12 w-12 rounded-xl flex items-center justify-center shrink-0 ${emphasis ? 'bg-primary/10 text-zinc-900 dark:text-primary' : optional ? 'bg-warning/10 text-warning' : 'bg-muted text-foreground'}`}>
                     {icon}
                 </div>
                 <div className="flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
                         <h3 className="text-base font-bold text-foreground">{title}</h3>
                         {optional && (
-                            <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-400 uppercase tracking-wider border border-amber-400/30">
+                            <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-warning/15 text-warning uppercase tracking-wider border border-warning/30">
                                 Optional · validate Phase 1
                             </span>
                         )}
@@ -201,8 +201,8 @@ function PathCard({
                 ))}
             </ul>
             {optional && optionalNote && (
-                <div className="mt-2 pt-2.5 border-t border-amber-400/20 flex items-start gap-1.5">
-                    <span className="text-[10px] text-amber-700/80 dark:text-amber-400/80 leading-snug">{optionalNote}</span>
+                <div className="mt-2 pt-2.5 border-t border-warning/20 flex items-start gap-1.5">
+                    <span className="text-[10px] text-warning/80 leading-snug">{optionalNote}</span>
                 </div>
             )}
         </button>
@@ -480,7 +480,7 @@ function DesignAssistedIntake({
                             <button
                                 onClick={() => setRejectOpen(true)}
                                 disabled={!allReady}
-                                className="flex items-center gap-1.5 px-3 py-2.5 text-sm font-bold text-red-700 dark:text-red-400 bg-red-50 dark:bg-red-500/10 border border-red-300 dark:border-red-500/30 rounded-xl hover:bg-red-100 dark:hover:bg-red-500/15 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                                className="flex items-center gap-1.5 px-3 py-2.5 text-sm font-bold text-destructive bg-destructive/10 border border-destructive/30 rounded-xl hover:bg-destructive/15 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                             >
                                 <Ban className="h-4 w-4" />
                                 Reject
@@ -581,9 +581,9 @@ function RejectedCard({
     onReplace: () => void
 }) {
     return (
-        <div className="rounded-xl border border-red-300 dark:border-red-500/40 bg-red-50/60 dark:bg-red-500/10 p-4 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="rounded-xl border border-destructive/40 bg-destructive/10 p-4 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
             <div className="flex items-start gap-3">
-                <div className="h-10 w-10 rounded-full bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 flex items-center justify-center shrink-0">
+                <div className="h-10 w-10 rounded-full bg-destructive/15 text-destructive flex items-center justify-center shrink-0">
                     <XCircle className="h-5 w-5" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -714,7 +714,7 @@ function RejectDocumentsModal({
                             <DialogPanel className="w-full max-w-xl bg-card dark:bg-zinc-900 border border-border rounded-2xl shadow-2xl">
                                 <div className="px-5 py-4 border-b border-border flex items-start justify-between gap-3">
                                     <div className="flex items-start gap-3">
-                                        <div className="h-10 w-10 rounded-xl bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 flex items-center justify-center shrink-0">
+                                        <div className="h-10 w-10 rounded-xl bg-destructive/15 text-destructive flex items-center justify-center shrink-0">
                                             <Ban className="h-5 w-5" />
                                         </div>
                                         <div>
@@ -750,12 +750,12 @@ function RejectDocumentsModal({
                                                         className={`
                                                             flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-semibold text-left transition-colors
                                                             ${active
-                                                                ? 'bg-red-50 dark:bg-red-500/10 border-red-300 dark:border-red-500/40 text-red-700 dark:text-red-400'
+                                                                ? 'bg-destructive/10 border-destructive/40 text-destructive'
                                                                 : 'bg-background dark:bg-zinc-800 border-border text-foreground hover:border-zinc-300 dark:hover:border-zinc-700'
                                                             }
                                                         `}
                                                     >
-                                                        <span className={`h-2 w-2 rounded-full shrink-0 ${active ? 'bg-red-500' : 'bg-muted-foreground/40'}`} />
+                                                        <span className={`h-2 w-2 rounded-full shrink-0 ${active ? 'bg-destructive' : 'bg-muted-foreground/40'}`} />
                                                         {c.label}
                                                     </button>
                                                 )
@@ -767,7 +767,7 @@ function RejectDocumentsModal({
                                     <div>
                                         <label className="block text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-2">
                                             Notes for the uploader
-                                            {category === 'other' && <span className="text-red-600 dark:text-red-400 ml-1">· required</span>}
+                                            {category === 'other' && <span className="text-destructive ml-1">· required</span>}
                                         </label>
                                         <textarea
                                             value={reason}
@@ -828,7 +828,7 @@ function RejectDocumentsModal({
                                     <button
                                         onClick={handleSubmit}
                                         disabled={!canSubmit}
-                                        className="flex items-center gap-1.5 px-4 py-2 text-sm font-bold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed shadow-sm"
+                                        className="flex items-center gap-1.5 px-4 py-2 text-sm font-bold text-white bg-destructive hover:bg-destructive/90 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed shadow-sm"
                                     >
                                         <Send className="h-4 w-4" />
                                         {notifyAuthors && authors.length > 0 ? 'Reject & notify uploader' : 'Reject documents'}
@@ -935,7 +935,7 @@ function RowAction({
     tone?: 'neutral' | 'danger'
 }) {
     const toneClasses = tone === 'danger'
-        ? 'text-red-600 dark:text-red-400 hover:bg-red-500/10 hover:border-red-500/40'
+        ? 'text-destructive hover:bg-destructive/10 hover:border-destructive/40'
         : 'text-muted-foreground hover:text-foreground hover:bg-muted/40 hover:border-zinc-300 dark:hover:border-zinc-700'
     return (
         <button
@@ -977,7 +977,7 @@ function CapPreviewTable() {
                         <div className="text-right tabular-nums text-muted-foreground line-through">${r.list.toLocaleString()}</div>
                         <div className="text-right tabular-nums font-bold text-foreground">${r.override.toLocaleString()}</div>
                         <div>
-                            <span className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${r.type === 'Custom' ? 'bg-info/10 text-info' : 'bg-amber-500/10 text-amber-700 dark:text-amber-400'}`}>{r.type}</span>
+                            <span className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${r.type === 'Custom' ? 'bg-info/10 text-info' : 'bg-warning/10 text-warning'}`}>{r.type}</span>
                         </div>
                     </div>
                 ))}

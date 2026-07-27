@@ -24,6 +24,7 @@
 
 import { useState } from 'react'
 import { FileText, AlertTriangle, Building2, Calendar, DollarSign, Sparkles, Clock, CreditCard, FileDown } from 'lucide-react'
+import { Callout } from 'strata-design-system'
 import type { Invoice } from '../../config/profiles/mbi-data'
 import MBIDetailSheet from './MBIDetailSheet'
 
@@ -55,7 +56,7 @@ export function InvoiceDocPreview({ invoice }: InvoiceDetailPanelProps) {
                     </div>
                     <div className="flex items-center gap-1.5 shrink-0">
                         {invoice.isEDI ? (
-                            <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-700 dark:text-blue-400 uppercase tracking-wider">EDI</span>
+                            <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-info/10 text-info uppercase tracking-wider">EDI</span>
                         ) : (
                             <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-muted text-muted-foreground uppercase tracking-wider">OCR</span>
                         )}
@@ -71,14 +72,17 @@ export function InvoiceDocPreview({ invoice }: InvoiceDetailPanelProps) {
                 </div>
             </div>
 
-            {/* Exception banner */}
+            {/* Exception banner · F33.a H4 · reemplazado por Callout DS
+                · era raw red-* tokens · Diego 2026-07-27. */}
             {invoice.hasException && (
-                <div className="px-4 py-3 bg-red-50 dark:bg-red-500/10 border-b border-red-200 dark:border-red-500/20 flex items-start gap-2">
-                    <AlertTriangle className="h-4 w-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
-                    <div className="flex-1 text-xs">
-                        <div className="font-bold text-red-700 dark:text-red-400">Exception requires review</div>
-                        <div className="text-muted-foreground mt-0.5">{invoice.exceptionReason}</div>
-                    </div>
+                <div className="px-4 py-3 border-b border-destructive/30">
+                    <Callout
+                        tone="danger"
+                        variant="soft"
+                        eyebrow="Exception requires review"
+                        icon={<AlertTriangle className="h-4 w-4" />}
+                        body={invoice.exceptionReason}
+                    />
                 </div>
             )}
 
@@ -165,10 +169,10 @@ function FieldRow({
     highlight?: boolean
 }) {
     return (
-        <div className={`flex items-center gap-2 text-xs rounded-lg px-3 py-2 border ${highlight ? 'bg-amber-50/60 dark:bg-amber-500/10 border-amber-300 dark:border-amber-500/30' : 'bg-muted/20 border-border'}`}>
-            <div className={`shrink-0 ${highlight ? 'text-amber-600 dark:text-amber-400' : 'text-muted-foreground'}`}>{icon}</div>
+        <div className={`flex items-center gap-2 text-xs rounded-lg px-3 py-2 border ${highlight ? 'bg-warning/10 border-warning/30' : 'bg-muted/20 border-border'}`}>
+            <div className={`shrink-0 ${highlight ? 'text-warning' : 'text-muted-foreground'}`}>{icon}</div>
             <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider w-20 shrink-0">{label}</div>
-            <div className={`flex-1 font-semibold truncate ${highlight ? 'text-amber-700 dark:text-amber-400' : 'text-foreground'}`}>{value}</div>
+            <div className={`flex-1 font-semibold truncate ${highlight ? 'text-warning' : 'text-foreground'}`}>{value}</div>
             <div className="text-[9px] font-bold text-ai tabular-nums">{confidence}%</div>
         </div>
     )
@@ -275,7 +279,7 @@ function InvoicePDFFull({ invoice }: { invoice: Invoice }) {
                         <div>
                             <div className="font-semibold">{li.description}</div>
                             {li.item === 1 && invoice.hasException && (
-                                <div className="text-red-600 text-[10px] mt-0.5">⚠ {invoice.exceptionReason}</div>
+                                <div className="text-destructive text-[10px] mt-0.5">⚠ {invoice.exceptionReason}</div>
                             )}
                             <div className="text-muted-foreground text-[9px]">Ref PO: {invoice.poNumber}</div>
                         </div>

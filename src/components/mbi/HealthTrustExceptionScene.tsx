@@ -95,10 +95,10 @@ export default function HealthTrustExceptionScene() {
 
             {/* Invoice summary card */}
             <div className={`
-                bg-card dark:bg-zinc-800 border-2 border-l-4 rounded-2xl overflow-hidden transition-all
+                bg-card border-2 border-l-4 rounded-2xl overflow-hidden transition-all
                 ${status === 'approved' ? 'border-success/30 border-l-success' : ''}
                 ${status === 'overridden' ? 'border-info/30 border-l-info' : ''}
-                ${status === 'escalated' ? 'border-red-300 dark:border-red-500/40 border-l-red-500' : ''}
+                ${status === 'escalated' ? 'border-destructive/40 border-l-destructive' : ''}
                 ${status === 'pending' ? 'border-border border-l-amber-400' : ''}
             `}>
                 {/* Invoice header */}
@@ -107,8 +107,8 @@ export default function HealthTrustExceptionScene() {
                         h-9 w-9 rounded-xl flex items-center justify-center shrink-0
                         ${status === 'approved' ? 'bg-success/15 text-success' : ''}
                         ${status === 'overridden' ? 'bg-info/15 text-info' : ''}
-                        ${status === 'escalated' ? 'bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400' : ''}
-                        ${status === 'pending' ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400' : ''}
+                        ${status === 'escalated' ? 'bg-destructive/15 text-destructive' : ''}
+                        ${status === 'pending' ? 'bg-warning/15 text-warning' : ''}
                     `}>
                         {status === 'approved' && <CheckCircle2 className="h-4.5 w-4.5" />}
                         {status === 'overridden' && <Pencil className="h-4.5 w-4.5" />}
@@ -207,14 +207,14 @@ export default function HealthTrustExceptionScene() {
                             <div className="grid grid-cols-3 gap-2">
                                 <button
                                     onClick={() => setModalKind('escalate')}
-                                    className="flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-bold text-red-700 dark:text-red-400 bg-background dark:bg-zinc-800 border border-red-300 dark:border-red-500/40 rounded-lg hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
+                                    className="flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-bold text-destructive bg-background border border-destructive/40 rounded-lg hover:bg-destructive/10 transition-colors"
                                 >
                                     <Flag className="h-3.5 w-3.5" />
                                     Escalate
                                 </button>
                                 <button
                                     onClick={() => setModalKind('override')}
-                                    className="flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-bold text-foreground bg-background dark:bg-zinc-800 border border-border rounded-lg hover:bg-muted hover:border-info/40 transition-colors"
+                                    className="flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-bold text-foreground bg-background border border-border rounded-lg hover:bg-muted hover:border-info/40 transition-colors"
                                 >
                                     <Pencil className="h-3.5 w-3.5" />
                                     Override
@@ -237,7 +237,7 @@ export default function HealthTrustExceptionScene() {
                                 <div className="flex items-start gap-2 text-xs min-w-0">
                                     {status === 'approved' && <CheckCircle2 className="h-4 w-4 text-success shrink-0 mt-0.5" />}
                                     {status === 'overridden' && <Pencil className="h-4 w-4 text-info shrink-0 mt-0.5" />}
-                                    {status === 'escalated' && <Flag className="h-4 w-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />}
+                                    {status === 'escalated' && <Flag className="h-4 w-4 text-destructive shrink-0 mt-0.5" />}
                                     <div className="min-w-0">
                                         <div className="text-foreground font-semibold">
                                             {status === 'approved' && <>Rebate posted · <span className="text-success tabular-nums">${rebate.toLocaleString()}</span> to GPO payable</>}
@@ -266,7 +266,7 @@ export default function HealthTrustExceptionScene() {
                                     flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[11px] font-semibold animate-in fade-in slide-in-from-bottom-2 duration-300
                                     ${status === 'approved' ? 'bg-success/15 text-success border border-success/30' : ''}
                                     ${status === 'overridden' ? 'bg-info/15 text-info border border-info/30' : ''}
-                                    ${status === 'escalated' ? 'bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-400 border border-red-300 dark:border-red-500/30' : ''}
+                                    ${status === 'escalated' ? 'bg-destructive/15 text-destructive border border-destructive/30' : ''}
                                 `}>
                                     {status === 'escalated' ? <Send className="h-3.5 w-3.5 shrink-0" /> : <Check className="h-3.5 w-3.5 shrink-0" />}
                                     <span className="truncate">{toast}</span>
@@ -279,7 +279,7 @@ export default function HealthTrustExceptionScene() {
 
             {/* Context cards — who is Lynda, what contract */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <div className="bg-card dark:bg-zinc-800 border border-border rounded-xl p-3 flex items-start gap-2.5">
+                <div className="bg-card border border-border rounded-xl p-3 flex items-start gap-2.5">
                     <div className="h-8 w-8 rounded-lg bg-info/15 text-info flex items-center justify-center shrink-0">
                         <UserCheck className="h-4 w-4" />
                     </div>
@@ -289,7 +289,7 @@ export default function HealthTrustExceptionScene() {
                         <div className="text-[10px] text-muted-foreground mt-0.5">Teams · #healthcare-gpo · responds ~1h</div>
                     </div>
                 </div>
-                <div className="bg-card dark:bg-zinc-800 border border-border rounded-xl p-3 flex items-start gap-2.5">
+                <div className="bg-card border border-border rounded-xl p-3 flex items-start gap-2.5">
                     <div className="h-8 w-8 rounded-lg bg-primary/10 text-zinc-900 dark:text-primary flex items-center justify-center shrink-0">
                         <FileText className="h-4 w-4" />
                     </div>

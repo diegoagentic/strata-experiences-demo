@@ -70,7 +70,7 @@ function ModalContent({ record, onClose, onRelease, onComment }: {
             <div className="flex items-center justify-between gap-3 px-5 py-4 border-b border-border bg-muted/40 dark:bg-zinc-800">
                 <div className="flex items-center gap-2.5 min-w-0">
                     <div className="h-8 w-8 rounded-lg bg-amber-100 dark:bg-amber-500/20 flex items-center justify-center shrink-0">
-                        <PauseCircle className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                        <PauseCircle className="h-4 w-4 text-warning" />
                     </div>
                     <div className="min-w-0">
                         <DialogTitle className="text-sm font-bold text-foreground truncate">
@@ -95,7 +95,7 @@ function ModalContent({ record, onClose, onRelease, onComment }: {
                     <div className="grid grid-cols-2 gap-3">
                         <SummaryRow icon={<FileText className="h-3.5 w-3.5" />} label="PO Number" value={record.poNumber} mono />
                         <SummaryRow icon={<DollarSign className="h-3.5 w-3.5" />} label="Amount due" value={`$${record.amount.toLocaleString()}`} accent="text-foreground font-bold" />
-                        <SummaryRow icon={<Clock className="h-3.5 w-3.5" />} label="Days past due" value={`${record.daysPastDue} days`} accent={record.daysPastDue > 20 ? 'text-red-600 dark:text-red-400' : 'text-amber-700 dark:text-amber-400'} />
+                        <SummaryRow icon={<Clock className="h-3.5 w-3.5" />} label="Days past due" value={`${record.daysPastDue} days`} accent={record.daysPastDue > 20 ? 'text-destructive' : 'text-warning'} />
                         {record.salesperson && (
                             <SummaryRow icon={<User className="h-3.5 w-3.5" />} label="Salesperson" value={record.salesperson} />
                         )}
@@ -106,13 +106,13 @@ function ModalContent({ record, onClose, onRelease, onComment }: {
                 </div>
 
                 {/* Hold reason */}
-                <div className="bg-amber-50/60 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/30 rounded-xl overflow-hidden">
-                    <div className="px-4 py-3 border-b border-amber-200 dark:border-amber-500/20 flex items-center gap-2">
+                <div className="bg-warning/10 border border-warning/30 rounded-xl overflow-hidden">
+                    <div className="px-4 py-3 border-b border-warning/20 flex items-center gap-2">
                         {record.holdReason === 'punch-list-open'
-                            ? <Wrench className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0" />
-                            : <PauseCircle className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0" />
+                            ? <Wrench className="h-4 w-4 text-warning shrink-0" />
+                            : <PauseCircle className="h-4 w-4 text-warning shrink-0" />
                         }
-                        <span className="text-xs font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">
+                        <span className="text-xs font-bold text-warning uppercase tracking-wider">
                             Collections hold · {record.holdReason === 'installation-pending' ? 'Installation pending' : 'Punch list open'}
                         </span>
                     </div>
@@ -122,7 +122,7 @@ function ModalContent({ record, onClose, onRelease, onComment }: {
                                 <div className="text-sm font-semibold text-amber-800 dark:text-amber-300">
                                     Scheduled installation: {installDate}
                                 </div>
-                                <div className="text-[11px] text-amber-700/80 dark:text-amber-400/80">
+                                <div className="text-[11px] text-warning/80">
                                     Collections are blocked until the installation is complete and signed off. Strata will auto-release once the project milestone is marked done.
                                 </div>
                             </>
@@ -131,7 +131,7 @@ function ModalContent({ record, onClose, onRelease, onComment }: {
                                 <div className="text-sm font-semibold text-amber-800 dark:text-amber-300">
                                     {record.punchListOpen} punch list item{record.punchListOpen !== 1 ? 's' : ''} still open
                                 </div>
-                                <div className="text-[11px] text-amber-700/80 dark:text-amber-400/80">
+                                <div className="text-[11px] text-warning/80">
                                     All punch list items must be resolved and approved before collections begin. Strata will auto-release once the punch list is fully closed.
                                 </div>
                             </>
@@ -180,7 +180,7 @@ function ModalContent({ record, onClose, onRelease, onComment }: {
                                 <button
                                     onClick={() => comment.trim() && onComment(comment.trim())}
                                     disabled={!comment.trim()}
-                                    className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-sm font-bold bg-primary text-zinc-900 hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed transition-opacity"
+                                    className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-sm font-bold bg-primary text-primary-foreground hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed transition-opacity"
                                 >
                                     <Check className="h-4 w-4" />
                                     Log comment

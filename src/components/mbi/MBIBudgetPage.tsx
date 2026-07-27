@@ -303,7 +303,7 @@ function QueueView() {
                 <div className="text-xs text-muted-foreground">
                     Pipeline stages · Intake → AI Parsing → Validation → Review → Approved
                 </div>
-                <button className="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-zinc-900 rounded-lg text-xs font-bold hover:opacity-90 transition-opacity">
+                <button className="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-primary-foreground rounded-lg text-xs font-bold hover:opacity-90 transition-opacity">
                     <Plus className="h-3.5 w-3.5" />
                     New Budget
                 </button>

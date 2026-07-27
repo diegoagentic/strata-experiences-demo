@@ -151,7 +151,7 @@ export default function ParsingDiscrepanciesPanel({
             <div
                 className={`
                     bg-card dark:bg-zinc-800 border rounded-2xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-3
-                    ${pending > 0 ? 'border-amber-300 dark:border-amber-500/30' : 'border-success/30'}
+                    ${pending > 0 ? 'border-warning/30' : 'border-success/30'}
                 `}
             >
                 <div className="flex items-start gap-3 min-w-0">
@@ -159,7 +159,7 @@ export default function ParsingDiscrepanciesPanel({
                         className={`
                             h-9 w-9 rounded-xl flex items-center justify-center shrink-0
                             ${pending > 0
-                                ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400'
+                                ? 'bg-warning/15 text-warning'
                                 : 'bg-success/15 text-success'
                             }
                         `}
@@ -178,7 +178,7 @@ export default function ParsingDiscrepanciesPanel({
                         {(savings > 0 || deviation > 0) && (
                             <div className="flex items-center gap-3 mt-1.5 text-[10px]">
                                 {deviation > 0 && (
-                                    <span className="inline-flex items-center gap-1 text-amber-700 dark:text-amber-400 font-semibold">
+                                    <span className="inline-flex items-center gap-1 text-warning font-semibold">
                                         <TrendingUp className="h-3 w-3" />
                                         +${deviation.toLocaleString()} pending
                                     </span>
@@ -206,7 +206,7 @@ export default function ParsingDiscrepanciesPanel({
                         className={`
                             flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-bold transition-colors
                             ${pending > 0
-                                ? 'bg-amber-500 text-white hover:bg-amber-600 shadow-sm'
+                                ? 'bg-warning text-warning-foreground hover:bg-warning/90 shadow-sm'
                                 : 'bg-background dark:bg-zinc-800 text-foreground border border-border hover:bg-muted'
                             }
                         `}
@@ -348,10 +348,10 @@ function DiscrepancyCard({
         }
         if (isField) {
             return {
-                border: 'border-amber-300 dark:border-amber-500/40',
-                bg: 'bg-amber-50/70 dark:bg-amber-500/10',
-                leftBar: 'border-l-amber-500',
-                iconBg: 'bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400',
+                border: 'border-warning/40',
+                bg: 'bg-warning/10',
+                leftBar: 'border-l-warning',
+                iconBg: 'bg-warning/15 text-warning',
                 icon: <AlertTriangle className="h-4 w-4" />,
                 label: 'Field mismatch',
                 tone: 'warning',
@@ -393,7 +393,7 @@ function DiscrepancyCard({
                         <div
                             className={`text-lg font-bold tabular-nums leading-none mt-0.5 ${
                                 discrepancy.impact.tone === 'positive' ? 'text-success'
-                                : discrepancy.impact.tone === 'negative' ? 'text-amber-600 dark:text-amber-400'
+                                : discrepancy.impact.tone === 'negative' ? 'text-warning'
                                 : 'text-foreground'
                             }`}
                         >
@@ -410,10 +410,10 @@ function DiscrepancyCard({
                     <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider mb-0.5">{discrepancy.current.label}</div>
                     <div className="text-xs text-foreground">{discrepancy.current.value}</div>
                 </div>
-                <div className={`${innerPanel} ${isField ? 'border-amber-200 dark:border-amber-500/30' : 'border-info/30'}`}>
+                <div className={`${innerPanel} ${isField ? 'border-warning/30' : 'border-info/30'}`}>
                     <div className="flex items-center gap-1 mb-0.5">
-                        <Sparkles className={`h-2.5 w-2.5 ${isField ? 'text-amber-600 dark:text-amber-400' : 'text-info'}`} />
-                        <div className={`text-[9px] font-bold uppercase tracking-wider ${isField ? 'text-amber-700 dark:text-amber-400' : 'text-info'}`}>
+                        <Sparkles className={`h-2.5 w-2.5 ${isField ? 'text-warning' : 'text-info'}`} />
+                        <div className={`text-[9px] font-bold uppercase tracking-wider ${isField ? 'text-warning' : 'text-info'}`}>
                             {discrepancy.suggestion.label}
                         </div>
                     </div>
@@ -459,7 +459,7 @@ function DiscrepancyCard({
                                 <div className="text-foreground font-semibold">
                                     {status === 'accepted'
                                         ? (isField
-                                            ? <>CAP total adopted{discrepancy.impact && <> · <span className="text-amber-600 dark:text-amber-400 tabular-nums">${discrepancy.impact.amount.toLocaleString()} reconciled</span></>}</>
+                                            ? <>CAP total adopted{discrepancy.impact && <> · <span className="text-warning tabular-nums">${discrepancy.impact.amount.toLocaleString()} reconciled</span></>}</>
                                             : <>Inventory swap applied{discrepancy.impact && <> · <span className="text-success tabular-nums">${discrepancy.impact.amount.toLocaleString()} saved</span></>}</>
                                         )
                                         : <>Dismissed{meta?.notifyAI ? ' · AI notified' : ' · logged locally'}</>
@@ -536,13 +536,13 @@ function ReviewDiscrepancySheet({
                     className={`
                         border rounded-xl p-3 flex items-start gap-2.5
                         ${isField
-                            ? 'bg-amber-50/70 dark:bg-amber-500/10 border-amber-300 dark:border-amber-500/40'
+                            ? 'bg-warning/10 border-warning/40'
                             : 'bg-info/5 dark:bg-info/10 border-info/30'
                         }
                     `}
                 >
                     {isField
-                        ? <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                        ? <AlertTriangle className="h-4 w-4 text-warning shrink-0 mt-0.5" />
                         : <PackageSearch className="h-4 w-4 text-info shrink-0 mt-0.5" />
                     }
                     <div className="text-xs">
@@ -603,8 +603,8 @@ function FieldReconcilerDetail() {
                     <div className="text-xs text-muted-foreground mt-0.5">Declared ceiling</div>
                     <div className="text-xl font-bold text-foreground tabular-nums mt-1">$385,000</div>
                 </div>
-                <div className="bg-amber-50/60 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/40 rounded-xl p-3">
-                    <div className="text-[10px] font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">CAP worksheet</div>
+                <div className="bg-warning/10 border border-warning/40 rounded-xl p-3">
+                    <div className="text-[10px] font-bold text-warning uppercase tracking-wider">CAP worksheet</div>
                     <div className="text-xs text-muted-foreground mt-0.5">Sum of overrides</div>
                     <div className="text-xl font-bold text-foreground tabular-nums mt-1">$392,450</div>
                 </div>
@@ -621,14 +621,14 @@ function FieldReconcilerDetail() {
                         <div key={r.line} className="px-3 py-2 grid grid-cols-[3rem_1fr_5rem] gap-3 items-center text-xs">
                             <div className="font-mono text-muted-foreground">{r.line}</div>
                             <div className="text-foreground truncate">{r.desc}</div>
-                            <div className="text-right tabular-nums font-bold text-amber-600 dark:text-amber-400">+${r.delta.toLocaleString()}</div>
+                            <div className="text-right tabular-nums font-bold text-warning">+${r.delta.toLocaleString()}</div>
                         </div>
                     ))}
                 </div>
-                <div className="px-3 py-2 bg-amber-50/40 dark:bg-amber-500/10 border-t border-border grid grid-cols-[3rem_1fr_5rem] gap-3 items-center text-xs">
+                <div className="px-3 py-2 bg-warning/10 border-t border-border grid grid-cols-[3rem_1fr_5rem] gap-3 items-center text-xs">
                     <div />
                     <div className="font-bold text-foreground">Total deviation</div>
-                    <div className="text-right tabular-nums font-bold text-amber-700 dark:text-amber-400 text-base">+${total.toLocaleString()}</div>
+                    <div className="text-right tabular-nums font-bold text-warning text-base">+${total.toLocaleString()}</div>
                 </div>
             </div>
 

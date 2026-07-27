@@ -134,13 +134,13 @@ export default function QuoteGPReviewScene() {
                             <div className="flex items-center rounded-lg border border-border overflow-hidden text-[10px] font-bold">
                                 <button
                                     onClick={() => setGPMode('byVendor')}
-                                    className={`px-2.5 py-1.5 transition-colors ${gpMode === 'byVendor' ? 'bg-primary text-zinc-900' : 'text-muted-foreground hover:text-foreground'}`}
+                                    className={`px-2.5 py-1.5 transition-colors ${gpMode === 'byVendor' ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'}`}
                                 >
                                     By vendor
                                 </button>
                                 <button
                                     onClick={() => setGPMode('allLines')}
-                                    className={`px-2.5 py-1.5 transition-colors border-l border-border ${gpMode === 'allLines' ? 'bg-primary text-zinc-900' : 'text-muted-foreground hover:text-foreground'}`}
+                                    className={`px-2.5 py-1.5 transition-colors border-l border-border ${gpMode === 'allLines' ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'}`}
                                 >
                                     All lines
                                 </button>
@@ -186,7 +186,7 @@ export default function QuoteGPReviewScene() {
                                 </div>
                                 <span className="text-[11px] text-muted-foreground">applied to HNI · Allsteel · Custom</span>
                             </div>
-                            <div className="mt-2 text-[10px] text-amber-600 dark:text-amber-400">
+                            <div className="mt-2 text-[10px] text-warning">
                                 Note: overrides the HNI Corporate contract GP for this quote only
                             </div>
                         </div>
