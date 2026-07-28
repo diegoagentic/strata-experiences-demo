@@ -25,7 +25,7 @@ interface SmartQuoteHubProps {
 }
 
 // Wrapper to intercept context messages
-function SmartQuoteHubContent({ onNavigate, demoPhase = 'IDLE', onUploadStart, onGeneratePO }: SmartQuoteHubProps) {
+function SmartQuoteHubContent({ onNavigate, demoPhase, onUploadStart, onGeneratePO }: SmartQuoteHubProps) {
     const { messages, sendMessage } = useGenUI();
     const [mode, setMode] = useState<'selection' | 'erp_selection' | 'processing' | 'review' | 'success'>('selection');
     const [reviewData, setReviewData] = useState<any>(null);
@@ -39,32 +39,26 @@ function SmartQuoteHubContent({ onNavigate, demoPhase = 'IDLE', onUploadStart, o
     const [dragActive, setDragActive] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    // Effect to sync internal state with demo phase if needed
+    // F42.k · sync interno con demoPhase controlled del parent. ANTES el default
+    // demoPhase='IDLE' causaba loop · al setMode('processing') internamente por
+    // sendMessage 'Processed Upload' · este useEffect corría con `demoPhase==='IDLE'
+    // && mode !== 'selection'` → setMode('selection') · reset infinito.
+    // Fix · demoPhase undefined por default · solo aplicar sync cuando el parent
+    // explícitamente lo controla (CreateQuoteModal · QuoteGenerationFlow).
     useEffect(() => {
-        if (demoPhase === 'APPROVED') {
-            // Ensure we are showing the success/download state
-            // This might involve setting 'mode' to 'success' or a new 'approved' state
-            // For now, the render logic below handles the 'APPROVED' phase directly.
-        }
-        // If demoPhase is 'ANALYZING', we might want to set mode to 'processing'
+        if (demoPhase === undefined) return; // widget standalone · gestiona su propio mode
         if (demoPhase === 'ANALYZING' && mode !== 'processing') {
             setMode('processing');
-            // Potentially set reviewData for the processing artifact
             setReviewData({ source: 'upload', fileName: 'RFQ_Demo.pdf' });
         }
-        // If demoPhase is 'REVIEW_NEEDED', we might want to set mode to 'review'
         if (demoPhase === 'REVIEW_NEEDED' && mode !== 'review') {
             setMode('review');
-            // This would require demoPhase to pass the reviewData
-            // For simplicity, we'll assume a placeholder for now if not provided
-            setReviewData(reviewData || { source: 'upload', fileName: 'RFQ_Demo.pdf', extractedData: { /* ... mock data ... */ } });
+            setReviewData(reviewData || { source: 'upload', fileName: 'RFQ_Demo.pdf', extractedData: {} });
         }
-        // If demoPhase is 'IDLE', reset to 'selection'
         if (demoPhase === 'IDLE' && mode !== 'selection') {
             setMode('selection');
             setReviewData(null);
         }
-
     }, [demoPhase, mode, reviewData]);
 
 
