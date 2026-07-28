@@ -174,11 +174,19 @@ function SmartQuoteHubContent({ onNavigate, demoPhase = 'IDLE', onUploadStart, o
     };
 
     const handleFiles = (files: FileList) => {
-        // For Flow 1: Immediately trigger upload start
+        const first = files[0];
+        if (!first) return;
+
+        // F42.j · siempre transitar a processing (antes solo si onUploadStart · en
+        // ExpertHubTransactions SmartQuoteHub se invoca sin onUploadStart · el
+        // upload no disparaba ninguna transición · widget queda en selection).
+        setMode('processing');
+        setReviewData({ source: 'upload', fileName: first.name });
+        sendMessage(`Uploaded RFQ document: ${first.name}`, 'user');
+
+        // Callback opcional al parent (QuoteGenerationFlow usa esto para su phase state).
         if (onUploadStart) {
             onUploadStart(Array.from(files));
-            // Add user message to GenUI context
-            sendMessage(`Uploaded RFQ document: ${files[0].name}`, 'user');
         }
     };
 
