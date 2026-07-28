@@ -60,6 +60,15 @@ export default function QuoteExtractionArtifact({ fileName, onComplete }: QuoteE
     const [currentLog, setCurrentLog] = useState<string>('Initializing agents...');
     const hasFired = useRef(false);
 
+    // F42.i · onCompleteRef estabiliza el callback · el useEffect abajo depende
+    // solo de fileName · no de onComplete (que es una nueva function ref en
+    // cada re-render del parent QuoteGenerationFlow). Sin este pattern · cada
+    // re-render del parent disparaba cleanup + re-run del effect · resetting
+    // los timeouts del timeline · loop visible del progress reiniciándose
+    // desde 0 (Diego 2026-07-27).
+    const onCompleteRef = useRef(onComplete);
+    useEffect(() => { onCompleteRef.current = onComplete; }, [onComplete]);
+
     useEffect(() => {
         if (hasFired.current) return;
         let mounted = true;
@@ -125,7 +134,7 @@ export default function QuoteExtractionArtifact({ fileName, onComplete }: QuoteE
                     updateStatus('validation', 'complete');
                     if (!hasFired.current) {
                         hasFired.current = true;
-                        onComplete({
+                        onCompleteRef.current({
                             source: 'autonomous',
                             fileName: fileName,
                             stats: { validated: 37, attention: 3, totalValue: 290750 },
@@ -195,7 +204,7 @@ export default function QuoteExtractionArtifact({ fileName, onComplete }: QuoteE
             mounted = false;
             timeouts.forEach(clearTimeout);
         };
-    }, [fileName, onComplete]);
+    }, [fileName]);
 
     return (
         <div className="h-full flex flex-col p-6 animate-in fade-in duration-500 overflow-hidden">
