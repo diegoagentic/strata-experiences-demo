@@ -18,6 +18,7 @@ import {
     BuildingOfficeIcon,
     ShoppingCartIcon
 } from '@heroicons/react/24/outline';
+import { HeroMetric } from 'strata-design-system';
 import { useGenUI } from '../../../context/GenUIContext';
 import EditAssetModal from './AssetReview/EditAssetModal';
 import AISuggestionPanel from './AssetReview/AISuggestionPanel';
@@ -529,51 +530,51 @@ export default function AssetReviewArtifact({ data, source = 'upload', onApprove
 
                     {/* Status Summary & Exceptions */}
                     <div className="p-6 pb-2">
+                        {/* F43.d.1 · StatCards refactor a HeroMetric primitive
+                            (packages/strata-ds/src/components/hero-metric.tsx).
+                            Adopta el envelope tinted + icon pill del DS y
+                            elimina los estilos custom con raw color classes.
+                            El "Resolve Now" button vive en el sub slot del
+                            action card (variant 'warning'). */}
                         <div className="flex flex-wrap gap-4 mb-6">
-                            {/* Validated Stats */}
-                            <div className="flex-1 min-w-[200px] bg-card p-4 rounded-xl border border-border shadow-sm flex items-center justify-between">
-                                <div>
-                                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Validated Assets</p>
-                                    <p className="text-2xl font-bold text-foreground mt-1">{stats.validated}</p>
-                                </div>
-                                <div className="p-2 bg-success/10 dark:bg-success/10 text-success rounded-lg">
-                                    <CheckCircleIcon className="w-6 h-6" />
-                                </div>
-                            </div>
+                            <HeroMetric
+                                className="flex-1 min-w-[200px]"
+                                tone="success"
+                                label="Validated Assets"
+                                value={stats.validated}
+                                icon={<CheckCircleIcon className="w-4 h-4" />}
+                            />
 
-                            {/* Total Value */}
-                            <div className="flex-1 min-w-[200px] bg-card p-4 rounded-xl border border-border shadow-sm flex items-center justify-between">
-                                <div>
-                                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Total Value</p>
-                                    <p className="text-2xl font-bold text-foreground mt-1">{formatCurrency(stats.totalValue)}</p>
-                                </div>
-                                <div className="p-2 bg-info/10 dark:bg-info/10 text-info rounded-lg">
-                                    <ChartBarIcon className="w-6 h-6" />
-                                </div>
-                            </div>
+                            <HeroMetric
+                                className="flex-1 min-w-[200px]"
+                                tone="info"
+                                label="Total Value"
+                                value={formatCurrency(stats.totalValue)}
+                                icon={<ChartBarIcon className="w-4 h-4" />}
+                            />
 
-                            {/* Action Card */}
-                            <div className={`flex-[1.5] min-w-[300px] p-4 rounded-xl border shadow-sm flex items-center justify-between transition-colors ${totalIssues > 0
-                                ? 'bg-warning/10 dark:bg-warning/10 border-warning/30 dark:border-warning/40/30'
-                                : 'bg-muted dark:bg-zinc-800/50 border-border'
-                                }`}>
-                                <div>
-                                    <p className={`text-xs font-medium uppercase tracking-wider ${totalIssues > 0 ? 'text-warning dark:text-warning' : 'text-muted-foreground'}`}>
-                                        {totalIssues > 0 ? 'Action Required' : 'Status'}
-                                    </p>
-                                    <p className={`text-lg font-bold mt-1 ${totalIssues > 0 ? 'text-warning dark:text-warning' : 'text-foreground'}`}>
-                                        {totalIssues > 0 ? `${totalIssues} Issues Found` : 'Ready to Process'}
-                                    </p>
-                                </div>
-                                {totalIssues > 0 && (
-                                    <button
-                                        onClick={() => setIsResolverOpen(true)}
-                                        className="px-6 py-2.5 bg-warning hover:bg-warning text-white rounded-lg font-bold text-sm shadow-md transition-transform active:scale-95 shrink-0"
-                                    >
-                                        Resolve Now
-                                    </button>
-                                )}
-                            </div>
+                            <HeroMetric
+                                className="flex-[1.5] min-w-[300px]"
+                                tone={totalIssues > 0 ? 'warning' : 'neutral'}
+                                label={totalIssues > 0 ? 'Action Required' : 'Status'}
+                                value={totalIssues > 0 ? `${totalIssues} Issues Found` : 'Ready to Process'}
+                                icon={
+                                    totalIssues > 0
+                                        ? <ExclamationTriangleIcon className="w-4 h-4" />
+                                        : <CheckCircleIcon className="w-4 h-4" />
+                                }
+                                sub={
+                                    totalIssues > 0 ? (
+                                        <button
+                                            onClick={() => setIsResolverOpen(true)}
+                                            className="inline-flex items-center gap-1.5 mt-1 px-4 py-1.5 bg-warning text-white rounded-lg font-semibold text-xs shadow-sm hover:bg-warning/90 transition-transform active:scale-95"
+                                        >
+                                            <ExclamationTriangleIcon className="w-3.5 h-3.5" />
+                                            Resolve Now
+                                        </button>
+                                    ) : undefined
+                                }
+                            />
 
                             {/* Change Summary — visible when all issues resolved */}
                             {totalIssues === 0 && (
@@ -713,8 +714,10 @@ export default function AssetReviewArtifact({ data, source = 'upload', onApprove
                         </div>
                     </div>
 
-                    {/* Scrollable List */}
-                    <div className="flex-1 overflow-y-auto px-6 pb-6 space-y-3 scrollbar-micro">
+                    {/* Scrollable List · F43.b.2 · min-h-0 forces flex-1 to
+                        actually clip (sin min-h-0 el flex-item retiene
+                        min-height:auto y el overflow no scrollea). */}
+                    <div className="flex-1 min-h-0 overflow-y-auto px-6 pb-6 space-y-3 scrollbar-micro">
                         {/* Empty state for filtered tabs */}
                         {filteredAssets.length === 0 && filter !== 'all' && (
                             <div className="py-12 flex flex-col items-center justify-center text-center">
