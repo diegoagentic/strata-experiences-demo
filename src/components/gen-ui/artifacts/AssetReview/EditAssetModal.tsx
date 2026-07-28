@@ -52,7 +52,7 @@ export default function EditAssetModal({ isOpen, onClose, asset, onSave }: EditA
             <div className="bg-card rounded-xl shadow-2xl w-full max-w-2xl border border-border animate-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
 
                 {/* Header */}
-                <div className="flex justify-between items-center p-6 border-b border-zinc-100 dark:border-zinc-800 shrink-0">
+                <div className="flex justify-between items-center p-6 border-b border-border shrink-0">
                     <div className="flex items-center gap-2 text-foreground">
                         {asset.status === 'review' ? (
                             <>
@@ -100,7 +100,7 @@ export default function EditAssetModal({ isOpen, onClose, asset, onSave }: EditA
                                 type="text"
                                 value={formData.description || ''}
                                 onChange={(e) => handleChange('description', e.target.value)}
-                                className="w-full px-3 py-2.5 rounded-lg border border-border bg-warning/10 dark:bg-zinc-800/50 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                                className="w-full px-3 py-2.5 rounded-lg border border-border bg-warning/10 dark:bg-muted/50 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                             />
                             {/* Inline Suggestion */}
                             {asset.issues?.length && (
@@ -111,7 +111,7 @@ export default function EditAssetModal({ isOpen, onClose, asset, onSave }: EditA
                                     </div>
                                     <button
                                         onClick={() => handleApplySuggestion('description', suggestions.description)}
-                                        className="text-[10px] font-bold bg-white dark:bg-blue-900 shadow-sm border border-info/30 dark:border-blue-700 text-info dark:text-info px-2 py-1 rounded hover:bg-info/10 transition-colors"
+                                        className="text-[10px] font-bold bg-white dark:bg-info/10 shadow-sm border border-info/30 dark:border-info/30 text-info dark:text-info px-2 py-1 rounded hover:bg-info/10 transition-colors"
                                     >
                                         Apply
                                     </button>
@@ -136,7 +136,7 @@ export default function EditAssetModal({ isOpen, onClose, asset, onSave }: EditA
                             <input
                                 type="text"
                                 defaultValue="Office Furniture"
-                                className="w-full px-3 py-2.5 rounded-lg border border-border bg-warning/10 dark:bg-zinc-800/50 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                                className="w-full px-3 py-2.5 rounded-lg border border-border bg-warning/10 dark:bg-muted/50 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                             />
                             {/* Inline Suggestion */}
                             {asset.issues?.length && (
@@ -145,7 +145,7 @@ export default function EditAssetModal({ isOpen, onClose, asset, onSave }: EditA
                                         <SparklesIcon className="w-3.5 h-3.5" />
                                         <span>AI suggests: "Seating" (optimized)</span>
                                     </div>
-                                    <button className="text-[10px] font-bold bg-white dark:bg-blue-900 shadow-sm border border-info/30 dark:border-blue-700 text-info dark:text-info px-2 py-1 rounded hover:bg-info/10 transition-colors">
+                                    <button className="text-[10px] font-bold bg-white dark:bg-info/10 shadow-sm border border-info/30 dark:border-info/30 text-info dark:text-info px-2 py-1 rounded hover:bg-info/10 transition-colors">
                                         Apply
                                     </button>
                                 </div>
@@ -188,7 +188,7 @@ export default function EditAssetModal({ isOpen, onClose, asset, onSave }: EditA
                 </div>
 
                 {/* Footer */}
-                <div className="p-6 border-t border-zinc-100 dark:border-zinc-800 bg-muted/50 dark:bg-zinc-800/50 flex flex-col items-center gap-4 shrink-0">
+                <div className="p-6 border-t border-border bg-muted/50 dark:bg-muted/50 flex flex-col items-center gap-4 shrink-0">
 
                     <div className="w-full flex justify-end gap-3">
                         <button onClick={onClose} className="px-6 py-2.5 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors">
@@ -196,7 +196,7 @@ export default function EditAssetModal({ isOpen, onClose, asset, onSave }: EditA
                         </button>
                         <button
                             onClick={handleSave}
-                            className="px-6 py-2.5 bg-destructive hover:bg-red-800 text-white rounded-lg text-sm font-bold shadow-sm transition-all"
+                            className="px-6 py-2.5 bg-destructive hover:bg-destructive/10 text-white rounded-lg text-sm font-bold shadow-sm transition-all"
                         >
                             Save Changes
                         </button>

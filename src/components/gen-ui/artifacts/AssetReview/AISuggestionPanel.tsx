@@ -13,7 +13,7 @@ export default function AISuggestionPanel({ originalAsset, suggestion, onAccept,
     const savings = (originalAsset.unitPrice - suggestion.price) * originalAsset.qty;
 
     return (
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-info/20 dark:border-info/40 rounded-xl p-4 shadow-sm my-3 animate-in fade-in slide-in-from-top-2">
+        <div className="bg-gradient-to-br from-info/10 to-ai/10 dark:from-info/20 dark:to-ai/20 border border-info/20 dark:border-info/40 rounded-xl p-4 shadow-sm my-3 animate-in fade-in slide-in-from-top-2">
             <div className="flex items-start gap-3">
                 <div className="p-2 bg-info/15 dark:bg-info/20 rounded-lg text-info">
                     <SparklesIcon className="w-5 h-5" />
@@ -56,7 +56,7 @@ export default function AISuggestionPanel({ originalAsset, suggestion, onAccept,
                         </button>
                         <button
                             onClick={onReject}
-                            className="flex-1 flex items-center justify-center gap-1.5 py-1.5 bg-card hover:bg-muted dark:hover:bg-zinc-700 text-muted-foreground dark:text-zinc-300 border border-border text-xs font-medium rounded-lg transition-colors"
+                            className="flex-1 flex items-center justify-center gap-1.5 py-1.5 bg-card hover:bg-muted dark:hover:bg-muted text-muted-foreground dark:text-muted-foreground border border-border text-xs font-medium rounded-lg transition-colors"
                         >
                             <XCircleIcon className="w-3.5 h-3.5" />
                             Dismiss

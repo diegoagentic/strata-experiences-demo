@@ -50,11 +50,11 @@ export default function MappingField({ field }: { field: MappingFieldProps }) {
     };
 
     return (
-        <div className={`bg-card border ${isMatched ? 'border-success/30 dark:border-green-900' : 'border-border'} rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow`}>
+        <div className={`bg-card border ${isMatched ? 'border-success/30 dark:border-success/30' : 'border-border'} rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow`}>
             {/* Header / Summary */}
             <div
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center justify-between p-3 cursor-pointer bg-muted/50 dark:bg-zinc-800/30 hover:bg-muted/50 transition-colors"
+                className="flex items-center justify-between p-3 cursor-pointer bg-muted/50 dark:bg-muted/30 hover:bg-muted transition-colors"
             >
                 <div className="flex items-center gap-3">
                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isMatched ? 'bg-success/15 text-success' : 'bg-warning/15 text-warning'}`}>
@@ -86,14 +86,14 @@ export default function MappingField({ field }: { field: MappingFieldProps }) {
 
             {/* Expanded Content */}
             {isOpen && (
-                <div className="p-3 border-t border-zinc-100 dark:border-zinc-800 bg-card animate-in slide-in-from-top-2 duration-200">
+                <div className="p-3 border-t border-border bg-card animate-in slide-in-from-top-2 duration-200">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* Column 1: Source Data */}
                         <div className="flex flex-col gap-1">
                             <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground mb-1">
                                 <Bars2Icon className="w-4 h-4" /> Source Data
                             </div>
-                            <div className="font-mono text-sm text-foreground bg-muted dark:bg-zinc-800/50 p-2.5 rounded-lg border border-zinc-100 dark:border-zinc-800">
+                            <div className="font-mono text-sm text-foreground bg-muted dark:bg-muted/50 p-2.5 rounded-lg border border-border">
                                 {field.description || "Sample data not available"}
                             </div>
                         </div>
@@ -105,13 +105,13 @@ export default function MappingField({ field }: { field: MappingFieldProps }) {
                                     <div className="flex items-center gap-2 text-xs font-semibold text-primary mb-1">
                                         <SparklesIcon className="w-4 h-4" /> Best Match
                                     </div>
-                                    <div className="border border-indigo-100 dark:border-indigo-900/50 bg-indigo-50/50 dark:bg-indigo-900/10 rounded-lg p-2.5 relative group hover:border-indigo-300 transition-colors cursor-pointer" onClick={() => setSelectedValue(field.suggestions![0].value)}>
+                                    <div className="border border-ai/30 bg-ai/10 rounded-lg p-2.5 relative group hover:border-ai/30 transition-colors cursor-pointer" onClick={() => setSelectedValue(field.suggestions![0].value)}>
                                         <div className="flex justify-between items-start">
                                             <div>
-                                                <div className="font-medium text-sm text-indigo-900 dark:text-indigo-200">{field.suggestions[0].value}</div>
-                                                <div className="text-[10px] text-indigo-700 dark:text-indigo-400 mt-0.5">{field.suggestions[0].description}</div>
+                                                <div className="font-medium text-sm text-ai">{field.suggestions[0].value}</div>
+                                                <div className="text-[10px] text-ai mt-0.5">{field.suggestions[0].description}</div>
                                             </div>
-                                            <span className="text-[10px] font-bold bg-card px-1.5 py-0.5 rounded text-indigo-600 shadow-sm float-right">
+                                            <span className="text-[10px] font-bold bg-card px-1.5 py-0.5 rounded text-ai shadow-sm float-right">
                                                 {field.suggestions[0].confidence}%
                                             </span>
                                         </div>
@@ -122,13 +122,13 @@ export default function MappingField({ field }: { field: MappingFieldProps }) {
                     </div>
 
                     {/* Footer Actions */}
-                    <div className="mt-3 flex items-center justify-between border-t border-zinc-50 dark:border-zinc-800 pt-3">
+                    <div className="mt-3 flex items-center justify-between border-t border-border pt-3">
                         <div className="flex-1 max-w-[200px]">
                             {field.suggestions && field.suggestions.length > 1 && (
                                 <div className="relative">
                                     <select
                                         onChange={(e) => setSelectedValue(e.target.value)}
-                                        className="w-full appearance-none bg-muted dark:bg-zinc-800 border-none text-xs rounded-lg py-1.5 pl-2 pr-6 text-muted-foreground focus:ring-1 focus:ring-primary cursor-pointer hover:bg-zinc-100 transition-colors"
+                                        className="w-full appearance-none bg-muted dark:bg-muted border-none text-xs rounded-lg py-1.5 pl-2 pr-6 text-muted-foreground focus:ring-1 focus:ring-primary cursor-pointer hover:bg-muted transition-colors"
                                         value={selectedValue}
                                     >
                                         <option disabled>Alternative options...</option>

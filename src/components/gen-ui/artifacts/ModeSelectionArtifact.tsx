@@ -110,7 +110,7 @@ export default function ModeSelectionArtifact() {
 
     return (
         <div className="flex flex-col w-full max-w-lg mx-auto bg-card rounded-2xl border border-border shadow-sm animate-in fade-in slide-in-from-right-8 duration-300">
-            <div className="p-4 border-b border-zinc-100 dark:border-zinc-800 flex items-center gap-3">
+            <div className="p-4 border-b border-border flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-brand-100 dark:bg-brand-900/20 text-brand-600 flex items-center justify-center shrink-0">
                     <CloudArrowUpIcon className="w-4 h-4" />
                 </div>
@@ -122,7 +122,7 @@ export default function ModeSelectionArtifact() {
 
             <div className="p-6">
                 <div
-                    className={`border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all group mb-6 ${dragActive ? 'border-brand-400 bg-brand-50/50 dark:bg-brand-900/10' : 'border-zinc-300 dark:border-zinc-700 hover:border-brand-400 hover:bg-muted dark:hover:bg-zinc-800/50'}`}
+                    className={`border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all group mb-6 ${dragActive ? 'border-brand-400 bg-brand-50/50 dark:bg-brand-900/10' : 'border-border hover:border-brand-400 hover:bg-muted dark:hover:bg-muted/50'}`}
                     onDragEnter={handleDrag}
                     onDragLeave={handleDrag}
                     onDragOver={handleDrag}
@@ -145,7 +145,7 @@ export default function ModeSelectionArtifact() {
                         I will automatically extract all line items and requirements
                     </p>
 
-                    <button className="px-5 py-2 bg-brand-300 dark:bg-brand-500 text-zinc-900 hover:bg-brand-400 dark:hover:bg-brand-600/50 rounded-lg text-sm font-semibold shadow-sm transition-all pointer-events-none">
+                    <button className="px-5 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg text-sm font-semibold shadow-sm transition-all pointer-events-none">
                         Browse Files
                     </button>
                 </div>
@@ -157,7 +157,7 @@ export default function ModeSelectionArtifact() {
 
                     <button
                         onClick={() => handleFileSelect('Office_Renovation_Specs.pdf')}
-                        className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-muted dark:hover:bg-zinc-800/50 transition-colors border border-zinc-100 dark:border-zinc-800 hover:border-brand-300 dark:hover:border-brand-600/50 text-left group shadow-sm hover:shadow"
+                        className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-muted dark:hover:bg-muted/50 transition-colors border border-border hover:border-brand-300 dark:hover:border-brand-600/50 text-left group shadow-sm hover:shadow"
                     >
                         <div className="w-10 h-10 rounded-lg bg-destructive/15 dark:bg-destructive/15 flex items-center justify-center shrink-0">
                             <DocumentTextIcon className="w-5 h-5 text-destructive" />
@@ -170,7 +170,7 @@ export default function ModeSelectionArtifact() {
 
                     <button
                         onClick={() => handleFileSelect('Q1_Requirements.xlsx')}
-                        className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-muted dark:hover:bg-zinc-800/50 transition-colors border border-zinc-100 dark:border-zinc-800 hover:border-brand-300 dark:hover:border-brand-600/50 text-left group shadow-sm hover:shadow"
+                        className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-muted dark:hover:bg-muted/50 transition-colors border border-border hover:border-brand-300 dark:hover:border-brand-600/50 text-left group shadow-sm hover:shadow"
                     >
                         <div className="w-10 h-10 rounded-lg bg-success/15 dark:bg-success/15 flex items-center justify-center shrink-0">
                             <DocumentTextIcon className="w-5 h-5 text-success" />
@@ -182,7 +182,7 @@ export default function ModeSelectionArtifact() {
                     </button>
                 </div>
 
-                <div className="mt-6 pt-5 border-t border-zinc-100 dark:border-zinc-800">
+                <div className="mt-6 pt-5 border-t border-border">
                     <div className="flex items-center justify-between">
                         <div>
                             <p className="text-sm font-semibold text-foreground">Or import from system</p>
@@ -190,7 +190,7 @@ export default function ModeSelectionArtifact() {
                         </div>
                         <button
                             onClick={() => sendMessage("Mode Selected: Connect ERP")}
-                            className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-muted-foreground dark:text-zinc-200 bg-muted hover:bg-zinc-200 dark:hover:bg-zinc-700/80 rounded-lg transition-colors border border-border"
+                            className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-muted-foreground dark:text-foreground bg-muted hover:bg-muted rounded-lg transition-colors border border-border"
                         >
                             <ServerStackIcon className="w-4 h-4" />
                             Auto-Sync ERP

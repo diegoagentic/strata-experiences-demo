@@ -188,14 +188,14 @@ function SmartQuoteHubContent({ onNavigate, demoPhase, onUploadStart, onGenerate
         <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden h-[600px] flex flex-col relative">
             {/* Header (Shared) */}
             {mode === 'selection' && (
-                <div className="p-6 border-b border-zinc-100 dark:border-zinc-800 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                <div className="p-6 border-b border-border flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-ai/10 text-ai flex items-center justify-center">
                         <DocumentPlusIcon className="w-6 h-6" />
                     </div>
                     <div>
                         <div className="flex items-center gap-2">
                             <h3 className="text-lg font-brand font-semibold text-foreground">Quick Quote</h3>
-                            <span className="inline-flex items-center rounded-full bg-indigo-50 dark:bg-indigo-900/10 px-2 py-0.5 text-xs font-medium text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-800">
+                            <span className="inline-flex items-center rounded-full bg-ai/10 px-2 py-0.5 text-xs font-medium text-ai border border-ai/30">
                                 Autonomous Mode
                             </span>
                         </div>
@@ -206,9 +206,9 @@ function SmartQuoteHubContent({ onNavigate, demoPhase, onUploadStart, onGenerate
 
             {/* Header for active flow states — shows "New Quote" reset button */}
             {(mode === 'processing' || mode === 'review') && (
-                <div className="px-4 py-3 border-b border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
+                <div className="px-4 py-3 border-b border-border flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <DocumentCheckIcon className="w-5 h-5 text-indigo-500" />
+                        <DocumentCheckIcon className="w-5 h-5 text-ai" />
                         <span className="text-sm font-semibold text-foreground">
                             {mode === 'processing' ? 'Analyzing Document...' : 'Asset Review'}
                         </span>

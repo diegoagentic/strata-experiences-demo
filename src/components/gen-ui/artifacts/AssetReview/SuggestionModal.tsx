@@ -24,7 +24,7 @@ export default function SuggestionModal({ isOpen, onClose, asset, onAccept, onRe
         },
         {
             id: 'premium',
-            badge: { text: 'Premium Quality', color: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400' },
+            badge: { text: 'Premium Quality', color: 'bg-ai/10 text-ai dark:bg-ai/30 dark:text-ai' },
             title: 'Premium Height Adjustable Workstation',
             sku: 'DESK-ELECTRIC-7230-PREMIUM',
             total: 148437.5,
@@ -54,7 +54,7 @@ export default function SuggestionModal({ isOpen, onClose, asset, onAccept, onRe
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
             <div className="bg-card rounded-xl shadow-2xl w-full max-w-4xl border border-border animate-in zoom-in-95 duration-200 overflow-hidden flex flex-col max-h-[90vh]">
                 {/* Header */}
-                <div className="flex justify-between items-start p-6 border-b border-zinc-100 dark:border-zinc-800 shrink-0">
+                <div className="flex justify-between items-start p-6 border-b border-border shrink-0">
                     <div>
                         <div className="flex items-center gap-2 mb-1">
                             <SparklesIcon className="w-5 h-5 text-info" />
@@ -69,7 +69,7 @@ export default function SuggestionModal({ isOpen, onClose, asset, onAccept, onRe
                     <div className="flex items-center gap-4">
                         <button
                             onClick={onAccept}
-                            className="px-4 py-2 bg-card border border-border hover:bg-muted dark:hover:bg-zinc-700 rounded-lg text-sm font-medium transition-colors"
+                            className="px-4 py-2 bg-card border border-border hover:bg-muted dark:hover:bg-muted rounded-lg text-sm font-medium transition-colors"
                         >
                             Apply Best Option
                         </button>
@@ -80,7 +80,7 @@ export default function SuggestionModal({ isOpen, onClose, asset, onAccept, onRe
                 </div>
 
                 {/* Grid Content */}
-                <div className="p-6 overflow-y-auto bg-muted/50 dark:bg-zinc-800/50 scrollbar-micro">
+                <div className="p-6 overflow-y-auto bg-muted/50 dark:bg-muted/50 scrollbar-micro">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {options.map((opt) => (
                             <div key={opt.id} className="bg-card border border-border rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between h-full">
@@ -110,7 +110,7 @@ export default function SuggestionModal({ isOpen, onClose, asset, onAccept, onRe
                                 </div>
 
                                 <div>
-                                    <div className="flex justify-between items-end mb-4 border-t border-zinc-100 dark:border-zinc-800 pt-3">
+                                    <div className="flex justify-between items-end mb-4 border-t border-border pt-3">
                                         <span className="text-xs text-muted-foreground">Total:</span>
                                         <span className="text-lg font-bold text-foreground">{formatCurrency(opt.total)}</span>
                                     </div>
@@ -128,7 +128,7 @@ export default function SuggestionModal({ isOpen, onClose, asset, onAccept, onRe
                 </div>
 
                 {/* Footer */}
-                <div className="p-4 border-t border-zinc-100 dark:border-zinc-800 bg-card shrink-0 flex justify-center">
+                <div className="p-4 border-t border-border bg-card shrink-0 flex justify-center">
                     <button
                         onClick={onClose}
                         className="w-full max-w-sm py-2.5 text-sm font-bold text-foreground hover:bg-muted rounded-lg transition-colors"

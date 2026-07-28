@@ -16,7 +16,7 @@ export default function SuccessModal({ isOpen, type = 'po', poNumber = 'PO-2026-
     return (
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-white/90 dark:bg-black/90 backdrop-blur-md p-4 animate-in fade-in duration-300">
             <div className="bg-card rounded-2xl shadow-2xl w-full max-w-md border border-border text-center p-8 relative overflow-hidden">
-                <div className={`absolute top-0 left-0 w-full h-2 bg-gradient-to-r ${isPO ? 'from-green-400 to-emerald-600' : 'from-amber-400 to-orange-600'}`}></div>
+                <div className={`absolute top-0 left-0 w-full h-2 bg-gradient-to-r ${isPO ? 'from-success/40 to-success' : 'from-warning/40 to-warning'}`}></div>
 
                 <div className="flex justify-center mb-6">
                     <div className={`w-20 h-20 rounded-full flex items-center justify-center animate-in zoom-in spin-in-12 duration-500 ${isPO ? 'bg-success/15' : 'bg-warning/15'}`}>
@@ -46,24 +46,24 @@ export default function SuccessModal({ isOpen, type = 'po', poNumber = 'PO-2026-
 
                     <button
                         onClick={onCreateNew || onClose}
-                        className="w-full bg-muted hover:bg-zinc-200 dark:hover:bg-zinc-700 text-muted-foreground py-3 rounded-xl font-medium transition-colors"
+                        className="w-full bg-muted hover:bg-muted text-muted-foreground py-3 rounded-xl font-medium transition-colors"
                     >
                         Create New Quote
                     </button>
 
                     <div className="grid grid-cols-2 gap-3 mt-2">
-                        <button className="flex items-center justify-center gap-2 py-2.5 px-4 bg-muted hover:bg-zinc-200 dark:hover:bg-zinc-700 text-muted-foreground rounded-xl text-sm font-medium transition-colors">
+                        <button className="flex items-center justify-center gap-2 py-2.5 px-4 bg-muted hover:bg-muted text-muted-foreground rounded-xl text-sm font-medium transition-colors">
                             <ArrowDownTrayIcon className="w-4 h-4" />
                             Download PDF
                         </button>
-                        <button className="flex items-center justify-center gap-2 py-2.5 px-4 bg-muted hover:bg-zinc-200 dark:hover:bg-zinc-700 text-muted-foreground rounded-xl text-sm font-medium transition-colors">
+                        <button className="flex items-center justify-center gap-2 py-2.5 px-4 bg-muted hover:bg-muted text-muted-foreground rounded-xl text-sm font-medium transition-colors">
                             <ShareIcon className="w-4 h-4" />
                             Share
                         </button>
                     </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800 text-xs text-muted-foreground">
+                <div className="mt-6 pt-4 border-t border-border text-xs text-muted-foreground">
                     A confirmation email has been sent to accounting@dealer.com
                 </div>
             </div>

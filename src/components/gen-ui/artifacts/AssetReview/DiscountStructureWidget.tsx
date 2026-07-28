@@ -148,7 +148,7 @@ export default function DiscountStructureWidget({ subtotal, onApply }: DiscountS
         <div className="w-full bg-card rounded-xl shadow-sm border border-border flex flex-col h-full max-h-[800px]">
 
             {/* Header */}
-            <div className="p-6 border-b border-zinc-100 dark:border-zinc-800 shrink-0">
+            <div className="p-6 border-b border-border shrink-0">
                 <div className="flex items-center gap-3">
                     <div className="p-2 bg-muted rounded-lg">
                         <CalculatorIcon className="w-6 h-6 text-foreground" />
@@ -201,7 +201,7 @@ export default function DiscountStructureWidget({ subtotal, onApply }: DiscountS
                         const colorMap: Record<string, any> = {
                             blue: { bg: 'bg-info/10 dark:bg-info/10', border: 'border-info/20 dark:border-info/40/30', text: 'text-info', badge: 'bg-info/15' },
                             orange: { bg: 'bg-warning/10 dark:bg-warning/10', border: 'border-warning/20 dark:border-warning/40/30', text: 'text-warning', badge: 'bg-warning/15' },
-                            purple: { bg: 'bg-indigo-50 dark:bg-indigo-900/10', border: 'border-indigo-100 dark:border-indigo-800/30', text: 'text-indigo-700 dark:text-indigo-400', badge: 'bg-indigo-100 dark:bg-indigo-800' },
+                            purple: { bg: 'bg-ai/10', border: 'border-ai/30', text: 'text-ai', badge: 'bg-ai/10' },
                             green: { bg: 'bg-success/10 dark:bg-success/10', border: 'border-success/20 dark:border-success/40/30', text: 'text-success', badge: 'bg-success/15' },
                             teal: { bg: 'bg-teal-50 dark:bg-teal-900/10', border: 'border-teal-100 dark:border-teal-800/30', text: 'text-teal-700 dark:text-teal-400', badge: 'bg-teal-100 dark:bg-teal-800' },
                         };
@@ -241,7 +241,7 @@ export default function DiscountStructureWidget({ subtotal, onApply }: DiscountS
 
                                         <div className="space-y-3">
                                             {section.items.map(item => (
-                                                <div key={item.id} className="bg-card p-4 rounded-xl border border-zinc-100 dark:border-zinc-800 shadow-sm flex items-center justify-between hover:shadow-md transition-all">
+                                                <div key={item.id} className="bg-card p-4 rounded-xl border border-border shadow-sm flex items-center justify-between hover:shadow-md transition-all">
                                                     <div className="flex flex-col">
                                                         <div className="flex items-center gap-2 mb-1">
                                                             <span className="font-bold text-foreground">{item.label}</span>

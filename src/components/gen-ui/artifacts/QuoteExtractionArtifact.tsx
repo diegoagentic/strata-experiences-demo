@@ -209,8 +209,8 @@ export default function QuoteExtractionArtifact({ fileName, onComplete }: QuoteE
     return (
         <div className="h-full flex flex-col p-6 animate-in fade-in duration-500 overflow-hidden">
             <div className="text-center mb-6 shrink-0">
-                <div className="inline-flex items-center justify-center p-3.5 bg-emerald-50 dark:bg-emerald-900/10 rounded-2xl mb-3 relative">
-                    <div className="absolute inset-0 rounded-2xl border border-emerald-500/20 w-full h-full animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
+                <div className="inline-flex items-center justify-center p-3.5 bg-success/10 rounded-2xl mb-3 relative">
+                    <div className="absolute inset-0 rounded-2xl border border-success/20 w-full h-full animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
                     <SparklesIcon className="w-8 h-8 text-success dark:text-success" />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground">Autonomous Processing</h3>
@@ -224,7 +224,7 @@ export default function QuoteExtractionArtifact({ fileName, onComplete }: QuoteE
                         {index !== steps.length - 1 && (
                             <div className={clsx(
                                 "absolute left-[11px] top-6 w-0.5 h-full -z-10 transition-colors duration-500",
-                                step.status === 'complete' ? "bg-indigo-200 dark:bg-indigo-700/50" : "bg-muted"
+                                step.status === 'complete' ? "bg-ai/10" : "bg-muted"
                             )}></div>
                         )}
 
@@ -234,8 +234,8 @@ export default function QuoteExtractionArtifact({ fileName, onComplete }: QuoteE
                                 step.status === 'complete'
                                     ? "border-success text-success bg-success/10 dark:bg-success/10"
                                     : step.status === 'active'
-                                        ? "border-indigo-500 text-indigo-500 animate-pulse bg-indigo-50 dark:bg-indigo-900/10"
-                                        : "border-border text-zinc-300"
+                                        ? "border-ai/30 text-ai animate-pulse bg-ai/10"
+                                        : "border-border text-muted-foreground"
                             )}>
                                 {step.status === 'complete' ? (
                                     <CheckCircleIcon className="w-4 h-4" />
@@ -252,14 +252,14 @@ export default function QuoteExtractionArtifact({ fileName, onComplete }: QuoteE
                                     )}>
                                         {step.label}
                                     </h4>
-                                    {step.status === 'active' && <span className="text-[10px] text-indigo-500 font-mono animate-pulse">PROCESSING</span>}
+                                    {step.status === 'active' && <span className="text-[10px] text-ai font-mono animate-pulse">PROCESSING</span>}
                                 </div>
 
                                 {/* Logs for this step */}
                                 {(step.status === 'active' || (step.status === 'complete' && step.logs.length > 0)) && (
                                     <div className="mt-2 space-y-1">
                                         {step.logs.map((log, i) => (
-                                            <div key={i} className="flex gap-2 text-[11px] font-mono text-indigo-600/80 dark:text-indigo-400/80 animate-in slide-in-from-left-2 fade-in duration-300">
+                                            <div key={i} className="flex gap-2 text-[11px] font-mono text-ai animate-in slide-in-from-left-2 fade-in duration-300">
                                                 <span className="shrink-0 opacity-50">{'>'}</span>
                                                 <span>{log}</span>
                                             </div>
