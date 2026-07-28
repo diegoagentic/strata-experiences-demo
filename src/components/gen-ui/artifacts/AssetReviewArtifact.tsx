@@ -473,8 +473,10 @@ export default function AssetReviewArtifact({ data, source = 'upload', onApprove
                             Back
                         </button>
                     )}
-                    <div className="p-2 bg-primary/20 dark:bg-primary/10 rounded-lg">
-                        <SparklesIcon className="w-5 h-5 text-primary" />
+                    {/* F42.l · era bg-primary/20 + text-primary (LAW 3 · lime sobre lime tenue · ilegible).
+                        Pattern F22/F23.f/F29.d · icon pill sólido brand + dark inverse foreground. */}
+                    <div className="p-2 bg-primary text-primary-foreground rounded-lg">
+                        <SparklesIcon className="w-5 h-5" />
                     </div>
                     <div>
                         <h2 className="text-lg font-bold font-brand text-foreground flex items-center gap-2">

@@ -43,7 +43,7 @@ export default function ERPSelectorArtifact() {
                                 <td className="px-4 py-3">
                                     <button
                                         onClick={() => sendMessage(`Selected ERP Order: ${order.id}`)}
-                                        className="text-xs bg-primary/10 text-primary hover:bg-primary hover:text-white px-3 py-1.5 rounded-md font-medium transition-all opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0"
+                                        className="text-xs bg-primary text-primary-foreground hover:bg-primary hover:text-white px-3 py-1.5 rounded-md font-medium transition-all opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0"
                                     >
                                         Select
                                     </button>

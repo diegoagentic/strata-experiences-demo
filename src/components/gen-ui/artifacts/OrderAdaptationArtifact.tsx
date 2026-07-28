@@ -144,23 +144,23 @@ export default function OrderAdaptationArtifact({ initialData, onConfirm, onCanc
                         onClick={() => setCurrentStep('review')}
                         className={`flex items-center gap-2 px-4 py-1.5 rounded-full transition-all ${currentStep === 'review' ? 'bg-background shadow-sm text-foreground ring-1 ring-border' : 'text-muted-foreground hover:text-foreground'}`}
                     >
-                        <span className={`flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-bold ${currentStep === 'review' ? 'bg-primary/10 text-primary' : 'bg-zinc-200 dark:bg-zinc-700 text-muted-foreground'}`}>1</span>
+                        <span className={`flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-bold ${currentStep === 'review' ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>1</span>
                         Review Assets
                     </button>
-                    <div className="w-px h-4 bg-zinc-300 dark:bg-zinc-700 mx-1"></div>
+                    <div className="w-px h-4 bg-border mx-1"></div>
                     <button
                         onClick={() => setCurrentStep('discount')}
                         className={`flex items-center gap-2 px-4 py-1.5 rounded-full transition-all ${currentStep === 'discount' ? 'bg-background shadow-sm text-foreground ring-1 ring-border' : 'text-muted-foreground hover:text-foreground'}`}
                     >
-                        <span className={`flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-bold ${currentStep === 'discount' ? 'bg-primary/10 text-primary' : 'bg-zinc-200 dark:bg-zinc-700 text-muted-foreground'}`}>2</span>
+                        <span className={`flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-bold ${currentStep === 'discount' ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>2</span>
                         Pricing
                     </button>
-                    <div className="w-px h-4 bg-zinc-300 dark:bg-zinc-700 mx-1"></div>
+                    <div className="w-px h-4 bg-border mx-1"></div>
                     <button
                         onClick={() => setCurrentStep('finalize')}
                         className={`flex items-center gap-2 px-4 py-1.5 rounded-full transition-all ${currentStep === 'finalize' ? 'bg-background shadow-sm text-foreground ring-1 ring-border' : 'text-muted-foreground hover:text-foreground'}`}
                     >
-                        <span className={`flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-bold ${currentStep === 'finalize' ? 'bg-primary/10 text-primary' : 'bg-zinc-200 dark:bg-zinc-700 text-muted-foreground'}`}>3</span>
+                        <span className={`flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-bold ${currentStep === 'finalize' ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>3</span>
                         Finalize
                     </button>
                 </div>
@@ -181,13 +181,13 @@ export default function OrderAdaptationArtifact({ initialData, onConfirm, onCanc
                                     <div className="flex bg-muted p-1 rounded-lg">
                                         <button
                                             onClick={() => setFilter('all')}
-                                            className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${filter === 'all' ? 'bg-white dark:bg-zinc-700 shadow-sm text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
+                                            className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${filter === 'all' ? 'bg-card shadow-sm text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
                                         >
                                             All ({stats.total})
                                         </button>
                                         <button
                                             onClick={() => setFilter('attention')}
-                                            className={`px-3 py-1 rounded-md text-xs font-medium transition-all flex items-center gap-1.5 ${filter === 'attention' ? 'bg-white dark:bg-zinc-700 shadow-sm text-warning dark:text-warning' : 'text-muted-foreground hover:text-foreground'}`}
+                                            className={`px-3 py-1 rounded-md text-xs font-medium transition-all flex items-center gap-1.5 ${filter === 'attention' ? 'bg-card shadow-sm text-warning dark:text-warning' : 'text-muted-foreground hover:text-foreground'}`}
                                         >
                                             <ExclamationTriangleIcon className="w-3.5 h-3.5" />
                                             Alerts ({stats.attention})
@@ -250,7 +250,7 @@ export default function OrderAdaptationArtifact({ initialData, onConfirm, onCanc
                         </div>
 
                         {/* Right Panel: Preview */}
-                        <div className="w-1/3 border-l border-border bg-zinc-100 dark:bg-zinc-950 hidden lg:flex flex-col">
+                        <div className="w-1/3 border-l border-border bg-muted hidden lg:flex flex-col">
 
                             <div className="p-3 border-b border-border bg-background text-sm font-medium flex items-center gap-2">
                                 <DocumentTextIcon className="w-4 h-4" /> Order Summary
