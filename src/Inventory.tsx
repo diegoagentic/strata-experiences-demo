@@ -12,6 +12,10 @@ import { useDemoProfile } from './context/useDemoProfile';
 import StatusBadge, { type StatusTone } from './components/shared/StatusBadge';
 import ContinuaHealthAnalysis from './components/continua/ContinuaHealthAnalysis';
 import ContinuaReceiving from './components/continua/ContinuaReceiving';
+import ContinuaLocationSync from './components/continua/ContinuaLocationSync';
+import ContinuaOfficeRelocation from './components/continua/ContinuaOfficeRelocation';
+import ContinuaReuseAssessment from './components/continua/ContinuaReuseAssessment';
+import ContinuaConsignmentReview from './components/continua/ContinuaConsignmentReview';
 import { CONTINUA_STEP_TIMING } from './config/profiles/continua-demo';
 import { AIAgentAvatar } from './components/simulations/DemoAvatars';
 import Breadcrumbs from './components/Breadcrumbs';
@@ -1069,380 +1073,42 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                 )}
 
                 {/* ═══ Continua Step 1.4 — Multi-Location Sync (auto 8s) ═══ */}
-                {isContinua && stepId === '1.4' && syncPhase !== 'idle' && (
-                    <div data-demo-target="multi-location-sync" className="space-y-4 mb-6">
-                        {/* F42.a · Notification "Multi-Location Sync" migrado al ActionCenter
-                            (continua-1.4-location-sync). */}
-
-                        {/* Processing */}
-                        {syncPhase === 'processing' && (
-                            <div className="p-4 rounded-xl bg-card border border-border shadow-sm animate-in fade-in duration-300">
-                                <div className="flex items-center gap-2 mb-3">
-                                    <AIAgentAvatar size="sm" />
-                                    <span className="text-xs font-bold text-foreground">LocationSyncAgent Synchronizing...</span>
-                                </div>
-                                <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                    <div className="h-full rounded-full bg-info/10 transition-all duration-[3500ms] ease-linear" style={{ width: `${syncProgress}%` }} />
-                                </div>
-                                <div className="space-y-1.5">
-                                    {syncAgents.map(agent => (
-                                        <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-info animate-spin shrink-0" />}
-                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-info")}>{agent.name}</span>
-                                            <span className="text-muted-foreground">{agent.detail}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Breathing */}
-                        {syncPhase === 'breathing' && (
-                            <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-success/10 animate-pulse" />
-                                <span className="text-xs font-semibold text-muted-foreground">Processing complete — syncing external systems...</span>
-                            </div>
-                        )}
-
-                        {/* Confirmed */}
-                        {(syncPhase === 'revealed' || syncPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-success/10 border-2 border-success/30 dark:border-success/30 animate-in fade-in duration-300">
-                                <div className="flex items-start gap-2">
-                                    <AIAgentAvatar size="sm" />
-                                    <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-success"><span className="font-bold">LocationSyncAgent:</span> All locations synced — <span className="font-semibold">45 in-transit</span>, 12 pending QC, 8 allocated. Route optimization: <span className="font-semibold">$1,800 freight savings</span>.</p>
-                                        <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-bold text-success uppercase tracking-wider">External Systems · Synced</span>
-                                        </div>
-                                        <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
-                                            {['WMS', 'GPS Tracker', 'QC System', 'Route Engine', 'Map Service'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/10 text-success text-[10px] font-medium border border-success/50 dark:border-success/20">
-                                                    <CheckCircleIcon className="h-3 w-3" />{sys}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Results */}
-                        {syncPhase === 'results' && (
-                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm">
-                                    {/* Header */}
-                                    <div className="p-4 border-b border-border/50 flex items-center justify-between">
-                                        <div>
-                                            <h3 className="text-sm font-bold text-foreground">Location Sync Status</h3>
-                                            <p className="text-[11px] text-muted-foreground mt-0.5">5 locations · 2,580 total items · Real-time tracking</p>
-                                        </div>
-                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-success/10 text-success font-bold">All Synced</span>
-                                    </div>
-
-                                    {/* Location Cards */}
-                                    <div className="p-4 space-y-2">
-                                        {LOCATION_STATUS.map(loc => {
-                                            // Animated status after sync completes
-                                            const animatedStatus = syncCardsAnimated ? (
-                                                loc.inTransit ? 'Delivered' :
-                                                loc.pendingQC ? 'QC Cleared' :
-                                                loc.allocated ? 'Shipped' :
-                                                loc.receiving ? 'Received' :
-                                                null
-                                            ) : null;
-                                            return (
-                                            <div key={loc.name} className={cn("flex items-center justify-between p-3 rounded-xl border transition-all duration-500",
-                                                syncCardsAnimated && animatedStatus ? "border-success/30 dark:border-success/30 bg-success/30 dark:bg-success/5" :
-                                                loc.type === 'Job Site' ? "border-info/30 dark:border-info/20 bg-info/30 dark:bg-info/5" : "border-border bg-muted/20"
-                                            )}>
-                                                <div className="flex items-center gap-3">
-                                                    <MapPinIcon className={cn("h-4 w-4 shrink-0 transition-colors duration-500",
-                                                        syncCardsAnimated && animatedStatus ? "text-success" :
-                                                        loc.type === 'Job Site' ? "text-info" : "text-muted-foreground"
-                                                    )} />
-                                                    <div>
-                                                        <p className="text-[11px] font-medium text-foreground">{loc.name}</p>
-                                                        <p className="text-[10px] text-muted-foreground">
-                                                            {syncCardsAnimated && loc.inTransit ? <>{loc.items + loc.inTransit} items · <span className="text-success font-semibold">{loc.inTransit} delivered</span></> :
-                                                             syncCardsAnimated && loc.pendingQC ? <>{loc.items} items · <span className="text-success font-semibold">{loc.pendingQC} QC cleared</span></> :
-                                                             syncCardsAnimated && loc.allocated ? <>{loc.items} items · <span className="text-success font-semibold">{loc.allocated} shipped</span></> :
-                                                             syncCardsAnimated && loc.receiving ? <>{loc.items} items · <span className="text-success font-semibold">Delivery received</span></> :
-                                                             <>{loc.items} items
-                                                            {loc.inTransit ? ` · ${loc.inTransit} in-transit` : ''}
-                                                            {loc.pendingQC ? ` · ${loc.pendingQC} pending QC` : ''}
-                                                            {loc.allocated ? ` · ${loc.allocated} allocated` : ''}
-                                                            {loc.receiving ? ' · Receiving active' : ''}</>}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    {loc.utilization && (
-                                                        <div className="flex items-center gap-1.5">
-                                                            <div className="w-16 h-1.5 rounded-full bg-muted overflow-hidden">
-                                                                <div className={cn("h-full rounded-full", loc.utilization > 60 ? "bg-warning/10" : "bg-success/10")} style={{ width: `${loc.utilization}%` }} />
-                                                            </div>
-                                                            <span className="text-[10px] font-medium text-foreground">{loc.utilization}%</span>
-                                                        </div>
-                                                    )}
-                                                    {animatedStatus ? (
-                                                        <span className="text-[9px] px-2 py-0.5 rounded-full font-bold bg-success/10 text-success animate-in fade-in zoom-in-95 duration-500 flex items-center gap-1">
-                                                            <CheckCircleIcon className="h-3 w-3" />{animatedStatus}
-                                                        </span>
-                                                    ) : (
-                                                        <span className={cn("text-[9px] px-2 py-0.5 rounded-full font-bold",
-                                                            loc.status === 'Active' ? "bg-success/10 text-success" :
-                                                            loc.status === 'Receiving' ? "bg-info/10 dark:bg-info/10 text-info" :
-                                                            "bg-muted text-muted-foreground"
-                                                        )}>{loc.status}</span>
-                                                    )}
-                                                </div>
-                                            </div>
-                                            );
-                                        })}
-                                    </div>
-
-                                    {/* Route Optimization */}
-                                    <div className="mx-4 mb-4 p-3 rounded-xl bg-success/10 border border-success/30 dark:border-success/20">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-2">
-                                                <TruckIcon className="h-4 w-4 text-success" />
-                                                <div>
-                                                    <p className="text-[11px] font-bold text-success">Route Optimization Applied</p>
-                                                    <p className="text-[10px] text-success">2 deliveries consolidated to UAL HQ — same-day schedule</p>
-                                                </div>
-                                            </div>
-                                            <span className="text-sm font-bold text-success">-$1,800</span>
-                                        </div>
-                                    </div>
-
-                                    {/* Auto-advance footer */}
-                                    <div className="px-4 py-3 border-t border-border/50 bg-muted/20 flex items-center justify-between">
-                                        <p className="text-[10px] text-muted-foreground">All 5 locations synchronized · Transit and QC status updated in real-time</p>
-                                        <span className="text-[10px] px-3 py-1.5 rounded-lg bg-muted text-muted-foreground font-medium">Auto-advancing...</span>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
+                {isContinua && stepId === '1.4' && syncPhase !== 'idle' && syncPhase !== 'notification' && (
+                    <ContinuaLocationSync
+                        syncPhase={syncPhase as 'processing' | 'breathing' | 'revealed' | 'results'}
+                        syncProgress={syncProgress}
+                        syncAgents={syncAgents}
+                        locationStatus={LOCATION_STATUS}
+                        syncCardsAnimated={syncCardsAnimated}
+                    />
                 )}
-
-                {/* ═══ FM Step 2.4 — Quick Action Office Relocation ═══ */}
+                {/* F42.d.2 · scene 2.4 FM Office Relocation extraído (solo phase committed) */}
                 {isContinua && stepId === '2.4' && fmRelocPhase !== 'idle' && (
-                    <div className="space-y-4 mb-6">
-                        {/* F42.a · Notification "Quick Action — Office Relocation" migrado al ActionCenter
-                            (continua-2.4-relocation). Advance a modal-open al click Start relocation. */}
-
-                        {/* Committed confirmation */}
-                        {fmRelocPhase === 'committed' && (
-                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                                <div className="p-3 rounded-xl bg-success/10 border border-success/30 dark:border-success/30">
-                                    <div className="flex items-start gap-2">
-                                        <CheckCircleIcon className="h-4 w-4 text-success shrink-0 mt-0.5" />
-                                        <div className="flex-1 min-w-0">
-                                            <p className="text-xs font-bold text-success">Assets Relocated Successfully</p>
-                                            <p className="text-[10px] text-success mt-1">Office 3-214 → Office 3-216. Inventory updated.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
+                    <ContinuaOfficeRelocation fmRelocPhase={fmRelocPhase as 'notification' | 'modal-open' | 'committed'} />
                 )}
 
                 {/* ═══ Continua Step 1.2 — Reuse Assessment & Cataloging (interactive) ═══ */}
-                {isContinua && stepId === '1.2' && reusePhase !== 'idle' && (
-                    <div className="space-y-4 mb-6">
-                        {/* F42.a · Notification "Reuse Assessment" migrado al ActionCenter
-                            (continua-1.2-reuse). */}
-
-                        {/* Processing */}
-                        {reusePhase === 'processing' && (
-                            <div className="p-4 rounded-xl bg-card border border-border shadow-sm animate-in fade-in duration-300">
-                                <div className="flex items-center gap-2 mb-3">
-                                    <AIAgentAvatar size="sm" />
-                                    <span className="text-xs font-bold text-foreground">SustainabilityAgent Assessing...</span>
-                                </div>
-                                <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                    <div className="h-full rounded-full bg-success transition-all duration-[3500ms] ease-linear" style={{ width: `${reuseProgress}%` }} />
-                                </div>
-                                <div className="space-y-1.5">
-                                    {reuseAgents.map(agent => (
-                                        <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-success animate-spin shrink-0" />}
-                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-success dark:text-success")}>{agent.name}</span>
-                                            <span className="text-muted-foreground">{agent.detail}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Breathing */}
-                        {reusePhase === 'breathing' && (
-                            <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-success/10 animate-pulse" />
-                                <span className="text-xs font-semibold text-muted-foreground">Assessment complete — cataloging items...</span>
-                            </div>
-                        )}
-
-                        {/* Revealed */}
-                        {(reusePhase === 'revealed' || reusePhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-success/10 border-2 border-success/30 dark:border-success/30 animate-in fade-in duration-300">
-                                <div className="flex items-start gap-2">
-                                    <AIAgentAvatar size="sm" />
-                                    <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-success"><span className="font-bold">SustainabilityAgent:</span> 340 items classified — <span className="font-semibold">180 reusable</span>, 95 recyclable, 65 EOL. Savings: <span className="font-semibold">$89,000</span> vs new procurement.</p>
-                                        <div className="flex flex-wrap items-center gap-1.5 mt-2">
-                                            {['Condition Scanner', 'Reuse Catalog', 'Value Engine', 'Sustainability'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/10 text-success text-[10px] font-medium border border-success/50 dark:border-success/20">
-                                                    <CheckCircleIcon className="h-3 w-3" />{sys}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Results */}
-                        {reusePhase === 'results' && (
-                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm">
-                                    <div className="p-4 border-b border-border/50 flex items-center justify-between">
-                                        <div>
-                                            <h3 className="text-sm font-bold text-foreground">Reuse Assessment — Floor 7 Teardown</h3>
-                                            <p className="text-[11px] text-muted-foreground mt-0.5">340 items evaluated · 180 reusable · $89K savings</p>
-                                        </div>
-                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-success/10 dark:bg-success/10 text-success dark:text-success font-bold">ASSESSED</span>
-                                    </div>
-                                    <div className="p-4 space-y-2">
-                                        {REUSE_ITEMS.map(item => (
-                                            <div key={item.category} className="flex items-center justify-between p-3 rounded-xl border border-border bg-muted/20">
-                                                <div className="flex items-center gap-3">
-                                                    <CubeIcon className="h-4 w-4 text-muted-foreground shrink-0" />
-                                                    <div>
-                                                        <p className="text-[11px] font-medium text-foreground">{item.category}</p>
-                                                        <p className="text-[10px] text-muted-foreground">Condition: {item.condition}/5 · Value: {item.value}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-success/10 dark:bg-success/10 text-success dark:text-success font-bold">{item.reusable} reuse</span>
-                                                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-info/10 dark:bg-info/10 text-info font-medium">{item.recyclable} recycle</span>
-                                                    {item.eol > 0 && <span className="text-[9px] px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-muted0/10 text-muted-foreground font-medium">{item.eol} EOL</span>}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div className="px-4 py-3 border-t border-border/50 bg-success/10 dark:bg-success/5">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-3">
-                                                <span className="text-[10px] text-muted-foreground">Savings vs new: <span className="font-bold text-success dark:text-success">$89,000</span></span>
-                                                <span className="text-[10px] text-muted-foreground">Carbon offset: <span className="font-bold text-success dark:text-success">2.4 tons</span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button onClick={() => nextStep()} className="w-full mt-4 py-3 px-4 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-sm transition-colors shadow-md flex items-center justify-center gap-2">
-                                    <CheckCircleIcon className="h-5 w-5" />
-                                    Catalog Reusable Items
-                                </button>
-                            </div>
-                        )}
-                    </div>
+                {/* F42.d.2 · scene 1.2 Reuse Assessment extraído */}
+                {isContinua && stepId === '1.2' && reusePhase !== 'idle' && reusePhase !== 'notification' && (
+                    <ContinuaReuseAssessment
+                        reusePhase={reusePhase as 'processing' | 'breathing' | 'revealed' | 'results'}
+                        reuseProgress={reuseProgress}
+                        reuseAgents={reuseAgents}
+                        reuseItems={REUSE_ITEMS}
+                        onCatalog={nextStep}
+                    />
                 )}
 
                 {/* ═══ Continua Step 1.5 — Consignment & Vendor Returns (interactive) ═══ */}
-                {isContinua && stepId === '1.5' && consignPhase !== 'idle' && (
-                    <div className="space-y-4 mb-6">
-                        {/* F42.a · Notification "Consignment Review" migrado al ActionCenter
-                            (continua-1.5-consignment). */}
-
-                        {/* Processing */}
-                        {consignPhase === 'processing' && (
-                            <div className="p-4 rounded-xl bg-card border border-border shadow-sm animate-in fade-in duration-300">
-                                <div className="flex items-center gap-2 mb-3">
-                                    <AIAgentAvatar size="sm" />
-                                    <span className="text-xs font-bold text-foreground">ConsignmentAgent Analyzing...</span>
-                                </div>
-                                <div className="h-1.5 rounded-full bg-muted overflow-hidden mb-3">
-                                    <div className="h-full rounded-full bg-destructive/10 transition-all duration-[3500ms] ease-linear" style={{ width: `${consignProgress}%` }} />
-                                </div>
-                                <div className="space-y-1.5">
-                                    {consignAgents.map(agent => (
-                                        <div key={agent.name} className={cn("flex items-center gap-2 text-[10px] transition-all duration-300", agent.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2")}>
-                                            {agent.done ? <CheckCircleIcon className="h-3.5 w-3.5 text-success shrink-0" /> : <ArrowPathIcon className="h-3.5 w-3.5 text-destructive animate-spin shrink-0" />}
-                                            <span className={cn("font-medium", agent.done ? "text-foreground" : "text-destructive")}>{agent.name}</span>
-                                            <span className="text-muted-foreground">{agent.detail}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Breathing */}
-                        {consignPhase === 'breathing' && (
-                            <div className="p-4 rounded-xl bg-muted/30 border border-border/50 animate-in fade-in duration-300 flex items-center justify-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-success/10 animate-pulse" />
-                                <span className="text-xs font-semibold text-muted-foreground">Analysis complete — preparing decisions...</span>
-                            </div>
-                        )}
-
-                        {/* Revealed */}
-                        {(consignPhase === 'revealed' || consignPhase === 'results') && (
-                            <div className="p-4 rounded-xl bg-success/10 border-2 border-success/30 dark:border-success/30 animate-in fade-in duration-300">
-                                <div className="flex items-start gap-2">
-                                    <AIAgentAvatar size="sm" />
-                                    <div className="flex-1 min-w-0">
-                                        <p className="text-xs text-success"><span className="font-bold">ConsignmentAgent:</span> 12 items analyzed — <span className="font-semibold">4 RMA auto-generated</span> ($8,200), <span className="font-semibold">4 convert-to-purchase</span> recommended (demand +12%).</p>
-                                        <div className="flex flex-wrap items-center gap-1.5 mt-2">
-                                            {['Consignment DB', 'RMA System', 'Demand Forecast', 'Manufacturer Portal'].map(sys => (
-                                                <span key={sys} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/10 text-success text-[10px] font-medium border border-success/50 dark:border-success/20">
-                                                    <CheckCircleIcon className="h-3 w-3" />{sys}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Results */}
-                        {consignPhase === 'results' && (
-                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm">
-                                    <div className="p-4 border-b border-border/50 flex items-center justify-between">
-                                        <div>
-                                            <h3 className="text-sm font-bold text-foreground">Consignment Decisions</h3>
-                                            <p className="text-[11px] text-muted-foreground mt-0.5">8 items · 4 RMA returns · 4 convert-to-purchase</p>
-                                        </div>
-                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-destructive/10 dark:bg-destructive/10 text-destructive font-bold">ACTION REQ</span>
-                                    </div>
-                                    <div className="p-4 space-y-2">
-                                        {CONSIGNMENT_ITEMS.map(item => (
-                                            <div key={item.name} className={cn("flex items-center justify-between p-3 rounded-xl border", item.action === 'RMA' ? "border-destructive/30 dark:border-destructive/20 bg-destructive/30 dark:bg-destructive/5" : "border-info/30 dark:border-info/20 bg-info/30 dark:bg-info/5")}>
-                                                <div className="flex items-center gap-3">
-                                                    <CubeIcon className={cn("h-4 w-4 shrink-0", item.action === 'RMA' ? "text-destructive" : "text-info")} />
-                                                    <div>
-                                                        <p className="text-[11px] font-medium text-foreground">{item.name}</p>
-                                                        <p className="text-[10px] text-muted-foreground">{item.mfr} · {item.daysLeft} days left · {item.value}</p>
-                                                    </div>
-                                                </div>
-                                                <span className={cn("text-[9px] px-2.5 py-1 rounded-full font-bold", item.action === 'RMA' ? "bg-destructive/10 text-destructive" : "bg-info/10 dark:bg-info/10 text-info")}>{item.action === 'RMA' ? 'Return (RMA)' : 'Convert to Purchase'}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div className="px-4 py-3 border-t border-border/50 bg-muted/20 flex items-center justify-between">
-                                        <span className="text-[10px] text-muted-foreground">RMA value: <span className="font-bold text-foreground">$8,200</span></span>
-                                        <span className="text-[10px] text-muted-foreground">Conversion savings: <span className="font-bold text-foreground">$3,400</span></span>
-                                    </div>
-                                </div>
-                                <button onClick={() => nextStep()} className="w-full mt-4 py-3 px-4 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-sm transition-colors shadow-md flex items-center justify-center gap-2">
-                                    <CheckCircleIcon className="h-5 w-5" />
-                                    Process Decisions
-                                </button>
-                            </div>
-                        )}
-                    </div>
+                {/* F42.d.2 · scene 1.5 Consignment Review extraído */}
+                {isContinua && stepId === '1.5' && consignPhase !== 'idle' && consignPhase !== 'notification' && (
+                    <ContinuaConsignmentReview
+                        consignPhase={consignPhase as 'processing' | 'breathing' | 'revealed' | 'results'}
+                        consignProgress={consignProgress}
+                        consignAgents={consignAgents}
+                        consignmentItems={CONSIGNMENT_ITEMS}
+                        onProcess={nextStep}
+                    />
                 )}
 
                 {/* Main Content (Tabs Logic) */}
