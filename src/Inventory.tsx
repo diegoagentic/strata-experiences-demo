@@ -10,7 +10,7 @@ import { useTenant } from './TenantContext';
 import { useDemo } from './context/DemoContext';
 import { useDemoProfile } from './context/useDemoProfile';
 import StatusBadge, { type StatusTone } from './components/shared/StatusBadge';
-import { HeroMetric, ViewToggle, FilterPills } from 'strata-design-system';
+import { HeroMetric, ViewToggle, FilterPills, DataListToolbar, DataListTable, DataListCardGrid, type ColumnDef } from 'strata-design-system';
 import { List as LucideList, LayoutGrid as LucideLayoutGrid } from 'lucide-react';
 import ContinuaHealthAnalysis from './components/continua/ContinuaHealthAnalysis';
 import ContinuaReceiving from './components/continua/ContinuaReceiving';
@@ -1110,146 +1110,163 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                     activeTab === 'inventory' && (
                         <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
 
-                            {/* Filters & View Toggle Bar */}
-                            <div className="bg-card p-4 rounded-xl border border-border shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
-
-                                {/* Left: Search & Filters */}
-                                <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
-                                    <div className="relative w-full sm:w-64">
-                                        <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                                        <input
-                                            type="text"
-                                            placeholder="Search assets..."
-                                            value={searchQuery}
-                                            onChange={(e) => setSearchQuery(e.target.value)}
-                                            className="w-full pl-9 pr-4 py-2 bg-muted dark:bg-card/50 border border-border rounded-lg text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all"
+                            {/* F42.f Task H5 · DataListToolbar unificado (search + filters + view toggle) */}
+                            <div className="bg-card p-4 rounded-xl border border-border shadow-sm">
+                                <DataListToolbar
+                                    search={
+                                        <div className="relative">
+                                            <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                                            <input
+                                                type="text"
+                                                placeholder="Search assets..."
+                                                value={searchQuery}
+                                                onChange={(e) => setSearchQuery(e.target.value)}
+                                                className="w-full pl-9 pr-4 py-2 bg-muted dark:bg-card/50 border border-border rounded-lg text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all"
+                                            />
+                                        </div>
+                                    }
+                                    filters={
+                                        <div className="flex items-center gap-2">
+                                            <Select
+                                                value={filterType}
+                                                onChange={setFilterType}
+                                                options={['All Types', ...uniqueTypes]}
+                                                className="w-40"
+                                            />
+                                            <Select
+                                                value={filterLocation}
+                                                onChange={setFilterLocation}
+                                                options={['All Locations', ...uniqueLocations]}
+                                                className="w-52"
+                                            />
+                                        </div>
+                                    }
+                                    actions={
+                                        <ViewToggle<'list' | 'grid'>
+                                            options={[
+                                                { value: 'list', icon: LucideList, label: 'List view' },
+                                                { value: 'grid', icon: LucideLayoutGrid, label: 'Grid view' },
+                                            ]}
+                                            value={viewMode}
+                                            onChange={setViewMode}
+                                            size="md"
                                         />
-                                    </div>
-                                    <div className="flex items-center gap-2 w-full sm:w-auto">
-                                        <Select
-                                            value={filterType}
-                                            onChange={setFilterType}
-                                            options={['All Types', ...uniqueTypes]}
-                                            className="w-40"
-                                        />
-                                        <Select
-                                            value={filterLocation}
-                                            onChange={setFilterLocation}
-                                            options={['All Locations', ...uniqueLocations]}
-                                            className="w-52"
-                                        />
-                                    </div>
-                                </div>
-
-                                {/* F42.e Task H4 · ViewToggle refactored a primitive.
-                                    Icons de lucide-react (List · LayoutGrid) por API constraint del primitive. */}
-                                <ViewToggle<'list' | 'grid'>
-                                    options={[
-                                        { value: 'list', icon: LucideList, label: 'List view' },
-                                        { value: 'grid', icon: LucideLayoutGrid, label: 'Grid view' },
-                                    ]}
-                                    value={viewMode}
-                                    onChange={setViewMode}
-                                    size="md"
+                                    }
                                 />
                             </div>
 
-                            {/* List View */}
-                            {viewMode === 'list' && (
-                                <div className="bg-card rounded-xl border border-border shadow-sm overflow-hidden">
-                                    <div className="overflow-x-auto">
-                                        <table className="w-full text-left text-sm">
-                                            <thead className="bg-muted dark:bg-card/50 border-b border-border">
-                                                <tr>
-                                                    <th className="p-4 w-12">
-                                                        <input
-                                                            type="checkbox"
-                                                            className="rounded border-border text-primary focus:ring-primary"
-                                                            checked={filteredData.length > 0 && selectedIds.size === filteredData.length}
-                                                            onChange={toggleAll}
+                            {/* F42.f Task H3 · List View · DataListTable primitive con columns spec */}
+                            {viewMode === 'list' && (() => {
+                                const columns: ColumnDef<InventoryItem>[] = [
+                                    {
+                                        key: 'select',
+                                        header: (
+                                            <input
+                                                type="checkbox"
+                                                className="rounded border-border text-primary focus:ring-primary"
+                                                checked={filteredData.length > 0 && selectedIds.size === filteredData.length}
+                                                onChange={toggleAll}
+                                            />
+                                        ),
+                                        width: 'w-12',
+                                        cell: (item) => (
+                                            <input
+                                                type="checkbox"
+                                                className="rounded border-border text-primary focus:ring-primary"
+                                                checked={selectedIds.has(item.id)}
+                                                onChange={() => toggleSelection(item.id)}
+                                                onClick={(e) => e.stopPropagation()}
+                                            />
+                                        ),
+                                    },
+                                    {
+                                        key: 'asset',
+                                        header: 'Asset',
+                                        cell: (item) => (
+                                            <div className="flex items-center gap-3">
+                                                {item.image ? (
+                                                    <>
+                                                        <img
+                                                            src={item.image}
+                                                            alt={item.assetName}
+                                                            className="w-10 h-10 rounded-lg object-cover border border-border"
+                                                            onError={(e) => {
+                                                                e.currentTarget.style.display = 'none';
+                                                                e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                                                                e.currentTarget.nextElementSibling?.classList.add('flex');
+                                                            }}
                                                         />
-                                                    </th>
-                                                    <th className="p-4 font-medium text-muted-foreground uppercase text-xs tracking-wider">Asset</th>
-                                                    <th className="p-4 font-medium text-muted-foreground uppercase text-xs tracking-wider">Category</th>
-                                                    <th className="p-4 font-medium text-muted-foreground uppercase text-xs tracking-wider">Location</th>
-                                                    <th className="p-4 font-medium text-muted-foreground uppercase text-xs tracking-wider">Status</th>
-                                                    <th className="p-4 font-medium text-muted-foreground uppercase text-xs tracking-wider">Value</th>
-                                                    <th className="p-4 font-medium text-muted-foreground uppercase text-xs tracking-wider">Carbon Impact</th>
-                                                    <th className="p-4 font-medium text-muted-foreground uppercase text-xs tracking-wider text-right">Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
-                                                {filteredData.map((item) => (
-                                                    <tr key={item.id} className={cn("group hover:bg-muted/50 transition-colors", selectedIds.has(item.id) ? "bg-primary/5 hover:bg-primary/10" : "")}>
-                                                        <td className="p-4">
-                                                            <input
-                                                                type="checkbox"
-                                                                className="rounded border-border text-primary focus:ring-primary"
-                                                                checked={selectedIds.has(item.id)}
-                                                                onChange={() => toggleSelection(item.id)}
-                                                            />
-                                                        </td>
-                                                        <td className="p-4">
-                                                            <div className="flex items-center gap-3">
-                                                                {item.image ? (
-                                                                    <>
-                                                                        <img
-                                                                            src={item.image}
-                                                                            alt={item.assetName}
-                                                                            className="w-10 h-10 rounded-lg object-cover border border-border"
-                                                                            onError={(e) => {
-                                                                                e.currentTarget.style.display = 'none';
-                                                                                e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                                                                                e.currentTarget.nextElementSibling?.classList.add('flex');
-                                                                            }}
-                                                                        />
-                                                                        <div className="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-card hidden items-center justify-center border border-border">
-                                                                            {getCategoryIcon(item.category, "w-6 h-6 text-muted-foreground")}
-                                                                        </div>
-                                                                    </>
-                                                                ) : (
-                                                                    <div className="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-card flex items-center justify-center border border-border">
-                                                                        {getCategoryIcon(item.category, "w-6 h-6 text-muted-foreground")}
-                                                                    </div>
-                                                                )}
-                                                                <div>
-                                                                    <p className="font-semibold text-foreground">{item.assetName}</p>
-                                                                    <p className="text-xs text-muted-foreground">{item.description}</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td className="p-4 text-muted-foreground">{item.category}</td>
-                                                        <td className="p-4">
-                                                            <div className="flex items-center gap-1.5 text-muted-foreground">
-                                                                <MapPinIcon className="w-3.5 h-3.5 text-muted-foreground" />
-                                                                <span>{item.location}</span>
-                                                            </div>
-                                                        </td>
-                                                        <td className="p-4">
-                                                            <StatusBadge label={item.status} tone={getStatusTone(item.status)} size="md" uppercase={false} />
-                                                        </td>
-                                                        <td className="p-4 font-medium">${item.value.toFixed(2)}</td>
-                                                        <td className="p-4">
-                                                            <span className={cn("px-2 py-0.5 rounded text-xs font-medium", getImpactBadge(item.carbonImpact))}>
-                                                                {item.carbonImpact}
-                                                            </span>
-                                                        </td>
-                                                        <td className="p-4 text-right">
-                                                            <button className="p-1.5 text-muted-foreground hover:text-foreground rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">
-                                                                <EllipsisHorizontalIcon className="w-5 h-5" />
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            )}
+                                                        <div className="w-10 h-10 rounded-lg bg-muted hidden items-center justify-center border border-border">
+                                                            {getCategoryIcon(item.category, "w-6 h-6 text-muted-foreground")}
+                                                        </div>
+                                                    </>
+                                                ) : (
+                                                    <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center border border-border">
+                                                        {getCategoryIcon(item.category, "w-6 h-6 text-muted-foreground")}
+                                                    </div>
+                                                )}
+                                                <div>
+                                                    <p className="font-semibold text-foreground">{item.assetName}</p>
+                                                    <p className="text-xs text-muted-foreground">{item.description}</p>
+                                                </div>
+                                            </div>
+                                        ),
+                                    },
+                                    { key: 'category', header: 'Category', cell: (item) => <span className="text-muted-foreground">{item.category}</span> },
+                                    {
+                                        key: 'location',
+                                        header: 'Location',
+                                        cell: (item) => (
+                                            <div className="flex items-center gap-1.5 text-muted-foreground">
+                                                <MapPinIcon className="w-3.5 h-3.5 text-muted-foreground" />
+                                                <span>{item.location}</span>
+                                            </div>
+                                        ),
+                                    },
+                                    {
+                                        key: 'status',
+                                        header: 'Status',
+                                        cell: (item) => (
+                                            <StatusBadge label={item.status} tone={getStatusTone(item.status)} size="md" uppercase={false} />
+                                        ),
+                                    },
+                                    { key: 'value', header: 'Value', cell: (item) => <span className="font-medium">${item.value.toFixed(2)}</span> },
+                                    {
+                                        key: 'carbon',
+                                        header: 'Carbon Impact',
+                                        cell: (item) => (
+                                            <span className={cn("px-2 py-0.5 rounded text-xs font-medium", getImpactBadge(item.carbonImpact))}>
+                                                {item.carbonImpact}
+                                            </span>
+                                        ),
+                                    },
+                                    {
+                                        key: 'actions',
+                                        header: 'Actions',
+                                        align: 'right',
+                                        cell: () => (
+                                            <button className="p-1.5 text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors">
+                                                <EllipsisHorizontalIcon className="w-5 h-5" />
+                                            </button>
+                                        ),
+                                    },
+                                ];
+                                return (
+                                    <DataListTable<InventoryItem>
+                                        rows={filteredData}
+                                        columns={columns}
+                                        getRowKey={(item) => item.id}
+                                    />
+                                );
+                            })()}
 
                             {/* Grid View */}
+                            {/* F42.f Task H2 · Grid wrapper refactored a DataListCardGrid primitive.
+                                Card layout custom (image hero + overlay + status badge on image) queda
+                                inline · DataListCard primitive es slot-based (label/value pairs) · no
+                                matchea el pattern image-hero de assets. */}
                             {viewMode === 'grid' && (
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                                <DataListCardGrid columns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" className="gap-6">
                                     {paginatedData.map((item) => (
                                         <div
                                             key={item.id}
@@ -1339,7 +1356,7 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                             </div>
                                         </div>
                                     ))}
-                                </div>
+                                </DataListCardGrid>
                             )}
                             {/* Pagination Footer */}
                             {filteredData.length > 0 && (
