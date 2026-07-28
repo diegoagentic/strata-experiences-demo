@@ -10,6 +10,8 @@ import { useTenant } from './TenantContext';
 import { useDemo } from './context/DemoContext';
 import { useDemoProfile } from './context/useDemoProfile';
 import StatusBadge, { type StatusTone } from './components/shared/StatusBadge';
+import { HeroMetric, ViewToggle, FilterPills } from 'strata-design-system';
+import { List as LucideList, LayoutGrid as LucideLayoutGrid } from 'lucide-react';
 import ContinuaHealthAnalysis from './components/continua/ContinuaHealthAnalysis';
 import ContinuaReceiving from './components/continua/ContinuaReceiving';
 import ContinuaLocationSync from './components/continua/ContinuaLocationSync';
@@ -171,6 +173,22 @@ const MOCK_INVENTORY: InventoryItem[] = Array.from({ length: 50 }, (_, i) => {
 // Summary Data adapted for Inventory by Time Period
 type InvTimePeriod = 'Day' | 'Week' | 'Month' | 'Quarter';
 type InvSummaryItem = { label: string; value: string; sub: string; icon: JSX.Element; color: string; trend: string; trendUp: boolean };
+
+// F42.e Task H1 · mapping color legacy → HeroMetric tone semantic.
+type HeroMetricTone = 'brand' | 'success' | 'warning' | 'ai' | 'info' | 'danger' | 'neutral';
+const COLOR_TO_TONE: Record<string, HeroMetricTone> = {
+    blue: 'info',
+    green: 'success',
+    orange: 'warning',
+    purple: 'ai',
+    indigo: 'ai',
+    red: 'danger',
+    yellow: 'warning',
+    emerald: 'success',
+    amber: 'warning',
+    sky: 'info',
+    brand: 'brand',
+};
 
 const inventorySummaryByPeriod: Record<InvTimePeriod, Record<string, InvSummaryItem>> = {
     Day: {
@@ -859,37 +877,16 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                 {/* Header Container */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
-                        {/* Pill-style Tabs (Matching Transactions) */}
-                        <div className="flex gap-1 bg-zinc-100 dark:bg-card/50 p-1 rounded-lg w-fit overflow-x-auto max-w-full border border-border">
-                            {[
-                                { id: 'inventory', label: 'Inventory', count: MOCK_INVENTORY.length },
-                                { id: 'locations', label: 'Locations', count: 4 }
-                            ].map((tab) => (
-                                <button
-                                    key={tab.id}
-                                    onClick={() => setActiveTab(tab.id as any)}
-                                    className={cn(
-                                        "px-3 py-1.5 text-sm font-medium rounded-md transition-all flex items-center gap-2 outline-none whitespace-nowrap",
-                                        activeTab === tab.id
-                                            ? "bg-primary text-primary-foreground shadow-sm"
-
-                                            : "hover:bg-primary hover:text-primary-foreground"
-                                    )}
-                                >
-                                    {tab.label}
-                                    {tab.count !== null && (
-                                        <span className={cn(
-                                            "text-xs px-1.5 py-0.5 rounded-full transition-colors",
-                                            activeTab === tab.id
-                                                ? "bg-primary-foreground/20 text-primary-foreground"
-                                                : "bg-background text-muted-foreground group-hover:bg-muted font-medium"
-                                        )}>
-                                            {tab.count}
-                                        </span>
-                                    )}
-                                </button>
-                            ))}
-                        </div>
+                        {/* F42.e Task H6 · Tabs pill refactored a FilterPills primitive */}
+                        <FilterPills<'inventory' | 'locations'>
+                            options={[
+                                { key: 'inventory', label: 'Inventory', count: MOCK_INVENTORY.length },
+                                { key: 'locations', label: 'Locations', count: 4 },
+                            ]}
+                            activeKey={activeTab}
+                            onChange={(k) => setActiveTab(k)}
+                            ariaLabel="Inventory tabs"
+                        />
                     </div>
                 </div>
 
@@ -909,30 +906,27 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                 Hide Details <ChevronUpIcon className="w-4 h-4" />
                             </button>
                         </div>
+                        {/* F42.e Task H1 \u00b7 StatCards refactored a HeroMetric primitive.
+                            Trend indicator sigue inline en el sub slot (HeroMetric no lo tiene nativo). */}
                         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 overflow-x-auto pb-4">
                             {Object.entries(inventorySummaryByPeriod[invTimePeriod]).map(([key, data]) => (
-                                <div key={key} className="bg-card rounded-2xl p-6 border border-border shadow-sm hover:shadow-md transition-all group min-w-[200px]">
-                                    <div className="flex items-center justify-between">
-                                        <div>
-                                            <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{data.label}</p>
-                                            <div className="mt-1 flex items-center gap-2">
-                                                <p className="text-3xl font-semibold text-foreground group-hover:scale-105 transition-transform origin-left">{data.value}</p>
-                                                <span className={`text-xs font-semibold ${data.trendUp ? 'text-success' : 'text-destructive'}`}>
-                                                    {data.trendUp ? '\u2191' : '\u2193'}{data.trend}
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            className={cn("p-3 rounded-xl relative group", colorStyles[data.color] || 'bg-muted text-muted-foreground')}
-                                            title={data.label}
-                                        >
-                                            {data.icon}
-                                        </div>
-                                    </div>
-                                    <div className="mt-4 flex items-center text-sm text-muted-foreground">
-                                        <span className="font-medium">{data.sub}</span>
-                                    </div>
-                                </div>
+                                <HeroMetric
+                                    key={key}
+                                    label={data.label}
+                                    value={data.value}
+                                    sub={
+                                        <span className="flex items-center gap-1.5">
+                                            <span>{data.sub}</span>
+                                            <span className={`text-[10px] font-semibold ${data.trendUp ? 'text-success' : 'text-destructive'}`}>
+                                                {data.trendUp ? '\u2191' : '\u2193'}{data.trend}
+                                            </span>
+                                        </span>
+                                    }
+                                    icon={data.icon}
+                                    tone={COLOR_TO_TONE[data.color] ?? 'neutral'}
+                                    size="lg"
+                                    className="min-w-[200px]"
+                                />
                             ))}
                         </div>
 
@@ -1147,36 +1141,17 @@ export default function Inventory({ onLogout, onNavigateToDetail, onNavigateToWo
                                     </div>
                                 </div>
 
-                                {/* Right: View Toggle · DS neutral pattern (no brand as hover-bg per LAW 2) */}
-                                <div className="flex items-center gap-1 p-1 rounded-lg border border-border bg-background">
-                                    <button
-                                        type="button"
-                                        onClick={() => setViewMode('list')}
-                                        aria-label="List view"
-                                        aria-pressed={viewMode === 'list'}
-                                        className={cn(
-                                            "p-1.5 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
-                                            viewMode === 'list'
-                                                ? "bg-muted text-foreground"
-                                                : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                                        )}
-                                    >
-                                        <ListBulletIcon className="w-5 h-5" aria-hidden="true" />
-                                    </button>
-                                    <button
-                                        type="button"
-                                        aria-label="Grid view"
-                                        aria-pressed={viewMode === 'grid'}
-                                        className={cn(
-                                            "p-1.5 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
-                                            viewMode === 'grid'
-                                                ? "bg-muted text-foreground"
-                                                : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                                        )}
-                                    >
-                                        <Squares2X2Icon className="w-5 h-5" aria-hidden="true" />
-                                    </button>
-                                </div>
+                                {/* F42.e Task H4 · ViewToggle refactored a primitive.
+                                    Icons de lucide-react (List · LayoutGrid) por API constraint del primitive. */}
+                                <ViewToggle<'list' | 'grid'>
+                                    options={[
+                                        { value: 'list', icon: LucideList, label: 'List view' },
+                                        { value: 'grid', icon: LucideLayoutGrid, label: 'Grid view' },
+                                    ]}
+                                    value={viewMode}
+                                    onChange={setViewMode}
+                                    size="md"
+                                />
                             </div>
 
                             {/* List View */}
