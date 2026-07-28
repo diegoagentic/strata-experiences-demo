@@ -3224,7 +3224,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                     mainTab === 'follow_up' && (
                         <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                             {/* Unified KPI experience · north-star hero + by-category grid + trends + printable report (Wendy item 11) · "This week" cards merged into DashboardPerformanceGrid to remove redundancy */}
-                            {isInboundOutbound && (
+                            {(isInboundOutbound || isOps) && (
                                 <>
                                     <div className="flex items-center justify-end -mb-2">
                                         <button
