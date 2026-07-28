@@ -404,7 +404,12 @@ export const DEMO_PROFILES: DemoProfile[] = [
         companyName: 'Dealer Ember',
         description: 'Receiving, invoicing & financial control',
         icon: '📊',
-        defaultApp: 'dashboard',
+        // F42.h · defaultApp: 'expert-hub' (Diego 2026-07-27) · la experiencia
+        // principal es el Receiving pipeline (step 1.1 · ReceivingAgent
+        // auto-ingests ASN · 14 agents processing) · antes 'dashboard' aterrizaba
+        // en content vacío (bug pre-existente · fix F42.g agregó fallback pero
+        // Diego prefirió que arranque directo en el flow principal).
+        defaultApp: 'expert-hub',
         experienceKind: 'tour-profile',
         steps: OPS_DEMO_STEPS,
         stepBehavior: OPS_DEMO_STEP_BEHAVIOR,
