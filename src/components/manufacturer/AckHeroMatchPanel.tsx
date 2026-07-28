@@ -159,7 +159,7 @@ export default function AckHeroMatchPanel({ orderId }: AckHeroMatchPanelProps) {
                                             <X className="h-4 w-4" aria-hidden="true" />
                                         </button>
                                     </div>
-                                    <div className="flex-1 overflow-y-auto p-4">
+                                    <div className="flex-1 min-h-0 overflow-y-auto p-4">
                                         <ThreeWayMatchView
                                             orderId={orderId}
                                             lines={MOCK_LINES}
@@ -218,13 +218,14 @@ export default function AckHeroMatchPanel({ orderId }: AckHeroMatchPanelProps) {
                                             <X className="h-4 w-4" aria-hidden="true" />
                                         </button>
                                     </div>
-                                    <div className="flex-1 overflow-y-auto p-5">
+                                    <div className="flex-1 min-h-0 overflow-y-auto p-5">
                                         {issues.length > 0 ? (
                                             <DiscrepancyResolverArtifact
                                                 issues={issues}
                                                 onResolve={(id) => handleResolve(id)}
                                                 onClose={() => setResolverOpen(false)}
                                                 title="Review Substitutions"
+                                                embedded
                                             />
                                         ) : (
                                             <div className="text-center py-8">
