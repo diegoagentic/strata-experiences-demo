@@ -119,6 +119,29 @@ export interface DemoProfile {
      * Undefined defaults to 'tour-profile' for backward compat.
      */
     experienceKind?: 'feature-module' | 'tour-profile';
+
+    // ─── Auto-start (F44) ───────────────────────────────────────────────────
+    /**
+     * When true, `DemoContext` flips `isDemoActive` a `true` al aterrizar en
+     * este profile (mount o change desde dropdown). Necesario cuando el step
+     * 1.1 depende de `isDemoActive` para arrancar su autoplay timeline (ej.
+     * COI · `EmailSimulation` L90-101 · el AI Processing Modal no dispara si
+     * `isDemoActive === false`). Sin este flag el user tiene que ir a "Start
+     * Demo" manualmente para que corra el flow.
+     */
+    autoStart?: boolean;
+
+    // ─── Chrome-less content mode (F44.a.3) ────────────────────────────────
+    /**
+     * When true, App.tsx esconde los componentes de scaffolding del tour
+     * (`DemoSidebar` con la lista de steps · `DemoStepBanner` bottom bar ·
+     * `DemoSpotlight` overlay · `DemoAIIndicator` pill) para que el user solo
+     * vea el contenido de la app en cada step. `DemoProcessPanel` se mantiene
+     * porque drivea los timers de auto-advance y muestra los content modals
+     * de cada step (ej. Normalization Pipeline en step 1.3). También quita
+     * el `pl-80` del main viewport ya que no hay sidebar que compensar.
+     */
+    hideChrome?: boolean;
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -433,6 +456,14 @@ export const DEMO_PROFILES: DemoProfile[] = [
         icon: '📧',
         defaultApp: 'email-marketplace',
         experienceKind: 'tour-profile',
+        // F44.a · Diego 2026-07-29 · el EmailSimulation step 1.1 gatea autoplay
+        // en `isDemoActive === true`. Sin autoStart, el flow se congela en la
+        // vista de email · no dispara AI Processing Modal · no avanza a Kanban.
+        autoStart: true,
+        // F44.a.3 · Diego 2026-07-29 · esconder el tour scaffolding (Demo Flow
+        // sidebar · step banner · spotlight · AI indicator) · el user solo ve
+        // el contenido de cada step (Email → Kanban → Expert Hub → etc).
+        hideChrome: true,
         steps: COI_DEMO_STEPS,
         stepBehavior: COI_DEMO_STEP_BEHAVIOR,
         stepMessages: COI_DEMO_STEP_MESSAGES,

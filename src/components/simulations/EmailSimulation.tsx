@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { useDemo } from '../../context/DemoContext';
+import { useDemoProfile } from '../../context/useDemoProfile';
 import {
     Bars3Icon,
     MagnifyingGlassIcon,
@@ -62,7 +63,13 @@ interface EmailSimulationProps {
 }
 
 export default function EmailSimulation({ previewMode = false }: EmailSimulationProps = {}) {
-    const { isDemoActive, nextStep, currentStep, isPaused, demoProfile } = useDemo();
+    // F44.a.2 · Layer 2 (Diego 2026-07-29) · dropped the broken `demoProfile`
+    // destructure — `DemoContextType` never exposed it (dead code from a
+    // previous refactor). Read the profile via `useDemoProfile` instead so we
+    // can access the new `autoStart` flag directly from `DemoProfileContext`
+    // without depending on `isDemoActive` propagation timing.
+    const { isDemoActive, setIsDemoActive, nextStep, currentStep, isPaused } = useDemo();
+    const { activeProfile } = useDemoProfile();
     const [selectedEmail, setSelectedEmail] = useState<number | null>(null);
     const [starred, setStarred] = useState<Record<number, boolean>>({ 1: true });
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -82,13 +89,20 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
         };
     }, []);
 
-    const isWRG = demoProfile?.id === 'wrg';
+    const isWRG = activeProfile.id === 'wrg';
 
     // Auto-open RFQ email and auto-start processing.
     // In demo tour: gated on step 1.1 / w1.1.
     // In shared-block preview: always autoplay on mount (no tour to gate on).
+    // F44.a.2 · Layer 2 · el fallback `activeProfile.autoStart` dispara el
+    // autoplay aunque `isDemoActive` no haya propagado el flip a true todavía
+    // (race entre el profile-change useEffect de DemoContext y este effect,
+    // agravado por StrictMode double-invoke en dev). El profile config es
+    // síncrono vía useContext · siempre visible en el primer render.
     useEffect(() => {
-        const stepAutoplay = isDemoActive && (currentStep.id === '1.1' || currentStep.id === 'w1.1');
+        const isAutoStartProfile = !!activeProfile.autoStart;
+        const stepAutoplay = (isDemoActive || isAutoStartProfile)
+            && (currentStep.id === '1.1' || currentStep.id === 'w1.1');
         if (!stepAutoplay && !previewMode) return;
 
         const timers: ReturnType<typeof setTimeout>[] = [];
@@ -98,7 +112,7 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
         timers.push(setTimeout(pauseAware(() => setShowProcessingModal(true)), 4050));
 
         return () => timers.forEach(clearTimeout);
-    }, [isDemoActive, currentStep.id, previewMode, pauseAware]);
+    }, [isDemoActive, currentStep.id, previewMode, pauseAware, activeProfile.autoStart]);
 
     const handleProcessingComplete = useCallback(() => {
         setShowProcessingModal(false);
@@ -108,10 +122,17 @@ export default function EmailSimulation({ previewMode = false }: EmailSimulation
             // so the state change reads before the modal covers it.
             setPreviewCompleted(true);
             setTimeout(() => setShowNextStepsModal(true), 650);
-        } else {
-            nextStep();
+            return;
         }
-    }, [nextStep, previewMode]);
+        // F44.a.2 · Layer 3 · safety net · si el profile pidió autoStart pero
+        // isDemoActive nunca llegó a true (race condition · HMR stale), forzar
+        // el flip antes del advance para que renderSimulation (App.tsx L747)
+        // tome el driver seat y monte el DealerMonitorKanban del step 1.2.
+        // Sin esto, renderCurrentPage seguiría mostrando el email vía
+        // defaultApp='email-marketplace' aún después del nextStep().
+        if (!isDemoActive && activeProfile.autoStart) setIsDemoActive(true);
+        nextStep();
+    }, [nextStep, previewMode, isDemoActive, activeProfile.autoStart, setIsDemoActive]);
 
     const defaultEmails: Array<{ id: number; sender: string; senderEmail: string; subject: string; snippet: string; time: string; unread: boolean; labels: string[] }> = [
         { id: 1, sender: 'Apex Furniture Procurement', senderEmail: 'orders@apexfurniture.com', subject: 'RFQ: 200 Executive Task Chairs & Specs', snippet: 'Please review the attached RFQ data and PDF specifications for 200 Task Chairs...', time: '10:42 AM', unread: true, labels: ['Inbox', 'Urgent'] },

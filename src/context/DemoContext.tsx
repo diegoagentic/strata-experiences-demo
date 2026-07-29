@@ -36,13 +36,18 @@ export const DemoProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const [procCompleteStep, setProcCompleteStep] = useState<string | null>(null);
     const [lupaStep, setLupaStep] = useState<string | null>(null);
 
-    // Reset step index when profile changes — keep isDemoActive as-is
+    // Reset step index when profile changes. F44.a · profiles con
+    // `autoStart: true` (ej. COI/Dealer Sage) arrancan con `isDemoActive=true`
+    // porque el step 1.1 depende de ese flag para su autoplay timeline
+    // (EmailSimulation → AI Processing Modal → nextStep). Sin autoStart, el
+    // default es reset a `false` para que otros profiles pidan Start Demo.
     useEffect(() => {
         setCurrentStepIndex(0);
         setIsPaused(false);
         setProcCompleteStep(null);
         setLupaStep(null);
-    }, [activeProfile.id]);
+        setIsDemoActive(activeProfile.autoStart ?? false);
+    }, [activeProfile.id, activeProfile.autoStart]);
 
     // Reset signals when step changes
     useEffect(() => {

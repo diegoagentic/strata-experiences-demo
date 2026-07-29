@@ -707,11 +707,16 @@ function App() {
         onLogout={handleLogout}
       />
 
-      {/* Demo UI Elements */}
-      <DemoSidebar />
-      <DemoSpotlight />
+      {/* Demo UI Elements · F44.a.3 · profiles con `hideChrome: true`
+           esconden la sidebar de steps + banner + spotlight overlay + AI pill.
+           DemoProcessPanel se mantiene siempre montado porque drivea los
+           timers de auto-advance y muestra los content modals de cada step
+           (ej. Normalization Pipeline en step 1.3 · parte de la experiencia,
+           no chrome). */}
+      {!demoProfile.hideChrome && <DemoSidebar />}
+      {!demoProfile.hideChrome && <DemoSpotlight />}
       <DemoProcessPanel onNavigate={handleNavigate} />
-      <DemoStepBanner />
+      {!demoProfile.hideChrome && <DemoStepBanner />}
 
       {/* FIXED NAVBAR (Unified) — hidden for email simulation, WRG Estimator routes & workspace/detail */}
       {/* isBFIMobile: hide navbar for BFI mobile-frame steps (r1.6) so the phone renders full-screen */}
@@ -741,9 +746,11 @@ function App() {
         </div>
       )}
 
-      {/* MAIN CONTENT VIEWPORT */}
-      <main className={`transition-all duration-300 ${(isDemoActive ? currentStep.app !== 'email-marketplace' && currentStep.app !== 'wrg-estimator' && currentStep.app !== 'workspaces-submit' && !bfiLoginActive && !(isBFI && ['r1.6', 'a1.0', 'a1.2'].includes(currentStep.id)) : currentPage !== 'detail' && currentPage !== 'workspace') ? 'pt-16' : ''} ${isDemoActive ? (isSidebarCollapsed ? 'pl-0' : 'pl-80') + ' animate-in fade-in duration-500' : ''} min-h-screen bg-background`}>
-        {isDemoActive && <DemoAIIndicator />}
+      {/* MAIN CONTENT VIEWPORT · F44.a.3 · el `pl-80` compensa el ancho del
+           DemoSidebar. Si `hideChrome` esconde la sidebar, no hay que
+           compensar · el content ocupa full width. Igual con DemoAIIndicator. */}
+      <main className={`transition-all duration-300 ${(isDemoActive ? currentStep.app !== 'email-marketplace' && currentStep.app !== 'wrg-estimator' && currentStep.app !== 'workspaces-submit' && !bfiLoginActive && !(isBFI && ['r1.6', 'a1.0', 'a1.2'].includes(currentStep.id)) : currentPage !== 'detail' && currentPage !== 'workspace') ? 'pt-16' : ''} ${isDemoActive && !demoProfile.hideChrome ? (isSidebarCollapsed ? 'pl-0' : 'pl-80') + ' animate-in fade-in duration-500' : ''} min-h-screen bg-background`}>
+        {isDemoActive && !demoProfile.hideChrome && <DemoAIIndicator />}
         {isDemoActive ? renderSimulation() : renderCurrentPage()}
       </main>
 
