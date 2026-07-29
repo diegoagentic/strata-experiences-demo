@@ -5,7 +5,12 @@
 // ApprovalChainBlock (context wrappers around a widget), just richer visual
 // because the reconciliation flow deserves educational framing. Historical
 // note explains the "three-way → PO vs ACK" post-Neocon 2026-06-05 rename.
-import { CheckCircleIcon, ExclamationTriangleIcon, XCircleIcon } from '@heroicons/react/24/outline';
+// F46.a.1 (Diego 2026-07-29) · wired onResolve handler + confirmation banner
+// para que el botón "Notify dealer of exceptions" sea funcional en el
+// preview · antes era no-op (el widget renderea el botón pero el wrapper
+// no pasaba onResolve callback).
+import { useState } from 'react';
+import { BellIcon, CheckCircleIcon, ExclamationTriangleIcon, XCircleIcon } from '@heroicons/react/24/outline';
 import ThreeWayMatchView, { type MatchLine } from '../components/widgets/ThreeWayMatchView';
 
 const MOCK_LINES: MatchLine[] = [
@@ -16,6 +21,15 @@ const MOCK_LINES: MatchLine[] = [
 ];
 
 export default function ThreeWayMatchBlock() {
+  const [notified, setNotified] = useState(false);
+  const exceptionCount = MOCK_LINES.filter(l => l.status !== 'match').length;
+
+  const handleNotify = () => {
+    setNotified(true);
+    // Auto-dismiss el banner después de 4s para que el user pueda re-testear.
+    setTimeout(() => setNotified(false), 4000);
+  };
+
   return (
     <div className="p-6 max-w-5xl mx-auto space-y-6">
       {/* ─── How the reconciliation works ──────────────────────────────── */}
@@ -103,7 +117,36 @@ export default function ThreeWayMatchBlock() {
       </div>
 
       {/* ─── Widget ─────────────────────────────────────────────────────── */}
-      <ThreeWayMatchView orderId="PO-2044-71" lines={MOCK_LINES} />
+      <ThreeWayMatchView
+        orderId="PO-2044-71"
+        lines={MOCK_LINES}
+        onResolve={handleNotify}
+      />
+
+      {/* Confirmation banner · aparece post-click en "Notify dealer of
+          exceptions" · demo-only feedback (el widget no persiste state) ·
+          auto-dismiss a los 4s. */}
+      {notified && (
+        <div className="rounded-2xl border border-success/30 bg-success/10 p-4 flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-300">
+          <div className="w-9 h-9 rounded-lg bg-success/20 text-success flex items-center justify-center shrink-0">
+            <BellIcon className="w-4 h-4" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold text-success">
+              Dealer notified · {exceptionCount} exception{exceptionCount !== 1 ? 's' : ''} routed to Apex Furniture procurement
+            </p>
+            <p className="text-xs text-success/80 mt-0.5">
+              NotificationAgent · email + in-app · 24hr SLA for dealer response · manufacturer stays in ACK stage.
+            </p>
+          </div>
+          <button
+            onClick={() => setNotified(false)}
+            className="text-xs text-success hover:underline shrink-0"
+          >
+            Dismiss
+          </button>
+        </div>
+      )}
 
       {/* ─── Status semantics ──────────────────────────────────────────── */}
       <div className="bg-card border border-border rounded-2xl p-6">
