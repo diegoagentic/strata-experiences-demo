@@ -409,7 +409,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                                                     className={cn(
                                                         "flex items-center gap-2 px-2 py-1.5 rounded-lg border transition-all",
                                                         isSelected
-                                                            ? "border-primary/40 bg-primary/30 dark:bg-primary/50/5"
+                                                            ? "border-primary/40 bg-primary/30 dark:bg-primary/5"
                                                             : "border-border"
                                                     )}
                                                 >
@@ -525,7 +525,7 @@ function ProjectDetailCard({ isNewProject, isProjectIntake, inline }: { isNewPro
                 {activeTab === 'insights' && (
                     <div className="space-y-3 animate-in fade-in duration-200">
                         {/* AI agent header */}
-                        <div className="flex items-center gap-3 p-2.5 rounded-lg bg-primary/5 dark:bg-primary/50/5 border border-primary/50 dark:border-primary/20">
+                        <div className="flex items-center gap-3 p-2.5 rounded-lg bg-primary/5 dark:bg-primary/5 border border-primary/50 dark:border-primary/20">
                             <AIAgentAvatar size="sm" />
                             <div className="flex-1">
                                 <p className="text-[10px] font-medium text-foreground">
@@ -759,7 +759,7 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                     onClick={handleNotificationClick}
                     className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500"
                 >
-                    <div className="p-4 rounded-xl bg-primary/5 dark:bg-primary/50/10 border-2 border-primary dark:border-primary/40 shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-shadow cursor-pointer">
+                    <div className="p-4 rounded-xl bg-primary/5 dark:bg-primary/10 border-2 border-primary dark:border-primary/40 shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-shadow cursor-pointer">
                         <div className="flex items-start gap-3">
                             <div className="h-9 w-9 rounded-lg bg-primary/50 flex items-center justify-center shrink-0">
                                 <BellAlertIcon className="h-5 w-5 text-primary-foreground" />
@@ -794,7 +794,7 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
 
             {/* AI Processing Phase — Continua intake pipeline */}
             {isProjectIntake && phase === 'processing' && (
-                <div className="bg-card border border-ai/30 dark:border-ai/30/20 rounded-xl p-4 animate-in fade-in duration-300">
+                <div className="bg-card border border-ai/30 dark:border-ai/20 rounded-xl p-4 animate-in fade-in duration-300">
                     <div className="flex items-start gap-3">
                         <AIAgentAvatar size="sm" />
                         <div className="flex-1">
@@ -833,8 +833,8 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                 <div className={cn(
                     "rounded-xl p-4 animate-in fade-in duration-300",
                     isProjectIntake
-                        ? "bg-success/10 dark:bg-success/100/5 border-2 border-success/30"
-                        : "bg-card border border-success/30 dark:border-success/40/30"
+                        ? "bg-success/10 dark:bg-success/5 border-2 border-success/30"
+                        : "bg-card border border-success/30 dark:border-success/30"
                 )}>
                     <div className="flex items-start gap-3">
                         <AIAgentAvatar size="sm" />
@@ -862,7 +862,7 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                                             { icon: <CurrencyDollarIcon className="h-3 w-3" />, label: 'Estimation Engine' },
                                             { icon: <UserGroupIcon className="h-3 w-3" />, label: 'Team Capacity DB' },
                                         ].map(sys => (
-                                            <span key={sys.label} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/15 dark:bg-success/10 text-success text-[10px] font-medium border border-success/30/50 dark:border-success/30">
+                                            <span key={sys.label} className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/15 dark:bg-success/10 text-success text-[10px] font-medium border border-success/50 dark:border-success/30">
                                                 {sys.icon}
                                                 {sys.label}
                                             </span>
@@ -908,15 +908,19 @@ function ProjectsView({ stepId, skipNotification, isProjectIntake }: { stepId: s
                                     <tr
                                         className={cn(
                                             'border-b border-border last:border-0 transition-all',
+                                            // F45.d.2 · era bg-primary/50 → /60 → /80 (LAW 3 · lime al 50-80%
+                                            // como fondo de fila · lucía como highlight glitch). Ahora usa /10
+                                            // subtle tint + border-l-4 accent para hacer "New Project" evidente
+                                            // sin dominar visualmente el resto de la tabla.
                                             isApex && isNewProject
                                                 ? cn(
-                                                    'bg-primary/50 dark:bg-primary/50/5 animate-in fade-in slide-in-from-top-2 duration-500',
-                                                    !isApexExpanded && 'ring-2 ring-inset ring-primary/30',
-                                                    rowHovered && 'bg-primary/10 dark:bg-primary/50/10 cursor-pointer shadow-sm',
-                                                    rowClicked && 'bg-primary/60 dark:bg-primary/50/15 scale-[0.998] shadow-inner'
+                                                    'bg-primary/10 dark:bg-primary/5 border-l-4 border-l-primary animate-in fade-in slide-in-from-top-2 duration-500',
+                                                    !isApexExpanded && 'ring-1 ring-inset ring-primary/20',
+                                                    rowHovered && 'bg-primary/15 dark:bg-primary/10 cursor-pointer shadow-sm',
+                                                    rowClicked && 'bg-primary/20 dark:bg-primary/15 scale-[0.998] shadow-inner'
                                                 )
                                                 : 'bg-card hover:bg-muted/20',
-                                            isApexExpanded && 'border-b-0 bg-primary/80 dark:bg-primary/50/8'
+                                            isApexExpanded && 'border-b-0 bg-primary/15 dark:bg-primary/10'
                                         )}
                                         onClick={isApex && isNewProject && isProjectIntake && showDetailCard ? () => setRowExpanded(prev => !prev) : undefined}
                                         style={isApex && isNewProject && isProjectIntake && showDetailCard ? { cursor: 'pointer' } : undefined}
@@ -1231,8 +1235,8 @@ function OrderTimelineView({ stepId }: { stepId: string }) {
                     ].map(s => (
                         <div key={s.supplier} className={cn(
                             'p-3 rounded-lg border',
-                            s.color === 'green' && 'border-success/30 bg-success/10/30 dark:border-success/40/30 dark:bg-success/10',
-                            s.color === 'amber' && 'border-warning/30 bg-warning/10/30 dark:border-warning/40/30 dark:bg-warning/10',
+                            s.color === 'green' && 'border-success/30 bg-success/30 dark:border-success/30 dark:bg-success/10',
+                            s.color === 'amber' && 'border-warning/30 bg-warning/30 dark:border-warning/30 dark:bg-warning/10',
                             s.color === 'zinc' && 'border-border bg-card',
                         )}>
                             <div className="flex items-center justify-between mb-1">
@@ -1276,8 +1280,8 @@ function OrderTimelineView({ stepId }: { stepId: string }) {
                                     isNS && phase === 'synced' && event.expandedDetail && 'cursor-pointer',
                                     isNS && phase === 'syncing' && 'bg-warning/10',
                                     isNS && phase === 'synced' && isExpanded && 'bg-info/10',
-                                    isNS && phase === 'synced' && !isExpanded && 'bg-info/10/40 dark:bg-info/100/5 hover:bg-info/10/70 dark:hover:bg-info/100/10',
-                                    !isNS && event.status === 'active' && 'bg-warning/10/30 dark:bg-warning/10',
+                                    isNS && phase === 'synced' && !isExpanded && 'bg-info/40 dark:bg-info/5 hover:bg-info/70 dark:hover:bg-info/10',
+                                    !isNS && event.status === 'active' && 'bg-warning/30 dark:bg-warning/10',
                                     !isNS && event.status !== 'active' && 'bg-card hover:bg-muted dark:hover:bg-zinc-700/60',
                                 )}
                             >
@@ -1312,7 +1316,7 @@ function OrderTimelineView({ stepId }: { stepId: string }) {
                                             </span>
                                         )}
                                         {isNS && phase === 'synced' && (
-                                            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-info/10 dark:bg-info/100/20 text-info font-bold flex items-center gap-1 animate-in fade-in duration-500">
+                                            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-info/10 dark:bg-info/20 text-info font-bold flex items-center gap-1 animate-in fade-in duration-500">
                                                 <SparklesIcon className="w-2.5 h-2.5" /> Just synced
                                             </span>
                                         )}
@@ -1901,7 +1905,7 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
                     onClick={onGoToCRM}
                     className="w-full text-left animate-in fade-in slide-in-from-top-4 duration-500"
                 >
-                    <div className="p-4 rounded-xl bg-primary/5 dark:bg-primary/50/10 border-2 border-primary dark:border-primary/40 shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-shadow cursor-pointer">
+                    <div className="p-4 rounded-xl bg-primary/5 dark:bg-primary/10 border-2 border-primary dark:border-primary/40 shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-shadow cursor-pointer">
                         <div className="flex items-start gap-3">
                             <div className="h-9 w-9 rounded-lg bg-primary/50 flex items-center justify-center shrink-0">
                                 <BellAlertIcon className="h-5 w-5 text-primary-foreground" />
@@ -1968,7 +1972,7 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
                                     'px-4 py-2.5 transition-all',
                                     !isNew && !entry.highlight && 'bg-card',
                                     isNew && 'bg-primary/5 animate-in fade-in slide-in-from-top-1 duration-700',
-                                    entry.highlight && 'bg-ai/10/30 dark:bg-ai/5',
+                                    entry.highlight && 'bg-ai/30 dark:bg-ai/5',
                                     isExpandable && 'cursor-pointer hover:bg-muted/30'
                                 )}
                                 onClick={() => isExpandable ? setExpandedEntry(isExpanded ? null : entry.id) : undefined}
@@ -2005,14 +2009,14 @@ function CRMDashboardView({ stepId, onGoToCRM }: { stepId: string; onGoToCRM: ()
                                 </div>
 
                                 {entry.highlight && isExpanded && entry.expandedDetail && (
-                                    <div className="mt-2 pt-2 ml-10 border-t border-ai/30/50 dark:border-ai/30/20">
+                                    <div className="mt-2 pt-2 ml-10 border-t border-ai/50 dark:border-ai/20">
                                         <div className="grid grid-cols-4 gap-3">
                                             <div className="rounded-md bg-card border border-border p-2">
                                                 <p className="text-[9px] text-muted-foreground font-medium mb-0.5">ORIGINAL</p>
                                                 <p className="text-[10px] text-foreground">{entry.expandedDetail.original.rate} × {entry.expandedDetail.original.hours}hrs</p>
                                                 <p className="text-xs font-semibold text-foreground">{entry.expandedDetail.original.total}</p>
                                             </div>
-                                            <div className="rounded-md bg-card border border-ai/30 dark:border-ai/30/20 p-2">
+                                            <div className="rounded-md bg-card border border-ai/30 dark:border-ai/20 p-2">
                                                 <p className="text-[9px] text-ai dark:text-ai font-medium mb-0.5">ADJUSTED</p>
                                                 <p className="text-[10px] text-foreground">{entry.expandedDetail.adjusted.rate} × {entry.expandedDetail.adjusted.hours}hrs</p>
                                                 <p className="text-xs font-semibold text-ai dark:text-ai">{entry.expandedDetail.adjusted.total}</p>
@@ -2177,7 +2181,7 @@ function InvoicingView() {
                     {[
                         { id: 'PO #ORD-2055', amount: '$43,750', items: '200 items', color: 'border-info/30 dark:border-info/40 bg-info/10 dark:bg-info/10' },
                         { id: 'ACK #ACK-2055', amount: '$43,750', items: '200 items', color: 'border-success/30 dark:border-success/40 bg-success/10 dark:bg-success/10' },
-                        { id: 'INV #INV-2055', amount: '$44,210', items: '202 items (+CO)', color: 'border-ai/30 dark:border-ai/30 bg-ai/10/50 dark:bg-ai/15' },
+                        { id: 'INV #INV-2055', amount: '$44,210', items: '202 items (+CO)', color: 'border-ai/30 dark:border-ai/30 bg-ai/50 dark:bg-ai/15' },
                     ].map((doc, i) => (
                         <div key={doc.id} className="flex items-center gap-2 flex-1">
                             <div className={cn("flex-1 p-2.5 rounded-lg border text-center", doc.color)}>
@@ -2394,7 +2398,13 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
     const { activeProfile } = useDemoProfile();
     const isOps = activeProfile.id === 'ops';
     const isContinua = activeProfile.id === 'continua';
-    const stepId = currentStep?.id || '1.12'
+    // F45.d.3 · era `|| '1.12'` · el fallback fabricaba la Sage animation
+    // (New Project Auto-Created · notification toast · phased reveal) cuando
+    // no había currentStep (ej. acme sin tour · user click en CRM tab).
+    // Ahora `'idle'` no matchea ningún check step-specific → tabla se
+    // renderea estática sin animación · más coherente con "user visita la
+    // tab" vs "step 1.12 del tour Sage se ejecutando".
+    const stepId = currentStep?.id || 'idle'
 
     // Pause-aware timer helper
     const isPausedRef = useRef(isPaused);
@@ -2470,7 +2480,7 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                 </div>
                 <div className="flex-1 overflow-y-auto p-6 space-y-4" data-demo-target="crm-receiving-milestone">
                     {/* Agent Context */}
-                    <div className="p-3 rounded-xl bg-ai/10 border border-ai/30 dark:border-ai/30/20 flex items-start gap-3">
+                    <div className="p-3 rounded-xl bg-ai/10 border border-ai/30 dark:border-ai/20 flex items-start gap-3">
                         <AIAgentAvatar className="mt-0.5" />
                         <div className="flex-1 text-xs text-ai">
                             <span className="font-bold">ReceivingMilestoneAgent:</span> Updating CRM project timeline — delivery confirmed for Apex Furniture. All data synced from receiving system automatically.
@@ -2558,7 +2568,7 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                 </div>
                 <div className="flex-1 overflow-y-auto p-6 space-y-4" data-demo-target="budget-vs-actual-chart">
                     {/* Agent Context */}
-                    <div className="p-3 rounded-xl bg-ai/10 border border-ai/30 dark:border-ai/30/20 flex items-start gap-3">
+                    <div className="p-3 rounded-xl bg-ai/10 border border-ai/30 dark:border-ai/20 flex items-start gap-3">
                         <AIAgentAvatar className="mt-0.5" />
                         <div className="flex-1 text-xs text-ai">
                             <span className="font-bold">BudgetAnalysisAgent:</span> Complete variance analysis for Apex Furniture — all changes documented with approval chain. Total actual: $50,205 (+14.7% vs. base quote).
@@ -2582,7 +2592,7 @@ export default function CRMSimulation({ onNavigate, activePage }: CRMSimulationP
                                 <div key={i} className={`flex items-center gap-4 p-3 rounded-xl border ${
                                     item.type === 'base' ? 'border-info/30 dark:border-info/40 bg-info/10 dark:bg-info/15' :
                                     item.type === 'add' ? 'border-warning/30 dark:border-warning/40 bg-warning/10 dark:bg-warning/15' :
-                                    'border-success/30 dark:border-success/40 bg-success/10/50 dark:bg-success/15'
+                                    'border-success/30 dark:border-success/40 bg-success/50 dark:bg-success/15'
                                 }`}>
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2">

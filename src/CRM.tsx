@@ -26,9 +26,12 @@ export default function CRM({ onLogout, onNavigateToWorkspace, onNavigate }: Pag
                 onNavigateToWorkspace={onNavigateToWorkspace}
                 onNavigate={onNavigate}
             />
-            <div className="pt-16">
-                <CRMSimulation onNavigate={onNavigate} activePage="crm" />
-            </div>
+            {/* F45.d.5 · sin pt-16 wrapper · CRMSimulation ya aplica `pt-24`
+                internamente (asume que renderea sin shell). El navbar mide
+                ~64px · pt-24 = 96px total → 32px de whitespace bajo el
+                navbar · aceptable. Antes había pt-16 acá + pt-24 dentro =
+                112px de whitespace excesivo. */}
+            <CRMSimulation onNavigate={onNavigate} activePage="crm" />
         </div>
     )
 }
