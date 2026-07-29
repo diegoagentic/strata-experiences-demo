@@ -125,6 +125,16 @@ function App() {
     }
   }, [isDemoActive, currentStep?.app, currentStep?.id])
 
+  // F44.b.2 (Diego 2026-07-29) · scroll-to-top on demo step change.
+  // Necesario porque varios steps del Dashboard usan `min-h-[200vh]` para
+  // mobile phone frame simulations. Sin scroll reset, después de step 1.6
+  // (Approval Chain corto) el user avanza a 1.7/1.8 pero mantiene su scroll
+  // position → ve la zona negra bg-zinc-950 debajo del phone frame en vez
+  // del content en el top. También ayuda a otros steps largos.
+  useEffect(() => {
+    if (isDemoActive) window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [currentStep?.id, isDemoActive])
+
   // Reset in-demo detail navigation when step changes
   useEffect(() => {
     if (isDemoActive && (currentPage === 'order-detail' || currentPage === 'quote-detail' || currentPage === 'ack-detail')) {
