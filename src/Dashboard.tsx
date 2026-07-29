@@ -454,7 +454,19 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
     const isOps = activeProfile.id === 'ops';
     const isContinua = activeProfile.id === 'continua';
     const isInboundOutbound = activeProfile.id === 'inbound-outbound';
+    const isCoi = activeProfile.id === 'coi';
     const stepId = currentStep?.id || '';
+    // F44.b.1 (Diego 2026-07-29) · step 1.6 es mobile phone frame para
+    // Continua (Client Review · Emily Chen) pero para COI es Approval Chain
+    // (Dashboard content) · NO debe usar el black bg + hide main content.
+    // Idem para 2.1 (Continua Service Request). Steps 1.8 y 3.5 sí son
+    // mobile frame en COI (push notif + punch list).
+    const isMobileFrameStep = !isOps && (
+        currentStep?.id === '1.8'
+        || currentStep?.id === '3.5'
+        || (currentStep?.id === '1.6' && !isCoi)
+        || (currentStep?.id === '2.1' && !isCoi)
+    );
 
     // Pause-aware timer helper (same pattern as DemoProcessPanel)
     const isPausedRef = useRef(isPaused);
@@ -815,12 +827,12 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
     }, [])
 
     return (
-        <div className={`font-sans text-foreground ${!isOps && ['1.8', '1.6', '2.1', '3.5'].includes(currentStep?.id) ? 'min-h-[200vh] bg-zinc-950 -mt-16 pt-16' : 'min-h-screen bg-background pb-10'}`}>
+        <div className={`font-sans text-foreground ${isMobileFrameStep ? 'min-h-[200vh] bg-zinc-950 -mt-16 pt-16' : 'min-h-screen bg-background pb-10'}`}>
             {/* AI command bar hidden for the inbound-outbound demo (per user) */}
-            {!isInboundOutbound && !(!isOps && ['1.8', '1.6', '2.1', '3.5'].includes(currentStep?.id)) && <GenUIContainer />}
+            {!isInboundOutbound && !isMobileFrameStep && <GenUIContainer />}
 
             {/* ===== Step 1.6: Client Review & Approval — Mobile device (Continua) ===== */}
-            {currentStep?.id === '1.6' && (
+            {currentStep?.id === '1.6' && !isCoi && (
                 <div data-demo-target="mobile-client-review" className="flex items-start justify-center pt-6 min-h-[calc(100vh-4rem)] animate-in fade-in duration-500">
                     <MobileDeviceFrame>
                         {/* Mobile Navbar */}
@@ -961,7 +973,7 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
             {/* d2.7 now renders inside Follow Up tab below */}
 
             {/* ===== Step 2.1: Service Request — Mobile device (Continua End User) ===== */}
-            {currentStep?.id === '2.1' && !isOps && (
+            {currentStep?.id === '2.1' && !isOps && !isCoi && (
                 <div data-demo-target="mobile-service-request" className="flex items-start justify-center pt-6 min-h-[calc(100vh-4rem)] animate-in fade-in duration-500">
                     <MobileDeviceFrame>
                         {/* Mobile Navbar */}
@@ -1657,8 +1669,9 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
                 </div>
             )}
 
-            {/* Main Content — hidden during mobile-only steps (fullscreen mobile overlay) */}
-            <div className={`pt-24 px-4 max-w-[1600px] mx-auto space-y-6 ${!isOps && ['1.6', '1.8', '2.1', '3.5'].includes(currentStep?.id) ? 'hidden' : ''}`}>
+            {/* Main Content — hidden during mobile-only steps (fullscreen mobile overlay).
+                 F44.b.1 · isMobileFrameStep excluye 1.6 para COI (Approval Chain) y 2.1 para COI. */}
+            <div className={`pt-24 px-4 max-w-[1600px] mx-auto space-y-6 ${isMobileFrameStep ? 'hidden' : ''}`}>
                 {/* Page Title & Search */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                     <div>
