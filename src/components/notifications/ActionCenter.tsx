@@ -195,6 +195,143 @@ const DUPLER_D11_NOTIFICATION: Notification = {
     ],
 };
 
+// F44.b.4 (Diego 2026-07-29) · COI (Dealer Sage) Flow 1 milestones · surface
+// las eventos claves del Email → PO → CRM en el Action Center bell para
+// consistencia con Strata pattern. Diego reportó que la CRM Dashboard ya
+// mostraba "New Project Auto-Created" banner (step 1.12) pero no aparecía
+// en el bell del navbar · rompía la promesa "todas las notifs centralizadas".
+// Reemplaza banners inline por notifs en el Action Center · sigue el mismo
+// pattern que Continua/Workspaces (sin gate isDemoActive · dispara por
+// currentStep.id · guard por profile.id para no cross-firing).
+const COI_STEP_NOTIFICATIONS: Record<string, Notification> = {
+    '1.1': {
+        id: 'coi-1.1-rfq-received',
+        type: 'system',
+        priority: 'high',
+        title: 'RFQ Detected · Apex Furniture',
+        message: '200 Executive Task Chairs · Specs.pdf + OrderData.csv attached · auto-processing initiated.',
+        meta: 'EmailIntakeAgent · orders@apexfurniture.com',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'View RFQ', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '1.2': {
+        id: 'coi-1.2-extraction-complete',
+        type: 'system',
+        priority: 'medium',
+        title: 'AI Extraction Complete · 200 line items',
+        message: 'OCR + DataParser extracted 200 items across 4 delivery zones · 82% overall confidence · normalizing to SIF format.',
+        meta: 'DataParser + Normalizer · Strata AI Engine v2.0',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'View extraction', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '1.5': {
+        id: 'coi-1.5-expert-review',
+        type: 'approval',
+        priority: 'high',
+        title: 'Expert Review Complete · QT-1025',
+        message: '200 items validated by Dr. James Wilson · 7 spec issues resolved · 96.5% pass rate · $22,750 savings · approval chain initiated.',
+        meta: 'SpecValidationAgent · Expert Hub',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'Review quote', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '1.6': {
+        id: 'coi-1.6-approval-chain',
+        type: 'approval',
+        priority: 'high',
+        title: 'Quote Approval Chain Initiated · QT-1025',
+        message: 'Quote QT-1025 ($134,250) triggered 2-level workflow · System Policy Engine (Level 1) reviewing · Regional Sales Manager Reyes (Level 2) pending.',
+        meta: 'ApprovalOrchestratorAgent · Policy Match 94%',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'View chain', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '1.7': {
+        id: 'coi-1.7-manager-approved',
+        type: 'approval',
+        priority: 'high',
+        title: 'Quote Ready for Review · QT-1025',
+        message: 'Quote QT-1025 for Apex Furniture — $134,250, 5 SKUs · AI-generated from RFQ · ready for your approval.',
+        meta: 'Regional Sales Manager Reyes · Sara\'s dashboard',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'Approve quote', primary: true },
+            { label: 'Request changes', primary: false },
+        ],
+    },
+    '1.9': {
+        id: 'coi-1.9-po-generated',
+        type: 'po_created',
+        priority: 'high',
+        title: 'PO Auto-Generated · ORD-2055',
+        message: 'PO ORD-2055 for Apex Furniture — $43,750, 200 items across 4 delivery zones. 3-level approval chain complete · transmitted to supplier · zero re-entry.',
+        meta: 'POGenerationAgent + ApprovalOrchestratorAgent',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'View PO', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '1.11': {
+        id: 'coi-1.11-pipeline-order',
+        type: 'system',
+        priority: 'medium',
+        title: 'New Order in Pipeline · ORD-2055',
+        message: 'Order ORD-2055 (Apex Furniture · $43,750) entered production pipeline · animated column transition · notifications ready.',
+        meta: 'PipelineAgent · Expert Hub Transactions',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'View pipeline', primary: true },
+            { label: 'Send notifications', primary: false },
+        ],
+    },
+    '1.12': {
+        id: 'coi-1.12-crm-project-created',
+        type: 'system',
+        priority: 'medium',
+        title: 'New Project Auto-Created · Apex HQ Renovation',
+        message: 'ProjectCreationAgent created PRJ-001 from Quote QT-1025 · $43,750 · 200 line items · 4 delivery zones · 5 suppliers · zero manual CRM entry.',
+        meta: 'ProjectCreationAgent · Cross-platform sync active',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'View project', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+    '1.13': {
+        id: 'coi-1.13-customer-360',
+        type: 'system',
+        priority: 'low',
+        title: 'Customer 360 Updated · Apex Furniture',
+        message: 'Apex Furniture profile aggregated across systems · $1.2M lifetime value · 5 active projects · 200 items delivery in progress.',
+        meta: 'CustomerAggregatorAgent · CRM',
+        timestamp: 'Just now',
+        unread: true,
+        actions: [
+            { label: 'View 360', primary: true },
+            { label: 'Dismiss', primary: false },
+        ],
+    },
+};
+
 // F42.a Task A · Continua (Project & Inventory Intelligence) notifications.
 // Reemplaza 11 banners custom inline en Inventory.tsx · Transactions.tsx ·
 // Dashboard.tsx por notifs registradas en el Action Center · pattern análogo
@@ -555,12 +692,25 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
     const [continuaDismissed, setContinuaDismissed] = useState<Set<string>>(new Set());
     const isContinuaActive = !!continuaStepConfig && !continuaDismissed.has(continuaStepConfig.id);
 
+    // F44.b.4 · COI (Dealer Sage) Flow 1 notifications · mismo pattern que
+    // Continua · guardean por profile.id para no cross-firing con OPS o otros
+    // profiles que tienen step ids 1.1-1.13 pero con contenido distinto.
+    const isCoiProfile = activeProfile?.id === 'coi';
+    const coiStepConfig = isCoiProfile
+        ? COI_STEP_NOTIFICATIONS[currentStep?.id ?? '']
+        : undefined;
+    const [coiDismissed, setCoiDismissed] = useState<Set<string>>(new Set());
+    const isCoiActive = !!coiStepConfig && !coiDismissed.has(coiStepConfig.id);
+
     const filteredNotifications = useMemo(() => {
         const currentTab = tabs.find(t => t.id === activeTab);
         const continuaEntry = isContinuaActive ? [continuaStepConfig!] : [];
         const workspacesEntry = isWorkspacesActive ? [workspacesStepConfig!] : [];
+        const coiEntry = isCoiActive ? [coiStepConfig!] : [];
         const duplerEntry = shouldShowDuplerD11 ? [DUPLER_D11_NOTIFICATION] : [];
-        const base = [...continuaEntry, ...workspacesEntry, ...duplerEntry, ...mockNotifications];
+        // F44.b.4 · Para COI, mostrar solo el step-specific + mockNotifications
+        // relevantes (ej. shipment/PO). No mostrar entries de otros profiles.
+        const base = [...coiEntry, ...continuaEntry, ...workspacesEntry, ...duplerEntry, ...mockNotifications];
         return base
             .filter(n => currentTab?.filter(n))
             .filter(n =>
@@ -568,15 +718,17 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
                 n.message.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 n.meta.toLowerCase().includes(searchQuery.toLowerCase())
             );
-    }, [activeTab, searchQuery, shouldShowDuplerD11, isWorkspacesActive, workspacesStepConfig, isContinuaActive, continuaStepConfig]);
+    }, [activeTab, searchQuery, shouldShowDuplerD11, isWorkspacesActive, workspacesStepConfig, isContinuaActive, continuaStepConfig, isCoiActive, coiStepConfig]);
 
     const urgentCount = (shouldShowDuplerD11 ? 1 : 0)
         + (isWorkspacesActive && workspacesStepConfig?.priority === 'high' ? 1 : 0)
         + (isContinuaActive && continuaStepConfig?.priority === 'high' ? 1 : 0)
+        + (isCoiActive && coiStepConfig?.priority === 'high' ? 1 : 0)
         + mockNotifications.filter(n => n.priority === 'high').length;
     const totalCount = (shouldShowDuplerD11 ? 1 : 0)
         + (isWorkspacesActive ? 1 : 0)
         + (isContinuaActive ? 1 : 0)
+        + (isCoiActive ? 1 : 0)
         + mockNotifications.filter(n => n.unread).length;
 
     // Flow 1 tabs for step 1.10 — single tab since only 1 notification
