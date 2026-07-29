@@ -224,11 +224,15 @@ export const SHARED_BLOCKS: SharedBlockEntry[] = [
 
   // ─── WIDGETS (3) ───────────────────────────────────────────────────────────
   {
+    // F46.b · id preservado ('three-way-match') para no romper URLs
+    // bookmarked · title + description actualizados post-Neocon 2026-06-05
+    // (el widget se rename de 3-way a PO vs ACK · el Receipt/Invoice column
+    // se removió porque el manufacturer no emite invoice en stage ACK).
     id: 'three-way-match',
     kind: 'widget',
-    title: 'Three-Way Match View',
+    title: 'PO vs ACK Match View',
     icon: '⚖️',
-    description: 'PO ↔ ACK ↔ Receipt reconciliation widget.',
+    description: 'AI-powered reconciliation of Purchase Order vs Acknowledgement line items.',
     usedByExperiences: ['ops'],
     component: ThreeWayMatchBlock,
   },
