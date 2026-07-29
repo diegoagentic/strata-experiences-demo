@@ -758,9 +758,14 @@ function App() {
 
       {/* MAIN CONTENT VIEWPORT · F44.a.3 · el `pl-80` compensa el ancho del
            DemoSidebar. Si `hideChrome` esconde la sidebar, no hay que
-           compensar · el content ocupa full width. Igual con DemoAIIndicator. */}
+           compensar · el content ocupa full width.
+           F45.c (Diego 2026-07-29) · el DemoAIIndicator SÍ se renderea con
+           hideChrome · es un sticky bar top compacto que muestra el step
+           title/desc/aiSummary/userAction · permite ver el diff narrativo
+           entre profiles (ej. coi enriquecido vs acme genérico) sin
+           reintroducir toda la Demo Flow sidebar. */}
       <main className={`transition-all duration-300 ${(isDemoActive ? currentStep.app !== 'email-marketplace' && currentStep.app !== 'wrg-estimator' && currentStep.app !== 'workspaces-submit' && !bfiLoginActive && !(isBFI && ['r1.6', 'a1.0', 'a1.2'].includes(currentStep.id)) : currentPage !== 'detail' && currentPage !== 'workspace') ? 'pt-16' : ''} ${isDemoActive && !demoProfile.hideChrome ? (isSidebarCollapsed ? 'pl-0' : 'pl-80') + ' animate-in fade-in duration-500' : ''} min-h-screen bg-background`}>
-        {isDemoActive && !demoProfile.hideChrome && <DemoAIIndicator />}
+        {isDemoActive && <DemoAIIndicator />}
         {isDemoActive ? renderSimulation() : renderCurrentPage()}
       </main>
 
