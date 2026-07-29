@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { useDemo } from '../../context/DemoContext';
+import { useDemoProfile } from '../../context/useDemoProfile';
 
 interface NavbarPillProps {
   leading?: ReactNode;
@@ -15,7 +16,11 @@ export default function NavbarPill({
   respectSidebar = true,
 }: NavbarPillProps) {
   const { isDemoActive, isSidebarCollapsed } = useDemo();
-  const sidebarExpanded = respectSidebar && isDemoActive && !isSidebarCollapsed;
+  const { activeProfile } = useDemoProfile();
+  // F44.b.3 · profiles con `hideChrome: true` (ej. COI/Dealer Sage post
+  // F44.a.3) esconden el DemoSidebar · el navbar NO debe reservar `left-80`
+  // para él · debe centrarse edge-to-edge como en modo normal.
+  const sidebarExpanded = respectSidebar && isDemoActive && !isSidebarCollapsed && !activeProfile.hideChrome;
 
   return (
     <div
