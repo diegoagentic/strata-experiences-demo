@@ -486,6 +486,12 @@ export const DEMO_PROFILES: DemoProfile[] = [
         icon: '🏭',
         defaultApp: 'email-marketplace',
         experienceKind: 'tour-profile',
+        // F45.a · Diego 2026-07-29 · Dealer Rust hereda el patrón F44 de
+        // Dealer Sage · auto-arranca el demo al aterrizar + esconde el tour
+        // scaffolding · content-only mode. Preserva la identidad legacy
+        // (COI_STEPS · 23 steps sin CRM steps) pero con la UX moderna.
+        autoStart: true,
+        hideChrome: true,
         steps: COI_STEPS,
         stepBehavior: COI_STEP_BEHAVIOR,
         stepMessages: COI_STEP_MESSAGES,

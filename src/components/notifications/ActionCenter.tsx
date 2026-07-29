@@ -695,7 +695,9 @@ export default function ActionCenter({ defaultOpen = false }: ActionCenterProps 
     // F44.b.4 · COI (Dealer Sage) Flow 1 notifications · mismo pattern que
     // Continua · guardean por profile.id para no cross-firing con OPS o otros
     // profiles que tienen step ids 1.1-1.13 pero con contenido distinto.
-    const isCoiProfile = activeProfile?.id === 'coi';
+    // F45.a · Extendido a acme (Dealer Rust) · comparte COI_STEPS 1.1-1.11.
+    // Los entries 1.12/1.13 (CRM) son no-ops porque acme no tiene esos steps.
+    const isCoiProfile = activeProfile?.id === 'coi' || activeProfile?.id === 'acme';
     const coiStepConfig = isCoiProfile
         ? COI_STEP_NOTIFICATIONS[currentStep?.id ?? '']
         : undefined;
