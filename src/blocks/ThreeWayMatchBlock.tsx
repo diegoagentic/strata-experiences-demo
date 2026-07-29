@@ -11,6 +11,7 @@
 // no pasaba onResolve callback).
 import { useState } from 'react';
 import { BellIcon, CheckCircleIcon, ExclamationTriangleIcon, XCircleIcon } from '@heroicons/react/24/outline';
+import { Callout } from 'strata-design-system';
 import ThreeWayMatchView, { type MatchLine } from '../components/widgets/ThreeWayMatchView';
 
 const MOCK_LINES: MatchLine[] = [
@@ -123,28 +124,31 @@ export default function ThreeWayMatchBlock() {
         onResolve={handleNotify}
       />
 
-      {/* Confirmation banner · aparece post-click en "Notify dealer of
-          exceptions" · demo-only feedback (el widget no persiste state) ·
-          auto-dismiss a los 4s. */}
+      {/* Confirmation callout · aparece post-click en "Notify dealer of
+          exceptions" · demo-only feedback · auto-dismiss a los 4s.
+          F46.a.2 · reemplazado el banner custom por el `<Callout>`
+          primitive del strata-design-system · tone success · variant soft ·
+          eyebrow + title + body + icon + actions slots consistentes con
+          los otros callouts del DS (Leland briefings · JoshuaReviewCard ·
+          BFI banners). */}
       {notified && (
-        <div className="rounded-2xl border border-success/30 bg-success/10 p-4 flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-300">
-          <div className="w-9 h-9 rounded-lg bg-success/20 text-success flex items-center justify-center shrink-0">
-            <BellIcon className="w-4 h-4" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-success">
-              Dealer notified · {exceptionCount} exception{exceptionCount !== 1 ? 's' : ''} routed to Apex Furniture procurement
-            </p>
-            <p className="text-xs text-success/80 mt-0.5">
-              NotificationAgent · email + in-app · 24hr SLA for dealer response · manufacturer stays in ACK stage.
-            </p>
-          </div>
-          <button
-            onClick={() => setNotified(false)}
-            className="text-xs text-success hover:underline shrink-0"
-          >
-            Dismiss
-          </button>
+        <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+          <Callout
+            tone="success"
+            variant="soft"
+            icon={<BellIcon className="w-4 h-4" />}
+            eyebrow="Dealer notified"
+            title={`${exceptionCount} exception${exceptionCount !== 1 ? 's' : ''} routed to Apex Furniture procurement`}
+            body="NotificationAgent · email + in-app · 24hr SLA for dealer response · manufacturer stays in ACK stage."
+            actions={
+              <button
+                onClick={() => setNotified(false)}
+                className="text-[11px] font-semibold text-success hover:underline"
+              >
+                Dismiss
+              </button>
+            }
+          />
         </div>
       )}
 
