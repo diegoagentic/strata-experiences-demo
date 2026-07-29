@@ -461,11 +461,15 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
     // (Dashboard content) · NO debe usar el black bg + hide main content.
     // Idem para 2.1 (Continua Service Request). Steps 1.8 y 3.5 sí son
     // mobile frame en COI (push notif + punch list).
+    // F45.b.1 (Diego 2026-07-29) · guards `!isCoi` cambiados a `isContinua`
+    // para excluir correctamente a acme (Dealer Rust) y otros profiles que
+    // podrían compartir step ids 1.6/2.1. Solo Continua debe activar el
+    // mobile phone frame en esos steps.
     const isMobileFrameStep = !isOps && (
         currentStep?.id === '1.8'
         || currentStep?.id === '3.5'
-        || (currentStep?.id === '1.6' && !isCoi)
-        || (currentStep?.id === '2.1' && !isCoi)
+        || (currentStep?.id === '1.6' && isContinua)
+        || (currentStep?.id === '2.1' && isContinua)
     );
 
     // Pause-aware timer helper (same pattern as DemoProcessPanel)
@@ -831,8 +835,11 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
             {/* AI command bar hidden for the inbound-outbound demo (per user) */}
             {!isInboundOutbound && !isMobileFrameStep && <GenUIContainer />}
 
-            {/* ===== Step 1.6: Client Review & Approval — Mobile device (Continua) ===== */}
-            {currentStep?.id === '1.6' && !isCoi && (
+            {/* ===== Step 1.6: Client Review & Approval — Mobile device (Continua) =====
+                 F45.b.1 · guard `!isCoi` cambiado a `isContinua` para no
+                 filtrar acme (Dealer Rust) o otros profiles que compartan
+                 step 1.6 pero no sean Continua. */}
+            {currentStep?.id === '1.6' && isContinua && (
                 <div data-demo-target="mobile-client-review" className="flex items-start justify-center pt-6 min-h-[calc(100vh-4rem)] animate-in fade-in duration-500">
                     <MobileDeviceFrame>
                         {/* Mobile Navbar */}
@@ -972,8 +979,10 @@ export default function Dashboard({ onLogout, onNavigateToDetail, onNavigateToWo
 
             {/* d2.7 now renders inside Follow Up tab below */}
 
-            {/* ===== Step 2.1: Service Request — Mobile device (Continua End User) ===== */}
-            {currentStep?.id === '2.1' && !isOps && !isCoi && (
+            {/* ===== Step 2.1: Service Request — Mobile device (Continua End User) =====
+                 F45.b.1 · guard actualizado a `isContinua` (antes `!isOps && !isCoi`)
+                 para restringir el mobile frame solo a Continua. acme cae fuera. */}
+            {currentStep?.id === '2.1' && isContinua && (
                 <div data-demo-target="mobile-service-request" className="flex items-start justify-center pt-6 min-h-[calc(100vh-4rem)] animate-in fade-in duration-500">
                     <MobileDeviceFrame>
                         {/* Mobile Navbar */}
